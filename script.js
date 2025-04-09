@@ -54,7 +54,7 @@ fetch('lieux.json')
 window.addEventListener("load", () => {
   const overlay = document.getElementById("intro-overlay");
   const introText = document.getElementById("intro-text");
-  introText.textContent = "Un territoire. Une carte. Des histoires sombres.";
+  introText.textContent = "Un territoire. Une carte. Un passé sombre.";
 
   // Disparition après écriture (5s) + pause (2s)
   setTimeout(() => {
