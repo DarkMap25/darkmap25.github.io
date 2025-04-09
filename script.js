@@ -2,18 +2,19 @@
 const map = L.map('map', {
   minZoom: 5,
   maxBounds: [
-    [40.0, -5.0],  // sud-ouest
-    [52.0, 10.0]   // nord-est
+    [40.0, -5.0],
+    [52.0, 10.0]
   ]
-}).setView([46.8, 2.5], 6); // Centre France
+}).setView([46.8, 2.5], 6);
 
+// Fond sombre
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
   attribution: '&copy; OpenStreetMap contributors',
   subdomains: 'abcd',
   maxZoom: 19
 }).addTo(map);
 
-// Fonction pour choisir l'icône selon la catégorie
+// Icônes personnalisées
 function getIcon(category) {
   return L.icon({
     iconUrl: `icons/${category}.png`,
@@ -23,7 +24,7 @@ function getIcon(category) {
   });
 }
 
-// Charger les lieux depuis le fichier lieux.json
+// Charger les lieux depuis lieux.json
 fetch('lieux.json')
   .then(response => response.json())
   .then(data => {
@@ -31,11 +32,18 @@ fetch('lieux.json')
       const marker = L.marker([lieu.lat, lieu.lng], {
         icon: getIcon(lieu.categorie)
       }).addTo(map);
-      marker.bindPopup(`<strong>${lieu.nom}</strong><br>${lieu.description}`);
+
+      const popupContent = `
+        <strong>${lieu.nom}</strong><br>
+        ${lieu.resume}<br>
+        <a href="${lieu.page}" target="_blank">Lire l’histoire complète →</a>
+      `;
+
+      marker.bindPopup(popupContent);
     });
   });
 
-// Formulaire de proposition de lieu
+// Formulaire - tu pourras adapter ce code plus tard si tu l’automatises
 document.getElementById("lieuForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -58,9 +66,8 @@ Catégorie : ${categorie}
   window.location.href = mailtoLink;
 });
 
-// 🌒 Effet torche (curseur)
+// Effet torche
 document.addEventListener("mousemove", function(e) {
-  const torch = document.querySelector(".torch");
-  torch.style.left = `${e.clientX}px`;
-  torch.style.top = `${e.clientY}px`;
+  document.documentElement.style.setProperty('--cursorX', e.clientX + 'px');
+  document.documentElement.style.setProperty('--cursorY', e.clientY + 'px');
 });
