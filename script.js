@@ -56,9 +56,10 @@ window.addEventListener("load", () => {
   const introText = document.getElementById("intro-text");
   introText.textContent = "Un territoire. Une carte. Des histoires sombres.";
 
+  // Disparition après écriture (5s) + pause (2s)
   setTimeout(() => {
     overlay.style.transition = "opacity 2s ease";
     overlay.style.opacity = 0;
     setTimeout(() => overlay.remove(), 2000);
-  }, 6000); // attend la fin de l’animation (5s + 1s de marge)
+  }, 7000); // 5s écriture + 2s pause
 });
