@@ -1,78 +1,43 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DarkMap</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="icons/darkstory.png">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-Vm7l7bTGS6BxXbiHrqC5cPlkS0cjg9LrCzG9xWvTD60=" crossorigin=""></script>
+
+  <!-- Feuilles de style -->
+  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Polices -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Intro animée -->
-  <div id="intro">
-    <h1><span id="intro-text"></span></h1>
-  </div>
+  <header>
+    <img src="icons/logo.png" alt="Logo DarkMap" class="logo" />
+    <h1>DarkMap</h1>
+    <p class="tagline">Un territoire. Une carte. Des histoires sombres.</p>
+  </header>
 
-  <!-- Contenu du site après l’intro -->
-  <div id="main-content" style="display: none;">
-    
-    <!-- Logo -->
-    <header>
-      <img src="icons/darkstory.png" alt="Logo DarkMap" class="logo">
-    </header>
+  <section class="intro">
+    <p>
+      DarkMap est un site interactif qui recense les lieux les plus sombres et étranges de France.<br>
+      Crimes non élucidés, histoires mystérieuses, lieux abandonnés ou chargés d’un passé lourd...<br>
+      Chaque point sur la carte vous raconte un fragment d’un passé oublié ou dérangeant.<br>
+      Ce projet a pour objectif de documenter, cartographier et faire découvrir ces lieux atypiques.<br>
+      Tous les emplacements sont choisis pour leur fiabilité et leur valeur historique ou intrigante.<br>
+      Explorez la France autrement, à travers ses secrets, ses drames et ses fantômes...
+    </p>
+  </section>
 
-    <!-- Carte -->
-    <div id="map"></div>
+  <div id="map"></div>
 
-    <!-- Formulaire pour proposer un lieu -->
-    <section id="proposition">
-      <h2>Proposer un lieu</h2>
-      <form id="lieuForm">
-        <input type="text" id="nom" placeholder="Nom du lieu" required>
-        <textarea id="description" placeholder="Description" required></textarea>
-        <input type="number" step="any" id="lat" placeholder="Latitude" required>
-        <input type="number" step="any" id="lng" placeholder="Longitude" required>
-        <select id="categorie" required>
-          <option value="crime">Crime</option>
-          <option value="abandoned">Lieux Abandonnés</option>
-          <option value="mystery">Lieu Mystérieux</option>
-          <option value="darkstory">Histoire Sombre</option>
-        </select>
-        <button type="submit">Envoyer</button>
-      </form>
-    </section>
-
-    <!-- Effet torche -->
-    <div class="torch"></div>
-
-  </div>
+  <footer>
+    <p>&copy; 2025 DarkMap.fr | Projet personnel</p>
+  </footer>
 
   <script src="script.js"></script>
-  <script>
-    // Animation du texte de l'intro
-    const text = "Un territoire. Une carte. Des histoires sombres.";
-    let i = 0;
-    const introText = document.getElementById("intro-text");
-
-    function typeWriter() {
-      if (i < text.length) {
-        introText.innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 60);
-      } else {
-        setTimeout(() => {
-          document.getElementById("intro").style.display = "none";
-          document.getElementById("main-content").style.display = "block";
-        }, 1000);
-      }
-    }
-    window.onload = typeWriter;
-  </script>
-
 </body>
 </html>
