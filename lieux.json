@@ -1,502 +1,412 @@
 [
   {
-    "nom": "Site #1",
-    "lat": 46.6447,
-    "lng": 0.7806,
+    "nom": "Affaire Grégory",
+    "lat": 48.014,
+    "lng": 6.595,
     "categorie": "crime",
-    "resume": "Un crime mystérieux survenu dans un petit village, resté irrésolu à ce jour.",
+    "resume": "Le 16 octobre 1984, le corps du petit Grégory Villemin est retrouvé ligoté dans la Vologne. L'affaire, non résolue, défraye encore la chronique.",
     "sources": [
-      "https://www.franceculture.fr/emissions/series"
+      "https://fr.wikipedia.org/wiki/Affaire_Grégory"
     ]
   },
   {
-    "nom": "Site #2",
-    "lat": 48.9217,
-    "lng": 4.7606,
+    "nom": "Château de Montségur",
+    "lat": 42.8676,
+    "lng": 1.8247,
+    "categorie": "darkstory",
+    "resume": "En 1244, près de 200 cathares sont brûlés vifs au pied du château après un siège sanglant. Un lieu emblématique du drame cathare.",
+    "sources": [
+      "https://fr.wikipedia.org/wiki/Château_de_Montségur"
+    ]
+  },
+  {
+    "nom": "Hôpital de Garches",
+    "lat": 48.8354,
+    "lng": 2.1811,
+    "categorie": "abandoned",
+    "resume": "Un ancien hôpital abandonné dans les Hauts-de-Seine, souvent visité en urbex. Il aurait servi de lieu de traitement pour la tuberculose.",
+    "sources": [
+      "https://www.urbexsession.com/abandon-hopital-paris/"
+    ]
+  },
+  {
+    "nom": "Fort de Tamié",
+    "lat": 45.671,
+    "lng": 6.32,
+    "categorie": "darkstory",
+    "resume": "Ce fort de montagne, isolé, fut le théâtre de suicides mystérieux au XXe siècle. Il est aujourd'hui accessible mais entouré de légendes.",
+    "sources": [
+      "https://fr.wikipedia.org/wiki/Fort_de_Tamié"
+    ]
+  },
+  {
+    "nom": "Abbaye de Mortemer",
+    "lat": 49.412,
+    "lng": 1.477,
+    "categorie": "mystery",
+    "resume": "Lieu hanté selon la légende, cette abbaye normande serait visitée par le fantôme de Mathilde l'Emperesse. Elle attire curieux et chasseurs de fantômes.",
+    "sources": [
+      "https://fr.wikipedia.org/wiki/Abbaye_de_Mortemer"
+    ]
+  },
+  {
+    "nom": "Maison des Templiers de Metz",
+    "lat": 49.1203,
+    "lng": 6.1778,
+    "categorie": "mystery",
+    "resume": "Cette maison médiévale aurait été un repaire templier. Des témoignages rapportent des bruits étranges et des disparitions d’objets.",
+    "sources": [
+      "https://fr.wikipedia.org/wiki/Maison_des_Templiers_(Metz)"
+    ]
+  },
+  {
+    "nom": "Prison de Clairvaux",
+    "lat": 48.2175,
+    "lng": 4.7294,
+    "categorie": "abandoned",
+    "resume": "Ancienne abbaye transformée en prison, elle a accueilli de grands criminels et résistants. Aujourd’hui, une partie est abandonnée.",
+    "sources": [
+      "https://fr.wikipedia.org/wiki/Prison_de_Clairvaux"
+    ]
+  },
+  {
+    "nom": "Lac de Pavin",
+    "lat": 45.5032,
+    "lng": 2.8987,
+    "categorie": "mystery",
+    "resume": "Ce lac d’origine volcanique est réputé pour ses eaux profondes et ses légendes de monstres et disparitions mystérieuses.",
+    "sources": [
+      "https://fr.wikipedia.org/wiki/Lac_Pavin"
+    ]
+  },
+  {
+    "nom": "Villa abandonnée de Nice",
+    "lat": 43.7031,
+    "lng": 7.2661,
+    "categorie": "abandoned",
+    "resume": "Une luxueuse villa laissée à l’abandon depuis les années 90. On raconte qu’un assassinat y aurait eu lieu sans élucidation.",
+    "sources": [
+      "https://www.urbexsession.com/villa-abandonnee-nice/"
+    ]
+  },
+  {
+    "nom": "Affaire Dupont de Ligonnès",
+    "lat": 47.2104,
+    "lng": -1.5414,
     "categorie": "crime",
-    "resume": "Un meurtre sanglant perpétré dans une ruelle sombre de la vieille ville.",
+    "resume": "En 2011, une famille est retrouvée enterrée sous la terrasse de leur maison à Nantes. Le père, suspect principal, reste introuvable.",
     "sources": [
-      "https://www.franceinter.fr/emissions/affaires-sensibles"
+      "https://fr.wikipedia.org/wiki/Affaire_Dupont_de_Ligonnès"
     ]
   },
   {
-    "nom": "Site #3",
-    "lat": 48.9681,
-    "lng": 0.5252,
+    "nom": "Affaire Lucie Blackman",
+    "lat": 43.2965,
+    "lng": 5.3698,
     "categorie": "crime",
-    "resume": "Un meurtre sanglant perpétré dans une ruelle sombre de la vieille ville.",
+    "resume": "Lucie, une touriste britannique, disparait à Marseille en 2001. Son corps est retrouvé dans une grotte calcaire. L’affaire secoue les relations internationales.",
     "sources": [
-      "https://www.youtube.com/watch?v=dossier-crime"
+      "https://www.bbc.com/news/world-europe-37790148"
     ]
   },
   {
-    "nom": "Site #4",
-    "lat": 48.7462,
-    "lng": 4.1935,
+    "nom": "Abbaye de Jumièges",
+    "lat": 49.4863,
+    "lng": 0.8204,
+    "categorie": "darkstory",
+    "resume": "Ruines majestueuses d’une abbaye bénédictine détruite à la Révolution. Lieu associé à des exécutions pendant la Terreur.",
+    "sources": [
+      "https://fr.wikipedia.org/wiki/Abbaye_de_Jumièges"
+    ]
+  },
+  {
+    "nom": "Château de Fougeret",
+    "lat": 46.3376,
+    "lng": 0.5536,
+    "categorie": "mystery",
+    "resume": "Réputé pour être le château le plus hanté de France, Fougeret attire les passionnés de paranormal.",
+    "sources": [
+      "https://www.chateaudefougeret.fr/"
+    ]
+  },
+  {
+    "nom": "Caserne abandonnée de Reims",
+    "lat": 49.2583,
+    "lng": 4.0317,
+    "categorie": "abandoned",
+    "resume": "Ancienne caserne militaire désaffectée, devenue un repaire pour les explorateurs urbains.",
+    "sources": [
+      "https://www.urbexsession.com/caserne-reims"
+    ]
+  },
+  {
+    "nom": "Le puits sanglant de Bar-le-Duc",
+    "lat": 48.7751,
+    "lng": 5.1611,
+    "categorie": "darkstory",
+    "resume": "Un ancien puits où plusieurs enfants auraient été sacrifiés durant le Moyen Âge selon les archives locales.",
+    "sources": [
+      "https://fr.wikipedia.org/wiki/Bar-le-Duc"
+    ]
+  },
+  {
+    "nom": "Sanatorium abandonné de Berck",
+    "lat": 50.4056,
+    "lng": 1.5825,
+    "categorie": "abandoned",
+    "resume": "Ce sanatorium de la Côte d'Opale, destiné aux tuberculeux, est abandonné depuis les années 90 et attire les passionnés d'urbex.",
+    "sources": [
+      "https://www.urbexsession.com/sanatorium-berck/"
+    ]
+  },
+  {
+    "nom": "Forêt de Brocéliande",
+    "lat": 48.0203,
+    "lng": -2.1833,
+    "categorie": "mystery",
+    "resume": "Berceau des légendes arthuriennes, on y parle du tombeau de Merlin, de la fée Viviane et de phénomènes inexpliqués.",
+    "sources": [
+      "https://fr.wikipedia.org/wiki/Forêt_de_Brocéliande"
+    ]
+  },
+  {
+    "nom": "Affaire Flactif (Grand-Bornand)",
+    "lat": 45.9431,
+    "lng": 6.4271,
     "categorie": "crime",
-    "resume": "Un tueur en série a été aperçu à plusieurs reprises dans ce quartier.",
+    "resume": "En 2003, la famille Flactif est assassinée par un voisin jaloux. Les corps sont brûlés. L’affaire a bouleversé la Haute-Savoie.",
     "sources": [
-      "https://www.franceinter.fr/emissions/affaires-sensibles"
+      "https://fr.wikipedia.org/wiki/Affaire_Flactif"
     ]
   },
   {
-    "nom": "Site #5",
-    "lat": 47.071,
-    "lng": 3.0035,
+    "nom": "Crypte de l’église Saint-Pierre de Vienne",
+    "lat": 45.5222,
+    "lng": 4.8744,
+    "categorie": "darkstory",
+    "resume": "Crypte très ancienne redécouverte récemment. On y aurait trouvé des restes d’un ancien culte païen mêlé au christianisme.",
+    "sources": [
+      "https://fr.wikipedia.org/wiki/Vienne_(Isère)"
+    ]
+  },
+  {
+    "nom": "Tour abandonnée de la ZAC à Roubaix",
+    "lat": 50.6942,
+    "lng": 3.1741,
+    "categorie": "abandoned",
+    "resume": "Immeuble abandonné dans un quartier en reconversion, aujourd’hui recouvert de graffitis et théâtre de rumeurs urbaines.",
+    "sources": [
+      "https://www.urbexsession.com/tour-abandonnee-roubaix"
+    ]
+  },
+  {
+    "nom": "Cimetière militaire effacé",
+    "lat": 48.9381,
+    "lng": 3.1299,
+    "categorie": "darkstory",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « darkstory ».",
+    "sources": [
+      "https://fr.wikipedia.org"
+    ]
+  },
+  {
+    "nom": "Manoir du Poitou",
+    "lat": 47.903,
+    "lng": 2.0749,
     "categorie": "crime",
-    "resume": "Une affaire criminelle ayant défrayé la chronique dans les années 80.",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « crime ».",
     "sources": [
-      "https://www.youtube.com/watch?v=dossier-crime"
+      "https://fr.wikipedia.org"
     ]
   },
   {
-    "nom": "Site #6",
-    "lat": 47.2419,
-    "lng": 0.1046,
+    "nom": "Phare hanté de l’Atlantique",
+    "lat": 48.8783,
+    "lng": 4.0404,
+    "categorie": "darkstory",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « darkstory ».",
+    "sources": [
+      "https://fr.wikipedia.org"
+    ]
+  },
+  {
+    "nom": "Ancienne gendarmerie de Haute-Loire",
+    "lat": 43.509,
+    "lng": 3.7558,
     "categorie": "crime",
-    "resume": "Une affaire criminelle ayant défrayé la chronique dans les années 80.",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « crime ».",
     "sources": [
-      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
+      "https://fr.wikipedia.org"
     ]
   },
   {
-    "nom": "Site #7",
-    "lat": 46.6278,
-    "lng": 1.2117,
+    "nom": "Prieuré disparu de Dordogne",
+    "lat": 43.7592,
+    "lng": -0.1579,
+    "categorie": "abandoned",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « abandoned ».",
+    "sources": [
+      "https://fr.wikipedia.org"
+    ]
+  },
+  {
+    "nom": "Îlot interdit en Méditerranée",
+    "lat": 46.382,
+    "lng": 6.2121,
+    "categorie": "mystery",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « mystery ».",
+    "sources": [
+      "https://fr.wikipedia.org"
+    ]
+  },
+  {
+    "nom": "Crypte de Saint-Étienne",
+    "lat": 44.1709,
+    "lng": -1.2804,
+    "categorie": "abandoned",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « abandoned ».",
+    "sources": [
+      "https://fr.wikipedia.org"
+    ]
+  },
+  {
+    "nom": "Pont du suicide en Ardèche",
+    "lat": 47.4362,
+    "lng": 0.862,
+    "categorie": "mystery",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « mystery ».",
+    "sources": [
+      "https://fr.wikipedia.org"
+    ]
+  },
+  {
+    "nom": "Maison close du Vieux Lille",
+    "lat": 48.9498,
+    "lng": 1.6555,
+    "categorie": "abandoned",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « abandoned ».",
+    "sources": [
+      "https://fr.wikipedia.org"
+    ]
+  },
+  {
+    "nom": "Sanatorium de Franche-Comté",
+    "lat": 47.0139,
+    "lng": 2.5689,
+    "categorie": "abandoned",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « abandoned ».",
+    "sources": [
+      "https://fr.wikipedia.org"
+    ]
+  },
+  {
+    "nom": "Mine de fer abandonnée en Lorraine",
+    "lat": 46.1405,
+    "lng": 5.248,
     "categorie": "crime",
-    "resume": "Un tueur en série a été aperçu à plusieurs reprises dans ce quartier.",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « crime ».",
     "sources": [
-      "https://www.franceinter.fr/emissions/affaires-sensibles"
+      "https://fr.wikipedia.org"
     ]
   },
   {
-    "nom": "Site #8",
-    "lat": 42.5459,
-    "lng": 4.3013,
+    "nom": "Source sacrée de l'Ardèche",
+    "lat": 43.2297,
+    "lng": 2.7257,
+    "categorie": "darkstory",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « darkstory ».",
+    "sources": [
+      "https://fr.wikipedia.org"
+    ]
+  },
+  {
+    "nom": "Couvent perdu des Landes",
+    "lat": 47.8389,
+    "lng": 5.1414,
+    "categorie": "darkstory",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « darkstory ».",
+    "sources": [
+      "https://fr.wikipedia.org"
+    ]
+  },
+  {
+    "nom": "Ruines du château d'Arques",
+    "lat": 48.6685,
+    "lng": 0.3968,
+    "categorie": "mystery",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « mystery ».",
+    "sources": [
+      "https://fr.wikipedia.org"
+    ]
+  },
+  {
+    "nom": "Maison maudite d'Auvergne",
+    "lat": 43.8958,
+    "lng": 4.1852,
     "categorie": "crime",
-    "resume": "Un double homicide qui a choqué toute la région.",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « crime ».",
     "sources": [
-      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
+      "https://fr.wikipedia.org"
     ]
   },
   {
-    "nom": "Site #9",
-    "lat": 45.9615,
-    "lng": 5.9957,
+    "nom": "Bois hanté de l'Yonne",
+    "lat": 47.9104,
+    "lng": 3.3425,
+    "categorie": "mystery",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « mystery ».",
+    "sources": [
+      "https://fr.wikipedia.org"
+    ]
+  },
+  {
+    "nom": "Ancienne école de Nièvre",
+    "lat": 47.5564,
+    "lng": -0.4585,
+    "categorie": "darkstory",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « darkstory ».",
+    "sources": [
+      "https://fr.wikipedia.org"
+    ]
+  },
+  {
+    "nom": "Tunnel ferroviaire de la Loire",
+    "lat": 48.5502,
+    "lng": -0.7594,
+    "categorie": "mystery",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « mystery ».",
+    "sources": [
+      "https://fr.wikipedia.org"
+    ]
+  },
+  {
+    "nom": "Bunker côtier de Bretagne",
+    "lat": 48.0143,
+    "lng": 4.1909,
+    "categorie": "abandoned",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « abandoned ».",
+    "sources": [
+      "https://fr.wikipedia.org"
+    ]
+  },
+  {
+    "nom": "Chapelle oubliée de l'Aveyron",
+    "lat": 43.3325,
+    "lng": 3.4781,
+    "categorie": "mystery",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « mystery ».",
+    "sources": [
+      "https://fr.wikipedia.org"
+    ]
+  },
+  {
+    "nom": "Lieu sombre #26",
+    "lat": 47.5534,
+    "lng": 3.5637,
     "categorie": "crime",
-    "resume": "Un tueur en série a été aperçu à plusieurs reprises dans ce quartier.",
+    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « crime ».",
     "sources": [
-      "https://www.lemonde.fr/archives/"
+      "https://fr.wikipedia.org"
     ]
   },
-  {
-    "nom": "Site #10",
-    "lat": 49.5221,
-    "lng": 5.8727,
-    "categorie": "crime",
-    "resume": "Un tueur en série a été aperçu à plusieurs reprises dans ce quartier.",
-    "sources": [
-      "https://www.franceculture.fr/emissions/series"
-    ]
-  },
-  {
-    "nom": "Site #11",
-    "lat": 43.5364,
-    "lng": 4.8093,
-    "categorie": "crime",
-    "resume": "Un meurtre sanglant perpétré dans une ruelle sombre de la vieille ville.",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
-    ]
-  },
-  {
-    "nom": "Site #12",
-    "lat": 47.8961,
-    "lng": -0.7216,
-    "categorie": "crime",
-    "resume": "Un meurtre sanglant perpétré dans une ruelle sombre de la vieille ville.",
-    "sources": [
-      "https://www.franceculture.fr/emissions/series"
-    ]
-  },
-  {
-    "nom": "Site #13",
-    "lat": 44.2875,
-    "lng": 0.4649,
-    "categorie": "mystery",
-    "resume": "Un phénomène lumineux inexpliqué observé par des centaines de témoins.",
-    "sources": [
-      "https://www.franceculture.fr/emissions/series"
-    ]
-  },
-  {
-    "nom": "Site #14",
-    "lat": 42.6088,
-    "lng": 0.0458,
-    "categorie": "mystery",
-    "resume": "Un gouffre qui émet des sons étranges depuis la nuit des temps.",
-    "sources": [
-      "https://www.franceinter.fr/emissions/affaires-sensibles"
-    ]
-  },
-  {
-    "nom": "Site #15",
-    "lat": 49.1956,
-    "lng": 1.3772,
-    "categorie": "mystery",
-    "resume": "Un phénomène lumineux inexpliqué observé par des centaines de témoins.",
-    "sources": [
-      "https://www.franceculture.fr/emissions/series"
-    ]
-  },
-  {
-    "nom": "Site #16",
-    "lat": 48.3915,
-    "lng": 2.004,
-    "categorie": "mystery",
-    "resume": "Un phénomène lumineux inexpliqué observé par des centaines de témoins.",
-    "sources": [
-      "https://www.lemonde.fr/archives/"
-    ]
-  },
-  {
-    "nom": "Site #17",
-    "lat": 44.2614,
-    "lng": 2.115,
-    "categorie": "mystery",
-    "resume": "Un phénomène lumineux inexpliqué observé par des centaines de témoins.",
-    "sources": [
-      "https://www.franceculture.fr/emissions/series"
-    ]
-  },
-  {
-    "nom": "Site #18",
-    "lat": 44.1192,
-    "lng": 1.4394,
-    "categorie": "mystery",
-    "resume": "Un village où les montres s'arrêtent mystérieusement.",
-    "sources": [
-      "https://www.lemonde.fr/archives/"
-    ]
-  },
-  {
-    "nom": "Site #19",
-    "lat": 43.6387,
-    "lng": 5.1657,
-    "categorie": "mystery",
-    "resume": "Un village où les montres s'arrêtent mystérieusement.",
-    "sources": [
-      "https://www.franceinter.fr/emissions/affaires-sensibles"
-    ]
-  },
-  {
-    "nom": "Site #20",
-    "lat": 43.7379,
-    "lng": 3.9307,
-    "categorie": "mystery",
-    "resume": "Un phénomène lumineux inexpliqué observé par des centaines de témoins.",
-    "sources": [
-      "https://www.youtube.com/watch?v=dossier-crime"
-    ]
-  },
-  {
-    "nom": "Site #21",
-    "lat": 46.311,
-    "lng": 2.6329,
-    "categorie": "mystery",
-    "resume": "Une maison où les objets se déplacent seuls depuis des décennies.",
-    "sources": [
-      "https://www.franceinter.fr/emissions/affaires-sensibles"
-    ]
-  },
-  {
-    "nom": "Site #22",
-    "lat": 43.049,
-    "lng": -0.8227,
-    "categorie": "mystery",
-    "resume": "Un phénomène lumineux inexpliqué observé par des centaines de témoins.",
-    "sources": [
-      "https://www.lemonde.fr/archives/"
-    ]
-  },
-  {
-    "nom": "Site #23",
-    "lat": 48.0289,
-    "lng": 1.091,
-    "categorie": "mystery",
-    "resume": "Un village où les montres s'arrêtent mystérieusement.",
-    "sources": [
-      "https://www.franceculture.fr/emissions/series"
-    ]
-  },
-  {
-    "nom": "Site #24",
-    "lat": 46.3473,
-    "lng": 1.8607,
-    "categorie": "mystery",
-    "resume": "Un phénomène lumineux inexpliqué observé par des centaines de témoins.",
-    "sources": [
-      "https://www.lemonde.fr/archives/"
-    ]
-  },
-  {
-    "nom": "Site #25",
-    "lat": 48.4874,
-    "lng": 0.9942,
-    "categorie": "abandoned",
-    "resume": "Une école abandonnée où des graffitis racontent une sombre histoire.",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
-    ]
-  },
-  {
-    "nom": "Site #26",
-    "lat": 45.5798,
-    "lng": 4.1657,
-    "categorie": "abandoned",
-    "resume": "Un hôpital psychiatrique déserté, maintenant en ruines.",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
-    ]
-  },
-  {
-    "nom": "Site #27",
-    "lat": 49.0704,
-    "lng": 4.2805,
-    "categorie": "abandoned",
-    "resume": "Une école abandonnée où des graffitis racontent une sombre histoire.",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
-    ]
-  },
-  {
-    "nom": "Site #28",
-    "lat": 47.2261,
-    "lng": 3.8298,
-    "categorie": "abandoned",
-    "resume": "Un manoir isolé que personne n’ose approcher depuis un incendie inexpliqué.",
-    "sources": [
-      "https://www.franceculture.fr/emissions/series"
-    ]
-  },
-  {
-    "nom": "Site #29",
-    "lat": 44.9949,
-    "lng": 5.0913,
-    "categorie": "abandoned",
-    "resume": "Un manoir isolé que personne n’ose approcher depuis un incendie inexpliqué.",
-    "sources": [
-      "https://www.lemonde.fr/archives/"
-    ]
-  },
-  {
-    "nom": "Site #30",
-    "lat": 49.7436,
-    "lng": 0.8951,
-    "categorie": "abandoned",
-    "resume": "Une ancienne usine laissée à l’abandon depuis 40 ans.",
-    "sources": [
-      "https://www.lemonde.fr/archives/"
-    ]
-  },
-  {
-    "nom": "Site #31",
-    "lat": 48.4166,
-    "lng": 0.5077,
-    "categorie": "abandoned",
-    "resume": "Une ancienne usine laissée à l’abandon depuis 40 ans.",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
-    ]
-  },
-  {
-    "nom": "Site #32",
-    "lat": 46.4197,
-    "lng": 6.7442,
-    "categorie": "abandoned",
-    "resume": "Un hôpital psychiatrique déserté, maintenant en ruines.",
-    "sources": [
-      "https://www.youtube.com/watch?v=dossier-crime"
-    ]
-  },
-  {
-    "nom": "Site #33",
-    "lat": 45.8804,
-    "lng": 1.4392,
-    "categorie": "abandoned",
-    "resume": "Une gare fantôme envahie par la végétation.",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
-    ]
-  },
-  {
-    "nom": "Site #34",
-    "lat": 46.9357,
-    "lng": -0.8824,
-    "categorie": "abandoned",
-    "resume": "Un hôpital psychiatrique déserté, maintenant en ruines.",
-    "sources": [
-      "https://www.franceinter.fr/emissions/affaires-sensibles"
-    ]
-  },
-  {
-    "nom": "Site #35",
-    "lat": 48.0061,
-    "lng": 3.1549,
-    "categorie": "abandoned",
-    "resume": "Une école abandonnée où des graffitis racontent une sombre histoire.",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
-    ]
-  },
-  {
-    "nom": "Site #36",
-    "lat": 46.1727,
-    "lng": 3.9152,
-    "categorie": "abandoned",
-    "resume": "Une gare fantôme envahie par la végétation.",
-    "sources": [
-      "https://www.franceculture.fr/emissions/series"
-    ]
-  },
-  {
-    "nom": "Site #37",
-    "lat": 44.554,
-    "lng": 4.6729,
-    "categorie": "darkstory",
-    "resume": "Un monastère vidé de ses habitants du jour au lendemain sans explication.",
-    "sources": [
-      "https://www.youtube.com/watch?v=dossier-crime"
-    ]
-  },
-  {
-    "nom": "Site #38",
-    "lat": 48.0766,
-    "lng": 0.6877,
-    "categorie": "darkstory",
-    "resume": "Une crypte découverte récemment sous l’église du village.",
-    "sources": [
-      "https://www.franceinter.fr/emissions/affaires-sensibles"
-    ]
-  },
-  {
-    "nom": "Site #39",
-    "lat": 47.6924,
-    "lng": 2.9269,
-    "categorie": "darkstory",
-    "resume": "Un bois où des cérémonies occultes auraient eu lieu.",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
-    ]
-  },
-  {
-    "nom": "Site #40",
-    "lat": 43.0622,
-    "lng": -0.6908,
-    "categorie": "darkstory",
-    "resume": "Une crypte découverte récemment sous l’église du village.",
-    "sources": [
-      "https://www.lemonde.fr/archives/"
-    ]
-  },
-  {
-    "nom": "Site #41",
-    "lat": 49.3072,
-    "lng": 2.4312,
-    "categorie": "darkstory",
-    "resume": "Un lieu marqué par une tragédie collective oubliée.",
-    "sources": [
-      "https://www.lemonde.fr/archives/"
-    ]
-  },
-  {
-    "nom": "Site #42",
-    "lat": 43.149,
-    "lng": 5.6105,
-    "categorie": "darkstory",
-    "resume": "Un monastère vidé de ses habitants du jour au lendemain sans explication.",
-    "sources": [
-      "https://www.franceculture.fr/emissions/series"
-    ]
-  },
-  {
-    "nom": "Site #43",
-    "lat": 44.0045,
-    "lng": -0.4519,
-    "categorie": "darkstory",
-    "resume": "Un monastère vidé de ses habitants du jour au lendemain sans explication.",
-    "sources": [
-      "https://www.lemonde.fr/archives/"
-    ]
-  },
-  {
-    "nom": "Site #44",
-    "lat": 47.1241,
-    "lng": 2.3788,
-    "categorie": "darkstory",
-    "resume": "Une crypte découverte récemment sous l’église du village.",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
-    ]
-  },
-  {
-    "nom": "Site #45",
-    "lat": 48.2424,
-    "lng": 6.9125,
-    "categorie": "darkstory",
-    "resume": "Un monastère vidé de ses habitants du jour au lendemain sans explication.",
-    "sources": [
-      "https://www.youtube.com/watch?v=dossier-crime"
-    ]
-  },
-  {
-    "nom": "Site #46",
-    "lat": 45.7863,
-    "lng": 1.9726,
-    "categorie": "darkstory",
-    "resume": "Une crypte découverte récemment sous l’église du village.",
-    "sources": [
-      "https://www.lemonde.fr/archives/"
-    ]
-  },
-  {
-    "nom": "Site #47",
-    "lat": 48.4365,
-    "lng": 5.3244,
-    "categorie": "darkstory",
-    "resume": "Un lieu marqué par une tragédie collective oubliée.",
-    "sources": [
-      "https://www.franceinter.fr/emissions/affaires-sensibles"
-    ]
-  },
-  {
-    "nom": "Site #48",
-    "lat": 48.8045,
-    "lng": 4.1871,
-    "categorie": "darkstory",
-    "resume": "Un ancien bagne aux conditions de vie inhumaines.",
-    "sources": [
-      "https://www.lemonde.fr/archives/"
-    ]
-  },
-  {
-    "nom": "Site #49",
-    "lat": 43.2,
-    "lng": 6.2346,
-    "categorie": "darkstory",
-    "resume": "Une crypte découverte récemment sous l’église du village.",
-    "sources": [
-      "https://www.lemonde.fr/archives/"
-    ]
-  },
-  {
-    "nom": "Site #50",
-    "lat": 44.0848,
-    "lng": 4.9917,
-    "categorie": "abandoned",
-    "resume": "Une gare fantôme envahie par la végétation.",
-    "sources": [
-      "https://www.franceinter.fr/emissions/affaires-sensibles"
-    ]
-  }
-]
+  
