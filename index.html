@@ -1,19 +1,35 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DarkMap.fr - Carte des mystères</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DarkMap - Carte des mystères</title>
+
+  <!-- Feuille de style -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Polices Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Leaflet (librairie de carte) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
+
+  <!-- Intro animée -->
+  <div id="intro">
+    <div id="intro-text"></div>
+  </div>
+
+  <!-- Header principal -->
   <header>
-    <h1>🗺️ DarkMap.fr</h1>
-    <p>Explorez les lieux sombres, abandonnés et mystérieux de France...</p>
+    <img src="assets/logo_darkmap.png" alt="Logo DarkMap" class="logo" />
+    <h1>DarkMap</h1>
+    <p class="tagline">Un territoire. Une carte. Des histoires sombres.</p>
   </header>
 
+  <!-- Filtres -->
   <section id="controls">
     <label for="category-select">Filtrer par catégorie :</label>
     <select id="category-select">
@@ -25,13 +41,17 @@
     </select>
   </section>
 
-  <div id="map"></div>
+  <!-- Carte -->
+  <div id="map-container">
+    <div id="map"></div>
+  </div>
 
+  <!-- Formulaire -->
   <section id="form">
     <h2>Proposer un lieu</h2>
     <form action="https://formspree.io/f/your-form-id" method="POST">
-      <input type="text" name="nom" placeholder="Nom du lieu" required>
-      <input type="text" name="localisation" placeholder="Adresse ou ville" required>
+      <input type="text" name="nom" placeholder="Nom du lieu" required />
+      <input type="text" name="localisation" placeholder="Adresse ou ville" required />
       <select name="catégorie" required>
         <option value="">Choisir une catégorie</option>
         <option value="Crimes">Crimes</option>
@@ -44,10 +64,12 @@
     </form>
   </section>
 
+  <!-- Pied de page -->
   <footer>
-    <p>&copy; 2025 DarkMap.fr | Projet personnel</p>
+    <p>&copy; 2025 DarkMap | Tous droits réservés</p>
   </footer>
 
+  <!-- Script JS -->
   <script src="script.js"></script>
 </body>
 </html>
