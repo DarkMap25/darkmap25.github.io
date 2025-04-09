@@ -1,73 +1,66 @@
-// === Initialiser la carte centrée sur la France ===
+// Initialisation de la carte
 const map = L.map('map', {
   minZoom: 5,
-  maxZoom: 18,
   maxBounds: [
-    [41.0, -5.0], // Sud-Ouest
-    [51.5, 10.0]  // Nord-Est
+    [40.0, -5.0],  // sud-ouest
+    [52.0, 10.0]   // nord-est
   ]
-}).setView([46.6, 2.2], 6);
+}).setView([46.8, 2.5], 6); // Centre France
 
-// === Fond de carte sombre (Stadia Dark) ===
-L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_dark/{z}/{x}/{y}{r}.png', {
-  maxZoom: 20,
-  attribution: '&copy; Stadia Maps, OpenMapTiles & OpenStreetMap'
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; OpenStreetMap contributors',
+  subdomains: 'abcd',
+  maxZoom: 19
 }).addTo(map);
 
-// === Icônes personnalisées ===
-const icons = {
-  "Crimes": L.icon({
-    iconUrl: 'icons/crime.png',
-    iconSize: [30, 30]
-  }),
-  "Lieux Abandonnés": L.icon({
-    iconUrl: 'icons/abandoned.png',
-    iconSize: [30, 30]
-  }),
-  "Lieux Mystérieux": L.icon({
-    iconUrl: 'icons/mystery.png',
-    iconSize: [30, 30]
-  }),
-  "Histoires Sombres": L.icon({
-    iconUrl: 'icons/darkstory.png',
-    iconSize: [30, 30]
-  })
-};
-
-// === Stockage des marqueurs pour filtrage ===
-let currentMarkers = [];
-
-// === Charger les lieux depuis lieux.json ===
-async function chargerLieux(categorie = "all") {
-  const response = await fetch("lieux.json");
-  const data = await response.json();
-
-  // Supprimer les anciens marqueurs
-  currentMarkers.forEach(marker => map.removeLayer(marker));
-  currentMarkers = [];
-
-  data.forEach(lieu => {
-    if (categorie === "all" || lieu.categorie === categorie) {
-      const marker = L.marker([lieu.lat, lieu.lng], {
-        icon: icons[lieu.categorie] || undefined
-      }).addTo(map)
-        .bindPopup(`<strong>${lieu.nom}</strong><br>${lieu.description}`);
-      currentMarkers.push(marker);
-    }
+// Fonction pour choisir l'icône selon la catégorie
+function getIcon(category) {
+  return L.icon({
+    iconUrl: `icons/${category}.png`,
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -30]
   });
 }
 
-// === Gestion du menu déroulant ===
-document.getElementById("category-select").addEventListener("change", (e) => {
-  const selected = e.target.value;
-  chargerLieux(selected);
+// Charger les lieux depuis le fichier lieux.json
+fetch('lieux.json')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(lieu => {
+      const marker = L.marker([lieu.lat, lieu.lng], {
+        icon: getIcon(lieu.categorie)
+      }).addTo(map);
+      marker.bindPopup(`<strong>${lieu.nom}</strong><br>${lieu.description}`);
+    });
+  });
+
+// Formulaire de proposition de lieu
+document.getElementById("lieuForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const nom = document.getElementById("nom").value;
+  const description = document.getElementById("description").value;
+  const lat = parseFloat(document.getElementById("lat").value);
+  const lng = parseFloat(document.getElementById("lng").value);
+  const categorie = document.getElementById("categorie").value;
+
+  const message = `
+Nouvelle proposition de lieu :
+Nom : ${nom}
+Description : ${description}
+Latitude : ${lat}
+Longitude : ${lng}
+Catégorie : ${categorie}
+  `;
+
+  const mailtoLink = `mailto:tonadresse@mail.com?subject=Nouvelle proposition de lieu DarkMap&body=${encodeURIComponent(message)}`;
+  window.location.href = mailtoLink;
 });
 
-// === Torche au curseur ===
-document.addEventListener('mousemove', (e) => {
-  document.documentElement.style.setProperty('--cursorX', e.clientX + 'px');
-  document.documentElement.style.setProperty('--cursorY', e.clientY + 'px');
+// 🌒 Effet torche (curseur)
+document.addEventListener("mousemove", function(e) {
+  const torch = document.querySelector(".torch");
+  torch.style.left = `${e.clientX}px`;
+  torch.style.top = `${e.clientY}px`;
 });
-
-// === Lancer au démarrage ===
-chargerLieux();
