@@ -1,4 +1,4 @@
-// Initialisation de la carte
+// Initialisation de la carte centrée sur la France
 const map = L.map('map', {
   minZoom: 5,
   maxBounds: [
@@ -35,36 +35,14 @@ fetch('lieux.json')
 
       const popupContent = `
         <strong>${lieu.nom}</strong><br>
-        ${lieu.resume}<br>
-        <a href="${lieu.page}" target="_blank">Lire l’histoire complète →</a>
+        ${lieu.resume}
       `;
-
       marker.bindPopup(popupContent);
     });
+  })
+  .catch(error => {
+    console.error("Erreur lors du chargement de lieux.json :", error);
   });
-
-// Formulaire - tu pourras adapter ce code plus tard si tu l’automatises
-document.getElementById("lieuForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const nom = document.getElementById("nom").value;
-  const description = document.getElementById("description").value;
-  const lat = parseFloat(document.getElementById("lat").value);
-  const lng = parseFloat(document.getElementById("lng").value);
-  const categorie = document.getElementById("categorie").value;
-
-  const message = `
-Nouvelle proposition de lieu :
-Nom : ${nom}
-Description : ${description}
-Latitude : ${lat}
-Longitude : ${lng}
-Catégorie : ${categorie}
-  `;
-
-  const mailtoLink = `mailto:tonadresse@mail.com?subject=Nouvelle proposition de lieu DarkMap&body=${encodeURIComponent(message)}`;
-  window.location.href = mailtoLink;
-});
 
 // Effet torche
 document.addEventListener("mousemove", function(e) {
