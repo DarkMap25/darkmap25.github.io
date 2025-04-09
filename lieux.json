@@ -1,0 +1,73 @@
+[
+    {
+      "nom": "Château de Montségur",
+      "lat": 42.8731,
+      "lng": 1.8306,
+      "categorie": "Histoires Sombres",
+      "description": "Ancien refuge cathare, théâtre d'un siège sanglant en 1244 où plus de 200 personnes furent brûlées vives."
+    },
+    {
+      "nom": "Maison de l'horreur de Montigny-lès-Metz",
+      "lat": 49.1167,
+      "lng": 6.1667,
+      "categorie": "Crimes",
+      "description": "En 2011, un homme y a été retrouvé enfermé et torturé pendant plus d’un mois dans une cave."
+    },
+    {
+      "nom": "Fort de la Chartreuse",
+      "lat": 50.6414,
+      "lng": 5.5951,
+      "categorie": "Lieux Abandonnés",
+      "description": "Ancien fort militaire devenu site d’urbex très prisé, aujourd’hui laissé à l’abandon dans une atmosphère post-apocalyptique."
+    },
+    {
+      "nom": "La forêt de Brocéliande",
+      "lat": 48.0167,
+      "lng": -2.1833,
+      "categorie": "Lieux Mystérieux",
+      "description": "Lieu mythique associé aux légendes arthuriennes et à la fée Morgane. Beaucoup rapportent des sensations étranges."
+    },
+    {
+      "nom": "Le Manoir de Paris",
+      "lat": 48.8738,
+      "lng": 2.3574,
+      "categorie": "Histoires Sombres",
+      "description": "Ancien manoir transformé en attraction, mais construit sur une légende urbaine de disparitions inexpliquées."
+    },
+    {
+      "nom": "Le village abandonné de Pirou",
+      "lat": 49.1576,
+      "lng": -1.5961,
+      "categorie": "Lieux Abandonnés",
+      "description": "Ce faux village en béton, construit pour un tournage, est aujourd’hui un lieu fantomatique prisé par les explorateurs."
+    },
+    {
+      "nom": "La maison sanglante de Pont-Saint-Esprit",
+      "lat": 44.2547,
+      "lng": 4.6492,
+      "categorie": "Crimes",
+      "description": "Lieu d'un mystérieux empoisonnement collectif en 1951, jamais totalement élucidé. Plus de 250 personnes touchées."
+    },
+    {
+      "nom": "La grotte de Saint-Marcel",
+      "lat": 44.3361,
+      "lng": 4.5577,
+      "categorie": "Lieux Mystérieux",
+      "description": "D’immenses galeries souterraines où certains affirment avoir vu des formes mouvantes ou perdu la notion du temps."
+    },
+    {
+      "nom": "L'hôpital psychiatrique de Saint-Ylie",
+      "lat": 47.0564,
+      "lng": 5.4759,
+      "categorie": "Lieux Abandonnés",
+      "description": "Ancien asile à l’abandon, dont les couloirs délabrés attirent les amateurs d’urbex... et d’histoires sinistres."
+    },
+    {
+      "nom": "La ferme des sœurs Papin",
+      "lat": 47.9989,
+      "lng": 0.1978,
+      "categorie": "Crimes",
+      "description": "Scène du crime célèbre en 1933 où deux sœurs domestiques ont sauvagement assassiné leur patronne et sa fille."
+    }
+  ]
+  
