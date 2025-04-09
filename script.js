@@ -6,7 +6,7 @@ const map = L.map('map', {
 }).setView([46.5, 2.5], 6);
 
 // Fond de carte sombre
-L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/dark_matter_nolabels/{z}/{x}/{y}.png', {
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap & CartoDB',
   subdomains: 'abcd',
   maxZoom: 19
