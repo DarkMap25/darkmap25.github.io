@@ -1,2 +1,2 @@
 # DarkMap
-Carte
+Carte sombre
