@@ -6,10 +6,9 @@ const map = L.map('map', {
 }).setView([46.5, 2.5], 6);
 
 // Fond de carte sombre
-L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap & CartoDB',
-  subdomains: 'abcd',
-  maxZoom: 19
+L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; Stadia Maps, OpenMapTiles & OpenStreetMap contributors',
+  maxZoom: 20
 }).addTo(map);
 
 // Emoji par catégorie
