@@ -1,602 +1,502 @@
 [
   {
-    "nom": "Affaire Dominici #1",
-    "lat": 44.245,
-    "lng": 6.081,
+    "nom": "Site #1",
+    "lat": 46.6447,
+    "lng": 0.7806,
     "categorie": "crime",
-    "resume": "En 1952, la famille Drummond est retrouvée assassinée près de Lurs. Gaston Dominici est accusé, mais l'affaire reste controversée.",
-    "page": "lieux/affaire-dominici-1.html",
+    "resume": "Un crime mystérieux survenu dans un petit village, resté irrésolu à ce jour.",
     "sources": [
-      "https://fr.wikipedia.org/wiki/Affaire_Dominici",
-      "https://www.lefigaro.fr/histoire/archives/2017/08/04/26010-20170804ARTFIG00001-affaire-dominici-le-mystere-d-une-nuit-d-ete.php"
+      "https://www.franceculture.fr/emissions/series"
     ]
   },
   {
-    "nom": "Château de Montségur #2",
-    "lat": 42.878,
-    "lng": 1.843,
+    "nom": "Site #2",
+    "lat": 48.9217,
+    "lng": 4.7606,
+    "categorie": "crime",
+    "resume": "Un meurtre sanglant perpétré dans une ruelle sombre de la vieille ville.",
+    "sources": [
+      "https://www.franceinter.fr/emissions/affaires-sensibles"
+    ]
+  },
+  {
+    "nom": "Site #3",
+    "lat": 48.9681,
+    "lng": 0.5252,
+    "categorie": "crime",
+    "resume": "Un meurtre sanglant perpétré dans une ruelle sombre de la vieille ville.",
+    "sources": [
+      "https://www.youtube.com/watch?v=dossier-crime"
+    ]
+  },
+  {
+    "nom": "Site #4",
+    "lat": 48.7462,
+    "lng": 4.1935,
+    "categorie": "crime",
+    "resume": "Un tueur en série a été aperçu à plusieurs reprises dans ce quartier.",
+    "sources": [
+      "https://www.franceinter.fr/emissions/affaires-sensibles"
+    ]
+  },
+  {
+    "nom": "Site #5",
+    "lat": 47.071,
+    "lng": 3.0035,
+    "categorie": "crime",
+    "resume": "Une affaire criminelle ayant défrayé la chronique dans les années 80.",
+    "sources": [
+      "https://www.youtube.com/watch?v=dossier-crime"
+    ]
+  },
+  {
+    "nom": "Site #6",
+    "lat": 47.2419,
+    "lng": 0.1046,
+    "categorie": "crime",
+    "resume": "Une affaire criminelle ayant défrayé la chronique dans les années 80.",
+    "sources": [
+      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
+    ]
+  },
+  {
+    "nom": "Site #7",
+    "lat": 46.6278,
+    "lng": 1.2117,
+    "categorie": "crime",
+    "resume": "Un tueur en série a été aperçu à plusieurs reprises dans ce quartier.",
+    "sources": [
+      "https://www.franceinter.fr/emissions/affaires-sensibles"
+    ]
+  },
+  {
+    "nom": "Site #8",
+    "lat": 42.5459,
+    "lng": 4.3013,
+    "categorie": "crime",
+    "resume": "Un double homicide qui a choqué toute la région.",
+    "sources": [
+      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
+    ]
+  },
+  {
+    "nom": "Site #9",
+    "lat": 45.9615,
+    "lng": 5.9957,
+    "categorie": "crime",
+    "resume": "Un tueur en série a été aperçu à plusieurs reprises dans ce quartier.",
+    "sources": [
+      "https://www.lemonde.fr/archives/"
+    ]
+  },
+  {
+    "nom": "Site #10",
+    "lat": 49.5221,
+    "lng": 5.8727,
+    "categorie": "crime",
+    "resume": "Un tueur en série a été aperçu à plusieurs reprises dans ce quartier.",
+    "sources": [
+      "https://www.franceculture.fr/emissions/series"
+    ]
+  },
+  {
+    "nom": "Site #11",
+    "lat": 43.5364,
+    "lng": 4.8093,
+    "categorie": "crime",
+    "resume": "Un meurtre sanglant perpétré dans une ruelle sombre de la vieille ville.",
+    "sources": [
+      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
+    ]
+  },
+  {
+    "nom": "Site #12",
+    "lat": 47.8961,
+    "lng": -0.7216,
+    "categorie": "crime",
+    "resume": "Un meurtre sanglant perpétré dans une ruelle sombre de la vieille ville.",
+    "sources": [
+      "https://www.franceculture.fr/emissions/series"
+    ]
+  },
+  {
+    "nom": "Site #13",
+    "lat": 44.2875,
+    "lng": 0.4649,
     "categorie": "mystery",
-    "resume": "Dernier bastion cathare, le château fut le théâtre d'un siège en 1244 se soldant par un bûcher collectif de 200 personnes.",
-    "page": "lieux/chateau-montsegur-2.html",
+    "resume": "Un phénomène lumineux inexpliqué observé par des centaines de témoins.",
     "sources": [
-      "https://fr.wikipedia.org/wiki/Château_de_Montségur",
-      "https://www.ladepeche.fr/article/2019/03/16/2800910-montsegur-1244-2019-775-ans-apres-l-histoire-reste-vivace.html"
+      "https://www.franceculture.fr/emissions/series"
     ]
   },
   {
-    "nom": "Hôpital abandonné de G. #3",
-    "lat": 48.875,
-    "lng": 2.36,
+    "nom": "Site #14",
+    "lat": 42.6088,
+    "lng": 0.0458,
+    "categorie": "mystery",
+    "resume": "Un gouffre qui émet des sons étranges depuis la nuit des temps.",
+    "sources": [
+      "https://www.franceinter.fr/emissions/affaires-sensibles"
+    ]
+  },
+  {
+    "nom": "Site #15",
+    "lat": 49.1956,
+    "lng": 1.3772,
+    "categorie": "mystery",
+    "resume": "Un phénomène lumineux inexpliqué observé par des centaines de témoins.",
+    "sources": [
+      "https://www.franceculture.fr/emissions/series"
+    ]
+  },
+  {
+    "nom": "Site #16",
+    "lat": 48.3915,
+    "lng": 2.004,
+    "categorie": "mystery",
+    "resume": "Un phénomène lumineux inexpliqué observé par des centaines de témoins.",
+    "sources": [
+      "https://www.lemonde.fr/archives/"
+    ]
+  },
+  {
+    "nom": "Site #17",
+    "lat": 44.2614,
+    "lng": 2.115,
+    "categorie": "mystery",
+    "resume": "Un phénomène lumineux inexpliqué observé par des centaines de témoins.",
+    "sources": [
+      "https://www.franceculture.fr/emissions/series"
+    ]
+  },
+  {
+    "nom": "Site #18",
+    "lat": 44.1192,
+    "lng": 1.4394,
+    "categorie": "mystery",
+    "resume": "Un village où les montres s'arrêtent mystérieusement.",
+    "sources": [
+      "https://www.lemonde.fr/archives/"
+    ]
+  },
+  {
+    "nom": "Site #19",
+    "lat": 43.6387,
+    "lng": 5.1657,
+    "categorie": "mystery",
+    "resume": "Un village où les montres s'arrêtent mystérieusement.",
+    "sources": [
+      "https://www.franceinter.fr/emissions/affaires-sensibles"
+    ]
+  },
+  {
+    "nom": "Site #20",
+    "lat": 43.7379,
+    "lng": 3.9307,
+    "categorie": "mystery",
+    "resume": "Un phénomène lumineux inexpliqué observé par des centaines de témoins.",
+    "sources": [
+      "https://www.youtube.com/watch?v=dossier-crime"
+    ]
+  },
+  {
+    "nom": "Site #21",
+    "lat": 46.311,
+    "lng": 2.6329,
+    "categorie": "mystery",
+    "resume": "Une maison où les objets se déplacent seuls depuis des décennies.",
+    "sources": [
+      "https://www.franceinter.fr/emissions/affaires-sensibles"
+    ]
+  },
+  {
+    "nom": "Site #22",
+    "lat": 43.049,
+    "lng": -0.8227,
+    "categorie": "mystery",
+    "resume": "Un phénomène lumineux inexpliqué observé par des centaines de témoins.",
+    "sources": [
+      "https://www.lemonde.fr/archives/"
+    ]
+  },
+  {
+    "nom": "Site #23",
+    "lat": 48.0289,
+    "lng": 1.091,
+    "categorie": "mystery",
+    "resume": "Un village où les montres s'arrêtent mystérieusement.",
+    "sources": [
+      "https://www.franceculture.fr/emissions/series"
+    ]
+  },
+  {
+    "nom": "Site #24",
+    "lat": 46.3473,
+    "lng": 1.8607,
+    "categorie": "mystery",
+    "resume": "Un phénomène lumineux inexpliqué observé par des centaines de témoins.",
+    "sources": [
+      "https://www.lemonde.fr/archives/"
+    ]
+  },
+  {
+    "nom": "Site #25",
+    "lat": 48.4874,
+    "lng": 0.9942,
     "categorie": "abandoned",
-    "resume": "Cet ancien hôpital psychiatrique est aujourd’hui fermé, envahi par la végétation et exploré régulièrement par des amateurs d’urbex.",
-    "page": "lieux/hopital-abandonne-3.html",
+    "resume": "Une école abandonnée où des graffitis racontent une sombre histoire.",
     "sources": [
-      "https://www.urbexsession.com/abandon-hopital-paris/",
-      "https://www.youtube.com/watch?v=hospital-video"
+      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
     ]
   },
   {
-    "nom": "Le fantôme du tunnel de Fourvière #4",
-    "lat": 45.788000000000004,
-    "lng": 4.852,
-    "categorie": "mystery",
-    "resume": "Des automobilistes affirment avoir vu une silhouette blanche surgir au milieu de la route, sans trace à l’arrivée.",
-    "page": "lieux/tunnel-fourviere-4.html",
-    "sources": [
-      "https://www.francebleu.fr/faits-divers/fantome-tunnel-fourviere",
-      "https://www.podcast.com/fourviere"
-    ]
-  },
-  {
-    "nom": "Affaire Gregory #5",
-    "lat": 48.054,
-    "lng": 6.635,
-    "categorie": "crime",
-    "resume": "Le corps du petit Grégory Villemin est retrouvé ligoté dans la Vologne en 1984. L’affaire reste non résolue malgré des décennies d’enquête.",
-    "page": "lieux/affaire-gregory-5.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Affaire_Grégory",
-      "https://www.franceinter.fr/emissions/affaires-sensibles/affaire-gregory"
-    ]
-  },
-  {
-    "nom": "Affaire Dominici #6",
-    "lat": 44.245,
-    "lng": 6.131,
-    "categorie": "crime",
-    "resume": "En 1952, la famille Drummond est retrouvée assassinée près de Lurs. Gaston Dominici est accusé, mais l'affaire reste controversée.",
-    "page": "lieux/affaire-dominici-6.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Affaire_Dominici",
-      "https://www.lefigaro.fr/histoire/archives/2017/08/04/26010-20170804ARTFIG00001-affaire-dominici-le-mystere-d-une-nuit-d-ete.php"
-    ]
-  },
-  {
-    "nom": "Château de Montségur #7",
-    "lat": 42.878,
-    "lng": 1.893,
-    "categorie": "mystery",
-    "resume": "Dernier bastion cathare, le château fut le théâtre d'un siège en 1244 se soldant par un bûcher collectif de 200 personnes.",
-    "page": "lieux/chateau-montsegur-7.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Château_de_Montségur",
-      "https://www.ladepeche.fr/article/2019/03/16/2800910-montsegur-1244-2019-775-ans-apres-l-histoire-reste-vivace.html"
-    ]
-  },
-  {
-    "nom": "Hôpital abandonné de G. #8",
-    "lat": 48.875,
-    "lng": 2.34,
+    "nom": "Site #26",
+    "lat": 45.5798,
+    "lng": 4.1657,
     "categorie": "abandoned",
-    "resume": "Cet ancien hôpital psychiatrique est aujourd’hui fermé, envahi par la végétation et exploré régulièrement par des amateurs d’urbex.",
-    "page": "lieux/hopital-abandonne-8.html",
+    "resume": "Un hôpital psychiatrique déserté, maintenant en ruines.",
     "sources": [
-      "https://www.urbexsession.com/abandon-hopital-paris/",
-      "https://www.youtube.com/watch?v=hospital-video"
+      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
     ]
   },
   {
-    "nom": "Le fantôme du tunnel de Fourvière #9",
-    "lat": 45.788000000000004,
-    "lng": 4.832,
-    "categorie": "mystery",
-    "resume": "Des automobilistes affirment avoir vu une silhouette blanche surgir au milieu de la route, sans trace à l’arrivée.",
-    "page": "lieux/tunnel-fourviere-9.html",
-    "sources": [
-      "https://www.francebleu.fr/faits-divers/fantome-tunnel-fourviere",
-      "https://www.podcast.com/fourviere"
-    ]
-  },
-  {
-    "nom": "Affaire Gregory #10",
-    "lat": 48.054,
-    "lng": 6.614999999999999,
-    "categorie": "crime",
-    "resume": "Le corps du petit Grégory Villemin est retrouvé ligoté dans la Vologne en 1984. L’affaire reste non résolue malgré des décennies d’enquête.",
-    "page": "lieux/affaire-gregory-10.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Affaire_Grégory",
-      "https://www.franceinter.fr/emissions/affaires-sensibles/affaire-gregory"
-    ]
-  },
-  {
-    "nom": "Affaire Dominici #11",
-    "lat": 44.245,
-    "lng": 6.111000000000001,
-    "categorie": "crime",
-    "resume": "En 1952, la famille Drummond est retrouvée assassinée près de Lurs. Gaston Dominici est accusé, mais l'affaire reste controversée.",
-    "page": "lieux/affaire-dominici-11.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Affaire_Dominici",
-      "https://www.lefigaro.fr/histoire/archives/2017/08/04/26010-20170804ARTFIG00001-affaire-dominici-le-mystere-d-une-nuit-d-ete.php"
-    ]
-  },
-  {
-    "nom": "Château de Montségur #12",
-    "lat": 42.878,
-    "lng": 1.873,
-    "categorie": "mystery",
-    "resume": "Dernier bastion cathare, le château fut le théâtre d'un siège en 1244 se soldant par un bûcher collectif de 200 personnes.",
-    "page": "lieux/chateau-montsegur-12.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Château_de_Montségur",
-      "https://www.ladepeche.fr/article/2019/03/16/2800910-montsegur-1244-2019-775-ans-apres-l-histoire-reste-vivace.html"
-    ]
-  },
-  {
-    "nom": "Hôpital abandonné de G. #13",
-    "lat": 48.875,
-    "lng": 2.3899999999999997,
+    "nom": "Site #27",
+    "lat": 49.0704,
+    "lng": 4.2805,
     "categorie": "abandoned",
-    "resume": "Cet ancien hôpital psychiatrique est aujourd’hui fermé, envahi par la végétation et exploré régulièrement par des amateurs d’urbex.",
-    "page": "lieux/hopital-abandonne-13.html",
+    "resume": "Une école abandonnée où des graffitis racontent une sombre histoire.",
     "sources": [
-      "https://www.urbexsession.com/abandon-hopital-paris/",
-      "https://www.youtube.com/watch?v=hospital-video"
+      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
     ]
   },
   {
-    "nom": "Le fantôme du tunnel de Fourvière #14",
-    "lat": 45.788000000000004,
-    "lng": 4.882,
-    "categorie": "mystery",
-    "resume": "Des automobilistes affirment avoir vu une silhouette blanche surgir au milieu de la route, sans trace à l’arrivée.",
-    "page": "lieux/tunnel-fourviere-14.html",
-    "sources": [
-      "https://www.francebleu.fr/faits-divers/fantome-tunnel-fourviere",
-      "https://www.podcast.com/fourviere"
-    ]
-  },
-  {
-    "nom": "Affaire Gregory #15",
-    "lat": 48.054,
-    "lng": 6.595,
-    "categorie": "crime",
-    "resume": "Le corps du petit Grégory Villemin est retrouvé ligoté dans la Vologne en 1984. L’affaire reste non résolue malgré des décennies d’enquête.",
-    "page": "lieux/affaire-gregory-15.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Affaire_Grégory",
-      "https://www.franceinter.fr/emissions/affaires-sensibles/affaire-gregory"
-    ]
-  },
-  {
-    "nom": "Affaire Dominici #16",
-    "lat": 44.245,
-    "lng": 6.091,
-    "categorie": "crime",
-    "resume": "En 1952, la famille Drummond est retrouvée assassinée près de Lurs. Gaston Dominici est accusé, mais l'affaire reste controversée.",
-    "page": "lieux/affaire-dominici-16.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Affaire_Dominici",
-      "https://www.lefigaro.fr/histoire/archives/2017/08/04/26010-20170804ARTFIG00001-affaire-dominici-le-mystere-d-une-nuit-d-ete.php"
-    ]
-  },
-  {
-    "nom": "Château de Montségur #17",
-    "lat": 42.878,
-    "lng": 1.853,
-    "categorie": "mystery",
-    "resume": "Dernier bastion cathare, le château fut le théâtre d'un siège en 1244 se soldant par un bûcher collectif de 200 personnes.",
-    "page": "lieux/chateau-montsegur-17.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Château_de_Montségur",
-      "https://www.ladepeche.fr/article/2019/03/16/2800910-montsegur-1244-2019-775-ans-apres-l-histoire-reste-vivace.html"
-    ]
-  },
-  {
-    "nom": "Hôpital abandonné de G. #18",
-    "lat": 48.875,
-    "lng": 2.3699999999999997,
+    "nom": "Site #28",
+    "lat": 47.2261,
+    "lng": 3.8298,
     "categorie": "abandoned",
-    "resume": "Cet ancien hôpital psychiatrique est aujourd’hui fermé, envahi par la végétation et exploré régulièrement par des amateurs d’urbex.",
-    "page": "lieux/hopital-abandonne-18.html",
+    "resume": "Un manoir isolé que personne n’ose approcher depuis un incendie inexpliqué.",
     "sources": [
-      "https://www.urbexsession.com/abandon-hopital-paris/",
-      "https://www.youtube.com/watch?v=hospital-video"
+      "https://www.franceculture.fr/emissions/series"
     ]
   },
   {
-    "nom": "Le fantôme du tunnel de Fourvière #19",
-    "lat": 45.788000000000004,
-    "lng": 4.862,
-    "categorie": "mystery",
-    "resume": "Des automobilistes affirment avoir vu une silhouette blanche surgir au milieu de la route, sans trace à l’arrivée.",
-    "page": "lieux/tunnel-fourviere-19.html",
-    "sources": [
-      "https://www.francebleu.fr/faits-divers/fantome-tunnel-fourviere",
-      "https://www.podcast.com/fourviere"
-    ]
-  },
-  {
-    "nom": "Affaire Gregory #20",
-    "lat": 48.054,
-    "lng": 6.645,
-    "categorie": "crime",
-    "resume": "Le corps du petit Grégory Villemin est retrouvé ligoté dans la Vologne en 1984. L’affaire reste non résolue malgré des décennies d’enquête.",
-    "page": "lieux/affaire-gregory-20.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Affaire_Grégory",
-      "https://www.franceinter.fr/emissions/affaires-sensibles/affaire-gregory"
-    ]
-  },
-  {
-    "nom": "Affaire Dominici #21",
-    "lat": 44.245,
-    "lng": 6.141,
-    "categorie": "crime",
-    "resume": "En 1952, la famille Drummond est retrouvée assassinée près de Lurs. Gaston Dominici est accusé, mais l'affaire reste controversée.",
-    "page": "lieux/affaire-dominici-21.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Affaire_Dominici",
-      "https://www.lefigaro.fr/histoire/archives/2017/08/04/26010-20170804ARTFIG00001-affaire-dominici-le-mystere-d-une-nuit-d-ete.php"
-    ]
-  },
-  {
-    "nom": "Château de Montségur #22",
-    "lat": 42.878,
-    "lng": 1.833,
-    "categorie": "mystery",
-    "resume": "Dernier bastion cathare, le château fut le théâtre d'un siège en 1244 se soldant par un bûcher collectif de 200 personnes.",
-    "page": "lieux/chateau-montsegur-22.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Château_de_Montségur",
-      "https://www.ladepeche.fr/article/2019/03/16/2800910-montsegur-1244-2019-775-ans-apres-l-histoire-reste-vivace.html"
-    ]
-  },
-  {
-    "nom": "Hôpital abandonné de G. #23",
-    "lat": 48.875,
-    "lng": 2.3499999999999996,
+    "nom": "Site #29",
+    "lat": 44.9949,
+    "lng": 5.0913,
     "categorie": "abandoned",
-    "resume": "Cet ancien hôpital psychiatrique est aujourd’hui fermé, envahi par la végétation et exploré régulièrement par des amateurs d’urbex.",
-    "page": "lieux/hopital-abandonne-23.html",
+    "resume": "Un manoir isolé que personne n’ose approcher depuis un incendie inexpliqué.",
     "sources": [
-      "https://www.urbexsession.com/abandon-hopital-paris/",
-      "https://www.youtube.com/watch?v=hospital-video"
+      "https://www.lemonde.fr/archives/"
     ]
   },
   {
-    "nom": "Le fantôme du tunnel de Fourvière #24",
-    "lat": 45.788000000000004,
-    "lng": 4.842,
-    "categorie": "mystery",
-    "resume": "Des automobilistes affirment avoir vu une silhouette blanche surgir au milieu de la route, sans trace à l’arrivée.",
-    "page": "lieux/tunnel-fourviere-24.html",
-    "sources": [
-      "https://www.francebleu.fr/faits-divers/fantome-tunnel-fourviere",
-      "https://www.podcast.com/fourviere"
-    ]
-  },
-  {
-    "nom": "Affaire Gregory #25",
-    "lat": 48.054,
-    "lng": 6.625,
-    "categorie": "crime",
-    "resume": "Le corps du petit Grégory Villemin est retrouvé ligoté dans la Vologne en 1984. L’affaire reste non résolue malgré des décennies d’enquête.",
-    "page": "lieux/affaire-gregory-25.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Affaire_Grégory",
-      "https://www.franceinter.fr/emissions/affaires-sensibles/affaire-gregory"
-    ]
-  },
-  {
-    "nom": "Affaire Dominici #26",
-    "lat": 44.245,
-    "lng": 6.121,
-    "categorie": "crime",
-    "resume": "En 1952, la famille Drummond est retrouvée assassinée près de Lurs. Gaston Dominici est accusé, mais l'affaire reste controversée.",
-    "page": "lieux/affaire-dominici-26.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Affaire_Dominici",
-      "https://www.lefigaro.fr/histoire/archives/2017/08/04/26010-20170804ARTFIG00001-affaire-dominici-le-mystere-d-une-nuit-d-ete.php"
-    ]
-  },
-  {
-    "nom": "Château de Montségur #27",
-    "lat": 42.878,
-    "lng": 1.883,
-    "categorie": "mystery",
-    "resume": "Dernier bastion cathare, le château fut le théâtre d'un siège en 1244 se soldant par un bûcher collectif de 200 personnes.",
-    "page": "lieux/chateau-montsegur-27.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Château_de_Montségur",
-      "https://www.ladepeche.fr/article/2019/03/16/2800910-montsegur-1244-2019-775-ans-apres-l-histoire-reste-vivace.html"
-    ]
-  },
-  {
-    "nom": "Hôpital abandonné de G. #28",
-    "lat": 48.875,
-    "lng": 2.4,
+    "nom": "Site #30",
+    "lat": 49.7436,
+    "lng": 0.8951,
     "categorie": "abandoned",
-    "resume": "Cet ancien hôpital psychiatrique est aujourd’hui fermé, envahi par la végétation et exploré régulièrement par des amateurs d’urbex.",
-    "page": "lieux/hopital-abandonne-28.html",
+    "resume": "Une ancienne usine laissée à l’abandon depuis 40 ans.",
     "sources": [
-      "https://www.urbexsession.com/abandon-hopital-paris/",
-      "https://www.youtube.com/watch?v=hospital-video"
+      "https://www.lemonde.fr/archives/"
     ]
   },
   {
-    "nom": "Le fantôme du tunnel de Fourvière #29",
-    "lat": 45.788000000000004,
-    "lng": 4.822,
-    "categorie": "mystery",
-    "resume": "Des automobilistes affirment avoir vu une silhouette blanche surgir au milieu de la route, sans trace à l’arrivée.",
-    "page": "lieux/tunnel-fourviere-29.html",
-    "sources": [
-      "https://www.francebleu.fr/faits-divers/fantome-tunnel-fourviere",
-      "https://www.podcast.com/fourviere"
-    ]
-  },
-  {
-    "nom": "Affaire Gregory #30",
-    "lat": 48.054,
-    "lng": 6.6049999999999995,
-    "categorie": "crime",
-    "resume": "Le corps du petit Grégory Villemin est retrouvé ligoté dans la Vologne en 1984. L’affaire reste non résolue malgré des décennies d’enquête.",
-    "page": "lieux/affaire-gregory-30.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Affaire_Grégory",
-      "https://www.franceinter.fr/emissions/affaires-sensibles/affaire-gregory"
-    ]
-  },
-  {
-    "nom": "Affaire Dominici #31",
-    "lat": 44.245,
-    "lng": 6.101,
-    "categorie": "crime",
-    "resume": "En 1952, la famille Drummond est retrouvée assassinée près de Lurs. Gaston Dominici est accusé, mais l'affaire reste controversée.",
-    "page": "lieux/affaire-dominici-31.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Affaire_Dominici",
-      "https://www.lefigaro.fr/histoire/archives/2017/08/04/26010-20170804ARTFIG00001-affaire-dominici-le-mystere-d-une-nuit-d-ete.php"
-    ]
-  },
-  {
-    "nom": "Château de Montségur #32",
-    "lat": 42.878,
-    "lng": 1.863,
-    "categorie": "mystery",
-    "resume": "Dernier bastion cathare, le château fut le théâtre d'un siège en 1244 se soldant par un bûcher collectif de 200 personnes.",
-    "page": "lieux/chateau-montsegur-32.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Château_de_Montségur",
-      "https://www.ladepeche.fr/article/2019/03/16/2800910-montsegur-1244-2019-775-ans-apres-l-histoire-reste-vivace.html"
-    ]
-  },
-  {
-    "nom": "Hôpital abandonné de G. #33",
-    "lat": 48.875,
-    "lng": 2.38,
+    "nom": "Site #31",
+    "lat": 48.4166,
+    "lng": 0.5077,
     "categorie": "abandoned",
-    "resume": "Cet ancien hôpital psychiatrique est aujourd’hui fermé, envahi par la végétation et exploré régulièrement par des amateurs d’urbex.",
-    "page": "lieux/hopital-abandonne-33.html",
+    "resume": "Une ancienne usine laissée à l’abandon depuis 40 ans.",
     "sources": [
-      "https://www.urbexsession.com/abandon-hopital-paris/",
-      "https://www.youtube.com/watch?v=hospital-video"
+      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
     ]
   },
   {
-    "nom": "Le fantôme du tunnel de Fourvière #34",
-    "lat": 45.788000000000004,
-    "lng": 4.872,
-    "categorie": "mystery",
-    "resume": "Des automobilistes affirment avoir vu une silhouette blanche surgir au milieu de la route, sans trace à l’arrivée.",
-    "page": "lieux/tunnel-fourviere-34.html",
-    "sources": [
-      "https://www.francebleu.fr/faits-divers/fantome-tunnel-fourviere",
-      "https://www.podcast.com/fourviere"
-    ]
-  },
-  {
-    "nom": "Affaire Gregory #35",
-    "lat": 48.054,
-    "lng": 6.654999999999999,
-    "categorie": "crime",
-    "resume": "Le corps du petit Grégory Villemin est retrouvé ligoté dans la Vologne en 1984. L’affaire reste non résolue malgré des décennies d’enquête.",
-    "page": "lieux/affaire-gregory-35.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Affaire_Grégory",
-      "https://www.franceinter.fr/emissions/affaires-sensibles/affaire-gregory"
-    ]
-  },
-  {
-    "nom": "Affaire Dominici #36",
-    "lat": 44.245,
-    "lng": 6.081,
-    "categorie": "crime",
-    "resume": "En 1952, la famille Drummond est retrouvée assassinée près de Lurs. Gaston Dominici est accusé, mais l'affaire reste controversée.",
-    "page": "lieux/affaire-dominici-36.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Affaire_Dominici",
-      "https://www.lefigaro.fr/histoire/archives/2017/08/04/26010-20170804ARTFIG00001-affaire-dominici-le-mystere-d-une-nuit-d-ete.php"
-    ]
-  },
-  {
-    "nom": "Château de Montségur #37",
-    "lat": 42.878,
-    "lng": 1.843,
-    "categorie": "mystery",
-    "resume": "Dernier bastion cathare, le château fut le théâtre d'un siège en 1244 se soldant par un bûcher collectif de 200 personnes.",
-    "page": "lieux/chateau-montsegur-37.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Château_de_Montségur",
-      "https://www.ladepeche.fr/article/2019/03/16/2800910-montsegur-1244-2019-775-ans-apres-l-histoire-reste-vivace.html"
-    ]
-  },
-  {
-    "nom": "Hôpital abandonné de G. #38",
-    "lat": 48.875,
-    "lng": 2.36,
+    "nom": "Site #32",
+    "lat": 46.4197,
+    "lng": 6.7442,
     "categorie": "abandoned",
-    "resume": "Cet ancien hôpital psychiatrique est aujourd’hui fermé, envahi par la végétation et exploré régulièrement par des amateurs d’urbex.",
-    "page": "lieux/hopital-abandonne-38.html",
+    "resume": "Un hôpital psychiatrique déserté, maintenant en ruines.",
     "sources": [
-      "https://www.urbexsession.com/abandon-hopital-paris/",
-      "https://www.youtube.com/watch?v=hospital-video"
+      "https://www.youtube.com/watch?v=dossier-crime"
     ]
   },
   {
-    "nom": "Le fantôme du tunnel de Fourvière #39",
-    "lat": 45.788000000000004,
-    "lng": 4.852,
-    "categorie": "mystery",
-    "resume": "Des automobilistes affirment avoir vu une silhouette blanche surgir au milieu de la route, sans trace à l’arrivée.",
-    "page": "lieux/tunnel-fourviere-39.html",
-    "sources": [
-      "https://www.francebleu.fr/faits-divers/fantome-tunnel-fourviere",
-      "https://www.podcast.com/fourviere"
-    ]
-  },
-  {
-    "nom": "Affaire Gregory #40",
-    "lat": 48.054,
-    "lng": 6.635,
-    "categorie": "crime",
-    "resume": "Le corps du petit Grégory Villemin est retrouvé ligoté dans la Vologne en 1984. L’affaire reste non résolue malgré des décennies d’enquête.",
-    "page": "lieux/affaire-gregory-40.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Affaire_Grégory",
-      "https://www.franceinter.fr/emissions/affaires-sensibles/affaire-gregory"
-    ]
-  },
-  {
-    "nom": "Affaire Dominici #41",
-    "lat": 44.245,
-    "lng": 6.131,
-    "categorie": "crime",
-    "resume": "En 1952, la famille Drummond est retrouvée assassinée près de Lurs. Gaston Dominici est accusé, mais l'affaire reste controversée.",
-    "page": "lieux/affaire-dominici-41.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Affaire_Dominici",
-      "https://www.lefigaro.fr/histoire/archives/2017/08/04/26010-20170804ARTFIG00001-affaire-dominici-le-mystere-d-une-nuit-d-ete.php"
-    ]
-  },
-  {
-    "nom": "Château de Montségur #42",
-    "lat": 42.878,
-    "lng": 1.893,
-    "categorie": "mystery",
-    "resume": "Dernier bastion cathare, le château fut le théâtre d'un siège en 1244 se soldant par un bûcher collectif de 200 personnes.",
-    "page": "lieux/chateau-montsegur-42.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Château_de_Montségur",
-      "https://www.ladepeche.fr/article/2019/03/16/2800910-montsegur-1244-2019-775-ans-apres-l-histoire-reste-vivace.html"
-    ]
-  },
-  {
-    "nom": "Hôpital abandonné de G. #43",
-    "lat": 48.875,
-    "lng": 2.34,
+    "nom": "Site #33",
+    "lat": 45.8804,
+    "lng": 1.4392,
     "categorie": "abandoned",
-    "resume": "Cet ancien hôpital psychiatrique est aujourd’hui fermé, envahi par la végétation et exploré régulièrement par des amateurs d’urbex.",
-    "page": "lieux/hopital-abandonne-43.html",
+    "resume": "Une gare fantôme envahie par la végétation.",
     "sources": [
-      "https://www.urbexsession.com/abandon-hopital-paris/",
-      "https://www.youtube.com/watch?v=hospital-video"
+      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
     ]
   },
   {
-    "nom": "Le fantôme du tunnel de Fourvière #44",
-    "lat": 45.788000000000004,
-    "lng": 4.832,
-    "categorie": "mystery",
-    "resume": "Des automobilistes affirment avoir vu une silhouette blanche surgir au milieu de la route, sans trace à l’arrivée.",
-    "page": "lieux/tunnel-fourviere-44.html",
-    "sources": [
-      "https://www.francebleu.fr/faits-divers/fantome-tunnel-fourviere",
-      "https://www.podcast.com/fourviere"
-    ]
-  },
-  {
-    "nom": "Affaire Gregory #45",
-    "lat": 48.054,
-    "lng": 6.614999999999999,
-    "categorie": "crime",
-    "resume": "Le corps du petit Grégory Villemin est retrouvé ligoté dans la Vologne en 1984. L’affaire reste non résolue malgré des décennies d’enquête.",
-    "page": "lieux/affaire-gregory-45.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Affaire_Grégory",
-      "https://www.franceinter.fr/emissions/affaires-sensibles/affaire-gregory"
-    ]
-  },
-  {
-    "nom": "Affaire Dominici #46",
-    "lat": 44.245,
-    "lng": 6.111000000000001,
-    "categorie": "crime",
-    "resume": "En 1952, la famille Drummond est retrouvée assassinée près de Lurs. Gaston Dominici est accusé, mais l'affaire reste controversée.",
-    "page": "lieux/affaire-dominici-46.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Affaire_Dominici",
-      "https://www.lefigaro.fr/histoire/archives/2017/08/04/26010-20170804ARTFIG00001-affaire-dominici-le-mystere-d-une-nuit-d-ete.php"
-    ]
-  },
-  {
-    "nom": "Château de Montségur #47",
-    "lat": 42.878,
-    "lng": 1.873,
-    "categorie": "mystery",
-    "resume": "Dernier bastion cathare, le château fut le théâtre d'un siège en 1244 se soldant par un bûcher collectif de 200 personnes.",
-    "page": "lieux/chateau-montsegur-47.html",
-    "sources": [
-      "https://fr.wikipedia.org/wiki/Château_de_Montségur",
-      "https://www.ladepeche.fr/article/2019/03/16/2800910-montsegur-1244-2019-775-ans-apres-l-histoire-reste-vivace.html"
-    ]
-  },
-  {
-    "nom": "Hôpital abandonné de G. #48",
-    "lat": 48.875,
-    "lng": 2.3899999999999997,
+    "nom": "Site #34",
+    "lat": 46.9357,
+    "lng": -0.8824,
     "categorie": "abandoned",
-    "resume": "Cet ancien hôpital psychiatrique est aujourd’hui fermé, envahi par la végétation et exploré régulièrement par des amateurs d’urbex.",
-    "page": "lieux/hopital-abandonne-48.html",
+    "resume": "Un hôpital psychiatrique déserté, maintenant en ruines.",
     "sources": [
-      "https://www.urbexsession.com/abandon-hopital-paris/",
-      "https://www.youtube.com/watch?v=hospital-video"
+      "https://www.franceinter.fr/emissions/affaires-sensibles"
     ]
   },
   {
-    "nom": "Le fantôme du tunnel de Fourvière #49",
-    "lat": 45.788000000000004,
-    "lng": 4.882,
-    "categorie": "mystery",
-    "resume": "Des automobilistes affirment avoir vu une silhouette blanche surgir au milieu de la route, sans trace à l’arrivée.",
-    "page": "lieux/tunnel-fourviere-49.html",
+    "nom": "Site #35",
+    "lat": 48.0061,
+    "lng": 3.1549,
+    "categorie": "abandoned",
+    "resume": "Une école abandonnée où des graffitis racontent une sombre histoire.",
     "sources": [
-      "https://www.francebleu.fr/faits-divers/fantome-tunnel-fourviere",
-      "https://www.podcast.com/fourviere"
+      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
     ]
   },
   {
-    "nom": "Affaire Gregory #50",
-    "lat": 48.054,
-    "lng": 6.595,
-    "categorie": "crime",
-    "resume": "Le corps du petit Grégory Villemin est retrouvé ligoté dans la Vologne en 1984. L’affaire reste non résolue malgré des décennies d’enquête.",
-    "page": "lieux/affaire-gregory-50.html",
+    "nom": "Site #36",
+    "lat": 46.1727,
+    "lng": 3.9152,
+    "categorie": "abandoned",
+    "resume": "Une gare fantôme envahie par la végétation.",
     "sources": [
-      "https://fr.wikipedia.org/wiki/Affaire_Grégory",
-      "https://www.franceinter.fr/emissions/affaires-sensibles/affaire-gregory"
+      "https://www.franceculture.fr/emissions/series"
+    ]
+  },
+  {
+    "nom": "Site #37",
+    "lat": 44.554,
+    "lng": 4.6729,
+    "categorie": "darkstory",
+    "resume": "Un monastère vidé de ses habitants du jour au lendemain sans explication.",
+    "sources": [
+      "https://www.youtube.com/watch?v=dossier-crime"
+    ]
+  },
+  {
+    "nom": "Site #38",
+    "lat": 48.0766,
+    "lng": 0.6877,
+    "categorie": "darkstory",
+    "resume": "Une crypte découverte récemment sous l’église du village.",
+    "sources": [
+      "https://www.franceinter.fr/emissions/affaires-sensibles"
+    ]
+  },
+  {
+    "nom": "Site #39",
+    "lat": 47.6924,
+    "lng": 2.9269,
+    "categorie": "darkstory",
+    "resume": "Un bois où des cérémonies occultes auraient eu lieu.",
+    "sources": [
+      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
+    ]
+  },
+  {
+    "nom": "Site #40",
+    "lat": 43.0622,
+    "lng": -0.6908,
+    "categorie": "darkstory",
+    "resume": "Une crypte découverte récemment sous l’église du village.",
+    "sources": [
+      "https://www.lemonde.fr/archives/"
+    ]
+  },
+  {
+    "nom": "Site #41",
+    "lat": 49.3072,
+    "lng": 2.4312,
+    "categorie": "darkstory",
+    "resume": "Un lieu marqué par une tragédie collective oubliée.",
+    "sources": [
+      "https://www.lemonde.fr/archives/"
+    ]
+  },
+  {
+    "nom": "Site #42",
+    "lat": 43.149,
+    "lng": 5.6105,
+    "categorie": "darkstory",
+    "resume": "Un monastère vidé de ses habitants du jour au lendemain sans explication.",
+    "sources": [
+      "https://www.franceculture.fr/emissions/series"
+    ]
+  },
+  {
+    "nom": "Site #43",
+    "lat": 44.0045,
+    "lng": -0.4519,
+    "categorie": "darkstory",
+    "resume": "Un monastère vidé de ses habitants du jour au lendemain sans explication.",
+    "sources": [
+      "https://www.lemonde.fr/archives/"
+    ]
+  },
+  {
+    "nom": "Site #44",
+    "lat": 47.1241,
+    "lng": 2.3788,
+    "categorie": "darkstory",
+    "resume": "Une crypte découverte récemment sous l’église du village.",
+    "sources": [
+      "https://fr.wikipedia.org/wiki/Liste_affaires_criminelles"
+    ]
+  },
+  {
+    "nom": "Site #45",
+    "lat": 48.2424,
+    "lng": 6.9125,
+    "categorie": "darkstory",
+    "resume": "Un monastère vidé de ses habitants du jour au lendemain sans explication.",
+    "sources": [
+      "https://www.youtube.com/watch?v=dossier-crime"
+    ]
+  },
+  {
+    "nom": "Site #46",
+    "lat": 45.7863,
+    "lng": 1.9726,
+    "categorie": "darkstory",
+    "resume": "Une crypte découverte récemment sous l’église du village.",
+    "sources": [
+      "https://www.lemonde.fr/archives/"
+    ]
+  },
+  {
+    "nom": "Site #47",
+    "lat": 48.4365,
+    "lng": 5.3244,
+    "categorie": "darkstory",
+    "resume": "Un lieu marqué par une tragédie collective oubliée.",
+    "sources": [
+      "https://www.franceinter.fr/emissions/affaires-sensibles"
+    ]
+  },
+  {
+    "nom": "Site #48",
+    "lat": 48.8045,
+    "lng": 4.1871,
+    "categorie": "darkstory",
+    "resume": "Un ancien bagne aux conditions de vie inhumaines.",
+    "sources": [
+      "https://www.lemonde.fr/archives/"
+    ]
+  },
+  {
+    "nom": "Site #49",
+    "lat": 43.2,
+    "lng": 6.2346,
+    "categorie": "darkstory",
+    "resume": "Une crypte découverte récemment sous l’église du village.",
+    "sources": [
+      "https://www.lemonde.fr/archives/"
+    ]
+  },
+  {
+    "nom": "Site #50",
+    "lat": 44.0848,
+    "lng": 4.9917,
+    "categorie": "abandoned",
+    "resume": "Une gare fantôme envahie par la végétation.",
+    "sources": [
+      "https://www.franceinter.fr/emissions/affaires-sensibles"
     ]
   }
 ]
