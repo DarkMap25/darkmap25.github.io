@@ -68,3 +68,38 @@ footer {
 .emoji-marker:hover {
   transform: scale(1.3);
 }
+
+#intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0d0d0d;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#intro-text {
+  font-family: 'UnifrakturCook', cursive;
+  color: #e60000;
+  font-size: 2em;
+  text-shadow: 0 0 10px red;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: .15em solid #e60000;
+  width: 0;
+  animation: typing 5s steps(40, end), blink-caret 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 35ch }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #e60000 }
+}
