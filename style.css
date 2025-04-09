@@ -89,17 +89,11 @@ footer {
   text-shadow: 0 0 10px red;
   white-space: nowrap;
   overflow: hidden;
-  border-right: .15em solid #e60000;
   width: 0;
-  animation: typing 5s steps(40, end), blink-caret 0.7s step-end infinite;
+  animation: typing 5s steps(40, end) forwards;
 }
 
 @keyframes typing {
   from { width: 0 }
   to { width: 35ch }
-}
-
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: #e60000 }
 }
