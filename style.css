@@ -1,37 +1,84 @@
+/* === POLICES ET BASE === */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=UnifrakturCook:wght@700&display=swap');
 
-/* ===== Reset & Général ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+  --cursorX: 50vw;
+  --cursorY: 50vh;
 }
 
 body {
   background-color: #0d0d0d;
   color: #f0f0f0;
-  padding: 20px;
+  font-family: 'Cormorant Garamond', serif;
   line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
 }
 
-/* ===== Header ===== */
+/* === VIGNETTAGE === */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,0.7) 100%);
+  z-index: 5;
+}
+
+/* === TORCHE AU CURSEUR === */
+body::after {
+  content: "";
+  position: fixed;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 80%);
+  mix-blend-mode: screen;
+  z-index: 6;
+  transform: translate(-50%, -50%);
+  top: var(--cursorY);
+  left: var(--cursorX);
+  transition: top 0.05s ease, left 0.05s ease;
+}
+
+/* === HEADER === */
 header {
   text-align: center;
   margin-bottom: 20px;
 }
 
+.logo {
+  max-width: 160px;
+  display: block;
+  margin: 0 auto 15px auto;
+  filter: drop-shadow(0 0 5px #e60000);
+}
+
 h1 {
+  font-family: 'UnifrakturCook', cursive;
   color: #e60000;
   font-size: 2.8em;
   text-shadow: 0 0 10px #e60000;
 }
 
-header p {
-  color: #ccc;
+.tagline {
+  text-align: center;
+  color: #f0f0f0;
   font-style: italic;
+  font-size: 1.2em;
+  margin-top: -5px;
+  letter-spacing: 1px;
 }
 
-/* ===== Selecteur de catégorie ===== */
+/* === CONTROLS / SELECTEURS === */
 #controls {
   margin: 20px 0;
   text-align: center;
@@ -48,16 +95,17 @@ header p {
   box-shadow: 0 0 5px #e60000;
 }
 
-/* ===== Carte ===== */
+/* === CARTE === */
 #map {
   height: 70vh;
   border: 2px solid #e60000;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(230, 0, 0, 0.3);
   margin-bottom: 30px;
+  z-index: 1;
 }
 
-/* ===== Formulaire ===== */
+/* === FORMULAIRE === */
 #form {
   background-color: #1a1a1a;
   padding: 20px;
@@ -65,9 +113,11 @@ header p {
   box-shadow: 0 0 10px #e60000;
   max-width: 600px;
   margin: 0 auto 40px auto;
+  z-index: 2;
 }
 
 #form h2 {
+  font-family: 'UnifrakturCook', cursive;
   color: #e60000;
   text-align: center;
   margin-bottom: 15px;
@@ -101,7 +151,7 @@ form button:hover {
   background-color: #b30000;
 }
 
-/* ===== Footer ===== */
+/* === FOOTER === */
 footer {
   text-align: center;
   margin-top: 20px;
@@ -109,7 +159,7 @@ footer {
   font-size: 0.9em;
 }
 
-/* ===== Responsive ===== */
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
   h1 {
     font-size: 2em;
