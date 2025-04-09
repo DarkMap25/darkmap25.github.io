@@ -49,3 +49,16 @@ fetch('lieux.json')
     });
   })
   .catch(error => console.error('Erreur lors du chargement des lieux :', error));
+
+// Animation d’intro avec texte tapé + disparition lente
+window.addEventListener("load", () => {
+  const overlay = document.getElementById("intro-overlay");
+  const introText = document.getElementById("intro-text");
+  introText.textContent = "Un territoire. Une carte. Des histoires sombres.";
+
+  setTimeout(() => {
+    overlay.style.transition = "opacity 2s ease";
+    overlay.style.opacity = 0;
+    setTimeout(() => overlay.remove(), 2000);
+  }, 6000); // attend la fin de l’animation (5s + 1s de marge)
+});
