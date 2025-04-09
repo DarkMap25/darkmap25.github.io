@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DarkMap.fr - Carte des mystères</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🗺️ DarkMap.fr</h1>
+    <p>Explorez les lieux sombres, abandonnés et mystérieux de France...</p>
+  </header>
+
+  <section id="controls">
+    <label for="category-select">Filtrer par catégorie :</label>
+    <select id="category-select">
+      <option value="all">Toutes les catégories</option>
+      <option value="Crimes">Crimes</option>
+      <option value="Lieux Mystérieux">Lieux Mystérieux</option>
+      <option value="Lieux Abandonnés">Lieux Abandonnés</option>
+      <option value="Histoires Sombres">Histoires Sombres</option>
+    </select>
+  </section>
+
+  <div id="map"></div>
+
+  <section id="form">
+    <h2>Proposer un lieu</h2>
+    <form action="https://formspree.io/f/your-form-id" method="POST">
+      <input type="text" name="nom" placeholder="Nom du lieu" required>
+      <input type="text" name="localisation" placeholder="Adresse ou ville" required>
+      <select name="catégorie" required>
+        <option value="">Choisir une catégorie</option>
+        <option value="Crimes">Crimes</option>
+        <option value="Lieux Mystérieux">Lieux Mystérieux</option>
+        <option value="Lieux Abandonnés">Lieux Abandonnés</option>
+        <option value="Histoires Sombres">Histoires Sombres</option>
+      </select>
+      <textarea name="description" placeholder="Décrivez ce lieu..." required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 DarkMap.fr | Projet personnel</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
