@@ -52,3 +52,19 @@ footer {
   font-size: 0.9em;
   color: #777;
 }
+
+.emoji-marker {
+  font-size: 22px;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 30px;
+  height: 30px;
+  color: white;
+  box-shadow: 0 0 5px red;
+  transition: transform 0.2s ease;
+}
+.emoji-marker:hover {
+  transform: scale(1.3);
+}
