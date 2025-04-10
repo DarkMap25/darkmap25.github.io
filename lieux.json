@@ -1,18 +1,18 @@
 [
   {
-    "nom": "Affaire non élucidée : Affaire Grégory",
+    "nom": "Affaire Grégory",
     "latitude": 48.014,
     "longitude": 6.595,
     "categorie": "Crimes",
-    "resume": "Le 16 octobre 1984, le corps du petit Grégory Villemin est retrouvé ligoté dans la Vologne. L'affaire, non résolue, défraye encore la chronique. Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
+    "resume": "Le 16 octobre 1984, le corps du petit Grégory Villemin est retrouvé ligoté dans la Vologne. Un mystère qui n’a jamais été élucidé et qui hante encore la France. Découvrez les rebondissements tragiques et l'ombre qui plane sur cette affaire qui divise le pays.",
     "lien": "https://fr.wikipedia.org/wiki/Affaire_Grégory"
   },
   {
-    "nom": "Les secrets de Château de Montségur",
+    "nom": "Château de Montségur",
     "latitude": 42.8676,
     "longitude": 1.8247,
     "categorie": "Histoires Sombres",
-    "resume": "En 1244, près de 200 cathares sont brûlés vifs au pied du château après un siège sanglant. Un lieu emblématique du drame cathare. Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
+    "resume": "En 1244, près de 200 cathares sont brûlés vifs au pied du château après un siège sanglant. Une tragédie qui bouleversa l’histoire des cathares et la région. Pourquoi cet endroit est-il le témoin silencieux d’une époque de souffrance et de résistance ?",
     "lien": "https://fr.wikipedia.org/wiki/Château_de_Montségur"
   },
   {
@@ -20,7 +20,7 @@
     "latitude": 48.8354,
     "longitude": 2.1811,
     "categorie": "Lieux Abandonnés",
-    "resume": "Un ancien hôpital abandonné dans les Hauts-de-Seine, souvent visité en urbex. Il aurait servi de lieu de traitement pour la tuberculose. Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
+    "resume": "Un ancien hôpital abandonné, aujourd'hui devenu un terrain de jeux pour les passionnés d'urbex. Ce lieu au passé lourd, où l’on soignait la tuberculose, porte des secrets sombres. Quelles histoires oubliées peuvent encore être entendues entre ses murs ?",
     "lien": "https://www.urbexsession.com/abandon-hopital-paris/"
   },
   {
@@ -28,303 +28,13 @@
     "latitude": 45.671,
     "longitude": 6.32,
     "categorie": "Histoires Sombres",
-    "resume": "Ce fort de montagne, isolé, fut le théâtre de suicides mystérieux au XXe siècle. Il est aujourd'hui accessible mais entouré de légendes. Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
+    "resume": "Ce fort montagneux fut le théâtre de suicides mystérieux au XXe siècle. Accédez à un lieu où des légendes prennent vie et plongez dans les récits non racontés d’un passé obscur et énigmatique.",
     "lien": "https://fr.wikipedia.org/wiki/Fort_de_Tamié"
   },
   {
-    "nom": "Les secrets de Abbaye de Mortemer",
+    "nom": "Abbaye de Mortemer",
     "latitude": 49.412,
     "longitude": 1.477,
     "categorie": "Lieux Mystérieux",
-    "resume": "Lieu hanté selon la légende, cette abbaye normande serait visitée par le fantôme de Mathilde l'Emperesse. Elle attire curieux et chasseurs de fantômes. Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org/wiki/Abbaye_de_Mortemer"
-  },
-  {
-    "nom": "Maison des Templiers de Metz",
-    "latitude": 49.1203,
-    "longitude": 6.1778,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Cette maison médiévale aurait été un repaire templier. Des témoignages rapportent des bruits étranges et des disparitions d’objets. Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org/wiki/Maison_des_Templiers_(Metz)"
-  },
-  {
-    "nom": "Vestiges interdits : Prison de Clairvaux",
-    "latitude": 48.2175,
-    "longitude": 4.7294,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Ancienne abbaye transformée en prison, elle a accueilli de grands criminels et résistants. Aujourd’hui, une partie est abandonnée. Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org/wiki/Prison_de_Clairvaux"
-  },
-  {
-    "nom": "Territoire légendaire : Lac de Pavin",
-    "latitude": 45.5032,
-    "longitude": 2.8987,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Ce lac d’origine volcanique est réputé pour ses eaux profondes et ses légendes de monstres et disparitions mystérieuses. Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org/wiki/Lac_Pavin"
-  },
-  {
-    "nom": "Villa abandonnée de Nice",
-    "latitude": 43.7031,
-    "longitude": 7.2661,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Une luxueuse villa laissée à l’abandon depuis les années 90. On raconte qu’un assassinat y aurait eu lieu sans élucidation. Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://www.urbexsession.com/villa-abandonnee-nice/"
-  },
-  {
-    "nom": "Affaire non élucidée : Affaire Dupont de Ligonnès",
-    "latitude": 47.2104,
-    "longitude": -1.5414,
-    "categorie": "Crimes",
-    "resume": "En 2011, une famille est retrouvée enterrée sous la terrasse de leur maison à Nantes. Le père, suspect principal, reste introuvable. Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org/wiki/Affaire_Dupont_de_Ligonnès"
-  },
-  {
-    "nom": "Affaire non élucidée : Affaire Lucie Blackman",
-    "latitude": 43.2965,
-    "longitude": 5.3698,
-    "categorie": "Crimes",
-    "resume": "Lucie, une touriste britannique, disparait à Marseille en 2001. Son corps est retrouvé dans une grotte calcaire. L’affaire secoue les relations internationales. Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://www.bbc.com/news/world-europe-37790148"
-  },
-  {
-    "nom": "Les secrets de Abbaye de Jumièges",
-    "latitude": 49.4863,
-    "longitude": 0.8204,
-    "categorie": "Histoires Sombres",
-    "resume": "Ruines majestueuses d’une abbaye bénédictine détruite à la Révolution. Lieu associé à des exécutions pendant la Terreur. Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org/wiki/Abbaye_de_Jumièges"
-  },
-  {
-    "nom": "Les secrets de Château de Fougeret",
-    "latitude": 46.3376,
-    "longitude": 0.5536,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Réputé pour être le château le plus hanté de France, Fougeret attire les passionnés de paranormal. Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://www.chateaudefougeret.fr/"
-  },
-  {
-    "nom": "Caserne abandonnée de Reims",
-    "latitude": 49.2583,
-    "longitude": 4.0317,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Ancienne caserne militaire désaffectée, devenue un repaire pour les explorateurs urbains. Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://www.urbexsession.com/caserne-reims"
-  },
-  {
-    "nom": "Le puits sanglant de Bar-le-Duc",
-    "latitude": 48.7751,
-    "longitude": 5.1611,
-    "categorie": "Histoires Sombres",
-    "resume": "Un ancien puits où plusieurs enfants auraient été sacrifiés durant le Moyen Âge selon les archives locales. Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org/wiki/Bar-le-Duc"
-  },
-  {
-    "nom": "Vestiges interdits : Sanatorium abandonné de Berck",
-    "latitude": 50.4056,
-    "longitude": 1.5825,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Ce sanatorium de la Côte d'Opale, destiné aux tuberculeux, est abandonné depuis les années 90 et attire les passionnés d'urbex. Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://www.urbexsession.com/sanatorium-berck/"
-  },
-  {
-    "nom": "Territoire légendaire : Forêt de Brocéliande",
-    "latitude": 48.0203,
-    "longitude": -2.1833,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Berceau des légendes arthuriennes, on y parle du tombeau de Merlin, de la fée Viviane et de phénomènes inexpliqués. Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org/wiki/Forêt_de_Brocéliande"
-  },
-  {
-    "nom": "Affaire non élucidée : Affaire Flactif (Grand-Bornand)",
-    "latitude": 45.9431,
-    "longitude": 6.4271,
-    "categorie": "Crimes",
-    "resume": "En 2003, la famille Flactif est assassinée par un voisin jaloux. Les corps sont brûlés. L’affaire a bouleversé la Haute-Savoie. Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org/wiki/Affaire_Flactif"
-  },
-  {
-    "nom": "Crypte de l’église Saint-Pierre de Vienne",
-    "latitude": 45.5222,
-    "longitude": 4.8744,
-    "categorie": "Histoires Sombres",
-    "resume": "Crypte très ancienne redécouverte récemment. On y aurait trouvé des restes d’un ancien culte païen mêlé au christianisme. Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org/wiki/Vienne_(Isère)"
-  },
-  {
-    "nom": "Tour abandonnée de la ZAC à Roubaix",
-    "latitude": 50.6942,
-    "longitude": 3.1741,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Immeuble abandonné dans un quartier en reconversion, aujourd’hui recouvert de graffitis et théâtre de rumeurs urbaines. Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://www.urbexsession.com/tour-abandonnee-roubaix"
-  },
-  {
-    "nom": "Cimetière militaire effacé",
-    "latitude": 48.9381,
-    "longitude": 3.1299,
-    "categorie": "Histoires Sombres",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « darkstory ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Manoir du Poitou",
-    "latitude": 47.903,
-    "longitude": 2.0749,
-    "categorie": "Crimes",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « crime ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Phare hanté de l’Atlantique",
-    "latitude": 48.8783,
-    "longitude": 4.0404,
-    "categorie": "Histoires Sombres",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « darkstory ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Vestiges interdits : Ancienne gendarmerie de Haute-Loire",
-    "latitude": 43.509,
-    "longitude": 3.7558,
-    "categorie": "Crimes",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « crime ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Prieuré disparu de Dordogne",
-    "latitude": 43.7592,
-    "longitude": -0.1579,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « abandoned ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Îlot interdit en Méditerranée",
-    "latitude": 46.382,
-    "longitude": 6.2121,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « mystery ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Crypte de Saint-Étienne",
-    "latitude": 44.1709,
-    "longitude": -1.2804,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « abandoned ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Pont du suicide en Ardèche",
-    "latitude": 47.4362,
-    "longitude": 0.862,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « mystery ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Maison close du Vieux Lille",
-    "latitude": 48.9498,
-    "longitude": 1.6555,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « abandoned ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Vestiges interdits : Sanatorium de Franche-Comté",
-    "latitude": 47.0139,
-    "longitude": 2.5689,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « abandoned ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Mine de fer abandonnée en Lorraine",
-    "latitude": 46.1405,
-    "longitude": 5.248,
-    "categorie": "Crimes",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « crime ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Source sacrée de l'Ardèche",
-    "latitude": 43.2297,
-    "longitude": 2.7257,
-    "categorie": "Histoires Sombres",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « darkstory ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Couvent perdu des Landes",
-    "latitude": 47.8389,
-    "longitude": 5.1414,
-    "categorie": "Histoires Sombres",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « darkstory ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Les secrets de Ruines du château d'Arques",
-    "latitude": 48.6685,
-    "longitude": 0.3968,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « mystery ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Maison maudite d'Auvergne",
-    "latitude": 43.8958,
-    "longitude": 4.1852,
-    "categorie": "Crimes",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « crime ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Bois hanté de l'Yonne",
-    "latitude": 47.9104,
-    "longitude": 3.3425,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « mystery ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Ancienne école de Nièvre",
-    "latitude": 47.5564,
-    "longitude": -0.4585,
-    "categorie": "Histoires Sombres",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « darkstory ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Tunnel ferroviaire de la Loire",
-    "latitude": 48.5502,
-    "longitude": -0.7594,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « mystery ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Bunker côtier de Bretagne",
-    "latitude": 48.0143,
-    "longitude": 4.1909,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « abandoned ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Chapelle oubliée de l'Aveyron",
-    "latitude": 43.3325,
-    "longitude": 3.4781,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « mystery ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Lieu sombre #26",
-    "latitude": 47.5534,
-    "longitude": 3.5637,
-    "categorie": "Crimes",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « crime ». Ce lieu intrigue, dérange ou fascine, et fait partie intégrante des recoins sombres de l'histoire française.",
-    "lien": "https://fr.wikipedia.org"
-  }
-]
+    "resume": "Lieu hanté, cette abbaye normande est envahie par des histoires surnaturelles. On raconte que le fantôme de Mathilde l’Emperesse rôde encore dans ses ruines. Que cachent ces murs ? Et pourquoi attisent-ils tant la curiosité des chasseurs de fantômes ?",
+    "lien": "https://
