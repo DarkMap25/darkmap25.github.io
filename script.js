@@ -1,3 +1,4 @@
+
 // Initialisation de la carte centrée sur la France
 const map = L.map('map', {
   maxBounds: [[41, -5], [52, 10]],
@@ -7,7 +8,7 @@ const map = L.map('map', {
 
 // Fond de carte sombre
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-  attribution: '&copy; OpenStreetMap & CartoDB',
+  attribution: '&copy; OpenStreetMap, CartoDB',
   subdomains: 'abcd',
   maxZoom: 19
 }).addTo(map);
