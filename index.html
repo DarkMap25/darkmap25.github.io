@@ -8,10 +8,6 @@
   <!-- Feuilles de style -->
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-  <!-- Polices -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
   
@@ -21,12 +17,12 @@
   
   <header>
     <h1 style="font-size: 6em; font-family: 'Playfair Display', serif; text-align: center; color: #e60000; text-shadow: 0 0 8px #e60000; margin-bottom: 0;">
-  DarkMap
-</h1>
+      DarkMap
+    </h1>
     <p class="tagline">La carte de France, version Dark.</p>
   </header>
 
-<section class="intro" style="max-width: 60ch; margin: 60px auto; text-align: center; line-height: 1.8;">
+  <section class="intro" style="max-width: 60ch; margin: 60px auto; text-align: center; line-height: 1.8;">
     <p>
       DarkMap est un site interactif qui recense les lieux les plus sombres et étranges de France.<br>
       Crimes, histoires mystérieuses, lieux abandonnés ou chargés d’un passé lourd...<br>
@@ -37,12 +33,29 @@
     </p>
   </section>
 
-  <div id="map"></div>
+  <div id="map" style="height: 600px;"></div> <!-- Assure-toi que la carte a une hauteur définie -->
 
   <footer>
     <p>&copy; 2025 DarkMap.fr | Projet personnel</p>
   </footer>
 
+  <!-- Script Leaflet, avant la fermeture de la balise body -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script>
+    // Initialisation de la carte centrée sur la France
+    const map = L.map('map', {
+      maxBounds: [[41, -5], [52, 10]], // Limites pour la France
+      minZoom: 5,
+      maxZoom: 15
+    }).setView([46.5, 2.5], 6);
+
+    // Fond de carte sombre CartoDB
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap & CartoDB',
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(map);
+  </script>
 </body>
 </html>
