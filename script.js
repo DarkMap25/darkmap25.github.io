@@ -1,4 +1,3 @@
-
 // Initialisation de la carte centrée sur la France
 const map = L.map('map', {
   maxBounds: [[41, -5], [52, 10]],
@@ -51,16 +50,24 @@ fetch('lieux.json')
   })
   .catch(error => console.error('Erreur lors du chargement des lieux :', error));
 
-// Animation d’intro avec texte tapé + disparition lente
-window.addEventListener("load", () => {
-  const overlay = document.getElementById("intro-overlay");
-  const introText = document.getElementById("intro-text");
-  introText.textContent = "Un territoire. Une carte. Un passé sombre.";
+// Définir une variable pour afficher ou masquer l'introduction
+let showIntro = false;  // Change à "true" pour afficher l'intro, "false" pour la masquer
 
-  // Disparition après écriture (5s) + pause (2s)
-  setTimeout(() => {
-    overlay.style.transition = "opacity 2s ease";
-    overlay.style.opacity = 0;
-    setTimeout(() => overlay.remove(), 2000);
-  }, 7000); // 5s écriture + 2s pause
+// Vérifier si showIntro est true, sinon ne pas afficher l'introduction
+window.addEventListener("load", () => {
+  if (showIntro) {
+    const overlay = document.getElementById("intro-overlay");
+    const introText = document.getElementById("intro-text");
+    introText.textContent = "Un territoire. Une carte. Un passé sombre.";
+
+    // Disparition après écriture (5s) + pause (2s)
+    setTimeout(() => {
+      overlay.style.transition = "opacity 2s ease";
+      overlay.style.opacity = 0;
+      setTimeout(() => overlay.remove(), 2000);
+    }, 7000); // 5s écriture + 2s pause
+  } else {
+    // Si showIntro est false, cacher l'overlay
+    document.getElementById("intro-overlay").style.display = "none";
+  }
 });
