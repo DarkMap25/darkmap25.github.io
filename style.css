@@ -2,11 +2,27 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #0d0d0d; /* Fond sombre pour l'ambiance du site */
-  color: #f0f0f0; /* Texte clair pour contraster avec le fond sombre */
-  font-family: 'Quicksand', sans-serif; /* Changement de police pour Quicksand Bold 700 */
+  background-image: url('icons/background.png'); /* Ton image de fond */
+  background-size: cover;                       /* Couvre tout l'écran */
+  background-position: center;                  /* Centrée */
+  background-repeat: no-repeat;                 
+  background-attachment: fixed;                 /* Reste fixe au scroll */
+  color: #f0f0f0;                                /* Texte clair */
+  font-family: 'Quicksand', sans-serif;
+  position: relative; /* Nécessaire pour le calque d'assombrissement */
 }
 
+/* 💡 Calque semi-transparent pour assombrir légèrement l'image */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Opacité 50% */
+  z-index: -1;
+}
 /* Titre h1 avec Quicksand Bold 700 */
 h1 {
   font-family: 'Quicksand', sans-serif; /* Applique la police Quicksand avec la graisse 700 */
