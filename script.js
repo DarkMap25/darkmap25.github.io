@@ -51,7 +51,7 @@ fetch('lieux.json')
   .catch(error => console.error('Erreur lors du chargement des lieux :', error));
 
 // Définir une variable pour afficher ou masquer l'introduction
-let showIntro = false;  // Change à "true" pour afficher l'intro, "false" pour la masquer
+let showIntro = true;  // Change à "true" pour afficher l'intro, "false" pour la masquer
 
 // Vérifier si showIntro est true, sinon ne pas afficher l'introduction
 window.addEventListener("load", () => {
