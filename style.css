@@ -108,29 +108,4 @@ footer {
   text-align: center;
 }
 
-/* Texte d’intro animé ligne par ligne */
-#intro-text {
-  font-family: 'UnifrakturCook', cursive;
-  color: #e60000;
-  font-size: 2em;
-  text-shadow: 0 0 10px red;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0;
-  animation: typing 5s steps(45, end) forwards;
-}
-
-/* Animation machine à écrire */
-@keyframes typing {
-  from { width: 0; }
-  to { width: 34ch; } /* largeur adaptée à "Un territoire. Une carte." */
-}
-
-/* Responsive mobile : police plus petite, mais même effet */
-@media (max-width: 600px) {
-  #intro-text {
-    font-size: 1.4em;
-    animation: typingMobile 5s steps(40, end) forwards;
-  }
-
-
+/* Bloc texte d*
