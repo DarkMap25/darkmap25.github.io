@@ -65,7 +65,7 @@ h1 {
 #map {
   height: 75vh;
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: 100%;
   border-radius: 10px;
   box-shadow: 0 0 10px #e60000;
   z-index: 1;
@@ -155,10 +155,15 @@ footer {
     font-size: 1.4em;
   }
 }
+
 @media (max-width: 768px) {
   body {
     background-attachment: scroll; /* plus sûr pour mobile */
     background-size: contain;
     background-position: center top;
   }
+}
+
+html, body {
+  height: 100%;
 }
