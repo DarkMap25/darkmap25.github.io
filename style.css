@@ -2,7 +2,6 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #0d0d0d; /* Couleur de secours si l'image échoue */
   background-image: url('./icons/background.png');
   background-size: cover;
   background-position: center;
