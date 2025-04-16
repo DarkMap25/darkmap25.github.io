@@ -36,8 +36,8 @@
         }
 
         .map-container {
-            width: 80%;
-            height: 60%;
+            width: 100%;
+            height: 70vh;
             margin-top: 20px;
         }
 
@@ -83,11 +83,9 @@
 
         // Initialisation de la carte avec OpenMapTiles
         function initializeMap() {
-            maplibregl.accessToken = ''; // Pas de clé API nécessaire
-
             var map = new maplibregl.Map({
                 container: 'map',
-                style: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',  // Utilisation du style OpenMapTiles
+                style: 'https://openmaptiles.github.io/maplibre-gl-styles/styles/basic/style.json',  // Style sans clé API
                 center: [2.2137, 46.2276], // Centrer la carte sur la France
                 zoom: 5,
                 maxBounds: [[-5.0, 41.0], [10.0, 51.0]] // Limiter la carte à la France
@@ -96,19 +94,21 @@
             // Ajouter un contrôle de zoom
             map.addControl(new maplibregl.NavigationControl());
 
-            // Ajouter les marqueurs et les points d'intérêt (exemple avec 3 lieux)
-            var lieux = [
-                { name: 'Lieu 1', coordinates: [2.2137, 46.2276] },
-                { name: 'Lieu 2', coordinates: [2.35, 48.85] },
-                { name: 'Lieu 3', coordinates: [3.25, 44.75] }
-            ];
-
-            lieux.forEach(function(lieu) {
-                new maplibregl.Marker()
-                    .setLngLat(lieu.coordinates)
-                    .setPopup(new maplibregl.Popup().setHTML('<h3>' + lieu.name + '</h3>'))
-                    .addTo(map);
-            });
+            // Charger les données de lieux depuis le fichier lieux.json
+            fetch('lieux.json')
+                .then(response => response.json())
+                .then(lieux => {
+                    // Ajouter les marqueurs pour chaque lieu dans lieux.json
+                    lieux.forEach(lieu => {
+                        new maplibregl.Marker()
+                            .setLngLat([lieu.longitude, lieu.latitude]) // Assurez-vous que les coordonnées sont dans l'ordre (longitude, latitude)
+                            .setPopup(new maplibregl.Popup().setHTML('<h3>' + lieu.name + '</h3><p>' + lieu.description + '</p><a href="' + lieu.link + '" target="_blank">En savoir plus</a>'))
+                            .addTo(map);
+                    });
+                })
+                .catch(error => {
+                    console.error('Erreur lors du chargement des lieux:', error);
+                });
         }
     </script>
 </body>
