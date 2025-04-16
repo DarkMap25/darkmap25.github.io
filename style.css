@@ -3,14 +3,14 @@ body {
   margin: 0;
   padding: 0;
   background-color: #0d0d0d; /* secours si image échoue */
-  background-image: url('icons/background.png'); /* Ton image de fond */
-  background-size: cover;                       /* Couvre tout l'écran */
-  background-position: center;                  /* Centrée */
-  background-repeat: no-repeat;                 
-  background-attachment: scroll; /* ← Remplace "fixed" par "scroll" pour mobile */
-  color: #f0f0f0;                                /* Texte clair */
+  background-image: url('icons/background.png'); /* Image de fond */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll; /* scroll pour compatibilité mobile */
+  color: #f0f0f0;
   font-family: 'Quicksand', sans-serif;
-  position: relative; /* Nécessaire pour le calque d'assombrissement */
+  position: relative;
 }
 
 /* 💡 Calque semi-transparent pour assombrir légèrement l'image */
@@ -24,119 +24,120 @@ body::before {
   background: rgba(0, 0, 0, 0.5); /* Opacité 50% */
   z-index: -1;
 }
+
 /* Titre h1 avec Quicksand Bold 700 */
 h1 {
-  font-family: 'Quicksand', sans-serif; /* Applique la police Quicksand avec la graisse 700 */
-  font-weight: 700; /* Bold (700) */
-  font-size: 6em; /* Taille du titre (très grand pour attirer l'attention) */
-  text-align: center; /* Centrer le titre */
-  color: #e60000; /* Rouge pour le titre */
-  text-shadow: 0 0 8px #e60000; /* Effet de lueur rouge autour du texte */
-  margin: 0; /* Pas de marge autour du titre */
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 6em;
+  text-align: center;
+  color: #e60000;
+  text-shadow: 0 0 8px #e60000;
+  margin: 0;
 }
 
-/* Tagline sous le titre (sous-titre) */
+/* Tagline sous le titre */
 .tagline {
-  text-align: center; /* Centrer le texte */
-  font-size: 1.2em; /* Taille de la police plus petite que le titre */
-  margin-top: 0; /* Pas de marge en haut */
-  color: #ccc; /* Couleur grise claire pour le sous-titre */
+  text-align: center;
+  font-size: 1.2em;
+  margin-top: 0;
+  color: #ccc;
 }
 
-/* Style pour le logo (si tu en as un) */
+/* Logo (si utilisé) */
 .logo {
   display: block;
-  margin: 20px auto 10px; /* Centrer le logo et ajouter des marges */
-  width: 100px; /* Largeur fixe pour le logo */
+  margin: 20px auto 10px;
+  width: 100px;
 }
 
-/* Style pour la section intro */
+/* Intro du site */
 .intro {
-  max-width: 800px; /* Largeur maximale de la section */
-  margin: 30px auto; /* Centrer la section et ajouter de la marge */
-  text-align: center; /* Centrer le texte dans la section */
-  line-height: 1.6; /* Espacement des lignes pour une meilleure lisibilité */
-  font-size: 1.1em; /* Taille de texte légèrement plus grande que la norme */
-  color: #dddddd; /* Texte gris clair */
+  max-width: 800px;
+  margin: 30px auto;
+  text-align: center;
+  line-height: 1.6;
+  font-size: 1.1em;
+  color: #dddddd;
 }
 
-/* Style de la carte interactive */
+/* Carte interactive */
 #map {
-  height: 75vh; /* Hauteur de la carte à 75% de la hauteur de la fenêtre */
-  margin: 0 auto; /* Centrer la carte horizontalement */
-  max-width: 1000px; /* Largeur maximale de la carte */
-  border-radius: 10px; /* Bords arrondis */
-  box-shadow: 0 0 10px #e60000; /* Ombre rouge autour de la carte */
-  z-index: 1; /* Assurer que la carte est au bon niveau de superposition */
+  height: 75vh;
+  margin: 0 auto;
+  max-width: 1000px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #e60000;
+  z-index: 1;
 }
 
-/* Style du footer */
+/* Pied de page */
 footer {
-  text-align: center; /* Centrer le texte dans le footer */
-  padding: 20px; /* Ajouter de l'espace autour du footer */
-  font-size: 0.9em; /* Taille de texte légèrement plus petite */
-  color: #777; /* Couleur grise claire */
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+  color: #777;
 }
 
-/* Style pour les marqueurs emoji (utilisés sur la carte) */
+/* Style pour les marqueurs emoji */
 .emoji-marker {
-  font-size: 24px; /* Taille des emojis */
-  background: none; /* Pas de fond */
-  border: none; /* Pas de bordure */
-  box-shadow: none; /* Pas d'ombre */
-  width: auto; /* Largeur automatique */
-  height: auto; /* Hauteur automatique */
-  line-height: 1; /* Espacement des lignes normal */
-  color: inherit; /* La couleur de l'emoji est héritée de la couleur du texte */
+  font-size: 24px;
+  background: none;
+  border: none;
+  box-shadow: none;
+  width: auto;
+  height: auto;
+  line-height: 1;
+  color: inherit;
 }
 
 /* Styles pour l'écran d'introduction */
 #intro-overlay {
-  position: fixed; /* L'overlay est fixe par rapport à l'écran */
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%; /* Largeur de l'écran */
-  height: 100%; /* Hauteur de l'écran */
-  background-color: #0d0d0d; /* Fond sombre pour l'effet d'introduction */
-  z-index: 9999; /* Assurer que l'overlay est au-dessus de tout le reste */
-  display: flex; /* Utilisation de flexbox pour centrer le texte */
-  align-items: center; /* Centrer verticalement */
-  justify-content: center; /* Centrer horizontalement */
-  padding: 20px;                    /* pour éviter que le texte touche les bords sur mobile */
+  width: 100%;
+  height: 100%;
+  background-color: #0d0d0d;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
   box-sizing: border-box;
-  text-align: center;}
+  text-align: center;
+}
 
-/* Animation du texte d'introduction */
+/* Texte d'intro avec effet machine à écrire */
 #intro-text {
-  font-family: 'UnifrakturCook', cursive; /* Police de type cursive pour l'intro */
-  color: #e60000; /* Rouge pour le texte */
-  font-size: 2em; /* Taille du texte */
-  text-shadow: 0 0 10px red; /* Ombre de texte rouge */
-  white-space: nowrap; /* Empêcher le texte de se diviser sur plusieurs lignes */
-  overflow: hidden; /* Cacher le texte au-delà de la largeur du conteneur */
-  width: 0; /* Définir la largeur du texte à 0 au départ */
-  animation: typing 5s steps(40, end) forwards; /* Animation de type machine à écrire */
+  font-family: 'UnifrakturCook', cursive;
+  color: #e60000;
+  font-size: 2em;
+  text-shadow: 0 0 10px red;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 5s steps(40, end) forwards;
 }
 
-/* Définition de l'animation pour l'effet "taper à la machine" */
+/* Animation pour effet "lettre par lettre" */
 @keyframes typing {
-  from { width: 0; } /* Commence avec une largeur de 0 */
-  to { width: 35ch; } /* Augmente la largeur jusqu'à 35 caractères */
+  from { width: 0; }
+  to { width: 35ch; }
 }
-  
-/* Adaptation pour écrans mobiles */
+
+/* 📱 Adaptation mobile : conserve l'effet typing mais adapté */
 @media (max-width: 600px) {
   #intro-text {
-    font-size: 1.4em;               /* Texte un peu plus petit sur mobile */
-    white-space: normal;           /* Permet les retours à la ligne */
-    width: auto;                   /* Ne force pas la largeur */
-    overflow: visible;             /* Permet l’affichage du texte sans coupure */
-    animation: fadeIn 3s ease-in forwards; /* Animation douce alternative */
+    font-size: 1.4em;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typingMobile 5s steps(35, end) forwards;
   }
 
-  /* Animation simple d’apparition pour mobile */
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  @keyframes typingMobile {
+    from { width: 0; }
+    to { width: 28ch; } /* largeur réduite pour écran étroit */
   }
 }
