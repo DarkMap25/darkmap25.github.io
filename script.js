@@ -51,7 +51,7 @@ fetch('lieux.json')
   .catch(error => console.error('Erreur lors du chargement des lieux :', error));
 
 // ✅ Affichage de l'intro animée ou non
-let showIntro = true; // Déclaration obligatoire
+let showIntro = false; // Déclaration obligatoire
 
 window.addEventListener("load", () => {
   const overlay = document.getElementById("intro-overlay");
