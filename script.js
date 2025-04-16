@@ -1,74 +1,96 @@
-// Initialisation de la carte centrée sur la France
-const map = L.map('map', {
-  maxBounds: [[41, -5], [52, 10]],
-  minZoom: 5,
-  maxZoom: 15
-}).setView([46.5, 2.5], 6);
+// Fonction pour créer et personnaliser la carte
+function creerCarte() {
+    const map = L.map("map", {
+        center: [46.603354, 1.888320],
+        zoom: 6,
+        minZoom: 5,
+        maxZoom: 18,
+    });
 
-// Fond de carte sombre
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-  attribution: '&copy; OpenStreetMap, CartoDB',
-  subdomains: 'abcd',
-  maxZoom: 19
-}).addTo(map);
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+        attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: "abcd",
+        maxZoom: 19,
+    }).addTo(map);
 
-// Emoji par catégorie
-const emojiParCategorie = {
-  "Crimes": "☠️",
-  "Histoires Sombres": "⚰️",
-  "Lieux Mystérieux": "👁️",
-  "Lieux Abandonnés": "🏰"
-};
+    const markerIcon = L.icon({
+        iconUrl: 'marker.png',
+        iconSize: [30, 40],
+        iconAnchor: [15, 40],
+        popupAnchor: [0, -40],
+    });
 
-// Fonction pour créer un marqueur avec emoji
-function createEmojiMarker(lieu) {
-  const emoji = emojiParCategorie[lieu.categorie] || "❓";
-  const emojiIcon = L.divIcon({
-    className: 'emoji-icon',
-    html: `<div class="emoji-marker">${emoji}</div>`,
-    iconSize: [30, 30],
-    iconAnchor: [15, 15],
-    popupAnchor: [0, -15]
-  });
-
-  const popupContent = `
-    <strong>${lieu.nom}</strong><br>
-    ${lieu.resume}<br>
-    <a href="${lieu.lien}" target="_blank">Voir plus</a>
-  `;
-
-  return L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon }).bindPopup(popupContent);
+    // Chargement des données des lieux à partir du fichier lieux.js
+    fetch('lieux.js')
+        .then(response => response.json())
+        .then(lieuxSombres => {
+            lieuxSombres.forEach((lieu) => {
+                const marker = L.marker([lieu.lat, lieu.lng], { icon: markerIcon }).addTo(map);
+                let popupContent = `
+                    <div style="width: 250px;">
+                        <h2 style="font-size: 1.4em; font-family: 'Cormorant Garamond', serif; color: #e60000; margin-bottom: 5px;">${lieu.titre}</h2>
+                        <p style="font-size: 0.9em; font-family: 'Cormorant Garamond', serif; font-style: italic; margin-bottom: 10px;">${lieu.description}</p>
+                        <img src="${lieu.image}" alt="${lieu.titre}" style="width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); margin-bottom: 10px;">
+                        <a href="#" style="font-size: 0.8em; color: #e60000; text-decoration: none; font-weight: bold;" onclick="afficherDetails('${lieu.titre}')">Voir les détails</a>
+                    </div>
+                `;
+                marker.bindPopup(popupContent);
+            });
+        })
+        .catch(error => {
+            console.error('Erreur lors du chargement des données des lieux:', error);
+            // Afficher un message d'erreur à l'utilisateur
+            document.getElementById('map').innerHTML = `<div style="color: red; text-align: center; padding: 20px;">Erreur lors du chargement des données. Veuillez réessayer plus tard.</div>`;
+        });
 }
 
-// Chargement des lieux depuis lieux.json
-fetch('lieux.json')
-  .then(response => response.json())
-  .then(data => {
-    data.forEach(lieu => {
-      createEmojiMarker(lieu).addTo(map);
-    });
-  })
-  .catch(error => console.error('Erreur lors du chargement des lieux :', error));
+function afficherDetails(titre) {
+    alert(`Détails de : ${titre}`);
+}
 
-// ✅ Affichage de l'intro animée ou non
-let showIntro = false; // Déclaration obligatoire
+function effetDeFrappe() {
+    const introTextElement = document.getElementById("intro-text");
+    const line1Element = document.querySelector("#intro-text .line1");
+    const line2Element = document.querySelector("#intro-text .line2");
+    const line1 = "Bienvenue sur";
+    const line2 = "DarkMap";
+    const typingSpeed = 100;
+    const delayBetweenLines = 1000;
 
-window.addEventListener("load", () => {
-  const overlay = document.getElementById("intro-overlay");
+    let charIndex = 0;
 
-  if (showIntro) {
-    const line1 = document.querySelector(".line1");
-    const line2 = document.querySelector(".line2");
+    function typeLine1() {
+        if (charIndex < line1.length) {
+            line1Element.textContent += line1.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeLine1, typingSpeed);
+        } else {
+            setTimeout(() => {
+                charIndex = 0;
+                typeLine2();
+            }, delayBetweenLines);
+        }
+    }
 
-    line1.textContent = "Un territoire. Une carte.";
-    line2.textContent = "Un passé sombre.";
+    function typeLine2() {
+        if (charIndex < line2.length) {
+            line2Element.textContent += line2.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeLine2, typingSpeed);
+        }
+    }
 
+    typeLine1();
+}
+
+window.onload = function () {
+    creerCarte();
+    effetDeFrappe();
     setTimeout(() => {
-      overlay.style.transition = "opacity 2s ease";
-      overlay.style.opacity = 0;
-      setTimeout(() => overlay.remove(), 2000);
-    }, 9000); // 4s (ligne 1) + 3s (ligne 2) + 2s pause
-  } else {
-    overlay.style.display = "none";
-  }
-});
+        const introOverlay = document.getElementById('intro-overlay');
+        if (introOverlay) {
+            introOverlay.style.display = 'none';
+        }
+    }, 3000);
+};
