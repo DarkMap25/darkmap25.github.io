@@ -6,7 +6,7 @@ body {
   background-size: cover;                       /* Couvre tout l'écran */
   background-position: center;                  /* Centrée */
   background-repeat: no-repeat;                 
-  background-attachment: fixed;                 /* Reste fixe au scroll */
+  background-attachment: scroll; /* ← Remplace "fixed" par "scroll" pour mobile */
   color: #f0f0f0;                                /* Texte clair */
   font-family: 'Quicksand', sans-serif;
   position: relative; /* Nécessaire pour le calque d'assombrissement */
