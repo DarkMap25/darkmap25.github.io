@@ -58,8 +58,10 @@ window.addEventListener("load", () => {
   if (showIntro) {
     const overlay = document.getElementById("intro-overlay");
     const introText = document.getElementById("intro-text");
-    introText.textContent = "Un territoire. Une carte. Un passé sombre.";
 
+    // Nouveau texte avec retour à la ligne
+    introText.innerHTML = "Un territoire. Une carte.<br>Un passé sombre.";
+    
     // Disparition après écriture (5s) + pause (2s)
     setTimeout(() => {
       overlay.style.transition = "opacity 2s ease";
