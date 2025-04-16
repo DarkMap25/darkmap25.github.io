@@ -4,128 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DarkMap</title>
-    <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet">
     <style>
-        /* Police et ambiance visuelle */
         body {
             font-family: 'Cormorant Garamond', serif;
-            background: #111;
-            color: white;
+            background-color: #101010;
+            color: #fff;
             margin: 0;
             padding: 0;
         }
-        h1, h2, h3 {
-            font-family: 'UnifrakturCook', serif;
-            color: #e6b7b0;
-        }
 
-        /* Intro animée */
         #intro {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            font-size: 3em;
-            color: white;
-            opacity: 0;
-            animation: fadeIn 3s forwards;
-        }
-        
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            animation: introAnimation 4s forwards;
         }
 
-        /* Carte */
+        #intro p {
+            font-family: 'UnifrakturCook', sans-serif;
+            font-size: 3em;
+            text-align: center;
+            color: #f00;
+            margin: 0;
+            line-height: 1.2em;
+            opacity: 0;
+        }
+
+        @keyframes introAnimation {
+            0% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
         #map {
             width: 100%;
             height: 100vh;
+            transition: opacity 1s;
+            opacity: 0;
         }
 
-        /* Popup */
-        .popup {
-            font-size: 1.1em;
+        .leaflet-popup-content-wrapper {
+            background-color: #101010;
+            color: #fff;
         }
 
-        .popup .title {
-            font-weight: bold;
-            font-size: 1.3em;
-        }
-        
-        .popup .description {
-            margin-top: 10px;
-        }
-        
-        .popup a {
-            color: #e6b7b0;
-            text-decoration: none;
+        .leaflet-popup-content {
+            color: #fff;
+            font-family: 'Cormorant Garamond', serif;
         }
 
+        .leaflet-popup-close-button {
+            color: #fff;
+        }
+
+        .leaflet-control-zoom {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 4px;
+        }
+
+        .leaflet-control-zoom-in, .leaflet-control-zoom-out {
+            color: #fff;
+        }
     </style>
 </head>
 <body>
-
-    <!-- Intro animée -->
-    <div id="intro">Un territoire. Une carte. Des histoires sombres.</div>
-
-    <!-- Carte -->
+    <div id="intro">
+        <p>Un territoire.<br>Une carte.<br>Un passé sombre.</p>
+    </div>
     <div id="map"></div>
-
-    <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
     <script>
-        // Initialisation de la carte MapLibre GL
-        var map = new maplibre.Map({
+        // Fonction pour cacher l'intro après l'animation
+        function hideIntro() {
+            document.getElementById('intro').style.display = 'none';
+            document.getElementById('map').style.opacity = 1;
+        }
+
+        setTimeout(hideIntro, 4000); // Cacher l'intro après 4 secondes
+
+        // Configuration de la carte MapLibre
+        const map = new maplibregl.Map({
             container: 'map',
-            style: {
-                "version": 8,
-                "sources": {
-                    "openmap": {
-                        "type": "raster",
-                        "url": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                        "tileSize": 256
-                    }
-                },
-                "layers": [{
-                    "id": "openmap",
-                    "type": "raster",
-                    "source": "openmap",
-                    "paint": {}
-                }]
-            },
-            center: [2.454071, 46.603354], // Centre de la France
+            style: 'https://api.maptiler.com/maps/dark-matter/style.json?key=your-maptiler-key', // Remplacez par votre propre clé MapTiler
+            center: [2.2137, 46.2276], // Coordonnées centrées sur la France
             zoom: 5,
-            maxZoom: 10,
-            minZoom: 5
+            pitch: 45,
+            bearing: 0
         });
 
-        // Fonction pour ajouter des lieux à partir du fichier JSON
-        fetch('lieux.json')
-            .then(response => response.json())
-            .then(lieux => {
-                lieux.forEach(lieu => {
-                    const marker = new maplibre.Marker()
-                        .setLngLat([lieu.longitude, lieu.latitude])
-                        .setPopup(new maplibre.Popup().setHTML(`
-                            <div class="popup">
-                                <div class="title">${lieu.nom}</div>
-                                <div class="description">${lieu.resume}</div>
-                                <a href="${lieu.lien}" target="_blank">Lire plus</a>
-                            </div>
-                        `))
-                        .addTo(map);
-                });
-            })
-            .catch(error => console.log('Erreur lors du chargement des lieux :', error));
-
-        // Animation d'entrée
-        setTimeout(function() {
-            document.getElementById('intro').style.display = 'none';
-        }, 4000);
+        // Ajout de la source de données pour les lieux (exemple avec un fichier JSON)
+        map.on('load', function() {
+            fetch('lieux.json')
+                .then(response => response.json())
+                .then(data => {
+                    data.features.forEach(feature => {
+                        new maplibregl.Marker({ color: feature.properties.color })
+                            .setLngLat([feature.geometry.coordinates[0], feature.geometry.coordinates[1]])
+                            .setPopup(new maplibregl.Popup().setHTML(
+                                `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p><a href="${feature.properties.link}">En savoir plus</a>`
+                            ))
+                            .addTo(map);
+                    });
+                })
+                .catch(error => console.error('Erreur lors du chargement des lieux:', error));
+        });
     </script>
 </body>
 </html>
