@@ -102,7 +102,9 @@ footer {
   display: flex; /* Utilisation de flexbox pour centrer le texte */
   align-items: center; /* Centrer verticalement */
   justify-content: center; /* Centrer horizontalement */
-}
+  padding: 20px;                    /* pour éviter que le texte touche les bords sur mobile */
+  box-sizing: border-box;
+  text-align: center;}
 
 /* Animation du texte d'introduction */
 #intro-text {
@@ -120,4 +122,21 @@ footer {
 @keyframes typing {
   from { width: 0; } /* Commence avec une largeur de 0 */
   to { width: 35ch; } /* Augmente la largeur jusqu'à 35 caractères */
+}
+  
+/* Adaptation pour écrans mobiles */
+@media (max-width: 600px) {
+  #intro-text {
+    font-size: 1.4em;               /* Texte un peu plus petit sur mobile */
+    white-space: normal;           /* Permet les retours à la ligne */
+    width: auto;                   /* Ne force pas la largeur */
+    overflow: visible;             /* Permet l’affichage du texte sans coupure */
+    animation: fadeIn 3s ease-in forwards; /* Animation douce alternative */
+  }
+
+  /* Animation simple d’apparition pour mobile */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 }
