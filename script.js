@@ -57,31 +57,37 @@ function createEmojiMarker(lieu) {
     <strong>${lieu.nom}</strong><br>
     ${lieu.resume}<br>
     <a href="${lieu.lien}" target="_blank">Voir plus</a>
-  `))
-  .addTo(map);
+  `)) // Afficher un popup avec plus d'infos
+  .addTo(map); // Ajouter le marqueur à la carte
 }
 
-// Fonction pour créer l'élément HTML du marqueur emoji
+// Créer un élément HTML pour le marqueur emoji
 function createMarkerElement(emoji) {
   const element = document.createElement('div');
   element.className = 'emoji-marker';
-  element.innerHTML = emoji;
+  element.textContent = emoji;
   return element;
 }
 
-// Charger les lieux depuis le fichier JSON et ajouter les marqueurs
-fetch('lieux.json')
-  .then(response => response.json())
-  .then(data => {
-    data.forEach(lieu => {
-      createEmojiMarker(lieu); // Ajouter un marqueur pour chaque lieu
-    });
-  })
-  .catch(error => console.error('Erreur lors du chargement des lieux :', error));
+// Exemple de lieux avec coordonnées, résumé et lien
+const lieux = [
+  {
+    nom: "Lieu Mystérieux 1",
+    categorie: "Lieux Mystérieux",
+    latitude: 48.8566,
+    longitude: 2.3522,
+    resume: "Un lieu mystérieux avec des événements étranges.",
+    lien: "#"
+  },
+  {
+    nom: "Crime Célèbre",
+    categorie: "Crimes",
+    latitude: 45.75,
+    longitude: 4.85,
+    resume: "Un crime célèbre qui a marqué la région.",
+    lien: "#"
+  }
+];
 
-// Effet d'intro texte
-document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(() => {
-    document.getElementById('intro-overlay').style.display = 'none';
-  }, 8000); // Masquer après l'animation
-});
+// Ajouter les marqueurs pour chaque lieu
+lieux.forEach(lieu => createEmojiMarker(lieu));
