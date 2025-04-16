@@ -50,26 +50,38 @@ fetch('lieux.json')
   })
   .catch(error => console.error('Erreur lors du chargement des lieux :', error));
 
-// Définir une variable pour afficher ou masquer l'introduction
-let showIntro = true;  // Change à "true" pour afficher l'intro, "false" pour la masquer
+// ✅ Affichage de l'intro animée ou non
+let showIntro = true; // Change à false pour désactiver l'intro
 
-// Vérifier si showIntro est true, sinon ne pas afficher l'introduction
 window.addEventListener("load", () => {
-  if (showIntro) {
-    const overlay = document.getElementById("intro-overlay");
-    const introText = document.getElementById("intro-text");
+  const overlay = document.getElementById("intro-overlay");
 
-    // Nouveau texte avec retour à la ligne
-    introText.innerHTML = "Un territoire. Une carte.<br>Un passé sombre.";
-    
-    // Disparition après écriture (5s) + pause (2s)
+  if (showIntro) {
+    // Sélectionne les deux lignes
+    const line1 = document.querySelector(".line1");
+    const line2 = document.querySelector(".line2");
+
+    // Ajoute le texte
+    line1.textContent = "Un territoire. Une carte.";
+    line2.textContent = "Un passé sombre.";
+
+    // Attend 9 secondes avant de faire disparaître l’intro
     setTimeout(() => {
       overlay.style.transition = "opacity 2s ease";
       overlay.style.opacity = 0;
       setTimeout(() => overlay.remove(), 2000);
-    }, 7000); // 5s écriture + 2s pause
+    }, 9000); // 4s (ligne 1) + 0.2s + 3s (ligne 2) + 2s pause
   } else {
-    // Si showIntro est false, cacher l'overlay
-    document.getElementById("intro-overlay").style.display = "none";
+    overlay.style.display = "none";
   }
 });
+📝 Tu dois avoir aussi dans le HTML :
+Dans ton index.html (déjà fait plus haut) :
+
+html
+Copier
+Modifier
+<p id="intro-text">
+  <span class="line1"></span><br>
+  <span class="line2"></span>
+</p>
