@@ -1,16 +1,19 @@
-// Initialisation de la carte centrée sur la France
-const map = L.map('map', {
-  maxBounds: [[41, -5], [52, 10]],
-  minZoom: 5,
-  maxZoom: 15
-}).setView([46.5, 2.5], 6);
+// Initialisation de la carte centrée sur la France avec MapLibre GL JS
+const map = new maplibregl.Map({
+  container: 'map', // L'élément HTML où la carte sera affichée
+  style: 'https://api.maptiler.com/maps/darkmatter/style.json?key=YOUR_API_KEY', // Carte de fond, MapTiler style par exemple
+  center: [2.5, 46.5], // Coordonnées du centre de la France (longitude, latitude)
+  zoom: 6,
+  maxBounds: [[-5, 41], [10, 52]], // Limiter la carte à la France
+  pitch: 0, // Pas d'inclinaison par défaut
+  bearing: 0, // Pas de rotation par défaut
+});
 
-// Fond de carte sombre
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-  attribution: '&copy; OpenStreetMap, CartoDB',
-  subdomains: 'abcd',
-  maxZoom: 19
-}).addTo(map);
+// Ajouter une attribution à MapLibre
+map.addControl(new maplibregl.AttributionControl());
+
+// Modifier les zoom et les contrôles de navigation
+map.addControl(new maplibregl.NavigationControl(), 'top-right');
 
 // Emoji par catégorie
 const emojiParCategorie = {
@@ -23,52 +26,42 @@ const emojiParCategorie = {
 // Fonction pour créer un marqueur avec emoji
 function createEmojiMarker(lieu) {
   const emoji = emojiParCategorie[lieu.categorie] || "❓";
-  const emojiIcon = L.divIcon({
-    className: 'emoji-icon',
-    html: `<div class="emoji-marker">${emoji}</div>`,
-    iconSize: [30, 30],
-    iconAnchor: [15, 15],
-    popupAnchor: [0, -15]
-  });
 
-  const popupContent = `
+  // Créer le marqueur avec l'emoji
+  const marker = new maplibregl.Marker({
+    element: createMarkerElement(emoji), // Créer un élément HTML pour l'emoji
+    anchor: 'bottom'
+  })
+  .setLngLat([lieu.longitude, lieu.latitude]) // Positionner le marqueur
+  .setPopup(new maplibregl.Popup().setHTML(`
     <strong>${lieu.nom}</strong><br>
     ${lieu.resume}<br>
     <a href="${lieu.lien}" target="_blank">Voir plus</a>
-  `;
-
-  return L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon }).bindPopup(popupContent);
+  `))
+  .addTo(map);
 }
 
-// Chargement des lieux depuis lieux.json
+// Fonction pour créer l'élément HTML du marqueur emoji
+function createMarkerElement(emoji) {
+  const element = document.createElement('div');
+  element.className = 'emoji-marker';
+  element.innerHTML = emoji;
+  return element;
+}
+
+// Charger les lieux depuis le fichier JSON et ajouter les marqueurs
 fetch('lieux.json')
   .then(response => response.json())
   .then(data => {
     data.forEach(lieu => {
-      createEmojiMarker(lieu).addTo(map);
+      createEmojiMarker(lieu); // Ajouter un marqueur pour chaque lieu
     });
   })
   .catch(error => console.error('Erreur lors du chargement des lieux :', error));
 
-// ✅ Affichage de l'intro animée ou non
-let showIntro = false; // Déclaration obligatoire
-
-window.addEventListener("load", () => {
-  const overlay = document.getElementById("intro-overlay");
-
-  if (showIntro) {
-    const line1 = document.querySelector(".line1");
-    const line2 = document.querySelector(".line2");
-
-    line1.textContent = "Un territoire. Une carte.";
-    line2.textContent = "Un passé sombre.";
-
-    setTimeout(() => {
-      overlay.style.transition = "opacity 2s ease";
-      overlay.style.opacity = 0;
-      setTimeout(() => overlay.remove(), 2000);
-    }, 9000); // 4s (ligne 1) + 3s (ligne 2) + 2s pause
-  } else {
-    overlay.style.display = "none";
-  }
+// Effet d'intro texte
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(() => {
+    document.getElementById('intro-overlay').style.display = 'none';
+  }, 8000); // Masquer après l'animation
 });
