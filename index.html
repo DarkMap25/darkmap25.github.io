@@ -95,15 +95,28 @@
             map.addControl(new maplibregl.NavigationControl());
 
             // Charger les données de lieux depuis le fichier lieux.json
-            fetch('lieux.json')
-                .then(response => response.json())
+            fetch('lieux.json')  // Assure-toi que le fichier lieux.json est dans le même dossier que index.html
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erreur de chargement du fichier JSON');
+                    }
+                    return response.json();
+                })
                 .then(lieux => {
+                    if (lieux.length === 0) {
+                        console.error('Aucun lieu trouvé dans lieux.json');
+                    }
+
                     // Ajouter les marqueurs pour chaque lieu dans lieux.json
                     lieux.forEach(lieu => {
-                        new maplibregl.Marker()
-                            .setLngLat([lieu.longitude, lieu.latitude]) // Assurez-vous que les coordonnées sont dans l'ordre (longitude, latitude)
-                            .setPopup(new maplibregl.Popup().setHTML('<h3>' + lieu.name + '</h3><p>' + lieu.description + '</p><a href="' + lieu.link + '" target="_blank">En savoir plus</a>'))
-                            .addTo(map);
+                        if (!lieu.latitude || !lieu.longitude) {
+                            console.warn('Lieu sans coordonnées :', lieu);
+                        } else {
+                            new maplibregl.Marker()
+                                .setLngLat([lieu.longitude, lieu.latitude]) // Assurez-vous que les coordonnées sont dans l'ordre (longitude, latitude)
+                                .setPopup(new maplibregl.Popup().setHTML('<h3>' + lieu.name + '</h3><p>' + lieu.description + '</p><a href="' + lieu.link + '" target="_blank">En savoir plus</a>'))
+                                .addTo(map);
+                        }
                     });
                 })
                 .catch(error => {
