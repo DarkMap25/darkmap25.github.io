@@ -1,7 +1,27 @@
 // Initialisation de la carte centrée sur la France avec MapLibre GL JS
 const map = new maplibregl.Map({
   container: 'map', // L'élément HTML où la carte sera affichée
-  style: 'https://api.maptiler.com/maps/darkmatter/style.json?key=YOUR_API_KEY', // Carte de fond, MapTiler style par exemple
+  style: {
+    "version": 8,
+    "sources": {
+      "osm": {
+        "type": "raster",
+        "tiles": [
+          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        ],
+        "tileSize": 256
+      }
+    },
+    "layers": [
+      {
+        "id": "osm",
+        "type": "raster",
+        "source": "osm",
+        "minzoom": 0,
+        "maxzoom": 19
+      }
+    ]
+  }, // Carte OpenStreetMap via MapLibre GL JS
   center: [2.5, 46.5], // Coordonnées du centre de la France (longitude, latitude)
   zoom: 6,
   maxBounds: [[-5, 41], [10, 52]], // Limiter la carte à la France
