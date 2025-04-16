@@ -2,6 +2,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #0d0d0d; /* secours si image échoue */
   background-image: url('icons/background.png'); /* Ton image de fond */
   background-size: cover;                       /* Couvre tout l'écran */
   background-position: center;                  /* Centrée */
