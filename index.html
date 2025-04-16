@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,19 +11,20 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <!-- Polices -->
-  <!-- Lien vers Google Fonts pour Quicksand Bold 700 -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- Introduction : Texte d'overlay -->
+<!-- Introduction avec effet de frappe sur 2 lignes -->
 <div id="intro-overlay">
-  <p id="intro-text"></p>
+  <p id="intro-text">
+    <span class="line1"></span><br>
+    <span class="line2"></span>
+  </p>
 </div>
 
 <header>
-  <!-- Titre principal avec la police Quicksand Bold 700 -->
   <h1 style="font-size: 6em; font-family: 'Quicksand', sans-serif; font-weight: 700; text-align: center; color: #e60000; text-shadow: 0 0 8px #e60000; margin-bottom: 0;">
     darkmap
   </h1>
@@ -46,11 +46,4 @@
 <div id="map"></div>
 
 <footer>
-  <p>&copy; 2025 DarkMap.fr </p>
-</footer>
-
-<!-- Lien vers le script JavaScript -->
-<script src="script.js"></script>
-
-</body>
-</html>
+  <p>&copy; 202
