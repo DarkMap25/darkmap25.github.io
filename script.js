@@ -66,8 +66,8 @@ window.addEventListener("load", () => {
     setTimeout(() => {
       overlay.style.transition = "opacity 2s ease";
       overlay.style.opacity = 0;
-      setTimeout(() => overlay.remove(), 2000);
-    }, 9000); // 4s (ligne 1) + 3s (ligne 2) + 2s pause
+      setTimeout(() => overlay.remove(), 1000);
+    }, 8000); // 4s (ligne 1) + 3s (ligne 2) + 1s pause
   } else {
     overlay.style.display = "none";
   }
