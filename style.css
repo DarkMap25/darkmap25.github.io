@@ -162,12 +162,3 @@ footer {
     background-position: center top;
   }
 }
-.ol-popup {
-  background: rgba(0, 0, 0, 0.85);
-  padding: 10px;
-  border-radius: 6px;
-  color: white;
-  font-size: 0.9em;
-  max-width: 200px;
-  box-shadow: 0 0 8px #e60000;
-}
