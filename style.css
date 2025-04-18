@@ -41,7 +41,7 @@ body {
   overflow: hidden; /* Masquer le texte qui déborde */
   width: 0; /* Initialiser la largeur à 0 pour l'animation */
   animation: typingLine1 4s steps(30, end) forwards; /* Animation de frappe */
-  white-space: nowrap; /* Autoriser le retour à la ligne */
+
 }
 
 /* Ligne 2 : "Une carte." */
@@ -52,7 +52,7 @@ body {
   animation: typingLine2 3s steps(30, end) forwards; /* Animation de frappe plus rapide */
   animation-delay: 4s; /* Délai pour commencer après la première ligne */
   animation-fill-mode: forwards; /* Maintenir l'état final de l'animation */
-  white-space: nowrap; /* Autoriser le retour à la ligne */
+
 }
 
 /* Ligne 3 : "Un passé sombre." */
@@ -63,27 +63,27 @@ body {
   animation: typingLine3 3s steps(30, end) forwards; /* Animation de frappe plus rapide */
   animation-delay: 7s; /* Délai pour commencer après la deuxième ligne */
   animation-fill-mode: forwards; /* Maintenir l'état final de l'animation */
-  white-space: nowrap; /* Autoriser le retour à la ligne */
+
 }
 
 /* Animation de frappe pour la ligne 1 */
 @keyframes typingLine1 {
   to {
-    width: 80%; /* Augmenter la largeur à 100% à la fin de l'animation */
+    width: 100%; /* Augmenter la largeur à 100% à la fin de l'animation */
   }
 }
 
 /* Animation de frappe pour la ligne 2 */
 @keyframes typingLine2 {
   to {
-    width: 80%; /* Augmenter la largeur à 100% à la fin de l'animation */
+    width: 100%; /* Augmenter la largeur à 100% à la fin de l'animation */
   }
 }
 
 /* Animation de frappe pour la ligne 3 */
 @keyframes typingLine3 {
   to {
-    width: 80%; /* Augmenter la largeur à 100% à la fin de l'animation */
+    width: 100%; /* Augmenter la largeur à 100% à la fin de l'animation */
   }
 }
 
