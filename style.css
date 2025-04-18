@@ -120,7 +120,7 @@ footer {
   text-shadow: 0 0 10px red;
   line-height: 1.6;
   text-align: center;
-  animation: fadeIntro 5s forwards; /* Réduire la durée pour faire disparaître plus vite */
+  animation: fadeIntro 8s forwards; /* Réduire la durée pour faire disparaître plus vite */
 }
 
 /* Ligne 1 : "Un territoire. Une carte." */
