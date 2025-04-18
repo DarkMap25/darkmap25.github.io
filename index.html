@@ -39,8 +39,19 @@
 </header>
 
 <!-- Carte interactive -->
-<div id="map"></div>
+<div id="map" style="height: 500px;"></div>
 
+<script>
+  var map = L.map('map').setView([48.8566, 2.3522], 13); // Coordonnées de Paris (latitude, longitude)
+
+  // Ajouter la couche Stamen Toner
+  L.tileLayer('https://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://stamen.com">Stamen Design</a>',
+    subdomains: ['a', 'b', 'c', 'd'],
+    maxZoom: 19
+  }).addTo(map);
+</script>  
+  
   <section class="intro" style="max-width: 80ch; margin: 40px auto; text-align: justify; padding: 0 20px;">
   <p>
     DarkMap est un site interactif qui recense les lieux les plus sombres et mystérieux de France.<br>
