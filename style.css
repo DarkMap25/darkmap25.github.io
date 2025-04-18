@@ -63,7 +63,7 @@ h1 {
 
 /* === Carte interactive === */
 #map {
-  height: 75vh;
+  height: 75vh; /* Hauteur de la carte sur les grands écrans */
   margin: 0 auto;
   max-width: 1000px;
   border-radius: 10px;
@@ -71,6 +71,46 @@ h1 {
   z-index: 1;
 }
 
+/* === Optimisation pour mobile === */
+@media (max-width: 768px) {
+  /* Réduire la taille de la carte sur les écrans plus petits */
+  #map {
+    height: 60vh; /* Réduire la hauteur de la carte sur les petits écrans */
+    max-width: 100%;
+    margin: 0 auto;
+    border-radius: 5px; /* Bord plus arrondi sur mobile */
+  }
+  
+  /* Ajuster le titre et l'introduction */
+  h1 {
+    font-size: 3em; /* Réduire la taille du titre sur mobile */
+  }
+  
+  .intro {
+    font-size: 1em; /* Réduire la taille du texte d'introduction */
+    margin: 20px auto;
+  }
+}
+
+/* Pour les très petits écrans (moins de 480px) */
+@media (max-width: 480px) {
+  #map {
+    height: 50vh; /* Réduire encore plus la hauteur de la carte */
+  }
+
+  h1 {
+    font-size: 2.5em; /* Réduire encore la taille du titre */
+  }
+
+  .intro {
+    font-size: 0.9em; /* Réduire encore la taille du texte d'introduction */
+  }
+
+  /* Ajuster la taille du texte d'introduction */
+  #intro-text {
+    font-size: 1.2em; /* Réduire la taille du texte d'intro */
+  }
+}
 /* === Pied de page === */
 footer {
   text-align: center;
