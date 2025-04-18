@@ -67,7 +67,7 @@ window.addEventListener("load", () => {
       overlay.style.transition = "opacity 2s ease";
       overlay.style.opacity = 0;
       setTimeout(() => overlay.remove(), 1000);
-    }, 8000); // 4s (ligne 1) + 3s (ligne 2) + 1s pause
+    }, 10000); 
   } else {
     overlay.style.display = "none";
   }
