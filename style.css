@@ -197,7 +197,6 @@ footer {
 /* Ligne 1 : "Un territoire. Une carte." */
 .line1 {
   display: inline-block; /* Affichage en ligne */
-  white-space: nowrap; /* Empêcher le texte de passer à la ligne suivante */
   overflow: hidden; /* Masquer le texte qui déborde */
   width: 0; /* Initialiser la largeur à 0 pour l'animation */
   animation: typingLine1 4s steps(30, end) forwards; /* Animation de frappe */
@@ -206,10 +205,9 @@ footer {
 /* Ligne 2 : "Un passé sombre." */
 .line2 {
   display: inline-block; /* Affichage en ligne */
-  white-space: nowrap; /* Empêcher le texte de passer à la ligne suivante */
   overflow: hidden; /* Masquer le texte qui déborde */
   width: 0; /* Initialiser la largeur à 0 pour l'animation */
-  animation: typingLine2 3s steps(25, end) forwards; /* Animation de frappe plus rapide */
+  animation: typingLine2 3s steps(30, end) forwards; /* Animation de frappe plus rapide */
   animation-delay: 4s; /* Délai pour commencer après la première ligne */
   animation-fill-mode: forwards; /* Maintenir l'état final de l'animation */
 }
