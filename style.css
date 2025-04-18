@@ -93,12 +93,18 @@ footer {
 
 /* === Overlay d’intro === */
 #intro-overlay {
+
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: #0d0d0d;
+  background-image: url('./icons/background.jpg'); /* Fond de l'intro */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Empêche le fond de défiler */
+  filter: blur(5px); /* Flou pour l'effet de profondeur */
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -107,6 +113,7 @@ footer {
   box-sizing: border-box;
   text-align: center;
 }
+
 
 /* Texte global de l’intro (contenant les lignes) */
 #intro-text {
@@ -134,7 +141,7 @@ footer {
   overflow: hidden;
   width: 0;
   animation: typingLine2 3s steps(20, end) forwards;
-  animation-delay: 4.2s;
+  animation-delay: 2s;
   animation-fill-mode: forwards;
 }
 
