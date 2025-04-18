@@ -80,15 +80,19 @@ h1 {
     margin: 0 auto; /* Centrer la carte horizontalement */
     border-radius: 5px; /* Coins arrondis plus petits */
   }
-
+  #map-background {
+    background-size: cover; /* Toujours ajuster l'image à l'écran */
+    background-position: center; /* Toujours centrer l'image */
+  }
+  
   /* Ajuster le titre et l'introduction pour les écrans mobiles */
   h1 {
     font-size: 3em; /* Réduire la taille du titre sur mobile */
   }
 
   .intro {
-    font-size: 1em; /* Réduire la taille du texte d'introduction */
-    margin: 20px auto; /* Espacement autour du texte */
+    font-size: 0.5em; /* Réduire la taille du texte d'introduction */
+    margin: 10px auto; /* Espacement autour du texte */
   }
 
   /* Retirer le 'background-attachment: fixed;' pour les mobiles */
@@ -107,13 +111,17 @@ h1 {
     border-radius: 5px; /* Coins arrondis */
     box-shadow: none; /* Retirer l'ombre pour un aspect plus léger */
   }
-
+    #map-background {
+    background-size: cover; /* Toujours ajuster l'image à l'écran */
+    background-position: center; /* Toujours centrer l'image */
+  }
+  
   h1 {
     font-size: 2.5em; /* Réduire encore la taille du titre */
   }
 
   .intro {
-    font-size: 0.9em; /* Réduire encore la taille du texte d'introduction */
+    font-size: 0.5em; /* Réduire encore la taille du texte d'introduction */
   }
 
   /* Ajuster la taille du texte d'introduction */
