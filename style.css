@@ -76,7 +76,7 @@ h1 {
   /* Réduire la taille de la carte sur les écrans plus petits */
   #map {
     height: 60vh; /* Réduire la hauteur de la carte sur les petits écrans */
-    max-width: 100%;
+    max-width: 80%;
     margin: 0 auto;
     border-radius: 5px; /* Bord plus arrondi sur mobile */
   }
@@ -95,7 +95,11 @@ h1 {
 /* Pour les très petits écrans (moins de 480px) */
 @media (max-width: 480px) {
   #map {
-    height: 50vh; /* Réduire encore plus la hauteur de la carte */
+    height: 45vh; /* Réduire encore la hauteur de la carte sur les très petits écrans */
+    width: 90%; /* Réduire encore la largeur à 90% sur les très petits écrans */
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: none; /* Retirer l'ombre pour un aspect plus léger */
   }
 
   h1 {
