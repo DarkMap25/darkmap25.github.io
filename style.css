@@ -139,7 +139,7 @@ footer {
   overflow: hidden;
   width: 0;
   animation: typingLine2 4s steps(20, end) forwards;
-  animation-delay: 2s;
+  animation-delay: 4s;
   animation-fill-mode: forwards;
 }
 
