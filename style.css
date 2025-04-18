@@ -80,15 +80,20 @@ h1 {
     margin: 0 auto; /* Centrer la carte horizontalement */
     border-radius: 5px; /* Coins arrondis plus petits */
   }
-  
+
   /* Ajuster le titre et l'introduction pour les écrans mobiles */
   h1 {
     font-size: 3em; /* Réduire la taille du titre sur mobile */
   }
-  
+
   .intro {
     font-size: 1em; /* Réduire la taille du texte d'introduction */
     margin: 20px auto; /* Espacement autour du texte */
+  }
+
+  /* Retirer le 'background-attachment: fixed;' pour les mobiles */
+  body {
+    background-attachment: scroll; /* Fond défilant sur les petits écrans */
   }
 }
 
