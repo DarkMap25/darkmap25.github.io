@@ -13,44 +13,6 @@ body {
   position: relative; /* Positionnement pour le calque noir transparent */
 }
 
-/* Calque noir transparent par-dessus l'image */
-body::before {
-  content: ""; /* Contenu vide pour un pseudo-élément */
-  position: fixed; /* Position fixe pour couvrir toute la fenêtre */
-  top: 0; /* Commence en haut de la page */
-  left: 0; /* Commence à gauche de la page */
-  width: 100%; /* Prend toute la largeur de l'écran */
-  height: 100%; /* Prend toute la hauteur de l'écran */
-  background: rgba(0, 0, 0, 0.2); /* Calque noir avec transparence */
-  z-index: -1; /* Placer ce calque derrière le contenu principal */
-}
-
-/* === Titre principal === */
-h1 {
-  font-family: 'Quicksand', sans-serif; /* Police du titre */
-  font-weight: 700; /* Poids du texte du titre */
-  font-size: 6em; /* Taille de la police */
-  text-align: center; /* Centrer le texte */
-  color: #e60000; /* Couleur du texte du titre */
-  text-shadow: 0 0 8px #e60000; /* Ombre rouge autour du titre */
-  margin: 0; /* Pas de marge autour du titre */
-}
-
-/* Sous-titre */
-.tagline {
-  text-align: center; /* Centrer le texte */
-  font-size: 1.2em; /* Taille de la police */
-  margin-top: 0; /* Pas de marge en haut */
-  color: #ccc; /* Couleur gris clair */
-}
-
-/* Logo si présent */
-.logo {
-  display: block; /* Assurer que le logo est un élément de bloc */
-  margin: 20px auto 10px; /* Espacement autour du logo (centré) */
-  width: 100px; /* Largeur fixe du logo */
-}
-
 /* === Introduction (texte descriptif) === */
 .intro {
   max-width: 800px; /* Limiter la largeur du texte */
@@ -61,129 +23,7 @@ h1 {
   color: #dddddd; /* Couleur gris clair */
 }
 
-/* === Carte interactive === */
-#map {
-  height: 75vh; /* Hauteur de la carte (75% de la hauteur de la fenêtre) */
-  margin: 0 auto; /* Centrer la carte horizontalement */
-  max-width: 1000px; /* Largeur maximale de la carte */
-  border-radius: 10px; /* Coins arrondis de la carte */
-  box-shadow: 0 0 10px #e60000; /* Ombre autour de la carte */
-  z-index: 1; /* Positionner la carte devant les autres éléments */
-}
-
-/* === Optimisation pour mobile === */
-@media (max-width: 768px) {
-  /* Réduire la taille de la carte sur les écrans plus petits */
-   body {
-    background-image: url('./icons/background.jpg'); /* Image différente pour mobile */
-    background-size: cover; /* Adapter l'image pour qu'elle soit rognée */
-    background-position: center center; /* Centrer l'image sur l'écran */
-  }  
-  #intro-text {
-    font-size: 0.5em; /* Réduire encore la taille du texte pour les très petits écrans */
-    line-height: 1.2; /* Espacement entre les lignes pour améliorer la lisibilité */
-  }  
-  #map {
-    height: 60vh; /* Hauteur réduite de la carte sur mobile */
-    max-width: 90%; /* Largeur réduite sur mobile */
-    margin: 0 auto; /* Centrer la carte horizontalement */
-    border-radius: 5px; /* Coins arrondis plus petits */
-  }
-  
-  /* Ajuster le titre et l'introduction pour les écrans mobiles */
-  h1 {
-    font-size: 3em; /* Réduire la taille du titre sur mobile */
-  }
-
-  .intro {
-    font-size: 1em; /* Réduire la taille du texte d'introduction */
-    margin: 20px auto; /* Espacement autour du texte */
-  }
-  /* Ajuster la taille du texte d'introduction */
-  #intro-text {
-    font-size: 0.5em; /* Réduire la taille du texte d'intro */
-  }  /* Retirer le 'background-attachment: fixed;' pour les mobiles */
-  body {
-    background-attachment: scroll; /* Fond défilant sur les petits écrans */
-  }
-}
-
-/* Pour les très petits écrans (moins de 480px) */
-@media (max-width: 480px) {
-  /* Ajustement spécifique pour les écrans très petits (comme l'iPhone SE) */
-  body {
-    background-image: url('./icons/background.jpg'); /* Image différente pour mobile */
-    background-size: cover; /* Adapter l'image pour qu'elle soit rognée */
-    background-position: center center; /* Centrer l'image sur l'écran */
-  }  
-  #intro-text {
-    font-size: 0.5em; /* Réduire encore la taille du texte pour les très petits écrans */
-    line-height: 1.2; /* Espacement entre les lignes pour améliorer la lisibilité */
-  }  
-  #map {
-    height: 45vh; /* Réduire encore la hauteur de la carte sur les très petits écrans */
-    width: 90%; /* Réduire la largeur à 90% */
-    margin: 0 auto; /* Centrer la carte */
-    border-radius: 5px; /* Coins arrondis */
-    box-shadow: none; /* Retirer l'ombre pour un aspect plus léger */
-  }
-  
-  h1 {
-    font-size: 2.5em; /* Réduire encore la taille du titre */
-  }
-
-  .intro {
-    font-size: 1em; /* Réduire encore la taille du texte d'introduction */
-  }
-
-  /* Ajuster la taille du texte d'introduction */
-  #intro-text {
-    font-size: 0.5em; /* Réduire la taille du texte d'intro */
-  }
-}
-
-/* === Pied de page === */
-footer {
-  text-align: center; /* Centrer le texte du pied de page */
-  padding: 20px; /* Espacement autour du pied de page */
-  font-size: 0.9em; /* Taille de la police */
-  color: #777; /* Couleur gris pour le texte */
-}
-
-/* === Marqueurs emoji === */
-.emoji-marker {
-  font-size: 24px; /* Taille des marqueurs emoji */
-  background: none; /* Pas de fond */
-  border: none; /* Pas de bordure */
-  box-shadow: none; /* Pas d'ombre */
-  width: auto; /* Taille automatique */
-  height: auto; /* Taille automatique */
-  line-height: 1; /* Hauteur de ligne pour centrer */
-  color: inherit; /* Couleur héritée du parent */
-}
-
-/* === Overlay d’intro === */
-#intro-overlay {
-  position: fixed; /* Position fixe pour couvrir toute la fenêtre */
-  top: 0; /* Commence en haut de la page */
-  left: 0; /* Commence à gauche de la page */
-  width: 100%; /* Prend toute la largeur de l'écran */
-  height: 100%; /* Prend toute la hauteur de l'écran */
-  background-color: #0d0d0d; /* Fond sombre */
-  background-image: url('./icons/background.jpg'); /* Image de fond de l'intro */
-  background-size: cover; /* Taille de l'image couvre tout l'écran */
-  background-position: center; /* L'image est centrée */
-  background-attachment: fixed; /* Empêche le fond de défiler */
-  z-index: 9999; /* Placer l'overlay au-dessus du contenu */
-  display: flex; /* Utiliser Flexbox pour centrer le contenu */
-  align-items: center; /* Centrer verticalement */
-  justify-content: center; /* Centrer horizontalement */
-  padding: 20px; /* Espacement autour du contenu */
-  box-sizing: border-box; /* Inclure le padding dans la taille totale */
-  text-align: center; /* Centrer le texte */
-}
-
-/* Texte global de l’intro (contenant les lignes) */
+/* === Texte global de l’intro (contenant les lignes) */
 #intro-text {
   font-family: 'UnifrakturCook', cursive; /* Police d'introduction */
   font-size: 5em; /* Taille de la police de l'intro */
@@ -192,17 +32,19 @@ footer {
   line-height: 1.6; /* Espacement entre les lignes */
   text-align: center; /* Centrer le texte */
   animation: fadeIntro 9s forwards; /* Animation de fondu */
+  white-space: normal; /* Autoriser le retour à la ligne */
 }
 
-/* Ligne 1 : "Un territoire. Une carte." */
+/* Ligne 1 : "Un territoire." */
 .line1 {
   display: inline-block; /* Affichage en ligne */
   overflow: hidden; /* Masquer le texte qui déborde */
   width: 0; /* Initialiser la largeur à 0 pour l'animation */
   animation: typingLine1 4s steps(30, end) forwards; /* Animation de frappe */
+  white-space: nowrap; /* Autoriser le retour à la ligne */
 }
 
-/* Ligne 2 : "Un passé sombre." */
+/* Ligne 2 : "Une carte." */
 .line2 {
   display: inline-block; /* Affichage en ligne */
   overflow: hidden; /* Masquer le texte qui déborde */
@@ -210,19 +52,38 @@ footer {
   animation: typingLine2 3s steps(30, end) forwards; /* Animation de frappe plus rapide */
   animation-delay: 4s; /* Délai pour commencer après la première ligne */
   animation-fill-mode: forwards; /* Maintenir l'état final de l'animation */
+  white-space: nowrap; /* Autoriser le retour à la ligne */
+}
+
+/* Ligne 3 : "Un passé sombre." */
+.line3 {
+  display: inline-block; /* Affichage en ligne */
+  overflow: hidden; /* Masquer le texte qui déborde */
+  width: 0; /* Initialiser la largeur à 0 pour l'animation */
+  animation: typingLine3 3s steps(30, end) forwards; /* Animation de frappe plus rapide */
+  animation-delay: 7s; /* Délai pour commencer après la deuxième ligne */
+  animation-fill-mode: forwards; /* Maintenir l'état final de l'animation */
+  white-space: nowrap; /* Autoriser le retour à la ligne */
 }
 
 /* Animation de frappe pour la ligne 1 */
 @keyframes typingLine1 {
   to {
-    width: 100%; /* Augmenter la largeur à 100% à la fin de l'animation */
+    width: 80%; /* Augmenter la largeur à 100% à la fin de l'animation */
   }
 }
 
 /* Animation de frappe pour la ligne 2 */
 @keyframes typingLine2 {
   to {
-    width: 100%; /* Augmenter la largeur à 100% à la fin de l'animation */
+    width: 80%; /* Augmenter la largeur à 100% à la fin de l'animation */
+  }
+}
+
+/* Animation de frappe pour la ligne 3 */
+@keyframes typingLine3 {
+  to {
+    width: 80%; /* Augmenter la largeur à 100% à la fin de l'animation */
   }
 }
 
