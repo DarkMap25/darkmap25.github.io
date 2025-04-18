@@ -178,7 +178,7 @@ footer {
 /* Texte global de l’intro (contenant les lignes) */
 #intro-text {
   font-family: 'UnifrakturCook', cursive; /* Police d'introduction */
-  font-size: 3em; /* Taille de la police de l'intro */
+  font-size: 2.8em; /* Taille de la police de l'intro */
   color: #e60000; /* Couleur rouge du texte */
   text-shadow: 0 0 10px red; /* Ombre rouge autour du texte */
   line-height: 1.6; /* Espacement entre les lignes */
