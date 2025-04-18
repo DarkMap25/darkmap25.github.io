@@ -116,7 +116,7 @@ footer {
 /* Texte global de l’intro (contenant les lignes) */
 #intro-text {
   font-family: 'UnifrakturCook', cursive;
-  font-size: 2em;
+  font-size: 3.5em;
   color: #e60000;
   text-shadow: 0 0 10px red;
   line-height: 1.6;
