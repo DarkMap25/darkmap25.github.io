@@ -81,7 +81,7 @@ h1 {
     border-radius: 5px; /* Coins arrondis plus petits */
   }
   
-  /* Ajuster le titre et l'introduction */
+  /* Ajuster le titre et l'introduction pour les écrans mobiles */
   h1 {
     font-size: 3em; /* Réduire la taille du titre sur mobile */
   }
@@ -94,6 +94,7 @@ h1 {
 
 /* Pour les très petits écrans (moins de 480px) */
 @media (max-width: 480px) {
+  /* Ajustement spécifique pour les écrans très petits (comme l'iPhone SE) */
   #map {
     height: 45vh; /* Réduire encore la hauteur de la carte sur les très petits écrans */
     width: 90%; /* Réduire la largeur à 90% */
