@@ -1,84 +1,84 @@
 /* === Styles généraux === */
 body {
-  margin: 0;
-  padding: 0;
-  background-color: #0d0d0d; /* Couleur de secours si l'image échoue */
-  background-image: url('./icons/background.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll; /* scroll pour compatibilité mobile */
-  color: #f0f0f0;
-  font-family: 'Quicksand', sans-serif;
-  position: relative;
+  margin: 0; /* Suppression des marges par défaut */
+  padding: 0; /* Suppression des espacements par défaut */
+  background-color: #0d0d0d; /* Couleur de fond de secours si l'image échoue */
+  background-image: url('./icons/background.jpg'); /* Image de fond */
+  background-size: cover; /* La taille de l'image couvre tout l'écran */
+  background-position: center; /* L'image est centrée */
+  background-repeat: no-repeat; /* L'image ne se répète pas */
+  background-attachment: scroll; /* Le fond défile avec la page (plus compatible mobile) */
+  color: #f0f0f0; /* Couleur du texte */
+  font-family: 'Quicksand', sans-serif; /* Police du texte */
+  position: relative; /* Positionnement pour le calque noir transparent */
 }
 
 /* Calque noir transparent par-dessus l'image */
 body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: -1;
+  content: ""; /* Contenu vide pour un pseudo-élément */
+  position: fixed; /* Position fixe pour couvrir toute la fenêtre */
+  top: 0; /* Commence en haut de la page */
+  left: 0; /* Commence à gauche de la page */
+  width: 100%; /* Prend toute la largeur de l'écran */
+  height: 100%; /* Prend toute la hauteur de l'écran */
+  background: rgba(0, 0, 0, 0.5); /* Calque noir avec transparence */
+  z-index: -1; /* Placer ce calque derrière le contenu principal */
 }
 
 /* === Titre principal === */
 h1 {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 6em;
-  text-align: center;
-  color: #e60000;
-  text-shadow: 0 0 8px #e60000;
-  margin: 0;
+  font-family: 'Quicksand', sans-serif; /* Police du titre */
+  font-weight: 700; /* Poids du texte du titre */
+  font-size: 6em; /* Taille de la police */
+  text-align: center; /* Centrer le texte */
+  color: #e60000; /* Couleur du texte du titre */
+  text-shadow: 0 0 8px #e60000; /* Ombre rouge autour du titre */
+  margin: 0; /* Pas de marge autour du titre */
 }
 
 /* Sous-titre */
 .tagline {
-  text-align: center;
-  font-size: 1.2em;
-  margin-top: 0;
-  color: #ccc;
+  text-align: center; /* Centrer le texte */
+  font-size: 1.2em; /* Taille de la police */
+  margin-top: 0; /* Pas de marge en haut */
+  color: #ccc; /* Couleur gris clair */
 }
 
 /* Logo si présent */
 .logo {
-  display: block;
-  margin: 20px auto 10px;
-  width: 100px;
+  display: block; /* Assurer que le logo est un élément de bloc */
+  margin: 20px auto 10px; /* Espacement autour du logo (centré) */
+  width: 100px; /* Largeur fixe du logo */
 }
 
 /* === Introduction (texte descriptif) === */
 .intro {
-  max-width: 800px;
-  margin: 30px auto;
-  text-align: center;
-  line-height: 1.6;
-  font-size: 1.1em;
-  color: #dddddd;
+  max-width: 800px; /* Limiter la largeur du texte */
+  margin: 30px auto; /* Centrer et espacer le texte */
+  text-align: center; /* Centrer le texte */
+  line-height: 1.6; /* Espacement entre les lignes du texte */
+  font-size: 1.1em; /* Taille du texte */
+  color: #dddddd; /* Couleur gris clair */
 }
 
 /* === Carte interactive === */
 #map {
-  height: 75vh; /* Hauteur de la carte sur les grands écrans */
-  margin: 0 auto;
-  max-width: 1000px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #e60000;
-  z-index: 1;
+  height: 75vh; /* Hauteur de la carte (75% de la hauteur de la fenêtre) */
+  margin: 0 auto; /* Centrer la carte horizontalement */
+  max-width: 1000px; /* Largeur maximale de la carte */
+  border-radius: 10px; /* Coins arrondis de la carte */
+  box-shadow: 0 0 10px #e60000; /* Ombre autour de la carte */
+  z-index: 1; /* Positionner la carte devant les autres éléments */
 }
 
 /* === Optimisation pour mobile === */
 @media (max-width: 768px) {
   /* Réduire la taille de la carte sur les écrans plus petits */
   #map {
-    height: 60vh; /* Réduire la hauteur de la carte sur les petits écrans */
-    max-width: 80%;
-    margin: 0 auto;
-    border-radius: 5px; /* Bord plus arrondi sur mobile */
+    height: 60vh; /* Hauteur réduite de la carte sur mobile */
+    max-width: 80%; /* Largeur réduite sur mobile */
+    margin: 0 auto; /* Centrer la carte horizontalement */
+    border-radius: 5px; /* Coins arrondis plus petits */
   }
   
   /* Ajuster le titre et l'introduction */
@@ -88,7 +88,7 @@ h1 {
   
   .intro {
     font-size: 1em; /* Réduire la taille du texte d'introduction */
-    margin: 20px auto;
+    margin: 20px auto; /* Espacement autour du texte */
   }
 }
 
@@ -96,9 +96,9 @@ h1 {
 @media (max-width: 480px) {
   #map {
     height: 45vh; /* Réduire encore la hauteur de la carte sur les très petits écrans */
-    width: 90%; /* Réduire encore la largeur à 90% sur les très petits écrans */
-    margin: 0 auto;
-    border-radius: 5px;
+    width: 90%; /* Réduire la largeur à 90% */
+    margin: 0 auto; /* Centrer la carte */
+    border-radius: 5px; /* Coins arrondis */
     box-shadow: none; /* Retirer l'ombre pour un aspect plus léger */
   }
 
@@ -115,121 +115,99 @@ h1 {
     font-size: 1.2em; /* Réduire la taille du texte d'intro */
   }
 }
+
 /* === Pied de page === */
 footer {
-  text-align: center;
-  padding: 20px;
-  font-size: 0.9em;
-  color: #777;
+  text-align: center; /* Centrer le texte du pied de page */
+  padding: 20px; /* Espacement autour du pied de page */
+  font-size: 0.9em; /* Taille de la police */
+  color: #777; /* Couleur gris pour le texte */
 }
 
 /* === Marqueurs emoji === */
 .emoji-marker {
-  font-size: 24px;
-  background: none;
-  border: none;
-  box-shadow: none;
-  width: auto;
-  height: auto;
-  line-height: 1;
-  color: inherit;
+  font-size: 24px; /* Taille des marqueurs emoji */
+  background: none; /* Pas de fond */
+  border: none; /* Pas de bordure */
+  box-shadow: none; /* Pas d'ombre */
+  width: auto; /* Taille automatique */
+  height: auto; /* Taille automatique */
+  line-height: 1; /* Hauteur de ligne pour centrer */
+  color: inherit; /* Couleur héritée du parent */
 }
 
 /* === Overlay d’intro === */
 #intro-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #0d0d0d;
-  background-image: url('./icons/background.jpg'); /* Fond de l'intro */
-  background-size: cover;
-  background-position: center;
+  position: fixed; /* Position fixe pour couvrir toute la fenêtre */
+  top: 0; /* Commence en haut de la page */
+  left: 0; /* Commence à gauche de la page */
+  width: 100%; /* Prend toute la largeur de l'écran */
+  height: 100%; /* Prend toute la hauteur de l'écran */
+  background-color: #0d0d0d; /* Fond sombre */
+  background-image: url('./icons/background.jpg'); /* Image de fond de l'intro */
+  background-size: cover; /* Taille de l'image couvre tout l'écran */
+  background-position: center; /* L'image est centrée */
   background-attachment: fixed; /* Empêche le fond de défiler */
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  box-sizing: border-box;
-  text-align: center;
+  z-index: 9999; /* Placer l'overlay au-dessus du contenu */
+  display: flex; /* Utiliser Flexbox pour centrer le contenu */
+  align-items: center; /* Centrer verticalement */
+  justify-content: center; /* Centrer horizontalement */
+  padding: 20px; /* Espacement autour du contenu */
+  box-sizing: border-box; /* Inclure le padding dans la taille totale */
+  text-align: center; /* Centrer le texte */
 }
 
 /* Texte global de l’intro (contenant les lignes) */
 #intro-text {
-  font-family: 'UnifrakturCook', cursive;
-  font-size: 5em; /* Augmenter la taille du texte global */
-  color: #e60000;
-  text-shadow: 0 0 10px red;
-  line-height: 1.6;
-  text-align: center;
-  animation: fadeIntro 9s forwards; /* Réduire la durée pour faire disparaître plus vite */
+  font-family: 'UnifrakturCook', cursive; /* Police d'introduction */
+  font-size: 5em; /* Taille de la police de l'intro */
+  color: #e60000; /* Couleur rouge du texte */
+  text-shadow: 0 0 10px red; /* Ombre rouge autour du texte */
+  line-height: 1.6; /* Espacement entre les lignes */
+  text-align: center; /* Centrer le texte */
+  animation: fadeIntro 9s forwards; /* Animation de fondu */
 }
 
 /* Ligne 1 : "Un territoire. Une carte." */
 .line1 {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0;
-  animation: typingLine1 4s steps(30, end) forwards;
+  display: inline-block; /* Affichage en ligne */
+  white-space: nowrap; /* Empêcher le texte de passer à la ligne suivante */
+  overflow: hidden; /* Masquer le texte qui déborde */
+  width: 0; /* Initialiser la largeur à 0 pour l'animation */
+  animation: typingLine1 4s steps(30, end) forwards; /* Animation de frappe */
 }
 
 /* Ligne 2 : "Un passé sombre." */
 .line2 {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0;
-  animation: typingLine2 3s steps(25, end) forwards; /* Faire apparaître plus rapidement */
-  animation-delay: 4s;
-  animation-fill-mode: forwards;
+  display: inline-block; /* Affichage en ligne */
+  white-space: nowrap; /* Empêcher le texte de passer à la ligne suivante */
+  overflow: hidden; /* Masquer le texte qui déborde */
+  width: 0; /* Initialiser la largeur à 0 pour l'animation */
+  animation: typingLine2 3s steps(25, end) forwards; /* Animation de frappe plus rapide */
+  animation-delay: 4s; /* Délai pour commencer après la première ligne */
+  animation-fill-mode: forwards; /* Maintenir l'état final de l'animation */
 }
 
-/* Animations de frappe (lettre par lettre) */
+/* Animation de frappe pour la ligne 1 */
 @keyframes typingLine1 {
-  from { width: 0; }
-  to { width: 28ch; }
+  to {
+    width: 100%; /* Augmenter la largeur à 100% à la fin de l'animation */
+  }
 }
 
+/* Animation de frappe pour la ligne 2 */
 @keyframes typingLine2 {
-  from { width: 0; }
-  to { width: 20ch; }
+  to {
+    width: 100%; /* Augmenter la largeur à 100% à la fin de l'animation */
+  }
 }
 
-/* Animation de fondu pour l'intro */
+/* Animation de fondu pour l'introduction */
 @keyframes fadeIntro {
   0% {
-    opacity: 1;
-  }
-  99% {
-    opacity: 1;
+    opacity: 0; /* Initialement invisible */
   }
   100% {
-    opacity: 0;
-  }
-}
-
-/* === Responsive mobile === */
-@media (max-width: 600px) {
-  #intro-text {
-    font-size: 2.5em; /* Réduire la taille du texte sur mobile */
-  }
-
-  h1 {
-    font-size: 3.5em; /* Réduire la taille du titre sur mobile */
-  }
-
-  .intro {
-    font-size: 1em; /* Ajuster la taille du texte descriptif */
-  }
-}
-
-@media (max-width: 768px) {
-  body {
-    background-attachment: scroll; /* plus sûr pour mobile */
-    background-size: contain;
-    background-position: center top;
+    opacity: 1; /* Devenir complètement visible */
   }
 }
