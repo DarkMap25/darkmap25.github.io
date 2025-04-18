@@ -44,13 +44,6 @@ h1 {
   color: #ccc;
 }
 
-/* Logo si présent */
-.logo {
-  display: block;
-  margin: 20px auto 10px;
-  width: 100px;
-}
-
 /* === Introduction (texte descriptif) === */
 .intro {
   max-width: 800px;
@@ -106,6 +99,9 @@ footer {
   padding: 20px;
   box-sizing: border-box;
   text-align: center;
+  background-image: url('./icons/background.jpg'); /* Le fond d'écran pendant l'animation */
+  background-size: cover;
+  background-position: center;
 }
 
 /* Texte global de l’intro (contenant les lignes) */
@@ -153,6 +149,18 @@ footer {
 @media (max-width: 600px) {
   #intro-text {
     font-size: 1.4em;
+  }
+
+  h1 {
+    font-size: 3em;
+  }
+
+  .intro {
+    font-size: 1em;
+  }
+
+  #map {
+    height: 50vh;
   }
 }
 @media (max-width: 768px) {
