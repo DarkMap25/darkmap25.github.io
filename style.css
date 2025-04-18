@@ -76,7 +76,7 @@ h1 {
   /* Réduire la taille de la carte sur les écrans plus petits */
   #map {
     height: 60vh; /* Hauteur réduite de la carte sur mobile */
-    max-width: 80%; /* Largeur réduite sur mobile */
+    max-width: 90%; /* Largeur réduite sur mobile */
     margin: 0 auto; /* Centrer la carte horizontalement */
     border-radius: 5px; /* Coins arrondis plus petits */
   }
