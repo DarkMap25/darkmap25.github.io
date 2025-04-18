@@ -80,7 +80,7 @@ h1 {
     background-position: center center; /* Centrer l'image sur l'écran */
   }  
   #intro-text {
-    font-size: 2.5em; /* Réduire encore la taille du texte pour les très petits écrans */
+    font-size: 0.5em; /* Réduire encore la taille du texte pour les très petits écrans */
     line-height: 1.2; /* Espacement entre les lignes pour améliorer la lisibilité */
   }  
   #map {
@@ -117,7 +117,7 @@ h1 {
     background-position: center center; /* Centrer l'image sur l'écran */
   }  
   #intro-text {
-    font-size: 2.5em; /* Réduire encore la taille du texte pour les très petits écrans */
+    font-size: 0.5em; /* Réduire encore la taille du texte pour les très petits écrans */
     line-height: 1.2; /* Espacement entre les lignes pour améliorer la lisibilité */
   }  
   #map {
