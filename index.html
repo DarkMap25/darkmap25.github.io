@@ -5,52 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DarkMap</title>
 
-  <!-- OpenLayers 5.3.0 CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol/5.3.0/ol.css" />
+  <!-- Feuilles de style -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <!-- Polices -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
-
-  <!-- Favicon -->
-  <link rel="icon" href="icons/favicon.jpg" type="image/jpeg" />
-
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Cormorant Garamond', serif;
-      background: #111;
-      color: #eee;
-    }
-    #map {
-      width: 100%;
-      height: 600px;
-    }
-    .ol-popup {
-      background: rgba(0,0,0,0.8);
-      color: white;
-      padding: 10px;
-      border-radius: 8px;
-      min-width: 150px;
-    }
-  </style>
 </head>
 <body>
 
-  <header>
-    <h1 style="font-size: 5em; font-family: 'UnifrakturCook', cursive; color: #e60000; text-align: center; text-shadow: 0 0 8px #e60000;">
-      DarkMap
-    </h1>
-    <p style="text-align: center;">Un territoire. Une carte. Un passé sombre.</p>
-  </header>
+<!-- Introduction avec effet de frappe sur 2 lignes -->
+<div id="intro-overlay">
+  <p id="intro-text">
+    <span class="line1"></span><br>
+    <span class="line2"></span>
+  </p>
+</div>
 
-  <div id="map"></div>
+<header>
+  <h1 style="font-size: 6em; font-family: 'Quicksand', sans-serif; font-weight: 700; text-align: center; color: #e60000; text-shadow: 0 0 8px #e60000; margin-bottom: 0;">
+    darkmap
+  </h1>
+  <p class="tagline">La carte de France, version Dark.</p>
+</header>
 
-  <!-- OpenLayers 5.3.0 JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ol/5.3.0/ol.js"></script>
+<section class="intro" style="max-width: 80ch; margin: 40px auto; text-align: justify; padding: 0 20px;">
+  <p>
+    DarkMap est un site interactif qui recense les lieux les plus sombres et étranges de France.<br>
+    Crimes, histoires mystérieuses, lieux abandonnés ou chargés d’un passé lourd...<br>
+    Chaque point sur la carte vous raconte un fragment d’un passé oublié ou dérangeant.<br>
+    Ce projet a pour objectif de documenter, cartographier et faire découvrir ces lieux atypiques.<br>
+    Tous les emplacements sont choisis pour leur fiabilité et leur valeur historique ou intrigante.<br>
+    Explorez la France autrement, à travers ses secrets, ses drames et son passé sombre...
+  </p>
+</section>
 
-  <!-- Ton script -->
-  <script src="script.js"></script>
+<!-- Carte interactive -->
+<div id="map"></div>
+
+<footer>
+  <p>&copy; 2025 DarkMap.fr</p>
+</footer>
+
+<!-- Script JavaScript -->
+<script src="script.js"></script>
 </body>
 </html>
