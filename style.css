@@ -138,7 +138,7 @@ footer {
   white-space: nowrap;
   overflow: hidden;
   width: 0;
-  animation: typingLine2 3.6s steps(20, end) forwards;
+  animation: typingLine2 4s steps(20, end) forwards;
   animation-delay: 2s;
   animation-fill-mode: forwards;
 }
