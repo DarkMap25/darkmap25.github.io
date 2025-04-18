@@ -79,12 +79,10 @@ h1 {
     background-size: cover; /* Adapter l'image pour qu'elle soit rognée */
     background-position: center center; /* Centrer l'image sur l'écran */
   }  
-    #intro-text {
-    width: 100%; /* Utiliser toute la largeur de l'écran */
-    overflow: hidden; /* Masquer le texte qui déborde */
-    white-space: normal; /* Permet au texte de passer à la ligne si nécessaire */
-    padding: 20px; /* Ajouter un peu d'espace autour du texte */
-  } 
+  #intro-text {
+    font-size: 2.5em; /* Réduire encore la taille du texte pour les très petits écrans */
+    line-height: 1.2; /* Espacement entre les lignes pour améliorer la lisibilité */
+  }  
   #map {
     height: 60vh; /* Hauteur réduite de la carte sur mobile */
     max-width: 90%; /* Largeur réduite sur mobile */
@@ -118,12 +116,10 @@ h1 {
     background-size: cover; /* Adapter l'image pour qu'elle soit rognée */
     background-position: center center; /* Centrer l'image sur l'écran */
   }  
-    #intro-text {
-    width: 100%; /* Utiliser toute la largeur de l'écran */
-    overflow: hidden; /* Masquer le texte qui déborde */
-    white-space: normal; /* Permet au texte de passer à la ligne si nécessaire */
-    padding: 20px; /* Ajouter un peu d'espace autour du texte */
-  } 
+  #intro-text {
+    font-size: 2.5em; /* Réduire encore la taille du texte pour les très petits écrans */
+    line-height: 1.2; /* Espacement entre les lignes pour améliorer la lisibilité */
+  }  
   #map {
     height: 45vh; /* Réduire encore la hauteur de la carte sur les très petits écrans */
     width: 90%; /* Réduire la largeur à 90% */
