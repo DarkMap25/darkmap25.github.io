@@ -112,15 +112,15 @@ footer {
   text-align: center;
 }
 
-
 /* Texte global de l’intro (contenant les lignes) */
 #intro-text {
   font-family: 'UnifrakturCook', cursive;
-  font-size: 3.5em;
+  font-size: 5em; /* Augmenter la taille du texte global */
   color: #e60000;
   text-shadow: 0 0 10px red;
   line-height: 1.6;
   text-align: center;
+  animation: fadeIntro 5s forwards; /* Réduire la durée pour faire disparaître plus vite */
 }
 
 /* Ligne 1 : "Un territoire. Une carte." */
@@ -138,12 +138,12 @@ footer {
   white-space: nowrap;
   overflow: hidden;
   width: 0;
-  animation: typingLine2 4s steps(20, end) forwards;
+  animation: typingLine2 3s steps(20, end) forwards; /* Faire apparaître plus rapidement */
   animation-delay: 4s;
   animation-fill-mode: forwards;
 }
 
-/* Animations lettre par lettre */
+/* Animations de frappe (lettre par lettre) */
 @keyframes typingLine1 {
   from { width: 0; }
   to { width: 28ch; }
@@ -154,12 +154,34 @@ footer {
   to { width: 20ch; }
 }
 
-/* Responsive mobile */
-@media (max-width: 600px) {
-  #intro-text {
-    font-size: 1.4em;
+/* Animation de fondu pour l'intro */
+@keyframes fadeIntro {
+  0% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
+
+/* === Responsive mobile === */
+@media (max-width: 600px) {
+  #intro-text {
+    font-size: 2.5em; /* Réduire la taille du texte sur mobile */
+  }
+
+  h1 {
+    font-size: 3.5em; /* Réduire la taille du titre sur mobile */
+  }
+
+  .intro {
+    font-size: 1em; /* Ajuster la taille du texte descriptif */
+  }
+}
+
 @media (max-width: 768px) {
   body {
     background-attachment: scroll; /* plus sûr pour mobile */
