@@ -154,6 +154,35 @@ footer {
   color: inherit; /* Couleur héritée du parent */
 }
 
+/* Style pour la légende */
+.info.legend {
+  background: rgba(255, 255, 255, 0.8); /* Fond semi-transparent */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Style pour chaque élément de la légende */
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+/* Style pour l'emoji dans la légende */
+.legend-item .emoji {
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+/* Style pour le nom de la catégorie */
+.legend-item .category-name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
 /* === Overlay d’intro === */
 #intro-overlay {
   position: fixed; /* Position fixe pour couvrir toute la fenêtre */
