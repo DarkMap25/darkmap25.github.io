@@ -36,9 +36,9 @@ function createEmojiMarker(lieu) {
 
   // Contenu du popup affiché lors du clic sur le marqueur
   const popupContent = `
-    <strong>${lieu.nom}</strong><br>  // Nom du lieu en gras
-    ${lieu.resume}<br>  // Résumé court du lieu
-    <a href="${lieu.lien}" target="_blank">Voir plus</a>  // Lien pour afficher plus de détails sur le lieu
+    <strong>${lieu.nom}</strong><br>  <!-- Nom du lieu en gras -->
+    ${lieu.resume}<br>  <!-- Résumé court du lieu -->
+    <a href="${lieu.lien}" target="_blank">Voir plus</a>  <!-- Lien pour afficher plus de détails sur le lieu -->
   `;
 
   // Retourne le marqueur avec son icône emoji et son popup
