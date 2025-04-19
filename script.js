@@ -29,7 +29,7 @@ const cartoDBDarkLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all
 // Initialisation de la carte avec le fond de carte Thunderforest par défaut
 const map = L.map('map', {
   center: [46.5, 2.5],  // Coordonnées de la France
-  zoom: 6,  // Zoom initial
+  zoom: 5,  // Zoom initial
   layers: [thunderforestLayer]  // La couche de carte initiale
 });
 
