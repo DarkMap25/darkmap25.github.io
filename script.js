@@ -6,7 +6,7 @@ if (!window.map) {
     zoom: 5,  // Zoom initial
     maxBounds: [[41, -5], [52, 10]],  // Limites géographiques minimales et maximales pour éviter de sortir de la France
     minZoom: 4,  // Niveau de zoom minimum
-    maxZoom: 22,  // Niveau de zoom maximum
+    maxZoom: 18,  // Niveau de zoom maximum
     layers: [thunderforestLayer]  // La couche de carte initiale (Thunderforest Spinal Map)
   });
 }
@@ -16,13 +16,13 @@ if (!window.map) {
 // Fond Thunderforest Spinal Map
 const thunderforestLayer = L.tileLayer('https://tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png?apikey=2f67b0d994104bf69ffcd0cf70f86a08', {
   attribution: '&copy; OpenStreetMap contributors, &copy; Thunderforest',
-  maxZoom: 19
+  maxZoom: 18
 });
 
 // Fond Thunderforest Atlas (remplace CartoDB Dark)
 const thunderforestAtlasLayer = L.tileLayer('https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=2f67b0d994104bf69ffcd0cf70f86a08', {
   attribution: '&copy; OpenStreetMap contributors, &copy; Thunderforest',
-  maxZoom: 22
+  maxZoom: 18
 });
 
 // Initialisation de la carte avec le fond de carte Thunderforest par défaut
