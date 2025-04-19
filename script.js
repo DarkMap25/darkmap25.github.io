@@ -6,7 +6,7 @@ if (!window.map) {
     zoom: 5,  // Zoom initial
     maxBounds: [[41, -5], [52, 10]],  // Limites géographiques minimales et maximales pour éviter de sortir de la France
     minZoom: 4,  // Niveau de zoom minimum
-    maxZoom: 19,  // Niveau de zoom maximum
+    maxZoom: 22,  // Niveau de zoom maximum
     layers: [thunderforestLayer]  // La couche de carte initiale (Thunderforest Spinal Map)
   });
 }
@@ -19,11 +19,10 @@ const thunderforestLayer = L.tileLayer('https://tile.thunderforest.com/spinal-ma
   maxZoom: 19
 });
 
-// Fond CartoDB Dark
-const cartoDBDarkLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-  attribution: '&copy; OpenStreetMap, CartoDB',
-  subdomains: 'abcd',
-  maxZoom: 19
+// Fond Thunderforest Atlas (remplace CartoDB Dark)
+const thunderforestAtlasLayer = L.tileLayer('https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=2f67b0d994104bf69ffcd0cf70f86a08', {
+  attribution: '&copy; OpenStreetMap contributors, &copy; Thunderforest',
+  maxZoom: 22
 });
 
 // Initialisation de la carte avec le fond de carte Thunderforest par défaut
@@ -36,7 +35,7 @@ const map = L.map('map', {
 // Ajout du contrôle de superposition pour basculer entre les fonds de carte
 L.control.layers({
   'Thunderforest Spinal Map': thunderforestLayer,
-  'CartoDB Dark': cartoDBDarkLayer
+  'Thunderforest Atlas': thunderforestAtlasLayer
 }, {}, {position: 'topleft'}).addTo(map);
 
 // Emoji par catégorie
