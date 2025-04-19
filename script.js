@@ -1,10 +1,9 @@
 // Initialisation de la carte centrée sur la France
-const map = L.map('map', {
   // Définition des limites de la carte (la France + Corse)
   maxBounds: [[41, -5], [52, 10]],  // Limites géographiques minimales et maximales pour éviter de sortir de la France
   minZoom: 5,  // Niveau de zoom minimum
   maxZoom: 15  // Niveau de zoom maximum
-}).setView([46.5, 2.5], 6);  // Positionnement initial de la carte au centre de la France avec un zoom de niveau 6
+.setView([46.5, 2.5], 6);  // Positionnement initial de la carte au centre de la France avec un zoom de niveau 6
 
 // Création des deux fonds de carte
 
@@ -32,7 +31,7 @@ const map = L.map('map', {
 L.control.layers({
   'Thunderforest Spinal Map': thunderforestLayer,
   'CartoDB Dark': cartoDBDarkLayer
-}, {}, {position: 'topright'}).addTo(map);
+}, {}, {position: 'topleft'}).addTo(map);
 
 // Emoji par catégorie
 const emojiParCategorie = {
