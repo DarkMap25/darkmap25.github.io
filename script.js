@@ -6,10 +6,9 @@ const map = L.map('map', {
   maxZoom: 15  // Niveau de zoom maximum
 }).setView([46.5, 2.5], 6);  // Positionnement initial de la carte au centre de la France avec un zoom de niveau 6
 
-// Fond de carte sombre Stamen Toner
-L.tileLayer('https://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://stamen.com">Stamen Design</a>',  // Attribution des sources du fond de carte
-  subdomains: 'abcd',  // Sous-domaines pour le rendu du fond de carte
+// Fond de carte Thunderforest Spinal Map
+L.tileLayer('https://tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png?apikey=2f67b0d994104bf69ffcd0cf70f86a08', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://www.thunderforest.com/">Thunderforest</a>',  // Attribution des sources du fond de carte
   maxZoom: 19  // Zoom maximal de la carte
 }).addTo(map);  // Ajout du fond de carte à la carte
 
