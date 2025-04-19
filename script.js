@@ -11,6 +11,50 @@ if (!window.map) {
   });
 }
 
+// Variables pour les filtres
+const filters = {
+  crime: true,
+  mystery: true,
+  unsolved: true,
+  abandoned: true,
+  drama: true,
+  war: true
+};
+
+// Ajouter des événements pour les filtres
+document.getElementById('crimeFilter').addEventListener('change', updateMap);
+document.getElementById('mysteryFilter').addEventListener('change', updateMap);
+document.getElementById('unsolvedFilter').addEventListener('change', updateMap);
+document.getElementById('abandonedFilter').addEventListener('change', updateMap);
+document.getElementById('dramaFilter').addEventListener('change', updateMap);
+document.getElementById('warFilter').addEventListener('change', updateMap);
+
+// Fonction qui met à jour l'affichage des marqueurs en fonction des filtres
+function updateMap() {
+  filters.crime = document.getElementById('crimeFilter').checked;
+  filters.mystery = document.getElementById('mysteryFilter').checked;
+  filters.unsolved = document.getElementById('unsolvedFilter').checked;
+  filters.abandoned = document.getElementById('abandonedFilter').checked;
+  filters.drama = document.getElementById('dramaFilter').checked;
+  filters.war = document.getElementById('warFilter').checked;
+
+  // Rafraîchir les marqueurs affichés
+  updateMarkers();
+}
+
+// Fonction pour mettre à jour la visibilité des marqueurs
+function updateMarkers() {
+  // Boucle sur tous les marqueurs et vérifie si la catégorie doit être affichée
+  markers.forEach(marker => {
+    const shouldShow = filters[marker.categorie.toLowerCase()];
+    if (shouldShow) {
+      map.addLayer(marker.layer); // Ajouter la couche (marqueur) à la carte
+    } else {
+      map.removeLayer(marker.layer); // Retirer la couche (marqueur) de la carte
+    }
+  });
+}
+
 // Création des deux fonds de carte
 
 // Fond Thunderforest Spinal Map
@@ -50,6 +94,9 @@ const emojiParCategorie = {
   "Guerres et Conflits": "⚔️"  // Emoji pour la catégorie Guerres et Conflits
 };
 
+// Tableau pour stocker les marqueurs afin de pouvoir les filtrer
+let markers = [];
+
 // Fonction pour créer un marqueur avec emoji
 function createEmojiMarker(lieu) {
   // Récupère l'emoji associé à la catégorie du lieu, ou un emoji par défaut si la catégorie est inconnue
@@ -71,8 +118,17 @@ function createEmojiMarker(lieu) {
     <a href="${lieu.lien}" target="_blank">Voir plus</a>  <!-- Lien pour afficher plus de détails sur le lieu -->
   `;
 
-  // Retourne le marqueur avec son icône emoji et son popup
-  return L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon }).bindPopup(popupContent);
+  // Création du marqueur avec l'icône et le popup
+  const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon }).bindPopup(popupContent);
+
+  // Enregistrer ce marqueur dans le tableau 'markers'
+  markers.push({
+    categorie: lieu.categorie,
+    layer: marker  // Le marqueur est enregistré dans le tableau
+  });
+
+  // Retourne le marqueur sans l'ajouter à la carte pour l'instant
+  return marker;
 }
 
 // Chargement des lieux depuis lieux.json
