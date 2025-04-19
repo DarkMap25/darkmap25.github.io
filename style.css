@@ -156,14 +156,11 @@ footer {
 
 /* Style pour la légende sans ombre et coins arrondis */
 .info.legend {
-  color: #2a0044;  /* Texte violet foncé */
+  color: #000000;  /* Texte violet foncé */
   padding: 10px;  /* Espace interne autour du texte */
   font-size: 14px;  /* Taille du texte */
   line-height: 1.6;  /* Hauteur de ligne pour améliorer la lisibilité */
-  border: none;  /* Suppression de la bordure */
-  box-shadow: none;  /* Suppression de l'ombre */
-  background: transparent;  /* Fond transparent */
-  border-radius: 0;  /* Suppression des coins arrondis */
+  text-shadow: 1px 1px 3px rgba(255, 0, 0, 0.8);  /* Contours rouges autour des lettres */
 }
 
 /* Style pour chaque élément de la légende */
