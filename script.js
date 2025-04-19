@@ -44,12 +44,14 @@ function updateMap() {
 
 // Fonction pour mettre à jour la visibilité des marqueurs
 function updateMarkers() {
-  // Boucle sur tous les marqueurs et vérifie si la catégorie doit être affichée
   markers.forEach(marker => {
     const shouldShow = filters[marker.categorie.toLowerCase()];
-    if (shouldShow) {
+
+    if (shouldShow && !map.hasLayer(marker.layer)) {
+      // Si le filtre est activé et le marqueur n'est pas déjà sur la carte
       map.addLayer(marker.layer); // Ajouter la couche (marqueur) à la carte
-    } else {
+    } else if (!shouldShow && map.hasLayer(marker.layer)) {
+      // Si le filtre est désactivé et le marqueur est sur la carte
       map.removeLayer(marker.layer); // Retirer la couche (marqueur) de la carte
     }
   });
