@@ -7,7 +7,7 @@ const map = L.map('map', {
 }).setView([46.5, 2.5], 6);  // Positionnement initial de la carte au centre de la France avec un zoom de niveau 6
 
 // Fond de carte sombre Stamen Toner
-L.tileLayer('https://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {
+L.tileLayer('https://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://stamen.com">Stamen Design</a>',  // Attribution des sources du fond de carte
   subdomains: 'abcd',  // Sous-domaines pour le rendu du fond de carte
   maxZoom: 19  // Zoom maximal de la carte
