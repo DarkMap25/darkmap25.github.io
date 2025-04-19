@@ -43,9 +43,11 @@ L.control.layers({
 // Emoji par catégorie
 const emojiParCategorie = {
   "Crimes": "☠️",  // Emoji pour la catégorie Crimes
-  "Histoires Sombres": "⚰️",  // Emoji pour la catégorie Histoires Sombres
+  "Drames": "⚰️",  // Emoji pour la catégorie Drames
   "Lieux Mystérieux": "👁️",  // Emoji pour la catégorie Lieux Mystérieux
-  "Lieux Abandonnés": "🏰"  // Emoji pour la catégorie Lieux Abandonnés
+  "Lieux Abandonnés": "🏰",  // Emoji pour la catégorie Lieux Abandonnés
+  "Affaires Non Résolues": "❓",  // Emoji pour la catégorie Affaires Non Résolues
+  "Guerres et Conflits": "⚔️"  // Emoji pour la catégorie Guerres et Conflits
 };
 
 // Fonction pour créer un marqueur avec emoji
