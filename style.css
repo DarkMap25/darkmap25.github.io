@@ -156,6 +156,7 @@ footer {
 
 /* Style pour la légende */
 .info.legend {
+  color: #800080;  /* Texte violet */
   background: rgba(255, 255, 255, 0.8); /* Fond semi-transparent */
   padding: 10px;
   border-radius: 5px;
