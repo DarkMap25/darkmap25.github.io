@@ -87,6 +87,41 @@ fetch('lieux.json')  // Effectue une requête pour récupérer les données du f
   })
   .catch(error => console.error('Erreur lors du chargement des lieux :', error));  // Gestion d'erreur en cas de problème de chargement
 
+// Fonction pour créer une légende avec les catégories et les emojis
+function createLegend() {
+  const legend = L.control({ position: 'bottomleft' }); // Crée un contrôle en bas à gauche
+
+  // Lors de l'ajout du contrôle à la carte
+  legend.onAdd = function (map) {
+    const div = L.DomUtil.create('div', 'info legend');  // Crée un conteneur pour la légende
+    const categories = [
+      { name: 'Crimes', emoji: '☠️' },
+      { name: 'Drames', emoji: '⚰️' },
+      { name: 'Lieux Mystérieux', emoji: '👁️' },
+      { name: 'Lieux Abandonnés', emoji: '🏰' },
+      { name: 'Affaires Non Résolues', emoji: '❓' },
+      { name: 'Guerres et Conflits', emoji: '⚔️' }
+    ];
+
+    // Parcours les catégories et les ajoute à la légende
+    categories.forEach(category => {
+      div.innerHTML += `
+        <div class="legend-item">
+          <span class="emoji">${category.emoji}</span>
+          <span class="category-name">${category.name}</span>
+        </div>
+      `;
+    });
+
+    return div; // Retourne le conteneur avec la légende
+  };
+
+  legend.addTo(map); // Ajoute la légende à la carte
+}
+
+// Appeler la fonction pour créer et afficher la légende
+createLegend();
+
 // ✅ Affichage de l'intro animée ou non
 let showIntro = true;  // Variable pour déterminer si l'intro animée doit être affichée ou non
 
