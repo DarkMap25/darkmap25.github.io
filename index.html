@@ -53,6 +53,29 @@
 <!-- Zone de la carte interactive -->
 <div id="map"></div>  <!-- Cette div contiendra la carte interactive générée par Leaflet -->
 
+<!-- Ajout des filtres --!>
+  <div id="filters" style="position: absolute; top: 20px; right: 20px; background: rgba(0, 0, 0, 0.7); color: white; padding: 10px; border-radius: 5px;">
+  <h3>Filtres</h3>
+  <label>
+    <input type="checkbox" id="crimeFilter" checked> Crimes ☠️
+  </label><br>
+  <label>
+    <input type="checkbox" id="mysteryFilter" checked> Lieux Mystérieux 👁️
+  </label><br>
+  <label>
+    <input type="checkbox" id="unsolvedFilter" checked> Affaires Non Résolues ❓
+  </label><br>
+  <label>
+    <input type="checkbox" id="abandonedFilter" checked> Lieux Abandonnés 🏰
+  </label><br>
+  <label>
+    <input type="checkbox" id="dramaFilter" checked> Drames ⚰️
+  </label><br>
+  <label>
+    <input type="checkbox" id="warFilter" checked> Guerres et Conflits ⚔️
+  </label><br>
+</div>
+
 <!-- Section d'introduction expliquant le projet -->
 <section class="intro" style="max-width: 80ch; margin: 40px auto; text-align: justify; padding: 0 20px;">
   <p>
