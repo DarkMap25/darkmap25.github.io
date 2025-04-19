@@ -6,11 +6,33 @@ const map = L.map('map', {
   maxZoom: 15  // Niveau de zoom maximum
 }).setView([46.5, 2.5], 6);  // Positionnement initial de la carte au centre de la France avec un zoom de niveau 6
 
-// Fond de carte Thunderforest Spinal Map
-L.tileLayer('https://tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png?apikey=2f67b0d994104bf69ffcd0cf70f86a08', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://www.thunderforest.com/">Thunderforest</a>',  // Attribution des sources du fond de carte
-  maxZoom: 19  // Zoom maximal de la carte
-}).addTo(map);  // Ajout du fond de carte à la carte
+// Création des deux fonds de carte
+
+// Fond Thunderforest Spinal Map
+const thunderforestLayer = L.tileLayer('https://tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png?apikey=2f67b0d994104bf69ffcd0cf70f86a08', {
+  attribution: '&copy; OpenStreetMap contributors, &copy; Thunderforest',
+  maxZoom: 19
+});
+
+// Fond CartoDB Dark
+const cartoDBDarkLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; OpenStreetMap, CartoDB',
+  subdomains: 'abcd',
+  maxZoom: 19
+});
+
+// Initialisation de la carte avec le fond de carte Thunderforest par défaut
+const map = L.map('map', {
+  center: [46.5, 2.5],  // Coordonnées de la France
+  zoom: 6,  // Zoom initial
+  layers: [thunderforestLayer]  // La couche de carte initiale
+});
+
+// Ajout du contrôle de superposition pour basculer entre les fonds de carte
+L.control.layers({
+  'Thunderforest Spinal Map': thunderforestLayer,
+  'CartoDB Dark': cartoDBDarkLayer
+}, {}, {position: 'topright'}).addTo(map);
 
 // Emoji par catégorie
 const emojiParCategorie = {
