@@ -54,9 +54,8 @@ h1 {
 /* === Introduction (texte descriptif) === */
 .intro {
   max-width: 800px; /* Limiter la largeur du texte */
-  margin: 30px auto; /* Centrer et espacer le texte */
+  margin: 0 auto; /* Centrer le texte */
   text-align: center; /* Centrer le texte */
-  transform: translate(-50%, -50%);
   line-height: 1.6; /* Espacement entre les lignes du texte */
   font-size: 1.1em; /* Taille du texte */
   color: #dddddd; /* Couleur gris clair */
