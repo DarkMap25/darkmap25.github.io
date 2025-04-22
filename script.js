@@ -40,9 +40,9 @@ const emojiParCategorie = {
   "Affaires Non Résolues": "❓",  // Emoji pour la catégorie Affaires Non Résolues
   "Crimes": "☠️",  // Emoji pour la catégorie Crimes
   "Drames": "⚰️",  // Emoji pour la catégorie Drames
-  "Guerres et Conflits": "⚔️"  // Emoji pour la catégorie Guerres et Conflits
+  "Guerres et Conflits": "⚔️",  // Emoji pour la catégorie Guerres et Conflits
   "Lieux Abandonnés": "🏰",  // Emoji pour la catégorie Lieux Abandonnés
-  "Lieux Mystérieux": "👁️",  // Emoji pour la catégorie Lieux Mystérieux
+  "Lieux Mystérieux": "👁️"  // Emoji pour la catégorie Lieux Mystérieux
 };
 
 // Fonction pour créer un marqueur avec emoji
