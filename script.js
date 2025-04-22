@@ -27,11 +27,19 @@ const thunderforestAtlasLayer = L.tileLayer('https://tile.thunderforest.com/atla
   maxZoom: 18
 });
 
+// ✅ Limites de la France métropolitaine + Corse
+const franceBounds = L.latLngBounds(
+  L.latLng(41, -5),   // Sud-Ouest
+  L.latLng(52, 10)    // Nord-Est
+);
+
 // Initialisation de la carte avec le fond de carte Thunderforest par défaut
 const map = L.map('map', {
   center: [46.5, 2.5],  // Coordonnées de la France
   zoom: 5,  // Zoom initial
   layers: [thunderforestLayer]  // La couche de carte initiale
+  maxBounds: franceBounds, // ⛔ empêche de sortir de la France
+  maxBoundsViscosity: 1.0  // 🌪️ "résistance" aux bords (1 = totalement bloqué)
 });
 
 // Ajout du contrôle de superposition pour basculer entre les fonds de carte
