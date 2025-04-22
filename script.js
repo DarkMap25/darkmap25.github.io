@@ -24,7 +24,7 @@ const franceBounds = L.latLngBounds(
 const map = L.map('map', {
   center: [46.5, 2.5],  // Coordonnées de la France
   zoom: 5,  // Zoom initial
-  layers: [thunderforestLayer]  // La couche de carte initiale
+  layers: [thunderforestLayer],  // La couche de carte initiale
   maxBounds: franceBounds, // ⛔ empêche de sortir de la France
   maxBoundsViscosity: 1.0  // 🌪️ "résistance" aux bords (1 = totalement bloqué)
 });
