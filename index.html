@@ -27,49 +27,57 @@
 
   <!-- Favicon : l'icône qui apparaît dans l'onglet du navigateur -->
   <link rel="icon" href="icons/favicon.jpg" type="image/jpeg" />
+
+  <!-- Feuille de style pour le bouton de localisation -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
   
 </head>
   
 <body>
-
-<!-- Introduction avec un fond de superposition (overlay) qui affiche un texte animé -->
-<div id="intro-overlay">
-  <p id="intro-text">
-    <span class="line1"></span><br>  <!-- Ligne 1 de l'introduction -->
-    <span class="line2"></span>  <!-- Ligne 2 de l'introduction -->
-  </p>
-</div>
-
-<header>
-  <!-- Titre principal de la page, stylisé avec des tailles de police, couleur et ombre -->
-  <h1 style="font-size: 6em; font-family: 'Quicksand', sans-serif; font-weight: 700; text-align: center; color: #e60000; text-shadow: 0 0 8px #e60000; margin-bottom: 0;">
-    darkmap
-  </h1>
   
-  <!-- Slogan du site, description courte -->
-  <p class="tagline">La carte de France, version Dark.</p>
-</header>
+  <!-- Introduction avec un fond de superposition (overlay) qui affiche un texte animé -->
+  <div id="intro-overlay">
+    <p id="intro-text">
+      <span class="line1"></span><br>  <!-- Ligne 1 de l'introduction -->
+      <span class="line2"></span>  <!-- Ligne 2 de l'introduction -->
+    </p>
+  </div>
 
-<!-- Zone de la carte interactive -->
-<div id="map"></div>  <!-- Cette div contiendra la carte interactive générée par Leaflet -->
-
-<!-- Section d'introduction expliquant le projet -->
-<section class="intro" style="max-width: 80ch; margin: 40px auto; text-align: justify; padding: 0 20px;">
-  <p>
-    DarkMap est un site interactif qui recense les lieux les plus sombres et mystérieux de France.<br>
-    Vous y trouverez des crimes, des histoires étranges et des lieux abandonnés.<br>
-    Chaque point sur la carte révèle un fragment d’un passé souvent oublié ou dérangeant.<br>
-    Ce projet collaboratif permet aux utilisateurs de suggérer des lieux, contribuant à documenter ces sites fascinants.<br>
-    Rejoignez-nous pour découvrir la France sous un autre angle, à travers ses secrets et ses drames.
-  </p>
-</section>
+    <header>
+      <!-- Titre principal de la page, stylisé avec des tailles de police, couleur et ombre -->
+      <h1 style="font-size: 6em; font-family: 'Quicksand', sans-serif; font-weight: 700; text-align: center; color: #e60000; text-shadow: 0 0 8px #e60000; margin-bottom: 0;">
+        darkmap
+      </h1>
+      
+      <!-- Slogan du site, description courte -->
+      <p class="tagline">La carte de France, version Dark.</p>
+    </header>
   
-<!-- Footer avec le droit d'auteur -->
-<footer>
-  <p>&copy; 2025 DarkMap.fr</p>
-</footer>
+  <!-- Zone de la carte interactive -->
+  <div id="map"></div>  <!-- Cette div contiendra la carte interactive générée par Leaflet -->
+  
+  <!-- Section d'introduction expliquant le projet -->
+  <section class="intro" style="max-width: 80ch; margin: 40px auto; text-align: justify; padding: 0 20px;">
+    <p>
+      DarkMap est un site interactif qui recense les lieux les plus sombres et mystérieux de France.<br>
+      Vous y trouverez des crimes, des histoires étranges et des lieux abandonnés.<br>
+      Chaque point sur la carte révèle un fragment d’un passé souvent oublié ou dérangeant.<br>
+      Ce projet collaboratif permet aux utilisateurs de suggérer des lieux, contribuant à documenter ces sites fascinants.<br>
+      Rejoignez-nous pour découvrir la France sous un autre angle, à travers ses secrets et ses drames.
+    </p>
+  </section>
+    
+  <!-- Footer avec le droit d'auteur -->
+  <footer>
+    <p>&copy; 2025 DarkMap.fr</p>
+  </footer>
+  
+  <!-- Inclusion du script JavaScript pour la logique de la carte et de l'animation -->
+  <script src="script.js"></script>
 
-<!-- Inclusion du script JavaScript pour la logique de la carte et de l'animation -->
-<script src="script.js"></script>
+  <!-- Script JS du plugin de localisation -->
+  <script src="https://unpkg.com/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
+  
 </body>
+  
 </html>
