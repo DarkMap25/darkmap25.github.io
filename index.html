@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
-  
+
 <head>
-  
   <!-- Définition du charset UTF-8 pour supporter les caractères spéciaux -->
   <meta charset="UTF-8" />
 
@@ -17,12 +16,9 @@
 
   <!-- Feuille de style pour le bouton de localisation -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />  
-  
+
   <!-- Inclusion de la feuille de style de Leaflet pour la carte -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-
-  <!-- Inclusion de la bibliothèque Leaflet pour créer et manipuler la carte -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <!-- Inclusion des polices Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">  <!-- Police pour le titre -->
@@ -32,9 +28,9 @@
   <link rel="icon" href="icons/favicon.jpg" type="image/jpeg" />
 
 </head>
-  
+
 <body>
-  
+
   <!-- Introduction avec un fond de superposition (overlay) qui affiche un texte animé -->
   <div id="intro-overlay">
     <p id="intro-text">
@@ -43,19 +39,19 @@
     </p>
   </div>
 
-    <header>
-      <!-- Titre principal de la page, stylisé avec des tailles de police, couleur et ombre -->
-      <h1 style="font-size: 6em; font-family: 'Quicksand', sans-serif; font-weight: 700; text-align: center; color: #e60000; text-shadow: 0 0 8px #e60000; margin-bottom: 0;">
-        darkmap
-      </h1>
-      
-      <!-- Slogan du site, description courte -->
-      <p class="tagline">La carte de France, version Dark.</p>
-    </header>
-  
+  <header>
+    <!-- Titre principal de la page, stylisé avec des tailles de police, couleur et ombre -->
+    <h1 style="font-size: 6em; font-family: 'Quicksand', sans-serif; font-weight: 700; text-align: center; color: #e60000; text-shadow: 0 0 8px #e60000; margin-bottom: 0;">
+      darkmap
+    </h1>
+    
+    <!-- Slogan du site, description courte -->
+    <p class="tagline">La carte de France, version Dark.</p>
+  </header>
+
   <!-- Zone de la carte interactive -->
   <div id="map"></div>  <!-- Cette div contiendra la carte interactive générée par Leaflet -->
-  
+
   <!-- Section d'introduction expliquant le projet -->
   <section class="intro" style="max-width: 80ch; margin: 40px auto; text-align: justify; padding: 0 20px;">
     <p>
@@ -66,17 +62,20 @@
       Rejoignez-nous pour découvrir la France sous un autre angle, à travers ses secrets et ses drames.
     </p>
   </section>
-    
+
   <!-- Footer avec le droit d'auteur -->
   <footer>
     <p>&copy; 2025 DarkMap.fr</p>
   </footer>
-  
-  <!-- Inclusion du script JavaScript pour la logique de la carte et de l'animation -->
-  <script src="script.js"></script>
 
   <!-- Script JS du plugin de localisation -->
   <script src="https://unpkg.com/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
+
+  <!-- Inclusion de la bibliothèque Leaflet pour créer et manipuler la carte -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Inclusion du script JavaScript pour la logique de la carte et de l'animation -->
+  <script src="script.js"></script>
 
   <!-- Script pour initialiser la carte et activer la localisation -->
   <script>
@@ -94,5 +93,5 @@
   </script>
   
 </body>
-  
+
 </html>
