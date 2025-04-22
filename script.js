@@ -1,16 +1,3 @@
-// Si la carte n'est pas encore initialisée, on la crée
-if (!window.map) {
-  // Création de la carte centrée sur la France
-  window.map = L.map('map', {
-    center: [46.5, 2.5],  // Coordonnées de la France
-    zoom: 5,  // Zoom initial
-    maxBounds: [[41, -5], [52, 10]],  // Limites géographiques minimales et maximales pour éviter de sortir de la France
-    minZoom: 5,  // Niveau de zoom minimum
-    maxZoom: 18,  // Niveau de zoom maximum
-    layers: [thunderforestLayer]  // La couche de carte initiale (Thunderforest Spinal Map)
-  });
-}
-
 // Création des deux fonds de carte
 
 // Fond Thunderforest Spinal Map
