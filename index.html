@@ -77,6 +77,21 @@
 
   <!-- Script JS du plugin de localisation -->
   <script src="https://unpkg.com/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
+
+  <!-- Script pour initialiser la carte et activer la localisation -->
+  <script>
+    // Initialisation de la carte avec un fond de carte Thunderforest
+    var map = L.map('map').setView([46.603354, 1.888334], 6); // Centré sur la France
+
+    // Chargement du fond de carte (Thunderforest)
+    L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=YOUR_API_KEY', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19
+    }).addTo(map);
+
+    // Ajouter le contrôle de localisation
+    L.control.locate().addTo(map);
+  </script>
   
 </body>
   
