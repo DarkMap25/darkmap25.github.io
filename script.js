@@ -37,12 +37,12 @@ L.control.layers({
 
 // Emoji par catégorie
 const emojiParCategorie = {
+  "Affaires Non Résolues": "❓",  // Emoji pour la catégorie Affaires Non Résolues
   "Crimes": "☠️",  // Emoji pour la catégorie Crimes
   "Drames": "⚰️",  // Emoji pour la catégorie Drames
-  "Lieux Mystérieux": "👁️",  // Emoji pour la catégorie Lieux Mystérieux
-  "Lieux Abandonnés": "🏰",  // Emoji pour la catégorie Lieux Abandonnés
-  "Affaires Non Résolues": "❓",  // Emoji pour la catégorie Affaires Non Résolues
   "Guerres et Conflits": "⚔️"  // Emoji pour la catégorie Guerres et Conflits
+  "Lieux Abandonnés": "🏰",  // Emoji pour la catégorie Lieux Abandonnés
+  "Lieux Mystérieux": "👁️",  // Emoji pour la catégorie Lieux Mystérieux
 };
 
 // Fonction pour créer un marqueur avec emoji
@@ -90,12 +90,12 @@ function createLegend() {
   legend.onAdd = function (map) {
     const div = L.DomUtil.create('div', 'info legend');  // Crée un conteneur pour la légende
     const categories = [
+      { name: 'Affaires Non Résolues', emoji: '❓' },
       { name: 'Crimes', emoji: '☠️' },
       { name: 'Drames', emoji: '⚰️' },
-      { name: 'Lieux Mystérieux', emoji: '👁️' },
+      { name: 'Guerres et Conflits', emoji: '⚔️' },
       { name: 'Lieux Abandonnés', emoji: '🏰' },
-      { name: 'Affaires Non Résolues', emoji: '❓' },
-      { name: 'Guerres et Conflits', emoji: '⚔️' }
+      { name: 'Lieux Mystérieux', emoji: '👁️' }
     ];
 
     // Parcours les catégories et les ajoute à la légende
