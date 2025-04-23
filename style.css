@@ -175,6 +175,26 @@ footer {
      1px  1px 0 #e6ccff;
 }
 
+/* Personnalisation du bouton de localisation avec l'emoji 🎯 */
+.leaflet-control-locate {
+  background-color: white;  /* Fond du bouton blanc */
+  border-radius: 50%;       /* Bordure arrondie */
+  border: none;             /* Pas de bordure */
+  width: 40px;              /* Largeur du bouton */
+  height: 40px;             /* Hauteur du bouton */
+  display: flex;            /* Pour centrer l'icône à l'intérieur */
+  justify-content: center;  /* Centrer l'icône horizontalement */
+  align-items: center;      /* Centrer l'icône verticalement */
+  font-size: 20px;          /* Taille de l'emoji */
+  text-align: center;       /* Centrer le texte dans le bouton */
+}
+
+/* Changer l'icône par l'emoji 🎯 */
+.leaflet-control-locate .leaflet-control-locate-icon {
+  content: '🎯';            /* Ajoute l'emoji 🎯 */
+  font-size: 20px;          /* Taille de l'emoji */
+}
+
 /* Style pour chaque élément de la légende */
 .legend-item {
   display: flex;
