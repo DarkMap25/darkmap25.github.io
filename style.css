@@ -177,6 +177,10 @@ footer {
   box-shadow: 0 0 8px rgba(160, 32, 240, 0.4);
 }
 
+.leaflet-control-layers-expanded {
+  background-color: #e6ccff; /* violet clair quand le panneau est ouvert */
+}
+
 /* Style pour la légende sans ombre et coins arrondis */
 .info.legend {
   color: #000000;  /* Texte violet foncé */
