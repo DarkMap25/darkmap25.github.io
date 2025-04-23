@@ -43,6 +43,16 @@ L.control.locate({
   keepCurrentZoomLevel: true     // Garde le niveau de zoom actuel lors du déplacement
 }).addTo(map);                    // Ajoute le contrôle à la carte
 
+// Cibler l'élément d'icône de localisation après l'initialisation de la carte
+map.on('locationfound', function() {
+  const locateButton = document.querySelector('.leaflet-control-locate .leaflet-control-locate-icon');
+  
+  if (locateButton) {
+    // Remplacer le contenu de l'icône par l'emoji 🎯
+    locateButton.innerHTML = '🎯'; // Met l'emoji à l'intérieur du bouton
+  }
+});
+
 // Ajout du contrôle de superposition pour basculer entre les fonds de carte
 L.control.layers({
   'Thunderforest Spinal Map': thunderforestLayer,
