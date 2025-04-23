@@ -29,29 +29,30 @@ const map = L.map('map', {
   maxBoundsViscosity: 1.0  // 🌪️ "résistance" aux bords (1 = totalement bloqué)
 });
 
-// Fonction de géolocalisation
-const locateButton = document.getElementById("locate-button");
+// Ajout du bouton de localisation
+L.control.locate({
+  position: 'topright',           // Position du bouton sur la carte (en haut à droite)
+  strings: {
+    title: "Localiser ma position"  // Texte au survol du bouton
+  },
+  drawCircle: true,              // Dessine un cercle autour de la position de l'utilisateur
+  drawMarker: true,              // Dessine un marqueur à la position de l'utilisateur
+  follow: true,                  // Suivi automatique de la position de l'utilisateur
+  stopFollowingOnDrag: true,     // Arrête le suivi lorsque l'utilisateur fait glisser la carte
+  setView: true,                 // Centre la carte sur la position de l'utilisateur
+  keepCurrentZoomLevel: true     // Garde le niveau de zoom actuel lors du déplacement
+}).addTo(map);                    // Ajoute le contrôle à la carte
 
-locateButton.addEventListener("click", () => {
-  if (!navigator.geolocation) {
-    alert("La géolocalisation n'est pas disponible sur ce navigateur.");
-    return;
+// Cibler l'élément d'icône de localisation après l'initialisation de la carte
+map.on('locationfound', function() {
+  const locateButton = document.querySelector('.leaflet-control-locate .leaflet-control-locate-icon');
+  
+  if (locateButton) {
+    // Remplacer le contenu de l'icône par l'emoji 🎯
+    locateButton.innerHTML = '🎯'; // Met l'emoji à l'intérieur du bouton
   }
-
-  navigator.geolocation.getCurrentPosition(
-    (position) => {
-      const { latitude, longitude } = position.coords;
-
-      const marker = L.marker([latitude, longitude]).addTo(map);
-      marker.bindPopup("Vous êtes ici 🎯").openPopup();
-
-      map.setView([latitude, longitude], 14);
-    },
-    () => {
-      alert("Impossible de récupérer votre position.");
-    }
-  );
 });
+
 // Ajout du contrôle de superposition pour basculer entre les fonds de carte
 L.control.layers({
   'Thunderforest Spinal Map': thunderforestLayer,
