@@ -175,24 +175,25 @@ footer {
      1px  1px 0 #e6ccff;
 }
 
-/* Personnalisation du bouton de localisation avec l'emoji 🎯 */
+/* Style général du bouton */
 .leaflet-control-locate {
-  background-color: white;  /* Fond du bouton blanc */
-  border-radius: 50%;       /* Bordure arrondie */
-  border: none;             /* Pas de bordure */
-  width: 40px;              /* Largeur du bouton */
-  height: 40px;             /* Hauteur du bouton */
-  display: flex;            /* Pour centrer l'icône à l'intérieur */
-  justify-content: center;  /* Centrer l'icône horizontalement */
-  align-items: center;      /* Centrer l'icône verticalement */
-  font-size: 20px;          /* Taille de l'emoji */
-  text-align: center;       /* Centrer le texte dans le bouton */
+  background-color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: black;
+  overflow: hidden;
 }
 
+/* Empêche les anciennes icônes SVG de s'afficher */
 .leaflet-control-locate .leaflet-control-locate-icon {
-  display: flex;            /* Utiliser flex pour centrer l'emoji */
-  justify-content: center;  /* Centrer l'emoji horizontalement */
-  align-items: center;      /* Centrer l'emoji verticalement */
+  background: none !important;
+  mask: none !important;
+  -webkit-mask: none !important;
 }
 
 /* Style pour chaque élément de la légende */
