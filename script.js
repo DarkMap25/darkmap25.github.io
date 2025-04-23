@@ -45,20 +45,23 @@ L.control.locate({
 
 // Ajout de la fonctionnalité de localisation avec animation de zoom
 map.on('locationfound', function(event) {
-    const zoomLevel = 14;  // Choisis un zoom qui correspond à la vue d'un département 
-    // Effectuer un zoom progressif vers la position de l'utilisateur
-    map.setView(event.latlng, zoomLevel, {
-        animate: true,  // Active l'animation
-        duration: 2     // Durée de l'animation (en secondes)
-    });
+    const targetLatLng = event.latlng;
+    const targetZoom = 12; // Zoom niveau département
 
-    // Optionnel : change la couleur du cercle de localisation (pour le rendre plus visible)
-    const locateCircle = document.querySelector('.leaflet-control-locate-circle');
-    if (locateCircle) {
-        locateCircle.style.stroke = "#FF0000"; // Met une bordure rouge autour du cercle
-        locateCircle.style.fillOpacity = 0.2;  // Change l'opacité de remplissage
+    // Étape 1 : faire un petit dézoom si nécessaire, pour rendre l'effet plus visible
+    const currentZoom = map.getZoom();
+    if (currentZoom > targetZoom - 2) {
+        map.setZoom(targetZoom - 2); // Zoom arrière rapide si on est déjà trop proche
     }
-});
+
+    // Étape 2 : attendre un tout petit peu puis animer vers la position et le zoom final
+    setTimeout(() => {
+        map.flyTo(targetLatLng, targetZoom, {
+            animate: true,
+            duration: 2.5, // Durée totale du mouvement en secondes
+            easeLinearity: 0.25
+        });
+    });
 
 // Ajout du contrôle de superposition pour basculer entre les fonds de carte
 L.control.layers({
