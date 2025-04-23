@@ -87,7 +87,6 @@ function createEmojiMarker(lieu) {
       map.panBy([0, offset], { animate: true });
     }
   });
-});
 
   return marker;
 }
