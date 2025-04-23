@@ -156,36 +156,9 @@ footer {
 
 /* === PERSONNALISATION DU BOUTON DE CHANGEMENT DE CARTE (Contrôle Leaflet) === */
 
-/* Personnalisation des boutons de zoom + et - */
-.leaflet-control-zoom-in,
-.leaflet-control-zoom-out {
-  background-color: #e6ccff; /* Fond violet clair */
-  width: 36px;
-  height: 36px;
-  font-size: 20px;
-  color: #1a001a; /* Texte sombre pour les symboles + et - */
-}
-
-.leaflet-control-layers-toggle {
-  background-color: #e6ccff; /* Couleur violette personnalisée */
-  border: 1px solid #999;
-  width: 36px;
-  height: 36px;
-  background-size: 20px 20px;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 .leaflet-control-layers {
-  background-color: #e6ccff; /* violet clair */
   color: #1a001a; /* texte sombre pour le contraste */
-  border: 1px solid #a64dff; /* violet plus soutenu */
   font-family: 'Quicksand', sans-serif; font-weight: 700;  
-  box-shadow: 0 0 8px rgba(160, 32, 240, 0.4);
-}
-
-.leaflet-control-layers-expanded {
-  background-color: #e6ccff; /* violet clair quand le panneau est ouvert */
 }
 
 /* Style pour la légende sans ombre et coins arrondis */
