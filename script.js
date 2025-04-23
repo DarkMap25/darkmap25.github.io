@@ -149,4 +149,25 @@ createLegend();
 // ✅ Affichage de l'intro animée ou non
 let showIntro = true;  // Variable pour déterminer si l'intro animée doit être affichée ou non
 
-// Écoute l'év
+// Écoute l'événement de chargement de la page pour lancer l'animation
+window.addEventListener("load", () => {
+  const overlay = document.getElementById("intro-overlay");  // Sélectionne l'élément overlay (couche de superposition de l'intro)
+  
+  if (showIntro) {  // Si l'animation est activée
+    const line1 = document.querySelector(".line1");  // Sélectionne la première ligne de texte de l'intro
+    const line2 = document.querySelector(".line2");  // Sélectionne la deuxième ligne de texte de l'intro
+    
+    // Définit le texte pour l'intro
+    line1.textContent = "Un territoire. Une carte.";
+    line2.textContent = "Un passé sombre.";
+    
+    // Démarre l'animation pour l'intro après un délai
+    setTimeout(() => {
+      //overlay.style.transition = "opacity 2s ease";  // Ajoute une transition de fondu pour l'overlay //enlevé
+      overlay.style.opacity = 0;  // Règle l'opacité à 0 pour faire disparaître l'overlay
+      setTimeout(() => overlay.remove(), 1000);  // Retire complètement l'overlay après une seconde
+    }, 10000);  // Délai de 10 secondes avant de démarrer la transition
+  } else {
+    overlay.style.display = "none";  // Si l'intro n'est pas activée, masque l'overlay
+  }
+});
