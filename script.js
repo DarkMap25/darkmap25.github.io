@@ -3,7 +3,7 @@
 // Fond Thunderforest Spinal Map
 const thunderforestLayer = L.tileLayer('https://tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png?apikey=2f67b0d994104bf69ffcd0cf70f86a08', {
   attribution: '&copy; OpenStreetMap contributors, &copy; Thunderforest',
-  minZoom: 5,  // Niveau de zoom minimum  
+  minZoom: 5,  // Niveau de zoom minimum
   maxZoom: 18
 });
 
@@ -41,12 +41,11 @@ L.control.locate({
   stopFollowingOnDrag: true,     // Arrête le suivi lorsque l'utilisateur fait glisser la carte
   setView: true,                 // Centre la carte sur la position de l'utilisateur
   keepCurrentZoomLevel: true     // Garde le niveau de zoom actuel lors du déplacement
-}).addTo(map);                    // Ajoute le contrôle à la carte
+}).addTo(map);
 
 // Cibler l'élément d'icône de localisation après l'initialisation de la carte
 map.on('locationfound', function() {
   const locateButton = document.querySelector('.leaflet-control-locate .leaflet-control-locate-icon');
-  
   if (locateButton) {
     // Remplacer le contenu de l'icône par l'emoji 🎯
     locateButton.innerHTML = '🎯'; // Met l'emoji à l'intérieur du bouton
@@ -57,7 +56,7 @@ map.on('locationfound', function() {
 L.control.layers({
   'Thunderforest Spinal Map': thunderforestLayer,
   'Thunderforest Atlas': thunderforestAtlasLayer
-}, {}, {position: 'topleft'}).addTo(map);
+}, {}, { position: 'topleft' }).addTo(map);
 
 // Emoji par catégorie
 const emojiParCategorie = {
@@ -73,7 +72,7 @@ const emojiParCategorie = {
 function createEmojiMarker(lieu) {
   // Récupère l'emoji associé à la catégorie du lieu, ou un emoji par défaut si la catégorie est inconnue
   const emoji = emojiParCategorie[lieu.categorie] || "❓";
-
+  
   // Création de l'icône du marqueur avec un emoji
   const emojiIcon = L.divIcon({
     className: 'emoji-icon',  // Classe CSS personnalisée pour l'icône
@@ -89,15 +88,15 @@ function createEmojiMarker(lieu) {
     ${lieu.resume}<br>  <!-- Résumé court du lieu -->
     <a href="${lieu.lien}" target="_blank">Voir plus</a>  <!-- Lien pour afficher plus de détails sur le lieu -->
   `;
-
-    // Retourne le marqueur avec son icône emoji et son popup
+  
+  // Retourne le marqueur avec son icône emoji et son popup
   const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon }).bindPopup(popupContent);
-
+  
   // Centrer la carte sur le marqueur lors du clic, et s'assurer que le marqueur est au centre
   marker.on('click', () => {
     map.setView([lieu.latitude, lieu.longitude], map.getZoom(), { animate: true });  // Centrer sur le marqueur et garder le zoom
   });
-
+  
   return marker;
 }
 
@@ -105,17 +104,17 @@ function createEmojiMarker(lieu) {
 fetch('lieux.json')  // Effectue une requête pour récupérer les données du fichier JSON contenant les lieux
   .then(response => response.json())  // Parse la réponse en JSON
   .then(data => {
-  const markers = data.map(lieu => createEmojiMarker(lieu)); // Crée tous les marqueurs
-  const group = L.featureGroup(markers);                     // Groupe contenant tous les marqueurs
-  group.addTo(map);                                          // Ajoute tous les marqueurs à la carte
-  map.fitBounds(group.getBounds());      
+    const markers = data.map(lieu => createEmojiMarker(lieu)); // Crée tous les marqueurs
+    const group = L.featureGroup(markers);                     // Groupe contenant tous les marqueurs
+    group.addTo(map);                                          // Ajoute tous les marqueurs à la carte
+    map.fitBounds(group.getBounds());                           // Ajuste la vue pour afficher tous les marqueurs
   })
   .catch(error => console.error('Erreur lors du chargement des lieux :', error));  // Gestion d'erreur en cas de problème de chargement
 
 // Fonction pour créer une légende avec les catégories et les emojis
 function createLegend() {
   const legend = L.control({ position: 'bottomleft' }); // Crée un contrôle en bas à gauche
-
+  
   // Lors de l'ajout du contrôle à la carte
   legend.onAdd = function (map) {
     const div = L.DomUtil.create('div', 'info legend');  // Crée un conteneur pour la légende
@@ -137,10 +136,10 @@ function createLegend() {
         </div>
       `;
     });
-
+    
     return div; // Retourne le conteneur avec la légende
   };
-
+  
   legend.addTo(map); // Ajoute la légende à la carte
 }
 
@@ -150,25 +149,4 @@ createLegend();
 // ✅ Affichage de l'intro animée ou non
 let showIntro = true;  // Variable pour déterminer si l'intro animée doit être affichée ou non
 
-// Écoute l'événement de chargement de la page pour lancer l'animation
-window.addEventListener("load", () => {
-  const overlay = document.getElementById("intro-overlay");  // Sélectionne l'élément overlay (couche de superposition de l'intro)
-
-  if (showIntro) {  // Si l'animation est activée
-    const line1 = document.querySelector(".line1");  // Sélectionne la première ligne de texte de l'intro
-    const line2 = document.querySelector(".line2");  // Sélectionne la deuxième ligne de texte de l'intro
-
-    // Définit le texte pour l'intro
-    line1.textContent = "Un territoire. Une carte.";
-    line2.textContent = "Un passé sombre.";
-
-    // Démarre l'animation pour l'intro après un délai
-    setTimeout(() => {
-      //overlay.style.transition = "opacity 2s ease";  // Ajoute une transition de fondu pour l'overlay//enlevé
-      overlay.style.opacity = 0;  // Règle l'opacité à 0 pour faire disparaître l'overlay
-      setTimeout(() => overlay.remove(), 1000);  // Retire complètement l'overlay après une seconde
-    }, 10000);  // Délai de 10 secondes avant de démarrer la transition
-  } else {
-    overlay.style.display = "none";  // Si l'intro n'est pas activée, masque l'overlay
-  }
-});
+// Écoute l'év
