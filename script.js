@@ -46,7 +46,7 @@ L.control.locate({
     html: '🎯',  // Emoji à afficher
     iconSize: [30, 30], // Ajuste la taille de l'emoji
     iconAnchor: [15, 15], // Centre l'emoji sur le bouton
-  });
+  })
 }).addTo(map);
 
 // Ajout de la fonctionnalité de localisation avec animation de zoom
