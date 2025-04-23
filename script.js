@@ -43,13 +43,21 @@ L.control.locate({
   keepCurrentZoomLevel: true     // Garde le niveau de zoom actuel lors du déplacement
 }).addTo(map);
 
-// Cibler l'élément d'icône de localisation après l'initialisation de la carte
-map.on('locationfound', function() {
-  const locateButton = document.querySelector('.leaflet-control-locate .leaflet-control-locate-icon');
-  if (locateButton) {
-    // Remplacer le contenu de l'icône par l'emoji 🎯
-    locateButton.innerHTML = '🎯'; // Met l'emoji à l'intérieur du bouton
-  }
+// Ajout de la fonctionnalité de localisation avec animation de zoom
+map.on('locationfound', function(event) {
+    const zoomLevel = 14;  // Choisis un zoom qui correspond à la vue d'un département 
+    // Effectuer un zoom progressif vers la position de l'utilisateur
+    map.setView(event.latlng, zoomLevel, {
+        animate: true,  // Active l'animation
+        duration: 2     // Durée de l'animation (en secondes)
+    });
+
+    // Optionnel : change la couleur du cercle de localisation (pour le rendre plus visible)
+    const locateCircle = document.querySelector('.leaflet-control-locate-circle');
+    if (locateCircle) {
+        locateCircle.style.stroke = "#FF0000"; // Met une bordure rouge autour du cercle
+        locateCircle.style.fillOpacity = 0.2;  // Change l'opacité de remplissage
+    }
 });
 
 // Ajout du contrôle de superposition pour basculer entre les fonds de carte
