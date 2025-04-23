@@ -136,7 +136,7 @@ h1 {
 
 /* === Pied de page === */
 footer {
-  text-align: center; /* Centrer le texte du pied de page */
+  text-align: justify; /* Centrer le texte du pied de page */
   padding: 20px; /* Espacement autour du pied de page */
   font-size: 0.9em; /* Taille de la police */
   color: #777; /* Couleur gris pour le texte */
