@@ -72,8 +72,20 @@ function createEmojiMarker(lieu) {
   // Centrer la carte sur le marqueur lors du clic, et s'assurer que le marqueur est au centre
   marker.on('click', () => {
     map.setView([lieu.latitude, lieu.longitude], map.getZoom(), { animate: true });  // Centrer sur le marqueur et garder le zoom
-  });
+    marker.openPopup();
 
+  // Ajuster la carte si le popup est trop proche du bord supérieur
+  const popup = marker.getPopup();
+  const mapHeight = map.getSize().y;  // Hauteur de la carte
+  const popupHeight = popup._container.offsetHeight;  // Hauteur du popup
+  const popupPosition = marker.getLatLng().lat;  // Position du marqueur
+
+  // Vérifier si le popup dépasse du bord supérieur
+  if (popupPosition - popupHeight / 2 < map.getBounds().getNorth()) {
+    const offset = (popupHeight / 2) - (map.getBounds().getNorth() - popupPosition);
+    map.panBy([0, offset], { animate: true });  // Déplacer la carte vers le bas pour faire apparaître le popup
+  }
+    )};
   return marker;
 }
 
@@ -90,7 +102,7 @@ fetch('lieux.json')  // Effectue une requête pour récupérer les données du f
 
 // Fonction pour créer une légende avec les catégories et les emojis
 function createLegend() {
-  const legend = L.control({ position: 'bottomleft' }); // Crée un contrôle en bas à gauche
+  const legend = L.control({ position: '}' }); // Crée un contrôle en bas à gauche
 
   // Lors de l'ajout du contrôle à la carte
   legend.onAdd = function (map) {
