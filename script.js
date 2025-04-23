@@ -46,7 +46,7 @@ L.control.locate({
 // Ajout de la fonctionnalité de localisation avec animation de zoom
 map.on('locationfound', function(event) {
     const targetLatLng = event.latlng;
-    const targetZoom = 12; // Zoom niveau département
+    const targetZoom = 8; // Zoom niveau département
 
     // Étape 1 : faire un petit dézoom si nécessaire, pour rendre l'effet plus visible
     const currentZoom = map.getZoom();
