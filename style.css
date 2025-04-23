@@ -189,10 +189,21 @@ footer {
   text-align: center;       /* Centrer le texte dans le bouton */
 }
 
-/* Changer l'icône par l'emoji 🎯 */
+/* Cibler l'élément qui contient l'icône de localisation de Leaflet */
 .leaflet-control-locate .leaflet-control-locate-icon {
+  display: flex;            /* Utiliser flex pour centrer l'emoji */
+  justify-content: center;  /* Centrer l'emoji horizontalement */
+  align-items: center;      /* Centrer l'emoji verticalement */
+  font-size: 20px;          /* Taille de l'emoji */
+  color: black;             /* Couleur de l'emoji */
+}
+
+/* Remplacer le contenu de l'icône par l'emoji 🎯 */
+.leaflet-control-locate .leaflet-control-locate-icon:before {
   content: '🎯';            /* Ajoute l'emoji 🎯 */
   font-size: 20px;          /* Taille de l'emoji */
+  color: black;             /* Couleur de l'emoji */
+  display: block;           /* Assure que l'emoji soit un bloc et bien centré */
 }
 
 /* Style pour chaque élément de la légende */
