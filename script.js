@@ -74,11 +74,10 @@ function createEmojiMarker(lieu) {
 fetch('lieux.json')  // Effectue une requête pour récupérer les données du fichier JSON contenant les lieux
   .then(response => response.json())  // Parse la réponse en JSON
   .then(data => {
-    // Pour chaque lieu dans le fichier JSON
-    data.forEach(lieu => {
-      // Crée un marqueur pour chaque lieu et l'ajoute à la carte
-      createEmojiMarker(lieu).addTo(map);
-    });
+  const markers = data.map(lieu => createEmojiMarker(lieu)); // Crée tous les marqueurs
+  const group = L.featureGroup(markers);                     // Groupe contenant tous les marqueurs
+  group.addTo(map);                                          // Ajoute tous les marqueurs à la carte
+  map.fitBounds(group.getBounds());      
   })
   .catch(error => console.error('Erreur lors du chargement des lieux :', error));  // Gestion d'erreur en cas de problème de chargement
 
