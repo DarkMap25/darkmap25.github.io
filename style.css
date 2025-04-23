@@ -160,7 +160,7 @@ footer {
    On change ici la couleur d’arrière-plan et les dimensions pour le personnaliser. */
 
 .leaflet-control-layers-toggle {
-  background-color: #e6ccff  /* Couleur violette personnalisée */
+  background-color: #e6ccff; /* Couleur violette personnalisée */
   border: 1px solid #999;
   width: 36px;
   height: 36px;
@@ -175,16 +175,6 @@ footer {
   border: 1px solid #a64dff; /* violet plus soutenu */
   font-family: 'Cormorant Garamond', serif;
   box-shadow: 0 0 8px rgba(160, 32, 240, 0.4);
-}
-
-.leaflet-control-layers-expanded {
-  border-radius: 8px;
-  padding: 6px;
-}
-
-.leaflet-control-layers:hover {
-  background-color: #f2e6ff; /* encore plus clair au survol */
-  box-shadow: 0 0 10px rgba(160, 32, 240, 0.6);
 }
 
 /* Style pour la légende sans ombre et coins arrondis */
