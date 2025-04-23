@@ -162,10 +162,10 @@ footer {
   line-height: 1.6;  /* Hauteur de ligne pour améliorer la lisibilité */
 /* Contour rouge net autour du texte */
   text-shadow:
-    -1px -1px 0 red,
-     1px -1px 0 red,
-    -1px  1px 0 red,
-     1px  1px 0 red;
+    -1px -1px 0 #8000ff
+     1px -1px 0 #8000ff
+    -1px  1px 0 #8000ff
+     1px  1px 0 #8000ff
 }
 
 /* Style pour chaque élément de la légende */
