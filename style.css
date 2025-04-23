@@ -175,15 +175,6 @@ footer {
      1px  1px 0 #e6ccff;
 }
 
-/* Personnalisation du bouton de localisation avec l'emoji 🎯 */
-.custom-location-icon {
-  font-size: 24px; /* Ajuste la taille de l'emoji */
-  background-color: transparent; /* Enlève le fond */
-  border: none; /* Enlève la bordure */
-  padding: 0; /* Enlève le padding si nécessaire */
-  cursor: pointer; /* Change le curseur en pointeur */
-}
-
 /* Style pour chaque élément de la légende */
 .legend-item {
   display: flex;
