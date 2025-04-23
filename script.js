@@ -29,22 +29,29 @@ const map = L.map('map', {
   maxBoundsViscosity: 1.0  // 🌪️ "résistance" aux bords (1 = totalement bloqué)
 });
 
-const locateControl = L.control.locate({
-  flyTo: true,
-  showPopup: false,
-  locateOptions: {
-    enableHighAccuracy: true
-  }
-}).addTo(map);
+// Fonction de géolocalisation
+const locateButton = document.getElementById("locate-button");
 
-// Attend que le bouton soit bien dans le DOM
-setTimeout(() => {
-  const icon = document.querySelector('.leaflet-control-locate .leaflet-control-locate-icon');
-  if (icon) {
-    icon.innerHTML = '🎯';
+locateButton.addEventListener("click", () => {
+  if (!navigator.geolocation) {
+    alert("La géolocalisation n'est pas disponible sur ce navigateur.");
+    return;
   }
-}, 200); // délai un peu plus long pour assurer le rendu
 
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const { latitude, longitude } = position.coords;
+
+      const marker = L.marker([latitude, longitude]).addTo(map);
+      marker.bindPopup("Vous êtes ici 🎯").openPopup();
+
+      map.setView([latitude, longitude], 14);
+    },
+    () => {
+      alert("Impossible de récupérer votre position.");
+    }
+  );
+});
 // Ajout du contrôle de superposition pour basculer entre les fonds de carte
 L.control.layers({
   'Thunderforest Spinal Map': thunderforestLayer,
