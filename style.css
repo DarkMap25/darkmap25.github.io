@@ -189,21 +189,29 @@ footer {
   text-align: center;       /* Centrer le texte dans le bouton */
 }
 
-/* Cibler l'élément qui contient l'icône de localisation de Leaflet */
+/* Retirer le contenu par défaut de l'icône Leaflet */
 .leaflet-control-locate .leaflet-control-locate-icon {
+  content: none;            /* Retirer l'icône par défaut de Leaflet */
+  font-size: 20px;          /* Taille de l'emoji */
+  color: black;             /* Couleur de l'emoji */
+  line-height: 0;           /* Pas de hauteur de ligne (centreur) */
   display: flex;            /* Utiliser flex pour centrer l'emoji */
   justify-content: center;  /* Centrer l'emoji horizontalement */
   align-items: center;      /* Centrer l'emoji verticalement */
-  font-size: 20px;          /* Taille de l'emoji */
-  color: black;             /* Couleur de l'emoji */
 }
 
-/* Remplacer le contenu de l'icône par l'emoji 🎯 */
-.leaflet-control-locate .leaflet-control-locate-icon:before {
-  content: '🎯';            /* Ajoute l'emoji 🎯 */
-  font-size: 20px;          /* Taille de l'emoji */
-  color: black;             /* Couleur de l'emoji */
-  display: block;           /* Assure que l'emoji soit un bloc et bien centré */
+/* Ajouter l'emoji directement dans le bouton */
+.leaflet-control-locate .leaflet-control-locate-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: black;
+}
+
+.leaflet-control-locate .leaflet-control-locate-icon::before {
+  content: '🎯';  /* Insérer l'emoji 🎯 */
+  font-size: 20px; /* Ajuster la taille de l'emoji */
 }
 
 /* Style pour chaque élément de la légende */
