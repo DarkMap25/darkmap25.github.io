@@ -73,20 +73,44 @@ function createEmojiMarker(lieu) {
   marker.on('click', () => {
     map.setView([lieu.latitude, lieu.longitude], map.getZoom(), { animate: true });  // Centrer sur le marqueur et garder le zoom
   });
+  
+    // Ouvre le popup
+  marker.openPopup();
 
-    // Vérifie si le popup dépasse du bord supérieur
-  const popup = marker.getPopup();
-  popup.on('open', () => {
+  // Ajouter un délai pour ajuster la vue de la carte après que le popup s'ouvre
+  setTimeout(() => {
+    const popup = marker.getPopup();
     const popupHeight = popup._container.offsetHeight;
     const mapHeight = map.getSize().y;
-    const popupPosition = marker.getLatLng();
+    const mapWidth = map.getSize().x;
 
-    // Si le popup dépasse du bord supérieur, ajuste la carte pour le rendre visible
-    if (popupPosition.lat - popupHeight / 2 < map.getBounds().getNorth()) {
-      const offset = (popupHeight / 2) - (mapPosition.lat - map.getBounds().getNorth());
-      map.panBy([0, offset], { animate: true });
+    // Position du popup
+    const markerPosition = marker.getLatLng();
+    const popupOffset = popup._container.getBoundingClientRect();
+
+    // Vérifie si le popup dépasse du bord supérieur
+    const topOverflow = popupOffset.top < 0;
+    const bottomOverflow = popupOffset.top + popupHeight > mapHeight;
+    const leftOverflow = popupOffset.left < 0;
+    const rightOverflow = popupOffset.left + popupOffset.width > mapWidth;
+
+    // Ajuste la carte si nécessaire pour rendre le popup visible
+    if (topOverflow) {
+      map.panBy([0, popupHeight], { animate: true });  // Si trop haut, déplace la carte vers le bas
     }
-  });
+
+    if (bottomOverflow) {
+      map.panBy([0, -popupHeight], { animate: true });  // Si trop bas, déplace la carte vers le haut
+    }
+
+    if (leftOverflow) {
+      map.panBy([popupOffset.width, 0], { animate: true });  // Si trop à gauche, déplace la carte vers la droite
+    }
+
+    if (rightOverflow) {
+      map.panBy([-popupOffset.width, 0], { animate: true });  // Si trop à droite, déplace la carte vers la gauche
+    }
+  }, 50);  // Légère temporisation avant d'ajuster
 
   return marker;
 }
