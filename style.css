@@ -154,6 +154,24 @@ footer {
   color: inherit; /* Couleur héritée du parent */
 }
 
+.leaflet-control-layers {
+  background-color: #e6ccff; /* violet clair */
+  color: #1a001a; /* texte sombre pour le contraste */
+  border: 1px solid #a64dff; /* violet plus soutenu */
+  font-family: 'Cormorant Garamond', serif;
+  box-shadow: 0 0 8px rgba(160, 32, 240, 0.4);
+}
+
+.leaflet-control-layers-expanded {
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.leaflet-control-layers:hover {
+  background-color: #f2e6ff; /* encore plus clair au survol */
+  box-shadow: 0 0 10px rgba(160, 32, 240, 0.6);
+}
+
 /* Style pour la légende sans ombre et coins arrondis */
 .info.legend {
   color: #000000;  /* Texte violet foncé */
