@@ -160,12 +160,12 @@ footer {
   padding: 10px;  /* Espace interne autour du texte */
   font-size: 10px;  /* Taille du texte */
   line-height: 1.6;  /* Hauteur de ligne pour améliorer la lisibilité */
-/* Contour rouge net autour du texte */
+/* Contour violet net autour du texte */
   text-shadow:
-    -1px -1px 0 #8000ff
-     1px -1px 0 #8000ff
-    -1px  1px 0 #8000ff
-     1px  1px 0 #8000ff
+    -1px -1px 0 #e6ccff,
+     1px -1px 0 #e6ccff,
+    -1px  1px 0 #e6ccff,
+     1px  1px 0 #e6ccff;
 }
 
 /* Style pour chaque élément de la légende */
