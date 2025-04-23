@@ -85,7 +85,7 @@ function createEmojiMarker(lieu) {
     const offset = (popupHeight / 2) - (map.getBounds().getNorth() - popupPosition);
     map.panBy([0, offset], { animate: true });  // Déplacer la carte vers le bas pour faire apparaître le popup
   }
-  
+  )
   return marker;
 }
 
