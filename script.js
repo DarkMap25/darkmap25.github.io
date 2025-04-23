@@ -66,8 +66,15 @@ function createEmojiMarker(lieu) {
     <a href="${lieu.lien}" target="_blank">Voir plus</a>  <!-- Lien pour afficher plus de détails sur le lieu -->
   `;
 
-  // Retourne le marqueur avec son icône emoji et son popup
-  return L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon }).bindPopup(popupContent);
+    // Retourne le marqueur avec son icône emoji et son popup
+  const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon }).bindPopup(popupContent);
+
+  // Centrer la carte sur le marqueur lors du clic, et s'assurer que le marqueur est au centre
+  marker.on('click', () => {
+    map.setView([lieu.latitude, lieu.longitude], 13, { animate: true });  // Centrer sur le marqueur et appliquer le zoom
+  });
+
+  return marker;
 }
 
 // Chargement des lieux depuis lieux.json
