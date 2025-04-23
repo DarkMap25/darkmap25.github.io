@@ -29,29 +29,21 @@ const map = L.map('map', {
   maxBoundsViscosity: 1.0  // 🌪️ "résistance" aux bords (1 = totalement bloqué)
 });
 
-// Ajout du bouton de localisation
-L.control.locate({
-  position: 'topright',           // Position du bouton sur la carte (en haut à droite)
-  strings: {
-    title: "Localiser ma position"  // Texte au survol du bouton
-  },
-  drawCircle: true,              // Dessine un cercle autour de la position de l'utilisateur
-  drawMarker: true,              // Dessine un marqueur à la position de l'utilisateur
-  follow: true,                  // Suivi automatique de la position de l'utilisateur
-  stopFollowingOnDrag: true,     // Arrête le suivi lorsque l'utilisateur fait glisser la carte
-  setView: true,                 // Centre la carte sur la position de l'utilisateur
-  keepCurrentZoomLevel: true     // Garde le niveau de zoom actuel lors du déplacement
-}).addTo(map);                    // Ajoute le contrôle à la carte
-
-// Cibler l'élément d'icône de localisation après l'initialisation de la carte
-map.on('locationfound', function() {
-  const locateButton = document.querySelector('.leaflet-control-locate .leaflet-control-locate-icon');
-  
-  if (locateButton) {
-    // Remplacer le contenu de l'icône par l'emoji 🎯
-    locateButton.innerHTML = '🎯'; // Met l'emoji à l'intérieur du bouton
+const locateControl = L.control.locate({
+  flyTo: true,
+  showPopup: false,
+  locateOptions: {
+    enableHighAccuracy: true
   }
-});
+}).addTo(map);
+
+// Attend que le bouton soit bien dans le DOM
+setTimeout(() => {
+  const icon = document.querySelector('.leaflet-control-locate .leaflet-control-locate-icon');
+  if (icon) {
+    icon.innerHTML = '🎯';
+  }
+}, 200); // délai un peu plus long pour assurer le rendu
 
 // Ajout du contrôle de superposition pour basculer entre les fonds de carte
 L.control.layers({
