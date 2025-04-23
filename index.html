@@ -12,6 +12,9 @@
   <!-- Titre de la page affiché dans l'onglet du navigateur -->
   <title>DarkMap</title>
 
+  <!-- Feuille de style pour le bouton de géolocalisation (leaflet.locatecontrol) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+
   <!-- Inclusion des feuilles de style CSS -->
   <link rel="stylesheet" href="style.css" />  <!-- Style personnalisé pour ton site -->
   
@@ -53,9 +56,6 @@
 <!-- Zone de la carte interactive -->
 <div id="map"></div>  <!-- Cette div contiendra la carte interactive générée par Leaflet -->
 
-<!-- Bouton géolocalisation 🎯 -->
-<button id="locate-button" title="Me localiser">🎯</button>
-
 <!-- Section d'introduction expliquant le projet -->
 <section class="intro" style="max-width: 80ch; margin: 40px auto; text-align: justify; padding: 0 20px;">
   <p>
@@ -71,7 +71,10 @@
   <p>&copy; 2025 DarkMap.fr</p>
 </footer>
 
+<!-- Feuille de style pour le bouton de géolocalisation -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet.locatecontrol@0.71.0/dist/L.Control.Locate.min.css" />
+
+<!-- Script du plugin de géolocalisation -->
 <script src="https://unpkg.com/leaflet.locatecontrol@0.71.0/dist/L.Control.Locate.min.js"></script>
   
 <!-- Inclusion du script JavaScript pour la logique de la carte et de l'animation -->
