@@ -69,50 +69,11 @@ function createEmojiMarker(lieu) {
     // Retourne le marqueur avec son icône emoji et son popup
   const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon }).bindPopup(popupContent);
 
+  // Centrer la carte sur le marqueur lors du clic, et s'assurer que le marqueur est au centre
   marker.on('click', () => {
-  // Centrer sur le marqueur sans modifier le zoom
-  map.setView([lieu.latitude, lieu.longitude], map.getZoom(), { animate: true });
+    map.setView([lieu.latitude, lieu.longitude], map.getZoom(), { animate: true });  // Centrer sur le marqueur et garder le zoom
+  });
 
-  // Ouvre le popup
-  marker.openPopup();
-
-  // Ajouter un délai pour s'assurer que le popup est complètement ouvert avant d'ajuster la carte
-  setTimeout(() => {
-    const popup = marker.getPopup();
-    if (popup && popup._container) {
-      const popupHeight = popup._container.offsetHeight;
-      const mapHeight = map.getSize().y;
-      const mapWidth = map.getSize().x;
-
-      // Position du popup
-      const markerPosition = marker.getLatLng();
-      const popupOffset = popup._container.getBoundingClientRect();
-
-      // Vérifie si le popup dépasse du bord supérieur
-      const topOverflow = popupOffset.top < 0;
-      const bottomOverflow = popupOffset.top + popupHeight > mapHeight;
-      const leftOverflow = popupOffset.left < 0;
-      const rightOverflow = popupOffset.left + popupOffset.width > mapWidth;
-
-      // Ajuste la carte si nécessaire pour rendre le popup visible
-      if (topOverflow) {
-        map.panBy([0, popupHeight], { animate: true });  // Si trop haut, déplace la carte vers le bas
-      }
-
-      if (bottomOverflow) {
-        map.panBy([0, -popupHeight], { animate: true });  // Si trop bas, déplace la carte vers le haut
-      }
-
-      if (leftOverflow) {
-        map.panBy([popupOffset.width, 0], { animate: true });  // Si trop à gauche, déplace la carte vers la droite
-      }
-
-      if (rightOverflow) {
-        map.panBy([-popupOffset.width, 0], { animate: true });  // Si trop à droite, déplace la carte vers la gauche
-      }
-    }
-  }, 100);  // Temporisation de 100ms pour s'assurer que le popup est ouvert
-});
   return marker;
 }
 
