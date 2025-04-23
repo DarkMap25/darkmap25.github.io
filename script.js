@@ -74,6 +74,21 @@ function createEmojiMarker(lieu) {
     map.setView([lieu.latitude, lieu.longitude], map.getZoom(), { animate: true });  // Centrer sur le marqueur et garder le zoom
   });
 
+    // Vérifie si le popup dépasse du bord supérieur
+  const popup = marker.getPopup();
+  popup.on('open', () => {
+    const popupHeight = popup._container.offsetHeight;
+    const mapHeight = map.getSize().y;
+    const popupPosition = marker.getLatLng();
+
+    // Si le popup dépasse du bord supérieur, ajuste la carte pour le rendre visible
+    if (popupPosition.lat - popupHeight / 2 < map.getBounds().getNorth()) {
+      const offset = (popupHeight / 2) - (mapPosition.lat - map.getBounds().getNorth());
+      map.panBy([0, offset], { animate: true });
+    }
+  });
+});
+
   return marker;
 }
 
