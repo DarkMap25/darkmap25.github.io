@@ -40,7 +40,13 @@ L.control.locate({
   follow: true,                  // Suivi automatique de la position de l'utilisateur
   stopFollowingOnDrag: true,     // Arrête le suivi lorsque l'utilisateur fait glisser la carte
   setView: true,                 // Centre la carte sur la position de l'utilisateur
-  keepCurrentZoomLevel: true     // Garde le niveau de zoom actuel lors du déplacement
+  keepCurrentZoomLevel: true,    // Garde le niveau de zoom actuel lors du déplacement
+    icon: L.divIcon({
+    className: 'custom-location-icon',  // Utilise une classe CSS pour personnaliser l'icône
+    html: '🎯',  // Emoji à afficher
+    iconSize: [30, 30], // Ajuste la taille de l'emoji
+    iconAnchor: [15, 15], // Centre l'emoji sur le bouton
+  });
 }).addTo(map);
 
 // Ajout de la fonctionnalité de localisation avec animation de zoom
