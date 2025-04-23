@@ -173,7 +173,7 @@ footer {
   background-color: #e6ccff; /* violet clair */
   color: #1a001a; /* texte sombre pour le contraste */
   border: 1px solid #a64dff; /* violet plus soutenu */
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Quicksand', sans-serif; font-weight: 700;  
   box-shadow: 0 0 8px rgba(160, 32, 240, 0.4);
 }
 
