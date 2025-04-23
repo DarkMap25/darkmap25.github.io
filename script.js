@@ -29,20 +29,6 @@ const map = L.map('map', {
   maxBoundsViscosity: 1.0  // 🌪️ "résistance" aux bords (1 = totalement bloqué)
 });
 
-// Ajout du contrôle de géolocalisation
-L.control.locate({
-  position: 'topleft',      // Position du bouton (en haut à droite)
-  setView: true,             // Centre automatiquement la carte sur ta position
-  flyTo: true,               // Fait une animation de transition douce
-  keepCurrentZoomLevel: false, // Ajuste automatiquement le zoom
-  strings: {
-    title: "Ma position"     // Texte affiché au survol du bouton
-  },
-  locateOptions: {
-    enableHighAccuracy: true // Active le GPS haute précision si dispo
-  }
-}).addTo(map);
-
 // Ajout du contrôle de superposition pour basculer entre les fonds de carte
 L.control.layers({
   'Thunderforest Spinal Map': thunderforestLayer,
