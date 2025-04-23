@@ -187,6 +187,7 @@ footer {
   align-items: center;      /* Centrer l'icône verticalement */
   font-size: 20px;          /* Taille de l'emoji */
   text-align: center;       /* Centrer le texte dans le bouton */
+  font-family: "Segoe UI Emoji", "Noto Color Emoji", sans-serif; /* Police d'emoji */
 }
 
 .leaflet-control-locate .leaflet-control-locate-icon {
