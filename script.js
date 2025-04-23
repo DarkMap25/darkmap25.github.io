@@ -29,6 +29,20 @@ const map = L.map('map', {
   maxBoundsViscosity: 1.0  // 🌪️ "résistance" aux bords (1 = totalement bloqué)
 });
 
+// Ajout du bouton de localisation
+L.control.locate({
+  position: 'topright',           // Position du bouton sur la carte (en haut à droite)
+  strings: {
+    title: "Localiser ma position"  // Texte au survol du bouton
+  },
+  drawCircle: true,              // Dessine un cercle autour de la position de l'utilisateur
+  drawMarker: true,              // Dessine un marqueur à la position de l'utilisateur
+  follow: true,                  // Suivi automatique de la position de l'utilisateur
+  stopFollowingOnDrag: true,     // Arrête le suivi lorsque l'utilisateur fait glisser la carte
+  setView: true,                 // Centre la carte sur la position de l'utilisateur
+  keepCurrentZoomLevel: true     // Garde le niveau de zoom actuel lors du déplacement
+}).addTo(map);                    // Ajoute le contrôle à la carte
+
 // Ajout du contrôle de superposition pour basculer entre les fonds de carte
 L.control.layers({
   'Thunderforest Spinal Map': thunderforestLayer,
