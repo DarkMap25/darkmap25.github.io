@@ -154,6 +154,21 @@ footer {
   color: inherit; /* Couleur héritée du parent */
 }
 
+/* === PERSONNALISATION DU BOUTON DE CHANGEMENT DE CARTE (Contrôle Leaflet) === */
+/* Ce style modifie le petit bouton visible en haut à gauche de la carte,
+   qui permet de basculer entre différents fonds de carte (ex: Spinal / Atlas).
+   On change ici la couleur d’arrière-plan et les dimensions pour le personnaliser. */
+
+.leaflet-control-layers-toggle {
+  background-color: #e6ccff  /* Couleur violette personnalisée */
+  border: 1px solid #999;
+  width: 36px;
+  height: 36px;
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .leaflet-control-layers {
   background-color: #e6ccff; /* violet clair */
   color: #1a001a; /* texte sombre pour le contraste */
