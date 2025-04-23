@@ -40,19 +40,13 @@ L.control.locate({
   follow: true,                  // Suivi automatique de la position de l'utilisateur
   stopFollowingOnDrag: true,     // Arrête le suivi lorsque l'utilisateur fait glisser la carte
   setView: true,                 // Centre la carte sur la position de l'utilisateur
-  keepCurrentZoomLevel: true,    // Garde le niveau de zoom actuel lors du déplacement
-    icon: L.divIcon({
-    className: 'custom-location-icon',  // Utilise une classe CSS pour personnaliser l'icône
-    html: '🎯',  // Emoji à afficher
-    iconSize: [30, 30], // Ajuste la taille de l'emoji
-    iconAnchor: [15, 15], // Centre l'emoji sur le bouton
-  })
+  keepCurrentZoomLevel: true     // Garde le niveau de zoom actuel lors du déplacement
 }).addTo(map);
 
 // Ajout de la fonctionnalité de localisation avec animation de zoom
 map.on('locationfound', function(event) {
     const targetLatLng = event.latlng;
-    const targetZoom = 8; // Zoom niveau département
+    const targetZoom = 9; // Zoom niveau département
 
     // Étape 1 : faire un petit dézoom si nécessaire, pour rendre l'effet plus visible
     const currentZoom = map.getZoom();
