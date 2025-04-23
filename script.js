@@ -62,7 +62,7 @@ map.on('locationfound', function(event) {
             easeLinearity: 0.25
         });
     });
-}
+});
 
 // Ajout du contrôle de superposition pour basculer entre les fonds de carte
 L.control.layers({
