@@ -71,7 +71,7 @@ function createEmojiMarker(lieu) {
 
   // Centrer la carte sur le marqueur lors du clic, et s'assurer que le marqueur est au centre
   marker.on('click', () => {
-    map.setView([lieu.latitude, lieu.longitude], 13, { animate: true });  // Centrer sur le marqueur et appliquer le zoom
+    map.setView([lieu.latitude, lieu.longitude], map.getZoom(), { animate: true });  // Centrer sur le marqueur et garder le zoom
   });
 
   return marker;
