@@ -176,24 +176,12 @@ footer {
 }
 
 /* Personnalisation du bouton de localisation avec l'emoji 🎯 */
-.leaflet-control-locate {
-  background-color: white;  /* Fond du bouton blanc */
-  border-radius: 50%;       /* Bordure arrondie */
-  border: none;             /* Pas de bordure */
-  width: 40px;              /* Largeur du bouton */
-  height: 40px;             /* Hauteur du bouton */
-  display: flex;            /* Pour centrer l'icône à l'intérieur */
-  justify-content: center;  /* Centrer l'icône horizontalement */
-  align-items: center;      /* Centrer l'icône verticalement */
-  font-size: 20px;          /* Taille de l'emoji */
-  text-align: center;       /* Centrer le texte dans le bouton */
-  font-family: "Segoe UI Emoji", "Noto Color Emoji", sans-serif; /* Police d'emoji */
-}
-
-.leaflet-control-locate .leaflet-control-locate-icon {
-  display: flex;            /* Utiliser flex pour centrer l'emoji */
-  justify-content: center;  /* Centrer l'emoji horizontalement */
-  align-items: center;      /* Centrer l'emoji verticalement */
+.custom-location-icon {
+  font-size: 24px; /* Ajuste la taille de l'emoji */
+  background-color: transparent; /* Enlève le fond */
+  border: none; /* Enlève la bordure */
+  padding: 0; /* Enlève le padding si nécessaire */
+  cursor: pointer; /* Change le curseur en pointeur */
 }
 
 /* Style pour chaque élément de la légende */
