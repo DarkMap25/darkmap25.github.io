@@ -175,25 +175,26 @@ footer {
      1px  1px 0 #e6ccff;
 }
 
-/* Style général du bouton */
-.leaflet-control-locate {
-  background-color: white;
+#locate-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  font-size: 24px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: white;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  color: black;
-  overflow: hidden;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 0 10px red;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* Empêche les anciennes icônes SVG de s'afficher */
-.leaflet-control-locate .leaflet-control-locate-icon {
-  background: none !important;
-  mask: none !important;
-  -webkit-mask: none !important;
+#locate-button:hover {
+  background: rgba(255, 0, 0, 0.7);
+  box-shadow: 0 0 15px crimson;
 }
 
 /* Style pour chaque élément de la légende */
