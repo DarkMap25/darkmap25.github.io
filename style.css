@@ -160,13 +160,10 @@ footer {
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out {
   background-color: #e6ccff; /* Fond violet clair */
-  border: 1px solid #a64dff; /* Bordure violette plus foncée */
   width: 36px;
   height: 36px;
   font-size: 20px;
   color: #1a001a; /* Texte sombre pour les symboles + et - */
-  border-radius: 5px; /* Pour arrondir les coins des boutons */
-  box-shadow: 0 0 8px rgba(160, 32, 240, 0.4); /* Ombre pour un effet doux */
 }
 
 .leaflet-control-layers-toggle {
