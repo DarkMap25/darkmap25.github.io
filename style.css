@@ -130,7 +130,7 @@ h1 {
 
   /* Ajuster la taille du texte d'introduction */
   #intro-text {
-    font-size: 0.5em; /* Réduire la taille du texte d'intro */
+    font-size: 0.3em; /* Réduire la taille du texte d'intro */
   }
 }
 
@@ -270,24 +270,29 @@ footer {
   }
 }
 
-/* === PERSONNALISATION DU BOUTON DE LOCALISATION (Ajouté) === */
-.leaflet-control-locate { /* Sélecteur par défaut, vérifiez dans votre navigateur si c'est le bon */
-  background-color: #f0f0f0; /* Couleur de fond grise */
-  border: 2px solid #ccc; /* Bordure grise */
-  padding: 5px 10px; /* Un peu de rembourrage */
-  border-radius: 5px; /* Coins arrondis */
+/* === PERSONNALISATION DU BOUTON DE LOCALISATION (Modifié pour l'emoji cliquable) === */
+.leaflet-control-locate { /* Sélecteur par défaut, vérifiez dans votre navigateur */
+  background-color: transparent !important; /* Fond transparent */
+  border: none !important; /* Pas de bordure */
+  padding: 0 !important; /* Pas de rembourrage */
+  width: auto !important; /* Ajuster la largeur à l'emoji */
+  height: auto !important; /* Ajuster la hauteur à l'emoji */
   cursor: pointer; /* Curseur de type "main" au survol */
-  text-align: center; /* Centrer le contenu */
-  width: auto; /* Ajuster la largeur au contenu */
+  text-align: center; /* Centrer l'emoji */
+  overflow: hidden; /* Empêcher tout débordement */
+  line-height: 1; /* Important pour le centrage vertical de l'emoji */
 }
 
 .leaflet-control-locate::before {
-  content: "📍"; /* Emoji de localisation */
-  font-size: 1.5em; /* Taille de l'emoji */
-  margin-right: 5px; /* Espacement entre l'emoji et le texte (si vous en avez) */
+  content: "🎯"; /* Emoji de localisation */
+  font-size: 2em; /* Taille de l'emoji (ajustez selon vos besoins) */
+  display: block; /* L'emoji prend tout l'espace du bouton */
+  width: 100%;
+  height: 100%;
+  line-height: inherit; /* Hérite du line-height du parent pour le centrage vertical */
 }
 
-/* Si vous voulez enlever le texte "Localiser" par défaut et n'afficher que l'emoji */
+/* Masquer tout texte potentiellement présent */
 .leaflet-control-locate span {
-  display: none;
+  display: none !important;
 }
