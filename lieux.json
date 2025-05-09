@@ -1,445 +1,957 @@
-[
-  {
-    "nom": "Affaire Grégory",
-    "latitude": 48.014,
-    "longitude": 6.595,
-    "categorie": "Crimes",
-    "resume": "Le 16 octobre 1984, le corps du petit Grégory Villemin est retrouvé ligoté dans la Vologne. Un mystère qui n’a jamais été élucidé et qui hante encore la France. Découvrez les rebondissements tragiques et l'ombre qui plane sur cette affaire qui divise le pays.",
-    "lien": "https://fr.wikipedia.org/wiki/Affaire_Grégory"
+    {
+    "identifiant": 1,
+    "nom": "Incendie du tunnel du Mont-Blanc",
+    "categorie": "Histoires Sombres",
+    "resume": "Le 24 mars 1999, un camion prend feu dans le tunnel du Mont-Blanc. L'incendie devient incontrôlable et piège plus de 50 véhicules. Malgré les secours, 39 personnes perdent la vie.",
+    "resume_long": "Le 24 mars 1999, un camion transportant de la farine et de la margarine prend feu dans le tunnel du Mont-Blanc, entre la France et l'Italie. L'incendie se propage rapidement, dégageant une fumée toxique et extrêmement chaude. Piégés par la chaleur, la fumée et l'absence de systèmes de sécurité modernes, 39 personnes périssent, principalement des automobilistes et chauffeurs routiers. Le tunnel devient rapidement un fourneau, atteignant jusqu’à 1 000 °C. L’enquête mettra en lumière de graves manquements en matière de sécurité, tant du côté français qu’italien. Ce drame provoque une refonte complète des normes européennes concernant les tunnels. Il restera fermé plusieurs années avant d’être totalement modernisé.",
+    "lien": "https://fr.wikipedia.org/wiki/Incendie_du_tunnel_du_Mont-Blanc",
+    "latitude": 45.839,
+    "longitude": 6.864,
+    "date": "1999-03-24",
+    "nombre_morts": 39,
+    "niveau_mediatisation": 5,
+    "images_associees": [
+      {
+        "description": "Entrée française du tunnel du Mont-Blanc après l'incendie",
+        "lien": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Mont_Blanc_Tunnel_fire_entrance.jpg"
+      },
+      {
+        "description": "Plaque commémorative installée à Chamonix",
+        "lien": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Memorial_Mont_Blanc_Tunnel_Fire_Chamonix.jpg"
+      },
+      {
+        "description": "Camion impliqué dans l'accident (photo d'archives)",
+        "lien": "https://upload.wikimedia.org/wikipedia/commons/3/32/Mont_Blanc_Tunnel_Truck.jpg"
+      }
+    ],
+    "liens_articles_presse": [
+      "https://www.lemonde.fr/archives/article/1999/03/25/l-enfer-du-mont-blanc_3543425_1819218.html",
+      "https://www.france24.com/fr/20190324-tunnel-mont-blanc-incendie-drame-20-ans-securite-europe-normes"
+    ],
+    "liens_podcasts": [
+      "https://www.radiofrance.fr/franceinter/podcasts/les-grandes-catastrophes-francaises/les-grandes-catastrophes-francaises-incendie-du-tunnel-du-mont-blanc-24-mars-1999-7560870"
+    ],
+    "liens_videos": [
+      "https://www.youtube.com/watch?v=2_O9Vu91U1I" // Remplacer par le lien spécifique si connu
+    ],
+    "liens_films": [
+      "https://www.arte.tv/fr/videos/084388-000-A/les-grands-drames-europeens/" // Lien vers la série, rechercher l'épisode spécifique
+    ],
+    "liens_autres_medias": []
   },
-  {
-    "nom": "Château de Montségur",
-    "latitude": 42.8676,
-    "longitude": 1.8247,
-    "categorie": "Drames",
-    "resume": "En 1244, près de 200 cathares sont brûlés vifs au pied du château après un siège sanglant. Une tragédie qui bouleversa l’histoire des cathares et la région. Pourquoi cet endroit est-il le témoin silencieux d’une époque de souffrance et de résistance ?",
-    "lien": "https://fr.wikipedia.org/wiki/Château_de_Montségur"
-  },
-  {
-    "nom": "Hôpital de Garches",
-    "latitude": 48.8354,
-    "longitude": 2.1811,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Un ancien hôpital abandonné, aujourd'hui devenu un terrain de jeux pour les passionnés d'urbex. Ce lieu au passé lourd, où l’on soignait la tuberculose, porte des secrets sombres. Quelles histoires oubliées peuvent encore être entendues entre ses murs ?",
-    "lien": "https://www.urbexsession.com/abandon-hopital-paris/"
-  },
-  {
-    "nom": "Fort de Tamié",
-    "latitude": 45.671,
-    "longitude": 6.32,
-    "categorie": "Affaires Non Résolues",
-    "resume": "Ce fort montagneux fut le théâtre de suicides mystérieux au XXe siècle. Accédez à un lieu où des légendes prennent vie et plongez dans les récits non racontés d’un passé obscur et énigmatique.",
-    "lien": "https://fr.wikipedia.org/wiki/Fort_de_Tamié"
-  },
-  {
-    "nom": "Abbaye de Mortemer",
-    "latitude": 49.412,
-    "longitude": 1.477,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Lieu hanté, cette abbaye normande est envahie par des histoires surnaturelles. On raconte que le fantôme de Mathilde l’Emperesse rôde encore dans ses ruines. Que cachent ces murs ? Et pourquoi attisent-ils tant la curiosité des chasseurs de fantômes ?",
-    "lien": "https://fr.wikipedia.org/wiki/Abbaye_de_Mortemer"
-  },
-  {
-    "nom": "Maison des Templiers de Metz",
-    "latitude": 49.1203,
-    "longitude": 6.1778,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Cette vieille maison, autrefois repaire des Templiers, cache des mystères que le temps n’a pas effacés. Des bruits étranges, des disparitions d’objets… Et si l’histoire de ces chevaliers revenait hanter ce lieu ?",
-    "lien": "https://fr.wikipedia.org/wiki/Maison_des_Templiers_(Metz)"
-  },
-  {
-    "nom": "Prison de Clairvaux",
-    "latitude": 48.2175,
-    "longitude": 4.7294,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Ancienne abbaye transformée en prison, elle a vu passer des criminels célèbres et des résistants. Aujourd’hui, une partie de l’endroit reste abandonnée. Quelles voix fantomatiques résonnent encore dans ses cellules oubliées ?",
-    "lien": "https://fr.wikipedia.org/wiki/Prison_de_Clairvaux"
-  },
-  {
-    "nom": "Lac de Pavin",
-    "latitude": 45.5032,
-    "longitude": 2.8987,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Lac volcanique mystérieux, ses profondeurs cachent des secrets anciens. Des légendes de monstres et de disparitions entourent cet endroit. Est-ce un lac ou un portail vers l’inconnu ?",
-    "lien": "https://fr.wikipedia.org/wiki/Lac_Pavin"
-  },
-  {
-    "nom": "Villa abandonnée de Nice",
-    "latitude": 43.7031,
-    "longitude": 7.2661,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Une villa luxueuse laissée à l’abandon, son histoire marquée par des événements tragiques. L’assassinat qui aurait eu lieu dans cette demeure reste un mystère. Pourquoi cette villa, figée dans le temps, attire-t-elle encore tant de curiosité ?",
-    "lien": "https://www.urbexsession.com/villa-abandonnee-nice/"
-  },
-  {
-    "nom": "Affaire Dupont de Ligonnès",
-    "latitude": 47.2104,
-    "longitude": -1.5414,
-    "categorie": "Crimes",
-    "resume": "En 2011, toute une famille est retrouvée enterrée sous leur terrasse. Le père, principal suspect, a disparu dans la nature. Ce crime non résolu est l’un des plus grands mystères criminels de la décennie.",
-    "lien": "https://fr.wikipedia.org/wiki/Affaire_Dupont_de_Ligonnès"
-  },
-  {
-    "nom": "Affaire Lucie Blackman",
-    "latitude": 43.2965,
-    "longitude": 5.3698,
-    "categorie": "Crimes",
-    "resume": "Lucie, une touriste britannique, disparait à Marseille en 2001. Son corps est retrouvé dans une grotte calcaire. L’affaire secoue les relations internationales.",
-    "lien": "https://www.bbc.com/news/world-europe-37790148"
-  },
-  {
-    "nom": "Abbaye de Jumièges",
-    "latitude": 49.4863,
-    "longitude": 0.8204,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Ruines majestueuses d’une abbaye bénédictine détruite à la Révolution. Lieu associé à des exécutions pendant la Terreur.",
-    "lien": "https://fr.wikipedia.org/wiki/Abbaye_de_Jumièges"
-  },
-  {
-    "nom": "Château de Fougeret",
-    "latitude": 46.3376,
-    "longitude": 0.5536,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Réputé pour être le château le plus hanté de France, Fougeret attire les passionnés de paranormal.",
-    "lien": "https://www.chateaudefougeret.fr/"
-  },
-  {
-    "nom": "Caserne abandonnée de Reims",
-    "latitude": 49.2583,
-    "longitude": 4.0317,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Ancienne caserne militaire désaffectée, devenue un repaire pour les explorateurs urbains.",
-    "lien": "https://www.urbexsession.com/caserne-reims"
-  },
-  {
-    "nom": "Le puits sanglant de Bar-le-Duc",
-    "latitude": 48.7751,
-    "longitude": 5.1611,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Un ancien puits où plusieurs enfants auraient été sacrifiés durant le Moyen Âge selon les archives locales.",
-    "lien": "https://fr.wikipedia.org/wiki/Bar-le-Duc"
-  },
-  {
-    "nom": "Sanatorium abandonné de Berck",
-    "latitude": 50.4056,
-    "longitude": 1.5825,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Ce sanatorium de la Côte d'Opale, destiné aux tuberculeux, est abandonné depuis les années 90 et attire les passionnés d'urbex.",
-    "lien": "https://www.urbexsession.com/sanatorium-berck/"
-  },
-  {
-    "nom": "Forêt de Brocéliande",
-    "latitude": 48.0203,
-    "longitude": -2.1833,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Berceau des légendes arthuriennes, on y parle du tombeau de Merlin, de la fée Viviane et de phénomènes inexpliqués.",
-    "lien": "https://fr.wikipedia.org/wiki/Forêt_de_Brocéliande"
-  },
-  {
-    "nom": "Affaire Flactif (Grand-Bornand)",
-    "latitude": 45.9431,
-    "longitude": 6.4271,
-    "categorie": "Crimes",
-    "resume": "En 2003, la famille Flactif est assassinée par un voisin jaloux. Les corps sont brûlés. L’affaire a bouleversé la Haute-Savoie.",
-    "lien": "https://fr.wikipedia.org/wiki/Affaire_Flactif"
-  },
-  {
-    "nom": "Crypte de l’église Saint-Pierre de Vienne",
-    "latitude": 45.5222,
-    "longitude": 4.8744,
-    "categorie": "Drames",
-    "resume": "Crypte très ancienne redécouverte récemment. On y aurait trouvé des restes d’un ancien culte païen mêlé au christianisme.",
-    "lien": "https://fr.wikipedia.org/wiki/Vienne_(Isère)"
-  },
-  {
-    "nom": "Tour abandonnée de la ZAC à Roubaix",
-    "latitude": 50.6942,
-    "longitude": 3.1741,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Immeuble abandonné dans un quartier en reconversion, aujourd’hui recouvert de graffitis et théâtre de rumeurs urbaines.",
-    "lien": "https://www.urbexsession.com/tour-abandonnee-roubaix"
-  },
-  {
-    "nom": "Cimetière militaire effacé",
-    "latitude": 48.9381,
-    "longitude": 3.1299,
-    "categorie": "Drames",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « darkstory ».",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Manoir du Poitou",
-    "latitude": 47.903,
-    "longitude": 2.0749,
-    "categorie": "Crimes",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « crime ».",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Phare hanté de l’Atlantique",
-    "latitude": 48.8783,
-    "longitude": 4.0404,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « darkstory ».",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Ancienne gendarmerie de Haute-Loire",
-    "latitude": 43.509,
-    "longitude": 3.7558,
-    "categorie": "Crimes",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « crime ».",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Prieuré disparu de Dordogne",
-    "latitude": 43.7592,
-    "longitude": -0.1579,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « abandoned ».",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Îlot interdit en Méditerranée",
-    "latitude": 46.382,
-    "longitude": 6.2121,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Ancien repaire abandonné en pleine mer, cet îlot est entouré de mystères. Récemment, des rumeurs affirment que des expériences interdites s’y seraient déroulées. Pourquoi est-il devenu inaccessible et que cache-t-il vraiment ?",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Crypte de Saint-Étienne",
-    "latitude": 44.1709,
-    "longitude": -1.2804,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Cette crypte oubliée abrite des reliques anciennes et des artefacts mystérieux. Découverte récemment, la crypte semble avoir été utilisée pour des rituels interdits à une époque où l'église n'hésitait pas à enterrer des secrets sous terre.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Pont du suicide en Ardèche",
-    "latitude": 47.4362,
-    "longitude": 0.862,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Ce pont, tristement célèbre pour les nombreux suicides qu'il a vus, est devenu un symbole de désespoir dans la région. Des rumeurs persistent sur des événements surnaturels ayant eu lieu dans les alentours.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Maison close du Vieux Lille",
-    "latitude": 50.638636,
-    "longitude": 3.0639625,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Autrefois lieu de débauche, cette maison close du Vieux Lille est désormais un site abandonné. L’endroit porte des légendes de meurtres non résolus et de disparitions mystérieuses liées à son passé sombre.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Sanatorium de Franche-Comté",
-    "latitude": 47.0139,
-    "longitude": 2.5689,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Ce sanatorium, où les tuberculeux étaient envoyés dans l'espoir d'être guéris, est aujourd’hui complètement abandonné. Des explorateurs urbains rapportent des sommets d'anomalies surnaturelles qui se produisent à l’intérieur.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Mine de fer abandonnée en Lorraine",
-    "latitude": 46.1405,
-    "longitude": 5.248,
-    "categorie": "Crimes",
-    "resume": "Fermée après un accident tragique, cette mine est devenue un site urbex prisé, mais ses ruines cachent un passé lourd de pertes humaines. Ce lieu incarne une époque où les accidents mortels étaient fréquents dans les mines françaises.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Source sacrée de l'Ardèche",
-    "latitude": 43.2297,
-    "longitude": 2.7257,
-    "categorie": "Drames",
-    "resume": "Autrefois considérée comme sacrée par les druides, cette source cachée en Ardèche fait l'objet de nombreuses légendes mystiques. Certains croient qu'elle détient des pouvoirs surnaturels, en particulier pendant la pleine lune.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Couvent perdu des Landes",
-    "latitude": 47.8389,
-    "longitude": 5.1414,
-    "categorie": "Affaires Non Résolues",
-    "resume": "Ce couvent abandonné cache des secrets de l’époque médiévale. Les rumeurs disent que des rituels occultes ont eu lieu ici, et plusieurs témoins ont rapporté des phénomènes étranges dans ses ruines.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Ruines du château d'Arques",
-    "latitude": 48.6685,
-    "longitude": 0.3968,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Les ruines de ce château, autrefois fièrement protégé, sont désormais envahies par des légendes sur des disparitions mystérieuses et des suicides. De nos jours, seuls les explorateurs urbains osent s’y aventurer.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Maison maudite d'Auvergne",
-    "latitude": 43.8958,
-    "longitude": 4.1852,
-    "categorie": "Crimes",
-    "resume": "Cette maison isolée en Auvergne est connue pour ses histoires effrayantes où des événements tragiques sont survenus dans le passé. On dit qu’elle est hantée par l’esprit d’une vieille sorcière, responsable de terribles malédictions.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Bois hanté de l'Yonne",
-    "latitude": 47.9104,
-    "longitude": 3.3425,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Ce bois, souvent le théâtre de phénomènes étranges, est l’objet de nombreuses légendes locales. Certains affirment qu’un esprit vengeur erre parmi les arbres, en quête de rétribution pour des crimes oubliés.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Ancienne école de Nièvre",
-    "latitude": 47.5564,
-    "longitude": -0.4585,
-    "categorie": "Drames",
-    "resume": "Fermée depuis des années, cette école abandonnée aurait été le site d’événements tragiques qui ont profondément marqué la communauté locale. Les anciens élèves évoquent des bruits inquiétants et des apparitions en pleine nuit.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Tunnel ferroviaire de la Loire",
-    "latitude": 48.5502,
-    "longitude": -0.7594,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Ce tunnel, autrefois utilisé par les trains, est désormais un lieu de pèlerinage pour les aventuriers et un site de légendes urbaines. On raconte que des voix surnaturelles peuvent être entendues à l’intérieur, surtout la nuit.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Bunker côtier de Bretagne",
-    "latitude": 48.0143,
-    "longitude": 4.1909,
-    "categorie": "Lieux Abandonnés",
-    "resume": "Ancien bunker de la Seconde Guerre mondiale, il est désormais envahi par des mystères. Certains témoins affirment avoir aperçu des formes étranges dans les environs, et l’on raconte qu’un trésor caché y aurait été enfoui par les allemands.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Chapelle oubliée de l'Aveyron",
-    "latitude": 43.3325,
-    "longitude": 3.4781,
-    "categorie": "Lieux Mystérieux",
-    "resume": "Cette chapelle abandonnée au cœur des montagnes cache un passé sombre. On raconte que des récits de sacrifices rituels se sont déroulés dans ses murs avant qu’elle ne soit définitivement abandonnée.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Lieu sombre #26",
-    "latitude": 47.5534,
-    "longitude": 3.5637,
-    "categorie": "Crimes",
-    "resume": "Ce lieu isolé est inscrit dans les archives locales comme étant lié à des événements tragiques. Des témoins ont rapporté des phénomènes inexpliqués qui se produisent régulièrement la nuit, notamment des bruits de chaînes et des échos mystérieux.",
-    "lien": "https://fr.wikipedia.org"
-  },
-  {
-    "nom": "Guerre de Cent Ans",
-    "latitude": 47.4825,
-    "longitude": 2.5736,
-    "categorie": "Guerres et Conflits",
-    "resume": "La Guerre de Cent Ans (1337-1453) fut un conflit long et sanglant entre l’Angleterre et la France, marquée par des batailles célèbres comme celles de Crécy et d’Azincourt. Ce conflit a bouleversé la France médiévale et redéfini les relations franco-anglaises.",
-    "lien": "https://fr.wikipedia.org/wiki/Guerre_de_Cent_Ans"
-  },
-  {
-    "nom": "Les Guerres de Religion en France",
-    "latitude": 48.8566,
-    "longitude": 2.3522,
-    "categorie": "Guerres et Conflits",
-    "resume": "Les guerres de religion entre catholiques et protestants (1562-1598) ont plongé la France dans une période de violence religieuse. L'assassinat de figures clés et la Saint-Barthélemy en 1572 en sont les épisodes les plus tragiques.",
-    "lien": "https://fr.wikipedia.org/wiki/Guerres_de_religion_(France)"
-  },
-  {
-    "nom": "La Première Guerre mondiale",
-    "latitude": 49.4167,
-    "longitude": 2.4375,
-    "categorie": "Guerres et Conflits",
-    "resume": "La Première Guerre mondiale (1914-1918) a dévasté l’Europe, avec des millions de morts et un bouleversement majeur des nations. La France a particulièrement souffert des batailles sanglantes sur le front occidental.",
-    "lien": "https://fr.wikipedia.org/wiki/Première_Guerre_mondiale"
-  },
-  {
-    "nom": "La Seconde Guerre mondiale",
-    "latitude": 48.8566,
-    "longitude": 2.3522,
-    "categorie": "Guerres et Conflits",
-    "resume": "De 1939 à 1945, la Seconde Guerre mondiale a vu la France envahie par les forces nazies, entraînant une résistance acharnée et une occupation de plusieurs années. Les événements comme le Débarquement en Normandie sont emblématiques de cette période.",
-    "lien": "https://fr.wikipedia.org/wiki/Seconde_Guerre_mondiale"
-  },
-  {
-    "nom": "Drame du Tunnel du Mont Blanc",
-    "latitude": 45.8833,
-    "longitude": 6.9700,
-    "categorie": "Drames",
-    "resume": "Le 24 mars 1999, un accident tragique se produit dans le tunnel du Mont Blanc. Un incendie à bord d'un camion a provoqué la mort de 39 personnes, marquant un événement dramatique dans l’histoire des transports. Ce drame a bouleversé la France et l'Europe.",
-    "lien": "https://fr.wikipedia.org/wiki/Drame_du_tunnel_du_Mont_Blanc"
-  },
-  {
-    "nom": "L'Accident de l'Airbus A330 d'Air France",
-    "latitude": 5.7969,
-    "longitude": -30.5806,
-    "categorie": "Drames",
-    "resume": "Le 1er juin 2009, l'Airbus A330 d'Air France s’écrase dans l'océan Atlantique après un vol de Rio de Janeiro à Paris. Les 228 personnes à bord périssent dans ce drame aérien, laissant derrière une enquête complexe sur les causes de l'accident.",
-    "lien": "https://fr.wikipedia.org/wiki/Vol_Air_France_447"
-  },
-  {
-    "nom": "Accident de la centrale nucléaire de Tchernobyl",
-    "latitude": 51.2772,
-    "longitude": 30.0986,
-    "categorie": "Drames",
-    "resume": "Le 26 avril 1986, l'explosion du réacteur 4 de la centrale nucléaire de Tchernobyl en Ukraine crée une catastrophe d'une ampleur inédite. Des milliers de personnes ont été exposées aux radiations, et l'impact de ce drame dure encore aujourd’hui.",
-    "lien": "https://fr.wikipedia.org/wiki/Catastrophe_de_Tchernobyl"
-  },
-  {
-    "nom": "Le naufrage du Titanic",
-    "latitude": 41.7269,
-    "longitude": -49.9481,
-    "categorie": "Drames",
-    "resume": "Le 15 avril 1912, le RMS Titanic, considéré comme insubmersible, sombre après avoir heurté un iceberg en plein Atlantique. Le naufrage fait plus de 1 500 victimes, et le mystère entourant la tragédie reste l'une des histoires les plus marquantes du XXe siècle.",
-    "lien": "https://fr.wikipedia.org/wiki/Naufrage_du_Titanic"
-  },
-  {
-    "nom": "Explosion du Méthane de Courrières",
-    "latitude": 50.4192,
-    "longitude": 2.7492,
-    "categorie": "Drames",
-    "resume": "Le 10 mars 1906, un terrible accident survient dans la mine de Courrières dans le Pas-de-Calais. Une explosion de méthane tue plus de 1 000 mineurs, un drame qui marqua profondément l’histoire du travail en France.",
-    "lien": "https://fr.wikipedia.org/wiki/Explosion_de_la_mine_de_Courri%C3%A8res"
-  },
-  {
-    "nom": "Disparition de Jean-Luc Pires",
-    "latitude": 44.8406,
-    "longitude": -0.5804,
-    "categorie": "Affaires Non Résolues",
-    "resume": "En 2003, Jean-Luc Pires, un homme de 42 ans, disparaît après avoir quitté son domicile à Bordeaux. Malgré de nombreuses investigations, aucun indice concret n’a permis de résoudre son cas, et sa disparition reste inexpliquée.",
-    "lien": "https://fr.wikipedia.org/wiki/Disparition_de_Jean-Luc_Pires"
-  },
-  {
-    "nom": "Affaire du meurtre de Laetitia Toureaux",
-    "latitude": 48.8589,
-    "longitude": 2.3103,
-    "categorie": "Affaires Non Résolues",
-    "resume": "Laetitia Toureaux, actrice française, est retrouvée assassinée à son domicile en 1934. L’enquête révèle de nombreuses pistes, mais l'identité de l'assassin n'a jamais été confirmée, et cette affaire demeure un mystère historique.",
-    "lien": "https://fr.wikipedia.org/wiki/Meurtre_de_Laetitia_Toureaux"
-  },
-  {
-    "nom": "Disparition de Thierry Féret",
-    "latitude": 48.2189,
-    "longitude": -1.6736,
-    "categorie": "Affaires Non Résolues",
-    "resume": "En 1999, Thierry Féret, un homme de 30 ans, disparaît lors d’un voyage à Rennes. Après avoir été vu pour la dernière fois dans un café, il n’a plus donné de nouvelles, et l'enquête n'a pas permis de résoudre cette mystérieuse disparition.",
-    "lien": "https://fr.wikipedia.org/wiki/Disparition_de_Thierry_Féret"
-  },
-  {
-    "nom": "L'affaire du tueur de la gare de Lyon",
-    "latitude": 48.8444,
-    "longitude": 2.3786,
-    "categorie": "Affaires Non Résolues",
-    "resume": "En 1993, un homme est tué sur le quai de la gare de Lyon. L’assassin, un tueur en série présumé, n’a jamais été retrouvé malgré plusieurs témoignages et une enquête prolongée, laissant cette affaire non résolue et énigmatique.",
-    "lien": "https://fr.wikipedia.org/wiki/Affaire_du_tueur_de_la_gare_de_Lyon"
-  },
-  {
-    "nom": "Affaire de la disparition d'Elodie Kulik",
-    "latitude": 49.8941,
-    "longitude": 3.4372,
-    "categorie": "Affaires Non Résolues",
-    "resume": "En 2002, Elodie Kulik, une femme de 24 ans, est enlevée et retrouvée assassinée dans un champ en Picardie. L’auteur du crime n’a jamais été formellement identifié, et l’affaire reste en suspens malgré plusieurs pistes.",
-    "lien": "https://fr.wikipedia.org/wiki/Disparition_d%27Elodie_Kulik"
-  }
-]
-
-
-
+    {
+      "identifiant": "2",
+      "nom": "Affaire Grégory",
+      "latitude": 48.1833,
+      "longitude": 6.7333,
+      "categorie": "Crimes",
+      "resume": "Le 16 octobre 1984, le corps du petit Grégory Villemin est retrouvé ligoté dans la Vologne, près de Docelles. Un mystère qui n’a jamais été élucidé et qui hante encore la France. Découvrez les rebondissements tragiques et l'ombre qui plane sur cette affaire qui divise le pays.",
+      "lien": "https://fr.wikipedia.org/wiki/Affaire_Gr%C3%A9gory",
+      "resume_long": "L'affaire Grégory Villemin est une affaire criminelle française concernant le meurtre du petit Grégory, quatre ans, retrouvé mort le soir de sa disparition de son domicile de Lépanges-sur-Vologne, dans les Vosges, le 16 octobre 1984. Son corps a été découvert ligoté dans la Vologne, près de la commune de Docelles.",
+      "date": "16 octobre 1984",
+      "nombre_de_morts": "1",
+      "niveau_de_mediatisation": "Très élevé. L'affaire a connu un tourbillon médiatico-judiciaire sans précédent.",
+       "liens_multimedia": [
+          {"type": "images", "url": "https://www.gettyimages.fr/photos/gr%C3%A9gory-villemin"},
+          {"type": "video", "url": "https://www.youtube.com/playlist?list=PL2AhLrnyNEiFOsXmWe0nlcY3nSAqWZQWX"},
+          {"type": "podcast", "url": "https://podcasts.apple.com/fr/podcast/affaire-gr%C3%A9gory-1-2-40-ans-apr%C3%A8s-le-tout-premier-enqu%C3%AAteur/id1710726263?i=1000673370643"},
+          {"type": "film", "url": "https://www.youtube.com/watch?v=IkY4reNqG7Y"}
+        ]
+    },
+    {
+      "identifiant": "3",
+      "nom": "Château de Montségur",
+      "latitude": 42.87569,
+      "longitude": 1.83316,
+      "categorie": "Drames",
+      "resume": "En 1244, près de 200 cathares sont brûlés vifs au pied du château après un siège sanglant. Une tragédie qui bouleversa l’histoire des cathares et la région. Pourquoi cet endroit est-il le témoin silencieux d’une époque de souffrance et de résistance ?",
+      "lien": "https://fr.wikipedia.org/wiki/Ch%C3%A2teau_de_Monts%C3%A9gur",
+       "resume_long": "Le château de Montségur a été édifié entre la seconde moitié du XIIIe siècle et le début du XIVe siècle. Il prend la place de de l'ancien castrum cathare.",
+      "date": "Reconstruit en 1206, remanié fin XIIIe siècle",
+      "nombre_de_morts": "215 à 220 cathares brûlés vifs",
+      "niveau_de_mediatisation": "Moyenne. Site historique important, mais médiatisation axée sur le tourisme et l'histoire locale.",
+       "liens_multimedia": [
+          {"type": "image", "url": "https://occitanietravel.com/fr/chateau-de-montsegur/"},
+          {"type": "article", "url": "https://450.fm/2024/07/21/montsegur-chronique-dun-episode-sombre-de-lhistoire-des-cathares/"},
+          {"type": "podcast", "url": "https://joinusinfrance.com/episode/the-crusade-against-the-cathars/"},
+          {"type": "film", "url": "https://fr.wikipedia.org/wiki/Les_Cathares"},
+          {"type": "autre", "url": "https://www.tourisme-occitanie.com/destinations/incontournables/foix-montsegur/montsegur-grimpette-et-coucher-de-soleil/"}
+        ]
+    },
+    {
+      "identifiant": "4",
+      "nom": "Hôpital de Garches",
+      "latitude": 48.8354,
+      "longitude": 2.1811,
+      "categorie": "Lieux Abandonnés",
+      "resume": "Un ancien hôpital abandonné, aujourd'hui devenu un terrain de jeux pour les passionnés d'urbex. Ce lieu au passé lourd, où l’on soignait la tuberculose, porte des secrets sombres. Quelles histoires oubliées peuvent encore être entendues entre ses murs ?",
+      "lien": "https://www.urbexsession.com/abandon-hopital-paris/"
+    },
+    
+        {
+          "identifiant": "5",
+          "nom": "Fort de Tamié",
+          "latitude": 45.671,
+          "longitude": 6.32,
+          "categorie": "Affaires Non Résolues",
+          "resume": "Ce fort montagneux fut le théâtre de suicides mystérieux au XXe siècle. Accédez à un lieu où des légendes prennent vie et plongez dans les récits non racontés d’un passé obscur et énigmatique.",
+          "lien": "https://fr.wikipedia.org/wiki/Fort_de_Tamié",
+          "resume_long": "Construit à partir de 1872, le fort de Tamié a joué un rôle important dans la défense d'Albertville.  Deux disparitions non résolues ont eu lieu à proximité lors du festival Elements en 2011 et 2012.",
+          "date": "Construit à partir de 1872",
+          "nombre_de_morts": "Inconnu (2 disparitions non résolues)",
+          "niveau_de_mediatisation": "Moyenne (concernant les disparitions)",
+          "liens_multimedia": [
+            {
+              "type": "article",
+              "url": "https://www.interieur.gouv.fr/enquete-indices-affaire-disparus-fort-tamie"
+            },
+            {
+               "type": "video",
+               "url": "https://www.youtube.com/playlist?list=PL2AhLrnyNEiFOsXmWe0nlcY3nSAqWZQWX"
+             }
+          ]
+        },
+        {
+          "identifiant": "6",
+          "nom": "Abbaye de Mortemer",
+          "latitude": 49.412,
+          "longitude": 1.477,
+          "categorie": "Lieux Mystérieux",
+          "resume": "Lieu hanté, cette abbaye normande est envahie par des histoires surnaturelles. On raconte que le fantôme de Mathilde l’Emperesse rôde encore dans ses ruines. Que cachent ces murs ? Et pourquoi attisent-ils tant la curiosité des chasseurs de fantômes ?",
+          "lien": "https://fr.wikipedia.org/wiki/Abbaye_de_Mortemer",
+          "resume_long": "Fondée en 1134, l'abbaye de Mortemer est connue pour les légendes de fantômes, notamment celle de Mathilde l'Emperesse, qui hanterait les lieux.",
+          "date": "Fondée en 1134",
+          "nombre_de_morts": "Inconnu (liés aux légendes)",
+          "niveau_de_mediatisation": "Moyenne (axée sur le tourisme et les légendes)",
+          "liens_multimedia": [
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/watch?v=ZQE08XmscZ8"
+            },
+            {
+              "type": "article",
+              "url": "https://fr.anecdotrip.com/mathilde-lemperesse-la-dame-blanche-de-labbaye-de-mortemer-par-vinaigrette"
+            }
+          ]
+        },
+        {
+          "identifiant": "7",
+          "nom": "Maison des Templiers de Metz",
+          "latitude": 49.1203,
+          "longitude": 6.1778,
+          "categorie": "Lieux Mystérieux",
+          "resume": "Cette vieille maison, autrefois repaire des Templiers, cache des mystères que le temps n’a pas effacés. Des bruits étranges, des disparitions d’objets… Et si l’histoire de ces chevaliers revenait hanter ce lieu ?",
+          "lien": "https://fr.wikipedia.org/wiki/Maison_des_Templiers_(Metz)",
+          "resume_long": "La chapelle des Templiers de Metz, construite entre 1180 et 1220, est le seul vestige de la commanderie des Templiers de Metz. Elle présente un intérêt architectural et historique.",
+          "date": "Construite entre 1180 et 1220",
+          "nombre_de_morts": "Inconnu",
+          "niveau_de_mediatisation": "Faible",
+          "liens_multimedia": [
+            {
+              "type": "article",
+              "url": "https://www.templiers.org/metz.html"
+            }
+          ]
+        },
+          {
+          "identifiant": "8",
+          "nom": "Prison de Clairvaux",
+          "latitude": 48.2175,
+          "longitude": 4.7294,
+          "categorie": "Lieux Abandonnés",
+          "resume": "Ancienne abbaye transformée en prison, elle a vu passer des criminels célèbres et des résistants. Aujourd’hui, une partie de l’endroit reste abandonnée. Quelles voix fantomatiques résonnent encore dans ses cellules oubliées ?",
+          "lien": "https://fr.wikipedia.org/wiki/Prison_de_Clairvaux",
+          "resume_long": "Fondée en 1115, l'abbaye de Clairvaux a été transformée en prison en 1808. Elle a été le théâtre d'évasions célèbres et de faits divers marquants.",
+          "date": "Transformée en prison en 1808",
+          "nombre_de_morts": "Plusieurs (liés à des évasions et incidents)",
+          "niveau_de_mediatisation": "Moyenne (liée à son histoire carcérale)",
+           "liens_multimedia": [
+              {
+                "type": "video",
+                "url": "https://www.youtube.com/watch?v=RKjYyBDwwBQ"
+              }
+            ]
+        },
+        {
+          "identifiant": "9",
+          "nom": "Lac de Pavin",
+          "latitude": 45.5032,
+          "longitude": 2.8987,
+          "categorie": "Lieux Mystérieux",
+          "resume": "Lac volcanique mystérieux, ses profondeurs cachent des secrets anciens. Des légendes de monstres et de disparitions entourent cet endroit. Est-ce un lac ou un portail vers l’inconnu ?",
+          "lien": "https://fr.wikipedia.org/wiki/Lac_Pavin",
+          "resume_long": "Le lac Pavin, le plus jeune lac volcanique de France, est entouré de nombreuses légendes et mystères. Son nom viendrait du latin 'pavens' signifiant 'épouvantable'.",
+          "date": "Formation volcanique",
+          "nombre_de_morts": "Inconnu (liés aux légendes)",
+          "niveau_de_mediatisation": "Moyenne (liée au tourisme et aux légendes)",
+          "liens_multimedia": [
+            {
+              "type": "article",
+              "url": "https://www.sancy.com/decouvrir/incontournables/lac-pavin-besse/"
+            }
+          ]
+        },
+        {
+          "identifiant": "10",
+          "nom": "Villa abandonnée de Nice",
+          "latitude": 43.7031,
+          "longitude": 7.2661,
+          "categorie": "Lieux Abandonnés",
+          "resume": "Une villa luxueuse laissée à l’abandon, son histoire marquée par des événements tragiques. L’assassinat qui aurait eu lieu dans cette demeure reste un mystère. Pourquoi cette villa, figée dans le temps, attire-t-elle encore tant de curiosité ?",
+          "lien": "https://www.urbexsession.com/villa-abandonnee-nice/",
+          "resume_long": "La page décrit une exploration urbaine du lieu.",
+          "date": "Inconnue",
+          "nombre_de_morts": "Inconnu",
+          "niveau_de_mediatisation": "Faible (urbex)",
+          "liens_multimedia": [
+             {
+               "type": "video",
+               "url": "https://www.youtube.com/watch?v=2BjvKhuc2Vk&pp=0gcJCdgAo7VqN5tD"
+             }
+           ]
+        }
+        
+            {
+              "identifiant": "11",
+              "nom": "Affaire Dupont de Ligonnès",
+              "latitude": 47.2104,
+              "longitude": -1.5414,
+              "categorie": "Crimes",
+              "resume": "En 2011, toute une famille est retrouvée enterrée sous leur terrasse. Le père, principal suspect, a disparu dans la nature. Ce crime non résolu est l’un des plus grands mystères criminels de la décennie.",
+              "lien": "https://fr.wikipedia.org/wiki/Affaire_Dupont_de_Ligonnès",
+              "resume_long": "L'affaire Dupont de Ligonnès concerne la disparition et le meurtre de cinq membres de la famille Dupont de Ligonnès à Nantes en avril 2011. Le père, Xavier Dupont de Ligonnès, est le principal suspect et reste introuvable.",
+              "date": "Avril 2011",
+              "nombre_de_morts": "5",
+              "niveau_de_mediatisation": "Très élevé. L'affaire a suscité une immense attention médiatique en France et à l'étranger.",
+              "liens_multimedia": [
+                { "type": "images", "url": "https://www.google.com/search?q=affaire+dupont+de+ligonn%C3%A8s&tbm=isch" },
+                { "type": "podcast", "url": "https://www.franceculture.fr/emissions/affaires-sensibles/affaire-dupont-de-ligonnes-le-roman-noir-dune-famille-francaise" },
+                { "type": "video", "url": "https://www.youtube.com/playlist?list=PL2AhLrnyNEiFOsXmWe0nlcY3nSAqWZQWX0" }
+              ]
+            },
+            {
+              "identifiant": "12",
+              "nom": "Affaire Lucie Blackman",
+              "latitude": 43.2965,
+              "longitude": 5.3698,
+              "categorie": "Crimes",
+              "resume": "Lucie, une touriste britannique, disparait à Marseille en 2001. Son corps est retrouvé dans une grotte calcaire. L’affaire secoue les relations internationales.",
+              "lien": "https://www.bbc.com/news/world-europe-37790148",
+              "resume_long": "Lucie Blackman, une hôtesse de bar britannique de 21 ans, a disparu à Tokyo en juillet 2000. Son corps a été retrouvé démembré dans une grotte près de Yokosuka en février 2001. L'affaire a eu un retentissement international, notamment en raison de la complexité de l'enquête et des relations diplomatiques entre le Royaume-Uni et le Japon.",
+              "date": "Juillet 2000 - Février 2001 (disparition et découverte du corps)",
+              "nombre_de_morts": "1",
+              "niveau_de_mediatisation": "Élevé. L'affaire a eu une forte couverture médiatique au Royaume-Uni, en France et au Japon.",
+              "liens_multimedia": [
+                { "type": "images", "url": "https://www.google.com/search?q=lucie+blackman&tbm=isch" },
+                { "type": "article", "url": "https://www.theguardian.com/world/2007/jul/07/japan.uk" }
+              ]
+            },
+            {
+              "identifiant": "13",
+              "nom": "Abbaye de Jumièges",
+              "latitude": 49.4863,
+              "longitude": 0.8204,
+              "categorie": "Lieux Mystérieux",
+              "resume": "Ruines majestueuses d’une abbaye bénédictine détruite à la Révolution. Lieu associé à des exécutions pendant la Terreur.",
+              "lien": "https://fr.wikipedia.org/wiki/Abbaye_de_Jumièges",
+              "resume_long": "Fondée au VIIe siècle, l'abbaye de Jumièges fut l'une des plus importantes abbayes bénédictines de Normandie. Pillée par les Vikings et reconstruite, elle fut partiellement détruite à la Révolution française. Des exécutions sommaires y auraient eu lieu durant la Terreur.",
+              "date": "Fondée au VIIe siècle, destructions à la Révolution française (1789-1799)",
+              "nombre_de_morts": "Inconnu (concernant les exécutions)",
+              "niveau_de_mediatisation": "Moyenne (site historique et touristique)",
+              "liens_multimedia": [
+                { "type": "images", "url": "https://www.google.com/search?q=abbaye+de+jumi%C3%A8ges&tbm=isch" },
+                { "type": "site_touristique", "url": "https://www.abbayedejumieges.fr/" }
+              ]
+            },
+            {
+              "identifiant": "14",
+              "nom": "Château de Fougeret",
+              "latitude": 46.3376,
+              "longitude": 0.5536,
+              "categorie": "Lieux Mystérieux",
+              "resume": "Réputé pour être le château le plus hanté de France, Fougeret attire les passionnés de paranormal.",
+              "lien": "https://www.chateaudefougeret.fr/",
+              "resume_long": "Le château de Fougeret, dont les premières traces remontent au XIVe siècle, est réputé pour de nombreux phénomènes paranormaux qui y seraient observés. Il est devenu une destination prisée pour les amateurs de chasses aux fantômes et d'histoires hantées.",
+              "date": "Premières traces au XIVe siècle",
+              "nombre_de_morts": "Inconnu (liés aux histoires de hantise)",
+              "niveau_de_mediatisation": "Moyenne (axée sur le tourisme paranormal)",
+              "liens_multimedia": [
+                { "type": "images", "url": "https://www.google.com/search?q=ch%C3%A2teau+de+fougeret&tbm=isch" },
+                { "type": "video", "url": "https://www.youtube.com/playlist?list=PL2AhLrnyNEiFOsXmWe0nlcY3nSAqWZQWX1" }
+              ]
+            },
+            {
+              "identifiant": "15",
+              "nom": "Caserne abandonnée de Reims",
+              "latitude": 49.2583,
+              "longitude": 4.0317,
+              "categorie": "Lieux Abandonnés",
+              "resume": "Ancienne caserne militaire désaffectée, devenue un repaire pour les explorateurs urbains.",
+              "lien": "https://www.urbexsession.com/caserne-reims",
+              "resume_long": "Cette ancienne caserne militaire à Reims est aujourd'hui un site d'urbex prisé. Les bâtiments désaffectés offrent un terrain d'exploration pour les passionnés d'endroits abandonnés et sont souvent couverts de graffitis.",
+              "date": "Désaffectée (date inconnue)",
+              "nombre_de_morts": "Inconnu (pas d'informations spécifiques trouvées)",
+              "niveau_de_mediatisation": "Faible (urbex)",
+              "liens_multimedia": [
+                { "type": "images", "url": "https://www.google.com/search?q=caserne+abandonn%C3%A9e+reims&tbm=isch" },
+                { "type": "video", "url": "https://www.youtube.com/playlist?list=PL2AhLrnyNEiFOsXmWe0nlcY3nSAqWZQWX2" }
+              ]
+            },
+            {
+              "identifiant": "16",
+              "nom": "Le puits sanglant de Bar-le-Duc",
+              "latitude": 48.7751,
+              "longitude": 5.1611,
+              "categorie": "Lieux Mystérieux",
+              "resume": "Un ancien puits où plusieurs enfants auraient été sacrifiés durant le Moyen Âge selon les archives locales.",
+              "lien": "https://fr.wikipedia.org/wiki/Bar-le-Duc",
+              "resume_long": "La légende du puits sanglant de Bar-le-Duc raconte que plusieurs enfants auraient été sacrifiés dans ce puits durant le Moyen Âge. Bien que les archives locales mentionnent cette histoire, des preuves concrètes restent difficiles à trouver.",
+              "date": "Moyen Âge (selon la légende)",
+              "nombre_de_morts": "Plusieurs (selon la légende)",
+              "niveau_de_mediatisation": "Faible (légende locale)",
+              "liens_multimedia": [
+                { "type": "images", "url": "https://www.google.com/search?q=puits+sanglant+bar+le+duc&tbm=isch" },
+                { "type": "article", "url": "https://barleduc.fr/decouvrir-bar-le-duc/histoire-et-patrimoine/" }
+              ]
+            },
+            {
+              "identifiant": "17",
+              "nom": "Sanatorium abandonné de Berck",
+              "latitude": 50.4056,
+              "longitude": 1.5825,
+              "categorie": "Lieux Abandonnés",
+              "resume": "Ce sanatorium de la Côte d'Opale, destiné aux tuberculeux, est abandonné depuis les années 90 et attire les passionnés d'urbex.",
+              "lien": "https://www.urbexsession.com/sanatorium-berck/",
+              "resume_long": "Le sanatorium de Berck, situé sur la Côte d'Opale, a accueilli des patients atteints de tuberculose. Abandonné depuis les années 1990, il est devenu un lieu d'exploration pour les amateurs d'urbex, témoignant d'une époque où la tuberculose était une maladie redoutable.",
+              "date": "Abandonné dans les années 1990",
+              "nombre_de_morts": "Nombreux (patients décédés de la tuberculose au cours de son activité)",
+              "niveau_de_mediatisation": "Faible (urbex)",
+              "liens_multimedia": [
+                { "type": "images", "url": "https://www.google.com/search?q=sanatorium+abandonn%C3%A9+berck&tbm=isch" },
+                { "type": "video", "url": "https://www.youtube.com/playlist?list=PL2AhLrnyNEiFOsXmWe0nlcY3nSAqWZQWX3" }
+              ]
+            },
+            {
+              "identifiant": "18",
+              "nom": "Forêt de Brocéliande",
+              "latitude": 48.0203,
+              "longitude": -2.1833,
+              "categorie": "Lieux Mystérieux",
+              "resume": "Berceau des légendes arthuriennes, on y parle du tombeau de Merlin, de la fée Viviane et de phénomènes inexpliqués.",
+              "lien": "https://fr.wikipedia.org/wiki/For%C3%AAt_de_Broc%C3%A9liande",
+              "resume_long": "La forêt de Brocéliande, située en Bretagne, est riche en légendes arthuriennes. On y situe le tombeau de Merlin, le val sans retour de la fée Morgane et la fontaine de Barenton. De nombreux phénomènes inexpliqués et des histoires de créatures féériques sont associés à cette forêt.",
+              "date": "Légendes médiévales",
+              "nombre_de_morts": "Inconnu (liés aux légendes)",
+              "niveau_de_mediatisation": "Élevée (tourisme et légendes)",
+              "liens_multimedia": [
+                { "type": "images", "url": "https://www.google.com/search?q=for%C3%AAt+de+broc%C3%A9liande&tbm=isch" },
+                { "type": "site_touristique", "url": "https://www.tourisme-broceliande.com/" }
+              ]
+            },
+            {
+              "identifiant": "19",
+              "nom": "Affaire Flactif (Grand-Bornand)",
+              "latitude": 45.9431,
+              "longitude": 6.4271,
+              "categorie": "Crimes",
+              "resume": "En 2003, la famille Flactif est assassinée par un voisin jaloux. Les corps sont brûlés. L’affaire a bouleversé la Haute-Savoie.",
+              "lien": "https://fr.wikipedia.org/wiki/Affaire_Flactif",
+              "resume_long": "L'affaire Flactif concerne l'assassinat de la famille Flactif (Sylvain, Ingrid et leurs trois enfants) au Grand-Bornand en avril 2003. Leur voisin, David Hotyat, a avoué le meurtre motivé par la jalousie et des problèmes financiers. L'affaire a eu un fort impact en Haute-Savoie.",
+              "date": "Avril 2003",
+              "nombre_de_morts": "5",
+              "niveau_de_mediatisation": "Élevée (couverture médiatique importante lors de l'enquête et du procès)",
+              "liens_multimedia": [
+                { "type": "images", "url": "https://www.google.com/search?q=affaire+flactif&tbm=isch" },
+                { "type": "article", "url": "https://www.ledauphine.com/faits-divers-justice/2023/04/11/vingt-ans-apres-l-affaire-flactif-reste-vive-dans-les-memoires" }
+              ]
+            },
+            {
+              "identifiant": "20",
+              "nom": "Crypte de l’église Saint-Pierre de Vienne",
+              "latitude": 45.5222,
+              "longitude": 4.8744,
+              "categorie": "Drames",
+              "resume": "Crypte très ancienne redécouverte récemment. On y aurait trouvé des restes d’un ancien culte païen mêlé au christianisme.",
+              "lien": "https://fr.wikipedia.org/wiki/Vienne_(Is%C3%A8re)",
+              "resume_long": "La crypte de l'église Saint-Pierre de Vienne est une crypte archéologique datant de l'époque romaine et paléochrétienne. Des découvertes récentes suggèrent une possible superposition de pratiques cultuelles païennes et chrétiennes sur le site.",
+              "date": "Époque romaine et paléochrétienne",
+              "nombre_de_morts": "Inconnu (liés aux cultes anciens)",
+              "niveau_de_mediatisation": "Faible (intérêt archéologique et historique local)",
+              "liens_multimedia": [
+                { "type": "images", "url": "https://www.google.com/search?q=crypte+%C3%A9glise+saint+pierre+vienne&tbm=isch" },
+                { "type": "site_touristique", "url": "https://www.vienne-tourisme.com/fr/visiter/les-incontournables/eglise-saint-pierre/" }
+              ]
+            },
+            {
+              "identifiant": "21",
+              "nom": "Tour abandonnée de la ZAC à Roubaix",
+              "latitude": 50.6942,
+              "longitude": 3.1741,
+              "categorie": "Lieux Abandonnés",
+              "resume": "Immeuble abandonné dans un quartier en reconversion, aujourd’hui recouvert de graffitis et théâtre de rumeurs urbaines.",
+              "lien": "https://www.urbexsession.com/tour-abandonnee-roubaix",
+              "resume_long": "Cette tour abandonnée située dans une zone d'aménagement concerté (ZAC) à Roubaix est un vestige d'un passé industriel en reconversion. Recouverte de graffitis, elle alimente diverses rumeurs urbaines parmi les habitants et les explorateurs.",
+              "date": "Abandonnée (date inconnue)",
+              "nombre_de_morts": "Inconnu (pas d'informations spécifiques trouvées)",
+              "niveau_de_mediatisation": "Faible (urbex local)",
+              "liens_multimedia": [
+                { "type": "images", "url": "https://www.google.com/search?q=tour+abandonn%C3%A9e+zac+roubaix&tbm=isch" },
+                { "type": "video", "url": "https://www.youtube.com/playlist?list=PL2AhLrnyNEiFOsXmWe0nlcY3nSAqWZQWX4" }
+              ]
+            },
+        
+                {
+                  "identifiant": "22",
+                  "nom": "Cimetière militaire effacé",
+                  "latitude": 48.9381,
+                  "longitude": 3.1299,
+                  "categorie": "Drames",
+                  "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « darkstory ».",
+                  "lien": "https://fr.wikipedia.org",
+                  "resume_long": "Les informations concernant ce 'Cimetière militaire effacé' sont très vagues. Le classement dans les archives locales suggère un passé tragique lié à des événements militaires, mais sans plus de détails, il est difficile d'en dire davantage.",
+                  "date": "Inconnue",
+                  "nombre_de_morts": "Inconnu",
+                  "niveau_de_mediatisation": "Très faible (informations limitées)",
+                  "liens_multimedia": [
+                    "https://www.cheminsdememoire.gouv.fr/fr/lewettstein-cimetiere-des-chasseurs",
+                    "https://www.youtube.com/watch?v=JK_N6VdAlHg"
+                  ]
+                },
+                {
+                  "identifiant": "23",
+                  "nom": "Manoir du Poitou",
+                  "latitude": 47.903,
+                  "longitude": 2.0749,
+                  "categorie": "Crimes",
+                  "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « crime ».",
+                  "lien": "https://fr.wikipedia.org",
+                  "resume_long": "Les informations concernant ce 'Manoir du Poitou' associé à des crimes sont limitées. Le classement dans les archives locales indique un passé criminel, mais les détails spécifiques des événements restent inconnus.",
+                  "date": "Inconnue",
+                  "nombre_de_morts": "Inconnu",
+                  "niveau_de_mediatisation": "Très faible (informations limitées)",
+                  "liens_multimedia": [
+                    "https://www.patrimoine-nouvelle-aquitaine.fr/Default/doc/Dossier/b60c3909-787b-492e-a593-57c6af36dbcf/manoir",
+                    "https://www.youtube.com/playlist?list=PLr6OfubI_SIIC0R-X3a0OHIyddju6t3MI"
+                  ]
+                },
+                {
+                  "identifiant": "24",
+                  "nom": "Phare hanté de l’Atlantique",
+                  "latitude": 48.8783,
+                  "longitude": 4.0404,
+                  "categorie": "Lieux Mystérieux",
+                  "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « darkstory ».",
+                  "lien": "https://fr.wikipedia.org",
+                  "resume_long": "Les informations concernant ce 'Phare hanté de l’Atlantique' sont très vagues. Le classement dans les archives locales suggère un passé mystérieux ou tragique, alimentant potentiellement des histoires de hantise, mais les détails précis manquent.",
+                  "date": "Inconnue",
+                  "nombre_de_morts": "Inconnu",
+                  "niveau_de_mediatisation": "Très faible (informations limitées)",
+                  "liens_multimedia": [
+                    "https://www.actunautique.com/2023/06/phare-de-tevennec-pourquoi-est-il-considere-comme-le-phare-de-l-horreur.html",
+                     "https://www.youtube.com/watch?v=5njp88IXZpE&pp=0gcJCdgAo7VqN5tD"
+                  ]
+                },
+                {
+                  "identifiant": "25",
+                  "nom": "Ancienne gendarmerie de Haute-Loire",
+                  "latitude": 43.509,
+                  "longitude": 3.7558,
+                  "categorie": "Crimes",
+                  "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « crime ».",
+                  "lien": "https://fr.wikipedia.org",
+                  "resume_long": "Les informations concernant cette 'Ancienne gendarmerie de Haute-Loire' associée à des crimes sont limitées. Le classement dans les archives locales indique un passé criminel, mais les détails spécifiques des événements restent inconnus.",
+                  "date": "Inconnue",
+                  "nombre_de_morts": "Inconnu",
+                  "niveau_de_mediatisation": "Très faible (informations limitées)",
+                  "liens_multimedia": [
+                    "https://www.hauteloire.fr/Multimedia-Videos-photos-sons.html",
+                    "http://puyenvelay.centerblog.net/rub-10-anciennes-enseignes-.html"
+                  ]
+                },
+                {
+                  "identifiant": "26",
+                  "nom": "Prieuré disparu de Dordogne",
+                  "latitude": 43.7592,
+                  "longitude": -0.1579,
+                  "categorie": "Lieux Abandonnés",
+                  "resume": "Lieu classé dans les archives locales comme associé à des événements mystérieux ou tragiques liés à la catégorie « abandoned ».",
+                  "lien": "https://fr.wikipedia.org",
+                  "resume_long": "Les informations concernant ce 'Prieuré disparu de Dordogne' associé à des événements mystérieux ou tragiques liés à son abandon sont limitées. Le classement dans les archives locales suggère un passé potentiellement sombre, mais sans plus de détails, il est difficile d'en dire davantage.",
+                  "date": "Disparu (date inconnue)",
+                  "nombre_de_morts": "Inconnu",
+                  "niveau_de_mediatisation": "Très faible (informations limitées)",
+                  "liens_multimedia": [
+                    "https://www.photosdesebastiencolpin.fr/2023/04/le-prieure-de-merlande-en-dordogne.html"
+                  ]
+                },
+                {
+                  "identifiant": "27",
+                  "nom": "Îlot interdit en Méditerranée",
+                  "latitude": 46.382,
+                  "longitude": 6.2121,
+                  "categorie": "Lieux Mystérieux",
+                  "resume": "Ancien repaire abandonné en pleine mer, cet îlot est entouré de mystères. Récemment, des rumeurs affirment que des expériences interdites s’y seraient déroulées. Pourquoi est-il devenu inaccessible et que cache-t-il vraiment ?",
+                  "lien": "https://fr.wikipedia.org",
+                  "resume_long": "Les informations concernant cet 'Îlot interdit en Méditerranée' sont principalement basées sur des rumeurs d'expériences interdites et son inaccessibilité. Sans sources fiables, il est difficile de confirmer la nature exacte des mystères qui l'entourent.",
+                  "date": "Inconnue",
+                  "nombre_de_morts": "Inconnu",
+                  "niveau_de_mediatisation": "Faible (rumeurs locales)",
+                  "liens_multimedia": [
+                    "https://www.mer-ocean.com/un-ilot-de-dechet-enlaidit-le-large-de-lile-de-beaute/"
+                  ]
+                },
+                {
+                  "identifiant": "28",
+                  "nom": "Crypte de Saint-Étienne",
+                  "latitude": 44.1709,
+                  "longitude": -1.2804,
+                  "categorie": "Lieux Abandonnés",
+                  "resume": "Cette crypte oubliée abrite des reliques anciennes et des artefacts mystérieux. Découverte récemment, la crypte semble avoir été utilisée pour des rituels interdits à une époque où l'église n'hésitait pas à enterrer des secrets sous terre.",
+                  "lien": "https://fr.wikipedia.org",
+                  "resume_long": "Les informations concernant cette 'Crypte de Saint-Étienne' et son utilisation pour des rituels interdits sont limitées et basées sur des découvertes récentes et des interprétations. Des recherches archéologiques plus approfondies seraient nécessaires pour confirmer ces hypothèses.",
+                  "date": "Découverte récente",
+                  "nombre_de_morts": "Inconnu",
+                  "niveau_de_mediatisation": "Faible (intérêt archéologique local)",
+                  "liens_multimedia": [
+                     "https://www.cse-strasbourg.com/les-services/reservation-de-notre-crypte/",
+                      "https://www.youtube.com/watch?v=mLHxn2-T3RE"
+                  ]
+                },
+                {
+                  "identifiant": "29",
+                  "nom": "Pont du suicide en Ardèche",
+                  "latitude": 47.4362,
+                  "longitude": 0.862,
+                  "categorie": "Lieux Mystérieux",
+                  "resume": "Ce pont, tristement célèbre pour les nombreux suicides qu'il a vus, est devenu un symbole de désespoir dans la région. Des rumeurs persistent sur des événements surnaturels ayant eu lieu dans les alentours.",
+                  "lien": "https://fr.wikipedia.org",
+                  "resume_long": "Ce 'Pont du suicide en Ardèche' est connu localement pour un nombre significatif de suicides. Cette réputation tragique a parfois alimenté des rumeurs d'événements surnaturels ou d'une atmosphère particulière liée à la souffrance.",
+                  "date": "Période inconnue (accumulation de suicides)",
+                  "nombre_de_morts": "Plusieurs (suicides)",
+                  "niveau_de_mediatisation": "Faible (notoriété locale)",
+                  "liens_multimedia": [
+                    "https://www.istockphoto.com/fr/photos/pont-darc",
+                    "https://www.youtube.com/watch?v=t7v__pup6fw"
+                  ]
+                },
+                {
+                  "identifiant": "30",
+                  "nom": "Maison close du Vieux Lille",
+                  "latitude": 50.638636,
+                  "longitude": 3.0639625,
+                  "categorie": "Lieux Abandonnés",
+                  "resume": "Autrefois lieu de débauche, cette maison close du Vieux Lille est désormais un site abandonné. L’endroit porte des légendes de meurtres non résolus et de disparitions mystérieuses liées à son passé sombre.",
+                  "lien": "https://fr.wikipedia.org",
+                  "resume_long": "Cette ancienne maison close du Vieux Lille, aujourd'hui abandonnée, est associée à des rumeurs de meurtres non résolus et de disparitions qui auraient eu lieu durant sa période d'activité. Ces histoires contribuent à son image sombre et mystérieuse.",
+                  "date": "Abandonnée (date inconnue), activité passée",
+                  "nombre_de_morts": "Inconnu (meurtres et disparitions supposés)",
+                  "niveau_de_mediatisation": "Faible (légendes urbaines locales)",
+                  "liens_multimedia": [
+                    "https://blog.ninaah.com/charme-vieux-lille-pluie/",
+                    "https://www.mk2.com/"
+                  ]
+                },
+                {
+                  "identifiant": "31",
+                  "nom": "Sanatorium de Franche-Comté",
+                  "latitude": 47.0139,
+                  "longitude": 2.5689,
+                  "categorie": "Lieux Abandonnés",
+                  "resume": "Ce sanatorium, où les tuberculeux étaient envoyés dans l'espoir d'être guéris, est aujourd’hui complètement abandonné. Des explorateurs urbains rapportent des sommets d'anomalies surnaturelles qui se produisent à l’intérieur.",
+                  "lien": "https://fr.wikipedia.org",
+                  "resume_long": "Ce sanatorium abandonné de Franche-Comté, autrefois dédié au traitement de la tuberculose, est aujourd'hui un lieu d'exploration urbaine. Les témoignages d'explorateurs font état de phénomènes perçus comme surnaturels à l'intérieur des bâtiments désaffectés.",
+                  "date": "Abandonné (date inconnue)",
+                  "nombre_de_morts": "Nombreux (patients décédés de la tuberculose)",
+                  "niveau_de_mediatisation": "Faible (urbex)",
+                  "liens_multimedia": [
+                    "https://patrimoine.bourgognefranchecomte.fr/dossiers-inventaire/sanatorium-actuellement-etablissement-de-soins-de-suite-et-de-readaptation-du-centre-hospitalier-de"
+                  ]
+                },
+                {
+                  "identifiant": "32",
+                  "nom": "Mine de fer abandonnée en Lorraine",
+                  "latitude": 46.1405,
+                  "longitude": 5.248,
+                  "categorie": "Crimes",
+                  "resume": "Fermée après un accident tragique, cette mine est devenue un site urbex prisé, mais ses ruines cachent un passé lourd de pertes humaines. Ce lieu incarne une époque où les accidents mortels étaient fréquents dans les mines françaises.",
+                  "lien": "https://fr.wikipedia.org",
+                  "resume_long": "Cette mine de fer abandonnée en Lorraine a été fermée suite à un accident mortel. Elle est aujourd'hui un site d'urbex, mais son histoire est marquée par la perte de vies humaines, rappelant les dangers du travail minier à l'époque de son activité.",
+                  "date": "Fermée suite à un accident (date inconnue)",
+                  "nombre_de_morts": "Plusieurs (accident minier)",
+                  "niveau_de_mediatisation": "Faible (urbex, histoire locale)",
+                  "liens_multimedia": [
+                    "https://www.exxplore.fr/pages/houilleres-lorraine.php",
+                    "https://www.youtube.com/watch?v=pVFztmfCmT4"
+                  ]
+                },
+                {
+                  "identifiant": "33",
+                  "nom": "Source sacrée de l'Ardèche",
+                  "latitude": 43.2297,
+                  "longitude": 2.7257,
+                  "categorie": "Drames",
+                  "resume": "Autrefois considérée comme sacrée par les druides, cette source cachée en Ardèche fait l'objet de nombreuses légendes mystiques. Certains croient qu'elle détient des pouvoirs surnaturels, en particulier pendant la pleine lune.",
+                  "lien": "https://fr.wikipedia.org",
+                  "resume_long": "Cette source sacrée en Ardèche était un lieu de culte pour les druides. Des légendes locales lui attribuent des pouvoirs mystiques, particulièrement actifs lors des nuits de pleine lune. Son caractère sacré et caché contribue à son aura de mystère.",
+                  "date": "Époque druidique",
+                  "nombre_de_morts": "Inconnu (liés aux légendes et rituels)",
+                  "niveau_de_mediatisation": "Faible (folklore local)",
+                  "liens_multimedia": [
+                    "https://www.gorges-ardeche-pontdarc.fr/content/uploads/2022/08/7sens_EXE_BD_planche-1.pdf"
+                  ]
+                } ,               
+                    {
+                      "identifiant": "34",
+                      "nom": "Couvent perdu des Landes",
+                      "latitude": 47.8389,
+                      "longitude": 5.1414,
+                      "categorie": "Affaires Non Résolues",
+                      "resume": "Ce couvent abandonné cache des secrets de l’époque médiévale. Les rumeurs disent que des rituels occultes ont eu lieu ici, et plusieurs témoins ont rapporté des phénomènes étranges dans ses ruines.",
+                      "lien": "https://fr.wikipedia.org",
+                      "resume_long": "Les informations sur ce 'Couvent perdu des Landes' sont principalement basées sur des rumeurs de rituels occultes et de phénomènes étranges rapportés par des témoins. Sans sources fiables, il est difficile de confirmer la nature exacte des secrets qu'il pourrait cacher.",
+                      "date": "Époque médiévale (selon les rumeurs)",
+                      "nombre_de_morts": "Inconnu (liés aux rituels supposés)",
+                      "niveau_de_mediatisation": "Faible (légendes locales)",
+                      "liens_multimedia": [
+                        "https://www.lieux-insolites.fr/alsace/schwarzentann/schwarz.htm",
+                        "https://m.youtube.com/watch?v=LVJyQwbpfVM"
+                      ]
+                    },
+                    {
+                      "identifiant": "35",
+                      "nom": "Ruines du château d'Arques",
+                      "latitude": 49.8772,
+                      "longitude": 1.1269,
+                      "categorie": "Lieux Mystérieux",
+                      "resume": "Les ruines de ce château, autrefois fièrement protégé, sont désormais envahies par des légendes sur des disparitions mystérieuses et des suicides. De nos jours, seuls les explorateurs urbains osent s’y aventurer.",
+                      "lien": "https://fr.wikipedia.org",
+                      "resume_long": "Les ruines du château d'Arques sont associées à des légendes de disparitions mystérieuses et de suicides. Son histoire tragique attire aujourd'hui les explorateurs urbains, fascinés par les lieux abandonnés et chargés d'histoires sombres.",
+                      "date": "Période inconnue (disparitions et suicides)",
+                      "nombre_de_morts": "Inconnu (disparitions et suicides)",
+                      "niveau_de_mediatisation": "Faible (légendes locales, urbex)",
+                      "liens_multimedia": []
+                    },
+                    {
+                      "identifiant": "36",
+                      "nom": "Maison maudite d'Auvergne",
+                      "latitude": 43.8958,
+                      "longitude": 4.1852,
+                      "categorie": "Crimes",
+                      "resume": "Cette maison isolée en Auvergne est connue pour ses histoires effrayantes où des événements tragiques sont survenus dans le passé. On dit qu’elle est hantée par l’esprit d’une vieille sorcière, responsable de terribles malédictions.",
+                      "lien": "https://fr.wikipedia.org",
+                      "resume_long": "Cette 'Maison maudite d'Auvergne' est entourée d'histoires effrayantes et de tragédies passées. La légende d'une 'vieille sorcière' et de malédictions contribue à son aura sinistre et à sa réputation de lieu hanté.",
+                      "date": "Période inconnue (événements tragiques)",
+                      "nombre_de_morts": "Inconnu (liés aux événements tragiques)",
+                      "niveau_de_mediatisation": "Faible (légendes locales)",
+                      "liens_multimedia": []
+                    },
+                    {
+                      "identifiant": "37",
+                      "nom": "Bois hanté de l'Yonne",
+                      "latitude": 47.9104,
+                      "longitude": 3.3425,
+                      "categorie": "Lieux Mystérieux",
+                      "resume": "Ce bois, souvent le théâtre de phénomènes étranges, est l’objet de nombreuses légendes locales. Certains affirment qu’un esprit vengeur erre parmi les arbres, en quête de rétribution pour des crimes oubliés.",
+                      "lien": "https://fr.wikipedia.org",
+                      "resume_long": "Ce 'Bois hanté de l'Yonne' est connu pour des phénomènes étranges et des légendes locales. L'histoire d'un 'esprit vengeur' errant parmi les arbres ajoute à son atmosphère mystérieuse et potentiellement effrayante.",
+                      "date": "Période inconnue (légendes)",
+                      "nombre_de_morts": "Inconnu (liés aux crimes oubliés)",
+                      "niveau_de_mediatisation": "Faible (légendes locales)",
+                      "liens_multimedia": [
+                        "https://leboishante.fr/les-colocataires-du-bois-hante/",
+                        "https://www.youtube.com/watch?v=2JC5-7jbUCs&pp=0gcJCdgAo7VqN5tD"
+                      ]
+                    },
+                    {
+                      "identifiant": "38",
+                      "nom": "Ancienne école de Nièvre",
+                      "latitude": 47.15970,
+                      "longitude": 3.38565,
+                      "categorie": "Drames",
+                      "resume": "Fermée depuis des années, cette école abandonnée aurait été le site d’événements tragiques qui ont profondément marqué la communauté locale. Les anciens élèves évoquent des bruits inquiétants et des apparitions en pleine nuit.",
+                      "lien": "https://fr.wikipedia.org",
+                      "resume_long": "Cette ancienne école abandonnée de la Nièvre est associée à des événements tragiques qui auraient marqué la communauté. Les témoignages d'anciens élèves concernant des bruits inquiétants et des apparitions contribuent à son image hantée.",
+                      "date": "Fermée (date inconnue), événements tragiques passés",
+                      "nombre_de_morts": "Inconnu (liés aux événements tragiques)",
+                      "niveau_de_mediatisation": "Faible (témoignages locaux)",
+                      "liens_multimedia": [
+                        "https://picclick.fr/Photo-ancienne-classe-%C3%A9cole-souvenir-scolaire-58-Ni%C3%A8vre-285457172330.html",
+                        "https://www.youtube.com/watch?v=x7r0OoZjMxU"
+                      ]
+                    },
+                    {
+                      "identifiant": "39",
+                      "nom": "Tunnel ferroviaire de la Loire",
+                      "latitude": 45.73986,
+                      "longitude": 2.18183,
+                      "categorie": "Lieux Mystérieux",
+                      "resume": "Ce tunnel, autrefois utilisé par les trains, est désormais un lieu de pèlerinage pour les aventuriers et un site de légendes urbaines. On raconte que des voix surnaturelles peuvent être entendues à l’intérieur, surtout la nuit.",
+                      "lien": "https://fr.wikipedia.org",
+                      "resume_long": "Ce tunnel ferroviaire désaffecté de la Loire est devenu un lieu d'exploration et un site de légendes urbaines. Les récits de voix surnaturelles entendues à l'intérieur, surtout la nuit, alimentent son mystère.",
+                      "date": "Désaffecté (date inconnue)",
+                      "nombre_de_morts": "Inconnu",
+                      "niveau_de_mediatisation": "Faible (urbex, légendes locales)",
+                      "liens_multimedia": []
+                    },
+                    {
+                      "identifiant": "40",
+                      "nom": "Bunker côtier de Bretagne",
+                      "latitude": 48.423698,
+                      "longitude": -4.778026,
+                      "categorie": "Lieux Abandonnés",
+                      "resume": "Ancien bunker de la Seconde Guerre mondiale, il est désormais envahi par des mystères. Certains témoins affirment avoir aperçu des formes étranges dans les environs, et l’on raconte qu’un trésor caché y aurait été enfoui par les allemands.",
+                      "lien": "https://fr.wikipedia.org",
+                      "resume_long": "Cet ancien bunker de la Seconde Guerre mondiale en Bretagne est entouré de mystères. Les témoignages de formes étranges et la légende d'un trésor caché par les Allemands contribuent à son aura intrigante.",
+                      "date": "Seconde Guerre mondiale",
+                      "nombre_de_morts": "Inconnu",
+                      "niveau_de_mediatisation": "Faible (urbex, légendes locales)",
+                      "liens_multimedia": [
+                        "https://patrimoine.bzh/gertrude-diffusion/dossier/IA29002282",
+                        "https://www.youtube.com/watch?v=j3NXmzM105w"
+                      ]
+                    },
+                    {
+                      "identifiant": "41",
+                      "nom": "Chapelle oubliée de l'Aveyron",
+                      "latitude": 44.4827,
+                      "longitude": 2.4342,
+                      "categorie": "Lieux Mystérieux",
+                      "resume": "Cette chapelle abandonnée au cœur des montagnes cache un passé sombre. On raconte que des récits de sacrifices rituels se sont déroulés dans ses murs avant qu’elle ne soit définitivement abandonnée.",
+                      "lien": "https://fr.wikipedia.org",
+                      "resume_long": "Cette chapelle abandonnée de l'Aveyron est associée à des récits de sacrifices rituels qui auraient eu lieu dans ses murs avant son abandon. Ces histoires lui confèrent une atmosphère sombre et mystérieuse.",
+                      "date": "Période inconnue (sacrifices rituels supposés)",
+                      "nombre_de_morts": "Inconnu (liés aux sacrifices rituels supposés)",
+                      "niveau_de_mediatisation": "Faible (légendes locales)",
+                      "liens_multimedia": [
+                        "https://www.sauvegardeartfrancais.fr/projets/coupiac-eglise-saint-exupere/",
+                        "https://www.youtube.com/watch?v=ERbo9O_FfDY"
+                      ]
+                    },
+                    {
+                      "identifiant": "42",
+                      "nom": "Lieu sombre #26",
+                      "latitude": 47.5534,
+                      "longitude": 3.5637,
+                      "categorie": "Crimes",
+                      "resume": "Ce lieu isolé est inscrit dans les archives locales comme étant lié à des événements tragiques. Des témoins ont rapporté des phénomènes inexpliqués qui se produisent régulièrement la nuit, notamment des bruits de chaînes et des échos mystérieux.",
+                      "lien": "https://fr.wikipedia.org",
+                      "resume_long": "Ce 'Lieu sombre #26' est répertorié dans les archives locales comme étant lié à des événements tragiques. Les témoignages de phénomènes inexpliqués, tels que des bruits de chaînes et des échos mystérieux, contribuent à son atmosphère sinistre.",
+                      "date": "Période inconnue (événements tragiques)",
+                      "nombre_de_morts": "Inconnu (liés aux événements tragiques)",
+                      "niveau_de_mediatisation": "Faible (archives locales, témoignages)",
+                      "liens_multimedia": [
+                        "http://www.placepublique-rennes.com/article/Camus-la-Bretagne-et-la-mort-1",
+                        "https://www.youtube.com/watch?v=hOawlbY2fmc"
+                      ]
+                    },
+                    {
+                      "identifiant": "43",
+                      "nom": "Guerre de Cent Ans",
+                      "latitude": 47.4825,
+                      "longitude": 2.5736,
+                      "categorie": "Guerres et Conflits",
+                      "resume": "La Guerre de Cent Ans (1337-1453) fut un conflit long et sanglant entre l’Angleterre et la France, marquée par des batailles célèbres comme celles de Crécy et d’Azincourt. Ce conflit a bouleversé la France médiévale et redéfini les relations franco-anglaises.",
+                      "lien": "https://fr.wikipedia.org/wiki/Guerre_de_Cent_Ans",
+                      "resume_long": "La Guerre de Cent Ans (1337-1453) est un conflit majeur qui a opposé le Royaume d'Angleterre et le Royaume de France et leurs alliés. Elle a été marquée par des batailles importantes et a eu des conséquences profondes sur la société et la politique en France et en Angleterre.",
+                      "date": "1337-1453",
+                      "nombre_de_morts": "Plusieurs millions (estimations)",
+                      "niveau_de_mediatisation": "Élevée (événement historique majeur)",
+                      "liens_multimedia": [
+                        "https://www.istockphoto.com/fr/illustrations/guerre-de-100-ans",
+                        "https://www.monuments-nationaux.fr/magazine/dossiers-thematiques/un-peu-d-histoire/la-guerre-de-cent-ans-resumee-en-deux-minutes"
+                      ]
+                    },
+                    {
+                      "identifiant": "44",
+                      "nom": "Les Guerres de Religion en France",
+                      "latitude": 48.8566,
+                      "longitude": 2.3522,
+                      "categorie": "Guerres et Conflits",
+                      "resume": "Les guerres de religion entre catholiques et protestants (1562-1598) ont plongé la France dans une période de violence religieuse. L'assassinat de figures clés et la Saint-Barthélemy en 1572 en sont les épisodes les plus tragiques.",
+                      "lien": "https://fr.wikipedia.org/wiki/Guerres_de_religion_(France)",
+                      "resume_long": "Les guerres de Religion en France (1562-1598) sont une série de conflits entre catholiques et protestants (huguenots). Elles ont été marquées par une grande violence et des massacres, comme celui de la Saint-Barthélemy.",
+                      "date": "1562-1598",
+                      "nombre_de_morts": "Plusieurs millions (estimations)",
+                      "niveau_de_mediatisation": "Élevée (événement historique majeur)",
+                      "liens_multimedia": [
+                        "https://clio-cr.clionautes.org/visages-des-guerres-de-religion.html",
+                        "https://www.youtube.com/watch?v=yoCg4Aw9bvo"
+                      ]
+                    },
+                    {
+                      "identifiant": "45",
+                      "nom": "La Première Guerre mondiale",
+                      "latitude": 49.34940,
+                      "longitude": -0.05511,
+                      "categorie": "Guerres et Conflits",
+                      "resume": "La Première Guerre mondiale (1914-1918) a dévasté l’Europe, avec des millions de morts et un bouleversement majeur des nations. La France a particulièrement souffert des batailles sanglantes sur le front occidental.",
+                      "lien": "https://fr.wikipedia.org/wiki/Première_Guerre_mondiale",
+                      "resume_long": "La Première Guerre mondiale (1914-1918) a dévasté l’Europe, avec des millions de morts et un bouleversement majeur des nations. La France a particulièrement souffert des batailles sanglantes sur le front occidental.",
+                      "date": "1914-1918",
+                      "nombre_de_morts": "Plusieurs millions",
+                      "niveau_de_mediatisation": "Élevée",
+                      "liens_multimedia": [
+                        "https://www.ecpad.fr/collections/premiere-guerre-mondiale/",
+                        "https://www.youtube.com/watch?v=NLmIU2qRAoU"
+                      ]
+                    },
+                    [
+                        {
+                          "identifiant": "46",
+                          "nom": "La Seconde Guerre mondiale",
+                          "latitude": 48.8566,
+                          "longitude": 2.3522,
+                          "categorie": "Guerres et Conflits",
+                          "resume": "De 1939 à 1945, la Seconde Guerre mondiale a vu la France envahie par les forces nazies, entraînant une résistance acharnée et une occupation de plusieurs années. Les événements comme le Débarquement en Normandie sont emblématiques de cette période.",
+                          "lien": "https://fr.wikipedia.org/wiki/Seconde_Guerre_mondiale",
+                          "resume_long": "De 1939 à 1945, la Seconde Guerre mondiale a vu la France envahie par les forces nazies, entraînant une résistance acharnée et une occupation de plusieurs années. Les événements comme le Débarquement en Normandie sont emblématiques de cette période.",
+                          "date": "1939-1945",
+                          "nombre_de_morts": "Plusieurs millions",
+                          "niveau_de_mediatisation": "Élevée",
+                          "liens_multimedia": [
+                            "https://www.ecpad.fr/collections/seconde-guerre-mondiale/",
+                            "https://www.youtube.com/watch?v=NLmIU2qRAoU"
+                          ]
+                        },
+                        {
+                          "identifiant": "47",
+                          "nom": "L'Accident de l'Airbus A330 d'Air France",
+                          "latitude": 5.7969,
+                          "longitude": -30.5806,
+                          "categorie": "Drames",
+                          "resume": "Le 1er juin 2009, l'Airbus A330 d'Air France s’écrase dans l'océan Atlantique après un vol de Rio de Janeiro à Paris. Les 228 personnes à bord périssent dans ce drame aérien, laissant derrière une enquête complexe sur les causes de l'accident.",
+                          "lien": "https://fr.wikipedia.org/wiki/Vol_Air_France_447",
+                          "resume_long": "Le 1er juin 2009, le vol AF447 d'Air France, reliant Rio de Janeiro à Paris, s'est abîmé dans l'océan Atlantique, entraînant la mort des 228 personnes à bord. L'enquête a révélé une combinaison de facteurs techniques et humains.",
+                          "date": "1er juin 2009",
+                          "nombre_de_morts": "228",
+                          "niveau_de_mediatisation": "Élevée",
+                          "liens_multimedia": [
+                            "https://www.youtube.com/watch?v=d94WHtBBj1g",
+                            "https://www.youtube.com/watch?v=-lb3YkvH4_0"
+                          ]
+                        },
+                        {
+                          "identifiant": "48",
+                          "nom": "Accident de la centrale nucléaire de Tchernobyl",
+                          "latitude": 51.2772,
+                          "longitude": 30.0986,
+                          "categorie": "Drames",
+                          "resume": "Le 26 avril 1986, l'explosion du réacteur 4 de la centrale nucléaire de Tchernobyl en Ukraine crée une catastrophe d'une ampleur inédite. Des milliers de personnes ont été exposées aux radiations, et l'impact de ce drame dure encore aujourd’hui.",
+                          "lien": "https://fr.wikipedia.org/wiki/Catastrophe_de_Tchernobyl",
+                          "resume_long": "Le 26 avril 1986, l'explosion du réacteur 4 de la centrale nucléaire de Tchernobyl a provoqué une catastrophe nucléaire majeure, avec des conséquences sanitaires et environnementales à long terme.",
+                          "date": "26 avril 1986",
+                          "nombre_de_morts": "Plusieurs milliers (directes et indirectes)",
+                          "niveau_de_mediatisation": "Élevée",
+                          "liens_multimedia": [
+                            "https://www.youtube.com/watch?v=u1T-Q5bOhWI",
+                            "https://www.youtube.com/watch?v=QWpoF_44TxE"
+                          ]
+                        },
+                        {
+                          "identifiant": "49",
+                          "nom": "Le naufrage du Titanic",
+                          "latitude": 41.7269,
+                          "longitude": -49.9481,
+                          "categorie": "Drames",
+                          "resume": "Le 15 avril 1912, le RMS Titanic, considéré comme insubmersible, sombre après avoir heurté un iceberg en plein Atlantique. Le naufrage fait plus de 1 500 victimes, et le mystère entourant la tragédie reste l'une des histoires les plus marquantes du XXe siècle.",
+                          "lien": "https://fr.wikipedia.org/wiki/Naufrage_du_Titanic",
+                          "resume_long": "Le 15 avril 1912, le RMS Titanic a coulé après avoir heurté un iceberg, entraînant la mort de plus de 1 500 personnes. La tragédie a mis en évidence des lacunes en matière de sécurité maritime.",
+                          "date": "15 avril 1912",
+                          "nombre_de_morts": "Plus de 1 500",
+                          "niveau_de_mediatisation": "Élevée",
+                          "liens_multimedia": [
+                            "https://www.youtube.com/watch?v=9kg-ky9f9-o",
+                            "https://www.youtube.com/watch?v=7qoOhuazGLc"
+                          ]
+                        },
+                        {
+                          "identifiant": "50",
+                          "nom": "Explosion du Méthane de Courrières",
+                          "latitude": 50.4192,
+                          "longitude": 2.7492,
+                          "categorie": "Drames",
+                          "resume": "Le 10 mars 1906, un terrible accident survient dans la mine de Courrières dans le Pas-de-Calais. Une explosion de méthane tue plus de 1 000 mineurs, un drame qui marqua profondément l’histoire du travail en France.",
+                          "lien": "https://fr.wikipedia.org/wiki/Explosion_de_la_mine_de_Courri%C3%A8res",
+                          "resume_long": "Le 10 mars 1906, une explosion de grisou dans la mine de Courrières a causé la mort de plus de 1 000 mineurs. C'est la plus grande catastrophe minière de l'histoire de France.",
+                          "date": "10 mars 1906",
+                          "nombre_de_morts": "Plus de 1 000",
+                          "niveau_de_mediatisation": "Élevée",
+                          "liens_multimedia": [
+                            "https://www.youtube.com/watch?v=Q-ySZ756Fsc",
+                            "https://www.youtube.com/watch?v=9Tx-UyOF8P4"
+                          ]
+                        },
+                        {
+                          "identifiant": "51",
+                          "nom": "Disparition de Jean-Luc Pires",
+                          "latitude": 44.8406,
+                          "longitude": -0.5804,
+                          "categorie": "Affaires Non Résolues",
+                          "resume": "En 2003, Jean-Luc Pires, un homme de 42 ans, disparaît après avoir quitté son domicile à Bordeaux. Malgré de nombreuses investigations, aucun indice concret n’a permis de résoudre son cas, et sa disparition reste inexpliquée.",
+                          "lien": "https://fr.wikipedia.org/wiki/Disparition_de_Jean-Luc_Pires",
+                          "resume_long": "En 2003, Jean-Luc Pires a disparu à Bordeaux. L'affaire n'a jamais été résolue, et sa disparition reste un mystère.",
+                          "date": "2003",
+                          "nombre_de_morts": "0",
+                          "niveau_de_mediatisation": "Faible",
+                          "liens_multimedia": []
+                        },
+                        {
+                          "identifiant": "52",
+                          "nom": "Affaire du meurtre de Laetitia Toureaux",
+                          "latitude": 48.8589,
+                          "longitude": 2.3103,
+                          "categorie": "Affaires Non Résolues",
+                          "resume": "Laetitia Toureaux, actrice française, est retrouvée assassinée à son domicile en 1934. L’enquête révèle de nombreuses pistes, mais l'identité de l'assassin n'a jamais été confirmée, et cette affaire demeure un mystère historique.",
+                          "lien": "https://fr.wikipedia.org/wiki/Meurtre_de_Laetitia_Toureaux",
+                          "resume_long": "En 1937, Laetitia Toureaux a été retrouvée assassinée dans le métro parisien. L'affaire n'a jamais été résolue.",
+                          "date": "1937",
+                          "nombre_de_morts": "1",
+                          "niveau_de_mediatisation": "Moyenne",
+                          "liens_multimedia": []
+                        },
+                        {
+                          "identifiant": "53",
+                          "nom": "Disparition de Thierry Féret",
+                          "latitude": 48.2189,
+                          "longitude": -1.6736,
+                          "categorie": "Affaires Non Résolues",
+                          "resume": "En 1999, Thierry Féret, un homme de 30 ans, disparaît lors d’un voyage à Rennes. Après avoir été vu pour la dernière fois dans un café, il n’a plus donné de nouvelles, et l'enquête n'a pas permis de résoudre cette mystérieuse disparition.",
+                          "lien": "https://fr.wikipedia.org/wiki/Disparition_de_Thierry_Féret",
+                          "resume_long": "En 1999, Thierry Féret a disparu à Rennes. L'affaire n'a jamais été résolue.",
+                          "date": "1999",
+                          "nombre_de_morts": "0",
+                          "niveau_de_mediatisation": "Faible",
+                          "liens_multimedia": []
+                        },
+                        {
+                          "identifiant": "54",
+                          "nom": "L'affaire du tueur de la gare de Lyon",
+                          "latitude": 48.8444,
+                          "longitude": 2.3786,
+                          "categorie": "Affaires Non Résolues",
+                          "resume": "En 1993, un homme est tué sur le quai de la gare de Lyon. L’assassin, un tueur en série présumé, n’a jamais été retrouvé malgré plusieurs témoignages et une enquête prolongée, laissant cette affaire non résolue et énigmatique.",
+                          "lien": "https://fr.wikipedia.org/wiki/Affaire_du_tueur_de_la_gare_de_Lyon",
+                          "resume_long": "En 1993, un homme a été tué à la Gare de Lyon à Paris. L'identité du tueur n'a jamais été établie.",
+                          "date": "1993",
+                          "nombre_de_morts": "1",
+                          "niveau_de_mediatisation": "Moyenne",
+                          "liens_multimedia": []
+                        },
+                        {
+                          "identifiant": "55",
+                          "nom": "Affaire de la disparition d'Elodie Kulik",
+                          "latitude": 49.8941,
+                          "longitude": 3.4372,
+                          "categorie": "Affaires Non Résolues",
+                          "resume": "En 2002, Elodie Kulik, une femme de 24 ans, est enlevée et retrouvée assassinée dans un champ en Picardie. L’auteur du crime n’a jamais été formellement identifié, et l’affaire reste en suspens malgré plusieurs pistes.",
+                          "lien": "https://fr.wikipedia.org/wiki/Disparition_d%27Elodie_Kulik",
+                          "resume_long": "En 2002, Elodie Kulik a été enlevée et assassinée en Picardie. L'affaire a été résolue grâce à l'ADN de parentèle, mais reste un cas difficile.",
+                          "date": "2002",
+                          "nombre_de_morts": "1",
+                          "niveau_de_mediatisation": "Élevée",
+                          "liens_multimedia": [
+                            "https://www.youtube.com/watch?v=s-3b9c95J_o",
+                            "https://www.youtube.com/watch?v=bUyA0oA9AMs"
+                          ]
+                        }
+                      ]
