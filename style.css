@@ -293,7 +293,7 @@ footer {
   height: auto !important;
   cursor: pointer;
   text-align: center !important;
-  font-size: 2em !important; /* Taille de l'emoji */
+  font-size: 3.5em !important; /* Taille de l'emoji */
   line-height: 1 !important; /* Centrage vertical */
   color: inherit !important; /* IMPORTANT : Hériter de la couleur pour rendre l'emoji visible */
   text-shadow: none !important;
