@@ -438,7 +438,128 @@
     "categorie": "Affaires Non Résolues",
     "resume": "En 2002, Elodie Kulik, une femme de 24 ans, est enlevée et retrouvée assassinée dans un champ en Picardie. L’auteur du crime n’a jamais été formellement identifié, et l’affaire reste en suspens malgré plusieurs pistes.",
     "lien": "https://fr.wikipedia.org/wiki/Disparition_d%27Elodie_Kulik"
+  },
+  {
+    "nom": "Affaire du Chevaline",
+    "latitude": 45.7579,
+    "longitude": 6.2314,
+    "categorie": "Affaires Non Résolues",
+    "resume": "En 2012, trois membres d'une famille britannique et un cycliste local sont tués par balles près du village de Chevaline. Un quadruple meurtre inexpliqué qui intrigue toujours les enquêteurs.",
+    "lien": "https://fr.wikipedia.org/wiki/Tuerie_de_Chevaline"
+  },
+  {
+    "nom": "Le Monastère de Tamié",
+    "latitude": 45.671,
+    "longitude": 6.322,
+    "categorie": "Lieux Mystérieux",
+    "resume": "Ce monastère isolé dans les montagnes savoyardes est lié à de nombreuses rumeurs de phénomènes inexpliqués. Certains visiteurs évoquent des apparitions ou des sensations étranges.",
+    "lien": "https://fr.wikipedia.org/wiki/Abbaye_de_Tamié"
+  },
+  {
+    "nom": "La grotte de la Balme (version Savoie)",
+    "latitude": 45.6995,
+    "longitude": 5.6467,
+    "categorie": "Lieux Mystérieux",
+    "resume": "Cette grotte proche de l'Avant-Pays savoyard est au cœur de légendes anciennes. Des disparitions inexpliquées auraient alimenté les récits de villageois.",
+    "lien": "https://fr.wikipedia.org/wiki/Grottes_de_la_Balme"
+  },
+  {
+    "nom": "Sanatorium du Plateau d'Assy",
+    "latitude": 45.9369,
+    "longitude": 6.6985,
+    "categorie": "Lieux Abandonnés",
+    "resume": "Ancien centre de soins pour tuberculeux, ce sanatorium est aujourd’hui partiellement abandonné. Certains bâtiments sont explorés par les amateurs d’urbex.",
+    "lien": "https://fr.wikipedia.org/wiki/Plateau_d%27Assy"
+  },
+  {
+    "nom": "Drame du refuge de l'Aigle",
+    "latitude": 45.0247,
+    "longitude": 6.3578,
+    "categorie": "Histoires Sombres",
+    "resume": "En 2009, une avalanche emporte plusieurs alpinistes près de ce refuge. Une tragédie marquante dans le milieu de la montagne en Savoie.",
+    "lien": "https://www.ledauphine.com/savoie/2019/08/01/le-drame-du-refuge-de-l-aigle-il-y-a-dix-ans"
+  },
+  {
+    "nom": "Le village englouti de Tignes",
+    "latitude": 45.4865,
+    "longitude": 6.9087,
+    "categorie": "Histoires Sombres",
+    "resume": "En 1952, l'ancien village de Tignes est englouti sous les eaux d’un barrage. Certains évoquent un traumatisme local et des souvenirs hantés par la montée des eaux.",
+    "lien": "https://fr.wikipedia.org/wiki/Barrage_de_Chevillard"
+  },
+  {
+    "nom": "Disparition de Nelly Balmain",
+    "latitude": 45.6848,
+    "longitude": 5.9098,
+    "categorie": "Affaires Non Résolues",
+    "resume": "En 1989, Nelly, 29 ans, disparaît à Chambéry. Aucune trace n’a été retrouvée. L'enquête reste ouverte plus de 30 ans après.",
+    "lien": "https://www.francebleu.fr/infos/faits-divers-justice/disparition-nelly-balmain-a-chambery-appel-a-temoins-1636386598"
+  },
+  {
+    "nom": "Massacre du Petit-Bornand",
+    "latitude": 45.9833,
+    "longitude": 6.4333,
+    "categorie": "Histoires Sombres",
+    "resume": "En août 1944, 76 personnes sont exécutées par les nazis à Petit-Bornand. Un des épisodes les plus sombres de la Haute-Savoie pendant la guerre.",
+    "lien": "https://fr.wikipedia.org/wiki/Massacre_du_Petit-Bornand"
+  },
+  {
+    "nom": "Ancienne prison de Chambéry",
+    "latitude": 45.5663,
+    "longitude": 5.9208,
+    "categorie": "Lieux Abandonnés",
+    "resume": "Ce bâtiment imposant fut le lieu de nombreuses exécutions. Désaffecté, il suscite encore des frissons chez ceux qui s’y aventurent.",
+    "lien": "https://france3-regions.francetvinfo.fr/auvergne-rhone-alpes/savoie/chambery/ancienne-prison-chambery-va-se-transformer-1373963.html"
+  },
+  {
+    "nom": "Château des Allinges",
+    "latitude": 46.348,
+    "longitude": 6.4831,
+    "categorie": "Lieux Mystérieux",
+    "resume": "Ces ruines médiévales surplombent le lac Léman. Des légendes parlent d’esprits et de messes noires ayant été célébrées dans les souterrains.",
+    "lien": "https://fr.wikipedia.org/wiki/Châteaux_des_Allinges"
+  },
+  {
+    "nom": "Affaire Jean-Christophe Morin",
+    "latitude": 45.8972,
+    "longitude": 6.1294,
+    "categorie": "Affaires Non Résolues",
+    "resume": "Disparu en 2011 après un festival au Fort de Tamié. L’affaire reste non résolue malgré des recherches intensives.",
+    "lien": "https://www.francebleu.fr/infos/faits-divers-justice/disparition-jean-christophe-morin-1677840028"
+  },
+  {
+    "nom": "Villa Goupil à Annecy",
+    "latitude": 45.8992,
+    "longitude": 6.1295,
+    "categorie": "Lieux Mystérieux",
+    "resume": "Cette villa abandonnée près d’Annecy est considérée comme hantée. Des phénomènes inexpliqués y sont régulièrement rapportés.",
+    "lien": "https://www.paranormal-fr.net/forum/viewtopic.php?t=19854"
+  },
+  {
+    "nom": "Château de Miolans",
+    "latitude": 45.5694,
+    "longitude": 6.135,
+    "categorie": "Lieux Mystérieux",
+    "resume": "Ancienne prison surnommée 'la Bastille des Alpes', ce château est réputé pour ses fantômes, dont celui du marquis de Sade.",
+    "lien": "https://fr.wikipedia.org/wiki/Château_de_Miolans"
+  },
+  {
+    "nom": "Crash de Megève - 1973",
+    "latitude": 45.8544,
+    "longitude": 6.6172,
+    "categorie": "Histoires Sombres",
+    "resume": "Un avion de tourisme s’écrase près de Megève en 1973. Tous les passagers périssent. Le lieu reste marqué par cette tragédie oubliée.",
+    "lien": "https://aviation-safety.net/wikibase/24162"
+  },
+  {
+    "nom": "Tunnel du Fréjus - Incendie de 2005",
+    "latitude": 45.1785,
+    "longitude": 6.8651,
+    "categorie": "Histoires Sombres",
+    "resume": "Un incendie se déclare dans un poids lourd dans le tunnel, tuant deux personnes. Cet événement relance les débats sur la sécurité des grands tunnels alpins.",
+    "lien": "https://fr.wikipedia.org/wiki/Tunnel_du_Fr%C3%A9jus#Incendie_de_2005"
   }
 ]
+
 
 
