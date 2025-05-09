@@ -270,29 +270,29 @@ footer {
   }
 }
 
-/* === PERSONNALISATION DU BOUTON DE LOCALISATION (Emoji Direct Hit Cliquable) === */
-.leaflet-control-locate { /* Assurez-vous que c'est bien la classe du bouton */
+/* === PERSONNALISATION DU BOUTON DE LOCALISATION (Ciblage de l'élément <a>) === */
+.leaflet-control-locate .leaflet-bar-part-single {
   background-color: transparent !important; /* Fond transparent */
   border: none !important; /* Pas de bordure */
-  padding: 0 !important; /* Pas de rembourrage */
+  padding: 5px !important; /* Un peu de rembourrage pour l'interaction */
   width: auto !important; /* Ajuster la largeur à l'emoji */
   height: auto !important; /* Ajuster la hauteur à l'emoji */
   cursor: pointer; /* Curseur "main" */
   text-align: center !important; /* Centrer l'emoji */
   font-size: 2em !important; /* Taille de l'emoji (ajustez) */
-  line-height: 1 !important; /* Centrage vertical de l'emoji */
+  line-height: 1 !important; /* Centrage vertical */
   overflow: hidden !important; /* Empêcher débordement */
-  color: transparent !important; /* Rendre le texte invisible */
+  /* Important : Définir l'emoji comme contenu */
+  content: "🎯" !important;
+  /* Pour s'assurer que tout texte/icône par défaut est bien masqué */
+  color: transparent !important;
+  text-shadow: none !important;
+  display: flex !important; /* Utiliser flex pour centrer l'emoji */
+  justify-content: center !important; /* Centrage horizontal */
+  align-items: center !important; /* Centrage vertical */
 }
 
-/* Afficher l'emoji comme contenu principal (peut nécessiter des ajustements) */
-.leaflet-control-locate::before {
-  content: "🎯" !important; /* Emoji direct hit */
-  display: inline-block !important;
-  width: auto !important;
-  height: auto !important;
-  font-size: inherit !important; /* Hériter de la taille du parent */
-  line-height: inherit !important; /* Hériter du line-height du parent */
-  margin: 0 !important;
-  padding: 0 !important;
+/* Supprimer tout style potentiel sur le ::before (inutile ici) */
+.leaflet-control-locate .leaflet-bar-part-single::before {
+  content: none !important;
 }
