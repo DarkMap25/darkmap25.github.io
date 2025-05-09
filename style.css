@@ -269,3 +269,25 @@ footer {
     opacity: 1; /* Devenir complètement visible */
   }
 }
+
+/* === PERSONNALISATION DU BOUTON DE LOCALISATION (Ajouté) === */
+.leaflet-control-locate { /* Sélecteur par défaut, vérifiez dans votre navigateur si c'est le bon */
+  background-color: #f0f0f0; /* Couleur de fond grise */
+  border: 2px solid #ccc; /* Bordure grise */
+  padding: 5px 10px; /* Un peu de rembourrage */
+  border-radius: 5px; /* Coins arrondis */
+  cursor: pointer; /* Curseur de type "main" au survol */
+  text-align: center; /* Centrer le contenu */
+  width: auto; /* Ajuster la largeur au contenu */
+}
+
+.leaflet-control-locate::before {
+  content: "📍"; /* Emoji de localisation */
+  font-size: 1.5em; /* Taille de l'emoji */
+  margin-right: 5px; /* Espacement entre l'emoji et le texte (si vous en avez) */
+}
+
+/* Si vous voulez enlever le texte "Localiser" par défaut et n'afficher que l'emoji */
+.leaflet-control-locate span {
+  display: none;
+}
