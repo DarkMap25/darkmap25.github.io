@@ -270,7 +270,7 @@ footer {
   }
 }
 
-/* === PERSONNALISATION DU BOUTON DE LOCALISATION (Emoji Direct Hit comme contenu - Tentative 3) === */
+/* === PERSONNALISATION DU BOUTON DE LOCALISATION (Emoji Direct Hit Visible et Cliquable) === */
 .leaflet-control-locate {
   background-color: transparent !important; /* Fond transparent */
   border: none !important; /* Pas de bordure */
@@ -280,8 +280,6 @@ footer {
   cursor: pointer; /* Curseur "main" */
   text-align: center !important; /* Centrer l'emoji */
   overflow: hidden !important; /* Empêcher débordement */
-  color: transparent !important; /* Rendre le texte invisible */
-  text-shadow: none !important; /* Supprimer toute ombre de texte */
   display: flex !important; /* Utiliser flex pour centrer */
   justify-content: center !important; /* Centrage horizontal */
   align-items: center !important; /* Centrage vertical */
@@ -297,7 +295,7 @@ footer {
   text-align: center !important;
   font-size: 2em !important; /* Taille de l'emoji */
   line-height: 1 !important; /* Centrage vertical */
-  color: transparent !important; /* Rendre le texte/icône par défaut invisible */
+  color: inherit !important; /* IMPORTANT : Hériter de la couleur pour rendre l'emoji visible */
   text-shadow: none !important;
   display: flex !important; /* Utiliser flex pour centrer */
   justify-content: center !important; /* Centrage horizontal */
@@ -313,5 +311,5 @@ footer {
   line-height: inherit !important; /* Hériter pour le centrage vertical */
   font-size: inherit !important; /* Hériter de la taille définie sur l'<a> */
   text-align: center !important; /* S'assurer que l'emoji est centré */
-  color: inherit !important; /* Hériter de la couleur (qui est transparent, donc on ne le voit pas directement ici) */
+  /* On ne définit pas de couleur ici, on hérite de celle de l'élément <a> */
 }
