@@ -343,17 +343,21 @@ footer {
 
 */ === Bouton dé === */
 #randomButton {
-  background-color: transparent;
-  border: none;
-  font-size: 2em;
-  color: #e60000;
-  text-shadow: 0 0 6px #e60000;
-  transition: transform 0.2s ease;
-  padding: 4px 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 6px; /* espace entre la localisation et le bouton 🎲 */
+  background-color: transparent !important;
+  border: none !important;
+  padding: 5px !important;
+  width: auto !important;
+  height: auto !important;
+  cursor: pointer;
+  text-align: center !important;
+  font-size: 3.5em !important;
+  line-height: 1 !important;
+  color: inherit !important;
+  text-shadow: none !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-top: 5px; /* espace avec le bouton du dessus */
 }
 
 #randomButton:hover {
