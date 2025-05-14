@@ -293,7 +293,7 @@ footer {
   height: auto !important;
   cursor: pointer;
   text-align: center !important;
-  font-size: 3.5em !important; /* Taille de l'emoji */
+  font-size: 2.5em !important; /* Taille de l'emoji */
   line-height: 1 !important; /* Centrage vertical */
   color: inherit !important; /* IMPORTANT : Hériter de la couleur pour rendre l'emoji visible */
   text-shadow: none !important;
@@ -315,7 +315,7 @@ footer {
   /* On ne définit pas de couleur ici, on hérite de celle de l'élément <a> */
 }
 .leaflet-control-locate .leaflet-bar-part-single:hover::before {
-  transform: scale(1.3); /* ✅ effet de grossissement uniquement au survol */
+  transform: scale(1.5); /* ✅ effet de grossissement uniquement au survol */
 }
 
 /* === PERSONNALISATION DU BOUTON DE CHANGEMENT DE FOND DE CARTE AVEC UN EMOJI 🗺️ === */
@@ -362,7 +362,7 @@ footer {
 }
 
 #randomButton:hover {
-    transform: scale(1.3);
+    transform: scale(1.5);
 }
 
 /* === Positionnement des contrôles en haut à droite === */
