@@ -342,13 +342,13 @@ footer {
 
 /* === Bouton dé (lieu aléatoire) === */
 #randomButton {
-  position: absolute; /* Position flottante par-dessus la carte */
-  bottom: 100px;       /* Distance depuis le bas */
-  right: 20px;         /* Distance depuis la droite */
-  z-index: 1000;       /* Par-dessus la carte */
+  position: absolute;
+  top: 90px; /* sous le bouton de localisation */
+  right: 20px;
+  z-index: 1000;
   background-color: transparent;
   border: none;
-  font-size: 3.5em;     /* Taille de l'emoji 🎲 */
+  font-size: 2.5em;     /* Taille de l'emoji 🎲 */
   cursor: pointer;
   color: #e60000;       /* Couleur rouge */
   text-shadow: 0 0 6px #e60000;  /* Glow rouge */
