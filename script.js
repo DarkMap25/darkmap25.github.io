@@ -7,6 +7,13 @@ const thunderforestLayer = L.tileLayer('https://tile.thunderforest.com/spinal-ma
   maxZoom: 18
 });
 
+// Fond toner stamen
+const tonerStamenLayer = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}{r}.png?api_key=a1ef2388-4a98-4134-8ffc-d2496230635e', {
+    attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>',
+  minZoom: 5,  // Niveau de zoom minimum
+  maxZoom: 18
+});
+
 // Fond Thunderforest Atlas (remplace CartoDB Dark)
 const thunderforestAtlasLayer = L.tileLayer('https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=2f67b0d994104bf69ffcd0cf70f86a08', {
   attribution: '&copy; OpenStreetMap contributors, &copy; Thunderforest',
@@ -24,7 +31,7 @@ const franceBounds = L.latLngBounds(
 const map = L.map('map', {
   center: [46.5, 2.5],  // Coordonnées de la France
   zoom: 5,  // Zoom initial
-  layers: [thunderforestLayer],  // La couche de carte initiale
+  layers: [tonerStamenLayer], // ✅ Toner Stamen est la première couche à être ajoutée
   maxBounds: franceBounds, // ⛔ empêche de sortir de la France
   maxBoundsViscosity: 1.0  // 🌪️ "résistance" aux bords (1 = totalement bloqué)
 });
@@ -66,6 +73,7 @@ map.on('locationfound', function(event) {
 
 // Ajout du contrôle de superposition pour basculer entre les fonds de carte
 L.control.layers({
+  'Toner Stamen': tonerStamenLayer, // ✅ Toner Stamen en premier dans la liste
   'Thunderforest Spinal Map': thunderforestLayer,
   'Thunderforest Atlas': thunderforestAtlasLayer
 }, {}, { position: 'topleft' }).addTo(map);
