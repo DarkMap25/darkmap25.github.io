@@ -345,7 +345,7 @@ footer {
 #randomButton {
   background-color: transparent;
   border: none;
-  font-size: 2.2em;
+  font-size: 6em;
   color: #e60000;
   text-shadow: 0 0 6px #e60000;
   transition: transform 0.2s ease;
