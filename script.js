@@ -117,6 +117,7 @@ fetch('lieux.json')  // Effectue une requête pour récupérer les données du f
   .then(response => response.json())  // Parse la réponse en JSON
   .then(data => {
     const markers = data.map(lieu => createEmojiMarker(lieu)); // Crée tous les marqueurs
+    window.allMarkers = markers;  // On sauvegarde tous les marqueurs pour y accéder plus tard
     const group = L.featureGroup(markers);                     // Groupe contenant tous les marqueurs
     group.addTo(map);                                          // Ajoute tous les marqueurs à la carte
     map.fitBounds(group.getBounds());                           // Ajuste la vue pour afficher tous les marqueurs
@@ -182,4 +183,19 @@ window.addEventListener("load", () => {
   } else {
     overlay.style.display = "none";  // Si l'intro n'est pas activée, masque l'overlay
   }
+});
+
+// === Bouton "Lieu aléatoire" (🎲) ===
+document.getElementById("randomButton").addEventListener("click", () => {
+  if (!window.allMarkers || window.allMarkers.length === 0) return;
+
+  // Sélection d’un marqueur au hasard
+  const randomIndex = Math.floor(Math.random() * window.allMarkers.length);
+  const randomMarker = window.allMarkers[randomIndex];
+
+  // Centre la carte sur le marqueur avec animation et zoom niveau 10
+  map.setView(randomMarker.getLatLng(), 10, { animate: true });
+
+  // Ouvre le popup associé
+  randomMarker.openPopup();
 });
