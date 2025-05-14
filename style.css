@@ -313,3 +313,25 @@ footer {
   text-align: center !important; /* S'assurer que l'emoji est centré */
   /* On ne définit pas de couleur ici, on hérite de celle de l'élément <a> */
 }
+
+/* === PERSONNALISATION DU BOUTON DE CHANGEMENT DE FOND DE CARTE AVEC UN EMOJI 🗺️ === */
+.leaflet-control-layers-toggle {
+  background-color: transparent !important;
+  background-image: none !important;
+  width: auto !important;
+  height: auto !important;
+  border: none !important;
+  font-size: 3.5em !important;
+  line-height: 1 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  cursor: pointer;
+  color: inherit !important;
+}
+
+.leaflet-control-layers-toggle::before {
+  content: "🗺️";
+  display: block;
+  font-size: inherit;
+}
