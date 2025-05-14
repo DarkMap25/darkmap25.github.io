@@ -82,7 +82,7 @@ map.on('locationfound', function(event) {
 L.control.layers({
   'Toner Stamen': tonerStamenLayer, // ✅ Toner Stamen en premier dans la liste
   'Thunderforest Spinal Map': thunderforestLayer,
-  'Atlas': thunderforestAtlasLayer
+  'Atlas': thunderforestAtlasLayer,
   'Dark' : alidadedarkLayer
 }, {}, { position: 'topleft' }).addTo(map);
 
