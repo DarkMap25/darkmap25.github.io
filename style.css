@@ -340,30 +340,40 @@ footer {
   font-size: inherit;
 }
 
-
-*/ === Bouton dé === */
+/* === Bouton dé === */
 #randomButton {
-  background-color: transparent !important;
-  border: none !important;
-  padding: 5px !important;
-  width: auto !important;
-  height: auto !important;
-  cursor: pointer;
-  text-align: center !important;
-  font-size: 3.5em !important; /* même que 🎯 */
-  line-height: 1 !important;
-  color: inherit !important;
-  text-shadow: none !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  margin-top: 5px;
-  overflow: visible !important; /* 🔥 empêche le rognage */
+    background-color: transparent !important;
+    border: none !important;
+    padding: 5px !important;
+    width: auto !important;
+    height: auto !important;
+    cursor: pointer;
+    text-align: center !important;
+    font-size: 3.5em !important; /* même que 🎯 */
+    line-height: 1 !important;
+    color: inherit !important;
+    text-shadow: none !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    /* Suppression de la marge ici, le positionnement se fera via Leaflet */
+    overflow: visible !important; /* 🔥 empêche le rognage */
+    transition: transform 0.2s ease; /* Ajout de la transition pour l'effet au survol */
+}
+
+#randomButton:hover {
+    transform: scale(1.3);
+}
+
+/* === Positionnement des contrôles en haut à droite === */
+.leaflet-topright {
+    display: flex; /* Utiliser flex pour aligner les éléments verticalement */
+    flex-direction: column; /* Aligner les éléments en colonne */
+    align-items: flex-end; /* Aligner les éléments à droite */
+    gap: 5px; /* Espacement vertical entre les boutons */
+    padding: 10px; /* Marge autour du groupe de boutons */
 }
 
 .leaflet-control-custom {
-  overflow: visible !important; /* 🔥 Leaflet limite parfois la taille à cause de ça */
-}
-#randomButton:hover {
-  transform: scale(1.3);
+    overflow: visible !important; /* 🔥 Leaflet limite parfois la taille à cause de ça */
 }
