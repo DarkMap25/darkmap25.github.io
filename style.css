@@ -144,7 +144,7 @@ footer {
 
 /* === Marqueurs emoji === */
 .emoji-marker {
-  font-size: 24px; /* Taille des marqueurs emoji */
+  font-size: 16px; /* Taille des marqueurs emoji */
   background: none; /* Pas de fond */
   border: none; /* Pas de bordure */
   box-shadow: none; /* Pas d'ombre */
