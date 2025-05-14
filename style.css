@@ -345,7 +345,7 @@ footer {
 #randomButton {
   background-color: transparent;
   border: none;
-  font-size: 6em;
+  font-size: 2em;
   color: #e60000;
   text-shadow: 0 0 6px #e60000;
   transition: transform 0.2s ease;
@@ -353,6 +353,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 6px; /* espace entre la localisation et le bouton 🎲 */
 }
 
 #randomButton:hover {
