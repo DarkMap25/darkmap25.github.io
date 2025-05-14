@@ -300,7 +300,7 @@ footer {
   display: flex !important; /* Utiliser flex pour centrer */
   justify-content: center !important; /* Centrage horizontal */
   align-items: center !important; /* Centrage vertical */
-}}
+}
 
 /* Afficher l'emoji comme contenu de l'élément <a> */
 .leaflet-control-locate .leaflet-bar-part-single::before {
