@@ -170,41 +170,55 @@ window.addEventListener("load", () => {
   }
 });
 
-// === Création dynamique du bouton "🎲 Lieu aléatoire" ===
-const randomButton = document.createElement("button");
-randomButton.id = "randomButton";
-randomButton.title = "Lieu au hasard 🎲";
-randomButton.textContent = "🎲";
-document.body.appendChild(randomButton);
+// === Ajout du bouton 🎲 à l'intérieur de la carte (sous le bouton de localisation) ===
+const randomControl = L.control({ position: 'topright' });
 
-// Comportement au clic : zoom niveau 10 et popup
-randomButton.addEventListener("click", () => {
-  if (!window.allMarkers || window.allMarkers.length === 0) return;
+randomControl.onAdd = function () {
+  const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+  container.id = 'randomButton';
+  container.innerHTML = '🎲';
+  container.title = 'Lieu au hasard 🎲';
 
-  const randomIndex = Math.floor(Math.random() * window.allMarkers.length);
-  const randomMarker = window.allMarkers[randomIndex];
-  const latlng = randomMarker.getLatLng();
+  container.style.cursor = 'pointer';
 
-  const currentZoom = map.getZoom();
+  // Empêche que le clic interfère avec les événements de la carte
+  L.DomEvent.disableClickPropagation(container);
 
-  // Étape 1 : dézoom si on est déjà très proche
-  if (currentZoom >= 10) {
-    map.setView(map.getCenter(), 5); // reset zoom
-    setTimeout(() => {
+  return container;
+};
+
+randomControl.addTo(map);
+
+// Ajout de l'écouteur une fois le bouton inséré dans la carte
+setTimeout(() => {
+  const btn = document.getElementById("randomButton");
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    if (!window.allMarkers || window.allMarkers.length === 0) return;
+
+    const randomIndex = Math.floor(Math.random() * window.allMarkers.length);
+    const randomMarker = window.allMarkers[randomIndex];
+    const latlng = randomMarker.getLatLng();
+    const currentZoom = map.getZoom();
+
+    if (currentZoom >= 10) {
+      map.setView(map.getCenter(), 5); // dézoom rapide
+      setTimeout(() => {
+        map.flyTo(latlng, 10, {
+          animate: true,
+          duration: 2.5,
+          easeLinearity: 0.25
+        });
+        randomMarker.openPopup();
+      }, 700);
+    } else {
       map.flyTo(latlng, 10, {
         animate: true,
         duration: 2.5,
         easeLinearity: 0.25
       });
       randomMarker.openPopup();
-    }, 700); // petit délai pour voir le dézoom
-  } else {
-    // Si on est déjà à un zoom faible
-    map.flyTo(latlng, 10, {
-      animate: true,
-      duration: 2.5,
-      easeLinearity: 0.25
-    });
-    randomMarker.openPopup();
-  }
-});
+    }
+  });
+}, 0);
