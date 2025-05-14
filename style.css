@@ -304,7 +304,7 @@ footer {
 
 /* Afficher l'emoji comme contenu de l'élément <a> */
 .leaflet-control-locate .leaflet-bar-part-single::before {
-  content: "🎯" !important; /* Emoji direct hit */
+  content: "📍" !important; /* Emoji direct hit */
   display: block !important; /* Important pour que le pseudo-élément prenne de la place */
   width: 100%;
   height: 100%;
