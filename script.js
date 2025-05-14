@@ -171,7 +171,7 @@ window.addEventListener("load", () => {
 });
 
 // === Ajout du bouton 🎲 à l'intérieur de la carte (sous le bouton de localisation) ===
-const randomControl = L.control({ position: 'bottomright' });
+const randomControl = L.control({ position: 'topright' });
 
 randomControl.onAdd = function () {
   const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
