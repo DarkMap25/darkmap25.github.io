@@ -115,4 +115,75 @@ fetch('lieux.json')
     group.addTo(map);
     map.fitBounds(group.getBounds());
   })
-  .catch(error => console.error('Erreur lors du chargement
+  .catch(error => console.error('Erreur lors du chargement des lieux :', error));
+
+// Légende emoji
+function createLegend() {
+  const legend = L.control({ position: 'bottomleft' });
+
+  legend.onAdd = function (map) {
+    const div = L.DomUtil.create('div', 'info legend');
+    const categories = [
+      { name: 'Affaires Non Résolues', emoji: '❓' },
+      { name: 'Crimes', emoji: '☠️' },
+      { name: 'Drames', emoji: '⚰️' },
+      { name: 'Guerres et Conflits', emoji: '⚔️' },
+      { name: 'Lieux Abandonnés', emoji: '🏰' },
+      { name: 'Lieux Mystérieux', emoji: '👁️' }
+    ];
+
+    categories.forEach(category => {
+      div.innerHTML += `
+        <div class="legend-item">
+          <span class="emoji">${category.emoji}</span>
+          <span class="category-name">${category.name}</span>
+        </div>
+      `;
+    });
+
+    return div;
+  };
+
+  legend.addTo(map);
+}
+createLegend();
+
+// Animation d’introduction
+let showIntro = true;
+
+window.addEventListener("load", () => {
+  const overlay = document.getElementById("intro-overlay");
+
+  if (showIntro) {
+    const line1 = document.querySelector(".line1");
+    const line2 = document.querySelector(".line2");
+
+    line1.textContent = "Un territoire. Une carte.";
+    line2.textContent = "Un passé sombre.";
+
+    setTimeout(() => {
+      overlay.style.opacity = 0;
+      setTimeout(() => overlay.remove(), 1000);
+    }, 10000);
+  } else {
+    overlay.style.display = "none";
+  }
+});
+
+// === Création dynamique du bouton "🎲 Lieu aléatoire" ===
+const randomButton = document.createElement("button");
+randomButton.id = "randomButton";
+randomButton.title = "Lieu au hasard 🎲";
+randomButton.textContent = "🎲";
+document.body.appendChild(randomButton);
+
+// Comportement au clic : zoom niveau 10 et popup
+randomButton.addEventListener("click", () => {
+  if (!window.allMarkers || window.allMarkers.length === 0) return;
+
+  const randomIndex = Math.floor(Math.random() * window.allMarkers.length);
+  const randomMarker = window.allMarkers[randomIndex];
+
+  map.setView(randomMarker.getLatLng(), 10, { animate: true });
+  randomMarker.openPopup();
+});
