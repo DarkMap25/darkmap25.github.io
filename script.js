@@ -183,7 +183,28 @@ randomButton.addEventListener("click", () => {
 
   const randomIndex = Math.floor(Math.random() * window.allMarkers.length);
   const randomMarker = window.allMarkers[randomIndex];
+  const latlng = randomMarker.getLatLng();
 
-  map.setView(randomMarker.getLatLng(), 10, { animate: true });
-  randomMarker.openPopup();
+  const currentZoom = map.getZoom();
+
+  // Étape 1 : dézoom si on est déjà très proche
+  if (currentZoom >= 10) {
+    map.setView(map.getCenter(), 5); // reset zoom
+    setTimeout(() => {
+      map.flyTo(latlng, 10, {
+        animate: true,
+        duration: 2.5,
+        easeLinearity: 0.25
+      });
+      randomMarker.openPopup();
+    }, 700); // petit délai pour voir le dézoom
+  } else {
+    // Si on est déjà à un zoom faible
+    map.flyTo(latlng, 10, {
+      animate: true,
+      duration: 2.5,
+      easeLinearity: 0.25
+    });
+    randomMarker.openPopup();
+  }
 });
