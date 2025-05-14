@@ -350,16 +350,20 @@ footer {
   height: auto !important;
   cursor: pointer;
   text-align: center !important;
-  font-size: 3.5em !important;
+  font-size: 3.5em !important; /* même que 🎯 */
   line-height: 1 !important;
   color: inherit !important;
   text-shadow: none !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  margin-top: 5px; /* espace avec le bouton du dessus */
+  margin-top: 5px;
+  overflow: visible !important; /* 🔥 empêche le rognage */
 }
 
+.leaflet-control-custom {
+  overflow: visible !important; /* 🔥 Leaflet limite parfois la taille à cause de ça */
+}
 #randomButton:hover {
   transform: scale(1.3);
 }
