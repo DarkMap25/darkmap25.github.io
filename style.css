@@ -311,9 +311,11 @@ footer {
   line-height: inherit !important; /* Hériter pour le centrage vertical */
   font-size: inherit !important; /* Hériter de la taille définie sur l'<a> */
   text-align: center !important; /* S'assurer que l'emoji est centré */
-  transform: scale(1.3);   /* Grossissement à 130% */
   transition: transform 0.2s ease;  /* Animation douce */  
   /* On ne définit pas de couleur ici, on hérite de celle de l'élément <a> */
+}
+.leaflet-control-locate .leaflet-bar-part-single:hover::before {
+  transform: scale(1.3); /* ✅ effet de grossissement uniquement au survol */
 }
 
 /* === PERSONNALISATION DU BOUTON DE CHANGEMENT DE FOND DE CARTE AVEC UN EMOJI 🗺️ === */
