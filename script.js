@@ -96,7 +96,11 @@ function createEmojiMarker(lieu) {
     <a href="${lieu.lien}" target="_blank">Voir plus</a>
   `;
 
-  const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon }).bindPopup(popupContent);
+  const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
+      .bindPopup(popupContent),{
+          maxWidth: 600,
+    autoPan: true
+      });
 
   marker.on('click', () => {
     map.setView([lieu.latitude, lieu.longitude], map.getZoom(), { animate: true });
