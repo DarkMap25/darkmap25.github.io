@@ -101,7 +101,7 @@ function createEmojiMarker(lieu) {
         maxWidth: 600,
         autoPan: true,
         keepInView: true,           // force le popup à se repositionner pour rester visible
-      autoPanPadding: [20, 20]    // marge (px) entre le popup et le bord de la carte      
+      autoPanPadding: [40, 40]    // marge (px) entre le popup et le bord de la carte      
     });
 
   marker.on('click', () => {
