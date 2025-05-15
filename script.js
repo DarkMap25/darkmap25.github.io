@@ -97,7 +97,7 @@ function createEmojiMarker(lieu) {
   `;
 
   const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
-      .bindPopup(popupContent),{
+      .bindPopup(popupContent, {
           maxWidth: 600,
     autoPan: true
       });
