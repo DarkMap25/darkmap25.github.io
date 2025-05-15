@@ -98,9 +98,11 @@ function createEmojiMarker(lieu) {
 
   const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
       .bindPopup(popupContent, {
-          maxWidth: 600,
-    autoPan: true
-      });
+        maxWidth: 600,
+        autoPan: true,
+        keepInView: true,           // force le popup à se repositionner pour rester visible
+      autoPanPadding: [20, 20]    // marge (px) entre le popup et le bord de la carte      
+    });
 
   marker.on('click', () => {
     map.setView([lieu.latitude, lieu.longitude], map.getZoom(), { animate: true });
