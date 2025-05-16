@@ -114,6 +114,8 @@ function createEmojiMarker(lieu) {
 
   // Au clic : on n'ouvre que la popup, pas de zoom
   marker.on('click', () => {
+      // On centre sur la position du marqueur (même niveau de zoom)
+  map.panTo(marker.getLatLng(), { animate: true });
     marker.openPopup();
   });
 
