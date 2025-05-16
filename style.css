@@ -381,24 +381,27 @@ footer {
 /* === Adaptation des popups Leaflet === */
 /* Largeur max du popup sur desktop restée par défaut */
 
-/* Popups ≤ 768px : largeur réduite */
+/* === Adaptation des popups Leaflet pour mobile === */
 @media (max-width: 768px) {
+  /* limite la largeur du cadre */
   .leaflet-popup-content-wrapper {
     max-width: 334px !important;
   }
-  .leaflet-popup-content {
-    font-size: 0.3em;   /* 70% de la taille normale */
-    line-height: 0.4em; /* interligne resserré */
+  /* applique à tout le contenu (texte, liens…) */
+  .leaflet-popup-content,
+  .leaflet-popup-content * {
+    font-size: 12px !important;    /* taille fixe en px pour plus de contrôle */
+    line-height: 1.2 !important;    /* interligne adapté */
   }
 }
 
-/* Popups ≤ 480px : encore plus étroit et texte plus petit */
 @media (max-width: 480px) {
   .leaflet-popup-content-wrapper {
     max-width: 240px !important;
   }
-  .leaflet-popup-content {
-    font-size: 0.2em;  /* 75% de la taille normale */
-    line-height: 0.3em;
+  .leaflet-popup-content,
+  .leaflet-popup-content * {
+    font-size: 10px !important;
+    line-height: 1 !important;
   }
 }
