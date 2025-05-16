@@ -239,6 +239,7 @@ setTimeout(() => {
           randomMarker.openPopup();
         });
       }, 700);
+
     } else {
       // Sinon on zoome directement
       map.flyTo(latlng, targetZoom, {
@@ -251,5 +252,7 @@ setTimeout(() => {
         randomMarker.openPopup();
       });
     }
+
   });
+
 }, 0);
