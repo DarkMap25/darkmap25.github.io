@@ -224,34 +224,32 @@ setTimeout(() => {
     const targetZoom = 10;
 
     if (currentZoom >= targetZoom) {
-      // Si déjà trop zoomé, on recule d’abord à 5
+      // Si déjà trop zoomé, on dézoom d’abord à 5
       map.setView(map.getCenter(), 5, { animate: true });
 
-      // Puis on attend un peu avant de voler vers le marqueur
+      // Puis on vole vers le marqueur
       setTimeout(() => {
         map.flyTo(latlng, targetZoom, {
           animate: true,
           duration: 2.5,
           easeLinearity: 0.25
         });
-        // Popup une fois le vol terminé
+        // Une fois le vol terminé, on affiche le popup
         map.once('moveend', () => {
           randomMarker.openPopup();
         });
       }, 700);
-
     } else {
-      // Sinon zoom direct
+      // Sinon on zoome directement
       map.flyTo(latlng, targetZoom, {
         animate: true,
         duration: 2.5,
         easeLinearity: 0.25
       });
-      // Popup une fois le vol terminé
+      // Une fois le vol terminé, on affiche le popup
       map.once('moveend', () => {
         randomMarker.openPopup();
       });
     }
   });
 }, 0);
-}
