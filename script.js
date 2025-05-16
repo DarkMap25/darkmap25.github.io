@@ -1,27 +1,19 @@
-// === Initialisation des fonds de carte ===
+
+// Création des deux fonds de carte
 
 // Fond Alidade Smooth Dark
-const alidadedarkLayer = L.tileLayer(
-  'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=a1ef2388-4a98-4134-8ffc-d2496230635e',
-  {
-    attribution:
-      '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
-      '&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
-      '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>',
-    minZoom: 5,
-    maxZoom: 18
-  }
-);
+const alidadedarkLayer = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=a1ef2388-4a98-4134-8ffc-d2496230635e',{
+    attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>', 
+   minZoom: 5,
+   maxZoom: 18
+});
 
 // Fond Thunderforest Atlas
-const thunderforestAtlasLayer = L.tileLayer(
-  'https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=2f67b0d994104bf69ffcd0cf70f86a08',
-  {
-    attribution: '&copy; OpenStreetMap contributors, &copy; Thunderforest',
-    minZoom: 5,
-    maxZoom: 18
-  }
-);
+const thunderforestAtlasLayer = L.tileLayer('https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=2f67b0d994104bf69ffcd0cf70f86a08', {
+  attribution: '&copy; OpenStreetMap contributors, &copy; Thunderforest',
+  minZoom: 5,
+  maxZoom: 18
+});
 
 // Limites de la France métropolitaine + Corse
 const franceBounds = L.latLngBounds(
@@ -29,7 +21,7 @@ const franceBounds = L.latLngBounds(
   L.latLng(54, 10)
 );
 
-// === Création et configuration de la carte ===
+// Initialisation de la carte
 const map = L.map('map', {
   center: [46.5, 2.5],
   zoom: 5,
@@ -38,10 +30,12 @@ const map = L.map('map', {
   maxBoundsViscosity: 1.0
 });
 
-// === Bouton de localisation ===
+// Bouton de localisation
 L.control.locate({
   position: 'topright',
-  strings: { title: "Localiser ma position" },
+  strings: {
+    title: "Localiser ma position"
+  },
   drawCircle: true,
   drawMarker: true,
   follow: true,
@@ -50,33 +44,32 @@ L.control.locate({
   keepCurrentZoomLevel: true
 }).addTo(map);
 
-// === Animation de zoom lors de la géolocalisation ===
-map.on('locationfound', function (event) {
-  const targetLatLng = event.latlng;
-  const targetZoom = 9;
-  const currentZoom = map.getZoom();
+// Animation de zoom lors de la géolocalisation
+map.on('locationfound', function(event) {
+    const targetLatLng = event.latlng;
+    const targetZoom = 9;
 
-  if (currentZoom > targetZoom - 2) {
-    map.setZoom(targetZoom - 2);
-  }
+    const currentZoom = map.getZoom();
+    if (currentZoom > targetZoom - 2) {
+        map.setZoom(targetZoom - 2);
+    }
 
-  setTimeout(() => {
-    map.flyTo(targetLatLng, targetZoom, {
-      animate: true,
-      duration: 2.5,
-      easeLinearity: 0.25
+    setTimeout(() => {
+        map.flyTo(targetLatLng, targetZoom, {
+            animate: true,
+            duration: 2.5,
+            easeLinearity: 0.25
+        });
     });
-  });
 });
 
-// === Sélecteur de fonds de carte ===
-L.control.layers(
-  { Dark: alidadedarkLayer, Atlas: thunderforestAtlasLayer },
-  {},
-  { position: 'topleft' }
-).addTo(map);
+// Contrôle des fonds de carte
+L.control.layers({
+  'Dark' : alidadedarkLayer,
+  'Atlas': thunderforestAtlasLayer
+}, {}, { position: 'topleft' }).addTo(map);
 
-// === Emojis par catégorie ===
+// Emoji par catégorie
 const emojiParCategorie = {
   "Affaires Non Résolues": "❓",
   "Crimes": "☠️",
@@ -86,7 +79,7 @@ const emojiParCategorie = {
   "Lieux Mystérieux": "👁️"
 };
 
-// === Création d’un marqueur emoji + popup ===
+// Fonction de création des marqueurs emoji
 function createEmojiMarker(lieu) {
   const emoji = emojiParCategorie[lieu.categorie] || "❓";
 
@@ -105,41 +98,37 @@ function createEmojiMarker(lieu) {
   `;
 
   const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
-    .bindPopup(popupContent, {
-      maxWidth: 600,
-      autoPan: false,
-      keepInView: false
-    })
-    .addTo(map);
+      .bindPopup(popupContent, {
+        maxWidth: 600,
+        autoPan: true,
+        keepInView: true,           // force le popup à se repositionner pour rester visible
+      autoPanPadding: [40, 40]    // marge (px) entre le popup et le bord de la carte      
+    });
 
-  // Au clic : on n'ouvre que la popup, pas de zoom
   marker.on('click', () => {
-      // On centre sur la position du marqueur (même niveau de zoom)
-  map.panTo(marker.getLatLng(), { animate: true });
-    marker.openPopup();
+    map.setView([lieu.latitude, lieu.longitude], map.getZoom(), { animate: true });
   });
 
   return marker;
-} // <<< fermeture de createEmojiMarker
+}
 
-// === Chargement des données et ajout des marqueurs ===
+// Chargement des lieux
 fetch('lieux.json')
-  .then((response) => response.json())
-  .then((data) => {
-    const markers = data.map((lieu) => createEmojiMarker(lieu));
+  .then(response => response.json())
+  .then(data => {
+    const markers = data.map(lieu => createEmojiMarker(lieu));
     window.allMarkers = markers;
     const group = L.featureGroup(markers);
     group.addTo(map);
     map.fitBounds(group.getBounds());
   })
-  .catch((error) =>
-    console.error('Erreur lors du chargement des lieux :', error)
-  );
+  .catch(error => console.error('Erreur lors du chargement des lieux :', error));
 
-// === Légende des catégories ===
+// Légende emoji
 function createLegend() {
   const legend = L.control({ position: 'bottomleft' });
-  legend.onAdd = function () {
+
+  legend.onAdd = function (map) {
     const div = L.DomUtil.create('div', 'info legend');
     const categories = [
       { name: 'Affaires Non Résolues', emoji: '❓' },
@@ -149,94 +138,94 @@ function createLegend() {
       { name: 'Lieux Abandonnés', emoji: '🏰' },
       { name: 'Lieux Mystérieux', emoji: '👁️' }
     ];
-    categories.forEach((cat) => {
+
+    categories.forEach(category => {
       div.innerHTML += `
         <div class="legend-item">
-          <span class="emoji">${cat.emoji}</span>
-          <span class="category-name">${cat.name}</span>
+          <span class="emoji">${category.emoji}</span>
+          <span class="category-name">${category.name}</span>
         </div>
       `;
     });
+
     return div;
   };
+
   legend.addTo(map);
 }
 createLegend();
 
-// === Intro animée ===
+// Animation d’introduction
 let showIntro = true;
-window.addEventListener('load', () => {
-  const overlay = document.getElementById('intro-overlay');
+
+window.addEventListener("load", () => {
+  const overlay = document.getElementById("intro-overlay");
+
   if (showIntro) {
-    const line1 = document.querySelector('.line1');
-    const line2 = document.querySelector('.line2');
-    line1.textContent = 'Un territoire. Une carte.';
-    line2.textContent = 'Un passé sombre.';
+    const line1 = document.querySelector(".line1");
+    const line2 = document.querySelector(".line2");
+
+    line1.textContent = "Un territoire. Une carte.";
+    line2.textContent = "Un passé sombre.";
+
     setTimeout(() => {
       overlay.style.opacity = 0;
       setTimeout(() => overlay.remove(), 1000);
     }, 10000);
   } else {
-    overlay.style.display = 'none';
+    overlay.style.display = "none";
   }
 });
 
-// === Bouton "Lieu aléatoire" sous la localisation ===
+// === Ajout du bouton 🎲 à l'intérieur de la carte (sous le bouton de localisation) ===
 const randomControl = L.control({ position: 'topright' });
+
 randomControl.onAdd = function () {
-  const container = L.DomUtil.create(
-    'div',
-    'leaflet-bar leaflet-control leaflet-control-custom'
-  );
+  const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
   container.id = 'randomButton';
   container.innerHTML = '🎲';
   container.title = 'Lieu au hasard 🎲';
+
   container.style.cursor = 'pointer';
+
+  // Empêche que le clic interfère avec les événements de la carte
   L.DomEvent.disableClickPropagation(container);
+
   return container;
 };
+
 randomControl.addTo(map);
 
-// === Comportement du bouton aléatoire ===
+// Ajout de l'écouteur une fois le bouton inséré dans la carte
 setTimeout(() => {
-  const btn = document.getElementById('randomButton');
+  const btn = document.getElementById("randomButton");
   if (!btn) return;
 
-  btn.addEventListener('click', () => {
+  btn.addEventListener("click", () => {
     if (!window.allMarkers || window.allMarkers.length === 0) return;
 
-    const randomIndex = Math.floor(
-      Math.random() * window.allMarkers.length
-    );
+    const randomIndex = Math.floor(Math.random() * window.allMarkers.length);
     const randomMarker = window.allMarkers[randomIndex];
     const latlng = randomMarker.getLatLng();
     const currentZoom = map.getZoom();
-    const targetZoom = 10;
 
-    if (currentZoom >= targetZoom) {
-      // Dézoom préalable
-      map.setView(map.getCenter(), 5, { animate: true });
+    if (currentZoom >= 10) {
+      map.setView(map.getCenter(), 5); // dézoom rapide
       setTimeout(() => {
-        // Vol vers le marqueur
-        map.flyTo(latlng, targetZoom, {
+        map.flyTo(latlng, 10, {
           animate: true,
           duration: 2.5,
           easeLinearity: 0.25
         });
-        map.once('moveend', () => {
-          randomMarker.openPopup();
-        });
+        randomMarker.openPopup();
       }, 700);
     } else {
-      // Vol direct vers le marqueur
-      map.flyTo(latlng, targetZoom, {
+      map.flyTo(latlng, 10, {
         animate: true,
         duration: 2.5,
         easeLinearity: 0.25
       });
-      map.once('moveend', () => {
-        randomMarker.openPopup();
-      });
+      randomMarker.openPopup();
     }
   });
 }, 0);
