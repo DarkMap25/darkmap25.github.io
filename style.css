@@ -377,3 +377,28 @@ footer {
 .leaflet-control-custom {
     overflow: visible !important; /* 🔥 Leaflet limite parfois la taille à cause de ça */
 }
+
+/* === Adaptation des popups Leaflet === */
+/* Largeur max du popup sur desktop restée par défaut */
+
+/* Popups ≤ 768px : largeur réduite */
+@media (max-width: 768px) {
+  .leaflet-popup-content-wrapper {
+    max-width: 300px !important;
+  }
+  .leaflet-popup-content {
+    font-size: 0.7em;   /* 70% de la taille normale */
+    line-height: 1em; /* interligne resserré */
+  }
+}
+
+/* Popups ≤ 480px : encore plus étroit et texte plus petit */
+@media (max-width: 480px) {
+  .leaflet-popup-content-wrapper {
+    max-width: 240px !important;
+  }
+  .leaflet-popup-content {
+    font-size: 0.6em;  /* 75% de la taille normale */
+    line-height: 0.9em;
+  }
+}
