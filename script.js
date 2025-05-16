@@ -124,36 +124,10 @@ function createEmojiMarker(lieu) {
     .addTo(map);
 
   // Au clic : logique de dézoom/zoom et ouverture du popup
-  marker.on('click', () => {
-    const latlng = marker.getLatLng();
-    const targetZoom = 10;          // zoom désiré sur le marqueur
-    const currentZoom = map.getZoom();
-
-    if (currentZoom >= targetZoom) {
-      // Si on est déjà “très” zoomé, on dézoom d’abord au niveau 5
-      map.setView(map.getCenter(), 5, { animate: true });
-      setTimeout(() => {
-        // Puis on zoome vers le marqueur et on ouvre la popup
-        map.flyTo(latlng, targetZoom, {
-          animate: true,
-          duration: 1.5
-        });
-        marker.openPopup();
-      }, 700);
-    } else {
-      // Sinon on zoom directement et on ouvre la popup
-      map.flyTo(latlng, targetZoom, {
-        animate: true,
-        duration: 1.5
-      });
-      setTimeout(() => {
-        marker.openPopup();
-      }, 700);
-    }
-  });
-
-  return marker;
-}
+// À la place de l'ancien marker.on('click', …) :
+marker.on('click', () => {
+  marker.openPopup();
+});
 
 // === Chargement des données et ajout des marqueurs ===
 fetch('lieux.json')
@@ -239,8 +213,10 @@ randomControl.addTo(map);
 setTimeout(() => {
   const btn = document.getElementById("randomButton");
   if (!btn) return;
+
   btn.addEventListener("click", () => {
     if (!window.allMarkers || window.allMarkers.length === 0) return;
+
     const randomIndex = Math.floor(Math.random() * window.allMarkers.length);
     const randomMarker = window.allMarkers[randomIndex];
     const latlng = randomMarker.getLatLng();
@@ -248,16 +224,22 @@ setTimeout(() => {
     const targetZoom = 10;
 
     if (currentZoom >= targetZoom) {
-      // Si déjà trop zoomé, on recule à 5
-      map.setView(map.getCenter(), 5);
+      // Si déjà trop zoomé, on recule d’abord à 5
+      map.setView(map.getCenter(), 5, { animate: true });
+
+      // Puis on attend un peu avant de voler vers le marqueur
       setTimeout(() => {
         map.flyTo(latlng, targetZoom, {
           animate: true,
           duration: 2.5,
           easeLinearity: 0.25
         });
-        randomMarker.openPopup();
+        // Popup une fois le vol terminé
+        map.once('moveend', () => {
+          randomMarker.openPopup();
+        });
       }, 700);
+
     } else {
       // Sinon zoom direct
       map.flyTo(latlng, targetZoom, {
@@ -265,7 +247,10 @@ setTimeout(() => {
         duration: 2.5,
         easeLinearity: 0.25
       });
-      randomMarker.openPopup();
+      // Popup une fois le vol terminé
+      map.once('moveend', () => {
+        randomMarker.openPopup();
+      });
     }
   });
 }, 0);
