@@ -384,11 +384,11 @@ footer {
 /* Popups ≤ 768px : largeur réduite */
 @media (max-width: 768px) {
   .leaflet-popup-content-wrapper {
-    max-width: 300px !important;
+    max-width: 334px !important;
   }
   .leaflet-popup-content {
-    font-size: 0.7em;   /* 70% de la taille normale */
-    line-height: 1em; /* interligne resserré */
+    font-size: 0.3em;   /* 70% de la taille normale */
+    line-height: 0.4em; /* interligne resserré */
   }
 }
 
@@ -398,7 +398,7 @@ footer {
     max-width: 240px !important;
   }
   .leaflet-popup-content {
-    font-size: 0.6em;  /* 75% de la taille normale */
-    line-height: 0.9em;
+    font-size: 0.2em;  /* 75% de la taille normale */
+    line-height: 0.3em;
   }
 }
