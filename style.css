@@ -65,7 +65,7 @@ h1 {
 #map {
   height: 75vh; /* Hauteur de la carte (75% de la hauteur de la fenêtre) */
   margin: 0 auto; /* Centrer la carte horizontalement */
-  max-width: 1000px; /* Largeur maximale de la carte */
+  width: 90vw;                /* ✅ Largeur égale à 90% de la largeur de la fenêtre */
   border-radius: 10px; /* Coins arrondis de la carte */
   box-shadow: 0 0 10px #e60000; /* Ombre autour de la carte */
   z-index: 1; /* Positionner la carte devant les autres éléments */
