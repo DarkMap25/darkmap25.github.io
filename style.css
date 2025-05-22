@@ -174,20 +174,6 @@ footer {
   display: block;
 }
 
-/* Bouton de fermeture */
-#closeDetailPanel {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: #333;
-  color: white;
-  border: none;
-  font-size: 20px;
-  padding: 6px 10px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
 /* === PERSONNALISATION DU BOUTON DE CHANGEMENT DE CARTE (Contrôle Leaflet) === */
 
 .leaflet-control-layers {
