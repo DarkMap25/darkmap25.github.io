@@ -107,7 +107,6 @@ function createEmojiMarker(lieu) {
   // ✅ Toujours recentrer + ouvrir popup après un léger délai
 marker.on('click', () => {
     const latlng = marker.getLatLng();
-
     map.setView(latlng, map.getZoom(), { animate: true });
 
     setTimeout(() => {
@@ -118,53 +117,24 @@ marker.on('click', () => {
             if (!popupContainer) return;
 
             const popupRect = popupContainer.getBoundingClientRect();
+            const popupWidth = popupRect.width;
+            const popupHeight = popupRect.height;
 
-            const overflowTop = popupRect.top < 0;
-            const overflowLeft = popupRect.left < 0;
-            const overflowRight = popupRect.right > window.innerWidth;
+            // Calculer les limites du popup en coordonnées géographiques (approximation)
+            const popupNorthEast = map.containerPointToLatLng(L.point(popupRect.right, popupRect.top));
+            const popupSouthWest = map.containerPointToLatLng(L.point(popupRect.left, popupRect.bottom));
 
-            if (overflowTop || overflowLeft || overflowRight) {
-                const mapSize = map.getSize();
-                const markerPos = map.latLngToContainerPoint(latlng);
-                const popupWidth = popupRect.width;
-                const popupHeight = popupRect.height;
+            // Créer un rectangle englobant le marqueur et le popup
+            const bounds = L.latLngBounds([latlng, popupNorthEast, popupSouthWest]);
 
-                let offsetX = 0;
-                let offsetY = 0;
+            // Ajuster les limites pour éviter de sortir de franceBounds
+            const clampedBounds = bounds.extend(franceBounds.getNorthWest()).extend(franceBounds.getSouthEast());
 
-                if (overflowLeft) {
-                    offsetX = popupWidth / 2;
-                } else if (overflowRight) {
-                    offsetX = -popupWidth / 2;
-                }
-
-                if (overflowTop) {
-                    offsetY = popupHeight / 2;
-                }
-
-                const adjustedPoint = L.point(markerPos.x + offsetX, markerPos.y + offsetY);
-                let adjustedLatLng = map.containerPointToLatLng(adjustedPoint);
-
-                // Vérifier les limites de la carte
-                if (!franceBounds.contains(adjustedLatLng)) {
-                    let clampedLat = Math.max(franceBounds.getSouth(), Math.min(franceBounds.getNorth(), adjustedLatLng.lat));
-                    let clampedLng = Math.max(franceBounds.getWest(), Math.min(franceBounds.getEast(), adjustedLatLng.lng));
-                    adjustedLatLng = L.latLng(clampedLat, clampedLng);
-                }
-
-                // Dézoomer si le popup est trop large
-                const zoomLevel = map.getZoom();
-                const mapWidth = mapSize.x;
-                if (popupWidth > mapWidth * 0.8 && zoomLevel > 5) { // Évite de dézoomer en dessous du zoom initial
-                    map.setZoom(zoomLevel - 1, { animate: true });
-                }
-
-                map.panTo(adjustedLatLng, { animate: true });
-            }
+            // Déplacer la carte pour que le rectangle soit visible
+            map.panInsideBounds(clampedBounds, { animate: true, padding: [50, 50] }); // Ajoute un peu de marge
         }, 200);
     }, 250);
-});
-  return marker;
+});  return marker;
 }
 
 // Chargement des lieux
