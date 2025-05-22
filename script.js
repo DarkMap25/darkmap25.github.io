@@ -123,21 +123,69 @@ fetch('lieux.json')
   })
   .catch(error => console.error('Erreur lors du chargement des lieux :', error));
 
-// === Recherche de lieu par nom dans les marqueurs ===
-document.getElementById("searchInput").addEventListener("input", function () {
-  const term = this.value.trim().toLowerCase();  // Récupère ce que l'utilisateur tape
+// === Fonction de similarité texte (fuzzy) ===
+function stringSimilarity(a, b) {
+  a = a.toLowerCase();
+  b = b.toLowerCase();
 
-  if (!term || term.length < 2) return;          // Ignore si vide ou trop court
+  let matches = 0;
+  const len = Math.min(a.length, b.length);
 
-  // Cherche un marqueur dont le contenu du popup contient le terme
-  const found = window.allMarkers.find(marker => {
-    const popup = marker.getPopup();                              // Récupère le popup du marqueur
-    return popup && popup.getContent().toLowerCase().includes(term); // Cherche dans le contenu du popup
-  });
+  for (let i = 0; i < len; i++) {
+    if (a[i] === b[i]) matches++;
+  }
 
-  if (found) {
-    map.setView(found.getLatLng(), 10, { animate: true });  // Centre la carte sur le marqueur
-    found.openPopup();                                      // Ouvre le popup
+  return matches / Math.max(a.length, b.length);
+}
+
+// === Recherche par nom d’affaire avec animation fluide ===
+document.getElementById("searchInput").addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    const term = this.value.trim().toLowerCase();
+    if (!term || term.length < 2) return;
+
+    map.closePopup(); // ✅ ferme les anciens popups
+
+    let bestMatch = null;
+    let bestScore = 0;
+
+    window.allMarkers.forEach(marker => {
+      const popup = marker.getPopup();
+      if (!popup) return;
+
+      const title = popup.getContent().split("<br>")[0].toLowerCase();
+      const score = stringSimilarity(term, title);
+
+      if (score > bestScore && score >= 0.5) {
+        bestMatch = marker;
+        bestScore = score;
+      }
+    });
+
+    if (bestMatch) {
+      const latlng = bestMatch.getLatLng();
+      const currentZoom = map.getZoom();
+
+      // ✅ Si on est déjà trop zoomé, on dézoome un peu pour animer plus clairement
+      if (currentZoom >= 10) {
+        map.setView(map.getCenter(), 5); // dézoom rapide
+        setTimeout(() => {
+          map.flyTo(latlng, 10, {
+            animate: true,
+            duration: 2.5,
+            easeLinearity: 0.25
+          });
+          setTimeout(() => bestMatch.openPopup(), 3000);
+        }, 700);
+      } else {
+        map.flyTo(latlng, 10, {
+          animate: true,
+          duration: 2.5,
+          easeLinearity: 0.25
+        });
+        setTimeout(() => bestMatch.openPopup(), 3000);
+      }
+    }
   }
 });
 
