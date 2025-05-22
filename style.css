@@ -378,6 +378,14 @@ footer {
     overflow: visible !important; /* 🔥 Leaflet limite parfois la taille à cause de ça */
 }
 
+*/ === Footer === */
+footer {
+  text-align: center; /* ✅ centre horizontalement le texte */
+  padding: 20px;
+  font-size: 0.9em;
+  color: #777;
+}
+
 /* === Adaptation des popups Leaflet === */
 /* Largeur max du popup sur desktop restée par défaut */
 
