@@ -29,9 +29,6 @@ const map = L.map('map', {
   maxBoundsViscosity: 1.0
 });
 
-// Ajout de la barre de recherche
-L.Control.geocoder().addTo(map);
-
 // Bouton de localisation
 L.control.locate({
   position: 'topright',
