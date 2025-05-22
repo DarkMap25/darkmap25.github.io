@@ -408,6 +408,18 @@ footer {
     transform: scale(1.5);
 }
 
+/* CSS à ajouter pour que le panneau de détail prenne la place de la carte */
+#detailPanel.full-view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90%;
+  height: 75%;
+  z-index: 1000;
+  background: #fff;
+  overflow: auto;
+}
+
 /* === Positionnement des contrôles en haut à droite === */
 .leaflet-topright {
     display: flex; /* Utiliser flex pour aligner les éléments verticalement */
