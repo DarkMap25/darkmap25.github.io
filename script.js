@@ -163,7 +163,7 @@ document.addEventListener("click", function (e) {
     e.preventDefault();  // Empêche le lien # de faire défiler la page
 
     const id = e.target.getAttribute("data-id");
-    const lieu = window.lieuxData.find(l => l.identifiant == id);
+    const lieu = window.lieuxData.find(l => l.ID == id);
     if (!lieu) return;
 
     // === Construction HTML dynamique ===
