@@ -204,18 +204,40 @@ fullscreenControl.onAdd = function (map) {
 
     L.DomEvent.disableClickPropagation(container);
 
+    // Ajouter l'écouteur d'événement ici, directement dans onAdd
+    container.addEventListener('click', toggleFullscreen);
+
     return container;
 };
 
 fullscreenControl.addTo(map);
 
-// Ajout de l'écouteur d'événement au bouton
-setTimeout(() => { // S'assurer que le bouton existe dans le DOM
-    const btnFullscreen = document.getElementById('fullscreenButton');
-    if (btnFullscreen) {
-        btnFullscreen.addEventListener('click', toggleFullscreen);
+// === Définition de la fonction toggleFullscreen ===
+function toggleFullscreen() {
+    const mapElement = document.getElementById('map');
+
+    if (!document.fullscreenElement) {
+        if (mapElement.requestFullscreen) {
+            mapElement.requestFullscreen();
+        } else if (mapElement.mozRequestFullScreen) { /* Firefox */
+            mapElement.mozRequestFullScreen();
+        } else if (mapElement.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+            mapElement.webkitRequestFullscreen();
+        } else if (mapElement.msRequestFullscreen) { /* IE/Edge */
+            mapElement.msRequestFullscreen();
+        }
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { /* Firefox */
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { /* Chrome, Safari & Opera */
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE/Edge */
+            document.msExitFullscreen();
+        }
     }
-}, 0);
+}
 
 // Gestion des événements de changement de plein écran (optionnel mais recommandé)
 document.addEventListener('fullscreenchange', updateFullscreenButton);
