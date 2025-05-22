@@ -157,26 +157,40 @@ function createLegend() {
 }
 createLegend();
 
-// === Gère le clic sur le bouton "Voir plus" dans les popups ===
+// === Gère le clic sur le bouton "Voir plus" dans le popup ===
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("voir-plus")) {
-    e.preventDefault();
+    e.preventDefault();  // Empêche le lien # de faire défiler la page
 
-    const id = e.target.getAttribute("data-id"); // identifiant du lieu
-
+    const id = e.target.getAttribute("data-id");
     const lieu = window.lieuxData.find(l => l.identifiant == id);
     if (!lieu) return;
 
-    // Génère le contenu détaillé
+    // === Construction HTML dynamique ===
     let html = `<h2>${lieu.nom}</h2>`;
-    if (lieu.resume_long) html += `<p>${lieu.resume_long}</p>`;
 
-    // Ajoute les liens si disponibles
+    if (lieu.date) html += `<p><strong>Date :</strong> ${lieu.date}</p>`;
+    if (lieu.resume_long) html += `<p>${lieu.resume_long}</p>`;
+    if (lieu.nombre_morts) html += `<p><strong>Nombre de morts :</strong> ${lieu.nombre_morts}</p>`;
+    if (lieu.niveau_mediatisation) html += `<p><strong>Médiatisation :</strong> ${'⭐'.repeat(lieu.niveau_mediatisation)}</p>`;
+    if (lieu.adresse) html += `<p><strong>Adresse :</strong> ${lieu.adresse}</p>`;
+    if (lieu.etat_du_lieu) html += `<p><strong>État actuel :</strong> ${lieu.etat_du_lieu}</p>`;
+
+    // === Liens divers ===
     if (lieu.liens_articles_presse) {
-      html += `<p><strong>Articles :</strong><br><a href="${lieu.liens_articles_presse}" target="_blank">${lieu.liens_articles_presse}</a></p>`;
+      html += `<p><strong>Article :</strong> <a href="${lieu.liens_articles_presse}" target="_blank">Lire</a></p>`;
+    }
+    if (lieu.liens_podcasts) {
+      html += `<p><strong>Podcast :</strong> <a href="${lieu.liens_podcasts}" target="_blank">Écouter</a></p>`;
     }
     if (lieu.liens_videos) {
-      html += `<p><strong>Vidéos :</strong><br><a href="${lieu.liens_videos}" target="_blank">${lieu.liens_videos}</a></p>`;
+      html += `<p><strong>Vidéo :</strong> <a href="${lieu.liens_videos}" target="_blank">Regarder</a></p>`;
+    }
+    if (lieu.liens_films) {
+      html += `<p><strong>Film :</strong> <a href="${lieu.liens_films}" target="_blank">Voir</a></p>`;
+    }
+    if (lieu.images_associees) {
+      html += `<img src="${lieu.images_associees}" style="max-width:100%; margin-top:10px;" />`;
     }
 
     document.getElementById("detailContent").innerHTML = html;
