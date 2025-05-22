@@ -154,6 +154,40 @@ footer {
   color: inherit; /* Couleur héritée du parent */
 }
 
+/* === Panneau plein écran pour afficher les détails d’un lieu === */
+#detailPanel {
+  position: absolute;         /* Position libre sur la carte */
+  top: 0;
+  left: 0;
+  width: 100vw;               /* ✅ Prend toute la largeur de la fenêtre */
+  height: 100vh;              /* ✅ Prend toute la hauteur de la fenêtre */
+  background: #0d0d0d;        /* Fond noir, sombre comme DarkMap */
+  color: #f0f0f0;             /* Texte clair */
+  z-index: 1500;              /* Par-dessus tout */
+  padding: 30px 20px;
+  overflow-y: auto;           /* ✅ Scroll si le contenu est long */
+  display: none;              /* Caché par défaut */
+}
+
+/* Quand le panneau est actif */
+#detailPanel.visible {
+  display: block;
+}
+
+/* Bouton de fermeture */
+#closeDetailPanel {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #333;
+  color: white;
+  border: none;
+  font-size: 20px;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
 /* === PERSONNALISATION DU BOUTON DE CHANGEMENT DE CARTE (Contrôle Leaflet) === */
 
 .leaflet-control-layers {
