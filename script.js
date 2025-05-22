@@ -27,10 +27,10 @@ const franceBounds = L.latLngBounds(
 // Initialisation de la carte avec le calque sombre par défaut
 const map = L.map('map', {
   center: [46.5, 2.5],
-  zoom: 5,
+  zoom: 6,
   layers: [alidadedarkLayer],
   maxBounds: franceBounds,
-  maxBoundsViscosity: 1.0
+  maxBoundsViscosity: 0.5
 });
 
 // Ajout du bouton de localisation
