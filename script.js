@@ -93,7 +93,7 @@ function createEmojiMarker(lieu) {
   const popupContent = `
     <strong>${lieu.nom}</strong><br>
     ${lieu.resume}<br>
-    <a href="#" class="voir-plus" data-id="${lieu.identifiant}">Voir plus</a>
+    <a href="#" class="voir-plus" data-id="${lieu.ID}">Voir plus</a>
   `;
 
 const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
