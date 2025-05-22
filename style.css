@@ -41,7 +41,7 @@ h1 {
   text-align: center; /* Centrer le texte */
   font-size: 1.2em; /* Taille de la police */
   margin-top: 0; /* Pas de marge en haut */
-  color: #e60000 /* Couleur rouge */
+  color: #e60000; /* Couleur rouge */
 }
 
 /* Logo si présent */
