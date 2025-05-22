@@ -1,4 +1,3 @@
-
 // Création des deux fonds de carte
 
 // Fond Alidade Smooth Dark
@@ -17,8 +16,8 @@ const thunderforestAtlasLayer = L.tileLayer('https://tile.thunderforest.com/atla
 
 // Limites de la France métropolitaine + Corse
 const franceBounds = L.latLngBounds(
-  L.latLng(40, -12),
-  L.latLng(60, 17)
+  L.latLng(41, -8),
+  L.latLng(57, 13)
 );
 
 // Initialisation de la carte
@@ -97,37 +96,19 @@ function createEmojiMarker(lieu) {
     <a href="${lieu.lien}" target="_blank">Voir plus</a>
   `;
 
-let autoPanAttempts = 0; // Compteur global
-
-const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
-    .bindPopup(popupContent, {
+  const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
+      .bindPopup(popupContent, {
         maxWidth: 600,
         autoPan: true,
-        keepInView: true,
-        autoPanPadding: [40, 40]
+        keepInView: true,           // force le popup à se repositionner pour rester visible
+      autoPanPadding: [40, 40]    // marge (px) entre le popup et le bord de la carte      
     });
 
-marker.on('popupopen', () => {
-    autoPanAttempts = 0; // Réinitialiser le compteur à chaque ouverture de popup
-});
+  marker.on('click', () => {
+    map.setView([lieu.latitude, lieu.longitude], map.getZoom(), { animate: true });
+  });
 
-map.on('moveend', () => {
-    autoPanAttempts = 0; // Réinitialiser le compteur après chaque mouvement de la carte
-});
-
-marker.on('click', () => {
-    const latlng = marker.getLatLng();
-    map.setView(latlng, map.getZoom(), { animate: true });
-});
-
-map.on('autopanstart', () => { // Intercepter l'autoPan de Leaflet
-    autoPanAttempts++;
-    if (autoPanAttempts > 5) { // Limite arbitraire, ajuste selon tes besoins
-        map.stop(); // Arrêter l'autoPan
-        console.warn("AutoPan stopped to prevent stack overflow.");
-    }
-});
-    return marker;
+  return marker;
 }
 
 // Chargement des lieux
@@ -227,6 +208,9 @@ setTimeout(() => {
     const latlng = randomMarker.getLatLng();
     const currentZoom = map.getZoom();
 
+    // ✅ Fermer tous les popups ouverts AVANT tout
+    map.closePopup();
+      
     if (currentZoom >= 10) {
       map.setView(map.getCenter(), 5); // dézoom rapide
       setTimeout(() => {
