@@ -105,42 +105,66 @@ function createEmojiMarker(lieu) {
     });
 
   // ✅ Toujours recentrer + ouvrir popup après un léger délai
- marker.on('click', () => {
+marker.on('click', () => {
     const latlng = marker.getLatLng();
 
-    // Étape 1 : on centre exactement sur le marqueur
     map.setView(latlng, map.getZoom(), { animate: true });
 
-    // Étape 2 : attendre que la carte se recentre, puis afficher le popup
     setTimeout(() => {
-      marker.openPopup();
+        marker.openPopup();
 
-      // Étape 3 : vérifier si le popup déborde en haut / gauche / droite
-      setTimeout(() => {
-        const popupContainer = marker.getPopup()?._container;
-        if (!popupContainer) return;
+        setTimeout(() => {
+            const popupContainer = marker.getPopup()?._container;
+            if (!popupContainer) return;
 
-        const popupRect = popupContainer.getBoundingClientRect();
+            const popupRect = popupContainer.getBoundingClientRect();
 
-        // Calculer si le popup est partiellement hors écran
-        const overflowTop = popupRect.top < 0;
-        const overflowLeft = popupRect.left < 0;
-        const overflowRight = popupRect.right > window.innerWidth;
+            const overflowTop = popupRect.top < 0;
+            const overflowLeft = popupRect.left < 0;
+            const overflowRight = popupRect.right > window.innerWidth;
 
-        if (overflowTop || overflowLeft || overflowRight) {
-          const point = map.latLngToContainerPoint(latlng);
-          const offsetY = overflowTop ? 120 : 0;
-          const offsetX = overflowLeft ? -120 : overflowRight ? 120 : 0;
+            if (overflowTop || overflowLeft || overflowRight) {
+                const mapSize = map.getSize();
+                const markerPos = map.latLngToContainerPoint(latlng);
+                const popupWidth = popupRect.width;
+                const popupHeight = popupRect.height;
 
-          const adjustedPoint = L.point(point.x + offsetX, point.y + offsetY);
-          const adjustedLatLng = map.containerPointToLatLng(adjustedPoint);
+                let offsetX = 0;
+                let offsetY = 0;
 
-          map.panTo(adjustedLatLng, { animate: true });
-        }
-      }, 200); // délai court pour laisser le DOM s’afficher
+                if (overflowLeft) {
+                    offsetX = popupWidth / 2;
+                } else if (overflowRight) {
+                    offsetX = -popupWidth / 2;
+                }
+
+                if (overflowTop) {
+                    offsetY = popupHeight / 2;
+                }
+
+                const adjustedPoint = L.point(markerPos.x + offsetX, markerPos.y + offsetY);
+                let adjustedLatLng = map.containerPointToLatLng(adjustedPoint);
+
+                // Vérifier les limites de la carte
+                if (!franceBounds.contains(adjustedLatLng)) {
+                    let clampedLat = Math.max(franceBounds.getSouth(), Math.min(franceBounds.getNorth(), adjustedLatLng.lat));
+                    let clampedLng = Math.max(franceBounds.getWest(), Math.min(franceBounds.getEast(), adjustedLatLng.lng));
+                    adjustedLatLng = L.latLng(clampedLat, clampedLng);
+                }
+
+                // Dézoomer si le popup est trop large
+                const zoomLevel = map.getZoom();
+                const mapWidth = mapSize.x;
+                if (popupWidth > mapWidth * 0.8 && zoomLevel > 5) { // Évite de dézoomer en dessous du zoom initial
+                    map.setZoom(zoomLevel - 1, { animate: true });
+                }
+
+                map.panTo(adjustedLatLng, { animate: true });
+            }
+        }, 200);
     }, 250);
-  }); 
-    return marker;
+});
+  return marker;
 }
 
 // Chargement des lieux
