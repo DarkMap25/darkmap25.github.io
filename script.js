@@ -219,6 +219,16 @@ document.addEventListener("click", function(e) {
   document.getElementById("detailPanel").classList.add("visible");
 });
 
+// Gestion de la fermeture du panneau détail
+document.getElementById("closeDetailPanel").addEventListener("click", function() {
+  const mapContainer = document.getElementById('map');
+  const detailPanel  = document.getElementById('detailPanel');
+  // Enlève les classes qui rendent le panneau plein écran et visible
+  detailPanel.classList.remove('full-view', 'visible');
+  // Restaure l'affichage de la carte
+  mapContainer.style.display = 'block';
+});
+
 // Animation d’introduction au chargement de la page
 let showIntro = true;
 window.addEventListener("load", () => {
