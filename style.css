@@ -380,10 +380,18 @@ footer {
 
 */ === Footer === */
 footer {
-  text-align: center; /* ✅ centre horizontalement le texte */
+  width: 100%;                  /* Le footer prend toute la largeur de la page */
+  max-width: 1000px;            /* (optionnel) limite de largeur si tu veux pas qu'il s'étale trop */
+  margin: 0 auto;               /* ✅ Centre le bloc footer dans la page */
+  text-align: center;           /* ✅ Centre le texte à l'intérieur du footer */
   padding: 20px;
   font-size: 0.9em;
-  color: #777;
+  color: #000000;
+  text-shadow:
+    -1px -1px 0 #e6ccff,
+     1px -1px 0 #e6ccff,
+    -1px  1px 0 #e6ccff,
+     1px  1px 0 #e6ccff;
 }
 
 /* === Adaptation des popups Leaflet === */
