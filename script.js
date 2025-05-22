@@ -96,18 +96,18 @@ function createEmojiMarker(lieu) {
     <a href="${lieu.lien}" target="_blank">Voir plus</a>
   `;
 
-  const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
-      .bindPopup(popupContent, {
+const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
+    .bindPopup(popupContent, {
         maxWidth: 600,
-        autoPan: true,
-        keepInView: true,           // force le popup à se repositionner pour rester visible
-      autoPanPadding: [40, 40]    // marge (px) entre le popup et le bord de la carte      
+        autoPan: false, // Important de garder autoPan: false
+        keepInView: false // et keepInView: false pour éviter les erreurs
     });
 
-  marker.on('click', () => {
-    map.setView([lieu.latitude, lieu.longitude], map.getZoom(), { animate: true });
-  });
-
+marker.on('click', () => {
+    const latlng = marker.getLatLng();
+    map.setView(latlng, map.getZoom(), { animate: true });
+    marker.openPopup();
+});
   return marker;
 }
 
