@@ -161,38 +161,39 @@ function createLegend() {
 }
 createLegend();
 
-// Gestion du clic sur "Voir plus" dans les popups
-document.addEventListener("click", function(e) {
+// 1) Handler pour ouvrir le panneau "Voir plus"
+document.addEventListener("click", function (e) {
   if (!e.target.classList.contains("voir-plus")) return;
   e.preventDefault();
 
-  // → Masquer la carte et afficher le panneau + bouton de fermeture
-  const mapContainer = document.getElementById('map');
-  const detailPanel  = document.getElementById('detailPanel');
-  const closeBtn     = document.getElementById('closeDetailPanel');
-  mapContainer.style.display        = 'none';
-  detailPanel.classList.add('full-view', 'visible');
-  detailPanel.style.display         = 'block';
-  closeBtn.style.display            = 'block';
+  const mapContainer  = document.getElementById("map");
+  const detailPanel   = document.getElementById("detailPanel");
+  
+  // Masquer la carte et activer le panneau en plein écran
+  mapContainer.style.display = "none";
+  detailPanel.classList.add("full-view", "visible");
 
   // Récupération des données du lieu
   const id   = e.target.getAttribute("data-id");
-  const lieu = window.lieuxData.find(l => l.ID == id);
+  const lieu = window.lieuxData.find((l) => l.ID == id);
   if (!lieu) return;
 
-  // Construction du HTML
+  // Construction du contenu HTML
   let html = `<h2>${lieu.nom}</h2>`;
   html += `<p>${lieu.resume_long || lieu.resume}</p>`;
 
   if (lieu.date_debut || lieu.date_fin) {
-    const debut = lieu.date_debut || "";
-    const fin   = lieu.date_fin   || "";
-    html += `<p><strong>Période :</strong> ${debut}${debut && fin ? " – " : ""}${fin}</p>`;
+    const d = lieu.date_debut || "";
+    const f = lieu.date_fin   || "";
+    html += `<p><strong>Période :</strong> ${d}${d && f ? " – " : ""}${f}</p>`;
   }
 
-  const ignore = ["ID","nom","resume","resume_long","latitude","longitude","date_debut","date_fin"];
-  function formatLabel(key) {
-    return key
+  const ignore = [
+    "ID", "nom", "resume", "resume_long",
+    "latitude", "longitude", "date_debut", "date_fin"
+  ];
+  function formatLabel(k) {
+    return k
       .split("_")
       .map(w => w.charAt(0).toUpperCase() + w.slice(1))
       .join(" ");
@@ -210,17 +211,15 @@ document.addEventListener("click", function(e) {
   document.getElementById("detailContent").innerHTML = html;
 });
 
-// Gestion de la fermeture du panneau détail
-document.getElementById("closeDetailPanel").addEventListener("click", function() {
-  const mapContainer = document.getElementById('map');
-  const detailPanel  = document.getElementById('detailPanel');
-  const closeBtn     = document.getElementById('closeDetailPanel');
+// 2) Handler pour fermer le panneau (croix)
+document.getElementById("closeDetailPanel").addEventListener("click", function () {
+  const mapContainer = document.getElementById("map");
+  const detailPanel  = document.getElementById("detailPanel");
 
-  // → Cacher le panneau et la croix, restaurer la carte
-  detailPanel.classList.remove('full-view', 'visible');
-  detailPanel.style.display = 'none';
-  closeBtn.style.display     = 'none';
-  mapContainer.style.display = 'block';
+  // On retire les classes qui affichaient le panneau
+  detailPanel.classList.remove("full-view", "visible");
+  // On ré-affiche la carte
+  mapContainer.style.display = "block";
 });
 
 // Animation d’introduction au chargement de la page
