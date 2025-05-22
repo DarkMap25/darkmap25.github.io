@@ -16,8 +16,8 @@ const thunderforestAtlasLayer = L.tileLayer('https://tile.thunderforest.com/atla
 
 // Limites de la France métropolitaine + Corse
 const franceBounds = L.latLngBounds(
-  L.latLng(41, -16),
-  L.latLng(60, 21)
+  L.latLng(41, -10),
+  L.latLng(60, 15)
 );
 
 // Initialisation de la carte
