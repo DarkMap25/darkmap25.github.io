@@ -105,10 +105,19 @@ function createEmojiMarker(lieu) {
     });
 
   // ✅ Toujours recentrer + ouvrir popup après un léger délai
-  marker.on('click', () => {
-    map.panTo([lieu.latitude, lieu.longitude], { animate: true });
-    setTimeout(() => marker.openPopup(), 250); // délai léger pour laisser le recentrage se faire
-  });
+marker.on('click', () => {
+  const latlng = L.latLng(lieu.latitude, lieu.longitude);
+
+  // ✅ Décalage vers le haut (le marqueur est légèrement plus bas dans la vue)
+  const offset = map.project(latlng, map.getZoom()).subtract([0, 100]); // 100px vers le haut
+  const target = map.unproject(offset, map.getZoom());
+
+  // ✅ Pan avec décalage, pour laisser la place au popup au-dessus
+  map.panTo(target, { animate: true });
+
+  // ✅ Affichage du popup après un léger délai pour éviter les conflits d’animation
+  setTimeout(() => marker.openPopup(), 300);
+});
     return marker;
 }
 
