@@ -216,7 +216,7 @@ setTimeout(() => {
           duration: 2.5,
           easeLinearity: 0.25
         });
-    setTimeout(() => randomMarker.openPopup(), 1000); // ✅ ouverture après 1 seconde      
+    setTimeout(() => randomMarker.openPopup(), 3000); // ✅ ouverture après 1 seconde      
       }, 700);
     } else {
       map.flyTo(latlng, 10, {
@@ -224,7 +224,7 @@ setTimeout(() => {
         duration: 2.5,
         easeLinearity: 0.25
       });
-         setTimeout(() => randomMarker.openPopup(), 1000); // ✅ ouverture après 1 seconde    
+         setTimeout(() => randomMarker.openPopup(), 3000); // ✅ ouverture après 1 seconde    
     }
   });
 }, 0);
