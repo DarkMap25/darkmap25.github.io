@@ -163,24 +163,40 @@ createLegend();
 
 // Gestion du clic sur "Voir plus" dans les popups
 document.addEventListener("click", function(e) {
+  // Vérifie que le clic provient d'un lien "voir-plus"
   if (!e.target.classList.contains("voir-plus")) return;
+  // Empêche le comportement par défaut du lien
   e.preventDefault();
 
-  const id = e.target.getAttribute("data-id");
+  // Masquer la carte et préparer le panneau de détail en plein écran
+  const mapContainer = document.getElementById('map');
+  const detailPanel  = document.getElementById('detailPanel');
+  mapContainer.style.display         = 'none';
+  detailPanel.classList.add('full-view');
+
+  // Récupère l'ID du lieu cliqué et l'objet correspondant
+  const id   = e.target.getAttribute("data-id");
   const lieu = window.lieuxData.find(l => l.ID == id);
   if (!lieu) return;
 
+  // Construction du contenu HTML pour le détail du lieu
   let html = `<h2>${lieu.nom}</h2>`;
   html += `<p>${lieu.resume_long || lieu.resume}</p>`;
 
+  // Ajout de la période si date début ou date fin présentes
   if (lieu.date_debut || lieu.date_fin) {
     const debut = lieu.date_debut || "";
     const fin   = lieu.date_fin   || "";
     html += `<p><strong>Période :</strong> ${debut}${debut && fin ? " – " : ""}${fin}</p>`;
   }
 
-  const ignore = ["ID", "nom", "resume", "resume_long", "latitude", "longitude", "date_debut", "date_fin"];
+  // Définition des clés à ignorer lors de l'affichage dynamique
+  const ignore = [
+    "ID", "nom", "resume", "resume_long",
+    "latitude", "longitude", "date_debut", "date_fin"
+  ];
 
+  // Fonction pour formater les clés en libellés lisibles
   function formatLabel(key) {
     return key
       .split("_")
@@ -188,6 +204,7 @@ document.addEventListener("click", function(e) {
       .join(" ");
   }
 
+  // Boucle sur chaque paire [clé, valeur] pour ajouter le reste des informations
   for (const [key, value] of Object.entries(lieu)) {
     if (ignore.includes(key) || !value) continue;
     if (typeof value === "string" && value.match(/^https?:\/\//)) {
@@ -197,6 +214,7 @@ document.addEventListener("click", function(e) {
     }
   }
 
+  // Injection du contenu et affichage du panneau de détail
   document.getElementById("detailContent").innerHTML = html;
   document.getElementById("detailPanel").classList.add("visible");
 });
