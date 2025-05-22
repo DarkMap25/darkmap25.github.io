@@ -17,8 +17,8 @@ const thunderforestAtlasLayer = L.tileLayer('https://tile.thunderforest.com/atla
 
 // Limites de la France métropolitaine + Corse
 const franceBounds = L.latLngBounds(
-  L.latLng(41, -5),
-  L.latLng(54, 10)
+  L.latLng(41, -6),
+  L.latLng(55, 11)
 );
 
 // Initialisation de la carte
@@ -101,7 +101,7 @@ function createEmojiMarker(lieu) {
       .bindPopup(popupContent, {
         maxWidth: 600,
         autoPan: true,
-        keepInView: false,           // force le popup à se repositionner pour rester visible
+        keepInView: true,           // force le popup à se repositionner pour rester visible
       autoPanPadding: [40, 40]    // marge (px) entre le popup et le bord de la carte      
     });
 
