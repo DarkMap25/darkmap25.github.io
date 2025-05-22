@@ -154,19 +154,19 @@ footer {
   color: inherit; /* Couleur héritée du parent */
 }
 
-/* === Panneau plein écran pour afficher les détails d’un lieu === */
-#detailPanel {
-  position: absolute;         /* Position libre sur la carte */
-  top: 0;
-  left: 0;
-  width: 100vw;               /* ✅ Prend toute la largeur de la fenêtre */
-  height: 100vh;              /* ✅ Prend toute la hauteur de la fenêtre */
-  background: #0d0d0d;        /* Fond noir, sombre comme DarkMap */
-  color: #f0f0f0;             /* Texte clair */
-  z-index: 1500;              /* Par-dessus tout */
-  padding: 30px 20px;
-  overflow-y: auto;           /* ✅ Scroll si le contenu est long */
-  display: none;              /* Caché par défaut */
+/* Bouton de fermeture toujours visible, en rouge, fixé à la fenêtre */
+#closeDetailPanel {
+  position: fixed;              /* 1️⃣ toujours relatif à la fenêtre, pas au panneau */
+  top: 20px;                    /* 2️⃣ à 20px du bord supérieur de la fenêtre */
+  right: 20px;                  /* 3️⃣ à 20px du bord droit de la fenêtre */
+  background-color: #900;       /* 4️⃣ fond rouge sombre pour bien le voir */
+  color: #fff;                  /* 5️⃣ texte blanc pour un contraste optimal */
+  border: none;                 /* 6️⃣ supprime toute bordure par défaut */
+  font-size: 24px;              /* 7️⃣ augmente la taille du “✖” */
+  padding: 8px 12px;            /* 8️⃣ espace interne pour agrandir la zone cliquable */
+  border-radius: 4px;           /* 9️⃣ bords légèrement arrondis */
+  cursor: pointer;              /* 🔟 curseur pointeur pour indiquer qu’on peut cliquer */
+  z-index: 2001;                /* 1️⃣1️⃣ toujours au-dessus de tout le panneau */
 }
 
 /* Quand le panneau est actif */
