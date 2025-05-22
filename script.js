@@ -105,32 +105,41 @@ function createEmojiMarker(lieu) {
     });
 
   // ✅ Toujours recentrer + ouvrir popup après un léger délai
-  marker.on('click', () => {
-    // Étape 1 : ouvrir le popup
-    marker.openPopup();
+ marker.on('click', () => {
+    const latlng = marker.getLatLng();
 
-    // Étape 2 : attendre que le DOM du popup soit prêt, puis ajuster les limites visibles
+    // Étape 1 : on centre exactement sur le marqueur
+    map.setView(latlng, map.getZoom(), { animate: true });
+
+    // Étape 2 : attendre que la carte se recentre, puis afficher le popup
     setTimeout(() => {
-      // Récupérer les dimensions du popup
-      const popupEl = marker.getPopup()._container;
-      if (!popupEl) return;
+      marker.openPopup();
 
-      const popupRect = popupEl.getBoundingClientRect();
+      // Étape 3 : vérifier si le popup déborde en haut / gauche / droite
+      setTimeout(() => {
+        const popupContainer = marker.getPopup()?._container;
+        if (!popupContainer) return;
 
-      // Calculer les marges de sécurité
-      const padding = {
-        topLeft: [popupRect.width / 2 + 20, popupRect.height + 20],
-        bottomRight: [popupRect.width / 2 + 20, 20]
-      };
+        const popupRect = popupContainer.getBoundingClientRect();
 
-      // Faire en sorte que le popup soit entièrement dans la carte
-      map.panInsideBounds(marker.getPopup()._container.getBoundingClientRect(), {
-        paddingTopLeft: padding.topLeft,
-        paddingBottomRight: padding.bottomRight,
-        animate: true
-      });
-    }, 300); // Attendre que le popup soit dans le DOM
-  });
+        // Calculer si le popup est partiellement hors écran
+        const overflowTop = popupRect.top < 0;
+        const overflowLeft = popupRect.left < 0;
+        const overflowRight = popupRect.right > window.innerWidth;
+
+        if (overflowTop || overflowLeft || overflowRight) {
+          const point = map.latLngToContainerPoint(latlng);
+          const offsetY = overflowTop ? 120 : 0;
+          const offsetX = overflowLeft ? -120 : overflowRight ? 120 : 0;
+
+          const adjustedPoint = L.point(point.x + offsetX, point.y + offsetY);
+          const adjustedLatLng = map.containerPointToLatLng(adjustedPoint);
+
+          map.panTo(adjustedLatLng, { animate: true });
+        }
+      }, 200); // délai court pour laisser le DOM s’afficher
+    }, 250);
+  }); 
     return marker;
 }
 
