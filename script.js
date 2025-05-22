@@ -1,4 +1,3 @@
-
 // Création des deux fonds de carte
 
 // Fond Alidade Smooth Dark
@@ -217,7 +216,7 @@ setTimeout(() => {
           duration: 2.5,
           easeLinearity: 0.25
         });
-        randomMarker.openPopup();
+    setTimeout(() => randomMarker.openPopup(), 1000); // ✅ ouverture après 1 seconde      
       }, 700);
     } else {
       map.flyTo(latlng, 10, {
@@ -225,7 +224,7 @@ setTimeout(() => {
         duration: 2.5,
         easeLinearity: 0.25
       });
-      randomMarker.openPopup();
+         setTimeout(() => randomMarker.openPopup(), 1000); // ✅ ouverture après 1 seconde    
     }
   });
 }, 0);
