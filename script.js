@@ -1,3 +1,4 @@
+
 // Création des deux fonds de carte
 
 // Fond Alidade Smooth Dark
@@ -96,45 +97,19 @@ function createEmojiMarker(lieu) {
     <a href="${lieu.lien}" target="_blank">Voir plus</a>
   `;
 
-// ✅ On désactive les repositionnements automatiques du popup pour éviter les bugs
   const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
-    .bindPopup(popupContent, {
-      maxWidth: 600,
-      autoPan: false,         // ❌ on gère manuellement, donc on désactive
-      keepInView: false       // ❌ sinon risque de conflit avec panTo + bug de boucle
+      .bindPopup(popupContent, {
+        maxWidth: 600,
+        autoPan: true,
+        keepInView: true,           // force le popup à se repositionner pour rester visible
+      autoPanPadding: [40, 40]    // marge (px) entre le popup et le bord de la carte      
     });
 
-  // ✅ Toujours recentrer + ouvrir popup après un léger délai
-marker.on('click', () => {
-    const latlng = marker.getLatLng();
-    map.setView(latlng, map.getZoom(), { animate: true });
+  marker.on('click', () => {
+    map.setView([lieu.latitude, lieu.longitude], map.getZoom(), { animate: true });
+  });
 
-    setTimeout(() => {
-        marker.openPopup();
-
-        setTimeout(() => {
-            const popupContainer = marker.getPopup()?._container;
-            if (!popupContainer) return;
-
-            const popupRect = popupContainer.getBoundingClientRect();
-            const popupWidth = popupRect.width;
-            const popupHeight = popupRect.height;
-
-            // Calculer les limites du popup en coordonnées géographiques (approximation)
-            const popupNorthEast = map.containerPointToLatLng(L.point(popupRect.right, popupRect.top));
-            const popupSouthWest = map.containerPointToLatLng(L.point(popupRect.left, popupRect.bottom));
-
-            // Créer un rectangle englobant le marqueur et le popup
-            const bounds = L.latLngBounds([latlng, popupNorthEast, popupSouthWest]);
-
-            // Ajuster les limites pour éviter de sortir de franceBounds
-            const clampedBounds = bounds.extend(franceBounds.getNorthWest()).extend(franceBounds.getSouthEast());
-
-            // Déplacer la carte pour que le rectangle soit visible
-            map.panInsideBounds(clampedBounds, { animate: true, padding: [50, 50] }); // Ajoute un peu de marge
-        }, 200);
-    }, 250);
-});  return marker;
+  return marker;
 }
 
 // Chargement des lieux
