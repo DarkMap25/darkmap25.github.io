@@ -1,22 +1,16 @@
-/* === Blocage du scroll global sur toute la page === */
-html, body {
-  height: 100%;          /* Prend toute la hauteur de la fenêtre du navigateur */
-  overflow: hidden;      /* Empêche le défilement vertical ou horizontal */
-}
-
-/* === Styles généraux du fond et du texte === */
+/* === Styles généraux === */
 body {
-  margin: 0;                                     /* Supprime les marges par défaut du navigateur */
-  padding: 0;                                    /* Supprime les espacements internes par défaut */
-  background-color: #0d0d0d;                     /* Couleur de secours si l'image ne se charge pas */
-  background-image: url('./icons/background.jpg'); /* Image de fond principale */
-  background-size: cover;                        /* L’image remplit tout l’écran sans déformation */
-  background-position: center;                   /* L’image est centrée horizontalement et verticalement */
-  background-repeat: no-repeat;                  /* L’image ne se répète pas */
-  background-attachment: fixed;                  /* ✅ Image de fond figée lors du scroll */
-  color: #f0f0f0;                                /* Couleur du texte global (gris clair) */
-  font-family: 'Quicksand', sans-serif;          /* Police principale du site */
-  position: relative;                            /* Nécessaire si on ajoute des calques ou éléments absolus */
+  margin: 0; /* Suppression des marges par défaut */
+  padding: 0; /* Suppression des espacements par défaut */
+  background-color: #0d0d0d; /* Couleur de fond de secours si l'image échoue */
+  background-image: url('./icons/background.jpg'); /* Image de fond */
+  background-size: cover; /* La taille de l'image couvre tout l'écran */
+  background-position: center; /* L'image est centrée */
+  background-repeat: no-repeat; /* L'image ne se répète pas */
+  background-attachment: scroll; /* Le fond défile avec la page (plus compatible mobile) */
+  color: #f0f0f0; /* Couleur du texte */
+  font-family: 'Quicksand', sans-serif; /* Police du texte */
+  position: relative; /* Positionnement pour le calque noir transparent */
 }
 
 /* Calque noir transparent par-dessus l'image */
