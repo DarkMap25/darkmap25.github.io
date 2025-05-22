@@ -1,78 +1,78 @@
 // Création du fond de carte Alidade Smooth Dark
-const alidadedarkLayer = L.tileLayer(                                          // Initialise le calque de tuiles sombre
-  'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=a1ef2388-4a98-4134-8ffc-d2496230635e', // URL et clef API
+const alidadedarkLayer = L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=a1ef2388-4a98-4134-8ffc-d2496230635e',
   {
-    attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>', // Crédits
-    minZoom: 5,                                                              // Zoom minimum autorisé
-    maxZoom: 18                                                              // Zoom maximum autorisé
+    attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>',
+    minZoom: 5,
+    maxZoom: 18
   }
 );
 
 // Création du fond de carte Thunderforest Atlas
-const thunderforestAtlasLayer = L.tileLayer(                                  // Initialise le calque Thunderforest
-  'https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=2f67b0d994104bf69ffcd0cf70f86a08', // URL et clef API
+const thunderforestAtlasLayer = L.tileLayer(
+  'https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=2f67b0d994104bf69ffcd0cf70f86a08',
   {
-    attribution: '&copy; OpenStreetMap contributors, &copy; Thunderforest', // Crédits
-    minZoom: 5,                                                             // Zoom minimum autorisé
-    maxZoom: 18                                                             // Zoom maximum autorisé
+    attribution: '&copy; OpenStreetMap contributors, &copy; Thunderforest',
+    minZoom: 5,
+    maxZoom: 18
   }
 );
 
 // Définition des limites géographiques (France métropolitaine + Corse)
-const franceBounds = L.latLngBounds(                                         // Crée un rectangle englobant
-  L.latLng(41, -10),                                                         // Coin sud-ouest
-  L.latLng(60, 15)                                                           // Coin nord-est
+const franceBounds = L.latLngBounds(
+  L.latLng(41, -10),
+  L.latLng(60, 15)
 );
 
 // Initialisation de la carte avec le calque sombre par défaut
-const map = L.map('map', {                                                   // Lie la carte à l’élément #map
-  center: [46.5, 2.5],                                                        // Position centrale (France)
-  zoom: 5,                                                                    // Zoom initial
-  layers: [alidadedarkLayer],                                                // Calque de base
-  maxBounds: franceBounds,                                                   // Limites de navigation
-  maxBoundsViscosity: 1.0                                                     // Empêche de sortir des limites
+const map = L.map('map', {
+  center: [46.5, 2.5],
+  zoom: 5,
+  layers: [alidadedarkLayer],
+  maxBounds: franceBounds,
+  maxBoundsViscosity: 1.0
 });
 
 // Ajout du bouton de localisation
-L.control.locate({                                                            // Configuration du plugin LocateControl
-  position: 'topright',                                                       // Position à droite en haut
-  strings: { title: "Localiser ma position" },                               // Texte de l’info-bulle
-  drawCircle: true,                                                           // Dessine un cercle d’erreur
-  drawMarker: true,                                                           // Dessine le marqueur
-  follow: true,                                                               // Suit l’utilisateur
-  stopFollowingOnDrag: true,                                                  // Stop le suivi si l’utilisateur déplace la carte
-  setView: true,                                                              // Recentre la carte sur la position
-  keepCurrentZoomLevel: true                                                  // Conserve le niveau de zoom
-}).addTo(map);                                                                // Ajoute le contrôle à la carte
+L.control.locate({
+  position: 'topright',
+  strings: { title: "Localiser ma position" },
+  drawCircle: true,
+  drawMarker: true,
+  follow: true,
+  stopFollowingOnDrag: true,
+  setView: true,
+  keepCurrentZoomLevel: true
+}).addTo(map);
 
 // Animation pour zoomer doucement lors de la géolocalisation
-map.on('locationfound', function(event) {                                      // Événement lorsque la position est trouvée
-  const targetLatLng = event.latlng;                                          // Coordonnées détectées
-  const targetZoom = 9;                                                        // Zoom cible
+map.on('locationfound', function(event) {
+  const targetLatLng = event.latlng;
+  const targetZoom = 9;
 
-  const currentZoom = map.getZoom();                                          // Zoom actuel
-  if (currentZoom > targetZoom - 2) {                                         // Si on est déjà près du zoom cible
-    map.setZoom(targetZoom - 2);                                              // Ajuste doucement
+  const currentZoom = map.getZoom();
+  if (currentZoom > targetZoom - 2) {
+    map.setZoom(targetZoom - 2);
   }
 
-  setTimeout(() => {                                                          // Délai avant l’animation
-    map.flyTo(targetLatLng, targetZoom, {                                      // Animation de vol vers la position
+  setTimeout(() => {
+    map.flyTo(targetLatLng, targetZoom, {
       animate: true,
-      duration: 2.5,                                                           // Durée de l’animation
-      easeLinearity: 0.25                                                      // Courbe d’accélération
+      duration: 2.5,
+      easeLinearity: 0.25
     });
   });
 });
 
 // Ajout du contrôle de changement de fond de carte
-L.control.layers(                                                             // Sélecteur de calques
-  { 'Dark': alidadedarkLayer, 'Atlas': thunderforestAtlasLayer },             // Calques disponibles
-  {},                                                                          // Calques de superposition (aucun ici)
-  { position: 'topleft' }                                                     // Position en haut à gauche
+L.control.layers(
+  { 'Dark': alidadedarkLayer, 'Atlas': thunderforestAtlasLayer },
+  {},
+  { position: 'topleft' }
 ).addTo(map);
 
 // Définition des emojis par catégorie
-const emojiParCategorie = {                                                   
+const emojiParCategorie = {
   "Affaires Non Résolues": "❓",
   "Crimes": "☠️",
   "Drames": "⚰️",
@@ -82,61 +82,61 @@ const emojiParCategorie = {
 };
 
 // Fonction pour créer un marqueur emoji pour chaque lieu
-function createEmojiMarker(lieu) {                                             // Prend un objet lieu en paramètre
-  const emoji = emojiParCategorie[lieu.categorie] || "❓";                      // Sélectionne l’emoji ou point d’interrogation
+function createEmojiMarker(lieu) {
+  const emoji = emojiParCategorie[lieu.categorie] || "❓";
 
-  const emojiIcon = L.divIcon({                                                // Crée une icône personnalisée
-    className: 'emoji-icon',                                                   // Classe CSS pour le style
-    html: `<div class="emoji-marker">${emoji}</div>`,                          // HTML interne de l’icône
-    iconSize: [30, 30],                                                         // Taille de l’icône
-    iconAnchor: [15, 15],                                                       // Point d’ancrage de l’icône
-    popupAnchor: [0, -15]                                                       // Position du popup par rapport à l’icône
+  const emojiIcon = L.divIcon({
+    className: 'emoji-icon',
+    html: `<div class="emoji-marker">${emoji}</div>`,
+    iconSize: [30, 30],
+    iconAnchor: [15, 15],
+    popupAnchor: [0, -15]
   });
 
-  const popupContent = `                                                       
-    <strong>${lieu.nom}</strong><br>                                          
-    ${lieu.resume}<br>                                                         
-    <a href="#" class="voir-plus" data-id="${lieu.ID}">Voir plus</a>           
+  const popupContent = `
+    <strong>${lieu.nom}</strong><br>
+    ${lieu.resume}<br>
+    <a href="#" class="voir-plus" data-id="${lieu.ID}">Voir plus</a>
   `;
 
-  const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon }) // Crée le marqueur à la position
-    .bindPopup(popupContent, {                                                 // Lie le popup au marqueur
-      maxWidth: 600,                                                           // Largeur max du popup
-      autoPan: false,                                                          // Empêche le recentrage automatique du popup
-      keepInView: false                                                        // Empêche le maintien dans la vue
+  const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
+    .bindPopup(popupContent, {
+      maxWidth: 600,
+      autoPan: false,
+      keepInView: false
     });
 
-  marker.on('click', () => {                                                   // Gestionnaire du clic sur le marqueur
-    const latlng = marker.getLatLng();                                         // Récupère ses coordonnées
-    map.setView(latlng, map.getZoom(), { animate: true });                     // Recentre la carte dessus
-    marker.openPopup();                                                         // Ouvre le popup
+  marker.on('click', () => {
+    const latlng = marker.getLatLng();
+    map.setView(latlng, map.getZoom(), { animate: true });
+    marker.openPopup();
   });
 
-  return marker;                                                               // Retourne l’objet marker
+  return marker;
 }
 
 // Chargement du fichier lieux.json et création des marqueurs
-fetch('lieux.json')                                                            // Appel HTTP pour récupérer le JSON
-  .then(response => response.json())                                           // Parse la réponse en JSON
+fetch('lieux.json')
+  .then(response => response.json())
   .then(data => {
-    window.lieuxData = data;                                                   // Stocke les données globalement pour y accéder ailleurs
+    window.lieuxData = data;
 
-    const markers = data.map(lieu => createEmojiMarker(lieu));                // Crée un marqueur par lieu
-    window.allMarkers = markers;                                               // Garde la liste pour fonctionnalités futures
+    const markers = data.map(lieu => createEmojiMarker(lieu));
+    window.allMarkers = markers;
 
-    const group = L.featureGroup(markers);                                     // Groupe de marqueurs pour Leaflet
-    group.addTo(map);                                                          // Ajoute le groupe à la carte
-    map.fitBounds(group.getBounds());                                          // Ajuste le zoom pour englober tous les marqueurs
+    const group = L.featureGroup(markers);
+    group.addTo(map);
+    map.fitBounds(group.getBounds());
   })
-  .catch(error => console.error('Erreur lors du chargement des lieux :', error)); // Affiche une erreur si le fetch échoue
+  .catch(error => console.error('Erreur lors du chargement des lieux :', error));
 
 // Création de la légende emoji
-function createLegend() {                                                      // Fonction qui ajoute la légende
-  const legend = L.control({ position: 'bottomleft' });                        // Position en bas à gauche
+function createLegend() {
+  const legend = L.control({ position: 'bottomleft' });
 
-  legend.onAdd = function (map) {                                              // Méthode appelée par Leaflet
-    const div = L.DomUtil.create('div', 'info legend');                        // Crée le container <div>
-    const categories = [                                                       // Définition des catégories
+  legend.onAdd = function (map) {
+    const div = L.DomUtil.create('div', 'info legend');
+    const categories = [
       { name: 'Affaires Non Résolues', emoji: '❓' },
       { name: 'Crimes', emoji: '☠️' },
       { name: 'Drames', emoji: '⚰️' },
@@ -145,8 +145,8 @@ function createLegend() {                                                      /
       { name: 'Lieux Mystérieux', emoji: '👁️' }
     ];
 
-    categories.forEach(category => {                                           // Pour chaque catégorie
-      div.innerHTML += `                                                     
+    categories.forEach(category => {
+      div.innerHTML += `
         <div class="legend-item">
           <span class="emoji">${category.emoji}</span>
           <span class="category-name">${category.name}</span>
@@ -154,94 +154,97 @@ function createLegend() {                                                      /
       `;
     });
 
-    return div;                                                                // Retourne le bloc à Leaflet
+    return div;
   };
 
-  legend.addTo(map);                                                           // Ajoute la légende à la carte
+  legend.addTo(map);
 }
-createLegend();                                                                // Appelle la fonction pour construire la légende
+createLegend();
 
-// Gestion du clic sur le lien « Voir plus » dans les popups
-document.addEventListener("click", function (e) {                              // Écoute globale des clics
-  if (e.target.classList.contains("voir-plus")) {                              // Filtre uniquement les liens « voir-plus »
-    e.preventDefault();                                                        // Empêche le comportement par défaut du lien
+// Gestion du clic sur "Voir plus" dans les popups
+document.addEventListener("click", function(e) {
+  if (!e.target.classList.contains("voir-plus")) return;
+  e.preventDefault();
 
-    const id = e.target.getAttribute("data-id");                               // Récupère l’ID stocké
-    const lieu = window.lieuxData.find(l => l.ID == id);                       // Recherche l’objet lieu correspondant
-    if (!lieu) return;                                                         // Si aucun lieu trouvé, on sort
+  const id = e.target.getAttribute("data-id");
+  const lieu = window.lieuxData.find(l => l.ID == id);
+  if (!lieu) return;
 
-    // Construction du contenu HTML détaillé
-    let html = `<h2>${lieu.nom}</h2>`;                                         // Titre du lieu
+  let html = `<h2>${lieu.nom}</h2>`;
+  html += `<p>${lieu.resume_long || lieu.resume}</p>`;
 
-    if (lieu.date)                html += `<p><strong>Date :</strong> ${lieu.date}</p>`;          // Ajoute la date si présente
-    if (lieu.resume_long)         html += `<p>${lieu.resume_long}</p>`;         // Ajoute le résumé long
-    if (lieu.nombre_morts)        html += `<p><strong>Nombre de morts :</strong> ${lieu.nombre_morts}</p>`; // Nombre de morts si défini
-    if (lieu.niveau_mediatisation) html += `<p><strong>Médiatisation :</strong> ${'⭐'.repeat(lieu.niveau_mediatisation)}</p>`; // Niveau de médiatisation
-    if (lieu.adresse)             html += `<p><strong>Adresse :</strong> ${lieu.adresse}</p>`;    // Adresse précise
-    if (lieu.etat_du_lieu)        html += `<p><strong>État actuel :</strong> ${lieu.etat_du_lieu}</p>`; // État actuel
-
-    // Ajout des liens vers articles, podcasts, vidéos, films et images
-    if (lieu.liens_articles_presse) html += `<p><strong>Article :</strong> <a href="${lieu.liens_articles_presse}" target="_blank">Lire</a></p>`;
-    if (lieu.liens_podcasts)        html += `<p><strong>Podcast :</strong> <a href="${lieu.liens_podcasts}" target="_blank">Écouter</a></p>`;
-    if (lieu.liens_videos)          html += `<p><strong>Vidéo :</strong> <a href="${lieu.liens_videos}" target="_blank">Regarder</a></p>`;
-    if (lieu.liens_films)           html += `<p><strong>Film :</strong> <a href="${lieu.liens_films}" target="_blank">Voir</a></p>`;
-    if (lieu.images_associees)      html += `<img src="${lieu.images_associees}" style="max-width:100%; margin-top:10px;" />`; // Affiche l’image
-
-    // Injection dans le panneau detailPanel et affichage
-    document.getElementById("detailContent").innerHTML = html;                // Remplit le contenu
-    document.getElementById("detailPanel").classList.add("visible");          // Rend visible le panneau
+  if (lieu.date_debut || lieu.date_fin) {
+    const debut = lieu.date_debut || "";
+    const fin   = lieu.date_fin   || "";
+    html += `<p><strong>Période :</strong> ${debut}${debut && fin ? " – " : ""}${fin}</p>`;
   }
-});
 
-// Fermeture du panneau d'informations détaillées
-document.getElementById("closeDetailPanel").addEventListener("click", () => { // Écoute du clic sur la croix
-  document.getElementById("detailPanel").classList.remove("visible");         // Cache le panneau
+  const ignore = ["ID", "nom", "resume", "resume_long", "latitude", "longitude", "date_debut", "date_fin"];
+
+  function formatLabel(key) {
+    return key
+      .split("_")
+      .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(" ");
+  }
+
+  for (const [key, value] of Object.entries(lieu)) {
+    if (ignore.includes(key) || !value) continue;
+    if (typeof value === "string" && value.match(/^https?:\/\//)) {
+      html += `<p><strong>${formatLabel(key)} :</strong> <a href="${value}" target="_blank">${value}</a></p>`;
+    } else {
+      html += `<p><strong>${formatLabel(key)} :</strong> ${value}</p>`;
+    }
+  }
+
+  document.getElementById("detailContent").innerHTML = html;
+  document.getElementById("detailPanel").classList.add("visible");
 });
 
 // Animation d’introduction au chargement de la page
-let showIntro = true;                                                         // Contrôle l’affichage de l’overlay
-window.addEventListener("load", () => {                                       // À la fin du chargement
-  const overlay = document.getElementById("intro-overlay");                   // Récupère l’élément overlay
-  if (showIntro) {                                                             // Si on doit montrer l’intro
-    const line1 = document.querySelector(".line1");                           // Ligne 1 de texte
-    const line2 = document.querySelector(".line2");                           // Ligne 2 de texte
+let showIntro = true;
+window.addEventListener("load", () => {
+  const overlay = document.getElementById("intro-overlay");
+  if (showIntro) {
+    const line1 = document.querySelector(".line1");
+    const line2 = document.querySelector(".line2");
 
-    line1.textContent = "Un territoire. Une carte.";                          // Texte ligne 1
-    line2.textContent = "Un passé sombre.";                                   // Texte ligne 2
+    line1.textContent = "Un territoire. Une carte.";
+    line2.textContent = "Un passé sombre.";
 
-    setTimeout(() => {                                                        // Délai avant disparition
-      overlay.style.opacity = 0;                                              // Fade out
-      setTimeout(() => overlay.remove(), 1000);                               // Supprime l’overlay après le fade
-    }, 10000);                                                                 // Durée d’affichage initiale
+    setTimeout(() => {
+      overlay.style.opacity = 0;
+      setTimeout(() => overlay.remove(), 1000);
+    }, 10000);
   } else {
-    overlay.style.display = "none";                                           // Ne montre pas si désactivé
+    overlay.style.display = "none";
   }
 });
 
 // Ajout du bouton plein écran à la carte
-const fullscreenControl = L.control({ position: 'bottomright' });             // Position : bas à droite
-fullscreenControl.onAdd = function (map) {                                     // Méthode d’ajout de Leaflet
-  const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom'); // Crée un <div>
-  container.id = 'fullscreenButton';                                           // Attribue un ID
-  container.innerHTML = '&#x2194;&#xFE0F;';                                   // Icône ↔️
-  container.title = 'Passer en plein écran';                                  // Tooltip
-  container.style.cursor = 'pointer';                                         // Curseur pointeur
-  L.DomEvent.disableClickPropagation(container);                               // Empêche la carte de capter le clic
-  container.addEventListener('click', toggleFullscreen);                       // Lie l’événement toggleFullscreen
-  return container;                                                            // Retourne l’élément
+const fullscreenControl = L.control({ position: 'bottomright' });
+fullscreenControl.onAdd = function(map) {
+  const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+  container.id = 'fullscreenButton';
+  container.innerHTML = '&#x2194;&#xFE0F;';
+  container.title = 'Passer en plein écran';
+  container.style.cursor = 'pointer';
+  L.DomEvent.disableClickPropagation(container);
+  container.addEventListener('click', toggleFullscreen);
+  return container;
 };
-fullscreenControl.addTo(map);                                                  // Ajoute le contrôle à la carte
+fullscreenControl.addTo(map);
 
 // Fonction pour basculer en plein écran et sortir
-function toggleFullscreen() {                                                  // Déclaration de la fonction
-  const mapElement = document.getElementById('map');                           // Récupère l’élément carte
-  if (!document.fullscreenElement) {                                           // Si on n’est pas en plein écran
-    mapElement.requestFullscreen?.() ??                                          // Demande le plein écran
+function toggleFullscreen() {
+  const mapElement = document.getElementById('map');
+  if (!document.fullscreenElement) {
+    mapElement.requestFullscreen?.() ??
       mapElement.mozRequestFullScreen?.() ??
       mapElement.webkitRequestFullscreen?.() ??
       mapElement.msRequestFullscreen?.();
-  } else {                                                                     // Sinon si on est en plein écran
-    document.exitFullscreen?.() ??                                             // Quitte le plein écran
+  } else {
+    document.exitFullscreen?.() ??
       document.mozCancelFullScreen?.() ??
       document.webkitExitFullscreen?.() ??
       document.msExitFullscreen?.();
@@ -249,53 +252,49 @@ function toggleFullscreen() {                                                  /
 }
 
 // Mise à jour de l’icône et du titre du bouton plein écran
-['fullscreenchange','mozfullscreenchange','webkitfullscreenchange','msfullscreenchange']
-.forEach(evt => document.addEventListener(evt, updateFullscreenButton));       // Écoute tous les événements
+['fullscreenchange', 'mozfullscreenchange', 'webkitfullscreenchange', 'msfullscreenchange']
+  .forEach(evt => document.addEventListener(evt, updateFullscreenButton));
 
-function updateFullscreenButton() {                                            // Fonction de mise à jour
-  const btn = document.getElementById('fullscreenButton');                     // Récupère le bouton
-  if (!btn) return;                                                            // Si pas trouvé, stop
-  if (document.fullscreenElement) {                                            // Si en plein écran
-    btn.title = 'Quitter le plein écran';                                      // Change le tooltip
-  } else {
-    btn.title = 'Passer en plein écran';                                       // Restaure le tooltip
-  }
+function updateFullscreenButton() {
+  const btn = document.getElementById('fullscreenButton');
+  if (!btn) return;
+  btn.title = document.fullscreenElement ? 'Quitter le plein écran' : 'Passer en plein écran';
 }
 
-// Ajout du bouton « Lieu au hasard 🎲 »
-const randomControl = L.control({ position: 'topright' });                     // Position : haut à droite
-randomControl.onAdd = function () {                                            // Méthode d’ajout
-  const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom'); // Crée un <div>
-  container.id = 'randomButton';                                               // ID pour cibler
-  container.innerHTML = '🎲';                                                   // Emoji dé
-  container.title = 'Lieu au hasard 🎲';                                        // Tooltip
-  L.DomEvent.disableClickPropagation(container);                                // Ne perturbe pas la carte
-  return container;                                                            // Retourne l’élément
+// Ajout du bouton "Lieu au hasard 🎲"
+const randomControl = L.control({ position: 'topright' });
+randomControl.onAdd = function() {
+  const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+  container.id = 'randomButton';
+  container.innerHTML = '🎲';
+  container.title = 'Lieu au hasard 🎲';
+  L.DomEvent.disableClickPropagation(container);
+  return container;
 };
-randomControl.addTo(map);                                                      // Ajoute le contrôle
+randomControl.addTo(map);
 
 // Écoute du clic sur 🎲 pour afficher un lieu aléatoire
-setTimeout(() => {                                                             // Délai pour s’assurer que le bouton existe
-  const btn = document.getElementById("randomButton");                         // Récupère le bouton
-  if (!btn) return;                                                            // Si non trouvé, stop
-  btn.addEventListener("click", () => {                                        // Ajoute le gestionnaire de clic
-    if (!window.allMarkers?.length) return;                                    // Si aucun marqueur, stop
-    const randomIndex = Math.floor(Math.random() * window.allMarkers.length);  // Choix d’un index aléatoire
-    const randomMarker = window.allMarkers[randomIndex];                       // Récupère le marqueur
-    const latlng = randomMarker.getLatLng();                                   // Coordonnées du marqueur
-    const currentZoom = map.getZoom();                                         // Zoom actuel
+setTimeout(() => {
+  const btn = document.getElementById("randomButton");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    if (!window.allMarkers?.length) return;
+    const randomIndex = Math.floor(Math.random() * window.allMarkers.length);
+    const randomMarker = window.allMarkers[randomIndex];
+    const latlng = randomMarker.getLatLng();
+    const currentZoom = map.getZoom();
 
-    map.closePopup();                                                          // Ferme tout popup ouvert
+    map.closePopup();
 
-    if (currentZoom >= 10) {                                                   // Si zoom élevé
-      map.setView(map.getCenter(), 5);                                         // Dézoom rapide
-      setTimeout(() => {                                                       // Après un court délai
-        map.flyTo(latlng, 10, { animate: true, duration: 2.5, easeLinearity: 0.25 }); // Vol vers le lieu
-        setTimeout(() => randomMarker.openPopup(), 3000);                     // Ouvre le popup après l’animation
+    if (currentZoom >= 10) {
+      map.setView(map.getCenter(), 5);
+      setTimeout(() => {
+        map.flyTo(latlng, 10, { animate: true, duration: 2.5, easeLinearity: 0.25 });
+        setTimeout(() => randomMarker.openPopup(), 3000);
       }, 700);
-    } else {                                                                   // Si zoom pas trop important
-      map.flyTo(latlng, 10, { animate: true, duration: 2.5, easeLinearity: 0.25 }); // Vol directement
-      setTimeout(() => randomMarker.openPopup(), 3000);                       // Ouvre le popup après l’animation
+    } else {
+      map.flyTo(latlng, 10, { animate: true, duration: 2.5, easeLinearity: 0.25 });
+      setTimeout(() => randomMarker.openPopup(), 3000);
     }
   });
 }, 0);
