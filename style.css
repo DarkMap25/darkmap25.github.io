@@ -154,37 +154,44 @@ footer {
   color: inherit; /* Couleur héritée du parent */
 }
 
+/* CSS à ajouter */
 
-/* CSS à ajouter pour que le panneau de détail prenne la place de la carte */
-#detailPanel.full-view {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-  background: #000;
+/* Panneau de détail masqué par défaut */
+#detailPanel {
+  display: none;
+  background: #000;           /* fond noir Darkmap */
+  color: #000;                /* texte noir */
+  font-family: 'DarkMapFont', sans-serif;  
+  text-shadow: 0 0 4px violet; /* contour violet autour du texte */
   overflow: auto;
 }
 
-/* Bouton de fermeture toujours visible, en rouge, fixé à la fenêtre */
-#closeDetailPanel {
-  position: fixed;       /* toujours relatif à la fenêtre */
-  top: 20px;             /* 20px sous le bord supérieur */
-  right: 20px;           /* 20px du bord droit */
-  background-color: #900;/* fond rouge sombre */
-  color: #fff;           /* croix blanche */
-  border: none;
-  font-size: 24px;       /* croix plus grande */
-  padding: 8px 12px;     /* zone cliquable confortable */
-  border-radius: 4px;
-  cursor: pointer;
-  z-index: 2001;         /* toujours au-dessus de tout */
-}
-
-/* Quand le panneau est actif */
+/* Quand le panneau est actif, on l’affiche */
 #detailPanel.visible {
   display: block;
+}
+
+/* Panneau plein écran */
+#detailPanel.full-view {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  color: #000;  z-index: 1000;
+}
+
+/* Bouton de fermeture masqué par défaut */
+#closeDetailPanel {
+  display: none;
+  position: fixed;
+  top: 20px; right: 20px;
+  background-color: #900;
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 2001;
 }
 
 /* === PERSONNALISATION DU BOUTON DE CHANGEMENT DE CARTE (Contrôle Leaflet) === */
