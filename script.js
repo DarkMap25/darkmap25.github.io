@@ -93,7 +93,7 @@ function createEmojiMarker(lieu) {
   const popupContent = `
     <strong>${lieu.nom}</strong><br>
     ${lieu.resume}<br>
-    <a href="${lieu.lien}" target="_blank">Voir plus</a>
+    <a href="#" class="voir-plus" data-id="${lieu.identifiant}">Voir plus</a>
   `;
 
 const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
@@ -153,6 +153,38 @@ function createLegend() {
   legend.addTo(map);
 }
 createLegend();
+
+// === Gère le clic sur le bouton "Voir plus" dans les popups ===
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("voir-plus")) {
+    e.preventDefault();
+
+    const id = e.target.getAttribute("data-id"); // identifiant du lieu
+
+    const lieu = window.lieuxData.find(l => l.identifiant == id);
+    if (!lieu) return;
+
+    // Génère le contenu détaillé
+    let html = `<h2>${lieu.nom}</h2>`;
+    if (lieu.resume_long) html += `<p>${lieu.resume_long}</p>`;
+
+    // Ajoute les liens si disponibles
+    if (lieu.liens_articles_presse) {
+      html += `<p><strong>Articles :</strong><br><a href="${lieu.liens_articles_presse}" target="_blank">${lieu.liens_articles_presse}</a></p>`;
+    }
+    if (lieu.liens_videos) {
+      html += `<p><strong>Vidéos :</strong><br><a href="${lieu.liens_videos}" target="_blank">${lieu.liens_videos}</a></p>`;
+    }
+
+    document.getElementById("detailContent").innerHTML = html;
+    document.getElementById("detailPanel").classList.add("visible");
+  }
+});
+
+// === Fermer le panneau d'infos ===
+document.getElementById("closeDetailPanel").addEventListener("click", () => {
+  document.getElementById("detailPanel").classList.remove("visible");
+});
 
 // Animation d’introduction
 let showIntro = true;
