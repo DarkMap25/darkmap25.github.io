@@ -226,7 +226,8 @@ document.getElementById("closeDetailPanel").addEventListener("click", function(e
   // → Vider le contenu pour qu’il ne réapparaisse jamais hors du panneau
   detailContent.innerHTML = "";
   // → Rétablir la carte
-  mapContainer.removeAttribute("style");
+  mapContainer.style.display = "block";
+  map.invalidateSize();
 });
 
 // Animation d’introduction au chargement de la page
