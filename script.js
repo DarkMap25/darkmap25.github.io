@@ -123,6 +123,24 @@ fetch('lieux.json')
   })
   .catch(error => console.error('Erreur lors du chargement des lieux :', error));
 
+// === Recherche de lieu par nom dans les marqueurs ===
+document.getElementById("searchInput").addEventListener("input", function () {
+  const term = this.value.trim().toLowerCase();  // Récupère ce que l'utilisateur tape
+
+  if (!term || term.length < 2) return;          // Ignore si vide ou trop court
+
+  // Cherche un marqueur dont le contenu du popup contient le terme
+  const found = window.allMarkers.find(marker => {
+    const popup = marker.getPopup();                              // Récupère le popup du marqueur
+    return popup && popup.getContent().toLowerCase().includes(term); // Cherche dans le contenu du popup
+  });
+
+  if (found) {
+    map.setView(found.getLatLng(), 10, { animate: true });  // Centre la carte sur le marqueur
+    found.openPopup();                                      // Ouvre le popup
+  }
+});
+
 // Légende emoji
 function createLegend() {
   const legend = L.control({ position: 'bottomleft' });
