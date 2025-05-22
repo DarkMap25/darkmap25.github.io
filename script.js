@@ -105,19 +105,32 @@ function createEmojiMarker(lieu) {
     });
 
   // ✅ Toujours recentrer + ouvrir popup après un léger délai
-marker.on('click', () => {
-  const latlng = L.latLng(lieu.latitude, lieu.longitude);
+  marker.on('click', () => {
+    // Étape 1 : ouvrir le popup
+    marker.openPopup();
 
-  // ✅ Décalage vers le haut (le marqueur est légèrement plus bas dans la vue)
-  const offset = map.project(latlng, map.getZoom()).subtract([0, 100]); // 100px vers le haut
-  const target = map.unproject(offset, map.getZoom());
+    // Étape 2 : attendre que le DOM du popup soit prêt, puis ajuster les limites visibles
+    setTimeout(() => {
+      // Récupérer les dimensions du popup
+      const popupEl = marker.getPopup()._container;
+      if (!popupEl) return;
 
-  // ✅ Pan avec décalage, pour laisser la place au popup au-dessus
-  map.panTo(target, { animate: true });
+      const popupRect = popupEl.getBoundingClientRect();
 
-  // ✅ Affichage du popup après un léger délai pour éviter les conflits d’animation
-  setTimeout(() => marker.openPopup(), 300);
-});
+      // Calculer les marges de sécurité
+      const padding = {
+        topLeft: [popupRect.width / 2 + 20, popupRect.height + 20],
+        bottomRight: [popupRect.width / 2 + 20, 20]
+      };
+
+      // Faire en sorte que le popup soit entièrement dans la carte
+      map.panInsideBounds(marker.getPopup()._container.getBoundingClientRect(), {
+        paddingTopLeft: padding.topLeft,
+        paddingBottomRight: padding.bottomRight,
+        animate: true
+      });
+    }, 300); // Attendre que le popup soit dans le DOM
+  });
     return marker;
 }
 
