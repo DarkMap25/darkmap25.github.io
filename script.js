@@ -111,17 +111,20 @@ marker.on('click', () => {
   return marker;
 }
 
-// Chargement des lieux
+// === Chargement des lieux depuis le fichier lieux.json ===
 fetch('lieux.json')
-  .then(response => response.json())
+  .then(response => response.json())     // On récupère les données JSON
   .then(data => {
-    const markers = data.map(lieu => createEmojiMarker(lieu));
-    window.allMarkers = markers;
-    const group = L.featureGroup(markers);
-    group.addTo(map);
-    map.fitBounds(group.getBounds());
+    window.lieuxData = data;             // ✅ On stocke toutes les données globalement pour les réutiliser plus tard
+
+    const markers = data.map(lieu => createEmojiMarker(lieu)); // Création des marqueurs
+    window.allMarkers = markers;        // On les garde pour d'autres fonctions (recherche, random...)
+    
+    const group = L.featureGroup(markers); // Groupe de tous les marqueurs
+    group.addTo(map);                      // Ajout à la carte
+    map.fitBounds(group.getBounds());      // Ajuste le zoom pour englober tous les lieux
   })
-  .catch(error => console.error('Erreur lors du chargement des lieux :', error));
+  .catch(error => console.error('Erreur lors du chargement des lieux :', error)); // Affiche une erreur si problème
 
 // Légende emoji
 function createLegend() {
