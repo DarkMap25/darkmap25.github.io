@@ -162,72 +162,71 @@ function createLegend() {
 createLegend();
 
 // 1) Handler pour ouvrir le panneau "Voir plus"
-document.addEventListener("click", function (e) {
+document.addEventListener("click", function(e) {
   if (!e.target.classList.contains("voir-plus")) return;
   e.preventDefault();
 
   const mapContainer  = document.getElementById("map");
   const detailPanel   = document.getElementById("detailPanel");
-  
-  // Masquer la carte et activer le panneau en plein écran
-  mapContainer.style.display = "none";
-  detailPanel.classList.add("full-view", "visible");
+  const detailContent = document.getElementById("detailContent");
+  const closeBtn      = document.getElementById("closeDetailPanel");
 
-  // Récupération des données du lieu
+  // → Nettoyage d'éventuels styles inline hérités
+  detailPanel.removeAttribute("style");
+  mapContainer.removeAttribute("style");
+
+  // → Masquer la carte et afficher le panneau
+  mapContainer.style.display = "none";
+  detailPanel.classList.add("visible", "full-view");
+
+  // → Construire le contenu HTML
   const id   = e.target.getAttribute("data-id");
-  const lieu = window.lieuxData.find((l) => l.ID == id);
+  const lieu = window.lieuxData.find(l => l.ID == id);
   if (!lieu) return;
 
-  // Construction du contenu HTML
   let html = `<h2>${lieu.nom}</h2>`;
   html += `<p>${lieu.resume_long || lieu.resume}</p>`;
 
   if (lieu.date_debut || lieu.date_fin) {
-    const d = lieu.date_debut || "";
-    const f = lieu.date_fin   || "";
-    html += `<p><strong>Période :</strong> ${d}${d && f ? " – " : ""}${f}</p>`;
+    const d = lieu.date_debut||"", f = lieu.date_fin||"";
+    html += `<p><strong>Période :</strong> ${d}${d&&f?" – "+f:""}</p>`;
   }
 
-  const ignore = [
-    "ID", "nom", "resume", "resume_long",
-    "latitude", "longitude", "date_debut", "date_fin"
-  ];
-  function formatLabel(k) {
-    return k
-      .split("_")
-      .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-      .join(" ");
+  const ignore = ["ID","nom","resume","resume_long","latitude","longitude","date_debut","date_fin"];
+  function formatLabel(k){
+    return k.split("_").map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(" ");
   }
 
-  for (const [key, value] of Object.entries(lieu)) {
-    if (ignore.includes(key) || !value) continue;
-    if (typeof value === "string" && /^https?:\/\//.test(value)) {
+  for (const [key,value] of Object.entries(lieu)) {
+    if (ignore.includes(key)||!value) continue;
+    if (typeof value==="string" && /^https?:\/\//.test(value)) {
       html += `<p><strong>${formatLabel(key)} :</strong> <a href="${value}" target="_blank">${value}</a></p>`;
     } else {
       html += `<p><strong>${formatLabel(key)} :</strong> ${value}</p>`;
     }
   }
 
-  document.getElementById("detailContent").innerHTML = html;
+  detailContent.innerHTML = html;
+  // (le CSS fera apparaître automatiquement #closeDetailPanel via #detailPanel.visible)
 });
 
 // 2) Handler pour fermer le panneau (croix)
 document.getElementById("closeDetailPanel").addEventListener("click", function(e) {
   e.preventDefault();
-  e.stopPropagation();  // on stoppe la propagation pour éviter tout conflit
+  e.stopPropagation();  
 
-  const mapContainer   = document.getElementById("map");
-  const detailPanel    = document.getElementById("detailPanel");
-  const detailContent  = document.getElementById("detailContent");
+  const mapContainer  = document.getElementById("map");
+  const detailPanel   = document.getElementById("detailPanel");
+  const detailContent = document.getElementById("detailContent");
 
-  // 1️⃣ Retirer les classes pour revenir à l'état initial
+  // → Retirer les classes pour masquer via CSS
   detailPanel.classList.remove("visible", "full-view");
-  // 2️⃣ Forcer le style display pour bien cacher le panneau
-  detailPanel.style.display = "none";
-  // 3️⃣ Vider le contenu pour qu’il ne réapparaisse jamais hors du panneau
+  // → Forcer la suppression de tout style inline
+  detailPanel.removeAttribute("style");
+  // → Vider le contenu pour qu’il ne réapparaisse jamais hors du panneau
   detailContent.innerHTML = "";
-  // 4️⃣ Ré-afficher la carte
-  mapContainer.style.display = "block";
+  // → Rétablir la carte
+  mapContainer.removeAttribute("style");
 });
 
 // Animation d’introduction au chargement de la page
