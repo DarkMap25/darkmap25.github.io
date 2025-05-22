@@ -93,10 +93,10 @@ function createEmojiMarker(lieu) {                                             /
     popupAnchor: [0, -15]                                                       // Position du popup par rapport à l’icône
   });
 
-  const popupContent = `                                                       // Contenu HTML du popup
-    <strong>${lieu.nom}</strong><br>                                           // Titre en gras
-    ${lieu.resume}<br>                                                         // Résumé court
-    <a href="#" class="voir-plus" data-id="${lieu.ID}">Voir plus</a>            // Lien « Voir plus » avec data-id de lieu.ID
+  const popupContent = `                                                       
+    <strong>${lieu.nom}</strong><br>                                          
+    ${lieu.resume}<br>                                                         
+    <a href="#" class="voir-plus" data-id="${lieu.ID}">Voir plus</a>           
   `;
 
   const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon }) // Crée le marqueur à la position
@@ -146,7 +146,7 @@ function createLegend() {                                                      /
     ];
 
     categories.forEach(category => {                                           // Pour chaque catégorie
-      div.innerHTML += `                                                       // Ajoute une ligne à la légende
+      div.innerHTML += `                                                     
         <div class="legend-item">
           <span class="emoji">${category.emoji}</span>
           <span class="category-name">${category.name}</span>
@@ -161,54 +161,41 @@ function createLegend() {                                                      /
 }
 createLegend();                                                                // Appelle la fonction pour construire la légende
 
-// === Gestion du clic sur "Voir plus" dans les popups ===
-document.addEventListener("click", function (e) {                                        
-  if (!e.target.classList.contains("voir-plus")) return;  // 1️⃣ On ne traite que les liens “Voir plus”
-  e.preventDefault();                                       // 2️⃣ Empêche le # du href
+// Gestion du clic sur le lien « Voir plus » dans les popups
+document.addEventListener("click", function (e) {                              // Écoute globale des clics
+  if (e.target.classList.contains("voir-plus")) {                              // Filtre uniquement les liens « voir-plus »
+    e.preventDefault();                                                        // Empêche le comportement par défaut du lien
 
-  const id = e.target.getAttribute("data-id");              // 3️⃣ Récupère l’ID
-  const lieu = window.lieuxData.find(l => l.ID == id);      // 4️⃣ Cherche le lieu correspondant
-  if (!lieu) return;                                        // 5️⃣ Sécurité
+    const id = e.target.getAttribute("data-id");                               // Récupère l’ID stocké
+    const lieu = window.lieuxData.find(l => l.ID == id);                       // Recherche l’objet lieu correspondant
+    if (!lieu) return;                                                         // Si aucun lieu trouvé, on sort
 
-  // ── 6️⃣ On commence par le titre et le résumé (long si dispo, sinon court)
-  let html = `<h2>${lieu.nom}</h2>`;
-  html += `<p>${lieu.resume_long || lieu.resume}</p>`;
+    // Construction du contenu HTML détaillé
+    let html = `<h2>${lieu.nom}</h2>`;                                         // Titre du lieu
 
-  // ── 7️⃣ Affiche la période complète si tu as date_debut / date_fin
-  if (lieu.date_debut || lieu.date_fin) {
-    const debut = lieu.date_debut || "";
-    const fin   = lieu.date_fin   || "";
-    html += `<p><strong>Période :</strong> ${debut}${debut && fin ? " – " : ""}${fin}</p>`;
+    if (lieu.date)                html += `<p><strong>Date :</strong> ${lieu.date}</p>`;          // Ajoute la date si présente
+    if (lieu.resume_long)         html += `<p>${lieu.resume_long}</p>`;         // Ajoute le résumé long
+    if (lieu.nombre_morts)        html += `<p><strong>Nombre de morts :</strong> ${lieu.nombre_morts}</p>`; // Nombre de morts si défini
+    if (lieu.niveau_mediatisation) html += `<p><strong>Médiatisation :</strong> ${'⭐'.repeat(lieu.niveau_mediatisation)}</p>`; // Niveau de médiatisation
+    if (lieu.adresse)             html += `<p><strong>Adresse :</strong> ${lieu.adresse}</p>`;    // Adresse précise
+    if (lieu.etat_du_lieu)        html += `<p><strong>État actuel :</strong> ${lieu.etat_du_lieu}</p>`; // État actuel
+
+    // Ajout des liens vers articles, podcasts, vidéos, films et images
+    if (lieu.liens_articles_presse) html += `<p><strong>Article :</strong> <a href="${lieu.liens_articles_presse}" target="_blank">Lire</a></p>`;
+    if (lieu.liens_podcasts)        html += `<p><strong>Podcast :</strong> <a href="${lieu.liens_podcasts}" target="_blank">Écouter</a></p>`;
+    if (lieu.liens_videos)          html += `<p><strong>Vidéo :</strong> <a href="${lieu.liens_videos}" target="_blank">Regarder</a></p>`;
+    if (lieu.liens_films)           html += `<p><strong>Film :</strong> <a href="${lieu.liens_films}" target="_blank">Voir</a></p>`;
+    if (lieu.images_associees)      html += `<img src="${lieu.images_associees}" style="max-width:100%; margin-top:10px;" />`; // Affiche l’image
+
+    // Injection dans le panneau detailPanel et affichage
+    document.getElementById("detailContent").innerHTML = html;                // Remplit le contenu
+    document.getElementById("detailPanel").classList.add("visible");          // Rend visible le panneau
   }
+});
 
-  // ── 8️⃣ Boucle sur toutes les clefs de l’objet pour les afficher dynamiquement
-  const ignore = [                                     // Clefs qu’on ne veut pas ré-afficher
-    "ID", "nom", "resume", "resume_long", 
-    "latitude", "longitude", "date_debut", "date_fin"
-  ];
-  // Fonction pour formater proprement la clef (ex: "etat_actuel_du_lieu" → "Etat Actuel Du Lieu")
-  function formatLabel(key) {
-    return key
-      .split("_")
-      .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-      .join(" ");
-  }
-
-  for (const [key, value] of Object.entries(lieu)) {    // 9️⃣ Pour chaque paire [clef, valeur]
-    if (ignore.includes(key) || !value) continue;       // • On saute les clefs ignorées ou vides
-
-    // 10️⃣ Si c’est un lien (string qui commence par "http"), on affiche en <a>
-    if (typeof value === "string" && value.match(/^https?:\/\//)) {
-      html += `<p><strong>${formatLabel(key)} :</strong> <a href="${value}" target="_blank">${value}</a></p>`;
-    } 
-    else {
-      html += `<p><strong>${formatLabel(key)} :</strong> ${value}</p>`;  // 11️⃣ Texte simple
-    }
-  }
-
-  // ── 12️⃣ Injection et affichage du panneau
-  document.getElementById("detailContent").innerHTML = html;
-  document.getElementById("detailPanel").classList.add("visible");
+// Fermeture du panneau d'informations détaillées
+document.getElementById("closeDetailPanel").addEventListener("click", () => { // Écoute du clic sur la croix
+  document.getElementById("detailPanel").classList.remove("visible");         // Cache le panneau
 });
 
 // Animation d’introduction au chargement de la page
