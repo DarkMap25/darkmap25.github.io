@@ -44,6 +44,21 @@ h1 {
   color: #e60000 /* Couleur rouge */
 }
 
+/* Style de la barre de recherche */
+#searchInput {
+  position: absolute;              /* Permet de le positionner librement sur la page */
+  top: 10px;                       /* Distance depuis le haut de la page */
+  left: 50%;                       /* Centré horizontalement */
+  transform: translateX(-50%);     /* Correction pour un vrai centrage */
+  z-index: 1000;                   /* Au-dessus de la carte */
+  padding: 8px 12px;               /* Espacement intérieur */
+  border-radius: 6px;              /* Coins arrondis */
+  border: 1px solid #ccc;          /* Bord gris clair */
+  font-size: 14px;                 /* Taille du texte */
+  background: #fff;                /* Fond blanc */
+  width: 240px;                    /* Largeur du champ */
+}
+
 /* Logo si présent */
 .logo {
   display: block; /* Assurer que le logo est un élément de bloc */
