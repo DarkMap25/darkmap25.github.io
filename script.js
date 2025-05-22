@@ -96,21 +96,19 @@ function createEmojiMarker(lieu) {
     <a href="${lieu.lien}" target="_blank">Voir plus</a>
   `;
 
+// ✅ On désactive les repositionnements automatiques du popup pour éviter les bugs
   const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
-      .bindPopup(popupContent, {
-        maxWidth: 600,
-        autoPan: true,
-        keepInView: true,           // force le popup à se repositionner pour rester visible
-      autoPanPadding: [40, 40]    // marge (px) entre le popup et le bord de la carte      
+    .bindPopup(popupContent, {
+      maxWidth: 600,
+      autoPan: false,         // ❌ on gère manuellement, donc on désactive
+      keepInView: false       // ❌ sinon risque de conflit avec panTo + bug de boucle
     });
 
-marker.on('click', () => {
-  // ✅ Utilise panTo (moins agressif que setView) pour éviter les conflits d'animation
-  map.panTo([lieu.latitude, lieu.longitude], { animate: true });
-
-  // ✅ Et ouvre manuellement le popup (optionnel mais plus stable)
-  setTimeout(() => marker.openPopup(), 200);
-});
+  // ✅ Toujours recentrer + ouvrir popup après un léger délai
+  marker.on('click', () => {
+    map.panTo([lieu.latitude, lieu.longitude], { animate: true });
+    setTimeout(() => marker.openPopup(), 250); // délai léger pour laisser le recentrage se faire
+  });
     return marker;
 }
 
