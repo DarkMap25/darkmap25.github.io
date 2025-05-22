@@ -378,7 +378,7 @@ footer {
     overflow: visible !important; /* 🔥 Leaflet limite parfois la taille à cause de ça */
 }
 
-*/ === Footer === */
+/* === Footer === */
 footer {
   width: 100%;                  /* Le footer prend toute la largeur de la page */
   max-width: 1000px;            /* (optionnel) limite de largeur si tu veux pas qu'il s'étale trop */
