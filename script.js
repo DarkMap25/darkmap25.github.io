@@ -213,12 +213,15 @@ document.addEventListener("click", function (e) {
 
 // 2) Handler pour fermer le panneau (croix)
 document.getElementById("closeDetailPanel").addEventListener("click", function () {
-  const mapContainer = document.getElementById("map");
-  const detailPanel  = document.getElementById("detailPanel");
+  const mapContainer  = document.getElementById("map");
+  const detailPanel   = document.getElementById("detailPanel");
+  const detailContent = document.getElementById("detailContent");
 
-  // On retire les classes qui affichaient le panneau
+  // 1️⃣ Retirer les classes qui affichaient le panneau
   detailPanel.classList.remove("full-view", "visible");
-  // On ré-affiche la carte
+  // 2️⃣ Vider le HTML du panneau pour éviter tout réaffichage sous le footer
+  detailContent.innerHTML = "";
+  // 3️⃣ Restaurer la carte
   mapContainer.style.display = "block";
 });
 
