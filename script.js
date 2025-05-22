@@ -104,11 +104,14 @@ function createEmojiMarker(lieu) {
       autoPanPadding: [40, 40]    // marge (px) entre le popup et le bord de la carte      
     });
 
-  marker.on('click', () => {
-    map.setView([lieu.latitude, lieu.longitude], map.getZoom(), { animate: true });
-  });
+marker.on('click', () => {
+  // ✅ Utilise panTo (moins agressif que setView) pour éviter les conflits d'animation
+  map.panTo([lieu.latitude, lieu.longitude], { animate: true });
 
-  return marker;
+  // ✅ Et ouvre manuellement le popup (optionnel mais plus stable)
+  setTimeout(() => marker.openPopup(), 200);
+});
+    return marker;
 }
 
 // Chargement des lieux
