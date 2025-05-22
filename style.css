@@ -154,36 +154,55 @@ footer {
   color: inherit; /* Couleur héritée du parent */
 }
 
-/* CSS à ajouter */
+/* ===== CSS ===== */
 
-/* Panneau de détail masqué par défaut */
-#detailPanel {
-  display: none;
-  background: #000;           /* fond noir Darkmap */
-  color: #000;                /* texte noir */
-  font-family: 'DarkMapFont', sans-serif;  
-  text-shadow: 0 0 4px violet; /* contour violet autour du texte */
-  overflow: auto;
+/* 1. On force html/body et #map à 100% de haut */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#map, #detailPanel {
+  height: 100%;
 }
 
-/* Quand le panneau est actif, on l’affiche */
+/* 2. Style pour le panneau de détail avec fond image parchemin */
+#detailPanel.full-view {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-image: url('./icons/panneau.jpg'); /* image parchemin */
+  background-size: cover;        /* l'image couvre toute la surface */
+  background-position: center;   /* centrée */
+  background-repeat: no-repeat;  /* pas de répétition */
+  overflow: auto;                /* défilement si contenu long */
+  padding: 20px;
+  color: #e0d6cc;                /* couleur claire sur fond foncé */
+  font-family: 'Cormorant Garamond', serif;
+  text-shadow: 1px 1px 2px #000; /* meilleur contraste */
+}
+/* 3. Quand on ajoute .visible, on l’affiche */
 #detailPanel.visible {
   display: block;
 }
 
-/* Panneau plein écran */
+/* 4. En plein écran, on fixe sur l’ensemble du viewport */
 #detailPanel.full-view {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  color: #000;  z-index: 1000;
+  position: fixed;
+  inset: 0;      /* équivaut à top:0; right:0; bottom:0; left:0 */
+  z-index: 1000;
 }
 
-/* Bouton de fermeture masqué par défaut */
+/* 5. Croix cachée par défaut */
 #closeDetailPanel {
   display: none;
   position: fixed;
-  top: 20px; right: 20px;
+  top: 20px;
+  right: 20px;
   background-color: #900;
   color: #fff;
   border: none;
@@ -192,6 +211,11 @@ footer {
   border-radius: 4px;
   cursor: pointer;
   z-index: 2001;
+}
+
+/* 6. Quand le panneau est visible, on affiche la croix */
+#detailPanel.visible #closeDetailPanel {
+  display: block;
 }
 
 /* === PERSONNALISATION DU BOUTON DE CHANGEMENT DE CARTE (Contrôle Leaflet) === */
