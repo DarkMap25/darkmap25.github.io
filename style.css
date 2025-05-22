@@ -154,6 +154,19 @@ footer {
   color: inherit; /* Couleur héritée du parent */
 }
 
+
+/* CSS à ajouter pour que le panneau de détail prenne la place de la carte */
+#detailPanel.full-view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90%;
+  height: 75%;
+  z-index: 1000;
+  background: #fff;
+  overflow: auto;
+}
+
 /* Bouton de fermeture toujours visible, en rouge, fixé à la fenêtre */
 #closeDetailPanel {
   position: fixed;       /* toujours relatif à la fenêtre */
@@ -406,18 +419,6 @@ footer {
 
 #fullscreenButton:hover {
     transform: scale(1.5);
-}
-
-/* CSS à ajouter pour que le panneau de détail prenne la place de la carte */
-#detailPanel.full-view {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 90%;
-  height: 75%;
-  z-index: 1000;
-  background: #fff;
-  overflow: auto;
 }
 
 /* === Positionnement des contrôles en haut à droite === */
