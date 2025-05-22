@@ -100,8 +100,8 @@ function createEmojiMarker(lieu) {
   const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
       .bindPopup(popupContent, {
         maxWidth: 600,
-        autoPan: false,
-        keepInView: true,           // force le popup à se repositionner pour rester visible
+        autoPan: true,
+        keepInView: false,           // force le popup à se repositionner pour rester visible
       autoPanPadding: [40, 40]    // marge (px) entre le popup et le bord de la carte      
     });
 
