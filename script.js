@@ -176,6 +176,66 @@ window.addEventListener("load", () => {
   }
 });
 
+// === Ajout du bouton plein écran à l'intérieur de la carte (Bas à droite, avec emoji) ===
+const fullscreenControl = L.control({ position: 'bottomright' });
+
+fullscreenControl.onAdd = function (map) {
+    const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+    container.id = 'fullscreenButton';
+
+    container.innerHTML = '&#x2194;&#xFE0F;';
+    container.title = 'Passer en plein écran';
+
+    container.style.cursor = 'pointer';
+    container.style.fontSize = '2.5em';
+    container.style.lineHeight = '1';
+    container.style.color = 'inherit';
+    container.style.textShadow = 'none';
+    container.style.display = 'flex';
+    container.style.justifyContent = 'center';
+    container.style.alignItems = 'center';
+    container.style.overflow = 'visible';
+    container.style.backgroundColor = 'transparent !important';
+    container.style.border = 'none !important';
+    container.style.padding = '5px !important';
+    container.style.width = 'auto !important';
+    container.style.height = 'auto !important';
+    container.style.transition = 'transform 0.2s ease';
+
+    L.DomEvent.disableClickPropagation(container);
+
+    return container;
+};
+
+fullscreenControl.addTo(map);
+
+// Ajout de l'écouteur d'événement au bouton
+setTimeout(() => { // S'assurer que le bouton existe dans le DOM
+    const btnFullscreen = document.getElementById('fullscreenButton');
+    if (btnFullscreen) {
+        btnFullscreen.addEventListener('click', toggleFullscreen);
+    }
+}, 0);
+
+// Gestion des événements de changement de plein écran (optionnel mais recommandé)
+document.addEventListener('fullscreenchange', updateFullscreenButton);
+document.addEventListener('mozfullscreenchange', updateFullscreenButton);
+document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+document.addEventListener('msfullscreenchange', updateFullscreenButton);
+
+function updateFullscreenButton() {
+    const fullscreenButton = document.getElementById('fullscreenButton');
+    if (fullscreenButton) {
+        if (document.fullscreenElement) {
+            fullscreenButton.innerHTML = '&#x2194;&#xFE0F;';
+            fullscreenButton.title = 'Quitter le plein écran';
+        } else {
+            fullscreenButton.innerHTML = '&#x2194;&#xFE0F;';
+            fullscreenButton.title = 'Passer en plein écran';
+        }
+    }
+}
+
 // === Ajout du bouton 🎲 à l'intérieur de la carte (sous le bouton de localisation) ===
 const randomControl = L.control({ position: 'topright' });
 
