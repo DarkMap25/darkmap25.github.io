@@ -212,16 +212,21 @@ document.addEventListener("click", function (e) {
 });
 
 // 2) Handler pour fermer le panneau (croix)
-document.getElementById("closeDetailPanel").addEventListener("click", function () {
-  const mapContainer  = document.getElementById("map");
-  const detailPanel   = document.getElementById("detailPanel");
-  const detailContent = document.getElementById("detailContent");
+document.getElementById("closeDetailPanel").addEventListener("click", function(e) {
+  e.preventDefault();
+  e.stopPropagation();  // on stoppe la propagation pour éviter tout conflit
 
-  // 1️⃣ Retirer les classes qui affichaient le panneau
-  detailPanel.classList.remove("full-view", "visible");
-  // 2️⃣ Vider le HTML du panneau pour éviter tout réaffichage sous le footer
+  const mapContainer   = document.getElementById("map");
+  const detailPanel    = document.getElementById("detailPanel");
+  const detailContent  = document.getElementById("detailContent");
+
+  // 1️⃣ Retirer les classes pour revenir à l'état initial
+  detailPanel.classList.remove("visible", "full-view");
+  // 2️⃣ Forcer le style display pour bien cacher le panneau
+  detailPanel.style.display = "none";
+  // 3️⃣ Vider le contenu pour qu’il ne réapparaisse jamais hors du panneau
   detailContent.innerHTML = "";
-  // 3️⃣ Restaurer la carte
+  // 4️⃣ Ré-afficher la carte
   mapContainer.style.display = "block";
 });
 
