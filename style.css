@@ -550,6 +550,27 @@ footer {
   background: rgba(0, 0, 0, 0.8);
 }
 
+/* Scroll PopUP */
+.custom-popup .leaflet-popup-content {
+  overflow-y: auto;    /* autorise le scroll vertical */
+  overflow-x: hidden;  /* interdit le scroll horizontal */
+  /* facultatif : pour une barre plus discrète */
+  scrollbar-width: thin;       /* Firefox */
+  scrollbar-color: #e60000 transparent;
+}
+
+/* Chrome, Edge, Safari */
+.custom-popup .leaflet-popup-content::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-popup .leaflet-popup-content::-webkit-scrollbar-thumb {
+  background-color: #e60000;
+  border-radius: 3px;
+}
+.custom-popup .leaflet-popup-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 /* 19. Adaptation des popups Leaflet pour mobile === */
 @media (max-width: 768px) {
   /* limite la largeur du cadre */
