@@ -20,8 +20,8 @@ const thunderforestAtlasLayer = L.tileLayer(
 
 // Définition des limites géographiques (France métropolitaine + Corse)
 const franceBounds = L.latLngBounds(
-  L.latLng(41, -10),
-  L.latLng(60, 15)
+  L.latLng(40, -12),
+  L.latLng(56, 16)
 );
 
 // Initialisation de la carte avec le calque sombre par défaut
