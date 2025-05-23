@@ -31,8 +31,8 @@ body::before {
 :root {
   /* hauteurs des sections (total = 100vh) */
   --header-height: 20vh;
-  --map-height:    60vh;
-  --intro-height:  18vh;
+  --map-height:    66vh;
+  --intro-height:  12vh;
   --footer-height:  2vh;
 
   /* typographies & couleurs */
