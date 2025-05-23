@@ -30,9 +30,9 @@ body::before {
 /* 3.0 Variables de configuration (modifiable : hauteur en vh, tailles, couleurs…) */
 :root {
   /* hauteurs des sections (total = 100vh) */
-  --header-height: 18vh;
+  --header-height: 15vh;
   --map-height:    70vh;
-  --intro-height:  8vh;
+  --intro-height:  11vh;
   --footer-height:  4vh;
 
   /* typographies & couleurs */
@@ -68,7 +68,8 @@ header {
 }
 
 #map {
-  height: var(--map-height);
+  margin-top: 1vh;     /* décale la carte d’1% de la hauteur d’écran */
+  height: calc(var(--map-height) - 1vh); /* pour compenser si tu veux toujours 70vh visibles */  
   margin: 0 auto;
   margin-bottom: 0;    /* supprime l’espace sous la carte */
   width: 80vw;
@@ -82,10 +83,11 @@ header {
   width: 100vw;
   max-width: 100%; /* t’assure pas de débordement */
   margin: 0 auto;
-  margin-top: 1em;   /* petit espacement si tu veux quand même un peu de “respiration”  */
+  margin-top: 0;   
   padding: 10px;
   font-size: var(--intro-font-size);
   line-height: 1;
+  flex-direction: column;   /* empile les paragraphes */
   align-items: center;
   justify-content: center; 
   white-space: nowrap;      /* tout le texte reste sur une seule ligne */
