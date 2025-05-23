@@ -552,5 +552,5 @@ footer {
 
 /* 20. Surcharge réglée en dernier pour prendre le pas */
 body > #map {
-  height: 60vh !important;
+  height: var(--map-height) !important;  /* prendra 70vh comme défini dans :root */
 }
