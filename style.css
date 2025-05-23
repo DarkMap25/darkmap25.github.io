@@ -92,14 +92,24 @@ header {
 }
 
 footer {
-  height: var(--footer-height);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;   /* empile les paragraphes */
+  align-items: center;      /* centre horizontalement */
+  justify-content: center;  /* centre verticalement si nécessaire */
+  padding: 0.5em 0;         /* espace réduit top/bottom */
   font-size: var(--footer-font-size);
-  margin-top: auto; /* pousse en bas si contenu variable */
+  line-height: 1.2;         /* contrôle l’interligne */
+  margin-top: auto;         /* pousse le footer en bas de la page */
 }
 
+footer p {
+  margin: 0;                /* enlève marges par défaut */
+  padding: 0;
+}
+
+footer p + p {
+  margin-top: 0.4em;        /* petit écart entre la 1ère et la 2ème ligne */
+}
 /* 3.3 Styles du header (titre + sous-titre) */
 header h1 {
   margin: 0;
