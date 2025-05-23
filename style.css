@@ -526,8 +526,29 @@ footer {
      1px  1px 0 #e6ccff;
 }
 
-/* === Adaptation des popups Leaflet === */
-/* Largeur max du popup sur desktop restée par défaut */
+/* 18. Adaptation des popups Leaflet === */
+/* 1. Le conteneur de la popup */
+.custom-popup .leaflet-popup-content-wrapper {
+  background: rgba(0, 0, 0, 0.8); /* fond semi-transparent sombre */
+  border: 2px solid #e60000;      /* contour rouge DarkMap */
+  border-radius: 8px;             /* coins arrondis */
+  padding: 10px;                  /* espace interne */
+  box-shadow: 0 0 12px rgba(0,0,0,0.5);
+}
+
+/* 2. Le texte à l’intérieur */
+.custom-popup .leaflet-popup-content {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.6em;                 /* ajuste la taille du texte */
+  line-height: 1.2;               /* espacement des lignes */
+  color: #f0f0f0;                 /* texte clair */
+  margin: 0;
+}
+
+/* 3. Le “triangle” pointant sur le marqueur */
+.custom-popup .leaflet-popup-tip {
+  background: rgba(0, 0, 0, 0.8);
+}
 
 /* 19. Adaptation des popups Leaflet pour mobile === */
 @media (max-width: 768px) {
