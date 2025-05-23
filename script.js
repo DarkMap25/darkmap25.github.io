@@ -108,13 +108,20 @@ const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
     autoPan: false,
     keepInView: false
   });
-  
-  marker.on('click', () => {
-    const latlng = marker.getLatLng();
-    map.setView(latlng, map.getZoom(), { animate: true });
-    marker.openPopup();
-  });
 
+  marker.on('click', () => {
+  const latlng = marker.getLatLng();
+  // 1) recentre la carte sur la position du marqueur
+  map.setView(latlng, map.getZoom(), { animate: true });
+
+  // 2) ouvre la popup
+  marker.openPopup();
+
+  // 3) décale la carte vers le bas de 20% de la hauteur de la fenêtre
+  const offsetY = window.innerHeight * 0.20;  // 20% de la hauteur viewport
+  map.panBy([0, offsetY], { animate: true });
+});
+  
   return marker;
 }
 
