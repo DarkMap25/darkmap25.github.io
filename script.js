@@ -103,7 +103,7 @@ const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
   .bindPopup(popupContent, {
     className: 'custom-popup',  // <— nouvelle classe CSS
     minWidth: 200,              // largeur minimale
-    maxWidth: 800,              // largeur maximale
+    maxWidth: 600,              // largeur maximale
     maxHeight: 300,             // hauteur max avec scroll interne
     autoPan: false,
     keepInView: false
