@@ -102,7 +102,7 @@ footer {
   justify-content: center;  /* centre verticalement si nécessaire */
   padding: 0.2em;         /* espace réduit top/bottom */
   font-size: var(--footer-font-size);
-  line-height: 0.5;         /* contrôle l’interligne */
+  line-height: 1.2;         /* contrôle l’interligne */
 }
 
 footer p {
@@ -110,8 +110,10 @@ footer p {
   padding: 0;
 }
 
-footer p + p {
-  margin-top: 0.2em;        /* petit écart entre la 1ère et la 2ème ligne */
+
+/* …et on en rajoute entre **tous** les paragraphes sauf le premier */
+footer p:not(:first-child) {
+  margin-top: 0.4em;
 }
 
 /* 3.3 Styles du header (titre + sous-titre) */
