@@ -30,13 +30,13 @@ body::before {
 /* 3.0 Variables de configuration (modifiable : hauteur en vh, tailles, couleurs…) */
 :root {
   /* hauteurs des sections (total = 100vh) */
-  --header-height: 14vh;
+  --header-height: 18vh;
   --map-height:    70vh;
-  --intro-height:  14vh;
-  --footer-height:  2vh;
+  --intro-height:  8vh;
+  --footer-height:  4vh;
 
   /* typographies & couleurs */
-  --header-h1-font-size:      5em;
+  --header-h1-font-size:      4em;
   --header-h1-color:          #e60000;
   --header-h1-shadow:         0 0 8px #e60000;
   --header-tagline-font-size: 1em;
@@ -70,6 +70,7 @@ header {
 #map {
   height: var(--map-height);
   margin: 0 auto;
+  margin-bottom: 0;    /* supprime l’espace sous la carte */
   width: 80vw;
   border-radius: 10px;
   box-shadow: 0 0 10px #e60000;
@@ -78,11 +79,15 @@ header {
 
 .intro {
   height: var(--intro-height);
-  width: 80vw;
+  width: 100vw;
   margin: 0 auto;
+  margin-top: 1em;   /* petit espacement si tu veux quand même un peu de “respiration”  */
   padding: 10px;
   font-size: var(--intro-font-size);
-  line-height: 1.4;
+  line-height: 1;
+  align-items: center;
+  justify-content: center; 
+  white-space: nowrap;      /* tout le texte reste sur une seule ligne */
   overflow: visible; /* pas de scroll interne */
 }
 
