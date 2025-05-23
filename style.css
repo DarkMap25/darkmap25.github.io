@@ -1,4 +1,6 @@
-/* 1. Styles généraux === */
+/* ===  PARTIE I / GENERAL / INTRODUCTION / STRUCTURE SITE === */
+
+/* === I.1.1 Styles généraux === */
 body {
   margin: 0; /* Suppression des marges par défaut */
   padding: 0; /* Suppression des espacements par défaut */
@@ -13,7 +15,7 @@ body {
   position: relative; /* Positionnement pour le calque noir transparent */
 }
 
-/* 2. Calque noir transparent par-dessus l'image */
+/* === I.1.2 Calque noir transparent par-dessus l'image === */
 body::before {
   content: ""; /* Contenu vide pour un pseudo-élément */
   position: fixed; /* Position fixe pour couvrir toute la fenêtre */
@@ -25,9 +27,85 @@ body::before {
   z-index: -1; /* Placer ce calque derrière le contenu principal */
 }
 
-/* 3. Structure site ===== */
+/* === I.2.1 Overlay d’intro === */
+#intro-overlay {
+  position: fixed; /* Position fixe pour couvrir toute la fenêtre */
+  top: 0; /* Commence en haut de la page */
+  left: 0; /* Commence à gauche de la page */
+  width: 100%; /* Prend toute la largeur de l'écran */
+  height: 100%; /* Prend toute la hauteur de l'écran */
+  background-color: #0d0d0d; /* Fond sombre */
+  background-image: url('./icons/background.jpg'); /* Image de fond de l'intro */
+  background-size: cover; /* Taille de l'image couvre tout l'écran */
+  background-position: center; /* L'image est centrée */
+  background-attachment: fixed; /* Empêche le fond de défiler */
+  z-index: 9999; /* Placer l'overlay au-dessus du contenu */
+  display: flex; /* Utiliser Flexbox pour centrer le contenu */
+  align-items: center; /* Centrer verticalement */
+  justify-content: center; /* Centrer horizontalement */
+  padding: 20px; /* Espacement autour du contenu */
+  box-sizing: border-box; /* Inclure le padding dans la taille totale */
+  text-align: center; /* Centrer le texte */
+}
 
-/* 3.0 Variables de configuration (modifiable : hauteur en vh, tailles, couleurs…) */
+/* === I.2.2 Texte global de l’intro (contenant les lignes) === */
+#intro-text {
+  font-family: 'UnifrakturCook', cursive; /* Police d'introduction */
+  font-size: 2.8em; /* Taille de la police de l'intro */
+  color: #e60000; /* Couleur rouge du texte */
+  text-shadow: 0 0 10px red; /* Ombre rouge autour du texte */
+  line-height: 1.6; /* Espacement entre les lignes */
+  text-align: center; /* Centrer le texte */
+  animation: fadeIntro 8s forwards; /* Animation de fondu */
+}
+
+/* i. Ligne 1 : "Un territoire. Une carte." */
+.line1 {
+  display: inline-block; /* Affichage en ligne */
+  white-space: nowrap; /* Empêcher le texte de passer à la ligne suivante */
+  overflow: hidden; /* Masquer le texte qui déborde */
+  width: 0; /* Initialiser la largeur à 0 pour l'animation */
+  animation: typingLine1 4s steps(30, end) forwards; /* Animation de frappe */
+}
+
+/* ii. Ligne 2 : "Un passé sombre." */
+.line2 {
+  display: inline-block; /* Affichage en ligne */
+  white-space: nowrap; /* Empêcher le texte de passer à la ligne suivante */
+  overflow: hidden; /* Masquer le texte qui déborde */
+  width: 0; /* Initialiser la largeur à 0 pour l'animation */
+  animation: typingLine2 3s steps(30, end) forwards; /* Animation de frappe plus rapide */
+  animation-delay: 4s; /* Délai pour commencer après la première ligne */
+  animation-fill-mode: forwards; /* Maintenir l'état final de l'animation */
+}
+
+/* iii. Animation de frappe pour la ligne 1 */
+@keyframes typingLine1 {
+  to {
+    width: 100%; /* Augmenter la largeur à 100% à la fin de l'animation */
+  }
+}
+
+/* iv. Animation de frappe pour la ligne 2 */
+@keyframes typingLine2 {
+  to {
+    width: 100%; /* Augmenter la largeur à 100% à la fin de l'animation */
+  }
+}
+
+/* v. Animation de fondu pour l'introduction */
+@keyframes fadeIntro {
+  0% {
+    opacity: 0; /* Initialement invisible */
+  }
+  100% {
+    opacity: 1; /* Devenir complètement visible */
+  }
+}
+
+/* === I.3. Structure site === */
+
+/* === I.3.1 Variables de configuration (modifiable : hauteur en vh, tailles, couleurs…) === */
 :root {
   /* hauteurs des sections (total = 100vh) */
   --header-height: 20vh;
@@ -44,7 +122,7 @@ body::before {
   --footer-font-size:         0.3em;
 }
 
-/* 3.1 Mise en page flex-colonne full viewport */
+/* === I.3.2 Mise en page flex-colonne full viewport === */
 html, body {
   height: 100vh;
   margin: 0;
@@ -55,7 +133,7 @@ body {
   flex-direction: column;
 }
 
-/* 3.2 Hauteurs des sections principales */
+/* === I.3.4 Hauteurs des sections principales === */
 header {
   height: var(--header-height);
   display: flex;
@@ -94,28 +172,36 @@ header {
   overflow: auto;
 }  
 
+/* === I.3.5 Styles globaux du footer : largeur, centrage et décor === */
 footer {
-  display: flex;
-  flex-direction: column;   /* empile les paragraphes */
-  align-items: center;      /* centre horizontalement */
-  justify-content: center;  /* centre verticalement si nécessaire */
-  padding: 0;         /* espace réduit top/bottom */
-  font-size: var(--footer-font-size);
-  line-height: 1.2;         /* contrôle l’interligne */
+  display: flex;                   /* mise en page en colonne flex */
+  flex-direction: column;          /* empilement vertical */
+  align-items: center;             /* centrage horizontal */
+  justify-content: center;         /* centrage vertical */
+  width: 100%;                     /* prend toute la largeur */
+  margin: 0 auto;                  /* centré dans la page */
+  text-align: center;              /* centrage du texte */
+  padding: 2px;                    /* espacement interne */
+  font-size: 0.4em;                /* taille de la police */
+  line-height: 1;                  /* interligne */
+  color: #000000;                  /* couleur du texte */
+  text-shadow:                     /* ombrage du texte */
+    -1px -1px 0 #e6ccff,
+     1px -1px 0 #e6ccff,
+    -1px  1px 0 #e6ccff,
+     1px  1px 0 #e6ccff;
 }
 
+/* i. Reset et espacement des paragraphes dans le footer */
 footer p {
-  margin: 0;                /* enlève marges par défaut */
-  padding: 0;
+  margin: 0;                       /* suppression des marges par défaut */
+  padding: 0;                      /* suppression du padding par défaut */
 }
-
-
-/* …et on en rajoute entre **tous** les paragraphes sauf le premier */
 footer p:not(:first-child) {
-  margin-top: 0.4em;
+  margin-top: 0.4em;               /* espacement entre chaque paragraphe */
 }
 
-/* 3.3 Styles du header (titre + sous-titre) */
+/* === I.3.6 Styles du header (titre + sous-titre) === */
 header h1 {
   margin: 0;
   margin-bottom: 0em;
@@ -137,96 +223,71 @@ header .tagline {
   text-align: center;
 }
 
-/* 8. Optimisation pour mobile === */
-@media (max-width: 768px) {
-  /* 8.1 Réduire la taille de la carte sur les écrans plus petits */
-   body {
-    background-image: url('./icons/background.jpg'); /* Image différente pour mobile */
-    background-size: cover; /* Adapter l'image pour qu'elle soit rognée */
-    background-position: center center; /* Centrer l'image sur l'écran */
-  }  
-  #map {
-    height: 60vh; /* Hauteur réduite de la carte sur mobile */
-    max-width: 80%; /* Largeur réduite sur mobile */
-    margin: 0 auto; /* Centrer la carte horizontalement */
-    border-radius: 5px; /* Coins arrondis plus petits */
-  }
-  
-  /* Ajuster le titre et l'introduction pour les écrans mobiles */
-  h1 {
-    font-size: 1.5em; /* Réduire la taille du titre sur mobile */
-  }
+/* === PARTIE II / POP-UP / PANNEAU === */
 
-  .intro {
-    font-size: 0.6em; /* Réduire la taille du texte d'introduction */
-    margin: 20px auto; /* Espacement autour du texte */
-  }
-  /* Ajuster la taille du texte d'introduction */
-  #intro-text {
-    font-size: 0.5em; /* Réduire la taille du texte d'intro */
-  }  /* Retirer le 'background-attachment: fixed;' pour les mobiles */
-  body {
-    background-attachment: scroll; /* Fond défilant sur les petits écrans */
-  }
+/* === II.1.1 Adaptation des popups Leaflet === */
+/* i. Le conteneur de la popup */
+.custom-popup .leaflet-popup-content-wrapper {
+  background: rgba(0, 0, 0, 0.8); /* fond semi-transparent sombre */
+  border: 2px solid #e60000;      /* contour rouge DarkMap */
+  border-radius: 8px;             /* coins arrondis */
+  padding: 10px;                  /* espace interne */
+  box-shadow: 0 0 12px rgba(0,0,0,0.5);
 }
 
-/* 8.2 Pour les très petits écrans (moins de 480px) */
-@media (max-width: 480px) {
-  /* Ajustement spécifique pour les écrans très petits (comme l'iPhone SE) */
-  body {
-    background-image: url('./icons/background.jpg'); /* Image différente pour mobile */
-    background-size: cover; /* Adapter l'image pour qu'elle soit rognée */
-    background-position: center center; /* Centrer l'image sur l'écran */
-  }  
-  #map {
-    height: 60vh; /* Réduire encore la hauteur de la carte sur les très petits écrans */
-    width: 80%; /* Réduire la largeur à 90% */
-    margin: 0 auto; /* Centrer la carte */
-    border-radius: 5px; /* Coins arrondis */
-    box-shadow: none; /* Retirer l'ombre pour un aspect plus léger */
-  }
-  
-  h1 {
-    font-size: 1.5em; /* Réduire encore la taille du titre */
-  }
-
-  .intro {
-    font-size: 0.5em; /* Réduire encore la taille du texte d'introduction */
-  }
-
-  /* Ajuster la taille du texte d'introduction */
-  #intro-text {
-    font-size: 0.3em; /* Réduire la taille du texte d'intro */
-  }
+/* ii. Le texte à l’intérieur */
+.custom-popup .leaflet-popup-content {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.8em;                 /* ajuste la taille du texte */
+  line-height: 1.2;               /* espacement des lignes */
+  color: #f0f0f0;                 /* texte clair */
+  margin: 0;
 }
 
-/* 9. Pied de page === */
-footer {
-  text-align: justify; /* Centrer le texte du pied de page */
-  padding: 20px; /* Espacement autour du pied de page */
-  font-size: 0.4em; /* Taille de la police */
-  color: #777; /* Couleur gris pour le texte */
+/* iii. Le “triangle” pointant sur le marqueur */
+.custom-popup .leaflet-popup-tip {
+  background: rgba(0, 0, 0, 0.8);
 }
 
-/* 10. Marqueurs emoji === */
-.emoji-marker {
-  font-size: 16px; /* Taille des marqueurs emoji */
-  background: none; /* Pas de fond */
-  border: none; /* Pas de bordure */
-  box-shadow: none; /* Pas d'ombre */
-  width: auto; /* Taille automatique */
-  height: auto; /* Taille automatique */
-  line-height: 1; /* Hauteur de ligne pour centrer */
-  color: inherit; /* Couleur héritée du parent */
+/* iv. Titre du popup (le <strong> dans popupContent) */
+.custom-popup .leaflet-popup-content strong {
+  display: block;             /* pour prendre toute la largeur */
+  font-size: 1.2em;           /* légèrement plus gros */
+  font-weight: bold;          /* bien en gras */
+  text-decoration: underline; /* souligné */
+  color: #e60000;             /* rouge DarkMap */
+  text-align: center;         /* centré */
+  margin-bottom: 0.1em;       /* petit espace sous le titre */
 }
 
-/* === 10.3 DetailPanel : fullscreen uniquement quand ouvert === */
-/* Par défaut, on le cache et on ne définit PAS sa hauteur ici */
+/* === II.1.2 Scroll PopUP === */
+.custom-popup .leaflet-popup-content {
+  overflow-y: auto;    /* autorise le scroll vertical */
+  overflow-x: hidden;  /* interdit le scroll horizontal */
+  /* facultatif : pour une barre plus discrète */
+  scrollbar-width: thin;       /* Firefox */
+  scrollbar-color: #e60000 transparent;
+}
+
+/* Chrome, Edge, Safari */
+.custom-popup .leaflet-popup-content::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-popup .leaflet-popup-content::-webkit-scrollbar-thumb {
+  background-color: #e60000;
+  border-radius: 3px;
+}
+.custom-popup .leaflet-popup-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* === II.2.1 DetailPanel : fullscreen uniquement quand ouvert === */
+/* i. Par défaut, on le cache et on ne définit PAS sa hauteur ici */
 #detailPanel {
   display: none;
 }
 
-/* Quand on l’ouvre (classes .visible + .full-view) */
+/* ii. Quand on l’ouvre (classes .visible + .full-view) */
 #detailPanel.visible.full-view {
   display: block;
   position: fixed;
@@ -244,7 +305,7 @@ footer {
   text-shadow: 1px 1px 2px #000;
 }
 
-/* Croix de fermeture */
+/* iii. Croix de fermeture */
 #closeDetailPanel {
   display: none;
   position: fixed;
@@ -263,123 +324,15 @@ footer {
   display: block;
 }
 
-/* 11. PERSONNALISATION DU BOUTON DE CHANGEMENT DE CARTE (Contrôle Leaflet) === */
+/* === PARTIE III / PERSONNALISATION BOUTONS / STYLES === */
 
+/* === III.1.1 PERSONNALISATION DU BOUTON DE CHANGEMENT DE CARTE (Contrôle Leaflet) === */
 .leaflet-control-layers {
   color: #1a001a; /* texte sombre pour le contraste */
   font-family: 'Quicksand', sans-serif; font-weight: 700;  
 }
 
-/* Style pour la légende sans ombre et coins arrondis */
-.info.legend {
-  color: #000000;  /* Texte violet foncé */
-  padding: 0px;  /* Espace interne autour du texte */
-  font-size: 8px;  /* Taille du texte */
-  line-height: 0.8;  /* Hauteur de ligne pour améliorer la lisibilité */
-/* Contour violet net autour du texte */
-  text-shadow:
-    -1px -1px 0 #e6ccff,
-     1px -1px 0 #e6ccff,
-    -1px  1px 0 #e6ccff,
-     1px  1px 0 #e6ccff;
-}
-
-/* Style pour chaque élément de la légende */
-.legend-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 4px;
-}
-
-/* Style pour l'emoji dans la légende */
-.legend-item .emoji {
-  font-size: 12px;
-  margin-right: 6px;
-}
-
-/* Style pour le nom de la catégorie */
-.legend-item .category-name {
-  font-size: 8px;
-  font-weight: bold;
-}
-
-/* 12. Overlay d’intro === */
-#intro-overlay {
-  position: fixed; /* Position fixe pour couvrir toute la fenêtre */
-  top: 0; /* Commence en haut de la page */
-  left: 0; /* Commence à gauche de la page */
-  width: 100%; /* Prend toute la largeur de l'écran */
-  height: 100%; /* Prend toute la hauteur de l'écran */
-  background-color: #0d0d0d; /* Fond sombre */
-  background-image: url('./icons/background.jpg'); /* Image de fond de l'intro */
-  background-size: cover; /* Taille de l'image couvre tout l'écran */
-  background-position: center; /* L'image est centrée */
-  background-attachment: fixed; /* Empêche le fond de défiler */
-  z-index: 9999; /* Placer l'overlay au-dessus du contenu */
-  display: flex; /* Utiliser Flexbox pour centrer le contenu */
-  align-items: center; /* Centrer verticalement */
-  justify-content: center; /* Centrer horizontalement */
-  padding: 20px; /* Espacement autour du contenu */
-  box-sizing: border-box; /* Inclure le padding dans la taille totale */
-  text-align: center; /* Centrer le texte */
-}
-
-/* Texte global de l’intro (contenant les lignes) */
-#intro-text {
-  font-family: 'UnifrakturCook', cursive; /* Police d'introduction */
-  font-size: 2.8em; /* Taille de la police de l'intro */
-  color: #e60000; /* Couleur rouge du texte */
-  text-shadow: 0 0 10px red; /* Ombre rouge autour du texte */
-  line-height: 1.6; /* Espacement entre les lignes */
-  text-align: center; /* Centrer le texte */
-  animation: fadeIntro 8s forwards; /* Animation de fondu */
-}
-
-/* Ligne 1 : "Un territoire. Une carte." */
-.line1 {
-  display: inline-block; /* Affichage en ligne */
-  white-space: nowrap; /* Empêcher le texte de passer à la ligne suivante */
-  overflow: hidden; /* Masquer le texte qui déborde */
-  width: 0; /* Initialiser la largeur à 0 pour l'animation */
-  animation: typingLine1 4s steps(30, end) forwards; /* Animation de frappe */
-}
-
-/* Ligne 2 : "Un passé sombre." */
-.line2 {
-  display: inline-block; /* Affichage en ligne */
-  white-space: nowrap; /* Empêcher le texte de passer à la ligne suivante */
-  overflow: hidden; /* Masquer le texte qui déborde */
-  width: 0; /* Initialiser la largeur à 0 pour l'animation */
-  animation: typingLine2 3s steps(30, end) forwards; /* Animation de frappe plus rapide */
-  animation-delay: 4s; /* Délai pour commencer après la première ligne */
-  animation-fill-mode: forwards; /* Maintenir l'état final de l'animation */
-}
-
-/* Animation de frappe pour la ligne 1 */
-@keyframes typingLine1 {
-  to {
-    width: 100%; /* Augmenter la largeur à 100% à la fin de l'animation */
-  }
-}
-
-/* Animation de frappe pour la ligne 2 */
-@keyframes typingLine2 {
-  to {
-    width: 100%; /* Augmenter la largeur à 100% à la fin de l'animation */
-  }
-}
-
-/* Animation de fondu pour l'introduction */
-@keyframes fadeIntro {
-  0% {
-    opacity: 0; /* Initialement invisible */
-  }
-  100% {
-    opacity: 1; /* Devenir complètement visible */
-  }
-}
-
-/* 14. PERSONNALISATION DU BOUTON DE LOCALISATION (Emoji Direct Hit Visible et Cliquable) === */
+/* === III.1.2 PERSONNALISATION DU BOUTON DE LOCALISATION (Emoji Direct Hit Visible et Cliquable) === */
 .leaflet-control-locate {
   background-color: transparent !important; /* Fond transparent */
   border: none !important; /* Pas de bordure */
@@ -411,7 +364,7 @@ footer {
   align-items: center !important; /* Centrage vertical */
 }
 
-/* 15. Afficher l'emoji comme contenu de l'élément <a> */
+/* i. Afficher l'emoji comme contenu de l'élément <a>  */
 .leaflet-control-locate .leaflet-bar-part-single::before {
   content: "🎯" !important; /* Emoji direct hit */
   display: block !important; /* Important pour que le pseudo-élément prenne de la place */
@@ -427,7 +380,7 @@ footer {
   transform: scale(1.5); /* ✅ effet de grossissement uniquement au survol */
 }
 
-/* 16. PERSONNALISATION DU BOUTON DE CHANGEMENT DE FOND DE CARTE AVEC UN EMOJI 🗺️ === */
+/* === III.1.3 PERSONNALISATION DU BOUTON DE CHANGEMENT DE FOND DE CARTE AVEC UN EMOJI 🗺️ === */
 .leaflet-control-layers-toggle {
   background-color: transparent !important;
   background-image: none !important;
@@ -449,7 +402,7 @@ footer {
   font-size: inherit;
 }
 
-/* 17. Bouton dé === */
+/* === III.1.4 PERSONNALISATION DU BOUTON DE === */
 #randomButton {
     background-color: transparent !important;
     border: none !important;
@@ -497,7 +450,54 @@ footer {
     transform: scale(1.5);
 }
 
-/* 17. Positionnement des contrôles en haut à droite === */
+/* === III.2 STYLES DIVERSES === */
+
+/* === II.2.1 Marqueurs emoji === */
+.emoji-marker {
+  font-size: 16px; /* Taille des marqueurs emoji */
+  background: none; /* Pas de fond */
+  border: none; /* Pas de bordure */
+  box-shadow: none; /* Pas d'ombre */
+  width: auto; /* Taille automatique */
+  height: auto; /* Taille automatique */
+  line-height: 1; /* Hauteur de ligne pour centrer */
+  color: inherit; /* Couleur héritée du parent */
+}
+
+/* === III.2.2 Style pour la légende sans ombre et coins arrondis === */
+.info.legend {
+  color: #000000;  /* Texte violet foncé */
+  padding: 0px;  /* Espace interne autour du texte */
+  font-size: 8px;  /* Taille du texte */
+  line-height: 0.8;  /* Hauteur de ligne pour améliorer la lisibilité */
+/* Contour violet net autour du texte */
+  text-shadow:
+    -1px -1px 0 #e6ccff,
+     1px -1px 0 #e6ccff,
+    -1px  1px 0 #e6ccff,
+     1px  1px 0 #e6ccff;
+}
+
+/* i. Style pour chaque élément de la légende */
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+/* ii. Style pour l'emoji dans la légende */
+.legend-item .emoji {
+  font-size: 12px;
+  margin-right: 6px;
+}
+
+/* iii. Style pour le nom de la catégorie */
+.legend-item .category-name {
+  font-size: 8px;
+  font-weight: bold;
+}
+
+/* === III.2.3 Positionnement des contrôles en haut à droite === */
 .leaflet-topright {
     display: flex; /* Utiliser flex pour aligner les éléments verticalement */
     flex-direction: column; /* Aligner les éléments en colonne */
@@ -510,92 +510,88 @@ footer {
     overflow: visible !important; /* 🔥 Leaflet limite parfois la taille à cause de ça */
 }
 
-/* 18. Footer === */
-footer {
-  width: 100%;                  /* Le footer prend toute la largeur de la page */
-  margin: 0 auto;               /* ✅ Centre le bloc footer dans la page */
-  text-align: center;           /* ✅ Centre le texte à l'intérieur du footer */
-  padding: 2px;
-  font-size: 0.6em;
-  color: #000000;
-  text-shadow:
-    -1px -1px 0 #e6ccff,
-     1px -1px 0 #e6ccff,
-    -1px  1px 0 #e6ccff,
-     1px  1px 0 #e6ccff;
-}
+/* === PARTIE IV / ADAPTATIONS === */
 
-/* 18. Adaptation des popups Leaflet === */
-/* 1. Le conteneur de la popup */
-.custom-popup .leaflet-popup-content-wrapper {
-  background: rgba(0, 0, 0, 0.8); /* fond semi-transparent sombre */
-  border: 2px solid #e60000;      /* contour rouge DarkMap */
-  border-radius: 8px;             /* coins arrondis */
-  padding: 10px;                  /* espace interne */
-  box-shadow: 0 0 12px rgba(0,0,0,0.5);
-}
-
-/* 2. Le texte à l’intérieur */
-.custom-popup .leaflet-popup-content {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 0.8em;                 /* ajuste la taille du texte */
-  line-height: 1.2;               /* espacement des lignes */
-  color: #f0f0f0;                 /* texte clair */
-  margin: 0;
-}
-
-/* 3. Le “triangle” pointant sur le marqueur */
-.custom-popup .leaflet-popup-tip {
-  background: rgba(0, 0, 0, 0.8);
-}
-
-/* 4. Titre du popup (le <strong> dans popupContent) */
-.custom-popup .leaflet-popup-content strong {
-  display: block;             /* pour prendre toute la largeur */
-  font-size: 1.2em;           /* légèrement plus gros */
-  font-weight: bold;          /* bien en gras */
-  text-decoration: underline; /* souligné */
-  color: #e60000;             /* rouge DarkMap */
-  text-align: center;         /* centré */
-  margin-bottom: 0.1em;       /* petit espace sous le titre */
-}
-
-/* Scroll PopUP */
-.custom-popup .leaflet-popup-content {
-  overflow-y: auto;    /* autorise le scroll vertical */
-  overflow-x: hidden;  /* interdit le scroll horizontal */
-  /* facultatif : pour une barre plus discrète */
-  scrollbar-width: thin;       /* Firefox */
-  scrollbar-color: #e60000 transparent;
-}
-
-/* Chrome, Edge, Safari */
-.custom-popup .leaflet-popup-content::-webkit-scrollbar {
-  width: 6px;
-}
-.custom-popup .leaflet-popup-content::-webkit-scrollbar-thumb {
-  background-color: #e60000;
-  border-radius: 3px;
-}
-.custom-popup .leaflet-popup-content::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-/* 19. Adaptation des popups Leaflet pour mobile === */
+/* === IV.1 Adaptation pour écrans jusqu’à 768px === */
 @media (max-width: 768px) {
-  /* limite la largeur du cadre */
+  /* — Fond mobile (image différente, rognée et défilante) */
+  body {
+    background-image: url('./icons/background.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: scroll;
+  }
+
+  /* i. Carte : hauteur réduite, centrée et coins arrondis */
+  #map {
+    height: 60vh;
+    max-width: 80%;
+    margin: 0 auto;
+    border-radius: 5px;
+  }
+
+  /* ii. Titre principal : taille réduite */
+  h1 {
+    font-size: 1.5em;
+  }
+
+  /* iii. Texte d’introduction : taille réduite et marges ajustées */
+  .intro {
+    font-size: 0.6em;
+    margin: 20px auto;
+  }
+
+  /* iv. Conteneur de l’intro : taille de police encore plus petite */
+  #intro-text {
+    font-size: 0.5em;
+  }
+
+  /* v. Popups Leaflet : largeur et typographie adaptées */
   .leaflet-popup-content-wrapper {
     max-width: 334px !important;
   }
-  /* applique à tout le contenu (texte, liens…) */
   .leaflet-popup-content,
   .leaflet-popup-content * {
-    font-size: 12px !important;    /* taille fixe en px pour plus de contrôle */
-    line-height: 1.2 !important;    /* interligne adapté */
+    font-size: 12px !important;
+    line-height: 1.2 !important;
   }
 }
 
+/* === IV.2 Adaptation pour écrans jusqu’à 480px === */
 @media (max-width: 480px) {
+  /* i. Fond très petit écran (mêmes réglages que pour 768px) */
+  body {
+    background-image: url('./icons/background.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: scroll;
+  }
+
+  /* ii. Carte : largeur fixe, sans ombre pour alléger l’affichage */
+  #map {
+    height: 60vh;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: none;
+  }
+
+  /* iv. Titre principal : même taille que pour 768px */
+  h1 {
+    font-size: 1.5em;
+  }
+
+  /* v. Texte d’introduction : taille encore réduite */
+  .intro {
+    font-size: 0.5em;
+  }
+
+  /* vi. Conteneur de l’intro : taille minimale */
+  #intro-text {
+    font-size: 0.3em;
+  }
+
+  /* vii. Popups Leaflet : largeur et typographie pour petits écrans */
   .leaflet-popup-content-wrapper {
     max-width: 240px !important;
   }
@@ -606,7 +602,7 @@ footer {
   }
 }
 
-/* 20. Surcharge réglée en dernier pour prendre le pas */
+/* === IV.3 Surcharge de carte réglée en dernier pour prendre le pas === */
 body > #map {
-  height: var(--map-height) !important;  /* prendra 70vh comme défini dans :root */
+  height: var(--map-height) !important;  /* prendra comme défini dans :root */
 }
