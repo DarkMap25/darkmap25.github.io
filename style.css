@@ -539,7 +539,7 @@ footer {
 /* 2. Le texte à l’intérieur */
 .custom-popup .leaflet-popup-content {
   font-family: 'Quicksand', sans-serif;
-  font-size: 0.6em;                 /* ajuste la taille du texte */
+  font-size: 1em;                 /* ajuste la taille du texte */
   line-height: 1.2;               /* espacement des lignes */
   color: #f0f0f0;                 /* texte clair */
   margin: 0;
