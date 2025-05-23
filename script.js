@@ -99,13 +99,16 @@ function createEmojiMarker(lieu) {
     <a href="#" class="voir-plus" data-id="${lieu.ID}">Voir plus</a>
   `;
 
-  const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
-    .bindPopup(popupContent, {
-      maxWidth: 600,
-      autoPan: false,
-      keepInView: false
-    });
-
+const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
+  .bindPopup(popupContent, {
+    className: 'custom-popup',  // <— nouvelle classe CSS
+    minWidth: 200,              // largeur minimale
+    maxWidth: 600,              // largeur maximale
+    maxHeight: 300,             // hauteur max avec scroll interne
+    autoPan: false,
+    keepInView: false
+  });
+  
   marker.on('click', () => {
     const latlng = marker.getLatLng();
     map.setView(latlng, map.getZoom(), { animate: true });
