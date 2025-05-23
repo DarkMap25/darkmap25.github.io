@@ -39,7 +39,7 @@ body::before {
   --header-h1-font-size:      5em;
   --header-h1-color:          #e60000;
   --header-h1-shadow:         0 0 8px #e60000;
-  --header-tagline-font-size: 0.6em;
+  --header-tagline-font-size: 1em;
   --intro-font-size:          1em;
   --footer-font-size:         0.6em;
 }
