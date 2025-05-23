@@ -549,6 +549,15 @@ footer {
   background: rgba(0, 0, 0, 0.8);
 }
 
+/* 4. Titre du popup (le <strong> dans popupContent) */
+.custom-popup .leaflet-popup-content strong {
+  display: block;             /* pour prendre toute la largeur */
+  font-size: 1.2em;           /* légèrement plus gros */
+  color: #e60000;             /* rouge DarkMap */
+  text-align: center;         /* centré */
+  margin-bottom: 0.5em;       /* petit espace sous le titre */
+}
+
 /* Scroll PopUP */
 .custom-popup .leaflet-popup-content {
   overflow-y: auto;    /* autorise le scroll vertical */
