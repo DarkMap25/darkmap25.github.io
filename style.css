@@ -44,6 +44,13 @@ body::before {
   --footer-font-size:         0.6em;
 }
 
+:root {
+  --header-height: 15vh;
+  --map-height:    70vh;
+  --intro-height:  11vh;
+  --footer-height:  4vh;
+}
+
 /* 1. Layout flex-colonne sur tout le viewport */
 html, body {
   height: 100vh;
@@ -61,31 +68,40 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;  /* <— on colle tout en haut */
-  padding-top: 0.5em;           /* optionnel, un peu d’air au-dessus */
-  gap: 0.1em;                   /* espace min entre h1 et .tagline */
+  justify-content: flex-start;
+  gap: 0;           
+  padding: 0;        
 }
 
-/* 3. Carte = 70vh, sans margin-top ni bottom parasites */
+/* 3. Carte = 70vh, avec un petit espace sous le header */
 #map {
+  margin-top: 1vh;              /* petit écart sous le header */
   height: var(--map-height);    /* 70vh */
-  margin: 0 auto;               /* centré horizontalement */
-  width: 80vw;                  /* ou 100% si tu préfères */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;             
+  width: 80vw;
   border-radius: 10px;
   box-shadow: 0 0 10px #e60000;
   z-index: 1;
 }
 
-/* 4. Intro = 11vh, pas de nowrap, pas de scroll interne */
+/* 4. Intro = 11vh, 100% largeur viewport, wrapping autorisé */
 .intro {
   height: var(--intro-height);  /* 11vh */
-  width: 80vw;
-  margin: 0 auto;
-  padding: 10px;
+  width: 100vw;                 /* pleine largeur */
+  max-width: 100%;              
+  margin: 0;                    
+  padding: 0 10px;              /* padding horizontal pour respirer */
   font-size: var(--intro-font-size);
-  line-height: 1.4;
-  white-space: normal;          /* autorise le retour à la ligne */
-  overflow: hidden;             /* supprime les barres de scroll */
+  line-height: 1.2;
+  white-space: normal;          
+  overflow: hidden;             
+}
+/* Supprimer toute marge/padding par défaut sur les paragraphes de l’intro */
+.intro p {
+  margin: 0;
+  padding: 0;
 }
 
 /* 5. Footer = 4vh, empile 3 lignes */
@@ -95,10 +111,10 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0.2em 0;
+  padding: 0;                   
   font-size: var(--footer-font-size);
   line-height: 1.2;
-  margin: 0;                    /* pas de margin-top:auto ici */
+  margin: 0;                    
 }
 footer p {
   margin: 0;
@@ -110,28 +126,6 @@ footer a {
   margin-top: 0.2em;
   color: var(--header-h1-color);
   text-decoration: underline;
-}
-
-/* 3.3 Styles du header (titre + sous-titre) */
-header h1 {
-  margin: 0;
-  margin-bottom: 0em;
-  font-size: var(--header-h1-font-size);
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  text-align: center;
-  color: var(--header-h1-color);
-  text-shadow: var(--header-h1-shadow);
-}
-
-header .tagline {
-  margin: 0;
-  font-size: var(--header-tagline-font-size);
-  color: var(--header-h1-color);
-  margin-top: 0;                /* plus de marge au-dessus de la tagline */
-  line-height: 1;               /* compactage vertical */  
-  display: block;               /* s’assurer qu’elle n’est pas inline ou cachée */
-  text-align: center;
 }
 
 /* 8. Optimisation pour mobile === */
@@ -550,7 +544,3 @@ footer {
   }
 }
 
-/* 20. Surcharge réglée en dernier pour prendre le pas */
-body > #map {
-  height: var(--map-height) !important;  /* prendra 70vh comme défini dans :root */
-}
