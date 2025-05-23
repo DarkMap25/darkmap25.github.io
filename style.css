@@ -141,6 +141,7 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
   gap: 0em;               /* espace entre le h1 et la .tagline */
   padding-top: 0;               /* aucun padding supplémentaire */
 }
@@ -172,7 +173,41 @@ header {
   overflow: auto;
 }  
 
-/* === I.3.5 Styles globaux du footer : largeur, centrage et décor === */
+/* === I.3.5 Styles du header (titre + sous-titre) === */
+
+/* i. Créer l’overlay sombre en pseudo-élément */
+header::before {
+  content: "";                          
+  position: absolute;                  
+  top: 0; left: 0;                     
+  width: 100%; height: 100%;           
+  background: rgba(0, 0, 0, 0.5);      /* noir à 50 % d’opacité */
+  pointer-events: none;                /* ne gêne pas les clics */
+  z-index: 0;                          /* placé derrière le texte */
+}
+header h1 {
+  margin: 0;
+  margin-bottom: 0em;
+  font-size: var(--header-h1-font-size);
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  text-align: center;
+  color: var(--header-h1-color);
+  text-shadow: var(--header-h1-shadow);
+}
+
+header .tagline {
+  margin: 0;
+  position: relative;
+  font-size: var(--header-tagline-font-size);
+  color: var(--header-h1-color);
+  margin-top: 0;                /* plus de marge au-dessus de la tagline */
+  line-height: 1;               /* compactage vertical */  
+  display: block;               /* s’assurer qu’elle n’est pas inline ou cachée */
+  text-align: center;
+}
+
+/* === I.3.6 Styles globaux du footer : largeur, centrage et décor === */
 footer {
   display: flex;                   /* mise en page en colonne flex */
   flex-direction: column;          /* empilement vertical */
@@ -199,28 +234,6 @@ footer p {
 }
 footer p:not(:first-child) {
   margin-top: 0.4em;               /* espacement entre chaque paragraphe */
-}
-
-/* === I.3.6 Styles du header (titre + sous-titre) === */
-header h1 {
-  margin: 0;
-  margin-bottom: 0em;
-  font-size: var(--header-h1-font-size);
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  text-align: center;
-  color: var(--header-h1-color);
-  text-shadow: var(--header-h1-shadow);
-}
-
-header .tagline {
-  margin: 0;
-  font-size: var(--header-tagline-font-size);
-  color: var(--header-h1-color);
-  margin-top: 0;                /* plus de marge au-dessus de la tagline */
-  line-height: 1;               /* compactage vertical */  
-  display: block;               /* s’assurer qu’elle n’est pas inline ou cachée */
-  text-align: center;
 }
 
 /* === PARTIE II / POP-UP / PANNEAU === */
