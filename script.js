@@ -112,7 +112,7 @@ const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
 marker.on('click', () => {
   const latlng = marker.getLatLng();
   const mapSize = map.getSize();               // taille de la fenêtre Leaflet en pixels
-  const offsetY = mapSize.y * 0.40;            // 40% vers le bas
+  const offsetY = mapSize.y * 0.25;            // 25% vers le bas
 
   // 1) transformation latlng → point écran
   const point = map.latLngToContainerPoint(latlng);
