@@ -25,7 +25,9 @@ body::before {
   z-index: -1; /* Placer ce calque derrière le contenu principal */
 }
 
-*/ Style du site */
+/* 3. Structure site ===== */
+
+/* 3.0 Variables de configuration (modifiable : hauteur en vh, tailles, couleurs…) */
 :root {
   /* hauteurs des sections (total = 100vh) */
   --header-height: 15vh;
@@ -42,7 +44,7 @@ body::before {
   --footer-font-size:         0.6em;
 }
 
-/* 1. Layout flex-colonne sur tout le viewport */
+/* 3.1 Mise en page flex-colonne full viewport */
 html, body {
   height: 100vh;
   margin: 0;
@@ -53,24 +55,71 @@ body {
   flex-direction: column;
 }
 
-/* 2. Header = 15vh, titre + tagline empilés en haut */
+/* 3.2 Hauteurs des sections principales */
 header {
   height: var(--header-height);
   display: flex;
+  justify-content: flex-start;  /* aligne en haut */  
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  gap: 0;           
-  padding: 0;        
+  justify-content: center;
+  gap: 0em;               /* espace entre le h1 et la .tagline */
+  padding-top: 0;               /* aucun padding supplémentaire */
 }
 
-/* —— AJOUTÉ : Styles du titre DarkMap et de la tagline —— */
+#map {
+  margin-top: 1vh;     /* décale la carte d’1% de la hauteur d’écran */
+  height: calc(var(--map-height) - 1vh); /* pour compenser si tu veux toujours 70vh visibles */  
+  margin: 0 auto;
+  margin-bottom: 0;    /* supprime l’espace sous la carte */
+  width: 80vw;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #e60000;
+  z-index: 1;
+}
+
+.intro {
+  height: var(--intro-height);
+  width: 100vw;
+  max-width: 100%; /* t’assure pas de débordement */
+  margin: 0 auto;
+  margin-top: 0;   
+  padding: 10px;
+  font-size: var(--intro-font-size);
+  line-height: 1;
+  flex-direction: column;   /* empile les paragraphes */
+  align-items: center;
+  justify-content: center; 
+  white-space: nowrap;      /* tout le texte reste sur une seule ligne */
+  overflow: visible; /* pas de scroll interne */
+}
+
+footer {
+  display: flex;
+  flex-direction: column;   /* empile les paragraphes */
+  align-items: center;      /* centre horizontalement */
+  justify-content: center;  /* centre verticalement si nécessaire */
+  padding: 0.5em 0;         /* espace réduit top/bottom */
+  font-size: var(--footer-font-size);
+  line-height: 1.2;         /* contrôle l’interligne */
+}
+
+footer p {
+  margin: 0;                /* enlève marges par défaut */
+  padding: 0;
+}
+
+footer p + p {
+  margin-top: 0.4em;        /* petit écart entre la 1ère et la 2ème ligne */
+}
+
+/* 3.3 Styles du header (titre + sous-titre) */
 header h1 {
   margin: 0;
-  margin-bottom: 0.2em;
+  margin-bottom: 0em;
+  font-size: var(--header-h1-font-size);
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: var(--header-h1-font-size);
   text-align: center;
   color: var(--header-h1-color);
   text-shadow: var(--header-h1-shadow);
@@ -79,64 +128,11 @@ header h1 {
 header .tagline {
   margin: 0;
   font-size: var(--header-tagline-font-size);
+  color: var(--header-h1-color);
+  margin-top: 0;                /* plus de marge au-dessus de la tagline */
+  line-height: 1;               /* compactage vertical */  
+  display: block;               /* s’assurer qu’elle n’est pas inline ou cachée */
   text-align: center;
-  color: var(--header-h1-color);
-}
-/* ———————————————————————————————————————————————— */
-
-/* 3. Carte = 70vh, avec un petit espace sous le header */
-#map {
-  margin-top: 1vh;              /* petit écart sous le header */
-  height: var(--map-height);    /* 70vh */
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 0;             
-  width: 80vw;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #e60000;
-  z-index: 1;
-}
-
-/* 4. Intro = 11vh, 100% largeur viewport, wrapping autorisé */
-.intro {
-  height: var(--intro-height);  /* 11vh */
-  width: 100vw;                 /* pleine largeur */
-  max-width: 100%;              
-  margin: 0;                    
-  padding: 0 10px;              /* padding horizontal pour respirer */
-  font-size: var(--intro-font-size);
-  line-height: 1.2;
-  white-space: normal;          
-  overflow: hidden;             
-}
-/* Supprimer toute marge/padding par défaut sur les paragraphes de l’intro */
-.intro p {
-  margin: 0;
-  padding: 0;
-}
-
-/* 5. Footer = 4vh, empile 3 lignes */
-footer {
-  height: var(--footer-height);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0;                   
-  font-size: var(--footer-font-size);
-  line-height: 1.2;
-  margin: 0;                    
-}
-footer p {
-  margin: 0;
-}
-footer p + p {
-  margin-top: 0.2em;
-}
-footer a {
-  margin-top: 0.2em;
-  color: var(--header-h1-color);
-  text-decoration: underline;
 }
 
 /* 8. Optimisation pour mobile === */
@@ -555,3 +551,7 @@ footer {
   }
 }
 
+/* 20. Surcharge réglée en dernier pour prendre le pas */
+body > #map {
+  height: var(--map-height) !important;  /* prendra 70vh comme défini dans :root */
+}
