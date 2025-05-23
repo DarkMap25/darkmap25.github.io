@@ -79,20 +79,21 @@ header {
 }
 
 .intro {
-  height: var(--intro-height);
+  /* même largeur que la carte */
   width: 80vw;
-  max-width: 100%; /* t’assure pas de débordement */
-  margin: 0 auto;
-  margin-top: 0;   
-  padding: 10px;
+  margin: 1vh auto;        /* 1vh au-dessus et en-dessous, centré horizontalement */
+  /* ton restyling */
+  height: var(--intro-height);
+  padding: 0 10px;
   font-size: var(--intro-font-size);
-  line-height: 1;
-  flex-direction: column;   /* empile les paragraphes */
-  align-items: center;
-  justify-content: center; 
-  white-space: nowrap;      /* tout le texte reste sur une seule ligne */
-  overflow: visible; /* pas de scroll interne */
-}
+  line-height: 1.2;
+  /* centrer chaque ligne de texte */
+  text-align: center;
+  
+  /* retours à la ligne automatiques */
+  white-space: normal;
+  overflow: hidden;
+}  
 
 footer {
   display: flex;
