@@ -25,23 +25,33 @@ body::before {
   z-index: -1; /* Placer ce calque derrière le contenu principal */
 }
 
-/* 3. Titre principal === */
-h1 {
-  font-family: 'Quicksand', sans-serif; /* Police du titre */
-  font-weight: 700; /* Poids du texte du titre */
-  font-size: 3em; /* Taille de la police */
-  text-align: center; /* Centrer le texte */
-  color: #e60000; /* Couleur du texte du titre */
-  text-shadow: 0 0 8px #e60000; /* Ombre rouge autour du titre */
-  margin: 0; /* Pas de marge autour du titre */
+/* 3. Transformer ton <header> en colonne flex pour empiler le h1 et la .tagline */
+header {
+  display: flex;
+  flex-direction: column;    /* h1 au-dessus, p.tagline en dessous */
+  align-items: center;       /* centrage horizontal */
+  justify-content: center;   /* centrage vertical si tu veux */
+  height: 15vh;              /* ou la hauteur que tu souhaites pour le header */
 }
 
-/* 4. Sous-titre */
-.tagline {
-  text-align: center; /* Centrer le texte */
-  font-size: 0.6em; /* Taille de la police */
-  margin-top: 0; /* Pas de marge en haut */
-  color: #e60000; /* Couleur rouge */
+/* 4. Ajuster le h1 depuis le CSS plutôt qu’en inline style */
+header h1 {
+  margin: 0;                 /* pas d’espace au-dessus ni en-dessous */
+  margin-bottom: 0.2em;      /* petit écart avant le sous-titre */
+  font-size: 3em;            /* tu peux l’ajuster ici */
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  text-align: center;
+  color: #e60000;
+  text-shadow: 0 0 8px #e60000;
+}
+
+/*  Styliser la .tagline juste en dessous */
+header .tagline {
+  margin: 0;                 /* supprimer tout margin par défaut */
+  font-size: 0.6em;          /* taille que tu veux */
+  color: #e60000;
+  text-align: center;
 }
 
 /* 5. Logo si présent */
@@ -59,16 +69,6 @@ h1 {
   line-height: 1.2;            /* Espacement entre les lignes du texte */
   font-size: 1em;            /* Taille du texte */
   color: #dddddd;              /* Couleur gris clair */
-}
-
-/* 7. Carte interactive === */
-#map {
-  height: 60vh; /* Hauteur de la carte (60% de la hauteur de la fenêtre) */
-  margin: 0 auto; /* Centrer la carte horizontalement */
-  width: 80vw;                /* ✅ Largeur égale à 80% de la largeur de la fenêtre */
-  border-radius: 10px; /* Coins arrondis de la carte */
-  box-shadow: 0 0 10px #e60000; /* Ombre autour de la carte */
-  z-index: 1; /* Positionner la carte devant les autres éléments */
 }
 
 /* 8. Optimisation pour mobile === */
@@ -176,22 +176,26 @@ header {
   justify-content: center;
 }
 
-/*  Carte (#map) : 50vh */
+/*  Carte (#map) : 70vh */
 #map {
-  height: 60vh;
-  /* conserve tous tes styles existants ici */
+  height: 70vh;                 /* Hauteur de la carte */
+  margin: 0 auto;               /* Centrer la carte horizontalement */
+  width: 80vw;                  /* ✅ Largeur égale à 80% de la largeur de la fenêtre */
+  border-radius: 10px;          /* Coins arrondis de la carte */
+  box-shadow: 0 0 10px #e60000; /* Ombre autour de la carte */
+  z-index: 1;                   /* Positionner la carte devant les autres éléments */  
 }
 
-/* Texte explicatif (.intro) : 25vh */
+/* Texte explicatif (.intro) : 10vh */
 .intro {
-  height: 15vh;
+  height: 10vh;
   overflow-y: auto;  /* scroll interne si besoin */
   padding: 10px;
 }
 
-/* Footer : 10vh */
+/* Footer : 5vh */
 footer {
-  height: 10vh;
+  height: 5vh;
   display: flex;
   align-items: center;
   justify-content: center;
