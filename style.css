@@ -25,9 +25,7 @@ body::before {
   z-index: -1; /* Placer ce calque derrière le contenu principal */
 }
 
-/* 3. Structure site ===== */
-
-/* 3.0 Variables de configuration (modifiable : hauteur en vh, tailles, couleurs…) */
+*/ Style du site */
 :root {
   /* hauteurs des sections (total = 100vh) */
   --header-height: 15vh;
@@ -42,13 +40,6 @@ body::before {
   --header-tagline-font-size: 1em;
   --intro-font-size:          1em;
   --footer-font-size:         0.6em;
-}
-
-:root {
-  --header-height: 15vh;
-  --map-height:    70vh;
-  --intro-height:  11vh;
-  --footer-height:  4vh;
 }
 
 /* 1. Layout flex-colonne sur tout le viewport */
@@ -72,6 +63,26 @@ header {
   gap: 0;           
   padding: 0;        
 }
+
+/* —— AJOUTÉ : Styles du titre DarkMap et de la tagline —— */
+header h1 {
+  margin: 0;
+  margin-bottom: 0.2em;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: var(--header-h1-font-size);
+  text-align: center;
+  color: var(--header-h1-color);
+  text-shadow: var(--header-h1-shadow);
+}
+
+header .tagline {
+  margin: 0;
+  font-size: var(--header-tagline-font-size);
+  text-align: center;
+  color: var(--header-h1-color);
+}
+/* ———————————————————————————————————————————————— */
 
 /* 3. Carte = 70vh, avec un petit espace sous le header */
 #map {
