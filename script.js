@@ -1,4 +1,6 @@
-// Création du fond de carte Alidade Smooth Dark
+// === PARTIE I : CREATION CARTE / INTRODUCTION === //
+
+//  I.1. Création du fond de carte Alidade Smooth Dark
 const alidadedarkLayer = L.tileLayer(
   'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=a1ef2388-4a98-4134-8ffc-d2496230635e',
   {
@@ -8,7 +10,7 @@ const alidadedarkLayer = L.tileLayer(
   }
 );
 
-// Création du fond de carte Thunderforest Atlas
+// I.2 Création du fond de carte Thunderforest Atlas
 const thunderforestAtlasLayer = L.tileLayer(
   'https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=2f67b0d994104bf69ffcd0cf70f86a08',
   {
@@ -18,13 +20,13 @@ const thunderforestAtlasLayer = L.tileLayer(
   }
 );
 
-// Définition des limites géographiques (France métropolitaine + Corse)
+// I.3 Définition des limites géographiques (France métropolitaine + Corse)
 const franceBounds = L.latLngBounds(
   L.latLng(40, -12),
   L.latLng(56, 16)
 );
 
-// Initialisation de la carte avec le calque sombre par défaut
+// I.4 Initialisation de la carte avec le calque sombre par défaut
 const map = L.map('map', {
   center: [46.5, 2.5],
   zoom: 6,
@@ -33,45 +35,29 @@ const map = L.map('map', {
   maxBoundsViscosity: 0.5
 });
 
-// Ajout du bouton de localisation
-L.control.locate({
-  position: 'topright',
-  strings: { title: "Localiser ma position" },
-  drawCircle: true,
-  drawMarker: true,
-  follow: true,
-  stopFollowingOnDrag: true,
-  setView: true,
-  keepCurrentZoomLevel: true
-}).addTo(map);
+// I.5 Animation d’introduction au chargement de la page
+let showIntro = true;
+window.addEventListener("load", () => {
+  const overlay = document.getElementById("intro-overlay");
+  if (showIntro) {
+    const line1 = document.querySelector(".line1");
+    const line2 = document.querySelector(".line2");
 
-// Animation pour zoomer doucement lors de la géolocalisation
-map.on('locationfound', function(event) {
-  const targetLatLng = event.latlng;
-  const targetZoom = 9;
+    line1.textContent = "Un territoire. Une carte.";
+    line2.textContent = "Un passé sombre.";
 
-  const currentZoom = map.getZoom();
-  if (currentZoom > targetZoom - 2) {
-    map.setZoom(targetZoom - 2);
+    setTimeout(() => {
+      overlay.style.opacity = 0;
+      setTimeout(() => overlay.remove(), 1000);
+    }, 10000);
+  } else {
+    overlay.style.display = "none";
   }
-
-  setTimeout(() => {
-    map.flyTo(targetLatLng, targetZoom, {
-      animate: true,
-      duration: 2.5,
-      easeLinearity: 0.25
-    });
-  });
 });
 
-// Ajout du contrôle de changement de fond de carte
-L.control.layers(
-  { 'Dark': alidadedarkLayer, 'Atlas': thunderforestAtlasLayer },
-  {},
-  { position: 'topleft' }
-).addTo(map);
+// === PARTIE 2: EMOJIS / POP-UP / VOIR PLUS === //
 
-// Définition des emojis par catégorie
+// II.1.1 Définition des emojis par catégorie
 const emojiParCategorie = {
   "Affaires Non Résolues": "❓",
   "Crimes": "☠️",
@@ -81,7 +67,7 @@ const emojiParCategorie = {
   "Lieux Mystérieux": "👁️"
 };
 
-// Fonction pour créer un marqueur emoji pour chaque lieu
+// II.1.2 Fonction pour créer un marqueur emoji pour chaque lieu
 function createEmojiMarker(lieu) {
   const emoji = emojiParCategorie[lieu.categorie] || "❓";
 
@@ -92,7 +78,8 @@ function createEmojiMarker(lieu) {
     iconAnchor: [15, 15],
     popupAnchor: [0, -15]
   });
-
+  
+  // II.2.1 Création du Pop-Up
   const popupContent = `
     <strong>${lieu.nom}</strong><br>
     ${lieu.resume}<br>
@@ -109,10 +96,11 @@ const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
     keepInView: false
   });
 
-marker.on('click', () => {
-  const latlng = marker.getLatLng();
-  const mapSize = map.getSize();               // taille de la fenêtre Leaflet en pixels
-  const offsetY = mapSize.y * 0.25;            // 25% vers le bas
+  // II.2.2 Abaissement du Pop-Up
+  marker.on('click', () => {
+    const latlng = marker.getLatLng();
+    const mapSize = map.getSize();               // taille de la fenêtre Leaflet en pixels
+    const offsetY = mapSize.y * 0.20;            // 20% vers le bas
 
   // 1) transformation latlng → point écran
   const point = map.latLngToContainerPoint(latlng);
@@ -131,7 +119,7 @@ marker.on('click', () => {
   return marker;
 }
 
-// Chargement du fichier lieux.json et création des marqueurs
+// II.2.3 Chargement du fichier lieux.json et création des marqueurs
 fetch('lieux.json')
   .then(response => response.json())
   .then(data => {
@@ -146,7 +134,7 @@ fetch('lieux.json')
   })
   .catch(error => console.error('Erreur lors du chargement des lieux :', error));
 
-// Création de la légende emoji
+// II.2.4 Création de la légende emoji
 function createLegend() {
   const legend = L.control({ position: 'bottomleft' });
 
@@ -169,7 +157,6 @@ function createLegend() {
         </div>
       `;
     });
-
     return div;
   };
 
@@ -177,7 +164,7 @@ function createLegend() {
 }
 createLegend();
 
-// 1) Handler pour ouvrir le panneau "Voir plus"
+// III.3.1 Handler pour ouvrir le panneau "Voir plus"
 document.addEventListener("click", function(e) {
   if (!e.target.classList.contains("voir-plus")) return;
   e.preventDefault();
@@ -186,17 +173,17 @@ document.addEventListener("click", function(e) {
   const detailPanel   = document.getElementById("detailPanel");
   const detailContent = document.getElementById("detailContent");
 
-  // → Sauvegarde de la vue actuelle (centre + zoom)
+  // i. Sauvegarde de la vue actuelle (centre + zoom)
   window._prevMapView = {
     center: map.getCenter(),
     zoom:   map.getZoom()
   };
 
-  // → Masquer la carte et afficher le panneau
+  // ii. Masquer la carte et afficher le panneau
   mapContainer.style.display = "none";
   detailPanel.classList.add("visible", "full-view");
 
-  // … construction du HTML comme avant …
+  // iii. Construction du HTML comme avant 
   const id   = e.target.getAttribute("data-id");
   const lieu = window.lieuxData.find(l => l.ID == id);
   if (!lieu) return;
@@ -226,7 +213,7 @@ document.addEventListener("click", function(e) {
   // (le CSS fera apparaître automatiquement #closeDetailPanel via #detailPanel.visible)
 });
 
-// 2) Handler pour fermer le panneau (croix)
+// III.3.2 Handler pour fermer le panneau (croix)
 document.getElementById("closeDetailPanel").addEventListener("click", function(e) {
   e.preventDefault();
   e.stopPropagation();
@@ -235,44 +222,64 @@ document.getElementById("closeDetailPanel").addEventListener("click", function(e
   const detailPanel   = document.getElementById("detailPanel");
   const detailContent = document.getElementById("detailContent");
 
-  // → Cacher le panneau
+  // i. Cacher le panneau
   detailPanel.classList.remove("visible", "full-view");
-  // → Vider le contenu
+  // ii. Vider le contenu
   detailContent.innerHTML = "";
 
-  // → Réafficher la carte
+  // iii. Réafficher la carte
   mapContainer.style.display = "block";
-  // → Forcer Leaflet à redimensionner
+  // iv. Forcer Leaflet à redimensionner
   map.invalidateSize();
 
-  // → Revenir exactement à la vue précédente
+  // v. Revenir exactement à la vue précédente
   if (window._prevMapView) {
     map.setView(window._prevMapView.center, window._prevMapView.zoom, { animate: false });
     delete window._prevMapView;
   }
 });
 
-// Animation d’introduction au chargement de la page
-let showIntro = true;
-window.addEventListener("load", () => {
-  const overlay = document.getElementById("intro-overlay");
-  if (showIntro) {
-    const line1 = document.querySelector(".line1");
-    const line2 = document.querySelector(".line2");
+// === PARTIE 3 : BOUTONS ET ACTIONS === //
 
-    line1.textContent = "Un territoire. Une carte.";
-    line2.textContent = "Un passé sombre.";
+// III.1.1 Ajout du bouton de localisation
+L.control.locate({
+  position: 'topright',
+  strings: { title: "Localiser ma position" },
+  drawCircle: true,
+  drawMarker: true,
+  follow: true,
+  stopFollowingOnDrag: true,
+  setView: true,
+  keepCurrentZoomLevel: true
+}).addTo(map);
 
-    setTimeout(() => {
-      overlay.style.opacity = 0;
-      setTimeout(() => overlay.remove(), 1000);
-    }, 10000);
-  } else {
-    overlay.style.display = "none";
+// III.1.2 Animation pour zoomer doucement lors de la géolocalisation
+map.on('locationfound', function(event) {
+  const targetLatLng = event.latlng;
+  const targetZoom = 9;
+
+  const currentZoom = map.getZoom();
+  if (currentZoom > targetZoom - 2) {
+    map.setZoom(targetZoom - 2);
   }
+
+  setTimeout(() => {
+    map.flyTo(targetLatLng, targetZoom, {
+      animate: true,
+      duration: 2.5,
+      easeLinearity: 0.25
+    });
+  });
 });
 
-// Ajout du bouton plein écran à la carte
+// III.2 Ajout du contrôle de changement de fond de carte
+L.control.layers(
+  { 'Dark': alidadedarkLayer, 'Atlas': thunderforestAtlasLayer },
+  {},
+  { position: 'topleft' }
+).addTo(map);
+
+// III.3.1 Ajout du bouton plein écran à la carte
 const fullscreenControl = L.control({ position: 'bottomright' });
 fullscreenControl.onAdd = function(map) {
   const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
@@ -286,7 +293,7 @@ fullscreenControl.onAdd = function(map) {
 };
 fullscreenControl.addTo(map);
 
-// Fonction pour basculer en plein écran et sortir
+// III.3.2 Fonction pour basculer en plein écran et sortir
 function toggleFullscreen() {
   const mapElement = document.getElementById('map');
   if (!document.fullscreenElement) {
@@ -302,7 +309,7 @@ function toggleFullscreen() {
   }
 }
 
-// Mise à jour de l’icône et du titre du bouton plein écran
+// III.3.3 Mise à jour de l’icône et du titre du bouton plein écran
 ['fullscreenchange', 'mozfullscreenchange', 'webkitfullscreenchange', 'msfullscreenchange']
   .forEach(evt => document.addEventListener(evt, updateFullscreenButton));
 
@@ -312,7 +319,7 @@ function updateFullscreenButton() {
   btn.title = document.fullscreenElement ? 'Quitter le plein écran' : 'Passer en plein écran';
 }
 
-// Ajout du bouton "Lieu au hasard 🎲"
+// III.4.1 Ajout du bouton "Lieu au hasard 🎲"
 const randomControl = L.control({ position: 'topright' });
 randomControl.onAdd = function() {
   const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
@@ -324,7 +331,7 @@ randomControl.onAdd = function() {
 };
 randomControl.addTo(map);
 
-// Écoute du clic sur 🎲 pour afficher un lieu aléatoire
+// III.4.2 Écoute du clic sur 🎲 pour afficher un lieu aléatoire
 setTimeout(() => {
   const btn = document.getElementById("randomButton");
   if (!btn) return;
