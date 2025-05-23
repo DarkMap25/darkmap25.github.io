@@ -25,50 +25,90 @@ body::before {
   z-index: -1; /* Placer ce calque derrière le contenu principal */
 }
 
-/* 3. Transformer ton <header> en colonne flex pour empiler le h1 et la .tagline */
-header {
-  display: flex;
-  flex-direction: column;    /* h1 au-dessus, p.tagline en dessous */
-  align-items: center;       /* centrage horizontal */
-  justify-content: center;   /* centrage vertical si tu veux */
-  height: 15vh;              /* ou la hauteur que tu souhaites pour le header */
+/* 3. Structure site ===== */
+
+/* 3.0 Variables de configuration (modifiable : hauteur en vh, tailles, couleurs…) */
+:root {
+  /* hauteurs des sections (total = 100vh) */
+  --header-height: 14vh;
+  --map-height:    70vh;
+  --intro-height:  14vh;
+  --footer-height:  2vh;
+
+  /* typographies & couleurs */
+  --header-h1-font-size:      3em;
+  --header-h1-color:          #e60000;
+  --header-h1-shadow:         0 0 8px #e60000;
+  --header-tagline-font-size: 0.6em;
+  --intro-font-size:          1em;
+  --footer-font-size:         0.6em;
 }
 
-/* 4. Ajuster le h1 depuis le CSS plutôt qu’en inline style */
+/* 3.1 Mise en page flex-colonne full viewport */
+html, body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 3.2 Hauteurs des sections principales */
+header {
+  height: var(--header-height);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#map {
+  height: var(--map-height);
+  margin: 0 auto;
+  width: 80vw;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #e60000;
+  z-index: 1;
+}
+
+.intro {
+  height: var(--intro-height);
+  width: 80vw;
+  margin: 0 auto;
+  padding: 10px;
+  font-size: var(--intro-font-size);
+  line-height: 1.4;
+  overflow: visible; /* pas de scroll interne */
+}
+
+footer {
+  height: var(--footer-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--footer-font-size);
+  margin-top: auto; /* pousse en bas si contenu variable */
+}
+
+/* 3.3 Styles du header (titre + sous-titre) */
 header h1 {
-  margin: 0;                 /* pas d’espace au-dessus ni en-dessous */
-  margin-bottom: 0.2em;      /* petit écart avant le sous-titre */
-  font-size: 3em;            /* tu peux l’ajuster ici */
+  margin: 0;
+  margin-bottom: 0.2em;
+  font-size: var(--header-h1-font-size);
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   text-align: center;
-  color: #e60000;
-  text-shadow: 0 0 8px #e60000;
+  color: var(--header-h1-color);
+  text-shadow: var(--header-h1-shadow);
 }
 
-/*  Styliser la .tagline juste en dessous */
 header .tagline {
-  margin: 0;                 /* supprimer tout margin par défaut */
-  font-size: 0.6em;          /* taille que tu veux */
-  color: #e60000;
+  margin: 0;
+  font-size: var(--header-tagline-font-size);
+  color: var(--header-h1-color);
   text-align: center;
-}
-
-/* 5. Logo si présent */
-.logo {
-  display: block; /* Assurer que le logo est un élément de bloc */
-  margin: 20px auto 10px; /* Espacement autour du logo (centré) */
-  width: 100px; /* Largeur fixe du logo */
-}
-
-/* 6. Introduction (texte descriptif) === */
-.intro {
-  margin: 0 auto;              /* Centrer le texte */
-  width: 80%;                  /* Le footer prend 80% de la largeur de la page */
-  text-align: center;          /* Centrer le texte */
-  line-height: 1.2;            /* Espacement entre les lignes du texte */
-  font-size: 1em;            /* Taille du texte */
-  color: #dddddd;              /* Couleur gris clair */
 }
 
 /* 8. Optimisation pour mobile === */
@@ -152,53 +192,6 @@ footer {
   height: auto; /* Taille automatique */
   line-height: 1; /* Hauteur de ligne pour centrer */
   color: inherit; /* Couleur héritée du parent */
-}
-
-/* 10. CSS corrigé ===== */
-
-/* === 10.1 Structure générale Flex === */
-html, body {
-  height: 100vh;    /* 100% de la hauteur de la fenêtre */
-  margin: 0;
-  padding: 0;
-}
-body {
-  display: flex;
-  flex-direction: column;
-}
-
-/* === 10.2 Hauteurs des sections principales === */
-/*  Titre (header) : 15vh */
-header {
-  height: 15vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/*  Carte (#map) : 70vh */
-#map {
-  height: 70vh;                 /* Hauteur de la carte */
-  margin: 0 auto;               /* Centrer la carte horizontalement */
-  width: 80vw;                  /* ✅ Largeur égale à 80% de la largeur de la fenêtre */
-  border-radius: 10px;          /* Coins arrondis de la carte */
-  box-shadow: 0 0 10px #e60000; /* Ombre autour de la carte */
-  z-index: 1;                   /* Positionner la carte devant les autres éléments */  
-}
-
-/* Texte explicatif (.intro) : 10vh */
-.intro {
-  height: 10vh;
-  overflow-y: auto;  /* scroll interne si besoin */
-  padding: 10px;
-}
-
-/* Footer : 5vh */
-footer {
-  height: 5vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /* === 10.3 DetailPanel : fullscreen uniquement quand ouvert === */
