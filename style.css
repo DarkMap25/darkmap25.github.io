@@ -30,9 +30,9 @@ body::before {
 /* 3.0 Variables de configuration (modifiable : hauteur en vh, tailles, couleurs…) */
 :root {
   /* hauteurs des sections (total = 100vh) */
-  --header-height: 22vh;
-  --map-height:    70vh;
-  --intro-height:  6vh;
+  --header-height: 14vh;
+  --map-height:    72vh;
+  --intro-height:  12vh;
   --footer-height:  2vh;
 
   /* typographies & couleurs */
@@ -40,8 +40,8 @@ body::before {
   --header-h1-color:          #e60000;
   --header-h1-shadow:         0 0 8px #e60000;
   --header-tagline-font-size: 1em;
-  --intro-font-size:          0.8em;
-  --footer-font-size:         0.4em;
+  --intro-font-size:          0.6em;
+  --footer-font-size:         0.3em;
 }
 
 /* 3.1 Mise en page flex-colonne full viewport */
