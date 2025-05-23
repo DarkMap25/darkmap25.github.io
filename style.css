@@ -36,7 +36,7 @@ body::before {
   --footer-height:  2vh;
 
   /* typographies & couleurs */
-  --header-h1-font-size:      3em;
+  --header-h1-font-size:      5em;
   --header-h1-color:          #e60000;
   --header-h1-shadow:         0 0 8px #e60000;
   --header-tagline-font-size: 0.6em;
@@ -95,7 +95,7 @@ footer {
 /* 3.3 Styles du header (titre + sous-titre) */
 header h1 {
   margin: 0;
-  margin-bottom: 0.2em;
+  margin-bottom: 0.3em;
   font-size: var(--header-h1-font-size);
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
