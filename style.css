@@ -498,3 +498,8 @@ footer {
     line-height: 1 !important;
   }
 }
+
+/* Surcharge réglée en dernier pour prendre le pas */
+body > #map {
+  height: 60vh !important;
+}
