@@ -63,7 +63,7 @@ h1 {
 
 /* === Carte interactive === */
 #map {
-  height: 60vh; /* Hauteur de la carte (75% de la hauteur de la fenêtre) */
+  height: 30vh; /* Hauteur de la carte (30% de la hauteur de la fenêtre) */
   margin: 0 auto; /* Centrer la carte horizontalement */
   width: 80vw;                /* ✅ Largeur égale à 80% de la largeur de la fenêtre */
   border-radius: 10px; /* Coins arrondis de la carte */
