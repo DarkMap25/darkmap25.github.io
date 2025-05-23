@@ -115,8 +115,8 @@ body::before {
 
   /* typographies & couleurs */
   --header-h1-font-size:      4em;
-  --header-h1-color:          #580818;
-  --header-h1-shadow:         0 0 8px #e60000;
+  --header-h1-color:          #00000;
+  --header-h1-shadow:         0 0 10px #000000;
   --header-tagline-font-size: 1em;
   --intro-font-size:          0.8em;
   --footer-font-size:         0.3em;
@@ -151,8 +151,8 @@ header {
   /* Ajuste la hauteur pour toujours faire 70vh visibles */
   height: calc(var(--map-height) - 2vh);
   width: 80vw;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #e60000;
+  border-radius: 20px;
+  box-shadow: 0 0 50px #e60000;
   z-index: 1;
 }
 
