@@ -187,8 +187,27 @@ document.addEventListener("click", function(e) {
 
   let html = `<h2>${lieu.nom}</h2>`;
   html += `<p>${lieu.resume_long || lieu.resume}</p>`;
-  // (etc. reste inchangé)
+  if (lieu.date_debut || lieu.date_fin) {
+    const d = lieu.date_debut||"", f = lieu.date_fin||"";
+    html += `<p><strong>Période :</strong> ${d}${d&&f?" – "+f:""}</p>`;
+  }
+
+  const ignore = ["ID","nom","resume","resume_long","latitude","longitude","date_debut","date_fin"];
+  function formatLabel(k){
+    return k.split("_").map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(" ");
+  }
+
+  for (const [key,value] of Object.entries(lieu)) {
+    if (ignore.includes(key)||!value) continue;
+    if (typeof value==="string" && /^https?:\/\//.test(value)) {
+      html += `<p><strong>${formatLabel(key)} :</strong> <a href="${value}" target="_blank">${value}</a></p>`;
+    } else {
+      html += `<p><strong>${formatLabel(key)} :</strong> ${value}</p>`;
+    }
+  }
+
   detailContent.innerHTML = html;
+  // (le CSS fera apparaître automatiquement #closeDetailPanel via #detailPanel.visible)
 });
 
 // 2) Handler pour fermer le panneau (croix)
