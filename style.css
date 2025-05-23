@@ -1,4 +1,4 @@
-/* === Styles généraux === */
+/* 1. Styles généraux === */
 body {
   margin: 0; /* Suppression des marges par défaut */
   padding: 0; /* Suppression des espacements par défaut */
@@ -13,7 +13,7 @@ body {
   position: relative; /* Positionnement pour le calque noir transparent */
 }
 
-/* Calque noir transparent par-dessus l'image */
+/* 2. Calque noir transparent par-dessus l'image */
 body::before {
   content: ""; /* Contenu vide pour un pseudo-élément */
   position: fixed; /* Position fixe pour couvrir toute la fenêtre */
@@ -25,7 +25,7 @@ body::before {
   z-index: -1; /* Placer ce calque derrière le contenu principal */
 }
 
-/* === Titre principal === */
+/* 3. Titre principal === */
 h1 {
   font-family: 'Quicksand', sans-serif; /* Police du titre */
   font-weight: 700; /* Poids du texte du titre */
@@ -36,7 +36,7 @@ h1 {
   margin: 0; /* Pas de marge autour du titre */
 }
 
-/* Sous-titre */
+/* 4. Sous-titre */
 .tagline {
   text-align: center; /* Centrer le texte */
   font-size: 1.2em; /* Taille de la police */
@@ -44,14 +44,14 @@ h1 {
   color: #e60000; /* Couleur rouge */
 }
 
-/* Logo si présent */
+/* 5. Logo si présent */
 .logo {
   display: block; /* Assurer que le logo est un élément de bloc */
   margin: 20px auto 10px; /* Espacement autour du logo (centré) */
   width: 100px; /* Largeur fixe du logo */
 }
 
-/* === Introduction (texte descriptif) === */
+/* 6. Introduction (texte descriptif) === */
 .intro {
   max-width: 800px; /* Limiter la largeur du texte */
   margin: 0 auto; /* Centrer le texte */
@@ -61,7 +61,7 @@ h1 {
   color: #dddddd; /* Couleur gris clair */
 }
 
-/* === Carte interactive === */
+/* 7. Carte interactive === */
 #map {
   height: 30vh; /* Hauteur de la carte (30% de la hauteur de la fenêtre) */
   margin: 0 auto; /* Centrer la carte horizontalement */
@@ -71,9 +71,9 @@ h1 {
   z-index: 1; /* Positionner la carte devant les autres éléments */
 }
 
-/* === Optimisation pour mobile === */
+/* 8. Optimisation pour mobile === */
 @media (max-width: 768px) {
-  /* Réduire la taille de la carte sur les écrans plus petits */
+  /* 8.1 Réduire la taille de la carte sur les écrans plus petits */
    body {
     background-image: url('./icons/background.jpg'); /* Image différente pour mobile */
     background-size: cover; /* Adapter l'image pour qu'elle soit rognée */
@@ -104,7 +104,7 @@ h1 {
   }
 }
 
-/* Pour les très petits écrans (moins de 480px) */
+/* 8.2 Pour les très petits écrans (moins de 480px) */
 @media (max-width: 480px) {
   /* Ajustement spécifique pour les écrans très petits (comme l'iPhone SE) */
   body {
@@ -134,7 +134,7 @@ h1 {
   }
 }
 
-/* === Pied de page === */
+/* 9. Pied de page === */
 footer {
   text-align: justify; /* Centrer le texte du pied de page */
   padding: 20px; /* Espacement autour du pied de page */
@@ -142,7 +142,7 @@ footer {
   color: #777; /* Couleur gris pour le texte */
 }
 
-/* === Marqueurs emoji === */
+/* 10. Marqueurs emoji === */
 .emoji-marker {
   font-size: 16px; /* Taille des marqueurs emoji */
   background: none; /* Pas de fond */
@@ -154,28 +154,60 @@ footer {
   color: inherit; /* Couleur héritée du parent */
 }
 
-/* ===== CSS corrigé ===== */
+/* 10. CSS corrigé ===== */
 
-/* 1. Forcer html/body et #map à 100% de haut */
+/* === 10.1 Structure générale Flex === */
 html, body {
-  height: 100%;
+  height: 100vh;    /* 100% de la hauteur de la fenêtre */
   margin: 0;
   padding: 0;
 }
-#map {
-  height: 100%;
+body {
+  display: flex;
+  flex-direction: column;
 }
 
-/* 2. Cacher le panneau de détail par défaut */
+/* === 10.2 Hauteurs des sections principales === */
+/*  Titre (header) : 15vh */
+header {
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*  Carte (#map) : 50vh */
+#map {
+  height: 50vh;
+  /* conserve tous tes styles existants ici */
+}
+
+/* Texte explicatif (.intro) : 25vh */
+.intro {
+  height: 25vh;
+  overflow-y: auto;  /* scroll interne si besoin */
+  padding: 10px;
+}
+
+/* Footer : 10vh */
+footer {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === 10.3 DetailPanel : fullscreen uniquement quand ouvert === */
+/* Par défaut, on le cache et on ne définit PAS sa hauteur ici */
 #detailPanel {
   display: none;
 }
 
-/* 3. Panneau visible & plein écran (uniquement si .visible ET .full-view) */
+/* Quand on l’ouvre (classes .visible + .full-view) */
 #detailPanel.visible.full-view {
   display: block;
   position: fixed;
-  inset: 0;                /* top:0; right:0; bottom:0; left:0 */
+  inset: 0;           /* top/right/bottom/left = 0 */
   z-index: 1000;
   padding: 20px;
   background-image: url('./icons/panneau.jpg');
@@ -183,12 +215,13 @@ html, body {
   background-position: center;
   background-repeat: no-repeat;
   overflow: auto;
+  /* couleurs et polices Darkmap */
   color: #e0d6cc;
   font-family: 'Cormorant Garamond', serif;
   text-shadow: 1px 1px 2px #000;
 }
 
-/* 4. Croix cachée par défaut */
+/* Croix de fermeture */
 #closeDetailPanel {
   display: none;
   position: fixed;
@@ -203,12 +236,11 @@ html, body {
   cursor: pointer;
   z-index: 2001;
 }
-/* Afficher la croix seulement quand le panneau est ouvert */
 #detailPanel.visible #closeDetailPanel {
   display: block;
 }
 
-/* === PERSONNALISATION DU BOUTON DE CHANGEMENT DE CARTE (Contrôle Leaflet) === */
+/* 11. PERSONNALISATION DU BOUTON DE CHANGEMENT DE CARTE (Contrôle Leaflet) === */
 
 .leaflet-control-layers {
   color: #1a001a; /* texte sombre pour le contraste */
@@ -248,7 +280,7 @@ html, body {
   font-weight: bold;
 }
 
-/* === Overlay d’intro === */
+/* 12. Overlay d’intro === */
 #intro-overlay {
   position: fixed; /* Position fixe pour couvrir toute la fenêtre */
   top: 0; /* Commence en haut de la page */
@@ -324,7 +356,7 @@ html, body {
   }
 }
 
-/* === PERSONNALISATION DU BOUTON DE LOCALISATION (Emoji Direct Hit Visible et Cliquable) === */
+/* 14. PERSONNALISATION DU BOUTON DE LOCALISATION (Emoji Direct Hit Visible et Cliquable) === */
 .leaflet-control-locate {
   background-color: transparent !important; /* Fond transparent */
   border: none !important; /* Pas de bordure */
@@ -356,7 +388,7 @@ html, body {
   align-items: center !important; /* Centrage vertical */
 }
 
-/* Afficher l'emoji comme contenu de l'élément <a> */
+/* 15. Afficher l'emoji comme contenu de l'élément <a> */
 .leaflet-control-locate .leaflet-bar-part-single::before {
   content: "🎯" !important; /* Emoji direct hit */
   display: block !important; /* Important pour que le pseudo-élément prenne de la place */
@@ -372,7 +404,7 @@ html, body {
   transform: scale(1.5); /* ✅ effet de grossissement uniquement au survol */
 }
 
-/* === PERSONNALISATION DU BOUTON DE CHANGEMENT DE FOND DE CARTE AVEC UN EMOJI 🗺️ === */
+/* 16. PERSONNALISATION DU BOUTON DE CHANGEMENT DE FOND DE CARTE AVEC UN EMOJI 🗺️ === */
 .leaflet-control-layers-toggle {
   background-color: transparent !important;
   background-image: none !important;
@@ -394,7 +426,7 @@ html, body {
   font-size: inherit;
 }
 
-/* === Bouton dé === */
+/* 17. Bouton dé === */
 #randomButton {
     background-color: transparent !important;
     border: none !important;
@@ -442,7 +474,7 @@ html, body {
     transform: scale(1.5);
 }
 
-/* === Positionnement des contrôles en haut à droite === */
+/* 17. Positionnement des contrôles en haut à droite === */
 .leaflet-topright {
     display: flex; /* Utiliser flex pour aligner les éléments verticalement */
     flex-direction: column; /* Aligner les éléments en colonne */
@@ -455,7 +487,7 @@ html, body {
     overflow: visible !important; /* 🔥 Leaflet limite parfois la taille à cause de ça */
 }
 
-/* === Footer === */
+/* 18. Footer === */
 footer {
   width: 100%;                  /* Le footer prend toute la largeur de la page */
   max-width: 1000px;            /* (optionnel) limite de largeur si tu veux pas qu'il s'étale trop */
@@ -474,7 +506,7 @@ footer {
 /* === Adaptation des popups Leaflet === */
 /* Largeur max du popup sur desktop restée par défaut */
 
-/* === Adaptation des popups Leaflet pour mobile === */
+/* 19. Adaptation des popups Leaflet pour mobile === */
 @media (max-width: 768px) {
   /* limite la largeur du cadre */
   .leaflet-popup-content-wrapper {
@@ -499,7 +531,7 @@ footer {
   }
 }
 
-/* Surcharge réglée en dernier pour prendre le pas */
+/* 20. Surcharge réglée en dernier pour prendre le pas */
 body > #map {
   height: 60vh !important;
 }
