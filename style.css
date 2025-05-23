@@ -515,7 +515,7 @@ footer {
   width: 100%;                  /* Le footer prend toute la largeur de la page */
   margin: 0 auto;               /* ✅ Centre le bloc footer dans la page */
   text-align: center;           /* ✅ Centre le texte à l'intérieur du footer */
-  padding: 20px;
+  padding: 2px;
   font-size: 0.6em;
   color: #000000;
   text-shadow:
