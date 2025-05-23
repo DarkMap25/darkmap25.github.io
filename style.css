@@ -53,12 +53,12 @@ h1 {
 
 /* 6. Introduction (texte descriptif) === */
 .intro {
-  max-width: 1200px; /* Limiter la largeur du texte */
-  margin: 0 auto; /* Centrer le texte */
-  text-align: center; /* Centrer le texte */
-  line-height: 0.6; /* Espacement entre les lignes du texte */
-  font-size: 0.6em; /* Taille du texte */
-  color: #dddddd; /* Couleur gris clair */
+  margin: 0 auto;              /* Centrer le texte */
+  width: 80%;                  /* Le footer prend 80% de la largeur de la page */
+  text-align: center;          /* Centrer le texte */
+  line-height: 1.2;            /* Espacement entre les lignes du texte */
+  font-size: 1em;            /* Taille du texte */
+  color: #dddddd;              /* Couleur gris clair */
 }
 
 /* 7. Carte interactive === */
@@ -490,11 +490,10 @@ footer {
 /* 18. Footer === */
 footer {
   width: 100%;                  /* Le footer prend toute la largeur de la page */
-  max-width: 1000px;            /* (optionnel) limite de largeur si tu veux pas qu'il s'étale trop */
   margin: 0 auto;               /* ✅ Centre le bloc footer dans la page */
   text-align: center;           /* ✅ Centre le texte à l'intérieur du footer */
   padding: 20px;
-  font-size: 0.9em;
+  font-size: 0.6em;
   color: #000000;
   text-shadow:
     -1px -1px 0 #e6ccff,
