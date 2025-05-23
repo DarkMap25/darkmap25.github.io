@@ -1,4 +1,4 @@
-// === PARTIE I : CREATION CARTE / INTRODUCTION === //
+// === PARTIE I / CREATION CARTE / INTRODUCTION === //
 
 //  I.1. Création du fond de carte Alidade Smooth Dark
 const alidadedarkLayer = L.tileLayer(
@@ -55,7 +55,7 @@ window.addEventListener("load", () => {
   }
 });
 
-// === PARTIE 2: EMOJIS / POP-UP / VOIR PLUS === //
+// === PARTIE II / EMOJIS / POP-UP / VOIR PLUS === //
 
 // II.1.1 Définition des emojis par catégorie
 const emojiParCategorie = {
@@ -169,21 +169,26 @@ document.addEventListener("click", function(e) {
   if (!e.target.classList.contains("voir-plus")) return;
   e.preventDefault();
 
+  // i. Si on est en plein écran, on en sort
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  }  
+  
   const mapContainer  = document.getElementById("map");
   const detailPanel   = document.getElementById("detailPanel");
   const detailContent = document.getElementById("detailContent");
 
-  // i. Sauvegarde de la vue actuelle (centre + zoom)
+  // ii. Sauvegarde de la vue actuelle (centre + zoom)
   window._prevMapView = {
     center: map.getCenter(),
     zoom:   map.getZoom()
   };
 
-  // ii. Masquer la carte et afficher le panneau
+  // iii. Masquer la carte et afficher le panneau
   mapContainer.style.display = "none";
   detailPanel.classList.add("visible", "full-view");
 
-  // iii. Construction du HTML comme avant 
+  // iv. Construction du HTML comme avant 
   const id   = e.target.getAttribute("data-id");
   const lieu = window.lieuxData.find(l => l.ID == id);
   if (!lieu) return;
@@ -239,7 +244,7 @@ document.getElementById("closeDetailPanel").addEventListener("click", function(e
   }
 });
 
-// === PARTIE 3 : BOUTONS ET ACTIONS === //
+// === PARTIE III / BOUTONS ET ACTIONS === //
 
 // III.1.1 Ajout du bouton de localisation
 L.control.locate({
