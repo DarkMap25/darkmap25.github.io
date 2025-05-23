@@ -109,17 +109,23 @@ const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
     keepInView: false
   });
 
-  marker.on('click', () => {
+marker.on('click', () => {
   const latlng = marker.getLatLng();
-  // 1) recentre la carte sur la position du marqueur
-  map.setView(latlng, map.getZoom(), { animate: true });
+  const mapSize = map.getSize();               // taille de la fenêtre Leaflet en pixels
+  const offsetY = mapSize.y * 0.20;            // 20% vers le bas
 
-  // 2) ouvre la popup
+  // 1) transformation latlng → point écran
+  const point = map.latLngToContainerPoint(latlng);
+
+  // 2) on retire offsetY pixels sur l'axe Y pour remonter la carte
+  const offsetPoint = L.point(point.x, point.y - offsetY);
+
+  // 3) reconvertit en latlng
+  const newCenter = map.containerPointToLatLng(offsetPoint);
+
+  // 4) centre la carte là-dessus et ouvre la popup
+  map.setView(newCenter, map.getZoom(), { animate: true });
   marker.openPopup();
-
-  // 3) décale la carte vers le bas de 20% de la hauteur de la fenêtre
-  const offsetY = window.innerHeight * 0.20;  // 20% de la hauteur viewport
-  map.panBy([0, offsetY], { animate: true });
 });
   
   return marker;
