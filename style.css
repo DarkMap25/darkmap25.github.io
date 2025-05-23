@@ -50,10 +50,10 @@ body::before {
 
 /* === I.2.2 Texte global de l’intro (contenant les lignes) === */
 #intro-text {
-  font-family: 'UnifrakturCook', cursive; /* Police d'introduction */
+  font-family: 'IM FELL ENGLISH SC', serif; /* Police d'introduction */
   font-size: 2.8em; /* Taille de la police de l'intro */
-  color: #e60000; /* Couleur rouge du texte */
-  text-shadow: 0 0 10px red; /* Ombre rouge autour du texte */
+  color: #B22222; /* Couleur rouge du texte */
+  text-shadow: 0 0 20px black; /* Ombre rouge autour du texte */
   line-height: 1.6; /* Espacement entre les lignes */
   text-align: center; /* Centrer le texte */
   animation: fadeIntro 8s forwards; /* Animation de fondu */
