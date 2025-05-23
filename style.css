@@ -273,9 +273,9 @@ footer {
 /* Style pour la légende sans ombre et coins arrondis */
 .info.legend {
   color: #000000;  /* Texte violet foncé */
-  padding: 10px;  /* Espace interne autour du texte */
-  font-size: 10px;  /* Taille du texte */
-  line-height: 1.6;  /* Hauteur de ligne pour améliorer la lisibilité */
+  padding: 0px;  /* Espace interne autour du texte */
+  font-size: 8px;  /* Taille du texte */
+  line-height: 0.8;  /* Hauteur de ligne pour améliorer la lisibilité */
 /* Contour violet net autour du texte */
   text-shadow:
     -1px -1px 0 #e6ccff,
@@ -288,18 +288,18 @@ footer {
 .legend-item {
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 
 /* Style pour l'emoji dans la légende */
 .legend-item .emoji {
-  font-size: 14px;
-  margin-right: 8px;
+  font-size: 12px;
+  margin-right: 6px;
 }
 
 /* Style pour le nom de la catégorie */
 .legend-item .category-name {
-  font-size: 10px;
+  font-size: 8px;
   font-weight: bold;
 }
 
