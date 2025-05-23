@@ -2,7 +2,7 @@
 const alidadedarkLayer = L.tileLayer(
   'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=a1ef2388-4a98-4134-8ffc-d2496230635e',
   {
-    attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>',
+    attribution: false,
     minZoom: 5,
     maxZoom: 18
   }
@@ -12,7 +12,7 @@ const alidadedarkLayer = L.tileLayer(
 const thunderforestAtlasLayer = L.tileLayer(
   'https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=2f67b0d994104bf69ffcd0cf70f86a08',
   {
-    attribution: '&copy; OpenStreetMap contributors, &copy; Thunderforest',
+    attribution: false,
     minZoom: 5,
     maxZoom: 18
   }
