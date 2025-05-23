@@ -81,7 +81,7 @@ header {
 .intro {
   /* même largeur que la carte */
   width: 80vw;
-  margin: 1vh auto;        /* 1vh au-dessus et en-dessous, centré horizontalement */
+  margin: 1vh auto 0;        /* 1vh au-dessus */
   /* ton restyling */
   height: var(--intro-height);
   padding: 0 10px;
@@ -89,10 +89,9 @@ header {
   line-height: 1.2;
   /* centrer chaque ligne de texte */
   text-align: center;
-  
   /* retours à la ligne automatiques */
   white-space: normal;
-  overflow: hidden;
+  overflow: auto;
 }  
 
 footer {
@@ -100,7 +99,7 @@ footer {
   flex-direction: column;   /* empile les paragraphes */
   align-items: center;      /* centre horizontalement */
   justify-content: center;  /* centre verticalement si nécessaire */
-  padding: 0.2em;         /* espace réduit top/bottom */
+  padding: 0;         /* espace réduit top/bottom */
   font-size: var(--footer-font-size);
   line-height: 1.2;         /* contrôle l’interligne */
 }
