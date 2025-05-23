@@ -63,7 +63,7 @@ h1 {
 
 /* === Carte interactive === */
 #map {
-  height: 75vh; /* Hauteur de la carte (75% de la hauteur de la fenêtre) */
+  height: 60vh; /* Hauteur de la carte (75% de la hauteur de la fenêtre) */
   margin: 0 auto; /* Centrer la carte horizontalement */
   width: 80vw;                /* ✅ Largeur égale à 80% de la largeur de la fenêtre */
   border-radius: 10px; /* Coins arrondis de la carte */
@@ -81,7 +81,7 @@ h1 {
   }  
   #map {
     height: 60vh; /* Hauteur réduite de la carte sur mobile */
-    max-width: 90%; /* Largeur réduite sur mobile */
+    max-width: 80%; /* Largeur réduite sur mobile */
     margin: 0 auto; /* Centrer la carte horizontalement */
     border-radius: 5px; /* Coins arrondis plus petits */
   }
@@ -113,8 +113,8 @@ h1 {
     background-position: center center; /* Centrer l'image sur l'écran */
   }  
   #map {
-    height: 45vh; /* Réduire encore la hauteur de la carte sur les très petits écrans */
-    width: 90%; /* Réduire la largeur à 90% */
+    height: 60vh; /* Réduire encore la hauteur de la carte sur les très petits écrans */
+    width: 80%; /* Réduire la largeur à 90% */
     margin: 0 auto; /* Centrer la carte */
     border-radius: 5px; /* Coins arrondis */
     box-shadow: none; /* Retirer l'ombre pour un aspect plus léger */
