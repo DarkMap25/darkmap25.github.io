@@ -43,8 +43,8 @@ window.addEventListener("load", () => {
     const line1 = document.querySelector(".line1");
     const line2 = document.querySelector(".line2");
 
-    line1.textContent = "Un territoire. Une carte.";
-    line2.textContent = "Un passé sombre.";
+    line1.textContent = "un territoire. une carte.";
+    line2.textContent = "un passé sombre.";
 
     setTimeout(() => {
       overlay.style.opacity = 0;
