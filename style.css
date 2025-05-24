@@ -182,10 +182,10 @@ header .tagline {
   padding: 0 10px;
   font-family: 'IM FELL ENGLISH SC', serif;
   font-weight: 700;
-  color: var(--header-h1-color);
+  color: #f0f0f0;
   font-size: var(--intro-font-size);
   text-shadow: var(--header-h1-shadow);
-  line-height: 1.2;
+  line-height: 1;
   /* centrer chaque ligne de texte */
   text-align: center;
   /* retours à la ligne automatiques */
