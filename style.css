@@ -180,7 +180,11 @@ header .tagline {
   /* ton restyling */
   height: var(--intro-height);
   padding: 0 10px;
+  font-family: 'IM FELL ENGLISH SC', serif;
+  font-weight: 700;
+  color: var(--header-h1-color);
   font-size: var(--intro-font-size);
+  text-shadow: var(--header-h1-shadow);
   line-height: 1.2;
   /* centrer chaque ligne de texte */
   text-align: center;
@@ -201,12 +205,8 @@ footer {
   padding: 2px;                    /* espacement interne */
   font-size: 0.4em;                /* taille de la police */
   line-height: 1;                  /* interligne */
-  color: #000000;                  /* couleur du texte */
-  text-shadow:                     /* ombrage du texte */
-    -1px -1px 0 #e6ccff,
-     1px -1px 0 #e6ccff,
-    -1px  1px 0 #e6ccff,
-     1px  1px 0 #e6ccff;
+  color: #f0f0f0;                  /* couleur du texte */
+  text-shadow: var(--header-h1-shadow);
 }
 
 /* i. Reset et espacement des paragraphes dans le footer */
