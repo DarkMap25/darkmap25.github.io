@@ -476,8 +476,8 @@ footer p:not(:first-child) {
 
 /* ii. Style pour l'emoji dans la légende */
 .legend-item .emoji {
-  font-size: 12px;
-  margin-right: 6px;
+  font-size: 10px;
+  margin-right: 2px;
 }
 
 /* iii. Style pour le nom de la catégorie */
