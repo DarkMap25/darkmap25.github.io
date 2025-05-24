@@ -51,6 +51,7 @@ body::before {
 /* === I.2.2 Texte global de l’intro (contenant les lignes) === */
 #intro-text {
   font-family: 'IM FELL ENGLISH SC', serif; /* Police d'introduction */
+  font-weight: 900;
   font-size: 2.8em; /* Taille de la police de l'intro */
   color: #e60000; /* Couleur rouge du texte */
   text-shadow: 0 0 20px black; /* Ombre noir autour du texte */
@@ -142,7 +143,7 @@ header h1 {
   margin-bottom: 0em;
   font-size: var(--header-h1-font-size);
   font-family: 'IM FELL ENGLISH SC', serif;
-  font-weight: 700;
+  font-weight: 900;
   text-align: center;
   color: var(--header-h1-color);
   text-shadow: var(--header-h1-shadow);
@@ -154,6 +155,7 @@ header .tagline {
   color: var(--header-h1-color);
   text-shadow: var(--header-h1-shadow);
   font-family: 'IM FELL ENGLISH SC', serif;
+  font-weight: 700;
   margin-top: 0;                /* plus de marge au-dessus de la tagline */
   line-height: 1;               /* compactage vertical */  
   display: block;               /* s’assurer qu’elle n’est pas inline ou cachée */
