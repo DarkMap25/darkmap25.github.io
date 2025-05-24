@@ -52,8 +52,8 @@ body::before {
 #intro-text {
   font-family: 'IM FELL ENGLISH SC', serif; /* Police d'introduction */
   font-size: 2.8em; /* Taille de la police de l'intro */
-  color: #B22222; /* Couleur rouge du texte */
-  text-shadow: 0 0 20px black; /* Ombre rouge autour du texte */
+  color: #e60000; /* Couleur rouge du texte */
+  text-shadow: 0 0 20px black; /* Ombre noir autour du texte */
   line-height: 1.6; /* Espacement entre les lignes */
   text-align: center; /* Centrer le texte */
   animation: fadeIntro 8s forwards; /* Animation de fondu */
@@ -90,16 +90,6 @@ body::before {
 @keyframes typingLine2 {
   to {
     width: 100%; /* Augmenter la largeur à 100% à la fin de l'animation */
-  }
-}
-
-/* v. Animation de fondu pour l'introduction */
-@keyframes fadeIntro {
-  0% {
-    opacity: 0; /* Initialement invisible */
-  }
-  100% {
-    opacity: 1; /* Devenir complètement visible */
   }
 }
 
