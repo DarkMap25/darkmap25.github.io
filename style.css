@@ -461,16 +461,10 @@ footer p:not(:first-child) {
 
 /* === III.2.2 Style pour la légende sans ombre et coins arrondis === */
 .info.legend {
-  color: #000000;  /* Texte violet foncé */
+  color: #60000;  /* Texte rouge */
   padding: 0px;  /* Espace interne autour du texte */
   font-size: 8px;  /* Taille du texte */
   line-height: 0.8;  /* Hauteur de ligne pour améliorer la lisibilité */
-/* Contour violet net autour du texte */
-  text-shadow:
-    -1px -1px 0 #e6ccff,
-     1px -1px 0 #e6ccff,
-    -1px  1px 0 #e6ccff,
-     1px  1px 0 #e6ccff;
 }
 
 /* i. Style pour chaque élément de la légende */
