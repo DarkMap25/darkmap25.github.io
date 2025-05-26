@@ -167,7 +167,7 @@ header .tagline {
   margin: 1vh auto 1vh;
   /* Ajuste la hauteur pour toujours faire 70vh visibles */
   height: calc(var(--map-height) - 2vh);
-  width: 80vw;
+  width: 90vw;
   border-radius: 20px;
   box-shadow: 0 0 50px #e60000;
   z-index: 1;
@@ -232,9 +232,9 @@ footer p:not(:first-child) {
 
 /* ii. Le texte à l’intérieur */
 .custom-popup .leaflet-popup-content {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 0.8em;                 /* ajuste la taille du texte */
-  line-height: 1.2;               /* espacement des lignes */
+  font-family: 'Im Fell English SC', serif;
+  font-size: 1.0em;                 /* ajuste la taille du texte */
+  line-height: 1.0;               /* espacement des lignes */
   color: #f0f0f0;                 /* texte clair */
   margin: 0;
 }
@@ -263,7 +263,7 @@ footer p:not(:first-child) {
 /* === II.1.2 Scroll PopUP === */
 .custom-popup .leaflet-popup-content {
   overflow-y: auto;    /* autorise le scroll vertical */
-  overflow-x: hidden;  /* interdit le scroll horizontal */
+  overflow-x: auto;  /* interdit le scroll horizontal */
   /* facultatif : pour une barre plus discrète */
   scrollbar-width: thin;       /* Firefox */
   scrollbar-color: #e60000 transparent;
@@ -518,10 +518,9 @@ footer p:not(:first-child) {
 
   /* i. Carte : hauteur réduite, centrée et coins arrondis */
   #map {
-    height: 60vh;
-    max-width: 80%;
+    height: 66vh;
+    max-width: 90%;
     margin: 0 auto;
-    border-radius: 5px;
   }
 
   /* ii. Titre principal : taille réduite */
@@ -531,13 +530,13 @@ footer p:not(:first-child) {
 
   /* iii. Texte d’introduction : taille réduite et marges ajustées */
   .intro {
-    font-size: 0.6em;
+    font-size: 0.8em;
     margin: 20px auto;
   }
 
   /* iv. Conteneur de l’intro : taille de police encore plus petite */
   #intro-text {
-    font-size: 0.5em;
+    font-size: 1.0em;
   }
 
   /* v. Popups Leaflet : largeur et typographie adaptées */
@@ -546,8 +545,8 @@ footer p:not(:first-child) {
   }
   .leaflet-popup-content,
   .leaflet-popup-content * {
-    font-size: 12px !important;
-    line-height: 1.2 !important;
+    font-size: 1.0em !important;
+    line-height: 1.0 !important;
   }
 }
 
@@ -563,11 +562,9 @@ footer p:not(:first-child) {
 
   /* ii. Carte : largeur fixe, sans ombre pour alléger l’affichage */
   #map {
-    height: 60vh;
-    width: 80%;
+    height: 66vh;
+    width: 90%;
     margin: 0 auto;
-    border-radius: 5px;
-    box-shadow: none;
   }
 
   /* iv. Titre principal : même taille que pour 768px */
@@ -582,7 +579,7 @@ footer p:not(:first-child) {
 
   /* vi. Conteneur de l’intro : taille minimale */
   #intro-text {
-    font-size: 0.3em;
+    font-size: 1.0em;
   }
 
   /* vii. Popups Leaflet : largeur et typographie pour petits écrans */
