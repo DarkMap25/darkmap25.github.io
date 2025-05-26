@@ -203,6 +203,7 @@ footer {
   margin: 0 auto;                  /* centré dans la page */
   text-align: center;              /* centrage du texte */
   padding: 2px;                    /* espacement interne */
+  font-family: 'IM FELL ENGLISH SC', serif;
   font-size: var(--footer-font-size);                /* taille de la police */
   line-height: 0.8;                  /* interligne */
   color: #E0FFFF;                  /* couleur du texte */
@@ -469,7 +470,7 @@ footer p:not(:first-child) {
 .info.legend {
   color: #e60000;  /* Texte rouge */
   padding: 0px;  /* Espace interne autour du texte */
-  font-size: 8px;  /* Taille du texte */
+  font-size: 16px;  /* Taille du texte */
   line-height: 0.8;  /* Hauteur de ligne pour améliorer la lisibilité */
 }
 
@@ -482,13 +483,13 @@ footer p:not(:first-child) {
 
 /* ii. Style pour l'emoji dans la légende */
 .legend-item .emoji {
-  font-size: 10px;
+  font-size: 16px;
   margin-right: 2px;
 }
 
 /* iii. Style pour le nom de la catégorie */
 .legend-item .category-name {
-  font-size: 8px;
+  font-size: 16px;
   font-weight: bold;
 }
 
