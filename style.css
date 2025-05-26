@@ -105,7 +105,7 @@ body::before {
   --footer-height:  2vh;
 
   /* typographies & couleurs */
-  --header-h1-font-size:      4em;
+  --header-h1-font-size:      6em;
   --header-h1-color:          #e60000;
   --header-h1-shadow:         0 0 6px #000000;
   --header-tagline-font-size: 1.2em;
@@ -152,7 +152,7 @@ header h1 {
 header .tagline {
   margin: 0;
   font-size: var(--header-tagline-font-size);
-  color: var(--header-h1-color);
+  color: #FFFFE0;
   text-shadow: var(--header-h1-shadow);
   font-family: 'IM FELL ENGLISH SC', serif;
   font-weight: 700;
