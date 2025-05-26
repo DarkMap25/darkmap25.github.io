@@ -233,7 +233,7 @@ footer p:not(:first-child) {
 /* ii. Le texte à l’intérieur */
 .custom-popup .leaflet-popup-content {
   font-family: 'Im Fell English SC', serif;
-  font-size: 1.0em;                 /* ajuste la taille du texte */
+  font-size: 1.5em;                 /* ajuste la taille du texte */
   line-height: 1.0;               /* espacement des lignes */
   color: #FFFFE0;                 /* texte clair */
   margin: 0;
@@ -247,12 +247,12 @@ footer p:not(:first-child) {
 /* iv. Titre du popup (le <strong> dans popupContent) */
 .custom-popup .leaflet-popup-content strong {
   display: block;             /* pour prendre toute la largeur */
-  font-size: 1.2em;           /* légèrement plus gros */
+  font-size: 1.5em;           /* légèrement plus gros */
   font-weight: bold;          /* bien en gras */
   text-decoration: underline; /* souligné */
   color: #e60000;             /* rouge DarkMap */
   text-align: center;         /* centré */
-  margin-bottom: 0.1em;       /* petit espace sous le titre */
+  margin-bottom: 0em;       /* petit espace sous le titre */
 }
 
 /* v. Forcer les popups devant les contrôles Leaflet */
@@ -394,6 +394,7 @@ footer p:not(:first-child) {
   align-items: center !important;
   cursor: pointer;
   color: inherit !important;
+  z-index: 1000 !important;
 }
 
 .leaflet-control-layers-toggle::before {
