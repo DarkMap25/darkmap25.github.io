@@ -255,6 +255,11 @@ footer p:not(:first-child) {
   margin-bottom: 0.1em;       /* petit espace sous le titre */
 }
 
+/* v. Forcer les popups devant les contrôles Leaflet */
+.leaflet-popup-pane {
+  z-index: 10000 !important;
+}
+
 /* === II.1.2 Scroll PopUP === */
 .custom-popup .leaflet-popup-content {
   overflow-y: auto;    /* autorise le scroll vertical */
