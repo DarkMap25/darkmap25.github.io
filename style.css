@@ -108,9 +108,9 @@ body::before {
   --header-h1-font-size:      4em;
   --header-h1-color:          #e60000;
   --header-h1-shadow:         0 0 6px #000000;
-  --header-tagline-font-size: 1.3em;
+  --header-tagline-font-size: 1.2em;
   --intro-font-size:          0.8em;
-  --footer-font-size:         0.3em;
+  --footer-font-size:         0.6em;
 }
 
 /* === I.3.2 Mise en page flex-colonne full viewport === */
@@ -182,7 +182,7 @@ header .tagline {
   padding: 0 10px;
   font-family: 'IM FELL ENGLISH SC', serif;
   font-weight: 700;
-  color: #f0f0f0;
+  color: #FFFFE0;
   font-size: var(--intro-font-size);
   text-shadow: var(--header-h1-shadow);
   line-height: 1;
@@ -203,9 +203,9 @@ footer {
   margin: 0 auto;                  /* centré dans la page */
   text-align: center;              /* centrage du texte */
   padding: 2px;                    /* espacement interne */
-  font-size: 0.4em;                /* taille de la police */
-  line-height: 1;                  /* interligne */
-  color: #f0f0f0;                  /* couleur du texte */
+  font-size: var(--footer-font-size);                /* taille de la police */
+  line-height: 0.8;                  /* interligne */
+  color: #E0FFFF;                  /* couleur du texte */
   text-shadow: var(--header-h1-shadow);
 }
 
@@ -235,7 +235,7 @@ footer p:not(:first-child) {
   font-family: 'Im Fell English SC', serif;
   font-size: 1.0em;                 /* ajuste la taille du texte */
   line-height: 1.0;               /* espacement des lignes */
-  color: #f0f0f0;                 /* texte clair */
+  color: #FFFFE0;                 /* texte clair */
   margin: 0;
 }
 
