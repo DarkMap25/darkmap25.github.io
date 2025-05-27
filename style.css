@@ -365,6 +365,18 @@ footer a#mentionsLink:active {
 
 /* === II.3.1 SOUMETTRE === */
 
+/* === submitPanel : overlay plein écran au-dessus de tout === */
+#submitPanel {
+  position: fixed;      /* sort du flux et colle à la fenêtre */
+  top: 0; left: 0;
+  width: 100vw;         /* pleine largeur de la fenêtre */
+  height: 100vh;        /* pleine hauteur de la fenêtre */
+  background: #000;     /* ou rgba() si tu veux de la transparence */
+  overflow-y: auto;     /* scroll interne si besoin */
+  z-index: 10000;       /* au-dessus de tous tes éléments */
+  display: none;        /* caché tant que .visible n’est pas présent */
+}
+
 /* i. Cache tout panel qui a la classe .hidden */
 #submitPanel.hidden {
   display: none;
@@ -373,6 +385,25 @@ footer a#mentionsLink:active {
 /* ii. Affiche-le seulement quand il reçoit la classe .visible */
 #submitPanel.visible {
   display: block;  
+}
+
+/* iii. Croix de fermeture */
+#closesubmitPanel {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #900;
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 2001;
+}
+#submitPanel.visible #closesubmitPanel {
+  display: block;
 }
 
 /* === PARTIE III / PERSONNALISATION BOUTONS / STYLES === */
@@ -456,6 +487,7 @@ footer a#mentionsLink:active {
 }
 
 /* === III.1.4 PERSONNALISATION DU BOUTON DE / FULLSCREEN / SOUMETTRE === */
+
 #randomButton {
     background-color: transparent !important;
     border: none !important;
@@ -503,29 +535,39 @@ footer a#mentionsLink:active {
     transform: scale(1.5);
 }
 
-/* i Assure-toi que la zone des contrôles peut déborder */
 .leaflet-control-container,
 .leaflet-bar {
   overflow: visible !important;
 }
 
 .submit-story-control {
-  width: 2.5em;                   /* largeur carrée */
-  height: 2.5em;                  /* hauteur carrée */
-  line-height: 2.5em;             /* centre verticalement l’émoji */
-  font-size: 1.2em;               /* ajuste la taille de l’emoji à l’intérieur */
-  text-align: center;             /* centre horizontalement */
-  transform-origin: center center;/* agrandissement centré */
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  cursor: pointer;
+  text-align: center !important;
+  font-size: 2.5em !important;
+  line-height: 1 !important;
+  color: inherit !important;
+  text-shadow: none !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
   transition: transform 0.2s ease;
-  margin-bottom: 2.7em;           /* pousse vers le haut au-dessus du plein écran */
+  
+  /* i. Remonte le parchemin juste au-dessus du fullscreen */
+  margin-bottom: 2.7em !important;
+}
+
+/* ii. Positionne-le en bas à droite comme le fullscreen */
+.leaflet-bottom.leaflet-right .submit-story-control {
+  margin-right: 0.5em !important;
 }
 
 .submit-story-control:hover {
   transform: scale(1.5);
-}
-
-.leaflet-bottom.leaflet-right .submit-story-control {
-  margin-right: 0.5em;            /* petit écart par rapport au bord */
 }
 
 /* === III.2 STYLES DIVERSES === */
