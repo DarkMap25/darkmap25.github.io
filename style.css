@@ -519,9 +519,6 @@ footer a#mentionsLink:active {
     background-color: transparent !important;
     border: none !important;
     padding: 0px !important;
-    position: absolute !important;
-    bottom: 1em !important;
-    right: 0.5em !important;    
     width: auto !important;
     height: auto !important;
     cursor: pointer;
@@ -541,46 +538,43 @@ footer a#mentionsLink:active {
     transform: scale(1.5);
 }
 
+/* === III.1.4 bis – Personnalisation de l’emoji 📜 en bas à droite === */
+
+/* 1) Autorise le débordement pour ne pas rogner la mise à l’échelle */
 .leaflet-control-container,
 .leaflet-bar {
   overflow: visible !important;
 }
 
-/* 1) On s’assure que le conteneur Leaflet est positionné pour accueillir des enfants en absolute */
-.leaflet-control-container {
-  position: relative;
+/* 2) Cible le conteneur bottom-right natif de Leaflet */
+.leaflet-bottom.leaflet-right {
+  display: block !important;   /* bloque le flex par défaut pour un stacking simple */
 }
 
-/* 2) Bouton plein écran : on fixe son bottom/right */
-#fullscreenButton {
-  position: absolute !important;
-  bottom: 0.5em !important;
-  right: 0.5em !important;
-}
-
-/* 3) Bouton soumettre (📜) : positionné au-dessus du fullscreen */
-.submit-story-control {
-  position: absolute !important;      /* sort du flux flex par défaut */
-  bottom: 4em !important;           /* ajuste pour qu’il soit 4em+ au-dessus */
-  right: 0.5em !important;            /* même right que le fullscreen */
-  width: auto !important;             /* reprend ton style existant */
-  height: auto !important;
-  font-size: 2.5em !important;
-  line-height: 1 !important;
-  background: transparent !important;
+/* 3) Style identique au fullscreenButton pour le contrôle submit-story */
+.leaflet-bottom.leaflet-right .submit-story-control {
+  background-color: transparent !important;
   border: none !important;
   padding: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  cursor: pointer;
+  text-align: center !important;
+  font-size: 2.5em !important;     /* même taille que 🎯, 🗺️, Random… */
+  line-height: 1 !important;
+  color: inherit !important;
+  text-shadow: none !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  cursor: pointer;
   transition: transform 0.2s ease;
+  margin-bottom: 0.3em !important; /* espace exactement identique avec fullscreen */
 }
 
-/* 4) Effet au survol (inchangé) */
-.submit-story-control:hover {
+/* 4) Hover = scale(1.5) */
+.leaflet-bottom.leaflet-right .submit-story-control:hover {
   transform: scale(1.5);
-} 
+}
 
 /* === III.2 STYLES DIVERSES === */
 
