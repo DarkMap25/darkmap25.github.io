@@ -247,68 +247,31 @@ document.getElementById("closeDetailPanel").addEventListener("click", function(e
 // II.4.1 Création du contrôle Leaflet “Soumettre une histoire” (emoji parchemin en bas à droite)
 L.Control.SubmitStory = L.Control.extend({
   onAdd: function() {
-    // Création du bouton et définition des attributs
     const btn = L.DomUtil.create('a', 'leaflet-bar leaflet-control submit-story-control');
     btn.innerHTML = '📜';
     btn.title = 'Soumettre une histoire';
     btn.href = '#';
-    // Empêche le comportement par défaut et ouvre le panneau dédié
     L.DomEvent.on(btn, 'click', function(e) {
       L.DomEvent.stop(e);
       openSubmitPanel();
     });
     return btn;
   },
-  onRemove: function() {
-    // Aucun nettoyage nécessaire
-  }
+  onRemove: function() {}
 });
-
-// Ajout du contrôle à la carte en bas à droite
-L.control.submitStory = function(opts) {
-  return new L.Control.SubmitStory(opts);
-};
+L.control.submitStory = function(opts) { return new L.Control.SubmitStory(opts); };
 L.control.submitStory({ position: 'bottomright' }).addTo(map);
 
-
-// II.4.2 Fonction d’ouverture du panneau de soumission (utilise submitPanel)
+// II.4.2 Fonction d’ouverture du panneau de soumission (utilise le form inline)
 function openSubmitPanel() {
-  // Masque la carte pour afficher le panneau de soumission
+  // Masque la carte
   document.getElementById('map').style.display = 'none';
-  const panel = document.getElementById('submitPanel');
-  panel.classList.add('visible', 'full-view');
-
-  // Charge dynamiquement le contenu du formulaire depuis submit-story.html
-  fetch('submit-story.html')
-    .then(response => response.text())
-    .then(html => {
-      // Injecte le HTML du formulaire dans le conteneur
-      const container = document.getElementById('submitContent');
-      container.innerHTML = html;
-
-      // II.4.3 Branche le listener pour l’envoi du formulaire une fois injecté
-      const form = document.getElementById('storyForm');
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        // Récupère les valeurs du formulaire
-        const data = new FormData(form);
-        const body =
-          `Titre: ${data.get('title')}\n\n` +
-          `Clés: ${data.get('details')}\n\n` +
-          `Email: ${data.get('email')}`;
-        // Ouvre le client mail pour envoyer les données
-        window.location.href =
-          `mailto:darkmap.fr@gmail.com?subject=Nouvelle histoire&body=${encodeURIComponent(body)}`;
-      });
-    })
-    .catch(() => {
-      // Affiche un message d’erreur si le fetch échoue
-      document.getElementById('submitContent').innerHTML =
-        '<p>Impossible de charger le formulaire.</p>';
-    });
+  // Affiche le panel de soumission
+  document.getElementById('submitPanel')
+          .classList.add('visible', 'full-view');
 }
 
-// II.4.4 Liaison du lien "suggérer des lieux" dans l'intro pour ouvrir le panneau
+// II.4.3 Liaison du lien "suggérer des lieux" dans l'intro
 const submitLink = document.getElementById('submitLink');
 if (submitLink) {
   submitLink.addEventListener('click', function(e) {
@@ -317,14 +280,33 @@ if (submitLink) {
   });
 }
 
-// II.4.5 Gestion du bouton de fermeture du panneau de soumission (✖)
-document.getElementById('closeSubmitPanel').addEventListener('click', function(e) {
-  e.preventDefault();
-  // Réaffiche la carte
-  document.getElementById('map').style.display = 'block';
-  // Cache le panneau de soumission
-  document.getElementById('submitPanel').classList.remove('visible', 'full-view');
-});
+// II.4.4 Branche le listener du formulaire UNE SEULE FOIS au chargement
+const storyForm = document.getElementById('storyForm');
+if (storyForm) {
+  storyForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const data = new FormData(storyForm);
+    const body =
+      `Titre: ${data.get('title')}\n\n` +
+      `Clés: ${data.get('details')}\n\n` +
+      `Email: ${data.get('email')}`;
+    window.location.href =
+      `mailto:darkmap.fr@gmail.com?subject=Nouvelle histoire&body=${encodeURIComponent(body)}`;
+  });
+}
+
+// II.4.5 Gestion du bouton de fermeture du panel de soumission (✖)
+const closeSubmit = document.getElementById('closeSubmitPanel');
+if (closeSubmit) {
+  closeSubmit.addEventListener('click', function(e) {
+    e.preventDefault();
+    // Réaffiche la carte
+    document.getElementById('map').style.display = 'block';
+    // Cache le panel
+    document.getElementById('submitPanel')
+            .classList.remove('visible', 'full-view');
+  });
+}
 
 // === PARTIE III / BOUTONS ET ACTIONS === //
 
