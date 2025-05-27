@@ -246,7 +246,7 @@ footer a#mentionsLink:active {
   text-decoration: underline !important; /* toujours souligné */
 }
   
-/* === PARTIE II / POP-UP / PANNEAU === */
+/* === PARTIE II / POP-UP / PANNEAU / SOUMETTRE === */
 
 /* === II.1.1 Adaptation des popups Leaflet === */
 /* i. Le conteneur de la popup */
@@ -361,6 +361,18 @@ footer a#mentionsLink:active {
 }
 #detailPanel.visible #closeDetailPanel {
   display: block;
+}
+
+/* === II.3.1 SOUMETTRE === */
+
+/* i. Cache tout panel qui a la classe .hidden */
+#submitPanel.hidden {
+  display: none;
+}
+
+/* ii. Affiche-le seulement quand il reçoit la classe .visible */
+#submitPanel.visible {
+  display: block;  
 }
 
 /* === PARTIE III / PERSONNALISATION BOUTONS / STYLES === */
