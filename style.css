@@ -443,7 +443,7 @@ footer a#mentionsLink:active {
   font-size: inherit;
 }
 
-/* === III.1.4 PERSONNALISATION DU BOUTON DE === */
+/* === III.1.4 PERSONNALISATION DU BOUTON DE / FULLSCREEN / SOUMETTRE === */
 #randomButton {
     background-color: transparent !important;
     border: none !important;
@@ -489,6 +489,31 @@ footer a#mentionsLink:active {
 
 #fullscreenButton:hover {
     transform: scale(1.5);
+}
+
+/* i Assure-toi que la zone des contrôles peut déborder */
+.leaflet-control-container,
+.leaflet-bar {
+  overflow: visible !important;
+}
+
+.submit-story-control {
+  width: 2.5em;                   /* largeur carrée */
+  height: 2.5em;                  /* hauteur carrée */
+  line-height: 2.5em;             /* centre verticalement l’émoji */
+  font-size: 1.2em;               /* ajuste la taille de l’emoji à l’intérieur */
+  text-align: center;             /* centre horizontalement */
+  transform-origin: center center;/* agrandissement centré */
+  transition: transform 0.2s ease;
+  margin-bottom: 2.7em;           /* pousse vers le haut au-dessus du plein écran */
+}
+
+.submit-story-control:hover {
+  transform: scale(1.5);
+}
+
+.leaflet-bottom.leaflet-right .submit-story-control {
+  margin-right: 0.5em;            /* petit écart par rapport au bord */
 }
 
 /* === III.2 STYLES DIVERSES === */
