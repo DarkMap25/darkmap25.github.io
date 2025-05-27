@@ -228,9 +228,14 @@ footer p:not(:first-child) {
   margin-top: 0.4em;               /* espacement entre chaque paragraphe */
 }
 
-/* ii. Style du lien non-visité dans le footer */
-footer a:link {
-  color: #E0FFFF;           /* couleur souhaitée pour les liens classiques */
+/* ii. Mentions légales : couleur fixe, gras et souligné pour tous les états */
+footer a#mentionsLink,
+footer a#mentionsLink:visited,
+footer a#mentionsLink:hover,
+footer a#mentionsLink:active {
+  color: #E0FFFF !important;        /* même couleur que le footer */
+  font-weight: bold !important;     /* toujours en gras */
+  text-decoration: underline !important; /* toujours souligné */
 }
   
 /* === PARTIE II / POP-UP / PANNEAU === */
@@ -278,15 +283,18 @@ footer a:link {
     1px 1px 0px rgba(255, 255, 224, 1);    /* ombre nette opaque */
 }
 
-/* v. Forcer les popups devant les contrôles Leaflet */
-.leaflet-popup-pane {
-  z-index: 10000 !important;
+/* v. Style spécifique pour le lien “Voir plus” dans les popups */
+.custom-popup .voir-plus {
+  color: #e60000 !important;       /* même rouge vif que le reste */
+  font-weight: bold !important;    /* gras */
+  text-decoration: underline !important; /* toujours souligné */
+  text-shadow: none !important;    /* supprime l’ombre héritée */
 }
 
 /* === II.1.2 Scroll PopUP === */
 .custom-popup .leaflet-popup-content {
   overflow-y: auto;    /* autorise le scroll vertical */
-  overflow-x: auto;  /* interdit le scroll horizontal */
+  overflow-x: auto;  /* le scroll horizontal */
   /* facultatif : pour une barre plus discrète */
   scrollbar-width: thin;       /* Firefox */
   scrollbar-color: #e60000 transparent;
