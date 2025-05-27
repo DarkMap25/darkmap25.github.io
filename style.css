@@ -202,6 +202,14 @@ header .tagline {
     1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
 }  
 
+/* lien “suggérer des lieux” dans l’intro */
+.intro-submit {
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #FFFFE0; /* ou autre couleur DarkMap */
+}
+
 /* === I.3.5 Styles globaux du footer : largeur, centrage et décor === */
 footer {
   display: flex;                   /* mise en page en colonne flex */
@@ -515,7 +523,7 @@ footer a#mentionsLink:active {
   padding: 0px;  /* Espace interne autour du texte */
   font-size: 16px;  /* Taille du texte */
   font-family: 'Im Fell English SC', serif;
-  line-height: 0.8;  /* Hauteur de ligne pour améliorer la lisibilité */
+  line-height: 1.0;  /* Hauteur de ligne pour améliorer la lisibilité */
     text-shadow: 
     0px 0px 4px rgba(230, 0, 0, 0.8),          /* halo diffus rouge vif */
     1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
