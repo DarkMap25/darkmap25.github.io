@@ -271,6 +271,7 @@ footer a:link {
   text-decoration: underline; /* souligné */
   color: #e60000;             /* rouge DarkMap */
   text-align: center;         /* centré */
+  text-transform: uppercase; /* transforme en majuscule */
   margin-bottom: 0em;       /* petit espace sous le titre */
     text-shadow:
     0px 0px 4px rgba(255, 255, 224, 0.8),  /* halo diffus semi-transparent */
@@ -363,7 +364,7 @@ footer a:link {
   height: auto !important; /* Ajuster la hauteur au contenu */
   cursor: pointer; /* Curseur "main" */
   text-align: center !important; /* Centrer l'emoji */
-  overflow: hidden !important; /* Empêcher débordement */
+  overflow: visible !important; /* Empêcher débordement */
   display: flex !important; /* Utiliser flex pour centrer */
   justify-content: center !important; /* Centrage horizontal */
   align-items: center !important; /* Centrage vertical */
@@ -372,7 +373,7 @@ footer a:link {
 .leaflet-control-locate .leaflet-bar-part-single {
   background-color: transparent !important;
   border: none !important;
-  padding: 5px !important; /* Un peu de padding pour l'interaction */
+  padding: 0px !important; /* Un peu de padding pour l'interaction */
   width: auto !important;
   height: auto !important;
   cursor: pointer;
@@ -397,9 +398,6 @@ footer a:link {
   text-align: center !important; /* S'assurer que l'emoji est centré */
   transition: transform 0.2s ease;  /* Animation douce */  
   /* On ne définit pas de couleur ici, on hérite de celle de l'élément <a> */
-      text-shadow: 
-    0px 0px 4px rgba(230, 0, 0, 0.8),          /* halo diffus rouge vif */
-    1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
 }
 
 .leaflet-control-locate .leaflet-bar-part-single:hover::before {
@@ -413,7 +411,7 @@ footer a:link {
   width: auto !important;
   height: auto !important;
   border: none !important;
-  font-size: 3.5em !important;
+  font-size: 2.5em !important;
   line-height: 1 !important;
   display: flex !important;
   justify-content: center !important;
@@ -421,9 +419,6 @@ footer a:link {
   cursor: pointer;
   color: inherit !important;
   z-index: 1000 !important;
-      text-shadow: 
-    0px 0px 4px rgba(230, 0, 0, 0.8),          /* halo diffus rouge vif */
-    1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
 }
 
 .leaflet-control-layers-toggle::before {
@@ -436,7 +431,7 @@ footer a:link {
 #randomButton {
     background-color: transparent !important;
     border: none !important;
-    padding: 5px !important;
+    padding: 0px !important;
     width: auto !important;
     height: auto !important;
     cursor: pointer;
@@ -451,9 +446,6 @@ footer a:link {
     /* Suppression de la marge ici, le positionnement se fera via Leaflet */
     overflow: visible !important; /* 🔥 empêche le rognage */
     transition: transform 0.2s ease; /* Ajout de la transition pour l'effet au survol */
-      text-shadow: 
-    0px 0px 4px rgba(230, 0, 0, 0.8),          /* halo diffus rouge vif */
-    1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
 }
 
 #randomButton:hover {
@@ -463,7 +455,7 @@ footer a:link {
 #fullscreenButton {
     background-color: transparent !important;
     border: none !important;
-    padding: 5px !important;
+    padding: 0px !important;
     width: auto !important;
     height: auto !important;
     cursor: pointer;
@@ -477,9 +469,6 @@ footer a:link {
     align-items: center !important;
     overflow: visible !important;
     transition: transform 0.2s ease;
-      text-shadow: 
-    0px 0px 4px rgba(230, 0, 0, 0.8),          /* halo diffus rouge vif */
-    1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
 }
 
 #fullscreenButton:hover {
