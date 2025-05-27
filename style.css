@@ -474,6 +474,18 @@ footer a:link {
   color: inherit; /* Couleur héritée du parent */
 }
 
+/* i. On vise le conteneur de l’emoji et on prépare une transition fluide */
+.emoji-marker {
+  display: inline-block;           /* nécessaire pour que transform fonctionne correctement */
+  transform-origin: center center; /* pivote et agrandit depuis le centre */
+  transition: transform 0.2s ease; /* lissage de l’animation */
+}
+
+/* ii. Au survol, on augmente la taille à 1.5× */
+.emoji-marker:hover {
+  transform: scale(1.5);
+}
+
 /* === III.2.2 Style pour la légende sans ombre et coins arrondis === */
 .info.legend {
   color: #FFFFE0;  /* Couleur */
