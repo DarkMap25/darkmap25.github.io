@@ -371,8 +371,11 @@ footer a#mentionsLink:active {
   top: 0; left: 0;
   width: 100vw;         /* pleine largeur de la fenêtre */
   height: 100vh;        /* pleine hauteur de la fenêtre */
-  background: #000;     /* ou rgba() si tu veux de la transparence */
-  overflow-y: auto;     /* scroll interne si besoin */
+  background-image: url('./icons/submit.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: auto; 
   z-index: 10000;       /* au-dessus de tous tes éléments */
   display: none;        /* caché tant que .visible n’est pas présent */
 }
