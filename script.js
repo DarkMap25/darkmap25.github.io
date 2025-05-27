@@ -55,7 +55,7 @@ window.addEventListener("load", () => {
   }
 });
 
-// === PARTIE II / EMOJIS / POP-UP / VOIR PLUS === //
+// === PARTIE II / EMOJIS / POP-UP / VOIR PLUS / SOUMETTRE === //
 
 // II.1.1 Définition des emojis par catégorie
 const emojiParCategorie = {
@@ -164,7 +164,7 @@ function createLegend() {
 }
 createLegend();
 
-// III.3.1 Handler pour ouvrir le panneau "Voir plus"
+// II.3.1 Handler pour ouvrir le panneau "Voir plus"
 document.addEventListener("click", function(e) {
   if (!e.target.classList.contains("voir-plus")) return;
   e.preventDefault();
@@ -218,7 +218,7 @@ document.addEventListener("click", function(e) {
   // (le CSS fera apparaître automatiquement #closeDetailPanel via #detailPanel.visible)
 });
 
-// III.3.2 Handler pour fermer le panneau (croix)
+// II.3.2 Handler pour fermer le panneau (croix)
 document.getElementById("closeDetailPanel").addEventListener("click", function(e) {
   e.preventDefault();
   e.stopPropagation();
@@ -242,6 +242,62 @@ document.getElementById("closeDetailPanel").addEventListener("click", function(e
     map.setView(window._prevMapView.center, window._prevMapView.zoom, { animate: false });
     delete window._prevMapView;
   }
+});
+
+// II.4.1 Définition du contrôle “Soumettre une histoire”
+L.Control.SubmitStory = L.Control.extend({
+  onAdd: () => {
+    const btn = L.DomUtil.create('a', 'leaflet-bar leaflet-control submit-story-control');
+    btn.innerHTML = '📜';
+    btn.title = 'Soumettre une histoire';
+    btn.href = '#';
+    L.DomEvent.on(btn, 'click', e => {
+      L.DomEvent.stop(e);
+      openSubmitPanel();  // la fonction qu’on va créer en 3.
+    });
+    return btn;
+  },
+  onRemove: () => {}
+});
+L.control.submitStory = opts => new L.Control.SubmitStory(opts);
+L.control.submitStory({ position: 'bottomright' }).addTo(map);
+
+//II.4.2 Fonction générique d’ouverture de panneau avec chargement d’une URL
+function openSubmitPanel() {
+  // Masquer la map et afficher le panneau
+  document.getElementById('map').style.display = 'none';
+  const panel = document.getElementById('detailPanel');
+  panel.classList.add('visible', 'full-view');
+  
+  // i. Charger le contenu du formulaire
+  fetch('submit-story.html')
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById('detailContent').innerHTML = html;
+      // Si ton formulaire a besoin d’un listener pour le “submit”, tu le branches ici.
+    })
+    .catch(() => {
+      document.getElementById('detailContent').innerHTML = 
+        '<p>Impossible de charger le formulaire.</p>';
+    });
+}
+
+  // ii. Liaison du lien dans l’intro
+  document.getElementById('submitLink').addEventListener('click', e => {
+    e.preventDefault();
+    openSubmitPanel();
+});
+
+// II.4.3 ENVOIE LES HISTOIRES PAR MAIL
+
+document.getElementById('storyForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const form = new FormData(e.target);
+  const body = 
+    `Titre: ${form.get('title')}\n\n` +
+    `Clés: ${form.get('details')}\n\n` +
+    `Email: ${form.get('email')}`;
+  window.location.href = `mailto:darkmap.fr@gmail.com?subject=Nouvelle histoire&body=${encodeURIComponent(body)}`;
 });
 
 // === PARTIE III / BOUTONS ET ACTIONS === //
