@@ -22,8 +22,8 @@ const thunderforestAtlasLayer = L.tileLayer(
 
 // I.3 Définition des limites géographiques (France métropolitaine + Corse)
 const franceBounds = L.latLngBounds(
-  L.latLng(40, -12),
-  L.latLng(60, 16)
+  L.latLng(40, -17),
+  L.latLng(65, 21)
 );
 
 // I.4 Initialisation de la carte avec le calque sombre par défaut
@@ -92,8 +92,8 @@ const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
     minWidth: 200,              // largeur minimale
     maxWidth: 600,              // largeur maximale
     maxHeight: 300,             // hauteur max avec scroll interne
-    autoPan: false,
-    keepInView: false
+    autoPan: true,
+    keepInView: true
   });
 
   // II.2.2 Abaissement du Pop-Up
