@@ -164,7 +164,7 @@ header .tagline {
 
 #map {
   /* Petit espace au-dessus et en-dessous pour respirer */
-  margin: 1vh auto 1vh;
+  margin: 2vh auto 0vh;
   /* Ajuste la hauteur pour toujours faire 70vh visibles */
   height: calc(var(--map-height) - 2vh);
   width: 90vw;
@@ -191,6 +191,8 @@ header .tagline {
   /* retours à la ligne automatiques */
   white-space: normal;
   overflow: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }  
 
 /* === I.3.5 Styles globaux du footer : largeur, centrage et décor === */
