@@ -223,7 +223,7 @@ footer p:not(:first-child) {
 
 /* ii. Style du lien non-visité dans le footer */
 footer a:link {
-  color: #FFFFE0;           /* couleur souhaitée pour les liens classiques */
+  color: #E0FFFF;           /* couleur souhaitée pour les liens classiques */
 }
   
 /* === PARTIE II / POP-UP / PANNEAU === */
