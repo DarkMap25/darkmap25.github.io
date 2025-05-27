@@ -519,6 +519,9 @@ footer a#mentionsLink:active {
     background-color: transparent !important;
     border: none !important;
     padding: 0px !important;
+    position: absolute !important;
+    bottom: 1em !important;
+    right: 0.5em !important;    
     width: auto !important;
     height: auto !important;
     cursor: pointer;
@@ -543,35 +546,41 @@ footer a#mentionsLink:active {
   overflow: visible !important;
 }
 
+/* 1) On s’assure que le conteneur Leaflet est positionné pour accueillir des enfants en absolute */
+.leaflet-control-container {
+  position: relative;
+}
+
+/* 2) Bouton plein écran : on fixe son bottom/right */
+#fullscreenButton {
+  position: absolute !important;
+  bottom: 0.5em !important;
+  right: 0.5em !important;
+}
+
+/* 3) Bouton soumettre (📜) : positionné au-dessus du fullscreen */
 .submit-story-control {
-  background-color: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  width: auto !important;
+  position: absolute !important;      /* sort du flux flex par défaut */
+  bottom: 4em !important;           /* ajuste pour qu’il soit 4em+ au-dessus */
+  right: 0.5em !important;            /* même right que le fullscreen */
+  width: auto !important;             /* reprend ton style existant */
   height: auto !important;
-  cursor: pointer;
-  text-align: center !important;
   font-size: 2.5em !important;
   line-height: 1 !important;
-  color: inherit !important;
-  text-shadow: none !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
+  cursor: pointer;
   transition: transform 0.2s ease;
-  
-  /* i. Remonte le parchemin juste au-dessus du fullscreen */
-  margin-bottom: 2.7em !important;
 }
 
-/* ii. Positionne-le en bas à droite comme le fullscreen */
-.leaflet-bottom.leaflet-right .submit-story-control {
-  margin-right: 0.5em !important;
-}
-
+/* 4) Effet au survol (inchangé) */
 .submit-story-control:hover {
   transform: scale(1.5);
-}
+} 
 
 /* === III.2 STYLES DIVERSES === */
 
