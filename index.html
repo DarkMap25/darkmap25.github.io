@@ -58,7 +58,9 @@
 <!-- Section d'introduction expliquant le projet -->
 <section class="intro">
   <p>
-    DarkMap est un site interactif qui recense les lieux les plus sombres et mystérieux de France. Chaque point sur la carte révèle un fragment d’un passé souvent oublié ou dérangeant. Ce projet collaboratif permet aux utilisateurs de suggérer des lieux, contribuant à documenter ces sites fascinants. Rejoignez-nous pour découvrir la France sous un autre angle, à travers ses secrets et ses drames.
+    DarkMap est un site interactif qui recense les lieux les plus sombres et mystérieux de France. Chaque point sur la carte révèle un fragment d’un passé souvent oublié ou dérangeant.
+    Ce projet collaboratif permet aux utilisateurs de <a href="#" id="submitLink" class="intro-submit">suggérer des lieux</a>, contribuant à documenter ces sites fascinants.
+    Rejoignez-nous pour découvrir la France sous un autre angle, à travers ses secrets et ses drames.
   </p>
 </section>
   
@@ -79,6 +81,24 @@
   <button id="closeDetailPanel">✖</button>
   <div id="detailContent"></div>
 </div>
+
+<!-- Soumettre une Histoire -->
+<h2>Soumettre une nouvelle histoire</h2>
+<form id="storyForm">
+  <label>
+    Titre de l’histoire  
+    <input type="text" name="title" required />
+  </label>
+  <label>
+    Détails / Clés à disposition  
+    <textarea name="details" rows="5" required></textarea>
+  </label>
+  <label>
+    Votre e-mail (optionnel)  
+    <input type="email" name="email" />
+  </label>
+  <button type="submit">Envoyer</button>
+</form>
   
 <!-- Inclusion du script JavaScript pour la logique de la carte et de l'animation -->
 <script src="script.js"></script>
