@@ -176,7 +176,7 @@ header .tagline {
 .intro {
   /* même largeur que la carte */
   width: 80vw;
-  margin: 1vh auto 0;        /* 1vh au-dessus */
+  margin: 0.1vh auto 0;        /* 1vh au-dessus */
   /* ton restyling */
   height: var(--intro-height);
   padding: 0 10px;
@@ -249,6 +249,7 @@ footer p:not(:first-child) {
 .custom-popup .leaflet-popup-content strong {
   display: block;             /* pour prendre toute la largeur */
   font-size: 1.5em;           /* légèrement plus gros */
+  font-family: 'Im Fell English SC', serif;
   font-weight: bold;          /* bien en gras */
   text-decoration: underline; /* souligné */
   color: #e60000;             /* rouge DarkMap */
@@ -471,6 +472,7 @@ footer p:not(:first-child) {
   color: #FFFFE0;  /* Couleur */
   padding: 0px;  /* Espace interne autour du texte */
   font-size: 16px;  /* Taille du texte */
+  font-family: 'Im Fell English SC', serif;
   line-height: 0.8;  /* Hauteur de ligne pour améliorer la lisibilité */
     text-shadow: 
     0px 0px 4px rgba(230, 0, 0, 0.8),          /* halo diffus rouge vif */
