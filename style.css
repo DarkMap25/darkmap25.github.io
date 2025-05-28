@@ -202,19 +202,29 @@ header .tagline {
     1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
 }  
 
+/* Assure-toi que l’intro ne masque pas le débordement */
+.intro {
+  overflow: visible !important;
+}
+
 /* lien “suggérer des lieux” dans l’intro */
 .intro-submit {
   font-family: 'IM FELL ENGLISH SC', serif;
   font-weight: 900;  
   text-decoration: underline;
   cursor: pointer;
-  color: #e60000; /* ou autre couleur DarkMap */
+  color: #e60000;
   text-shadow: none !important;
+
+  /* 👇 ajouté pour le scale */
+  display: inline-block;            /* permet au transform de changer la taille */
+  transform-origin: center center;  /* centre la mise à l’échelle */
+  transition: transform 0.2s ease;  /* rend l’animation fluide */
 }
 
 /* Au survol, on agrandit le lien à 1.5× */
 .intro-submit:hover {
-  transform: scale(1.5);           /* zoom 150 % */
+  transform: scale(1.5) !important; /* zoom 150 % */
 }
 
 /* === I.3.5 Styles globaux du footer : largeur, centrage et décor === */
