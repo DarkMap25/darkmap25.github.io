@@ -207,7 +207,8 @@ header .tagline {
   font-weight: bold;
   text-decoration: underline;
   cursor: pointer;
-  color: #FFFFE0; /* ou autre couleur DarkMap */
+  color: #e60000; /* ou autre couleur DarkMap */
+  text-shadow: none !important;
 }
 
 /* === I.3.5 Styles globaux du footer : largeur, centrage et décor === */
