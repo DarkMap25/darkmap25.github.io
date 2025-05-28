@@ -230,7 +230,7 @@ footer {
   font-family: 'IM FELL ENGLISH SC', serif;
   font-size: var(--footer-font-size);                /* taille de la police */
   line-height: 0.8;                  /* interligne */
-  color: #E0FFFF;                  /* couleur du texte */
+  color: #E6E6FA;                  /* couleur du texte */
   text-shadow: var(--header-h1-shadow);
 }
 
@@ -248,7 +248,7 @@ footer a#mentionsLink,
 footer a#mentionsLink:visited,
 footer a#mentionsLink:hover,
 footer a#mentionsLink:active {
-  color: #E0FFFF !important;        /* même couleur que le footer */
+  color: #E6E6FA !important;        /* même couleur que le footer */
   font-weight: bold !important;     /* toujours en gras */
   text-decoration: underline !important; /* toujours souligné */
 }
