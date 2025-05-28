@@ -93,7 +93,7 @@ const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
     maxWidth: 600,              // largeur maximale
     maxHeight: 300,             // hauteur max avec scroll interne
     autoPan: true,
-    keepInView: true
+    keepInView: false
   });
 
   // II.2.2 Abaissement du Pop-Up
