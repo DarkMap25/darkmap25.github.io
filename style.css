@@ -215,16 +215,7 @@ header .tagline {
   cursor: pointer;
   color: #e60000;
   text-shadow: none !important;
-
-  /* 👇 ajouté pour le scale */
-  display: inline-block;            /* permet au transform de changer la taille */
-  transform-origin: center center;  /* centre la mise à l’échelle */
   transition: transform 0.2s ease;  /* rend l’animation fluide */
-}
-
-/* Au survol, on agrandit le lien à 1.5× */
-.intro-submit:hover {
-  transform: scale(1.5) !important; /* zoom 150 % */
 }
 
 /* === I.3.5 Styles globaux du footer : largeur, centrage et décor === */
