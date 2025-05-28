@@ -627,11 +627,42 @@ footer a#mentionsLink:active {
   grid-column: 1 / -1;
 }
 
-/* Empêche le panneau de défiler */
+/* 1) On fixe le panel en full-screen */
 #submitPanel {
-  overflow: hidden !important;    /* Veille à ce que son contenu ne dépasse pas : */
-  max-height: 100vh;
-  height: 100vh;
+  position: fixed;       /* colle le panel à la fenêtre */
+  top: 0;
+  left: 0;
+  width: 100vw;          /* pleine largeur */
+  height: 100vh;         /* pleine hauteur */
+  overflow: hidden !important;
+  z-index: 10000;        /* au-dessus de tout */
+}
+
+/* 2) On positionne absolument le bouton Close dans ce panel */
+#closeSubmitPanel {
+  position: absolute;    /* par rapport à #submitPanel */
+  top: 1rem;             /* à 1rem du haut */
+  right: 1rem;           /* à 1rem du bord droit */
+  background-color: #900;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  z-index: 10001;        /* au-dessus du contenu du panel */
+}
+
+/* 3) (Optionnel) si tu veux un scroll interne pour le contenu */
+#submitContent {
+  position: absolute;
+  top: 3rem;             /* laisse de la place pour la croix */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: auto;      /* scroll vertical si nécessaire */
+  padding: 1rem;
 }
 
 /* Responsive : 1 colonne sous 768px */
