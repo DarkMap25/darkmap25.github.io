@@ -399,7 +399,7 @@ footer a#mentionsLink:active {
 }
 
 /* iii. Croix de fermeture */
-#closesubmitPanel {
+#closeSubmitPanel {
   display: none;
   position: fixed;
   top: 20px;
