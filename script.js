@@ -336,7 +336,7 @@ if (storyForm) {
 }
 
 // II.5.5 Gestion du bouton de fermeture du panel de soumission (✖)
-const closeSubmit = document.getElementById('closeSubmitPanel');
+const closeSubmit = document.getElementById('closesubmitPanel');
 if (closeSubmit) {
   closeSubmit.addEventListener('click', function(e) {
     e.preventDefault();
