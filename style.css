@@ -334,24 +334,6 @@ footer a#mentionsLink:active {
   display: none;
 }
 
-/* ii. Quand on l’ouvre (classes .visible + .full-view) */
-#detailPanel.visible.full-view {
-  display: block;
-  position: fixed;
-  inset: 0;           /* top/right/bottom/left = 0 */
-  z-index: 1000;
-  padding: 20px;
-  background-image: url('./icons/bureau.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: auto;
-  /* couleurs et polices Darkmap */
-  color: #e0d6cc;
-  font-family: 'Cormorant Garamond', serif;
-  text-shadow: 1px 1px 2px #000;
-}
-
 /* iii. Croix de fermeture */
 #closeDetailPanel {
   display: none;
@@ -413,7 +395,7 @@ footer a#mentionsLink:active {
   cursor: pointer;
   z-index: 2001;
 }
-#submitPanel.visible #closesubmitPanel {
+#submitPanel.visible #closeSubmitPanel {
   display: block;
 }
 
@@ -630,12 +612,21 @@ footer a#mentionsLink:active {
 /* 1) On fixe le panel en full-screen */
 #submitPanel {
   position: fixed;       /* colle le panel à la fenêtre */
-  top: 0;
+  background-image: url('./icons/bureau.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: auto;  top: 0;
   left: 0;
   width: 100vw;          /* pleine largeur */
   height: 100vh;         /* pleine hauteur */
   overflow: hidden !important;
   z-index: 10000;        /* au-dessus de tout */
+}
+
+/* Affiche le panel quand la classe .visible est appliquée */
+#submitPanel.visible {
+  display: block;
 }
 
 /* 2) On positionne absolument le bouton Close dans ce panel */
