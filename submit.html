@@ -7,15 +7,15 @@
 
 <form id="storyForm">
   <!-- Titre du récit -->
-  <p class="tagline">Quel est le titre de votre récit ?</p>
+  <p class="ask-submit">Quel est le titre de votre récit ?</p>
   <label>
     <input type="text" name="titre_recit" class="form-input"
-           placeholder="Ex. : Disparition dans la forêt de Fontainebleau"
+           placeholder="Titre"
            required />
   </label>
 
   <!-- Catégorie -->
-  <p class="tagline">Quelle est la catégorie ?<small>Si vous ne savez pas, cochez "Je ne sais pas"</small></p>
+  <p class="ask-submit">Quelle est la catégorie ?<small> Si vous ne savez pas, cochez "Je ne sais pas"</small></p>
   <label>
     <select name="categorie" class="form-input" required>
       <option value="">— Choisissez une catégorie —</option>
@@ -30,26 +30,26 @@
   </label>
 
   <!-- Lieu -->
-  <p class="tagline">
-    À quel endroit ?<small>Ville / Lieu / Coordonnées GPS (plus c’est précis, plus c’est riche)</small>
+  <p class="ask-submit">
+    "À quel endroit précis ce récit ténébreux a-t-il pris racine ? <small> Plus vous serez exact, plus l'écho de son histoire résonnera</small>
   </p>
   <label>
     <input type="text" name="lieu" class="form-input"
-           placeholder="Ex. : Forêt de Fontainebleau, Paris ou 48.4064, 2.7019"
+           placeholder="Coordonnées GPS / Adresse / Lieux / Ville"
            required />
   </label>
 
   <!-- Date libre -->
-  <p class="tagline">
-    À quelle date ou période ?<small>Optionnel, libre</small>
+  <p class="ask-submit">
+    À quelle date ou période ?<small> Optionnel</small>
   </p>
   <label>
     <input type="text" name="date_event" class="form-input"
-           placeholder="Ex. : 12 mai 1870 / fin XIXᵉ siècle" />
+           placeholder="Date"
   </label>
 
   <!-- Résumé libre -->
-  <p class="tagline">
+  <p class="ask-submit">
     Quelle histoire sombre se cache derrière ce lieu ?<br>
     Dites-nous pourquoi il mérite de rejoindre DarkMap.
   </p>
@@ -60,29 +60,29 @@
   </label>
 
   <!-- Liens dynamiques -->
-  <p class="tagline">
+  <p class="ask-submit">
     Devenez les archivistes de l'obscurité :  
-    <strong>partagez les sources et liens</strong>.  
-    <small>Optionnel</small>
+    <strong>partagez vos sources et liens</strong>.  
+    <small> Optionnel</small>
   </p>
   <div id="linksContainer">
     <label>
       <input type="url" name="liens[]" class="form-input"
-             placeholder="https://exemple.com/article" />
+             placeholder="https://" />
     </label>
   </div>
 
       <!-- Question Pseudo (optionnel) -->
-<p class="tagline">
-  Laissez votre nom hanter les pages de DarkMap (facultatif) :  
-  indiquez votre pseudo si vous souhaitez être crédité.
+<p class="ask-submit">
+  Laissez votre nom hanter les pages de DarkMap.<br>
+  Indiquez votre pseudo si vous souhaitez être crédité. <small> Optionnel</small>
 </p>
 <label>
   <input
     type="text"
     name="pseudo"
     class="form-input"
-    placeholder="Votre pseudo (facultatif)"
+    placeholder="Votre pseudo"
   />
 </label>
 
