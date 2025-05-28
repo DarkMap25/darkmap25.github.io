@@ -590,10 +590,8 @@ footer a#mentionsLink:active {
   font-family: 'IM Fell English SC', serif;   /* police immersive */
   font-weight: 700;                           /* gras */
   font-size: 1.6em;                           /* taille souhaitée */
-  color: #FFFFE0;                             /* couleur clair rappelant DarkMap */
-  text-shadow:
-    0px 0px 4px rgba(230, 0, 0, 0.8),         /* halo diffus rouge vif */
-    1px 1px 0px rgba(230, 0, 0, 1);            /* légère ombre nette */
+  color: #e60000;                             /* couleur clair rappelant DarkMap */
+  text-shadow:var(--header-h1-shadow);
   margin: 1em 0 0.5em;                        /* espacement vertical */
 }
 
