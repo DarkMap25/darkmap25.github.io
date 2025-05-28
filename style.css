@@ -154,7 +154,6 @@ header .tagline {
   margin: 0;
   font-size: var(--header-tagline-font-size);
   color: #FFFFE0;
-  text-shadow: var(--header-h1-shadow);
   font-family: 'IM FELL ENGLISH SC', serif;
   font-weight: 700;
   margin-top: 0;                /* plus de marge au-dessus de la tagline */
@@ -582,6 +581,20 @@ footer a#mentionsLink:active {
 /* 4) Hover = scale(1.5) */
 .leaflet-bottom.leaflet-right .submit-story-control:hover {
   transform: scale(1.5);
+}
+
+/* === III.1.5 STYLES SOUMETTRE === */
+
+/* Styles pour les questions du formulaire de soumission */
+.ask-submit {
+  font-family: 'IM Fell English SC', serif;   /* police immersive */
+  font-weight: 700;                           /* gras */
+  font-size: 1.6em;                           /* taille souhaitée */
+  color: #FFFFE0;                             /* couleur clair rappelant DarkMap */
+  text-shadow:
+    0px 0px 4px rgba(230, 0, 0, 0.8),         /* halo diffus rouge vif */
+    1px 1px 0px rgba(230, 0, 0, 1);            /* légère ombre nette */
+  margin: 1em 0 0.5em;                        /* espacement vertical */
 }
 
 /* === III.2 STYLES DIVERSES === */
