@@ -569,7 +569,7 @@ footer a#mentionsLink:active {
   justify-content: center !important;
   align-items: center !important;
   transition: transform 0.2s ease;
-  margin-bottom: 0.3em !important; /* espace exactement identique avec fullscreen */
+  margin-bottom: 0.5em !important; /* espace exactement identique avec fullscreen */
 }
 
 /* 4) Hover = scale(1.5) */
