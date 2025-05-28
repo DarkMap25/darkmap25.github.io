@@ -1,17 +1,93 @@
-      <!-- SUBMIT HTML -->
-      <h2>Soumettre une nouvelle histoire</h2>
-      <form id="storyForm">
-        <label>
-          Titre de l’histoire  
-          <input type="text" name="title" required />
-        </label>
-        <label>
-          Détails / Clés à disposition  
-          <textarea name="details" rows="5" required></textarea>
-        </label>
-        <label>
-          Votre e-mail (optionnel)  
-          <input type="email" name="email" />
-        </label>
-        <button type="submit">Envoyer</button>
-      </form>
+<!-- SUBMIT HTML -->
+
+<header>
+  <h1>darkmap</h1>
+  <p class="tagline">Les lieux oubliés n’attendent qu’une voix pour ressurgir.</p>
+</header>
+
+<form id="storyForm">
+  <!-- Titre du récit -->
+  <p class="tagline">Quel est le titre de votre récit ?</p>
+  <label>
+    <input type="text" name="titre_recit" class="form-input"
+           placeholder="Ex. : Disparition dans la forêt de Fontainebleau"
+           required />
+  </label>
+
+  <!-- Catégorie -->
+  <p class="tagline">Quelle est la catégorie ?<small>Si vous ne savez pas, cochez "Je ne sais pas"</small></p>
+  <label>
+    <select name="categorie" class="form-input" required>
+      <option value="">— Choisissez une catégorie —</option>
+      <option value="Affaires Non Résolues">❓ Affaires Non Résolues</option>
+      <option value="Crimes">☠️ Crimes</option>
+      <option value="Drames">⚰️ Drames</option>
+      <option value="Guerres et Conflits">🪖 Guerres et Conflits</option>
+      <option value="Lieux Abandonnés">🏰 Lieux Abandonnés</option>
+      <option value="Lieux Mystérieux">👁️ Lieux Mystérieux</option>
+      <option value="Inconnu">❔ Je ne sais pas</option>
+    </select>
+  </label>
+
+  <!-- Lieu -->
+  <p class="tagline">
+    À quel endroit ?<small>Ville / Lieu / Coordonnées GPS (plus c’est précis, plus c’est riche)</small>
+  </p>
+  <label>
+    <input type="text" name="lieu" class="form-input"
+           placeholder="Ex. : Forêt de Fontainebleau, Paris ou 48.4064, 2.7019"
+           required />
+  </label>
+
+  <!-- Date libre -->
+  <p class="tagline">
+    À quelle date ou période ?<small>Optionnel, libre</small>
+  </p>
+  <label>
+    <input type="text" name="date_event" class="form-input"
+           placeholder="Ex. : 12 mai 1870 / fin XIXᵉ siècle" />
+  </label>
+
+  <!-- Résumé libre -->
+  <p class="tagline">
+    Quelle histoire sombre se cache derrière ce lieu ?<br>
+    Dites-nous pourquoi il mérite de rejoindre DarkMap.
+  </p>
+  <label>
+    <textarea name="resume_interet" class="form-input" rows="6"
+              placeholder="Racontez librement…"
+              required></textarea>
+  </label>
+
+  <!-- Liens dynamiques -->
+  <p class="tagline">
+    Devenez les archivistes de l'obscurité :  
+    <strong>partagez les sources et liens</strong>.  
+    <small>Optionnel</small>
+  </p>
+  <div id="linksContainer">
+    <label>
+      <input type="url" name="liens[]" class="form-input"
+             placeholder="https://exemple.com/article" />
+    </label>
+  </div>
+
+      <!-- Question Pseudo (optionnel) -->
+<p class="tagline">
+  Laissez votre nom hanter les pages de DarkMap (facultatif) :  
+  indiquez votre pseudo si vous souhaitez être crédité.
+</p>
+<label>
+  <input
+    type="text"
+    name="pseudo"
+    class="form-input"
+    placeholder="Votre pseudo (facultatif)"
+  />
+</label>
+
+  <!-- Bouton d’envoi -->
+  <button type="button" id="submitStoryButton" class="form-submit-button">
+    Envoyer mon histoire
+  </button>
+</form>
