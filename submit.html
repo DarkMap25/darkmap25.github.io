@@ -12,14 +12,15 @@
       <p class="ask-submit">Quel est le titre de votre récit ?</p>
       <label>
         <input type="text" name="titre_recit" class="form-input"
-               placeholder="Titre"
+               placeholder="Titre" 
                required />
       </label>
     </div>
 
     <!-- Catégorie -->
     <div class="form-group">
-      <p class="ask-submit">Quelle est la catégorie ?<small> Si vous ne savez pas, cochez "Je ne sais pas"</small></p>
+      <p class="ask-submit">Quelle est la catégorie ?<br>
+        <small>Si vous ne savez pas, cochez "Je ne sais pas"</small></p>
       <label>
         <select name="categorie" class="form-input" required>
           <option value="">— Choisissez une catégorie —</option>
@@ -37,11 +38,12 @@
     <!-- Lieu -->
     <div class="form-group">
       <p class="ask-submit">
-       À quel endroit précis ce récit ténébreux a-t-il pris racine ? <small>Plus vous serez exact, plus l'écho de son histoire résonnera</small>
+       À quel endroit ce récit ténébreux a-t-il pris racine ?<br>
+        <small>Plus vous serez exact, plus l'écho de son histoire résonnera</small>
       </p>
       <label>
         <input type="text" name="lieu" class="form-input"
-               placeholder="Coordonnées GPS / Adresse / Lieu / Ville"
+               placeholder="Coordonnées GPS / Adresse / Lieu / Ville" 
                required />
       </label>
     </div>
@@ -49,7 +51,8 @@
     <!-- Date libre -->
     <div class="form-group">
       <p class="ask-submit">
-        À quelle date ou période ?<small> Optionnel</small>
+        À quelle date ou période ?<br>
+        <small>Optionnel</small>
       </p>
       <label>
         <input type="text" name="date_event" class="form-input"
@@ -60,12 +63,11 @@
     <!-- Résumé libre -->
     <div class="form-group" style="grid-column: 1 / -1;">
       <p class="ask-submit">
-        Quelle histoire sombre se cache derrière ce lieu ?<br>
-        Dites-nous pourquoi il mérite de rejoindre DarkMap.
+        Quelle histoire sombre se cache derrière ce lieu ? Dites-nous pourquoi il mérite de rejoindre DarkMap.
       </p>
       <label>
         <textarea name="resume_interet" class="form-input" rows="6"
-                  placeholder="Racontez librement…"
+                  placeholder="Racontez librement" 
                   required></textarea>
       </label>
     </div>
@@ -73,9 +75,9 @@
     <!-- Liens dynamiques -->
     <div class="form-group" style="grid-column: 1 / -1;">
       <p class="ask-submit">
-        Devenez les archivistes de l'obscurité :  
-        <strong>partagez vos sources et liens</strong>.  
-        <small> Optionnel</small>
+        Devenez les archivistes de l'obscurité :<br> 
+        Partagez vos sources et liens.<br>
+        <small>Optionnel</small>
       </p>
       <div id="linksContainer">
         <label>
@@ -89,7 +91,7 @@
     <div class="form-group" style="grid-column: 1 / -1;">
       <p class="ask-submit">
         Laissez votre nom hanter les pages de DarkMap.<br>
-        Indiquez votre pseudo si vous souhaitez être crédité. <small> Optionnel</small>
+        Indiquez votre pseudo si vous souhaitez être crédité.<br><small>Optionnel</small>
       </p>
       <label>
         <input type="text" name="pseudo" class="form-input"
