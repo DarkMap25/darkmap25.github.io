@@ -205,11 +205,16 @@ header .tagline {
 /* lien “suggérer des lieux” dans l’intro */
 .intro-submit {
   font-family: 'IM FELL ENGLISH SC', serif;
-  font-weight: 700;  
+  font-weight: 900;  
   text-decoration: underline;
   cursor: pointer;
   color: #e60000; /* ou autre couleur DarkMap */
   text-shadow: none !important;
+}
+
+/* Au survol, on agrandit le lien à 1.5× */
+.intro-submit:hover {
+  transform: scale(1.5);           /* zoom 150 % */
 }
 
 /* === I.3.5 Styles globaux du footer : largeur, centrage et décor === */
