@@ -148,7 +148,8 @@ header h1 {
   color: var(--header-h1-color);
     text-shadow:
     0px 0px 4px rgba(255, 255, 224, 0.8),  /* halo diffus semi-transparent */
-    1px 1px 0px rgba(255, 255, 224, 1);    /* ombre nette opaque */}
+    1px 1px 0px rgba(255, 255, 224, 1);    /* ombre nette opaque */
+}
 
 header .tagline {
   margin: 0;
@@ -589,10 +590,23 @@ footer a#mentionsLink:active {
 .ask-submit {
   font-family: 'IM Fell English SC', serif;   /* police immersive */
   font-weight: 700;                           /* gras */
-  font-size: 1.6em;                           /* taille souhaitée */
-  color: #e60000;                             /* couleur clair rappelant DarkMap */
-  text-shadow:var(--header-h1-shadow);
-  margin: 1em 0 0.5em;                        /* espacement vertical */
+  font-size: 1.2em;                           /* taille souhaitée */
+  color: #e60000;                             /* couleur rouge rappelant DarkMap */
+  text-shadow:    0px 0px 4px rgba(255, 255, 224, 0.8),  /* halo diffus semi-transparent */
+    1px 1px 0px rgba(255, 255, 224, 1);    /* ombre nette opaque */  
+  text-transform: uppercase;
+  margin: 1em 0.5em 0.5em;                        /* espacement vertical */
+}
+
+/* Cible uniquement les <small> dans les .ask-submit */
+#submitPanel .ask-submit small {
+  color: #FEEEE0;
+  font-family: 'IM Fell English SC', serif;   /* police immersive */
+  font-size: 0.8em;                           /* taille souhaitée */
+  font-style: italic;  /* italique */  
+        text-shadow: 
+    0px 0px 4px rgba(230, 0, 0, 0.8),          /* halo diffus rouge vif */
+    1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
 }
 
 /* 2-col layout pour le formulaire submit */
@@ -611,6 +625,13 @@ footer a#mentionsLink:active {
 /* Champs qui occupent toute la largeur */
 .form-grid > .form-group[style*="grid-column"] {
   grid-column: 1 / -1;
+}
+
+/* Empêche le panneau de défiler */
+#submitPanel {
+  overflow: hidden !important;    /* Veille à ce que son contenu ne dépasse pas : */
+  max-height: 100vh;
+  height: 100vh;
 }
 
 /* Responsive : 1 colonne sous 768px */
