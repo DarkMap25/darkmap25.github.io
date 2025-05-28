@@ -55,7 +55,7 @@ window.addEventListener("load", () => {
   }
 });
 
-// === PARTIE II / EMOJIS / POP-UP / VOIR PLUS / SOUMETTRE === //
+// === PARTIE II / EMOJIS / POP-UP / VOIR PLUS / PLEIN ECRAN / SOUMETTRE === //
 
 // II.1.1 Définition des emojis par catégorie
 const emojiParCategorie = {
@@ -244,7 +244,47 @@ document.getElementById("closeDetailPanel").addEventListener("click", function(e
   }
 });
 
-// II.4.1 Création du contrôle Leaflet “Soumettre une histoire” (emoji parchemin en bas à droite)
+//// II.4.1 Ajout du bouton plein écran à la carte
+const fullscreenControl = L.control({ position: 'bottomright' });
+fullscreenControl.onAdd = function(map) {
+  const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+  container.id = 'fullscreenButton';
+  container.innerHTML = '&#x2194;&#xFE0F;';
+  container.title = 'Passer en plein écran';
+  container.style.cursor = 'pointer';
+  L.DomEvent.disableClickPropagation(container);
+  container.addEventListener('click', toggleFullscreen);
+  return container;
+};
+fullscreenControl.addTo(map);
+
+// II.4.2 Fonction pour basculer en plein écran et sortir
+function toggleFullscreen() {
+  const mapElement = document.getElementById('map');
+  if (!document.fullscreenElement) {
+    mapElement.requestFullscreen?.() ??
+      mapElement.mozRequestFullScreen?.() ??
+      mapElement.webkitRequestFullscreen?.() ??
+      mapElement.msRequestFullscreen?.();
+  } else {
+    document.exitFullscreen?.() ??
+      document.mozCancelFullScreen?.() ??
+      document.webkitExitFullscreen?.() ??
+      document.msExitFullscreen?.();
+  }
+}
+
+// II.4.3 Mise à jour de l’icône et du titre du bouton plein écran
+['fullscreenchange', 'mozfullscreenchange', 'webkitfullscreenchange', 'msfullscreenchange']
+  .forEach(evt => document.addEventListener(evt, updateFullscreenButton));
+
+function updateFullscreenButton() {
+  const btn = document.getElementById('fullscreenButton');
+  if (!btn) return;
+  btn.title = document.fullscreenElement ? 'Quitter le plein écran' : 'Passer en plein écran';
+}
+
+// II.5.1 Création du contrôle Leaflet “Soumettre une histoire” (emoji parchemin en bas à droite)
 L.Control.SubmitStory = L.Control.extend({
   onAdd: function() {
     const btn = L.DomUtil.create('a', 'leaflet-bar leaflet-control submit-story-control');
@@ -262,7 +302,7 @@ L.Control.SubmitStory = L.Control.extend({
 L.control.submitStory = function(opts) { return new L.Control.SubmitStory(opts); };
 L.control.submitStory({ position: 'bottomright' }).addTo(map);
 
-// II.4.2 Fonction d’ouverture du panneau de soumission (utilise le form inline)
+// II.5.2 Fonction d’ouverture du panneau de soumission (utilise le form inline)
 function openSubmitPanel() {
   // Masque la carte
   document.getElementById('map').style.display = 'none';
@@ -271,7 +311,7 @@ function openSubmitPanel() {
           .classList.add('visible', 'full-view');
 }
 
-// II.4.3 Liaison du lien "suggérer des lieux" dans l'intro
+// II.5.3 Liaison du lien "suggérer des lieux" dans l'intro
 const submitLink = document.getElementById('submitLink');
 if (submitLink) {
   submitLink.addEventListener('click', function(e) {
@@ -280,7 +320,7 @@ if (submitLink) {
   });
 }
 
-// II.4.4 Branche le listener du formulaire UNE SEULE FOIS au chargement
+// II.5.4 Branche le listener du formulaire UNE SEULE FOIS au chargement
 const storyForm = document.getElementById('storyForm');
 if (storyForm) {
   storyForm.addEventListener('submit', function(e) {
@@ -295,7 +335,7 @@ if (storyForm) {
   });
 }
 
-// II.4.5 Gestion du bouton de fermeture du panel de soumission (✖)
+// II.5.5 Gestion du bouton de fermeture du panel de soumission (✖)
 const closeSubmit = document.getElementById('closeSubmitPanel');
 if (closeSubmit) {
   closeSubmit.addEventListener('click', function(e) {
@@ -347,46 +387,6 @@ L.control.layers(
   {},
   { position: 'topleft' }
 ).addTo(map);
-
-// III.3.1 Ajout du bouton plein écran à la carte
-const fullscreenControl = L.control({ position: 'bottomright' });
-fullscreenControl.onAdd = function(map) {
-  const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-  container.id = 'fullscreenButton';
-  container.innerHTML = '&#x2194;&#xFE0F;';
-  container.title = 'Passer en plein écran';
-  container.style.cursor = 'pointer';
-  L.DomEvent.disableClickPropagation(container);
-  container.addEventListener('click', toggleFullscreen);
-  return container;
-};
-fullscreenControl.addTo(map);
-
-// III.3.2 Fonction pour basculer en plein écran et sortir
-function toggleFullscreen() {
-  const mapElement = document.getElementById('map');
-  if (!document.fullscreenElement) {
-    mapElement.requestFullscreen?.() ??
-      mapElement.mozRequestFullScreen?.() ??
-      mapElement.webkitRequestFullscreen?.() ??
-      mapElement.msRequestFullscreen?.();
-  } else {
-    document.exitFullscreen?.() ??
-      document.mozCancelFullScreen?.() ??
-      document.webkitExitFullscreen?.() ??
-      document.msExitFullscreen?.();
-  }
-}
-
-// III.3.3 Mise à jour de l’icône et du titre du bouton plein écran
-['fullscreenchange', 'mozfullscreenchange', 'webkitfullscreenchange', 'msfullscreenchange']
-  .forEach(evt => document.addEventListener(evt, updateFullscreenButton));
-
-function updateFullscreenButton() {
-  const btn = document.getElementById('fullscreenButton');
-  if (!btn) return;
-  btn.title = document.fullscreenElement ? 'Quitter le plein écran' : 'Passer en plein écran';
-}
 
 // III.3.4 Ajout du bouton de fermeture Mentions Légales //
 
