@@ -1,5 +1,8 @@
 /* ===  PARTIE I / GENERAL / INTRODUCTION / STRUCTURE SITE === */
 
+
+
+
 /* === I.1.1 Styles généraux === */
 body {
   margin: 0; /* Suppression des marges par défaut */
@@ -26,6 +29,9 @@ body::before {
   background: rgba(0, 0, 0, 0.2); /* Calque noir avec transparence */
   z-index: -1; /* Placer ce calque derrière le contenu principal */
 }
+
+
+
 
 /* === I.2.1 Overlay d’intro === */
 #intro-overlay {
@@ -93,6 +99,9 @@ body::before {
     width: 100%; /* Augmenter la largeur à 100% à la fin de l'animation */
   }
 }
+
+
+
 
 /* === I.3. Structure site === */
 
@@ -253,17 +262,25 @@ footer a#mentionsLink:active {
   font-weight: bold !important;     /* toujours en gras */
   text-decoration: underline !important; /* toujours souligné */
 }
-  
+
+
+
+
 /* === PARTIE II / POP-UP / PANNEAU / SOUMETTRE === */
 
+
+
+
+
 /* === II.1.1 Adaptation des popups Leaflet === */
+
 /* i. Le conteneur de la popup */
 .custom-popup .leaflet-popup-content-wrapper {
   background: rgba(0, 0, 0, 0.8); /* fond semi-transparent sombre */
-  border: 2px solid #e60000;      /* contour rouge DarkMap */
-  border-radius: 8px;             /* coins arrondis */
-  padding: 10px;                  /* espace interne */
-  box-shadow: 0 0 12px rgba(0,0,0,0.5);
+  border: none;                                  /* suppression du contour rouge simple */
+  box-shadow: 0 0 50px #e60000;
+  border-radius: 8px;                            /* coins arrondis conservés */
+  padding: 10px;                                 /* espace interne */
 }
 
 /* ii. Le texte à l’intérieur */
@@ -289,7 +306,6 @@ footer a#mentionsLink:active {
   font-size: 1.5em;           /* légèrement plus gros */
   font-family: 'Im Fell English SC', serif;
   font-weight: bold;          /* bien en gras */
-  text-decoration: underline; /* souligné */
   color: #e60000;             /* rouge DarkMap */
   text-align: center;         /* centré */
   text-transform: uppercase; /* transforme en majuscule */
@@ -308,6 +324,7 @@ footer a#mentionsLink:active {
 }
 
 /* === II.1.2 Scroll PopUP === */
+
 .custom-popup .leaflet-popup-content {
   overflow-y: auto;    /* autorise le scroll vertical */
   overflow-x: auto;  /* le scroll horizontal */
@@ -328,7 +345,11 @@ footer a#mentionsLink:active {
   background: transparent;
 }
 
+
+
+
 /* === II.2.1 DetailPanel : fullscreen uniquement quand ouvert === */
+
 /* i. Par défaut, on le cache et on ne définit PAS sa hauteur ici */
 #detailPanel {
   display: none;
@@ -352,6 +373,9 @@ footer a#mentionsLink:active {
 #detailPanel.visible #closeDetailPanel {
   display: block;
 }
+
+
+
 
 /* === II.3.1 SOUMETTRE === */
 
@@ -399,15 +423,120 @@ footer a#mentionsLink:active {
   display: block;
 }
 
+/* === II.4.1 STYLES SOUMETTRE INTERNE === */
+
+/* Styles pour les questions du formulaire de soumission */
+.ask-submit {
+  font-family: 'IM Fell English SC', serif;   /* police immersive */
+  font-weight: 700;                           /* gras */
+  font-size: 1.2em;                           /* taille souhaitée */
+  color: #e60000;                             /* couleur rouge rappelant DarkMap */
+  text-shadow:    0px 0px 4px rgba(255, 255, 224, 0.8),  /* halo diffus semi-transparent */
+    1px 1px 0px rgba(255, 255, 224, 1);    /* ombre nette opaque */  
+  text-transform: uppercase;
+  margin: 1em 0.5em 0.5em;                        /* espacement vertical */
+}
+
+/* Cible uniquement les <small> dans les .ask-submit */
+#submitPanel .ask-submit small {
+  color: #FEEEE0;
+  font-family: 'IM Fell English SC', serif;   /* police immersive */
+  font-size: 0.8em;                           /* taille souhaitée */
+  font-style: italic;  /* italique */  
+        text-shadow: 
+    0px 0px 4px rgba(230, 0, 0, 0.8),          /* halo diffus rouge vif */
+    1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
+}
+
+/* 2-col layout pour le formulaire submit */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1.5rem;
+}
+
+/* Chaque question+input dans sa propre « case » */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Champs qui occupent toute la largeur */
+.form-grid > .form-group[style*="grid-column"] {
+  grid-column: 1 / -1;
+}
+
+/* 1) On fixe le panel en full-screen */
+#submitPanel {
+  position: fixed;       /* colle le panel à la fenêtre */
+  background-image: url('./icons/bureau.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: auto;  top: 0;
+  left: 0;
+  width: 100vw;          /* pleine largeur */
+  height: 100vh;         /* pleine hauteur */
+  overflow: hidden !important;
+  z-index: 10000;        /* au-dessus de tout */
+}
+
+/* Affiche le panel quand la classe .visible est appliquée */
+#submitPanel.visible {
+  display: block;
+}
+
+/* 2) On positionne absolument le bouton Close dans ce panel */
+#closeSubmitPanel {
+  position: absolute;    /* par rapport à #submitPanel */
+  top: 1rem;             /* à 1rem du haut */
+  right: 1rem;           /* à 1rem du bord droit */
+  background-color: #900;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  z-index: 10001;        /* au-dessus du contenu du panel */
+}
+
+/* 3) (Optionnel) si tu veux un scroll interne pour le contenu */
+#submitContent {
+  position: absolute;
+  top: 3rem;             /* laisse de la place pour la croix */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: auto;      /* scroll vertical si nécessaire */
+  padding: 1rem;
+}
+
+/* Responsive : 1 colonne sous 768px */
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
 /* === PARTIE III / PERSONNALISATION BOUTONS / STYLES === */
 
+
+
+
 /* === III.1.1 PERSONNALISATION DU BOUTON DE CHANGEMENT DE CARTE (Contrôle Leaflet) === */
+
 .leaflet-control-layers {
   color: #1a001a; /* texte sombre pour le contraste */
   font-family: 'Quicksand', sans-serif; font-weight: 700;  
 }
 
 /* === III.1.2 PERSONNALISATION DU BOUTON DE LOCALISATION (Emoji Direct Hit Visible et Cliquable) === */
+
 .leaflet-control-locate {
   background-color: transparent !important; /* Fond transparent */
   border: none !important; /* Pas de bordure */
@@ -457,6 +586,7 @@ footer a#mentionsLink:active {
 }
 
 /* === III.1.3 PERSONNALISATION DU BOUTON DE CHANGEMENT DE FOND DE CARTE AVEC UN EMOJI 🗺️ === */
+
 .leaflet-control-layers-toggle {
   background-color: transparent !important;
   background-image: none !important;
@@ -566,102 +696,8 @@ footer a#mentionsLink:active {
   transform: scale(1.5);
 }
 
-/* === III.1.5 STYLES SOUMETTRE === */
 
-/* Styles pour les questions du formulaire de soumission */
-.ask-submit {
-  font-family: 'IM Fell English SC', serif;   /* police immersive */
-  font-weight: 700;                           /* gras */
-  font-size: 1.2em;                           /* taille souhaitée */
-  color: #e60000;                             /* couleur rouge rappelant DarkMap */
-  text-shadow:    0px 0px 4px rgba(255, 255, 224, 0.8),  /* halo diffus semi-transparent */
-    1px 1px 0px rgba(255, 255, 224, 1);    /* ombre nette opaque */  
-  text-transform: uppercase;
-  margin: 1em 0.5em 0.5em;                        /* espacement vertical */
-}
 
-/* Cible uniquement les <small> dans les .ask-submit */
-#submitPanel .ask-submit small {
-  color: #FEEEE0;
-  font-family: 'IM Fell English SC', serif;   /* police immersive */
-  font-size: 0.8em;                           /* taille souhaitée */
-  font-style: italic;  /* italique */  
-        text-shadow: 
-    0px 0px 4px rgba(230, 0, 0, 0.8),          /* halo diffus rouge vif */
-    1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
-}
-
-/* 2-col layout pour le formulaire submit */
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1.5rem;
-}
-
-/* Chaque question+input dans sa propre « case » */
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Champs qui occupent toute la largeur */
-.form-grid > .form-group[style*="grid-column"] {
-  grid-column: 1 / -1;
-}
-
-/* 1) On fixe le panel en full-screen */
-#submitPanel {
-  position: fixed;       /* colle le panel à la fenêtre */
-  background-image: url('./icons/bureau.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: auto;  top: 0;
-  left: 0;
-  width: 100vw;          /* pleine largeur */
-  height: 100vh;         /* pleine hauteur */
-  overflow: hidden !important;
-  z-index: 10000;        /* au-dessus de tout */
-}
-
-/* Affiche le panel quand la classe .visible est appliquée */
-#submitPanel.visible {
-  display: block;
-}
-
-/* 2) On positionne absolument le bouton Close dans ce panel */
-#closeSubmitPanel {
-  position: absolute;    /* par rapport à #submitPanel */
-  top: 1rem;             /* à 1rem du haut */
-  right: 1rem;           /* à 1rem du bord droit */
-  background-color: #900;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 1.5rem;
-  line-height: 1;
-  padding: 0.3rem 0.6rem;
-  cursor: pointer;
-  z-index: 10001;        /* au-dessus du contenu du panel */
-}
-
-/* 3) (Optionnel) si tu veux un scroll interne pour le contenu */
-#submitContent {
-  position: absolute;
-  top: 3rem;             /* laisse de la place pour la croix */
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow-y: auto;      /* scroll vertical si nécessaire */
-  padding: 1rem;
-}
-
-/* Responsive : 1 colonne sous 768px */
-@media (max-width: 768px) {
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-}
 
 /* === III.2 STYLES DIVERSES === */
 
@@ -689,7 +725,11 @@ footer a#mentionsLink:active {
   transform: scale(1.5);
 }
 
+
+
+
 /* === III.2.2 Style pour la légende sans ombre et coins arrondis === */
+
 .info.legend {
   color: #FFFFE0;  /* Couleur */
   padding: 0px;  /* Espace interne autour du texte */
@@ -720,7 +760,11 @@ footer a#mentionsLink:active {
   font-weight: bold;
 }
 
+
+
+
 /* === III.2.3 Positionnement des contrôles en haut à droite === */
+
 .leaflet-topright {
     display: flex; /* Utiliser flex pour aligner les éléments verticalement */
     flex-direction: column; /* Aligner les éléments en colonne */
@@ -733,9 +777,16 @@ footer a#mentionsLink:active {
     overflow: visible !important; /* 🔥 Leaflet limite parfois la taille à cause de ça */
 }
 
+
+
+
 /* === PARTIE IV / ADAPTATIONS === */
 
+
+
+
 /* === IV.1 Adaptation pour écrans jusqu’à 768px === */
+
 @media (max-width: 768px) {
   /* — Fond mobile (image différente, rognée et défilante) */
   body {
@@ -779,7 +830,11 @@ footer a#mentionsLink:active {
   }
 }
 
+
+
+
 /* === IV.2 Adaptation pour écrans jusqu’à 480px === */
+
 @media (max-width: 480px) {
   /* i. Fond très petit écran (mêmes réglages que pour 768px) */
   body {
@@ -821,6 +876,9 @@ footer a#mentionsLink:active {
     line-height: 1 !important;
   }
 }
+
+
+
 
 /* === IV.3 Surcharge de carte réglée en dernier pour prendre le pas === */
 body > #map {
