@@ -62,7 +62,19 @@
                 background-attachment: fixed;
                 display: block;
               }
-              
+
+                /* Calque noir semi-transparent AU-DESSUS du background de l’overlay */
+                #intro-overlay::before {
+                  content: "";
+                  position: absolute;      /* couvre tout #intro-overlay */
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background: rgba(0, 0, 0, 0.2);
+                  /* pas de z-index ici : par défaut il est derrière le contenu de #intro-overlay */
+                }
+
               /* Conteneur pour positionner le header animé AU MÊME endroit que le header « réel » */
               .overlay-header-container {
                position: absolute;
@@ -71,6 +83,7 @@
                 transform: translateX(-50%);
                 display: block;
                 text-align: center;
+                z-index: 1;              /* au-dessus du pseudo-élément ::before */
               }
               
               /* === Titre statique « darkmap » === */
