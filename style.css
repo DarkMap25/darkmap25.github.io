@@ -551,6 +551,34 @@
                   }
                 }
 
+/* === II.4.2 CORRECTIONS SOUMETTRE === */
+
+                /* 1) Forcer html/body en plein écran sans marges ni scroll global */
+                html, body {
+                  margin: 0;
+                  padding: 0;
+                  height: 100vh;
+                  overflow: hidden;
+                }
+                
+                /* 2) Positionner le titre “darkmap” exactement au même endroit que sur la page principale */
+                #submitPanel header h1,
+                #submitPanel header .site-title {
+                  position: absolute;      /* sort du flow pour ne rien pousser */
+                  top: 1rem;               /* même repère vertical que sur ton site principal */
+                  left: 50%;               /* centré horizontalement */
+                  transform: translateX(-50%);
+                  margin: 0;               /* annule toute marge par défaut */
+                  font-size: 2rem;         /* ajuste si besoin pour matcher exactement */
+                  z-index: 10002;          /* sous le bouton close, au-dessus du contenu */
+                  background: transparent; /* pas de fond gênant */
+                }
+                
+                /* 3) (optionnel) s’assurer que ton header ne crée pas de bande noire */
+                #submitPanel header {
+                  background: transparent;
+                  padding-top: 0;
+                }
 
 /* === PARTIE III / PERSONNALISATION BOUTONS / STYLES === */
 
