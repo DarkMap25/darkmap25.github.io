@@ -193,85 +193,86 @@
 
 // II.3.1 Handler pour ouvrir le panneau "Voir plus"
 
-          document.addEventListener("click", function(e) {
-            if (!e.target.classList.contains("voir-plus")) return;
-            e.preventDefault();
-          
-            // i. Si on est en plein écran, on en sort
-            if (document.fullscreenElement) {
-              document.exitFullscreen();
-            }  
-            
-            const mapContainer  = document.getElementById("map");
-            const detailPanel   = document.getElementById("detailPanel");
-            const detailContent = document.getElementById("detailContent");
-          
-            // ii. Sauvegarde de la vue actuelle (centre + zoom)
-            window._prevMapView = {
-              center: map.getCenter(),
-              zoom:   map.getZoom()
-            };
-          
-            // iii. Masquer la carte et afficher le panneau
-            mapContainer.style.display = "none";
-            detailPanel.classList.add("visible", "full-view");
-          
-            // iv. Construction du HTML comme avant 
-            const id   = e.target.getAttribute("data-id");
-            const lieu = window.lieuxData.find(l => l.ID == id);
-            if (!lieu) return;
-          
-            let html = `<h2>${lieu.nom}</h2>`;
-            html += `<p>${lieu.resume_long || lieu.resume}</p>`;
-            if (lieu.date_debut || lieu.date_fin) {
-              const d = lieu.date_debut||"", f = lieu.date_fin||"";
-              html += `<p><strong>Période :</strong> ${d}${d&&f?" – "+f:""}</p>`;
-            }
-          
-            const ignore = ["ID","nom","resume","resume_long","latitude","longitude","date_debut","date_fin"];
-            function formatLabel(k){
-              return k.split("_").map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(" ");
-            }
-          
-            for (const [key,value] of Object.entries(lieu)) {
-              if (ignore.includes(key)||!value) continue;
-              if (typeof value==="string" && /^https?:\/\//.test(value)) {
-                html += `<p><strong>${formatLabel(key)} :</strong> <a href="${value}" target="_blank">${value}</a></p>`;
-              } else {
-                html += `<p><strong>${formatLabel(key)} :</strong> ${value}</p>`;
-              }
-            }
-          
-            detailContent.innerHTML = html;
-            // (le CSS fera apparaître automatiquement #closeDetailPanel via #detailPanel.visible)
-          });
+                document.addEventListener("click", function(e) {
+                  // 1) On cible vraiment le lien .voir-plus, quel que soit l'élément cliqué à l'intérieur
+                  const voirPlusBtn = e.target.closest(".voir-plus");
+                  if (!voirPlusBtn) return;
+                  e.preventDefault();
+                
+                  // 2) Si on est en plein écran, on en sort
+                  if (document.fullscreenElement) {
+                    document.exitFullscreen();
+                  }
+                
+                  const mapContainer  = document.getElementById("map");
+                  const detailPanel   = document.getElementById("detailPanel");
+                  const detailContent = document.getElementById("detailContent");
+                
+                  // 3) Sauvegarde de la vue actuelle (centre + zoom)
+                  window._prevMapView = {
+                    center: map.getCenter(),
+                    zoom:   map.getZoom()
+                  };
+                
+                  // 4) Masquer la carte et afficher le panneau
+                  mapContainer.style.display = "none";
+                  detailPanel.classList.add("visible", "full-view");
+                
+                  // 5) Construction du HTML comme avant, en utilisant voirPlusBtn au lieu de e.target
+                  const id   = voirPlusBtn.getAttribute("data-id");
+                  const lieu = window.lieuxData.find(l => l.ID == id);
+                  if (!lieu) return;
+                
+                  let html = `<h2>${lieu.nom}</h2>`;
+                  html += `<p>${lieu.resume_long || lieu.resume}</p>`;
+                  if (lieu.date_debut || lieu.date_fin) {
+                    const d = lieu.date_debut||"", f = lieu.date_fin||"";
+                    html += `<p><strong>Période :</strong> ${d}${d&&f?" – "+f:""}</p>`;
+                  }
+                
+                  const ignore = ["ID","nom","resume","resume_long","latitude","longitude","date_debut","date_fin"];
+                  function formatLabel(k){
+                    return k.split("_").map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(" ");
+                  }
+                
+                  for (const [key,value] of Object.entries(lieu)) {
+                    if (ignore.includes(key)||!value) continue;
+                    if (typeof value==="string" && /^https?:\/\//.test(value)) {
+                      html += `<p><strong>${formatLabel(key)} :</strong> <a href="${value}" target="_blank">${value}</a></p>`;
+                    } else {
+                      html += `<p><strong>${formatLabel(key)} :</strong> ${value}</p>`;
+                    }
+                  }
+                
+                  detailContent.innerHTML = html;
+                  // (le CSS fera apparaître automatiquement #closeDetailPanel via #detailPanel.visible)
+                });
 
 // II.3.2 Handler pour fermer le panneau (croix)
-
-          document.getElementById("closeDetailPanel").addEventListener("click", function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-          
-            const mapContainer  = document.getElementById("map");
-            const detailPanel   = document.getElementById("detailPanel");
-            const detailContent = document.getElementById("detailContent");
-          
-            // i. Cacher le panneau
-            detailPanel.classList.remove("visible", "full-view");
-            // ii. Vider le contenu
-            detailContent.innerHTML = "";
-          
-            // iii. Réafficher la carte
-            mapContainer.style.display = "block";
-            // iv. Forcer Leaflet à redimensionner
-            map.invalidateSize();
-          
-            // v. Revenir exactement à la vue précédente
-            if (window._prevMapView) {
-              map.setView(window._prevMapView.center, window._prevMapView.zoom, { animate: false });
-              delete window._prevMapView;
-            }
-          });
+                document.getElementById("closeDetailPanel").addEventListener("click", function(e) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                
+                  const mapContainer  = document.getElementById("map");
+                  const detailPanel   = document.getElementById("detailPanel");
+                  const detailContent = document.getElementById("detailContent");
+                
+                  // i. Cacher le panneau
+                  detailPanel.classList.remove("visible", "full-view");
+                  // ii. Vider le contenu
+                  detailContent.innerHTML = "";
+                
+                  // iii. Réafficher la carte
+                  mapContainer.style.display = "block";
+                  // iv. Forcer Leaflet à redimensionner
+                  map.invalidateSize();
+                
+                  // v. Revenir exactement à la vue précédente
+                  if (window._prevMapView) {
+                    map.setView(window._prevMapView.center, window._prevMapView.zoom, { animate: false });
+                    delete window._prevMapView;
+                  }
+                });
 
 // II.4.1 Ajout du bouton plein écran à la carte
 
