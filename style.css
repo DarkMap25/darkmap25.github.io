@@ -1,884 +1,847 @@
 /* ===  Variables de configuration (modifiable : hauteur en vh, tailles, couleurs…) === */
-:root {
-  /* hauteurs des sections (total = 100vh) */
-  --header-height: 20vh;
-  --map-height:    66vh;
-  --intro-height:  12vh;
-  --footer-height:  2vh;
 
-  /* typographies & couleurs */
-  --header-h1-font-size:      6em;
-  --header-h1-color:          #e60000;
-  --header-h1-shadow:         0 0 6px #000000;
-  --header-tagline-font-size: 1.6em;
-  --intro-font-size:          1.2em;
-  --footer-font-size:         0.8em;
-}
-
-
-
+        :root {
+          /* hauteurs des sections (total = 100vh) */
+          --header-height: 20vh;
+          --map-height:    66vh;
+          --intro-height:  12vh;
+          --footer-height:  2vh;
+        
+          /* typographies & couleurs */
+          --header-h1-font-size:      6em;
+          --header-h1-color:          #e60000;
+          --header-h1-shadow:         0 0 6px #000000;
+          --header-tagline-font-size: 1.6em;
+          --intro-font-size:          1.2em;
+          --footer-font-size:         0.8em;
+        }
 
 
 /* ===  PARTIE I / GENERAL / INTRODUCTION / STRUCTURE SITE === */
 
 
-
-
 /* === I.1.1 Styles généraux === */
-body {
-  margin: 0; /* Suppression des marges par défaut */
-  padding: 0; /* Suppression des espacements par défaut */
-  background-color: #0d0d0d; /* Couleur de fond de secours si l'image échoue */
-  background-image: url('./icons/background.jpg'); /* Image de fond */
-  background-size: cover; /* La taille de l'image couvre tout l'écran */
-  background-position: center; /* L'image est centrée */
-  background-repeat: no-repeat; /* L'image ne se répète pas */
-  background-attachment: scroll; /* Le fond défile avec la page (plus compatible mobile) */
-  color: #f0f0f0; /* Couleur du texte */
-  font-family: 'Quicksand', sans-serif; /* Police du texte */
-  position: relative; /* Positionnement pour le calque noir transparent */
-}
+
+              body {
+                margin: 0; /* Suppression des marges par défaut */
+                padding: 0; /* Suppression des espacements par défaut */
+                background-color: #0d0d0d; /* Couleur de fond de secours si l'image échoue */
+                background-image: url('./icons/background.jpg'); /* Image de fond */
+                background-size: cover; /* La taille de l'image couvre tout l'écran */
+                background-position: center; /* L'image est centrée */
+                background-repeat: no-repeat; /* L'image ne se répète pas */
+                background-attachment: scroll; /* Le fond défile avec la page (plus compatible mobile) */
+                color: #f0f0f0; /* Couleur du texte */
+                font-family: 'Quicksand', sans-serif; /* Police du texte */
+                position: relative; /* Positionnement pour le calque noir transparent */
+              }
 
 /* === I.1.2 Calque noir transparent par-dessus l'image === */
-body::before {
-  content: ""; /* Contenu vide pour un pseudo-élément */
-  position: fixed; /* Position fixe pour couvrir toute la fenêtre */
-  top: 0; /* Commence en haut de la page */
-  left: 0; /* Commence à gauche de la page */
-  width: 100%; /* Prend toute la largeur de l'écran */
-  height: 100%; /* Prend toute la hauteur de l'écran */
-  background: rgba(0, 0, 0, 0.2); /* Calque noir avec transparence */
-  z-index: -1; /* Placer ce calque derrière le contenu principal */
-}
 
+              body::before {
+                content: ""; /* Contenu vide pour un pseudo-élément */
+                position: fixed; /* Position fixe pour couvrir toute la fenêtre */
+                top: 0; /* Commence en haut de la page */
+                left: 0; /* Commence à gauche de la page */
+                width: 100%; /* Prend toute la largeur de l'écran */
+                height: 100%; /* Prend toute la hauteur de l'écran */
+                background: rgba(0, 0, 0, 0.2); /* Calque noir avec transparence */
+                z-index: -1; /* Placer ce calque derrière le contenu principal */
+              }
 
+/* === I.2.1 Overlay d’intro  === */
 
-
-/* === I.2.1 Overlay d’intro (même bg que le site) === */
-#intro-overlay {
-  position: fixed;           /* couvre tout l’écran */
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-color: #0d0d0d; /* ton fond sombre */
-  background-image: url('./icons/background.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-
-/* Conteneur pour positionner le header animé AU MÊME endroit que le header « réel » */
-.overlay-header-container {
- position: absolute;
-  top: 40px;                /* adapte cette valeur pour que ça colle pile sous ta barre (essaye 40px, 50px, etc.) */
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-}
-
-/* === Titre statique « darkmap » === */
-.overlay-header-container .static-title {
-    margin: 0;
-    margin-bottom: 0em;
-    font-size: var(--header-h1-font-size);
-    font-family: 'IM FELL ENGLISH SC', serif;
-    font-weight: 900;
-    text-align: center;
-    color: var(--header-h1-color);
-    text-shadow: 0px 0px 4px rgba(255, 255, 224, 0.8), 1px 1px 0px rgba(255, 255, 224, 1);
-}
-
-/* === Texte animé « La Carte de France, version Dark » === */
-.overlay-text {
-    margin: 0;
-    font-size: var(--header-tagline-font-size);
-    color: #FFFFE0;
-    font-family: 'IM FELL ENGLISH SC', serif;
-    font-weight: 700;
-    margin-top: 0;
-    line-height: 1;
-    display: block;
-    text-align: center;
-    text-shadow: 0px 0px 4px rgba(230, 0, 0, 0.8), 1px 1px 0px rgba(230, 0, 0, 1);
-    width: 0;                              /* démarrage à 0 */
-    animation: typing 3s steps(30,end) forwards; /* 3s pour taper */
-}
-
-/* Clé d’animation machine-à-écrire */
-@keyframes typing {
-  to { width: 100%; }
-}
-
-/* === Fade-in carte, intro et footer après l’animation === */
-#map,
-.intro,
-footer {
-  opacity: 0;
-  transition: opacity 0.8s ease-in-out;
-}
-
-
+              #intro-overlay {
+                position: fixed;           /* couvre tout l’écran */
+                top: 0; left: 0;
+                width: 100%; height: 100%;
+                background-color: #0d0d0d; /* ton fond sombre */
+                background-image: url('./icons/background.jpg');
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+              }
+              
+              /* Conteneur pour positionner le header animé AU MÊME endroit que le header « réel » */
+              .overlay-header-container {
+               position: absolute;
+                top: 40px;                /* adapte cette valeur pour que ça colle pile sous ta barre (essaye 40px, 50px, etc.) */
+                left: 50%;
+                transform: translateX(-50%);
+                text-align: center;
+              }
+              
+              /* === Titre statique « darkmap » === */
+              .overlay-header-container .static-title {
+                  margin: 0;
+                  margin-bottom: 0em;
+                  font-size: var(--header-h1-font-size);
+                  font-family: 'IM FELL ENGLISH SC', serif;
+                  font-weight: 900;
+                  text-align: center;
+                  color: var(--header-h1-color);
+                  text-shadow: 0px 0px 4px rgba(255, 255, 224, 0.8), 1px 1px 0px rgba(255, 255, 224, 1);
+              }
+              
+              /* === Texte animé « La Carte de France, version Dark » === */
+              
+              #overlay-text {
+                display: inline-block;             /* crucial pour typing */
+                white-space: nowrap;              
+                overflow: hidden;                 
+                border-right: 2px solid rgba(230,0,0,0.75); /* curseur clignotant si souhaité */
+                font-size: var(--header-tagline-font-size);
+                color: #FFFFE0;
+                font-family: 'IM FELL ENGLISH SC', serif;
+                font-weight: 700;
+                animation: typing 3s steps(30,end) forwards;
+              }
+              
+              /* Définition de l’animation */
+              @keyframes typing {
+                to { width: 100%; }
+              }
+              
+              /* === Fade-in carte, intro et footer après l’animation === */
+              #map,
+              .intro,
+              footer {
+                opacity: 0;
+                transition: opacity 3s ease-in-out;
+              }
 
 /* === I.3. Structure site === */
 
 /* === I.3.2 Mise en page flex-colonne full viewport === */
-html, body {
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-}
-body {
-  display: flex;
-  flex-direction: column;
-}
+
+              html, body {
+                height: 100vh;
+                margin: 0;
+                padding: 0;
+              }
+              body {
+                display: flex;
+                flex-direction: column;
+              }
 
 /* === I.3.3 Hauteurs des sections principales === */
-header {
-  height: var(--header-height);
-  display: flex;
-  justify-content: flex-start;  /* aligne en haut */  
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0em;               /* espace entre le h1 et la .tagline */
-  padding-top: 0;               /* aucun padding supplémentaire */
-}
+
+              header {
+                height: var(--header-height);
+                display: flex;
+                justify-content: flex-start;  /* aligne en haut */  
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 0em;               /* espace entre le h1 et la .tagline */
+                padding-top: 0;               /* aucun padding supplémentaire */
+              }
 
 /* === I.3.4 Styles du header (titre + sous-titre) === */
 
-header h1 {
-  margin: 0;
-  margin-bottom: 0em;
-  font-size: var(--header-h1-font-size);
-  font-family: 'IM FELL ENGLISH SC', serif;
-  font-weight: 900;
-  text-align: center;
-  color: var(--header-h1-color);
-    text-shadow:
-    0px 0px 4px rgba(255, 255, 224, 0.8),  /* halo diffus semi-transparent */
-    1px 1px 0px rgba(255, 255, 224, 1);    /* ombre nette opaque */
-}
-
-header .tagline {
-  margin: 0;
-  font-size: var(--header-tagline-font-size);
-  color: #FFFFE0;
-  font-family: 'IM FELL ENGLISH SC', serif;
-  font-weight: 700;
-  margin-top: 0;                /* plus de marge au-dessus de la tagline */
-  line-height: 1;               /* compactage vertical */  
-  display: block;               /* s’assurer qu’elle n’est pas inline ou cachée */
-  text-align: center;
-      text-shadow: 
-    0px 0px 4px rgba(230, 0, 0, 0.8),          /* halo diffus rouge vif */
-    1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
-}
-
-#map {
-  /* Petit espace au-dessus et en-dessous pour respirer */
-  margin: 2vh auto 0vh;
-  /* Ajuste la hauteur pour toujours faire 70vh visibles */
-  height: calc(var(--map-height) - 2vh);
-  width: 90vw;
-  border-radius: 20px;
-  box-shadow: 0 0 50px #e60000;
-  z-index: 1;
-}
-
-.intro {
-  /* même largeur que la carte */
-  width: 80vw;
-  margin: 0.1vh auto 0;        /* 1vh au-dessus */
-  /* ton restyling */
-  height: var(--intro-height);
-  padding: 0 10px;
-  font-family: 'IM FELL ENGLISH SC', serif;
-  font-weight: 700;
-  color: #FFFFE0;
-  font-size: var(--intro-font-size);
-  text-shadow: var(--header-h1-shadow);
-  line-height: 1;
-  /* centrer chaque ligne de texte */
-  text-align: center;
-  /* retours à la ligne automatiques */
-  white-space: normal;
-  overflow: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-      text-shadow: 
-    0px 0px 4px rgba(230, 0, 0, 0.8),          /* halo diffus rouge vif */
-    1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
-}  
-
-/* Assure-toi que l’intro ne masque pas le débordement */
-.intro {
-  overflow: visible !important;
-}
-
-/* lien “suggérer des lieux” dans l’intro */
-.intro-submit {
-  font-family: 'IM FELL ENGLISH SC', serif;
-  font-weight: 900;  
-  text-decoration: underline;
-  cursor: pointer;
-  color: #e60000;
-  text-shadow: none !important;
-  transition: transform 0.2s ease;  /* rend l’animation fluide */
-}
+                header h1 {
+                  margin: 0;
+                  margin-bottom: 0em;
+                  font-size: var(--header-h1-font-size);
+                  font-family: 'IM FELL ENGLISH SC', serif;
+                  font-weight: 900;
+                  text-align: center;
+                  color: var(--header-h1-color);
+                    text-shadow:
+                    0px 0px 4px rgba(255, 255, 224, 0.8),  /* halo diffus semi-transparent */
+                    1px 1px 0px rgba(255, 255, 224, 1);    /* ombre nette opaque */
+                }
+                
+                header .tagline {
+                  margin: 0;
+                  font-size: var(--header-tagline-font-size);
+                  color: #FFFFE0;
+                  font-family: 'IM FELL ENGLISH SC', serif;
+                  font-weight: 700;
+                  margin-top: 0;                /* plus de marge au-dessus de la tagline */
+                  line-height: 1;               /* compactage vertical */  
+                  display: block;               /* s’assurer qu’elle n’est pas inline ou cachée */
+                  text-align: center;
+                      text-shadow: 
+                    0px 0px 4px rgba(230, 0, 0, 0.8),          /* halo diffus rouge vif */
+                    1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
+                }
+                
+                #map {
+                  /* Petit espace au-dessus et en-dessous pour respirer */
+                  margin: 2vh auto 0vh;
+                  /* Ajuste la hauteur pour toujours faire 70vh visibles */
+                  height: calc(var(--map-height) - 2vh);
+                  width: 90vw;
+                  border-radius: 20px;
+                  box-shadow: 0 0 50px #e60000;
+                  z-index: 1;
+                }
+                
+                .intro {
+                  /* même largeur que la carte */
+                  width: 80vw;
+                  margin: 0.1vh auto 0;        /* 1vh au-dessus */
+                  /* ton restyling */
+                  height: var(--intro-height);
+                  padding: 0 10px;
+                  font-family: 'IM FELL ENGLISH SC', serif;
+                  font-weight: 700;
+                  color: #FFFFE0;
+                  font-size: var(--intro-font-size);
+                  text-shadow: var(--header-h1-shadow);
+                  line-height: 1;
+                  /* centrer chaque ligne de texte */
+                  text-align: center;
+                  /* retours à la ligne automatiques */
+                  white-space: normal;
+                  overflow: auto;
+                  margin-top: 10px;
+                  margin-bottom: 10px;
+                      text-shadow: 
+                    0px 0px 4px rgba(230, 0, 0, 0.8),          /* halo diffus rouge vif */
+                    1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
+                }  
+                
+                /* Assure-toi que l’intro ne masque pas le débordement */
+                .intro {
+                  overflow: visible !important;
+                }
+                
+                /* lien “suggérer des lieux” dans l’intro */
+                .intro-submit {
+                  font-family: 'IM FELL ENGLISH SC', serif;
+                  font-weight: 900;  
+                  text-decoration: underline;
+                  cursor: pointer;
+                  color: #e60000;
+                  text-shadow: none !important;
+                  transition: transform 0.2s ease;  /* rend l’animation fluide */
+                }
 
 /* === I.3.5 Styles globaux du footer : largeur, centrage et décor === */
-footer {
-  display: flex;                   /* mise en page en colonne flex */
-  flex-direction: column;          /* empilement vertical */
-  align-items: center;             /* centrage horizontal */
-  justify-content: center;         /* centrage vertical */
-  width: 100%;                     /* prend toute la largeur */
-  margin: 0 auto;                  /* centré dans la page */
-  text-align: center;              /* centrage du texte */
-  padding: 2px;                    /* espacement interne */
-  font-family: 'IM FELL ENGLISH SC', serif;
-  font-size: var(--footer-font-size);                /* taille de la police */
-  line-height: 0.8;                  /* interligne */
-  color: #E6E6FA;                  /* couleur du texte */
-  text-shadow: var(--header-h1-shadow);
-}
 
-/* i. Reset et espacement des paragraphes dans le footer */
-footer p {
-  margin: 0;                       /* suppression des marges par défaut */
-  padding: 0;                      /* suppression du padding par défaut */
-}
-footer p:not(:first-child) {
-  margin-top: 0.4em;               /* espacement entre chaque paragraphe */
-}
-
-/* ii. Mentions légales : couleur fixe, gras et souligné pour tous les états */
-footer a#mentionsLink,
-footer a#mentionsLink:visited,
-footer a#mentionsLink:hover,
-footer a#mentionsLink:active {
-  color: #E6E6FA !important;        /* même couleur que le footer */
-  font-weight: bold !important;     /* toujours en gras */
-  text-decoration: underline !important; /* toujours souligné */
-}
-
-
+              footer {
+                display: flex;                   /* mise en page en colonne flex */
+                flex-direction: column;          /* empilement vertical */
+                align-items: center;             /* centrage horizontal */
+                justify-content: center;         /* centrage vertical */
+                width: 100%;                     /* prend toute la largeur */
+                margin: 0 auto;                  /* centré dans la page */
+                text-align: center;              /* centrage du texte */
+                padding: 2px;                    /* espacement interne */
+                font-family: 'IM FELL ENGLISH SC', serif;
+                font-size: var(--footer-font-size);                /* taille de la police */
+                line-height: 0.8;                  /* interligne */
+                color: #E6E6FA;                  /* couleur du texte */
+                text-shadow: var(--header-h1-shadow);
+              }
+              
+              /* i. Reset et espacement des paragraphes dans le footer */
+              footer p {
+                margin: 0;                       /* suppression des marges par défaut */
+                padding: 0;                      /* suppression du padding par défaut */
+              }
+              footer p:not(:first-child) {
+                margin-top: 0.4em;               /* espacement entre chaque paragraphe */
+              }
+              
+              /* ii. Mentions légales : couleur fixe, gras et souligné pour tous les états */
+              footer a#mentionsLink,
+              footer a#mentionsLink:visited,
+              footer a#mentionsLink:hover,
+              footer a#mentionsLink:active {
+                color: #E6E6FA !important;        /* même couleur que le footer */
+                font-weight: bold !important;     /* toujours en gras */
+                text-decoration: underline !important; /* toujours souligné */
+              }
 
 
 /* === PARTIE II / POP-UP / PANNEAU / SOUMETTRE === */
 
 
-
-
-
 /* === II.1.1 Adaptation des popups Leaflet === */
 
-/* i. Le conteneur de la popup */
-.custom-popup .leaflet-popup-content-wrapper {
-  background: rgba(0, 0, 0, 0.8); /* fond semi-transparent sombre */
-  border: none;                                  /* suppression du contour rouge simple */
-  box-shadow: 0 0 50px #e60000;
-  border-radius: 8px;                            /* coins arrondis conservés */
-  padding: 10px;                                 /* espace interne */
-}
-
-/* ii. Le texte à l’intérieur */
-.custom-popup .leaflet-popup-content {
-  font-family: 'Im Fell English SC', serif;
-  font-size: 1.5em;                 /* ajuste la taille du texte */
-  line-height: 1.0;               /* espacement des lignes */
-  color: #FFFFE0;                 /* texte clair */
-  margin: 0;
-      text-shadow: 
-    0px 0px 4px rgba(230, 0, 0, 0.8),          /* halo diffus rouge vif */
-    1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
-}
-
-/* iii. Le “triangle” pointant sur le marqueur */
-.custom-popup .leaflet-popup-tip {
-  background: rgba(0, 0, 0, 0.8);
-}
-
-/* iv. Titre du popup (le <strong> dans popupContent) */
-.custom-popup .leaflet-popup-content strong {
-  display: block;             /* pour prendre toute la largeur */
-  font-size: 1.5em;           /* légèrement plus gros */
-  font-family: 'Im Fell English SC', serif;
-  font-weight: bold;          /* bien en gras */
-  color: #e60000;             /* rouge DarkMap */
-  text-align: center;         /* centré */
-  text-transform: uppercase; /* transforme en majuscule */
-  margin-bottom: 0em;       /* petit espace sous le titre */
-    text-shadow:
-    0px 0px 4px rgba(255, 255, 224, 0.8),  /* halo diffus semi-transparent */
-    1px 1px 0px rgba(255, 255, 224, 1);    /* ombre nette opaque */
-}
-
-/* v. Style spécifique pour le lien “Voir plus” dans les popups */
-.custom-popup .voir-plus {
-  color: #e60000 !important;       /* même rouge vif que le reste */
-  font-weight: bold !important;    /* gras */
-  text-decoration: underline !important; /* toujours souligné */
-  text-shadow: none !important;    /* supprime l’ombre héritée */
-}
+                /* i. Le conteneur de la popup */
+                .custom-popup .leaflet-popup-content-wrapper {
+                  background: rgba(0, 0, 0, 0.8); /* fond semi-transparent sombre */
+                  border: none;                                  /* suppression du contour rouge simple */
+                  box-shadow: 0 0 50px #e60000;
+                  border-radius: 8px;                            /* coins arrondis conservés */
+                  padding: 10px;                                 /* espace interne */
+                }
+                
+                /* ii. Le texte à l’intérieur */
+                .custom-popup .leaflet-popup-content {
+                  font-family: 'Im Fell English SC', serif;
+                  font-size: 1.5em;                 /* ajuste la taille du texte */
+                  line-height: 1.0;               /* espacement des lignes */
+                  color: #FFFFE0;                 /* texte clair */
+                  margin: 0;
+                      text-shadow: 
+                    0px 0px 4px rgba(230, 0, 0, 0.8),          /* halo diffus rouge vif */
+                    1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
+                }
+                
+                /* iii. Le “triangle” pointant sur le marqueur */
+                .custom-popup .leaflet-popup-tip {
+                  background: rgba(0, 0, 0, 0.8);
+                }
+                
+                /* iv. Titre du popup (le <strong> dans popupContent) */
+                .custom-popup .leaflet-popup-content strong {
+                  display: block;             /* pour prendre toute la largeur */
+                  font-size: 1.5em;           /* légèrement plus gros */
+                  font-family: 'Im Fell English SC', serif;
+                  font-weight: bold;          /* bien en gras */
+                  color: #e60000;             /* rouge DarkMap */
+                  text-align: center;         /* centré */
+                  text-transform: uppercase; /* transforme en majuscule */
+                  margin-bottom: 0em;       /* petit espace sous le titre */
+                    text-shadow:
+                    0px 0px 4px rgba(255, 255, 224, 0.8),  /* halo diffus semi-transparent */
+                    1px 1px 0px rgba(255, 255, 224, 1);    /* ombre nette opaque */
+                }
+                
+                /* v. Style spécifique pour le lien “Voir plus” dans les popups */
+                .custom-popup .voir-plus {
+                  color: #e60000 !important;       /* même rouge vif que le reste */
+                  font-weight: bold !important;    /* gras */
+                  text-decoration: underline !important; /* toujours souligné */
+                  text-shadow: none !important;    /* supprime l’ombre héritée */
+                }
 
 /* === II.1.2 Scroll PopUP === */
 
-.custom-popup .leaflet-popup-content {
-  overflow-y: auto;    /* autorise le scroll vertical */
-  overflow-x: auto;  /* le scroll horizontal */
-  /* facultatif : pour une barre plus discrète */
-  scrollbar-width: thin;       /* Firefox */
-  scrollbar-color: #e60000 transparent;
-}
-
-/* Chrome, Edge, Safari */
-.custom-popup .leaflet-popup-content::-webkit-scrollbar {
-  width: 6px;
-}
-.custom-popup .leaflet-popup-content::-webkit-scrollbar-thumb {
-  background-color: #e60000;
-  border-radius: 3px;
-}
-.custom-popup .leaflet-popup-content::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-
-
+                .custom-popup .leaflet-popup-content {
+                  overflow-y: auto;    /* autorise le scroll vertical */
+                  overflow-x: auto;  /* le scroll horizontal */
+                  /* facultatif : pour une barre plus discrète */
+                  scrollbar-width: thin;       /* Firefox */
+                  scrollbar-color: #e60000 transparent;
+                }
+                
+                /* Chrome, Edge, Safari */
+                .custom-popup .leaflet-popup-content::-webkit-scrollbar {
+                  width: 6px;
+                }
+                .custom-popup .leaflet-popup-content::-webkit-scrollbar-thumb {
+                  background-color: #e60000;
+                  border-radius: 3px;
+                }
+                .custom-popup .leaflet-popup-content::-webkit-scrollbar-track {
+                  background: transparent;
+                }
 
 /* === II.2.1 DetailPanel : fullscreen uniquement quand ouvert === */
 
-/* i. Par défaut, on le cache et on ne définit PAS sa hauteur ici */
-#detailPanel {
-  display: none;
-}
-
-/* iii. Croix de fermeture */
-#closeDetailPanel {
-  display: none;
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: #900;
-  color: #fff;
-  border: none;
-  font-size: 24px;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  z-index: 2001;
-}
-#detailPanel.visible #closeDetailPanel {
-  display: block;
-}
-
-
-
+                /* i. Par défaut, on le cache et on ne définit PAS sa hauteur ici */
+                #detailPanel {
+                  display: none;
+                }
+                
+                /* iii. Croix de fermeture */
+                #closeDetailPanel {
+                  display: none;
+                  position: fixed;
+                  top: 20px;
+                  right: 20px;
+                  background-color: #900;
+                  color: #fff;
+                  border: none;
+                  font-size: 24px;
+                  padding: 8px 12px;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  z-index: 2001;
+                }
+                #detailPanel.visible #closeDetailPanel {
+                  display: block;
+                }
 
 /* === II.3.1 SOUMETTRE === */
 
-/* === submitPanel : overlay plein écran au-dessus de tout === */
-#submitPanel {
-  position: fixed;      /* sort du flux et colle à la fenêtre */
-  top: 0; left: 0;
-  width: 100vw;         /* pleine largeur de la fenêtre */
-  height: 100vh;        /* pleine hauteur de la fenêtre */
-  background-image: url('./icons/submit.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: auto; 
-  z-index: 10000;       /* au-dessus de tous tes éléments */
-  display: none;        /* caché tant que .visible n’est pas présent */
-}
+                /* === submitPanel : overlay plein écran au-dessus de tout === */
+                #submitPanel {
+                  position: fixed;      /* sort du flux et colle à la fenêtre */
+                  top: 0; left: 0;
+                  width: 100vw;         /* pleine largeur de la fenêtre */
+                  height: 100vh;        /* pleine hauteur de la fenêtre */
+                  background-image: url('./icons/submit.jpg');
+                  background-size: cover;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  overflow: auto; 
+                  z-index: 10000;       /* au-dessus de tous tes éléments */
+                  display: none;        /* caché tant que .visible n’est pas présent */
+                }
+                
+                /* i. Cache tout panel qui a la classe .hidden */
+                #submitPanel.hidden {
+                  display: none;
+                }
+                
+                /* ii. Affiche-le seulement quand il reçoit la classe .visible */
+                #submitPanel.visible {
+                  display: block;  
+                }
+                
+                /* iii. Croix de fermeture */
+                #closeSubmitPanel {
+                  display: none;
+                  position: fixed;
+                  top: 20px;
+                  right: 20px;
+                  background-color: #900;
+                  color: #fff;
+                  border: none;
+                  font-size: 24px;
+                  padding: 8px 12px;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  z-index: 2001;
+                }
+                #submitPanel.visible #closeSubmitPanel {
+                  display: block;
+                }
 
-/* i. Cache tout panel qui a la classe .hidden */
-#submitPanel.hidden {
-  display: none;
-}
+/* === II.4 STYLES SOUMETTRE INTERNE === */
 
-/* ii. Affiche-le seulement quand il reçoit la classe .visible */
-#submitPanel.visible {
-  display: block;  
-}
-
-/* iii. Croix de fermeture */
-#closeSubmitPanel {
-  display: none;
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: #900;
-  color: #fff;
-  border: none;
-  font-size: 24px;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  z-index: 2001;
-}
-#submitPanel.visible #closeSubmitPanel {
-  display: block;
-}
-
-/* === II.4.1 STYLES SOUMETTRE INTERNE === */
-
-/* Styles pour les questions du formulaire de soumission */
-.ask-submit {
-  font-family: 'IM Fell English SC', serif;   /* police immersive */
-  font-weight: 700;                           /* gras */
-  font-size: 1.2em;                           /* taille souhaitée */
-  color: #e60000;                             /* couleur rouge rappelant DarkMap */
-  text-shadow:    0px 0px 4px rgba(255, 255, 224, 0.8),  /* halo diffus semi-transparent */
-    1px 1px 0px rgba(255, 255, 224, 1);    /* ombre nette opaque */  
-  text-transform: uppercase;
-  margin: 1em 0.5em 0.5em;                        /* espacement vertical */
-}
-
-/* Cible uniquement les <small> dans les .ask-submit */
-#submitPanel .ask-submit small {
-  color: #FEEEE0;
-  font-family: 'IM Fell English SC', serif;   /* police immersive */
-  font-size: 0.8em;                           /* taille souhaitée */
-  font-style: italic;  /* italique */  
-        text-shadow: 
-    0px 0px 4px rgba(230, 0, 0, 0.8),          /* halo diffus rouge vif */
-    1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
-}
-
-/* 2-col layout pour le formulaire submit */
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1.5rem;
-}
-
-/* Chaque question+input dans sa propre « case » */
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Champs qui occupent toute la largeur */
-.form-grid > .form-group[style*="grid-column"] {
-  grid-column: 1 / -1;
-}
-
-/* 1) On fixe le panel en full-screen */
-#submitPanel {
-  position: fixed;       /* colle le panel à la fenêtre */
-  background-image: url('./icons/bureau.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: auto;  top: 0;
-  left: 0;
-  width: 100vw;          /* pleine largeur */
-  height: 100vh;         /* pleine hauteur */
-  overflow: hidden !important;
-  z-index: 10000;        /* au-dessus de tout */
-}
-
-/* Affiche le panel quand la classe .visible est appliquée */
-#submitPanel.visible {
-  display: block;
-}
-
-/* 2) On positionne absolument le bouton Close dans ce panel */
-#closeSubmitPanel {
-  position: absolute;    /* par rapport à #submitPanel */
-  top: 1rem;             /* à 1rem du haut */
-  right: 1rem;           /* à 1rem du bord droit */
-  background-color: #900;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 1.5rem;
-  line-height: 1;
-  padding: 0.3rem 0.6rem;
-  cursor: pointer;
-  z-index: 10001;        /* au-dessus du contenu du panel */
-}
-
-/* 3) (Optionnel) si tu veux un scroll interne pour le contenu */
-#submitContent {
-  position: absolute;
-  top: 3rem;             /* laisse de la place pour la croix */
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow-y: auto;      /* scroll vertical si nécessaire */
-  padding: 1rem;
-}
-
-/* Responsive : 1 colonne sous 768px */
-@media (max-width: 768px) {
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-
+                /* Styles pour les questions du formulaire de soumission */
+                .ask-submit {
+                  font-family: 'IM Fell English SC', serif;   /* police immersive */
+                  font-weight: 700;                           /* gras */
+                  font-size: 1.2em;                           /* taille souhaitée */
+                  color: #e60000;                             /* couleur rouge rappelant DarkMap */
+                  text-shadow:    0px 0px 4px rgba(255, 255, 224, 0.8),  /* halo diffus semi-transparent */
+                    1px 1px 0px rgba(255, 255, 224, 1);    /* ombre nette opaque */  
+                  text-transform: uppercase;
+                  margin: 1em 0.5em 0.5em;                        /* espacement vertical */
+                }
+                
+                /* Cible uniquement les <small> dans les .ask-submit */
+                #submitPanel .ask-submit small {
+                  color: #FEEEE0;
+                  font-family: 'IM Fell English SC', serif;   /* police immersive */
+                  font-size: 0.8em;                           /* taille souhaitée */
+                  font-style: italic;  /* italique */  
+                        text-shadow: 
+                    0px 0px 4px rgba(230, 0, 0, 0.8),          /* halo diffus rouge vif */
+                    1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
+                }
+                
+                /* 2-col layout pour le formulaire submit */
+                .form-grid {
+                  display: grid;
+                  grid-template-columns: repeat(2, 1fr);
+                  grid-gap: 1.5rem;
+                }
+                
+                /* Chaque question+input dans sa propre « case » */
+                .form-group {
+                  display: flex;
+                  flex-direction: column;
+                }
+                
+                /* Champs qui occupent toute la largeur */
+                .form-grid > .form-group[style*="grid-column"] {
+                  grid-column: 1 / -1;
+                }
+                
+                /* 1) On fixe le panel en full-screen */
+                #submitPanel {
+                  position: fixed;       /* colle le panel à la fenêtre */
+                  background-image: url('./icons/bureau.jpg');
+                  background-size: cover;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  overflow: auto;  top: 0;
+                  left: 0;
+                  width: 100vw;          /* pleine largeur */
+                  height: 100vh;         /* pleine hauteur */
+                  overflow: hidden !important;
+                  z-index: 10000;        /* au-dessus de tout */
+                }
+                
+                /* Affiche le panel quand la classe .visible est appliquée */
+                #submitPanel.visible {
+                  display: block;
+                }
+                
+                /* 2) On positionne absolument le bouton Close dans ce panel */
+                #closeSubmitPanel {
+                  position: absolute;    /* par rapport à #submitPanel */
+                  top: 1rem;             /* à 1rem du haut */
+                  right: 1rem;           /* à 1rem du bord droit */
+                  background-color: #900;
+                  color: #fff;
+                  border: none;
+                  border-radius: 4px;
+                  font-size: 1.5rem;
+                  line-height: 1;
+                  padding: 0.3rem 0.6rem;
+                  cursor: pointer;
+                  z-index: 10001;        /* au-dessus du contenu du panel */
+                }
+                
+                /* 3) (Optionnel) si tu veux un scroll interne pour le contenu */
+                #submitContent {
+                  position: absolute;
+                  top: 3rem;             /* laisse de la place pour la croix */
+                  bottom: 0;
+                  left: 0;
+                  right: 0;
+                  overflow-y: auto;      /* scroll vertical si nécessaire */
+                  padding: 1rem;
+                }
+                
+                /* Responsive : 1 colonne sous 768px */
+                @media (max-width: 768px) {
+                  .form-grid {
+                    grid-template-columns: 1fr;
+                  }
+                }
 
 
 /* === PARTIE III / PERSONNALISATION BOUTONS / STYLES === */
 
 
-
-
 /* === III.1.1 PERSONNALISATION DU BOUTON DE CHANGEMENT DE CARTE (Contrôle Leaflet) === */
 
-.leaflet-control-layers {
-  color: #1a001a; /* texte sombre pour le contraste */
-  font-family: 'Quicksand', sans-serif; font-weight: 700;  
-}
+                .leaflet-control-layers {
+                  color: #1a001a; /* texte sombre pour le contraste */
+                  font-family: 'Quicksand', sans-serif; font-weight: 700;  
+                }
 
 /* === III.1.2 PERSONNALISATION DU BOUTON DE LOCALISATION (Emoji Direct Hit Visible et Cliquable) === */
 
-.leaflet-control-locate {
-  background-color: transparent !important; /* Fond transparent */
-  border: none !important; /* Pas de bordure */
-  padding: 0 !important; /* Pas de rembourrage */
-  width: auto !important; /* Ajuster la largeur au contenu */
-  height: auto !important; /* Ajuster la hauteur au contenu */
-  cursor: pointer; /* Curseur "main" */
-  text-align: center !important; /* Centrer l'emoji */
-  overflow: visible !important; /* Empêcher débordement */
-  display: flex !important; /* Utiliser flex pour centrer */
-  justify-content: center !important; /* Centrage horizontal */
-  align-items: center !important; /* Centrage vertical */
-}
-
-.leaflet-control-locate .leaflet-bar-part-single {
-  background-color: transparent !important;
-  border: none !important;
-  padding: 0px !important; /* Un peu de padding pour l'interaction */
-  width: auto !important;
-  height: auto !important;
-  cursor: pointer;
-  text-align: center !important;
-  font-size: 2.5em !important; /* Taille de l'emoji */
-  line-height: 1 !important; /* Centrage vertical */
-  color: inherit !important; /* IMPORTANT : Hériter de la couleur pour rendre l'emoji visible */
-  text-shadow: none !important;
-  display: flex !important; /* Utiliser flex pour centrer */
-  justify-content: center !important; /* Centrage horizontal */
-  align-items: center !important; /* Centrage vertical */
-}
-
-/* i. Afficher l'emoji comme contenu de l'élément <a>  */
-.leaflet-control-locate .leaflet-bar-part-single::before {
-  content: "🎯" !important; /* Emoji direct hit */
-  display: block !important; /* Important pour que le pseudo-élément prenne de la place */
-  width: 100%;
-  height: 100%;
-  line-height: inherit !important; /* Hériter pour le centrage vertical */
-  font-size: inherit !important; /* Hériter de la taille définie sur l'<a> */
-  text-align: center !important; /* S'assurer que l'emoji est centré */
-  transition: transform 0.2s ease;  /* Animation douce */  
-  /* On ne définit pas de couleur ici, on hérite de celle de l'élément <a> */
-}
-
-.leaflet-control-locate .leaflet-bar-part-single:hover::before {
-  transform: scale(1.5); /* ✅ effet de grossissement uniquement au survol */
-}
+                  .leaflet-control-locate {
+                    background-color: transparent !important; /* Fond transparent */
+                    border: none !important; /* Pas de bordure */
+                    padding: 0 !important; /* Pas de rembourrage */
+                    width: auto !important; /* Ajuster la largeur au contenu */
+                    height: auto !important; /* Ajuster la hauteur au contenu */
+                    cursor: pointer; /* Curseur "main" */
+                    text-align: center !important; /* Centrer l'emoji */
+                    overflow: visible !important; /* Empêcher débordement */
+                    display: flex !important; /* Utiliser flex pour centrer */
+                    justify-content: center !important; /* Centrage horizontal */
+                    align-items: center !important; /* Centrage vertical */
+                  }
+                  
+                  .leaflet-control-locate .leaflet-bar-part-single {
+                    background-color: transparent !important;
+                    border: none !important;
+                    padding: 0px !important; /* Un peu de padding pour l'interaction */
+                    width: auto !important;
+                    height: auto !important;
+                    cursor: pointer;
+                    text-align: center !important;
+                    font-size: 2.5em !important; /* Taille de l'emoji */
+                    line-height: 1 !important; /* Centrage vertical */
+                    color: inherit !important; /* IMPORTANT : Hériter de la couleur pour rendre l'emoji visible */
+                    text-shadow: none !important;
+                    display: flex !important; /* Utiliser flex pour centrer */
+                    justify-content: center !important; /* Centrage horizontal */
+                    align-items: center !important; /* Centrage vertical */
+                  }
+                  
+                  /* i. Afficher l'emoji comme contenu de l'élément <a>  */
+                  .leaflet-control-locate .leaflet-bar-part-single::before {
+                    content: "🎯" !important; /* Emoji direct hit */
+                    display: block !important; /* Important pour que le pseudo-élément prenne de la place */
+                    width: 100%;
+                    height: 100%;
+                    line-height: inherit !important; /* Hériter pour le centrage vertical */
+                    font-size: inherit !important; /* Hériter de la taille définie sur l'<a> */
+                    text-align: center !important; /* S'assurer que l'emoji est centré */
+                    transition: transform 0.2s ease;  /* Animation douce */  
+                    /* On ne définit pas de couleur ici, on hérite de celle de l'élément <a> */
+                  }
+                  
+                  .leaflet-control-locate .leaflet-bar-part-single:hover::before {
+                    transform: scale(1.5); /* ✅ effet de grossissement uniquement au survol */
+                  }
 
 /* === III.1.3 PERSONNALISATION DU BOUTON DE CHANGEMENT DE FOND DE CARTE AVEC UN EMOJI 🗺️ === */
 
-.leaflet-control-layers-toggle {
-  background-color: transparent !important;
-  background-image: none !important;
-  width: auto !important;
-  height: auto !important;
-  border: none !important;
-  font-size: 2.5em !important;
-  line-height: 1 !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  cursor: pointer;
-  color: inherit !important;
-  z-index: 1000 !important;
-}
-
-.leaflet-control-layers-toggle::before {
-  content: "🗺️";
-  display: block;
-  font-size: inherit;
-}
+                .leaflet-control-layers-toggle {
+                  background-color: transparent !important;
+                  background-image: none !important;
+                  width: auto !important;
+                  height: auto !important;
+                  border: none !important;
+                  font-size: 2.5em !important;
+                  line-height: 1 !important;
+                  display: flex !important;
+                  justify-content: center !important;
+                  align-items: center !important;
+                  cursor: pointer;
+                  color: inherit !important;
+                  z-index: 1000 !important;
+                }
+                
+                .leaflet-control-layers-toggle::before {
+                  content: "🗺️";
+                  display: block;
+                  font-size: inherit;
+                }
 
 /* === III.1.4 PERSONNALISATION DU BOUTON DE / FULLSCREEN / SOUMETTRE === */
 
-#randomButton {
-    background-color: transparent !important;
-    border: none !important;
-    padding: 0px !important;
-    width: auto !important;
-    height: auto !important;
-    cursor: pointer;
-    text-align: center !important;
-    font-size: 2.5em !important; /* même que 🎯 */
-    line-height: 1 !important;
-    color: inherit !important;
-    text-shadow: none !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    /* Suppression de la marge ici, le positionnement se fera via Leaflet */
-    overflow: visible !important; /* 🔥 empêche le rognage */
-    transition: transform 0.2s ease; /* Ajout de la transition pour l'effet au survol */
-}
-
-#randomButton:hover {
-    transform: scale(1.5);
-}
-
-#fullscreenButton {
-    background-color: transparent !important;
-    border: none !important;
-    padding: 0px !important;
-    width: auto !important;
-    height: auto !important;
-    cursor: pointer;
-    text-align: center !important;
-    font-size: 2.5em !important;
-    line-height: 1 !important;
-    color: inherit !important;
-    text-shadow: none !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    overflow: visible !important;
-    transition: transform 0.2s ease;
-}
-
-#fullscreenButton:hover {
-    transform: scale(1.5);
-}
+                #randomButton {
+                    background-color: transparent !important;
+                    border: none !important;
+                    padding: 0px !important;
+                    width: auto !important;
+                    height: auto !important;
+                    cursor: pointer;
+                    text-align: center !important;
+                    font-size: 2.5em !important; /* même que 🎯 */
+                    line-height: 1 !important;
+                    color: inherit !important;
+                    text-shadow: none !important;
+                    display: flex !important;
+                    justify-content: center !important;
+                    align-items: center !important;
+                    /* Suppression de la marge ici, le positionnement se fera via Leaflet */
+                    overflow: visible !important; /* 🔥 empêche le rognage */
+                    transition: transform 0.2s ease; /* Ajout de la transition pour l'effet au survol */
+                }
+                
+                #randomButton:hover {
+                    transform: scale(1.5);
+                }
+                
+                #fullscreenButton {
+                    background-color: transparent !important;
+                    border: none !important;
+                    padding: 0px !important;
+                    width: auto !important;
+                    height: auto !important;
+                    cursor: pointer;
+                    text-align: center !important;
+                    font-size: 2.5em !important;
+                    line-height: 1 !important;
+                    color: inherit !important;
+                    text-shadow: none !important;
+                    display: flex !important;
+                    justify-content: center !important;
+                    align-items: center !important;
+                    overflow: visible !important;
+                    transition: transform 0.2s ease;
+                }
+                
+                #fullscreenButton:hover {
+                    transform: scale(1.5);
+                }
 
 /* === III.1.4 bis – Personnalisation de l’emoji 📜 en bas à droite === */
 
-/* 1) Autorise le débordement pour ne pas rogner la mise à l’échelle */
-.leaflet-control-container,
-.leaflet-bar {
-  overflow: visible !important;
-}
-
-/* 2) Cible le conteneur bottom-right natif de Leaflet */
-.leaflet-bottom.leaflet-right {
-  display: block !important;   /* bloque le flex par défaut pour un stacking simple */
-}
-
-/* 3) Style identique au fullscreenButton pour le contrôle submit-story */
-.leaflet-bottom.leaflet-right .submit-story-control {
-  background-color: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  width: auto !important;
-  height: auto !important;
-  cursor: pointer;
-  text-align: center !important;
-  font-size: 2.5em !important;     /* même taille que 🎯, 🗺️, Random… */
-  line-height: 1 !important;
-  color: inherit !important;
-  text-shadow: none !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  transition: transform 0.2s ease;
-  margin-bottom: 0.5em !important; /* espace exactement identique avec fullscreen */
-}
-
-/* 4) Hover = scale(1.5) */
-.leaflet-bottom.leaflet-right .submit-story-control:hover {
-  transform: scale(1.5);
-}
-
-
-
+                  /* 1) Autorise le débordement pour ne pas rogner la mise à l’échelle */
+                  .leaflet-control-container,
+                  .leaflet-bar {
+                    overflow: visible !important;
+                  }
+                  
+                  /* 2) Cible le conteneur bottom-right natif de Leaflet */
+                  .leaflet-bottom.leaflet-right {
+                    display: block !important;   /* bloque le flex par défaut pour un stacking simple */
+                  }
+                  
+                  /* 3) Style identique au fullscreenButton pour le contrôle submit-story */
+                  .leaflet-bottom.leaflet-right .submit-story-control {
+                    background-color: transparent !important;
+                    border: none !important;
+                    padding: 0 !important;
+                    width: auto !important;
+                    height: auto !important;
+                    cursor: pointer;
+                    text-align: center !important;
+                    font-size: 2.5em !important;     /* même taille que 🎯, 🗺️, Random… */
+                    line-height: 1 !important;
+                    color: inherit !important;
+                    text-shadow: none !important;
+                    display: flex !important;
+                    justify-content: center !important;
+                    align-items: center !important;
+                    transition: transform 0.2s ease;
+                    margin-bottom: 0.5em !important; /* espace exactement identique avec fullscreen */
+                  }
+                  
+                  /* 4) Hover = scale(1.5) */
+                  .leaflet-bottom.leaflet-right .submit-story-control:hover {
+                    transform: scale(1.5);
+                  }
 
 /* === III.2 STYLES DIVERSES === */
 
 /* === III.2.1 Marqueurs emoji === */
-.emoji-marker {
-  font-size: 16px; /* Taille des marqueurs emoji */
-  background: none; /* Pas de fond */
-  border: none; /* Pas de bordure */
-  box-shadow: none; /* Pas d'ombre */
-  width: auto; /* Taille automatique */
-  height: auto; /* Taille automatique */
-  line-height: 1; /* Hauteur de ligne pour centrer */
-  color: inherit; /* Couleur héritée du parent */
-}
 
-/* i. On vise le conteneur de l’emoji et on prépare une transition fluide */
-.emoji-marker {
-  display: inline-block;           /* nécessaire pour que transform fonctionne correctement */
-  transform-origin: center center; /* pivote et agrandit depuis le centre */
-  transition: transform 0.2s ease; /* lissage de l’animation */
-}
+                .emoji-marker {
+                  font-size: 16px; /* Taille des marqueurs emoji */
+                  background: none; /* Pas de fond */
+                  border: none; /* Pas de bordure */
+                  box-shadow: none; /* Pas d'ombre */
+                  width: auto; /* Taille automatique */
+                  height: auto; /* Taille automatique */
+                  line-height: 1; /* Hauteur de ligne pour centrer */
+                  color: inherit; /* Couleur héritée du parent */
+                }
 
-/* ii. Au survol, on augmente la taille à 1.5× */
-.emoji-marker:hover {
-  transform: scale(1.5);
-}
-
-
-
-
+                /* i. On vise le conteneur de l’emoji et on prépare une transition fluide */
+                .emoji-marker {
+                  display: inline-block;           /* nécessaire pour que transform fonctionne correctement */
+                  transform-origin: center center; /* pivote et agrandit depuis le centre */
+                  transition: transform 0.2s ease; /* lissage de l’animation */
+                }
+                
+                /* ii. Au survol, on augmente la taille à 1.5× */
+                .emoji-marker:hover {
+                  transform: scale(1.5);
+                }
+                
 /* === III.2.2 Style pour la légende sans ombre et coins arrondis === */
 
-.info.legend {
-  color: #FFFFE0;  /* Couleur */
-  padding: 0px;  /* Espace interne autour du texte */
-  font-size: 16px;  /* Taille du texte */
-  font-family: 'Im Fell English SC', serif;
-  line-height: 1.0;  /* Hauteur de ligne pour améliorer la lisibilité */
-    text-shadow: 
-    0px 0px 4px rgba(230, 0, 0, 0.8),          /* halo diffus rouge vif */
-    1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
-}
-
-/* i. Style pour chaque élément de la légende */
-.legend-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 4px;
-}
-
-/* ii. Style pour l'emoji dans la légende */
-.legend-item .emoji {
-  font-size: 16px;
-  margin-right: 2px;
-}
-
-/* iii. Style pour le nom de la catégorie */
-.legend-item .category-name {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-
-
+                .info.legend {
+                  color: #FFFFE0;  /* Couleur */
+                  padding: 0px;  /* Espace interne autour du texte */
+                  font-size: 16px;  /* Taille du texte */
+                  font-family: 'Im Fell English SC', serif;
+                  line-height: 1.0;  /* Hauteur de ligne pour améliorer la lisibilité */
+                    text-shadow: 
+                    0px 0px 4px rgba(230, 0, 0, 0.8),          /* halo diffus rouge vif */
+                    1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
+                }
+                
+                /* i. Style pour chaque élément de la légende */
+                .legend-item {
+                  display: flex;
+                  align-items: center;
+                  margin-bottom: 4px;
+                }
+                
+                /* ii. Style pour l'emoji dans la légende */
+                .legend-item .emoji {
+                  font-size: 16px;
+                  margin-right: 2px;
+                }
+                
+                /* iii. Style pour le nom de la catégorie */
+                .legend-item .category-name {
+                  font-size: 16px;
+                  font-weight: bold;
+                }
 
 /* === III.2.3 Positionnement des contrôles en haut à droite === */
 
-.leaflet-topright {
-    display: flex; /* Utiliser flex pour aligner les éléments verticalement */
-    flex-direction: column; /* Aligner les éléments en colonne */
-    align-items: flex-end; /* Aligner les éléments à droite */
-    gap: 10px; /* Espacement vertical entre les boutons */
-    padding: 10px; /* Marge autour du groupe de boutons */
-}
-
-.leaflet-control-custom {
-    overflow: visible !important; /* 🔥 Leaflet limite parfois la taille à cause de ça */
-}
-
-
+                .leaflet-topright {
+                    display: flex; /* Utiliser flex pour aligner les éléments verticalement */
+                    flex-direction: column; /* Aligner les éléments en colonne */
+                    align-items: flex-end; /* Aligner les éléments à droite */
+                    gap: 10px; /* Espacement vertical entre les boutons */
+                    padding: 10px; /* Marge autour du groupe de boutons */
+                }
+                
+                .leaflet-control-custom {
+                    overflow: visible !important; /* 🔥 Leaflet limite parfois la taille à cause de ça */
+                }
 
 
 /* === PARTIE IV / ADAPTATIONS === */
 
 
-
-
 /* === IV.1 Adaptation pour écrans jusqu’à 768px === */
 
-@media (max-width: 768px) {
-  /* — Fond mobile (image différente, rognée et défilante) */
-  body {
-    background-image: url('./icons/background.jpg');
-    background-size: cover;
-    background-position: center center;
-    background-attachment: scroll;
-  }
-
-  /* i. Carte : hauteur réduite, centrée et coins arrondis */
-  #map {
-    height: 66vh;
-    max-width: 90%;
-    margin: 0 auto;
-  }
-
-  /* ii. Titre principal : taille réduite */
-  h1 {
-    font-size: 1.5em;
-  }
-
-  /* iii. Texte d’introduction : taille réduite et marges ajustées */
-  .intro {
-    font-size: 0.8em;
-    margin: 20px auto;
-  }
-
-  /* iv. Conteneur de l’intro : taille de police encore plus petite */
-  #intro-text {
-    font-size: 1.0em;
-  }
-
-  /* v. Popups Leaflet : largeur et typographie adaptées */
-  .leaflet-popup-content-wrapper {
-    max-width: 334px !important;
-  }
-  .leaflet-popup-content,
-  .leaflet-popup-content * {
-    font-size: 1.0em !important;
-    line-height: 1.0 !important;
-  }
-}
-
-
-
+              @media (max-width: 768px) {
+                /* — Fond mobile (image différente, rognée et défilante) */
+                body {
+                  background-image: url('./icons/background.jpg');
+                  background-size: cover;
+                  background-position: center center;
+                  background-attachment: scroll;
+                }
+              
+                /* i. Carte : hauteur réduite, centrée et coins arrondis */
+                #map {
+                  height: 66vh;
+                  max-width: 90%;
+                  margin: 0 auto;
+                }
+              
+                /* ii. Titre principal : taille réduite */
+                h1 {
+                  font-size: 1.5em;
+                }
+              
+                /* iii. Texte d’introduction : taille réduite et marges ajustées */
+                .intro {
+                  font-size: 0.8em;
+                  margin: 20px auto;
+                }
+              
+                /* iv. Conteneur de l’intro : taille de police encore plus petite */
+                #intro-text {
+                  font-size: 1.0em;
+                }
+              
+                /* v. Popups Leaflet : largeur et typographie adaptées */
+                .leaflet-popup-content-wrapper {
+                  max-width: 334px !important;
+                }
+                .leaflet-popup-content,
+                .leaflet-popup-content * {
+                  font-size: 1.0em !important;
+                  line-height: 1.0 !important;
+                }
+              }
 
 /* === IV.2 Adaptation pour écrans jusqu’à 480px === */
 
-@media (max-width: 480px) {
-  /* i. Fond très petit écran (mêmes réglages que pour 768px) */
-  body {
-    background-image: url('./icons/background.jpg');
-    background-size: cover;
-    background-position: center center;
-    background-attachment: scroll;
-  }
-
-  /* ii. Carte : largeur fixe, sans ombre pour alléger l’affichage */
-  #map {
-    height: 66vh;
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  /* iv. Titre principal : même taille que pour 768px */
-  h1 {
-    font-size: 1.5em;
-  }
-
-  /* v. Texte d’introduction : taille encore réduite */
-  .intro {
-    font-size: 0.5em;
-  }
-
-  /* vi. Conteneur de l’intro : taille minimale */
-  #intro-text {
-    font-size: 1.0em;
-  }
-
-  /* vii. Popups Leaflet : largeur et typographie pour petits écrans */
-  .leaflet-popup-content-wrapper {
-    max-width: 240px !important;
-  }
-  .leaflet-popup-content,
-  .leaflet-popup-content * {
-    font-size: 10px !important;
-    line-height: 1 !important;
-  }
-}
-
-
-
+              @media (max-width: 480px) {
+                /* i. Fond très petit écran (mêmes réglages que pour 768px) */
+                body {
+                  background-image: url('./icons/background.jpg');
+                  background-size: cover;
+                  background-position: center center;
+                  background-attachment: scroll;
+                }
+              
+                /* ii. Carte : largeur fixe, sans ombre pour alléger l’affichage */
+                #map {
+                  height: 66vh;
+                  width: 90%;
+                  margin: 0 auto;
+                }
+              
+                /* iv. Titre principal : même taille que pour 768px */
+                h1 {
+                  font-size: 1.5em;
+                }
+              
+                /* v. Texte d’introduction : taille encore réduite */
+                .intro {
+                  font-size: 0.5em;
+                }
+              
+                /* vi. Conteneur de l’intro : taille minimale */
+                #intro-text {
+                  font-size: 1.0em;
+                }
+              
+                /* vii. Popups Leaflet : largeur et typographie pour petits écrans */
+                .leaflet-popup-content-wrapper {
+                  max-width: 240px !important;
+                }
+                .leaflet-popup-content,
+                .leaflet-popup-content * {
+                  font-size: 10px !important;
+                  line-height: 1 !important;
+                }
+              }
 
 /* === IV.3 Surcharge de carte réglée en dernier pour prendre le pas === */
-body > #map {
-  height: var(--map-height) !important;  /* prendra comme défini dans :root */
-}
+
+              body > #map {
+                height: var(--map-height) !important;  /* prendra comme défini dans :root */
+              }
