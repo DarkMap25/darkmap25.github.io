@@ -123,13 +123,13 @@
                           overflow: hidden;                  /* masque le texte non encore “tapé” */
                           width: 0;                          /* démarre à 0 pour l’animation */
                           border-right: 2px solid rgba(230,0,0,0.75); /* curseur */
-                          animation: typing 3s steps(33, end) forwards;
+                          animation: typing 4s steps(33, end) forwards;
                         }
                         
                         /* Keyframes du “typing” */
                         @keyframes typing {
-                          from { width: 0; }
-                          to   { width: 100%; }
+                          from { width: 0ch; }
+                          to   { width: 33ch; }
                         }
                                       
               /* === Fade-in carte, intro et footer après l’animation === */
