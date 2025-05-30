@@ -65,7 +65,7 @@
               /* Conteneur pour positionner le header animé AU MÊME endroit que le header « réel » */
               .overlay-header-container {
                position: absolute;
-                top: 40px;                /* adapte cette valeur pour que ça colle pile sous ta barre (essaye 40px, 50px, etc.) */
+                top: 0px;                /* adapte cette valeur pour que ça colle pile sous ta barre (essaye 40px, 50px, etc.) */
                 left: 50%;
                 transform: translateX(-50%);
                 text-align: center;
