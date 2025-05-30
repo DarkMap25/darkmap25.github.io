@@ -408,50 +408,71 @@
                   padding: 2rem;
                 }
 
-/* === II.3.1 SOUMETTRE === */
-
-                /* === submitPanel : overlay plein écran au-dessus de tout === */
+/* === II.3 Submit Panel épuré === */
+                
+                /* 1) Overlay plein écran, caché par défaut */
                 #submitPanel {
-                  position: fixed;      /* sort du flux et colle à la fenêtre */
+                  position: fixed;
                   top: 0; left: 0;
-                  width: 100vw;         /* pleine largeur de la fenêtre */
-                  height: 100vh;        /* pleine hauteur de la fenêtre */
+                  width: 100vw;
+                  height: 100vh;
                   background-image: url('./icons/submit.jpg');
                   background-size: cover;
                   background-position: center;
                   background-repeat: no-repeat;
-                  overflow: auto; 
-                  z-index: 10000;       /* au-dessus de tous tes éléments */
-                  display: none;        /* caché tant que .visible n’est pas présent */
-                }
-                
-                /* i. Cache tout panel qui a la classe .hidden */
-                #submitPanel.hidden {
+                  overflow: hidden;      /* on gère le scroll via #submitContent */
+                  z-index: 10000;
                   display: none;
                 }
                 
-                /* ii. Affiche-le seulement quand il reçoit la classe .visible */
+                /* 2) Affichage quand on ajoute .visible */
                 #submitPanel.visible {
-                  display: block;  
+                  display: block;
                 }
                 
-                /* iii. Croix de fermeture */
+                /* 3) Bouton de fermeture unique */
                 #closeSubmitPanel {
-                  display: none;
-                  position: fixed;
-                  top: 20px;
-                  right: 20px;
+                  position: absolute;    /* par rapport à #submitPanel */
+                  top: 1rem;
+                  right: 1rem;
                   background-color: #900;
                   color: #fff;
                   border: none;
-                  font-size: 24px;
-                  padding: 8px 12px;
                   border-radius: 4px;
+                  font-size: 1.5rem;
+                  line-height: 1;
+                  padding: 0.3rem 0.6rem;
                   cursor: pointer;
-                  z-index: 2001;
+                  z-index: 10001;
+                  display: block;        /* toujours visible quand .visible */
                 }
-                #submitPanel.visible #closeSubmitPanel {
-                  display: block;
+                
+                /* 4) Masquer toute autre croix parasite s’il en reste */
+                #closeSubmit {
+                  display: none !important;
+                }
+                
+                /* 5) Header transparent, aucun padding ni marge */
+                #submitPanel header {
+                  background: none;
+                  margin: 0;
+                  padding: 0;
+                }
+                
+                /* 6) H1 exactement en haut et centré */
+                #submitPanel header h1 {
+                  position: absolute;
+                  top: 1rem;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  margin: 0;
+                  text-align: center;
+                  width: 100%;
+                }
+                
+                /* 7) Cacher la tagline (tu n’en veux pas) */
+                #submitPanel .tagline {
+                  display: none;
                 }
 
 /* === II.4 STYLES SOUMETTRE INTERNE === */
