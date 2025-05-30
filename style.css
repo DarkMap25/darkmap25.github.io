@@ -60,6 +60,7 @@
                 background-size: cover;
                 background-position: center;
                 background-attachment: fixed;
+                display: block;
               }
               
               /* Conteneur pour positionner le header animé AU MÊME endroit que le header « réel » */
@@ -68,6 +69,7 @@
                 top: 0px;                /* adapte cette valeur pour que ça colle pile sous ta barre (essaye 40px, 50px, etc.) */
                 left: 50%;
                 transform: translateX(-50%);
+                display: block;
                 text-align: center;
               }
               
@@ -88,7 +90,8 @@
               #overlay-text {
                 display: inline-block;             /* crucial pour typing */
                 white-space: nowrap;              
-                overflow: hidden;                 
+                overflow: hidden;       
+                width: 0;
                 border-right: 2px solid rgba(230,0,0,0.75); /* curseur clignotant si souhaité */
                 animation: typing 3s steps(33,end) forwards;
               }
