@@ -458,34 +458,42 @@
 
 // III.3 Ajout du bouton de fermeture Mentions Légales 
 
-            // i. Cible le lien "Mentions légales" //
-            const mentionsLink = document.getElementById('mentionsLink');
-            
-            // ii. Au clic, on empêche la navigation et on charge la page dans #detailPanel //
-            mentionsLink.addEventListener('click', function(e) {
-              e.preventDefault();
-              // si tu sauvegardes la vue comme pour Voir plus, tu peux le réutiliser
-              if (window._prevMapView) {
-                map.invalidateSize(); // réajuste la carte si besoin
-              }
-            
-            // iii. Masquer la carte et afficher le panneau de détail //
-              document.getElementById('map').style.display = 'none';
-              const panel = document.getElementById('detailPanel');
-              panel.classList.add('visible', 'full-view');
-            
-            // iv. Charger le contenu de mentions-legales.html
-              fetch('mentions-legales.html')
-                .then(resp => resp.text())
-                .then(html => {
-                  document.getElementById('detailContent').innerHTML = html;
-                })
-                .catch(err => {
-                  document.getElementById('detailContent').innerHTML = 
-                    '<p>Impossible de charger les mentions légales.</p>';
-                  console.error(err);
+                // i. Cible le lien "Mentions légales" //
+                const mentionsLink = document.getElementById('mentionsLink');
+                    
+                // ii. Gestion du clic sur "Mentions légales" === //
+                mentionsLink.addEventListener('click', function(e) {
+                  e.preventDefault();
+                
+                  // Sauvegarde et ajustement de la carte si nécessaire
+                  if (window._prevMapView) {
+                    map.invalidateSize(); // Force Leaflet à recalculer ses dimensions
+                  }
+                
+                  // Masquer la carte et ouvrir le panneau de détail
+                  document.getElementById('map').style.display = 'none';
+                  const panel = document.getElementById('detailPanel');
+                  panel.classList.add('visible', 'full-view');
+                
+                  // Charger le fichier HTML des mentions légales
+                  fetch('mentions-legales.html')
+                    .then(resp => resp.text())
+                    .then(htmlString => {
+                      // Parser le HTML reçu pour en extraire uniquement le <body>
+                      const parser = new DOMParser();
+                      const doc = parser.parseFromString(htmlString, 'text/html');
+                      const bodyContent = doc.body.innerHTML; // tout ce qui est dans <body>…</body>
+                
+                      // Injecter **seulement** ce contenu dans le panneau, sans écraser les styles globaux
+                      document.getElementById('detailContent').innerHTML = bodyContent;
+                    })
+                    .catch(err => {
+                      // En cas d’erreur, afficher un message amical
+                      document.getElementById('detailContent').innerHTML =
+                        '<p>Impossible de charger les mentions légales.</p>';
+                      console.error(err);
+                    });
                 });
-            });
 
 // III.4 Ajout du bouton "Lieu au hasard 🎲"
 
