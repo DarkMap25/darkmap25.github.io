@@ -90,16 +90,13 @@
                 white-space: nowrap;              
                 overflow: hidden;                 
                 border-right: 2px solid rgba(230,0,0,0.75); /* curseur clignotant si souhaité */
-                font-size: var(--header-tagline-font-size);
-                color: #FFFFE0;
-                font-family: 'IM FELL ENGLISH SC', serif;
-                font-weight: 700;
-                animation: typing 3s steps(30,end) forwards;
+                animation: typing 3s steps(33,end) forwards;
               }
               
               /* Définition de l’animation */
               @keyframes typing {
-                to { width: 100%; }
+                from { width: 0; }
+                to   { width: 100%; }
               }
               
               /* === Fade-in carte, intro et footer après l’animation === */
