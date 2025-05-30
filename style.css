@@ -76,15 +76,19 @@
                 }
 
               /* Conteneur pour positionner le header animé AU MÊME endroit que le header « réel » */
-              .overlay-header-container {
-               position: absolute;
-                top: 0px;                /* adapte cette valeur pour que ça colle pile sous ta barre (essaye 40px, 50px, etc.) */
-                left: 50%;
-                transform: translateX(-50%);
-                display: block;
-                text-align: center;
-                z-index: 1;              /* au-dessus du pseudo-élément ::before */
-              }
+                    .overlay-header-container {
+                          position: absolute;
+                          top: 0;
+                          left: 0;                             /* commence pile en haut à gauche */
+                          width: 100%;                         /* prend toute la largeur */
+                          height: var(--header-height);        /* même hauteur que <header> */
+                          display: flex;                       /* même flex que <header> */
+                          flex-direction: column;
+                          align-items: center;
+                          justify-content: center;             /* centre verticalement */
+                          text-align: center;
+                          z-index: 1;
+                        }
               
               /* === Titre statique « darkmap » === */
               .overlay-header-container .static-title {
@@ -109,7 +113,7 @@
                           font-family: 'IM FELL ENGLISH SC', serif;
                           font-weight: 700;
                           line-height: 1;
-                          display: block;
+                          display: inline-block;
                           text-align: center;
                           text-shadow:
                             0px 0px 4px rgba(230, 0, 0, 0.8),
@@ -119,7 +123,7 @@
                           overflow: hidden;                  /* masque le texte non encore “tapé” */
                           width: 0;                          /* démarre à 0 pour l’animation */
                           border-right: 2px solid rgba(230,0,0,0.75); /* curseur */
-                          animation: typing 3s steps(33, end) forwards;
+                          animation: typing 4s steps(33, end) forwards;
                         }
                         
                         /* Keyframes du “typing” */
