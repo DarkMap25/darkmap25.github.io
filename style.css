@@ -87,21 +87,34 @@
               
               /* === Texte animé « La Carte de France, version Dark » === */
               
-              #overlay-text {
-                display: inline-block;             /* crucial pour typing */
-                white-space: nowrap;              
-                overflow: hidden;       
-                width: 0;
-                border-right: 2px solid rgba(230,0,0,0.75); /* curseur clignotant si souhaité */
-                animation: typing 3s steps(33,end) forwards;
-              }
-              
-              /* Définition de l’animation */
-              @keyframes typing {
-                from { width: 0; }
-                to   { width: 100%; }
-              }
-              
+              /* === Texte animé “La carte de France, version Dark.” dans l’overlay === */
+                        #overlay-text {
+                          /* Style identique à header .tagline */
+                          margin: 0;
+                          font-size: var(--header-tagline-font-size);
+                          color: #FFFFE0;
+                          font-family: 'IM FELL ENGLISH SC', serif;
+                          font-weight: 700;
+                          line-height: 1;
+                          display: block;
+                          text-align: center;
+                          text-shadow:
+                            0px 0px 4px rgba(230, 0, 0, 0.8),
+                            1px 1px 0px rgba(230, 0, 0, 1);
+                        /* Propriétés pour l’animation “machine à écrire” */
+                          white-space: nowrap;               /* pas de retour à la ligne */
+                          overflow: hidden;                  /* masque le texte non encore “tapé” */
+                          width: 0;                          /* démarre à 0 pour l’animation */
+                          border-right: 2px solid rgba(230,0,0,0.75); /* curseur */
+                          animation: typing 3s steps(33, end) forwards;
+                        }
+                        
+                        /* Keyframes du “typing” */
+                        @keyframes typing {
+                          from { width: 0; }
+                          to   { width: 100%; }
+                        }
+                                      
               /* === Fade-in carte, intro et footer après l’animation === */
               #map,
               .intro,
