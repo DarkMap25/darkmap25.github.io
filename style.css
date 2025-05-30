@@ -64,15 +64,15 @@ body::before {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  display: flex;             /* centre le contenu horizontalement */
-  justify-content: center;
-  align-items: center;       /* et verticalement */
-  text-align: center;
 }
 
 /* Conteneur pour positionner le header animé AU MÊME endroit que le header « réel » */
 .overlay-header-container {
-padding-top : 0px;
+ position: absolute;
+  top: 40px;                /* adapte cette valeur pour que ça colle pile sous ta barre (essaye 40px, 50px, etc.) */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
 }
 
 /* === Titre statique « darkmap » === */
