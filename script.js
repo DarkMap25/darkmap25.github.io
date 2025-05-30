@@ -42,7 +42,6 @@
 
 // I.5 Animation d’introduction au chargement de la page
 
-        let showIntro = true;
         // Il écoute le DOMContentLoaded pour lancer le reveal progressif.
         document.addEventListener('DOMContentLoaded', () => {
           // Durée totale avant le reveal = 3s (typing CSS) + 1s de pause = 4000ms
