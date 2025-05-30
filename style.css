@@ -1,3 +1,24 @@
+/* ===  Variables de configuration (modifiable : hauteur en vh, tailles, couleurs…) === */
+:root {
+  /* hauteurs des sections (total = 100vh) */
+  --header-height: 20vh;
+  --map-height:    66vh;
+  --intro-height:  12vh;
+  --footer-height:  2vh;
+
+  /* typographies & couleurs */
+  --header-h1-font-size:      6em;
+  --header-h1-color:          #e60000;
+  --header-h1-shadow:         0 0 6px #000000;
+  --header-tagline-font-size: 1.6em;
+  --intro-font-size:          1.2em;
+  --footer-font-size:         0.8em;
+}
+
+
+
+
+
 /* ===  PARTIE I / GENERAL / INTRODUCTION / STRUCTURE SITE === */
 
 
@@ -33,94 +54,71 @@ body::before {
 
 
 
-/* === I.2.1 Overlay d’intro === */
+/* === I.2.1 Overlay d’intro (même bg que le site) === */
 #intro-overlay {
-  position: fixed; /* Position fixe pour couvrir toute la fenêtre */
-  top: 0; /* Commence en haut de la page */
-  left: 0; /* Commence à gauche de la page */
-  width: 100%; /* Prend toute la largeur de l'écran */
-  height: 100%; /* Prend toute la hauteur de l'écran */
-  background-color: #0d0d0d; /* Fond sombre */
-  background-image: url('./icons/background.jpg'); /* Image de fond de l'intro */
-  background-size: cover; /* Taille de l'image couvre tout l'écran */
-  background-position: center; /* L'image est centrée */
-  background-attachment: fixed; /* Empêche le fond de défiler */
-  z-index: 9999; /* Placer l'overlay au-dessus du contenu */
-  display: flex; /* Utiliser Flexbox pour centrer le contenu */
-  align-items: center; /* Centrer verticalement */
-  justify-content: center; /* Centrer horizontalement */
-  padding: 20px; /* Espacement autour du contenu */
-  box-sizing: border-box; /* Inclure le padding dans la taille totale */
-  text-align: center; /* Centrer le texte */
+  position: fixed;           /* couvre tout l’écran */
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: #0d0d0d; /* ton fond sombre */
+  background-image: url('./icons/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;             /* centre le contenu horizontalement */
+  justify-content: center;
+  align-items: center;       /* et verticalement */
+  text-align: center;
 }
 
-/* === I.2.2 Texte global de l’intro (contenant les lignes) === */
-#intro-text {
-  font-family: 'IM FELL ENGLISH SC', serif; /* Police d'introduction */
-  font-weight: 900;
-  font-size: 2.8em; /* Taille de la police de l'intro */
-  color: #e60000; /* Couleur rouge du texte */
-  text-shadow: 0 0 20px black; /* Ombre noir autour du texte */
-  line-height: 1.6; /* Espacement entre les lignes */
-  text-align: center; /* Centrer le texte */
-  animation: fadeIntro 8s forwards; /* Animation de fondu */
+/* Conteneur pour positionner le header animé AU MÊME endroit que le header « réel » */
+.overlay-header-container {
+padding-top : 0px;
 }
 
-/* i. Ligne 1 : "Un territoire. Une carte." */
-.line1 {
-  display: inline-block; /* Affichage en ligne */
-  white-space: nowrap; /* Empêcher le texte de passer à la ligne suivante */
-  overflow: hidden; /* Masquer le texte qui déborde */
-  width: 0; /* Initialiser la largeur à 0 pour l'animation */
-  animation: typingLine1 4s steps(30, end) forwards; /* Animation de frappe */
+/* === Titre statique « darkmap » === */
+.overlay-header-container .static-title {
+    margin: 0;
+    margin-bottom: 0em;
+    font-size: var(--header-h1-font-size);
+    font-family: 'IM FELL ENGLISH SC', serif;
+    font-weight: 900;
+    text-align: center;
+    color: var(--header-h1-color);
+    text-shadow: 0px 0px 4px rgba(255, 255, 224, 0.8), 1px 1px 0px rgba(255, 255, 224, 1);
 }
 
-/* ii. Ligne 2 : "Un passé sombre." */
-.line2 {
-  display: inline-block; /* Affichage en ligne */
-  white-space: nowrap; /* Empêcher le texte de passer à la ligne suivante */
-  overflow: hidden; /* Masquer le texte qui déborde */
-  width: 0; /* Initialiser la largeur à 0 pour l'animation */
-  animation: typingLine2 3s steps(30, end) forwards; /* Animation de frappe plus rapide */
-  animation-delay: 4s; /* Délai pour commencer après la première ligne */
-  animation-fill-mode: forwards; /* Maintenir l'état final de l'animation */
+/* === Texte animé « La Carte de France, version Dark » === */
+.overlay-text {
+    margin: 0;
+    font-size: var(--header-tagline-font-size);
+    color: #FFFFE0;
+    font-family: 'IM FELL ENGLISH SC', serif;
+    font-weight: 700;
+    margin-top: 0;
+    line-height: 1;
+    display: block;
+    text-align: center;
+    text-shadow: 0px 0px 4px rgba(230, 0, 0, 0.8), 1px 1px 0px rgba(230, 0, 0, 1);
+    width: 0;                              /* démarrage à 0 */
+    animation: typing 3s steps(30,end) forwards; /* 3s pour taper */
 }
 
-/* iii. Animation de frappe pour la ligne 1 */
-@keyframes typingLine1 {
-  to {
-    width: 100%; /* Augmenter la largeur à 100% à la fin de l'animation */
-  }
+/* Clé d’animation machine-à-écrire */
+@keyframes typing {
+  to { width: 100%; }
 }
 
-/* iv. Animation de frappe pour la ligne 2 */
-@keyframes typingLine2 {
-  to {
-    width: 100%; /* Augmenter la largeur à 100% à la fin de l'animation */
-  }
+/* === Fade-in carte, intro et footer après l’animation === */
+#map,
+.intro,
+footer {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
 }
-
 
 
 
 /* === I.3. Structure site === */
-
-/* === I.3.1 Variables de configuration (modifiable : hauteur en vh, tailles, couleurs…) === */
-:root {
-  /* hauteurs des sections (total = 100vh) */
-  --header-height: 20vh;
-  --map-height:    66vh;
-  --intro-height:  12vh;
-  --footer-height:  2vh;
-
-  /* typographies & couleurs */
-  --header-h1-font-size:      6em;
-  --header-h1-color:          #e60000;
-  --header-h1-shadow:         0 0 6px #000000;
-  --header-tagline-font-size: 1.6em;
-  --intro-font-size:          1.2em;
-  --footer-font-size:         0.8em;
-}
 
 /* === I.3.2 Mise en page flex-colonne full viewport === */
 html, body {
