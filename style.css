@@ -287,7 +287,7 @@
               }
 
 
-/* === PARTIE II / POP-UP / PANNEAU / SOUMETTRE === */
+/* === PARTIE II / POP-UP / VOIR PLUS / SOUMETTRE === */
 
 
 /* === II.1.1 Adaptation des popups Leaflet === */
@@ -363,7 +363,7 @@
                   background: transparent;
                 }
 
-/* === II.2.1 DetailPanel : fullscreen uniquement quand ouvert === */
+/* === II.2.1 VOIR PLUS : fullscreen uniquement quand ouvert === */
 
                 /* i. Par défaut, on le cache et on ne définit PAS sa hauteur ici */
                 #detailPanel {
@@ -387,6 +387,25 @@
                 }
                 #detailPanel.visible #closeDetailPanel {
                   display: block;
+                }
+
+                /* Plein écran quand visible === */
+                #detailPanel.visible {
+                  display: block;           /* on passe de none à block */
+                  position: fixed;          /* au-dessus de tout */
+                  top: 0;
+                  left: 0;
+                  width: 100vw;             /* largeur totale de la fenêtre */
+                  height: 100vh;            /* hauteur totale de la fenêtre */
+                  background-color: rgba(0, 0, 0, 0.9);
+                  color: #fff;
+                  z-index: 2000;
+                  overflow: auto;           /* scroll si contenu trop long */
+                }
+                
+                /* Un peu de padding quand on est en plein écran */
+                #detailPanel.full-view {
+                  padding: 2rem;
                 }
 
 /* === II.3.1 SOUMETTRE === */
