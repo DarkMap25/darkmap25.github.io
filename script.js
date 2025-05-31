@@ -535,6 +535,19 @@
 
 // V.5 BOUTON FERMETURE CENTRALE //
 
+// ====  Création unique du bouton globalCloseBtn  ====
+
+                ;(function() {
+                  // Si le bouton n’existe pas déjà, on le crée
+                  if (!document.getElementById('globalCloseBtn')) {
+                    const btn = document.createElement('button');
+                    btn.id = 'globalCloseBtn';
+                    btn.className = 'overlay-close';  // reprend la classe CSS que vous avez définie
+                    btn.textContent = '❌';
+                    document.body.appendChild(btn);
+                  }
+                })();
+
                 document.getElementById('globalCloseBtn').addEventListener('click', function(e) {
                   e.preventDefault();
                   e.stopPropagation();
