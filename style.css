@@ -286,6 +286,19 @@
                 text-decoration: underline !important; /* toujours souligné */
               }
 
+                /* iii. Bouton de fermeture unique */
+                .overlay-close {
+                  display: none;
+                  position: fixed;
+                  top: 1rem;
+                  right: 1rem;
+                  background-color: #FEEEE0;
+                  border: none;
+                  font-size: 2rem;
+                  cursor: pointer;
+                  z-index: 9999;
+                }
+                       
 
 /* === PARTIE II / POP-UP / VOIR PLUS / SOUMETTRE === */
 
@@ -369,25 +382,6 @@
                 #detailPanel {
                   display: none;
                 }
-                
-                /* iii. Croix de fermeture */
-                #closeDetailPanel {
-                  display: none;
-                  position: fixed;
-                  top: 20px;
-                  right: 20px;
-                  background-color: #900;
-                  color: #fff;
-                  border: none;
-                  font-size: 24px;
-                  padding: 8px 12px;
-                  border-radius: 4px;
-                  cursor: pointer;
-                  z-index: 2001;
-                }
-                #detailPanel.visible #closeDetailPanel {
-                  display: block;
-                }
 
                 /* Plein écran quand visible === */
                 #detailPanel.visible {
@@ -428,28 +422,6 @@
                 /* 2) Affichage quand on ajoute .visible */
                 #submitPanel.visible {
                   display: block;
-                }
-                
-                /* 3) Bouton de fermeture unique */
-                #closeSubmitPanel {
-                  position: absolute;    /* par rapport à #submitPanel */
-                  top: 1rem;
-                  right: 1rem;
-                  background-color: #900;
-                  color: #fff;
-                  border: none;
-                  border-radius: 4px;
-                  font-size: 1.5rem;
-                  line-height: 1;
-                  padding: 0.3rem 0.6rem;
-                  cursor: pointer;
-                  z-index: 10001;
-                  display: block;        /* toujours visible quand .visible */
-                }
-                
-                /* 4) Masquer toute autre croix parasite s’il en reste */
-                #closeSubmit {
-                  display: none !important;
                 }
                 
                 /* 5) Header transparent, aucun padding ni marge */
@@ -538,23 +510,7 @@
                   display: block;
                 }
                 
-                /* 2) On positionne absolument le bouton Close dans ce panel */
-                #closeSubmitPanel {
-                  position: absolute;    /* par rapport à #submitPanel */
-                  top: 1rem;             /* à 1rem du haut */
-                  right: 1rem;           /* à 1rem du bord droit */
-                  background-color: #900;
-                  color: #fff;
-                  border: none;
-                  border-radius: 4px;
-                  font-size: 1.5rem;
-                  line-height: 1;
-                  padding: 0.3rem 0.6rem;
-                  cursor: pointer;
-                  z-index: 10001;        /* au-dessus du contenu du panel */
-                }
-                
-                /* 3) (Optionnel) si tu veux un scroll interne pour le contenu */
+                /* 2) (Optionnel) si tu veux un scroll interne pour le contenu */
                 #submitContent {
                   position: absolute;
                   top: 3rem;             /* laisse de la place pour la croix */
