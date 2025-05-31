@@ -356,10 +356,22 @@
                             // → on parse le HTML pour n’extraire que la balise <form>
                             const parser = new DOMParser();
                             const doc = parser.parseFromString(htmlString, 'text/html');
-                            const formEl = doc.querySelector('form');
-                            if (formEl) {
-                              document.getElementById('submitContent').innerHTML = formEl.outerHTML;
-                            } else {
+                           // 1. On récupère le header complet
+                                        const headerEl = doc.querySelector('header');
+                                        // 2. On récupère le formulaire
+                                        const formEl   = doc.querySelector('form');
+                                        
+                                        let html = '';
+                                        if (headerEl) {
+                                          html += headerEl.outerHTML;   // injecte <header>…</header>
+                                        }
+                                        if (formEl) {
+                                          html += formEl.outerHTML;     // injecte ensuite le <form>…</form>
+                                        }
+                                        
+                                        document.getElementById('submitContent').innerHTML = html;
+                                                                    } 
+                                else {
                               document.getElementById('submitContent').innerHTML =
                                 '<p>Impossible de charger correctement le formulaire.</p>';
                             }
