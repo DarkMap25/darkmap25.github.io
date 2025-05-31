@@ -417,11 +417,6 @@
                     `&body=${encodeURIComponent(body)}`;
                   window.location.href = mailto;
                 });
-              
-              .catch(() => {
-                document.getElementById('submitContent').innerHTML =
-                  '<p>Impossible de charger le formulaire.</p>';
-              });
           }
 
 
