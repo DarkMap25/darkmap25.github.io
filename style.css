@@ -460,12 +460,12 @@
                             transform: none; /* Et ici */
                             width: auto;     /* Et ici */
                             z-index: auto;   /* Et ici */
-                            padding-top: 1rem; /* Ajoute un peu d'espace en haut */
+                            padding-top: 0rem; /* Ajoute un peu d'espace en haut */
                         }                
                 /* 5)tagline  */
                                               #submitPanel header .tagline {
                                     display: block; /* Assure-toi qu'elle est affichée */
-                                    margin: 0;
+                                    margin: 1em;
                                     font-size: var(--header-tagline-font-size);
                                     color: #FFFFE0;
                                     font-family: 'IM FELL ENGLISH SC', serif;
@@ -494,19 +494,6 @@
                   background: transparent;
                 }
                 
-                /* 8) Si jamais il y a un <h1> à l’intérieur de #submitContent, on s’assure qu’il ne crée pas d’espace supplémentaire */
-                #submitContent header h1 {
-                  position: relative;
-                  top: 0;
-                  margin: 0 auto 1rem auto;
-                  font-size: var(--header-h1-font-size);
-                  font-family: 'IM FELL ENGLISH SC', serif;
-                  font-weight: 900;
-                  color: var(--header-h1-color);
-                  text-shadow: var(--header-h1-shadow);
-                  text-align: center;
-                }
-                
                 /* 9) (Optionnel) Si vous aviez mis des règles globales “html, body { overflow: hidden; }” et que vous souhaitez que
                        la page globale puisse défiler, commentez ces lignes. Sinon, laissez-les désactivées (commentées) : */
                 /*
@@ -529,7 +516,7 @@
                   text-shadow:    0px 0px 4px rgba(255, 255, 224, 0.8),  /* halo diffus semi-transparent */
                     1px 1px 0px rgba(255, 255, 224, 1);    /* ombre nette opaque */  
                   text-transform: uppercase;
-                  margin: 1em 0.5em 0.5em;                        /* espacement vertical */
+                  margin: 0.2em 0.2em 0.2em;                        /* espacement vertical */
                 }
                 
                 /* Cible uniquement les <small> dans les .ask-submit */
