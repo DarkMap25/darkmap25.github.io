@@ -535,67 +535,52 @@
 
 // V.5 BOUTON FERMETURE CENTRALE //
 
-;(function() {
-  // 1) Si le bouton global n’existe pas encore, on le crée et on l’ajoute au <body>
-  if (!document.getElementById('globalCloseBtn')) {
-    const btn = document.createElement('button');
-    btn.id = 'globalCloseBtn';
-    btn.className = 'overlay-close';
-    btn.textContent = '❌';
-    document.body.appendChild(btn);
-  }
-
-  // 2) On récupère la référence du bouton (créé ou déjà présent)
-  const closeBtn = document.getElementById('globalCloseBtn');
-
-  // 3) On attache un listener unique pour gérer la fermeture
-  closeBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    // a) Si on est en plein écran, on en sort
-    if (document.fullscreenElement) {
-      document.exitFullscreen?.() ||
-        document.mozCancelFullScreen?.() ||
-        document.webkitExitFullscreen?.() ||
-        document.msExitFullscreen?.();
-      return;
-    }
-
-    // b) Sinon, si un panel/modal est ouvert (Voir plus / Mentions / Soumettre / etc.), on le ferme
-    if (window.currentlyOpenPanel) {
-      const panel = window.currentlyOpenPanel;
-
-      // b.1) Si c’est detailPanel (Voir plus ou Mentions légales)
-      if (panel.id === 'detailPanel') {
-        panel.classList.remove('visible', 'full-view');
-        document.getElementById('detailContent').innerHTML = '';
-        document.getElementById('map').style.display = 'block';
-        map.invalidateSize();
-        if (window._prevMapView) {
-          map.setView(
-            window._prevMapView.center,
-            window._prevMapView.zoom,
-            { animate: false }
-          );
-          delete window._prevMapView;
-        }
-      }
-      // b.2) Si c’est submitPanel (Soumettre)
-      else if (panel.id === 'submitPanel') {
-        panel.classList.remove('visible', 'full-view');
-        panel.classList.add('hidden');
-        document.getElementById('map').style.display = 'block';
-      }
-      // b.3) Cas éventuel d’un autre panel
-      else {
-        panel.classList.remove('visible', 'full-view');
-        panel.classList.add('hidden');
-      }
-
-      // c) On cache la croix et on réinitialise la variable
-      closeBtn.style.display = 'none';
-      window.currentlyOpenPanel = null;
-    }
-  });
-})();
+                document.getElementById('globalCloseBtn').addEventListener('click', function(e) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                
+                  // 1) Si on est en plein écran, on en sort
+                  if (document.fullscreenElement) {
+                    document.exitFullscreen?.() ??
+                      document.mozCancelFullScreen?.() ??
+                      document.webkitExitFullscreen?.() ??
+                      document.msExitFullscreen?.();
+                    return;
+                  }
+                
+                  // 2) Sinon, si un panel est ouvert (Voir plus, Soumettre, Mentions), on le ferme
+                  if (currentlyOpenPanel) {
+                    // a) Si c’est detailPanel (Voir plus ou Mentions légales)
+                    if (currentlyOpenPanel.id === 'detailPanel') {
+                      // i. Masquer detailPanel
+                      currentlyOpenPanel.classList.remove('visible', 'full-view');
+                      // ii. Vider le contenu
+                      document.getElementById('detailContent').innerHTML = '';
+                      // iii. Réafficher la carte
+                      document.getElementById('map').style.display = 'block';
+                      // iv. Redimensionner Leaflet
+                      map.invalidateSize();
+                      // v. Restaurer la vue si on venait de « Voir plus »
+                      if (window._prevMapView) {
+                        map.setView(window._prevMapView.center, window._prevMapView.zoom, { animate: false });
+                        delete window._prevMapView;
+                      }
+                    }
+                    // b) Si c’est submitPanel (Soumettre)
+                    else if (currentlyOpenPanel.id === 'submitPanel') {
+                      currentlyOpenPanel.classList.remove('visible', 'full-view');
+                      currentlyOpenPanel.classList.add('hidden');
+                      document.getElementById('map').style.display = 'block';
+                    }
+                    // c) (Éventuel) cas d’un autre panel (si vous en avez créé un différent), on le cache de la même façon
+                    else {
+                      currentlyOpenPanel.classList.remove('visible', 'full-view');
+                      currentlyOpenPanel.classList.add('hidden');
+                    }
+                
+                    // 3) On cache la croix
+                    document.getElementById('globalCloseBtn').style.display = 'none';
+                    // 4) Réinitialiser le pointeur de panel ouvert
+                    currentlyOpenPanel = null;
+                  }
+                });
