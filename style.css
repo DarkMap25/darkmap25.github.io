@@ -293,11 +293,10 @@
                   top: 1rem;
                   right: 1rem;
                   border: none;
+                  background-color: #000000;
                   font-size: 2rem;
                   cursor: pointer;
                   z-index: 10003;
-                }
-
                   /* Transition pour l’effet au survol */
                   transition: transform 0.2s ease, background-color 0.2s ease;
                 }
@@ -528,24 +527,6 @@
                   overflow: hidden;
                 }
                 
-                /* 2) Positionner le titre “darkmap” exactement au même endroit que sur la page principale */
-                #submitPanel header h1,
-                #submitPanel header .site-title {
-                  position: absolute;      /* sort du flow pour ne rien pousser */
-                  top: 1rem;               /* même repère vertical que sur ton site principal */
-                  left: 50%;               /* centré horizontalement */
-                  transform: translateX(-50%);
-                  margin: 0;               /* annule toute marge par défaut */
-                  font-size: 2rem;         /* ajuste si besoin pour matcher exactement */
-                  z-index: 10002;          /* sous le bouton close, au-dessus du contenu */
-                  background: transparent; /* pas de fond gênant */
-                }
-                
-                /* 3) (optionnel) s’assurer que ton header ne crée pas de bande noire */
-                #submitPanel header {
-                  background: transparent;
-                  padding-top: 0;
-                }
 
 /* === PARTIE III / PERSONNALISATION BOUTONS / STYLES === */
 
