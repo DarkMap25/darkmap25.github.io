@@ -431,58 +431,87 @@
                   display: block;
                 }
                 
-                /* 3) Réinitialiser la hauteur du header (globalement, header = 22vh) */
+                /* 3) Réinitialiser la hauteur du header (globale de 22vh) */
                 #submitPanel header {
-                  height: auto !important;           /* on annule la hauteur de 22vh imposée globalement */
+                  height: auto !important;       /* on annule le height:22vh imposé globalement */
                   margin: 0;
                   padding: 0;
-                  background: transparent;           /* on veut voir l’image de fond derrière */
+                  background: transparent;       /* on veut voir l’image de fond derrière */
                   display: flex;
                   flex-direction: column;
                   align-items: center;
                   justify-content: center;
-                  position: relative;                /* pour garder le flow normal, sans espace superflu */
-                  z-index: 10001;                    /* sous la croix (10003) et au-dessus du fond */
+                  position: relative;            /* pour garder le flow normal, sans espace superflu */
+                  z-index: 10001;                /* sous la croix (z-index:10003) et au-dessus du fond */
                 }
                 
-                /* 4) On recalcule “top” du titre pour qu’il soit collé contre le haut du viewport */
+                /* 4) Placer le <h1> exactement à 1rem du sommet, centré, avec ombre conservée */
                 #submitPanel header h1 {
                   margin: 0;
-                  font-size: var(--header-h1-font-size);   /* 6em */
+                  font-size: var(--header-h1-font-size); /* 6em */
                   font-family: 'IM FELL ENGLISH SC', serif;
                   font-weight: 900;
-                  color: var(--header-h1-color);           /* #e60000 */
-                  text-shadow: var(--header-h1-shadow);     /* 0 0 6px #000000 */
+                  color: var(--header-h1-color);         /* #e60000 */
+                  /* Ombre du titre (conservée) */
+                  text-shadow: 0px 0px 4px rgba(255, 255, 224, 0.8),
+                               1px 1px 0px rgba(255, 255, 224, 1);
                   text-align: center;
                   position: absolute;       /* on fixe le h1 dans le header */
                   top: 1rem;                /* exactement 1 rem du sommet, comme sur la home */
                   left: 50%;
                   transform: translateX(-50%);
                   width: 100%;
-                  text-shadow: 0px 0px 4px rgba(255, 255, 224, 0.8), 1px 1px 0px rgba(255, 255, 224, 1);              
-                  z-index: 10002;           /* sous la croix mais au-dessus du header */
+                  z-index: 10002;           /* sous la croix (10003) mais au-dessus du header */
                 }
                 
-                /* 6) Le formulaire (#submitContent) défile sous le header, sans masquer l’image */
+                /* 5) Masquer la tagline si vous ne la voulez pas ici */
+                #submitPanel header .tagline {
+                  display: none;
+                }
+                
+                /* 6) Zone interne scrollable (#submitContent), commence juste sous le <h1> */
+                /*    Comme le <h1> fait 6em de hauteur (font-size:6em, line-height:1), on ajoute 6em. */
                 #submitContent {
                   position: absolute;
-                  top: calc(1rem + var(--header-line-height, 0px)); 
-                  /* 
-                     → on veut que #submitContent commence juste sous le <h1> (+1rem),
-                       mais comme votre header n’a plus une hauteur fixe, on peut
-                       compenser avec un “safe area” minimal :
-                       ici on utilise calc(1rem + 0) ; il est possible d’ajuster
-                       après mesure réelle dans le browser si jamais l’espacement
-                       ne colle pas exactement. 
-                     → en pratique, 1rem représente le “top” de l’h1, donc on veut
-                       commencer le scroll juste en dessous.
-                  */
+                  top: calc(1rem + 6em);
                   bottom: 0;
                   left: 0;
                   right: 0;
                   overflow-y: auto;         /* autorise le scroll vertical si nécessaire */
                   padding: 1rem;
                 }
+                
+                /* 7) Si jamais #submitContent contenait lui aussi un <header>, on neutralise sa hauteur */
+                #submitContent header {
+                  height: auto !important;
+                  margin: 0;
+                  padding: 0;
+                  background: transparent;
+                }
+                
+                /* 8) Si jamais il y a un <h1> à l’intérieur de #submitContent, on s’assure qu’il ne crée pas d’espace supplémentaire */
+                #submitContent header h1 {
+                  position: relative;
+                  top: 0;
+                  margin: 0 auto 1rem auto;
+                  font-size: var(--header-h1-font-size);
+                  font-family: 'IM FELL ENGLISH SC', serif;
+                  font-weight: 900;
+                  color: var(--header-h1-color);
+                  text-shadow: var(--header-h1-shadow);
+                  text-align: center;
+                }
+                
+                /* 9) (Optionnel) Si vous aviez mis des règles globales “html, body { overflow: hidden; }” et que vous souhaitez que
+                       la page globale puisse défiler, commentez ces lignes. Sinon, laissez-les désactivées (commentées) : */
+                /*
+                html, body {
+                  margin: 0;
+                  padding: 0;
+                  // height: 100vh;
+                  // overflow: hidden;
+                }
+                */
 
 /* === II.4 STYLES SOUMETTRE INTERNE === */
 
