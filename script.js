@@ -76,7 +76,7 @@
         });
 
 
-// === PARTIE II / EMOJIS / POP-UP / VOIR PLUS / PLEIN ECRAN / SOUMETTRE === //
+// === PARTIE II / EMOJIS / POP-UP  === //
 
 
 // II.1.1 Définition des emojis par catégorie
@@ -191,7 +191,15 @@
           }
           createLegend();
 
-// II.3.1 Handler pour ouvrir le panneau "Voir plus"
+
+// PARTIE III / BOUTON FERMETURE / VOIR PLUS //
+
+
+// Ajoutez CE BLOC au tout début de script.js
+
+                let currentlyOpenPanel = null;   // ‘null’ si aucun panel/modal/plein-écran n’est ouvert
+
+// III.1 Handler pour ouvrir le panneau "Voir plus"
 
                 document.addEventListener("click", function(e) {
                   // 1) On cible vraiment le lien .voir-plus, quel que soit l'élément cliqué à l'intérieur
@@ -217,7 +225,11 @@
                   // 4) Masquer la carte et afficher le panneau
                   mapContainer.style.display = "none";
                   detailPanel.classList.add("visible", "full-view");
-                
+
+                // === NOUVEAU : on mémorise quel panel est ouvert ===
+                         currentlyOpenPanel = detailPanel;
+                         document.getElementById("globalCloseBtn").style.display = "block";
+                        
                   // 5) Construction du HTML comme avant, en utilisant voirPlusBtn au lieu de e.target
                   const id   = voirPlusBtn.getAttribute("data-id");
                   const lieu = window.lieuxData.find(l => l.ID == id);
@@ -248,33 +260,11 @@
                   // (le CSS fera apparaître automatiquement #closeDetailPanel via #detailPanel.visible)
                 });
 
-// II.3.2 Handler pour fermer le panneau (croix)
-                document.getElementById("closeDetailPanel").addEventListener("click", function(e) {
-                  e.preventDefault();
-                  e.stopPropagation();
-                
-                  const mapContainer  = document.getElementById("map");
-                  const detailPanel   = document.getElementById("detailPanel");
-                  const detailContent = document.getElementById("detailContent");
-                
-                  // i. Cacher le panneau
-                  detailPanel.classList.remove("visible", "full-view");
-                  // ii. Vider le contenu
-                  detailContent.innerHTML = "";
-                
-                  // iii. Réafficher la carte
-                  mapContainer.style.display = "block";
-                  // iv. Forcer Leaflet à redimensionner
-                  map.invalidateSize();
-                
-                  // v. Revenir exactement à la vue précédente
-                  if (window._prevMapView) {
-                    map.setView(window._prevMapView.center, window._prevMapView.zoom, { animate: false });
-                    delete window._prevMapView;
-                  }
-                });
 
-// II.4.1 Ajout du bouton plein écran à la carte
+// PARTIE IV / PLEIN ECRAN / SOUMETTRE //
+
+
+// IV.1.1 Ajout du bouton plein écran à la carte
 
           const fullscreenControl = L.control({ position: 'bottomright' });
           fullscreenControl.onAdd = function(map) {
@@ -289,7 +279,7 @@
           };
           fullscreenControl.addTo(map);
 
-// II.4.2 Fonction pour basculer en plein écran et sortir
+// IV.1.2 Fonction pour basculer en plein écran et sortir
 
           function toggleFullscreen() {
             const mapElement = document.getElementById('map');
@@ -306,18 +296,29 @@
             }
           }
 
-// II.4.3 Mise à jour de l’icône et du titre du bouton plein écran
+//  IV.1.3 Mise à jour de l’icône et du titre du bouton plein écran 
 
-          ['fullscreenchange', 'mozfullscreenchange', 'webkitfullscreenchange', 'msfullscreenchange']
-            .forEach(evt => document.addEventListener(evt, updateFullscreenButton));
-          
-          function updateFullscreenButton() {
-            const btn = document.getElementById('fullscreenButton');
-            if (!btn) return;
-            btn.title = document.fullscreenElement ? 'Quitter le plein écran' : 'Passer en plein écran';
-          }
+                ['fullscreenchange', 'mozfullscreenchange', 'webkitfullscreenchange', 'msfullscreenchange']
+                  .forEach(evt => document.addEventListener(evt, updateFullscreenButton));
+                
+                function updateFullscreenButton() {
+                  const btn = document.getElementById('fullscreenButton');
+                  if (!btn) return;
+                  btn.title = document.fullscreenElement ? 'Quitter le plein écran' : 'Passer en plein écran';
+                
+                  // === Afficher/masquer la croix globale en fonction du fullscreen ===
+                  if (document.fullscreenElement) {
+                    currentlyOpenPanel = null;                     // pas de panel “interne” ouvert
+                    document.getElementById('globalCloseBtn').style.display = 'block';
+                  } else {
+                    // On sort du plein écran : cacher la croix si aucun panel n’est ouvert
+                    if (currentlyOpenPanel === null) {
+                      document.getElementById('globalCloseBtn').style.display = 'none';
+                    }
+                  }
+                }
 
-// II.5.1 Création du contrôle Leaflet “Soumettre une histoire” (emoji 📜 en bas à droite)
+// IV.2.1 Création du contrôle Leaflet “Soumettre une histoire” (emoji 📜 en bas à droite)
 
             L.Control.SubmitStory = L.Control.extend({
               onAdd: function() {
@@ -337,7 +338,7 @@
             L.control.submitStory({ position: 'bottomright' }).addTo(map);
 
 
-// II.5.2 Fonction d’ouverture du panneau de soumission (fetch externe)
+// IV.2.2 Fonction d’ouverture du panneau de soumission (fetch externe)
 
           function openSubmitPanel() {
             // Masquer la carte
@@ -353,16 +354,11 @@
               .then(r => r.text())
               .then(html => {
                 document.getElementById('submitContent').innerHTML = html;
-          
-                // Branche le bouton ✖ de fermeture (dans le panel injecté)
-                const closeBtn = document.getElementById('closeSubmitPanel');
-                closeBtn?.addEventListener('click', e => {
-                  e.preventDefault();
-                  panel.classList.remove('visible','full-view');
-                  panel.classList.add('hidden');
-                  document.getElementById('map').style.display = 'block';
-                });
-          
+
+                       // ===  On mémorise quel panel est ouvert ===
+                     currentlyOpenPanel = panel;
+                     document.getElementById('globalCloseBtn').style.display = 'block';
+                                      
                 // Branche le comportement "Envoyer mon histoire"
                 const sendBtn = document.getElementById('submitStoryButton');
                 sendBtn?.addEventListener('click', e => {
@@ -405,7 +401,7 @@
           }
 
 
-// II.5.5 Liaison du lien "suggérer des lieux" dans l'intro (index.html)
+// IV.2.3 Liaison du lien "suggérer des lieux" dans l'intro (index.html)
 
             document.getElementById('submitLink')?.addEventListener('click', e => {
               e.preventDefault();
@@ -413,10 +409,10 @@
             });
 
 
-// === PARTIE III / BOUTONS ET ACTIONS === //
+// === PARTIE V / BOUTONS ET ACTIONS === //
 
 
-// III.1.1 Ajout du bouton de localisation
+// V.1.1 Ajout du bouton de localisation
 
             L.control.locate({
               position: 'topright',
@@ -429,7 +425,7 @@
               keepCurrentZoomLevel: true
             }).addTo(map);
 
-// III.1.2 Animation pour zoomer doucement lors de la géolocalisation
+// V.1.2 Animation pour zoomer doucement lors de la géolocalisation
 
             map.on('locationfound', function(event) {
               const targetLatLng = event.latlng;
@@ -449,7 +445,7 @@
               });
             });
 
-// III.2 Ajout du contrôle de changement de fond de carte
+// V.2 Ajout du contrôle de changement de fond de carte
 
           L.control.layers(
             { 'Dark': alidadedarkLayer, 'Atlas': thunderforestAtlasLayer },
@@ -457,12 +453,10 @@
             { position: 'topleft' }
           ).addTo(map);
 
-// III.3 Ajout du bouton de fermeture Mentions Légales 
+// V.3 Ajout du bouton de fermeture Mentions Légales 
 
                 // i. Cible le lien "Mentions légales" //
                 const mentionsLink = document.getElementById('mentionsLink');
-                    
-                // ii. Gestion du clic sur "Mentions légales" === //
                 mentionsLink.addEventListener('click', function(e) {
                   e.preventDefault();
                 
@@ -487,6 +481,10 @@
                 
                       // Injecter **seulement** ce contenu dans le panneau, sans écraser les styles globaux
                       document.getElementById('detailContent').innerHTML = bodyContent;
+                
+                      // === NOUVEAU : on mémorise quel panel est ouvert ===
+                      currentlyOpenPanel = panel;
+                      document.getElementById('globalCloseBtn').style.display = 'block';
                     })
                     .catch(err => {
                       // En cas d’erreur, afficher un message amical
@@ -496,7 +494,7 @@
                     });
                 });
 
-// III.4 Ajout du bouton "Lieu au hasard 🎲"
+// V.4 Ajout du bouton "Lieu au hasard 🎲"
 
             const randomControl = L.control({ position: 'topright' });
             randomControl.onAdd = function() {
@@ -534,3 +532,55 @@
                 }
               });
             }, 0);
+
+// V.5 BOUTON FERMETURE CENTRALE //
+
+                document.getElementById('globalCloseBtn').addEventListener('click', function(e) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                
+                  // 1) Si on est en plein écran, on en sort
+                  if (document.fullscreenElement) {
+                    document.exitFullscreen?.() ??
+                      document.mozCancelFullScreen?.() ??
+                      document.webkitExitFullscreen?.() ??
+                      document.msExitFullscreen?.();
+                    return;
+                  }
+                
+                  // 2) Sinon, si un panel est ouvert (Voir plus, Soumettre, Mentions), on le ferme
+                  if (currentlyOpenPanel) {
+                    // a) Si c’est detailPanel (Voir plus ou Mentions légales)
+                    if (currentlyOpenPanel.id === 'detailPanel') {
+                      // i. Masquer detailPanel
+                      currentlyOpenPanel.classList.remove('visible', 'full-view');
+                      // ii. Vider le contenu
+                      document.getElementById('detailContent').innerHTML = '';
+                      // iii. Réafficher la carte
+                      document.getElementById('map').style.display = 'block';
+                      // iv. Redimensionner Leaflet
+                      map.invalidateSize();
+                      // v. Restaurer la vue si on venait de « Voir plus »
+                      if (window._prevMapView) {
+                        map.setView(window._prevMapView.center, window._prevMapView.zoom, { animate: false });
+                        delete window._prevMapView;
+                      }
+                    }
+                    // b) Si c’est submitPanel (Soumettre)
+                    else if (currentlyOpenPanel.id === 'submitPanel') {
+                      currentlyOpenPanel.classList.remove('visible', 'full-view');
+                      currentlyOpenPanel.classList.add('hidden');
+                      document.getElementById('map').style.display = 'block';
+                    }
+                    // c) (Éventuel) cas d’un autre panel (si vous en avez créé un différent), on le cache de la même façon
+                    else {
+                      currentlyOpenPanel.classList.remove('visible', 'full-view');
+                      currentlyOpenPanel.classList.add('hidden');
+                    }
+                
+                    // 3) On cache la croix
+                    document.getElementById('globalCloseBtn').style.display = 'none';
+                    // 4) Réinitialiser le pointeur de panel ouvert
+                    currentlyOpenPanel = null;
+                  }
+                });
