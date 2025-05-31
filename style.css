@@ -292,13 +292,20 @@
                   position: fixed;
                   top: 1rem;
                   right: 1rem;
-                  background-color: #FEEEE0;
                   border: none;
                   font-size: 2rem;
                   cursor: pointer;
                   z-index: 10003;
                 }
-                       
+
+                  /* Transition pour l’effet au survol */
+                  transition: transform 0.2s ease, background-color 0.2s ease;
+                }
+                
+                /* Au survol, on augmente à 1.5 et on ajuste légèrement la couleur */
+                .overlay-close:hover {
+                  transform: scale(1.5);
+                }                       
 
 /* === PARTIE II / POP-UP / VOIR PLUS / SOUMETTRE === */
 
@@ -425,27 +432,10 @@
                 }
                 
                 /* 5) Header transparent, aucun padding ni marge */
-                #submitPanel header {
-                  background: none;
-                  margin: 0;
-                  padding: 0;
-                }
                 
                 /* 6) H1 exactement en haut et centré */
-                #submitPanel header h1 {
-                  position: absolute;
-                  top: 1rem;
-                  left: 50%;
-                  transform: translateX(-50%);
-                  margin: 0;
-                  text-align: center;
-                  width: 100%;
-                }
                 
                 /* 7) Cacher la tagline (tu n’en veux pas) */
-                #submitPanel .tagline {
-                  display: none;
-                }
 
 /* === II.4 STYLES SOUMETTRE INTERNE === */
 
