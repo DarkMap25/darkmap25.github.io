@@ -350,10 +350,34 @@
             panel.classList.add('visible', 'full-view');
           
             // Charger le HTML du formulaire
-            fetch('submit.html')
-              .then(r => r.text())
-              .then(html => {
-                document.getElementById('submitContent').innerHTML = html;
+                         fetch('submit.html')
+                          .then(r => r.text())
+                          .then(htmlString => {
+                            // → on parse le HTML pour n’extraire que la balise <form>
+                            const parser = new DOMParser();
+                            const doc = parser.parseFromString(htmlString, 'text/html');
+                            const formEl = doc.querySelector('form');
+                            if (formEl) {
+                              document.getElementById('submitContent').innerHTML = formEl.outerHTML;
+                            } else {
+                              document.getElementById('submitContent').innerHTML =
+                                '<p>Impossible de charger correctement le formulaire.</p>';
+                            }
+                        
+                            // → maintenant qu’on a collé uniquement le <form>, on peut
+                            //   attacher le listener au bouton “Envoyer mon histoire”
+                            const sendBtn = document.getElementById('submitStoryButton');
+                            sendBtn?.addEventListener('click', e => {
+                              e.preventDefault();
+                              const form = document.getElementById('storyForm');
+                              const data = new FormData(form);
+                              // … reste inchangé …
+                            });
+                          })
+                          .catch(() => {
+                            document.getElementById('submitContent').innerHTML =
+                              '<p>Impossible de charger le formulaire.</p>';
+                          });
 
                        // ===  On mémorise quel panel est ouvert ===
                      currentlyOpenPanel = panel;
