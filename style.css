@@ -408,7 +408,7 @@
                   padding: 2rem;
                 }
 
-/* === II.3 Submit Panel épuré === */
+/* === II.3 Submit Panel corrigé === */
 
                 /* 1) Overlay plein écran, caché par défaut */
                 #submitPanel {
@@ -421,9 +421,9 @@
                   background-size: cover;
                   background-position: center;
                   background-repeat: no-repeat;
-                  overflow: hidden;   /* on gère le scroll via #submitContent */
+                  overflow: hidden;      /* le scroll se fera uniquement dans #submitContent */
                   z-index: 10000;
-                  display: none;
+                  display: none;         /* rendu visible uniquement quand on ajoute .visible */
                 }
                 
                 /* 2) Affichage quand on ajoute .visible */
@@ -431,51 +431,56 @@
                   display: block;
                 }
                 
-                /* 5) Header de #submitPanel : transparent, pas de marge ni padding */
+                /* 3) Réinitialiser la hauteur du header (globalement, header = 22vh) */
                 #submitPanel header {
+                  height: auto !important;           /* on annule la hauteur de 22vh imposée globalement */
                   margin: 0;
                   padding: 0;
-                  background: transparent;   /* laisse apparaître l’image de fond */
+                  background: transparent;           /* on veut voir l’image de fond derrière */
                   display: flex;
                   flex-direction: column;
                   align-items: center;
                   justify-content: center;
-                  /* si besoin d’un petit espace au sommet, décommentez la ligne suivante :
-                  padding-top: 1rem; 
-                  */
-                  z-index: 10001;  /* sous la croix (qui est à z-index:10003) */
+                  position: relative;                /* pour garder le flow normal, sans espace superflu */
+                  z-index: 10001;                    /* sous la croix (10003) et au-dessus du fond */
                 }
                 
-                /* 6) H1 exactement en haut et centré */
+                /* 4) On recalcule “top” du titre pour qu’il soit collé contre le haut du viewport */
                 #submitPanel header h1 {
                   margin: 0;
-                  font-size: var(--header-h1-font-size);   /* récupère 6em */
+                  font-size: var(--header-h1-font-size);   /* 6em */
                   font-family: 'IM FELL ENGLISH SC', serif;
                   font-weight: 900;
                   color: var(--header-h1-color);           /* #e60000 */
                   text-shadow: var(--header-h1-shadow);     /* 0 0 6px #000000 */
                   text-align: center;
-                  position: absolute;
-                  top: 1rem;       /* même repère vertical que sur la page principale */
+                  position: absolute;       /* on fixe le h1 dans le header */
+                  top: 1rem;                /* exactement 1 rem du sommet, comme sur la home */
                   left: 50%;
                   transform: translateX(-50%);
                   width: 100%;
-                  z-index: 10002;  /* sous la croix mais au-dessus du background */
+                  text-shadow: 0px 0px 4px rgba(255, 255, 224, 0.8), 1px 1px 0px rgba(255, 255, 224, 1);              
+                  z-index: 10002;           /* sous la croix mais au-dessus du header */
                 }
                 
-                /* 7) Cacher la tagline dans #submitPanel */
-                #submitPanel header .tagline {
-                  display: none;
-                }
-                
-                /* 8) Zone scrollable interne (le formulaire), juste en dessous du header */
+                /* 6) Le formulaire (#submitContent) défile sous le header, sans masquer l’image */
                 #submitContent {
                   position: absolute;
-                  top: var(--header-height);  /* 22vh, sous le header */
+                  top: calc(1rem + var(--header-line-height, 0px)); 
+                  /* 
+                     → on veut que #submitContent commence juste sous le <h1> (+1rem),
+                       mais comme votre header n’a plus une hauteur fixe, on peut
+                       compenser avec un “safe area” minimal :
+                       ici on utilise calc(1rem + 0) ; il est possible d’ajuster
+                       après mesure réelle dans le browser si jamais l’espacement
+                       ne colle pas exactement. 
+                     → en pratique, 1rem représente le “top” de l’h1, donc on veut
+                       commencer le scroll juste en dessous.
+                  */
                   bottom: 0;
                   left: 0;
                   right: 0;
-                  overflow-y: auto;           /* scroll vertical si contenu trop grand */
+                  overflow-y: auto;         /* autorise le scroll vertical si nécessaire */
                   padding: 1rem;
                 }
 
