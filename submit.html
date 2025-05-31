@@ -1,140 +1,111 @@
-<!-- Début du document HTML de la page de soumission -->
 <!DOCTYPE html>
 <html lang="fr">
-                <head>
-                  <!-- Métadonnées et lien vers ton CSS principal -->
-                  <meta charset="UTF-8" />
-                  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                  <title>Proposez votre histoire – DarkMap</title>
-                  <link rel="stylesheet" href="style.css" />
-                </head>
 
-<!-- Corps de la page -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proposez votre histoire – DarkMap</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
 <body>
-  
-  <!-- Conteneur plein écran pour tout le contenu de la page de submit -->
-  
+
   <div id="submitContainer">
-    
-    
-    <!-- Header avec le titre et la tagline, positionnés comme sur la page principale -->
-    
-    <header>
-      <h1>darkmap</h1>
-      <p class="tagline">Les lieux oubliés n’attendent qu’une voix pour ressurgir.</p>
-    </header>
-    
-    <!-- Formulaire de saisie de l’histoire -->
-    
-    <form id="storyForm">
-      <div class="form-grid">
-        <!-- Titre du récit -->
-        <div class="form-group">
-          <p class="ask-submit">Quel est le titre de votre récit ?</p>
-          <label>
-            <input type="text" name="titre_recit" class="form-input"
-                   placeholder="Titre" required />
-          </label>
-        </div>
 
-        <!-- Catégorie -->
-        
-        <div class="form-group">
-          <p class="ask-submit">Quelle est la catégorie ?</p>
-          <label>
-            <select name="categorie" class="form-input" required>
-              <option value="">— Choisissez une catégorie —</option>
-              <option value="Affaires Non Résolues">❓ Affaires Non Résolues</option>
-              <option value="Crimes">☠️ Crimes</option>
-              <option value="Drames">⚰️ Drames</option>
-              <option value="Guerres et Conflits">⚔️ Guerres et Conflits</option>
-              <option value="Lieux Abandonnés">🏰 Lieux Abandonnés</option>
-              <option value="Lieux Mystérieux">👁️ Lieux Mystérieux</option>
-              <option value="Inconnu">❔ Je ne sais pas</option>
-            </select>
-          </label>
-        </div>
+    <div id="submitContent">
 
-        <!-- Lieu -->
-        
-        <div class="form-group">
-          <p class="ask-submit">
-            À quel endroit ce récit ténébreux a-t-il pris racine ?<br>
-            <small>Plus vous serez exact, plus l'écho de son histoire résonnera</small>
-          </p>
-          <label>
-            <input type="text" name="lieu" class="form-input"
-                   placeholder="Coordonnées GPS / Adresse / Lieu / Ville"
-                   required />
-          </label>
-        </div>
+      <header>
+        <h1>darkmap</h1>
+        <p class="tagline">Les lieux oubliés n’attendent qu’une voix pour ressurgir.</p>
+      </header>
 
-        <!-- Date libre -->
-        
-        <div class="form-group">
-          <p class="ask-submit">
-            À quelle date ou période ?<br><small>Optionnel</small>
-          </p>
-          <label>
-            <input type="text" name="date_event" class="form-input"
-                   placeholder="Date" />
-          </label>
-        </div>
-
-        <!-- Résumé libre -->
-        
-        <div class="form-group" style="grid-column: 1 / -1;">
-          <p class="ask-submit">
-            Quelle histoire sombre se cache derrière ce lieu ? Dites-nous pourquoi il mérite de rejoindre DarkMap.
-          </p>
-          <label>
-            <textarea name="resume_interet" class="form-input" rows="6"
-                      placeholder="Racontez librement" required></textarea>
-          </label>
-        </div>
-
-        <!-- Liens dynamiques -->
-        
-        <div class="form-group">
-          <p class="ask-submit">
-            Devenez les archivistes de l'obscurité :<br>
-            Partagez vos sources et liens.<br><small>Optionnel</small>
-          </p>
-          <div id="linksContainer">
+      <form id="storyForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <p class="ask-submit">Quel est le titre de votre récit ?</p>
             <label>
-              <input type="url" name="liens[]" class="form-input"
-                     placeholder="https://" />
+              <input type="text" name="titre_recit" class="form-input" placeholder="Titre" required />
+            </label>
+          </div>
+
+          <div class="form-group">
+            <p class="ask-submit">Quelle est la catégorie ?</p>
+            <label>
+              <select name="categorie" class="form-input" required>
+                <option value="">— Choisissez une catégorie —</option>
+                <option value="Affaires Non Résolues">❓ Affaires Non Résolues</option>
+                <option value="Crimes">☠️ Crimes</option>
+                <option value="Drames">⚰️ Drames</option>
+                <option value="Guerres et Conflits">⚔️ Guerres et Conflits</option>
+                <option value="Lieux Abandonnés">🏰 Lieux Abandonnés</option>
+                <option value="Lieux Mystérieux">👁️ Lieux Mystérieux</option>
+                <option value="Inconnu">❔ Je ne sais pas</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="form-group">
+            <p class="ask-submit">
+              À quel endroit ce récit ténébreux a-t-il pris racine ?<br>
+              <small>Plus vous serez exact, plus l'écho de son histoire résonnera</small>
+            </p>
+            <label>
+              <input type="text" name="lieu" class="form-input"
+                placeholder="Coordonnées GPS / Adresse / Lieu / Ville" required />
+            </label>
+          </div>
+
+          <div class="form-group">
+            <p class="ask-submit">
+              À quelle date ou période ?<br><small>Optionnel</small>
+            </p>
+            <label>
+              <input type="text" name="date_event" class="form-input" placeholder="Date" />
+            </label>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <p class="ask-submit">
+              Quelle histoire sombre se cache derrière ce lieu ? Dites-nous pourquoi il mérite de rejoindre DarkMap.
+            </p>
+            <label>
+              <textarea name="resume_interet" class="form-input" rows="6"
+                placeholder="Racontez librement" required></textarea>
+            </label>
+          </div>
+
+          <div class="form-group">
+            <p class="ask-submit">
+              Devenez les archivistes de l'obscurité :<br>
+              Partagez vos sources et liens.<br><small>Optionnel</small>
+            </p>
+            <div id="linksContainer">
+              <label>
+                <input type="url" name="liens[]" class="form-input" placeholder="https://" />
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <p class="ask-submit">
+              Laissez votre nom hanter les pages de DarkMap :<br>
+              Indiquez votre pseudo si vous souhaitez être crédité.<br><small>Optionnel</small>
+            </p>
+            <label>
+              <input type="text" name="pseudo" class="form-input" placeholder="Votre pseudo" />
             </label>
           </div>
         </div>
 
-        <!-- Pseudo (optionnel) -->
-        
-        <div class="form-group">
-          <p class="ask-submit">
-            Laissez votre nom hanter les pages de DarkMap :<br>
-            Indiquez votre pseudo si vous souhaitez être crédité.<br><small>Optionnel</small>
-          </p>
-          <label>
-            <input type="text" name="pseudo" class="form-input"
-                   placeholder="Votre pseudo" />
-          </label>
+        <div style="text-align:center; margin-top:1.5em;">
+          <button type="button" id="submitStoryButton" class="form-submit-button">
+            Envoyer mon histoire
+          </button>
         </div>
-      </div>
+      </form>
 
-      <!-- Bouton d’envoi centré -->
-      
-      <div style="text-align:center; margin-top:1.5em;">
-        <button type="button" id="submitStoryButton" class="form-submit-button">
-          Envoyer mon histoire
-        </button>
-      </div>
-    </form>
+    </div> </div> <script src="closeButton.js"></script>
 
-  </div> <!-- /#submitContainer -->
-
-  <!-- On charge closeButton.js pour injecter la croix ❌ sur cette page spécifique -->
-    <script src="closeButton.js"></script>  
-  
 </body>
+
 </html>
