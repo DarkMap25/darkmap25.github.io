@@ -593,7 +593,7 @@
                   /* i. Le texte à l’intérieur */
                   /* On reprend la même police, taille, interligne et ombre que pour la popup Leaflet */
                   font-family: 'Im Fell English SC', serif;
-                  font-size: 1.2em;             /* ajuste la taille du texte */
+                  font-size: 1.5em;             /* ajuste la taille du texte */
                   line-height: 1.0;             /* espacement des lignes */
                   color: #FFFFE0;               /* texte clair (jaune très pâle) */
                   margin: 0;                    /* pas de marge interne au composant */
