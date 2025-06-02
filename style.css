@@ -637,21 +637,19 @@
                 .suggest-button {
                   /* i. Texte : même police, taille 1.6em, texte clair avec ombre rouge */
                   font-family: 'Im Fell English SC', serif;
-                  font-size: 1.6em;             /* taille plus grande que 1.5em */
+                  font-size: 1.8em;             /* taille plus grande que 1.5em */
                   line-height: 1.0;             /* espacement des lignes */
+                  text-transform: uppercase;
                   color: #FFFFE0;               /* texte clair (jaune très pâle) */
-                  text-shadow:
-                    0px 0px 4px rgba(230, 0, 0, 0.8),  /* halo diffus rouge vif */
-                    1px 1px 0px rgba(230, 0, 0, 1);    /* légère ombre nette en décalage */
                 
                   /* ii. Fond rouge, coins arrondis, halo extérieur */
                   background-color: #e60000;    /* rouge DarkMap */
                   border: none;                 /* on enlève tout contour par défaut */
-                  box-shadow: 0 0 50px #e60000; /* grand halo rouge autour du bouton */
+                  box-shadow: 0 0 50px #FEEEE0; /* grand halo autour du bouton */
                   border-radius: 8px;           /* mêmes coins arrondis que .form-input */
                 
                   /* iii. Espacements intérieurs et dimensions */
-                  padding: 0.5em 1em;           /* espace autour du texte */
+                  padding: 0.3em 0.3em;           /* espace autour du texte */
                   cursor: pointer;              /* pointeur main au survol */
                   display: inline-block;        /* pour que le fond épouse la taille du contenu + padding */
                 
@@ -662,13 +660,13 @@
                     transform 0.2s ease;
                 
                   /* v. Hauteur minimale pour que le bouton ne soit pas trop étroit */
-                  min-height: 2.5em;
+                  min-height: 2.4em;
                   box-sizing: border-box;       /* inclut le padding dans la largeur/hauteur */
                 }
                 
                 /* Effet au survol : le bouton grossit à 1.5× et on peut aussi assombrir l’arrière-plan */
                 .suggest-button:hover {
-                  transform: scale(1.5);              /* grossissement à 150% */
+                  transform: scale(1.3);              /* grossissement à 130% */
                   background-color: #cc0000;          /* rouge un peu plus foncé au survol */
                   box-shadow: 0 0 60px rgba(230, 0, 0, 0.9); /* halo rouge renforcé */
                 }
