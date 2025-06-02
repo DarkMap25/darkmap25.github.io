@@ -337,107 +337,116 @@
             L.control.submitStory = opts => new L.Control.SubmitStory(opts);
             L.control.submitStory({ position: 'bottomright' }).addTo(map);
 
-
 // IV.2.2 Fonction d’ouverture du panneau de soumission (fetch externe)
 
-                            // Fonction pour ouvrir le panneau "Soumettre"
-                        function openSubmitPanel() {
-                          // Masquer la carte
-                          document.getElementById('map').style.display = 'none';
-                          
-                          // Afficher le panneau de soumission
-                          const panel = document.getElementById('submitPanel');
-                          panel.classList.remove('hidden');
-                          panel.classList.add('visible', 'full-view');
-                          
-                          // Charger le HTML de submit.html
-                          fetch('submit.html')
-                            .then(r => r.text())
-                            .then(htmlString => {
-                              // → on parse le HTML pour extraire le header et le formulaire
-                              const parser = new DOMParser();
-                              const doc = parser.parseFromString(htmlString, 'text/html');
-                              
-                              // 1. Récupérer l'élément <header>
-                              const headerEl = doc.querySelector('header');
-                              // 2. Récupérer l'élément <form>
-                              const formEl   = doc.querySelector('form');
-                              
-                              // Vérifier si on a bien récupéré le formulaire
-                              if (formEl) {
-                                // → construire la chaîne HTML à injecter
-                                let html = '';
-                                if (headerEl) {
-                                  html += headerEl.outerHTML;   // injecte <header>…</header>
-                                }
-                                html += formEl.outerHTML;       // injecte ensuite le <form>…</form>
-                                
-                                // Injecter le header et le formulaire dans #submitContent
-                                document.getElementById('submitContent').innerHTML = html;
-                              } else {
-                                // Afficher un message d'erreur si le <form> est introuvable
-                                document.getElementById('submitContent').innerHTML =
-                                  '<p>Impossible de charger correctement le formulaire.</p>';
-                              }
-                              
-                              // → maintenant qu’on a collé uniquement le <form>, on peut attacher le listener
-                              const sendBtn = document.getElementById('submitStoryButton');
-                              sendBtn?.addEventListener('click', e => {
-                                e.preventDefault();
-                                const form = document.getElementById('storyForm');
-                                const data = new FormData(form);
-                                // … reste inchangé …
-                              });
-                            })
-                            .catch(() => {
-                              // Gestion d'erreur si le fetch échoue
-                              document.getElementById('submitContent').innerHTML =
-                                '<p>Impossible de charger le formulaire.</p>';
-                            });
-                        
-                          // === On mémorise quel panel est ouvert ===
-                          currentlyOpenPanel = panel;
-                          document.getElementById('globalCloseBtn').style.display = 'block';
-                          
-                          // Branche le comportement "Envoyer mon histoire" pour le formulaire déjà présent dans le DOM
-                          const sendBtn = document.getElementById('submitStoryButton');
-                          sendBtn?.addEventListener('click', e => {
-                            e.preventDefault();
-                            const form = document.getElementById('storyForm');
-                            const data = new FormData(form);
-                        
-                            // Construire le sujet et le corps du mail
-                            const subject = 'Nouvelle histoire DarkMap';
-                            let body = '';
-                        
-                            // Champs simples
-                            body += `Titre du récit         : ${data.get('titre_recit')}\n`;
-                            body += `Catégorie              : ${data.get('categorie')}\n`;
-                            body += `Lieu                   : ${data.get('lieu')}\n`;
-                            body += `Date / période         : ${data.get('date_event')}\n`;
-                            body += `Résumé                 : ${data.get('resume_interet')}\n`;
-                        
-                            // Pseudo optionnel
-                            const pseudo = data.get('pseudo');
-                            if (pseudo) {
-                              body += `Pseudo                  : ${pseudo}\n`;
-                            }
-                        
-                            // Tous les liens (tableau liens[])
-                            for (const l of data.getAll('liens[]')) {
-                              if (l) {
-                                body += `Lien                    : ${l}\n`;
-                              }
-                            }
-                        
-                            // Ouvrir la boîte mail avec les données du formulaire
-                            const mailto =
-                              `mailto:darkmap.fr@gmail.com` +
-                              `?subject=${encodeURIComponent(subject)}` +
-                              `&body=${encodeURIComponent(body)}`;
-                            window.location.href = mailto;
-                          });
+                function openSubmitPanel() {
+                  // Masquer la carte
+                  document.getElementById('map').style.display = 'none';
+                
+                  // Afficher le panneau de soumission
+                  const panel = document.getElementById('submitPanel');
+                  panel.classList.remove('hidden');
+                  panel.classList.add('visible', 'full-view');
+                
+                  // Charger le HTML de submit.html
+                  fetch('submit.html')
+                    .then(r => {
+                      if (!r.ok) {
+                        throw new Error('submit.html introuvable');
+                      }
+                      return r.text();
+                    })
+                    .then(htmlString => {
+                      // → on parse le HTML pour extraire le header et le formulaire
+                      const parser = new DOMParser();
+                      const doc = parser.parseFromString(htmlString, 'text/html');
+                
+                      // 1. Récupérer l'élément <header>
+                      const headerEl = doc.querySelector('header');
+                      // 2. Récupérer l'élément <form>
+                      const formEl   = doc.querySelector('form');
+                
+                      // Vérifier si on a bien récupéré le formulaire
+                      if (formEl) {
+                        // → construire la chaîne HTML à injecter
+                        let html = '';
+                        if (headerEl) {
+                          html += headerEl.outerHTML;   // injecte <header>…</header>
                         }
+                        html += formEl.outerHTML;       // injecte ensuite le <form>…</form>
+                
+                        // Injecter le header et le formulaire dans #submitContent
+                        document.getElementById('submitContent').innerHTML = html;
+                      } else {
+                        // Afficher un message d'erreur si le <form> est introuvable
+                        document.getElementById('submitContent').innerHTML =
+                          '<p>Impossible de charger correctement le formulaire.</p>';
+                        return; // on stoppe ici car pas de formulaire
+                      }
+                
+                      // → maintenant qu’on a collé uniquement le <form>, on peut attacher le listener
+                      const sendBtn = document.getElementById('submitStoryButton');
+                      if (!sendBtn) {
+                        console.error('submitStoryButton introuvable !');
+                        return;
+                      }
+                      sendBtn.addEventListener('click', e => {
+                        e.preventDefault();
+                
+                        // Petit debug pour vérifier qu’on entre bien dans ce listener
+                        console.log('Clic sur "Suggérer ce lieu" détecté');
+                
+                        const form = document.getElementById('storyForm');
+                        if (!form) {
+                          console.error('storyForm introuvable !');
+                          return;
+                        }
+                
+                        const data = new FormData(form);
+                        // Construire le sujet et le corps du mail
+                        const subject = 'Nouvelle histoire DarkMap';
+                        let body = '';
+                
+                        // Champs simples
+                        body += `Titre du récit  : ${data.get('titre_recit')}\n`;
+                        body += `Catégorie       : ${data.get('categorie')}\n`;
+                        body += `Lieu            : ${data.get('lieu')}\n`;
+                        body += `Date / période  : ${data.get('date_event')}\n`;
+                        body += `Résumé          : ${data.get('resume_interet')}\n`;
+                
+                        // Pseudo optionnel
+                        const pseudo = data.get('pseudo');
+                        if (pseudo) {
+                          body += `Pseudo          : ${pseudo}\n`;
+                        }
+                
+                        // Tous les liens (tableau liens[])
+                        for (const l of data.getAll('liens[]')) {
+                          if (l) {
+                            body += `Lien            : ${l}\n`;
+                          }
+                        }
+                
+                        // Ouvrir la boîte mail avec les données du formulaire
+                        const mailto =
+                          `mailto:darkmap.fr@gmail.com` +
+                          `?subject=${encodeURIComponent(subject)}` +
+                          `&body=${encodeURIComponent(body)}`;
+                
+                        console.log('mailto généré :', mailto);
+                        window.location.href = mailto;
+                      });
+                    })
+                    .catch(err => {
+                      console.error(err);
+                      document.getElementById('submitContent').innerHTML =
+                        '<p>Impossible de charger le formulaire.</p>';
+                    });
+                
+                  // === On mémorise quel panel est ouvert ===
+                  currentlyOpenPanel = document.getElementById('submitPanel');
+                  document.getElementById('globalCloseBtn').style.display = 'block';
+                }
 
 // IV.2.3 Liaison du lien "suggérer des lieux" dans l'intro (index.html)
 
