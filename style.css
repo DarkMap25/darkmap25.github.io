@@ -593,7 +593,7 @@
                   /* i. Le texte à l’intérieur */
                   /* On reprend la même police, taille, interligne et ombre que pour la popup Leaflet */
                   font-family: 'Im Fell English SC', serif;
-                  font-size: 1.5em;             /* ajuste la taille du texte */
+                  font-size: 1.2em;             /* ajuste la taille du texte */
                   line-height: 1.0;             /* espacement des lignes */
                   color: #FFFFE0;               /* texte clair (jaune très pâle) */
                   margin: 0;                    /* pas de marge interne au composant */
@@ -608,11 +608,11 @@
                   border-radius: 8px;             /* coins arrondis identiques à la popup */
                 
                   /* iii. Gestion de la taille et du défilement (scroll) */
-                  width: 100%;                    /* le champ remplit la largeur du conteneur parent */
-                  max-width: 600px;               /* largeur maximale personnalisable */
+                  width: 80%;                    /* le champ remplit la largeur du conteneur parent */
+                  max-width: 6000px;               /* largeur maximale personnalisable */
                   /* Hauteur de base (pour <input>), mais on peut ramener à auto si besoin */
-                  height: 2.5em;                  
-                  padding: 10px;                  /* espace intérieur équivalent à la popup */
+                  height: 1.5em;                  
+                  padding: 0px;                  /* espace intérieur équivalent à la popup */
                   box-sizing: border-box;         /* inclut padding et bordure dans la largeur/hauteur */
                 
                   overflow-y: auto;               /* si le texte dépasse (surtout pour <textarea>), on peut défiler verticalement */
