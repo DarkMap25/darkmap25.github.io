@@ -405,10 +405,7 @@
                                   background-size: cover;
                                   background-position: center;
                                   background-repeat: no-repeat;
-                                  background-color: rgba(0, 0, 0, 0.8);
-                                  background-blend-mode: overlay;
-                                
-                                  /* Texte clair pour le contraste */
+                                  filter: brightness(1.8);                /* augmentation de la luminosité */                                  /* Texte clair pour le contraste */
                                   color: #f0f0f0;
                                   z-index: 2000;
                                   overflow: auto; /* Scroll si le contenu dépasse */
@@ -545,10 +542,7 @@
                   background-size: cover;          /* l’image couvre tout l’overlay */
                   background-position: center;     /* centrage de l’image */
                   background-repeat: no-repeat;    /* pas de répétition */
-                  /* Couche sombre semi-transparente pour l’ambiance DarkMap */
-                  background-color: rgba(0, 0, 0, 0.8);
-                  background-blend-mode: overlay;
-                  filter: brightness(1.5);         /* rehausse légèrement la luminosité de l’image */
+                  filter: brightness(1.8);         /*  légèrement la luminosité de l’image */
                   overflow: hidden;                /* le scroll se fera uniquement dans #submitContent */
                   z-index: 10000;                  /* au-dessus de tous les autres éléments */
                   display: none;                   /* invisible tant que la classe .visible n’est pas appliquée */
