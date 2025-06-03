@@ -340,6 +340,19 @@
 // IV.2.2 Fonction d’ouverture du panneau de soumission (fetch externe)
 
                 function openSubmitPanel() {
+                // i. SI ON EST EN PLEIN ÉCRAN, ON EN SORT
+                  if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+                    // Utilisation de l’API standard
+                    if (document.exitFullscreen) {
+                      document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) { 
+                      document.webkitExitFullscreen();       // pour Safari / Chrome anciens
+                    } else if (document.mozCancelFullScreen) { 
+                      document.mozCancelFullScreen();        // pour Firefox
+                    } else if (document.msExitFullscreen) { 
+                      document.msExitFullscreen();           // pour IE/Edge
+                    }
+                  }
                   // Masquer la carte
                   document.getElementById('map').style.display = 'none';
                 
