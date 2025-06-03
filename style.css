@@ -382,321 +382,382 @@
                   background: transparent;
                 }
 
-/* === II.2.1 VOIR PLUS : fullscreen uniquement quand ouvert (style DarkMap complet) === */
-
-                        /* i. Par défaut, on cache le panneau de détail */
-                        #detailPanel {
-                          display: none;
-                        }
-                        
-                        /* ii. Plein écran quand visible avec l’image bureau.jpg en fond et ambiance DarkMap */
-                        #detailPanel.visible {
-                          /* On passe de none à block pour afficher le panneau en plein écran */
-                          display: block;
-                          /* Positionnement au-dessus de tout le reste */
-                          position: fixed;
-                          top: 0;
-                          left: 0;
-                          width: 100vw;   /* largeur totale de la fenêtre */
-                          height: 100vh;  /* hauteur totale de la fenêtre */
-                        
-                          /* Fond : image bureau.jpg depuis le dossier icons + couche sombre semi-transparente */
-                          background-image: url('./icons/bureau.jpg');
-                          background-size: cover;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-color: rgba(0, 0, 0, 0.8);
-                          background-blend-mode: overlay;
-                        
-                          /* Couleur du texte claire pour un bon contraste */
-                          color: #f0f0f0;
-                          z-index: 2000;
-                          overflow: auto; /* autorise le scroll si le contenu dépasse */
-                        }
-                        
-                        /* iii. Un peu de padding quand le panneau est en plein écran */
-                        #detailPanel.full-view {
-                          padding: 2rem;
-                        }
-                        
-                        /* === Styles internes pour structurer le contenu “Voir plus” === */
-                        
-                        /* 1) Conteneur pour le header (titre DarkMap + sous-titre titre de l’affaire) */
-                        #detailPanel .panel-header {
-                          /* On centre horizontalement les titres et on ajoute de l’espace en bas */
-                          display: flex;
-                          flex-direction: column;
-                          align-items: center;
-                          justify-content: flex-start;
-                          margin-bottom: 2rem;
-                        }
-                        
-                        /* 2) Style du titre principal “darkmap” */
-                        #detailPanel .panel-header h1 {
-                          margin: 0;
-                          font-size: var(--header-h1-font-size);
-                          /* Police serif rappelant DarkMap */
-                          font-family: 'IM FELL ENGLISH SC', serif;
-                          font-weight: 900;
-                          color: var(--header-h1-color);
-                          /* Légère lueur jaune clair pour faire ressortir le titre */
-                          text-shadow:
-                            0 0 4px rgba(255, 255, 224, 0.8),
-                            1px 1px 0 rgba(255, 255, 224, 1);
-                          text-align: center;
-                        }
-                        
-                        /* 3) Style du sous-titre (nom de l’affaire cliquée) */
-                        #detailPanel .panel-header h2 {
-                                    display: block;
-                                    font-size: 1.5em;
-                                    font-family: 'Im Fell English SC', serif;
-                                    font-weight: bold;
-                                    color: #e60000;
-                                    text-align: center;
-                                    text-transform: uppercase;
-                                    margin-bottom: 0em;
-                                    text-shadow: 0px 0px 4px rgba(255, 255, 224, 0.8), 1px 1px 0px rgba(255, 255, 224, 1);
-                        }
-                        
-                        /* 4) Conteneur principal du contenu texte à l’intérieur du panneau */
-                        #detailPanel .panel-body {
-                                    font-family: 'Im Fell English SC', serif;
-                                    font-size: 1.2em;
-                                    line-height: 1.0;
-                                    color: #FFFFE0;
-                                    margin: 0;
-                                    text-shadow: 0px 0px 4px rgba(230, 0, 0, 0.8), 1px 1px 0px rgba(230, 0, 0, 1);                        }
-                        
-                        /* 5) Chaque section d’information (résumé, catégorie, date, etc.) */
-                        #detailPanel .info-section {
-                          margin-bottom: 0.4rem;  /* espace entre chaque bloc d’info */
-                        }
-                        
-                        /* 6) Style des labels en gras dans chaque info-section */
-                        #detailPanel .info-section strong {
-                                    display: block;
-                                    font-size: 1.2em;
-                                    font-family: 'Im Fell English SC', serif;
-                                    font-weight: bold;
-                                    color: #e60000;
-                                    text-transform: uppercase;
-                                    margin-bottom: 0em;
-                                    text-shadow: 0px 0px 4px rgba(255, 255, 224, 0.8), 1px 1px 0px rgba(255, 255, 224, 1);                          margin-right: 0.5rem; /* espacement entre le label et la donnée */
-                        }
-                        
-                        /* 7) Style par défaut pour les paragraphes (résumé long ou résumé court) */
-                        #detailPanel .info-section p {
-                                    font-family: 'Im Fell English SC', serif;
-                                    font-size: 1.2em;
-                                    line-height: 1.0;
-                                    color: #FFFFE0;
-                                    margin: 0;
-                                    text-shadow: 0px 0px 4px rgba(230, 0, 0, 0.8), 1px 1px 0px rgba(230, 0, 0, 1); 
-                        }                         
-                        
-                        /* 8) Style des liens (articles, vidéos, Wikipedia…) */
-                        #detailPanel a {
-                          color: #FEEEE0;           /* rouge pour se fondre dans l’identité visuelle */
-                          text-decoration: underline; /* souligné pour identifier comme lien */
-                          word-break: break-all;    /* évite de dépasser en cas de longues URL */
-                        }
-                        
-                        /* 9) Conteneur pour la liste de tous les liens et images associées */
-                        #detailPanel .links-images {
-                          margin-top: 2rem; /* espace avant cette section */
-                        }
-                        
-                        /* 10) Chaque élément (lien ou image) dans la liste */
-                        #detailPanel .links-images li {
-                          margin-bottom: 0.5rem; /* petit espace entre les éléments listés */
-                          list-style: none;      /* on retire la puce par défaut */
-                        }
-                        
-                        /* 11) Style des images associées : taille responsive et bordure rouge */
-                        #detailPanel .links-images img {
-                          max-width: 100%;         /* s’adapte à la largeur du conteneur */
-                          height: auto;            /* garde les proportions */
-                          border: 2px solid #e60000; /* fine bordure rouge */
-                          border-radius: 8px;      /* coins légèrement arrondis */
-                        }
+/* === II.2.1 VOIR PLUS : fullscreen uniquement quand ouvert (style DarkMap mis à jour) === */
+                                
+                                /* i. Par défaut, on cache le panneau de détail */
+                                #detailPanel {
+                                  display: none;
+                                }
+                                
+                                /* ii. Plein écran quand visible avec l’image bureau.jpg en fond et ambiance DarkMap */
+                                #detailPanel.visible {
+                                  /* Passage de none à block pour afficher le panneau en plein écran */
+                                  display: block;
+                                  /* Positionnement au-dessus de tout */
+                                  position: fixed;
+                                  top: 0;
+                                  left: 0;
+                                  width: 100vw;   /* largeur totale de la fenêtre */
+                                  height: 100vh;  /* hauteur totale de la fenêtre */
+                                
+                                  /* Fond : image bureau.jpg depuis le dossier icons + couche sombre semi-transparente */
+                                  background-image: url('icons/bureau.jpg');
+                                  background-size: cover;
+                                  background-position: center;
+                                  background-repeat: no-repeat;
+                                  background-color: rgba(0, 0, 0, 0.8);
+                                  background-blend-mode: overlay;
+                                
+                                  /* Texte clair pour le contraste */
+                                  color: #f0f0f0;
+                                  z-index: 2000;
+                                  overflow: auto; /* Scroll si le contenu dépasse */
+                                }
+                                
+                                /* iii. Un peu de padding quand le panneau est en plein écran */
+                                #detailPanel.full-view {
+                                  padding: 2rem;
+                                }
+                                
+                                /* === Styles internes pour structurer le contenu “Voir plus” === */
+                                
+                                /* 1) Conteneur pour le header (titre DarkMap + sous-titre : titre de l’affaire) */
+                                #detailPanel .panel-header {
+                                  display: flex;
+                                  flex-direction: column;
+                                  align-items: center;
+                                  justify-content: flex-start;
+                                  margin-bottom: 2rem;
+                                }
+                                
+                                /* 2) Style du titre principal “darkmap” */
+                                #detailPanel .panel-header h1 {
+                                  margin: 0;
+                                  font-size: var(--header-h1-font-size);
+                                  font-family: 'IM FELL ENGLISH SC', serif;
+                                  font-weight: 900;
+                                  color: var(--header-h1-color);
+                                  text-shadow:
+                                    0 0 4px rgba(255, 255, 224, 0.8),
+                                    1px 1px 0 rgba(255, 255, 224, 1);
+                                  text-align: center;
+                                }
+                                
+                                /* 3) Style du sous-titre (nom de l’affaire cliquée) */
+                                #detailPanel .panel-header h2 {
+                                  display: block;
+                                  font-size: 1.5em;
+                                  font-family: 'IM FELL ENGLISH SC', serif;
+                                  font-weight: bold;
+                                  color: #e60000;
+                                  text-align: center;
+                                  text-transform: uppercase;
+                                  margin-bottom: 0;
+                                  text-shadow:
+                                    0 0 4px rgba(255, 255, 224, 0.8),
+                                    1px 1px 0 rgba(255, 255, 224, 1);
+                                }
+                                
+                                /* 4) Conteneur principal du contenu texte à l’intérieur du panneau */
+                                #detailPanel .panel-body {
+                                  font-family: 'IM FELL ENGLISH SC', serif;
+                                  font-size: 1.2em;
+                                  line-height: 1.0;
+                                  color: #FFFFE0;
+                                  margin: 0;
+                                  text-shadow:
+                                    0 0 4px rgba(230, 0, 0, 0.8),
+                                    1px 1px 0 rgba(230, 0, 0, 1);
+                                  max-width: 800px;
+                                  margin-left: auto;
+                                  margin-right: auto;
+                                }
+                                
+                                /* 5) Chaque section d’information (résumé, catégorie, date, etc.) */
+                                #detailPanel .info-section {
+                                  margin-bottom: 0.4rem;
+                                }
+                                
+                                /* 6) Style des labels en gras dans chaque info-section */
+                                #detailPanel .info-section strong {
+                                  display: block;
+                                  font-size: 1.2em;
+                                  font-family: 'IM FELL ENGLISH SC', serif;
+                                  font-weight: bold;
+                                  color: #e60000;
+                                  text-transform: uppercase;
+                                  margin-bottom: 0;
+                                  text-shadow:
+                                    0 0 4px rgba(255, 255, 224, 0.8),
+                                    1px 1px 0 rgba(255, 255, 224, 1);
+                                  margin-right: 0.5rem;
+                                }
+                                
+                                /* 7) Style par défaut pour les paragraphes (résumé long ou résumé court) */
+                                #detailPanel .info-section p {
+                                  font-family: 'IM FELL ENGLISH SC', serif;
+                                  font-size: 1.2em;
+                                  line-height: 1.0;
+                                  color: #FFFFE0;
+                                  margin: 0;
+                                  text-shadow:
+                                    0 0 4px rgba(230, 0, 0, 0.8),
+                                    1px 1px 0 rgba(230, 0, 0, 1);
+                                }
+                                
+                                /* 8) Style des liens (articles, vidéos, Wikipedia…) */
+                                #detailPanel a {
+                                  color: #FFFFE0;
+                                  text-decoration: underline;
+                                  word-break: break-all;
+                                }
+                                
+                                /* 9) Conteneur pour la liste de tous les liens et images associées */
+                                #detailPanel .links-images {
+                                  margin-top: 2rem;
+                                }
+                                
+                                /* 10) Chaque élément (lien ou image) dans la liste */
+                                #detailPanel .links-images li {
+                                  margin-bottom: 0.5rem;
+                                  list-style: none;
+                                }
+                                
+                                /* 11) Style des images associées : taille responsive et bordure rouge */
+                                #detailPanel .links-images img {
+                                  max-width: 100%;
+                                  height: auto;
+                                  border: 2px solid #e60000;
+                                  border-radius: 8px;
+                                }
 
 /* === II.3 Submit Panel corrigé === */
 
-                /* 1) Overlay plein écran, caché par défaut */
+                /* 1) Définition de l’overlay #submitPanel : positionné en plein écran, caché par défaut */
                 #submitPanel {
-                  position: fixed;
-                  top: 0;
-                  left: 0;
-                  width: 100vw;
-                  height: 100vh;
-                  background-image: url('./icons/submit.jpg');
-                  background-size: cover;
-                  background-position: center;
-                  background-repeat: no-repeat;
-                  filter: brightness(1.5);
-                  overflow: hidden;      /* le scroll se fera uniquement dans #submitContent */
-                  z-index: 10000;
-                  display: none;         /* rendu visible uniquement quand on ajoute .visible */
+                  position: fixed;         /* position au-dessus de tout le contenu */
+                  top: 0;                  /* aligné en haut de la fenêtre */
+                  left: 0;                 /* aligné à gauche de la fenêtre */
+                  width: 100vw;            /* largeur = largeur de la fenêtre */
+                  height: 100vh;           /* hauteur = hauteur de la fenêtre */
+                  /* Chargement de l’image de fond submit.jpg depuis le dossier icons (style.css à la racine) */
+                  background-image: url('icons/submit.jpg');
+                  background-size: cover;          /* l’image couvre tout l’overlay */
+                  background-position: center;     /* centrage de l’image */
+                  background-repeat: no-repeat;    /* pas de répétition */
+                  /* Couche sombre semi-transparente pour l’ambiance DarkMap */
+                  background-color: rgba(0, 0, 0, 0.8);
+                  background-blend-mode: overlay;
+                  filter: brightness(1.5);         /* rehausse légèrement la luminosité de l’image */
+                  overflow: hidden;                /* le scroll se fera uniquement dans #submitContent */
+                  z-index: 10000;                  /* au-dessus de tous les autres éléments */
+                  display: none;                   /* invisible tant que la classe .visible n’est pas appliquée */
                 }
                 
-                /* 2) Affichage quand on ajoute .visible */
+                /* 2) Affichage de l’overlay quand on ajoute la classe .visible */
                 #submitPanel.visible {
-                  display: block;
+                  display: block;  /* on passe de display:none à display:block pour rendre l’overlay visible */
                 }
                 
-                /* 3) Réinitialiser la hauteur du header (globale de 22vh) */
-               #submitPanel header {
-                            height: auto !important;
-                            margin: 0;
-                            padding: 0;
-                            background: transparent;
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-                            justify-content: center;
-                            position: relative;
-                            z-index: 10001;
-                        }                
-                /* 4) Placer le <h1> exactement à 1rem du sommet, centré, avec ombre conservée */
-                                     #submitPanel header h1 {
-                            margin: 0;
-                            font-size: var(--header-h1-font-size);
-                            font-family: 'IM FELL ENGLISH SC', serif;
-                            font-weight: 900;
-                            color: var(--header-h1-color);
-                            text-shadow: 0px 0px 4px rgba(255, 255, 224, 0.8),
-                                         1px 1px 0px rgba(255, 255, 224, 1);
-                            text-align: center;
-                            position: static; /* Changement ici */
-                            top: auto;       /* Et ici */
-                            left: auto;      /* Et ici */
-                            transform: none; /* Et ici */
-                            width: auto;     /* Et ici */
-                            z-index: auto;   /* Et ici */
-                            padding-top: 0rem; /* Ajoute un peu d'espace en haut */
-                        }                
-                /* 5)tagline  */
-                                              #submitPanel header .tagline {
-                                    display: block; /* Assure-toi qu'elle est affichée */
-                                    margin: 1em;
-                                    font-size: var(--header-tagline-font-size);
-                                    color: #FFFFE0;
-                                    font-family: 'IM FELL ENGLISH SC', serif;
-                                    font-weight: 700;
-                                    margin-top: 0;
-                                    line-height: 1;
-                                    text-align: center;
-                                    text-shadow: 0px 0px 4px rgba(230, 0, 0, 0.8),
-                                                 1px 1px 0px rgba(230, 0, 0, 1);
-                                }                
-                /* 6) Zone interne scrollable (#submitContent), commence juste sous le <h1> */
-                                       #submitContent {
-                            position: static; /* Changement ici */
-                            top: auto;       /* Et ici */
-                            bottom: auto;    /* Et ici */
-                            left: auto;      /* Et ici */
-                            right: auto;     /* Et ici */
-                            overflow-y: auto;
-                            padding: 1rem;
-                        }                
-                /* 7) Si jamais #submitContent contenait lui aussi un <header>, on neutralise sa hauteur */
+                /* 3) Styles du <header> interne de #submitPanel : on neutralise la hauteur et on centre le contenu */
+                #submitPanel header {
+                  height: auto !important;     /* annule toute hauteur précédemment définie (ex. 22vh) */
+                  margin: 0;                    /* suppression des marges */
+                  padding: 0;                   /* suppression des paddings */
+                  background: transparent;      /* fond transparent pour laisser voir l’image en arrière-plan */
+                  display: flex;                /* affiche le header en flexbox */
+                  flex-direction: column;       /* aligne verticalement les enfants */
+                  align-items: center;          /* centre horizontalement les enfants */
+                  justify-content: center;      /* centre verticalement les enfants */
+                  position: relative;           /* position relative pour gérer l’empilement */
+                  z-index: 10001;               /* au-dessus du fond mais sous le contenu scrollable */
+                }
+                
+                /* 4) Style du <h1> dans le header : placé en haut, centré, avec l’ombre de texte */
+                #submitPanel header h1 {
+                  margin: 1rem 0 0;             /* espace de 1rem au-dessus pour respirer */
+                  font-size: var(--header-h1-font-size);    /* taille dynamique définie par une variable CSS */
+                  font-family: 'IM FELL ENGLISH SC', serif; /* police serif immersive de DarkMap */
+                  font-weight: 900;             /* texte très gras */
+                  color: var(--header-h1-color);/* couleur dynamique (souvent rouge foncé ou jaune pâle) */
+                  text-shadow:
+                    0 0 4px rgba(255, 255, 224, 0.8),  /* halo jaune pâle diffus */
+                    1px 1px 0 rgba(255, 255, 224, 1);   /* ombre nette opaque juste décalée */
+                  text-align: center;           /* centré horizontalement */
+                  position: static;             /* pas de positionnement absolu, reste dans le flux du header */
+                  width: auto;                  /* largeur automatique selon le contenu */
+                  z-index: auto;                /* pas de modification de l’empilement */
+                }
+                
+                /* 5) Style de la tagline sous le <h1> : texte secondaire centré avec ombre rouge */
+                #submitPanel header .tagline {
+                  display: block;               /* affichage en bloc pour prendre toute la largeur disponible */
+                  margin: 0.5rem 0 1rem;        /* 0.5rem au-dessus, 1rem en dessous pour la séparation */
+                  font-size: var(--header-tagline-font-size); /* taille dynamique définie par une variable CSS */
+                  color: #FFFFE0;               /* couleur jaune très pâle pour contraster */
+                  font-family: 'IM FELL ENGLISH SC', serif;    /* même police que le titre pour cohérence */
+                  font-weight: 700;             /* texte moins gras que le h1 */
+                  line-height: 1;               /* interligne de 1 pour compacité */
+                  text-align: center;           /* centré horizontalement */
+                  text-shadow:
+                    0 0 4px rgba(230, 0, 0, 0.8),   /* halo rouge vif diffus */
+                    1px 1px 0 rgba(230, 0, 0, 1);    /* ombre rouge nette décalée */
+                }
+                
+                /* 6) Zone interne scrollable (#submitContent) : commence juste sous le titre */
+                #submitContent {
+                  position: absolute;            /* positionné par rapport à #submitPanel */
+                  top: 4rem;                     /* 4rem pour laisser la place du <h1> et de la croix de fermeture */
+                  bottom: 0;                     /* s’étire jusqu’en bas de l’overlay */
+                  left: 0;                       /* aligné à gauche */
+                  right: 0;                      /* aligné à droite */
+                  overflow-y: auto;              /* scroll vertical si le contenu dépasse */
+                  padding: 1rem;                 /* espace intérieur pour le contenu du formulaire */
+                }
+                
+                /* 7) Si #submitContent contenait un <header> interne, on neutralise sa hauteur par défaut */
                 #submitContent header {
-                  height: auto !important;
-                  margin: 0;
-                  padding: 0;
-                  background: transparent;
+                  height: auto !important;       /* annule toute hauteur forcée */
+                  margin: 0;                      /* suppression des marges */
+                  padding: 0;                     /* suppression des paddings */
+                  background: transparent;        /* fond transparent pour laisser voir le scroll */
                 }
-                
-                /* 9) (Optionnel) Si vous aviez mis des règles globales “html, body { overflow: hidden; }” et que vous souhaitez que
-                       la page globale puisse défiler, commentez ces lignes. Sinon, laissez-les désactivées (commentées) : */
-                /*
-                html, body {
-                  margin: 0;
-                  padding: 0;
-                  // height: 100vh;
-                  // overflow: hidden;
-                }
-                */
+
 
 /* === II.4 STYLES SOUMETTRE INTERNE === */
 
-                /* Styles pour les questions du formulaire de soumission */
+                /* 1) Style des questions .ask-submit dans le formulaire : police immersive + ombre + couleur DarkMap */
                 .ask-submit {
-                  font-family: 'IM Fell English SC', serif;   /* police immersive */
-                  font-weight: 700;                           /* gras */
-                  font-size: 1.2em;                           /* taille souhaitée */
-                  color: #e60000;                             /* couleur rouge rappelant DarkMap */
-                  text-shadow:    0px 0px 4px rgba(255, 255, 224, 0.8),  /* halo diffus semi-transparent */
-                    1px 1px 0px rgba(255, 255, 224, 1);    /* ombre nette opaque */  
-                  text-transform: uppercase;
-                  margin: 0.2em 0.2em 0.2em;                        /* espacement vertical */
+                  font-family: 'IM FELL ENGLISH SC', serif; /* police immersive DarkMap */
+                  font-weight: 700;                        /* texte en gras */
+                  font-size: 1.2em;                        /* taille confortable */
+                  color: #e60000;                          /* rouge vif DarkMap */
+                  text-shadow:
+                    0 0 4px rgba(255, 255, 224, 0.8),      /* halo jaune pâle */
+                    1px 1px 0 rgba(255, 255, 224, 1);       /* ombre nette jaune pâle */
+                  text-transform: uppercase;               /* tout en majuscules pour insister */
+                  margin: 0.2em 0;                         /* petit espace vertical autour */
                 }
                 
-                /* Cible uniquement les <small> dans les .ask-submit */
+                /* 2) Cible du <small> à l’intérieur des .ask-submit : style plus discret */
                 #submitPanel .ask-submit small {
-                  color: #FEEEE0;
-                  font-family: 'IM Fell English SC', serif;   /* police immersive */
-                  font-size: 0.8em;                           /* taille souhaitée */
-                  font-style: italic;  /* italique */  
-                        text-shadow: 
-                    0px 0px 4px rgba(230, 0, 0, 0.8),          /* halo diffus rouge vif */
-                    1px 1px 0px rgba(230, 0, 0, 1);             /* légère ombre nette en décalage */
+                  color: #FFFFE0;                          /* texte jaune très pâle */
+                  font-family: 'IM FELL ENGLISH SC', serif;/* même police immersive */
+                  font-size: 0.8em;                        /* taille réduite pour texte secondaire */
+                  font-style: italic;                      /* italique pour distinction */
+                  text-shadow:
+                    0 0 4px rgba(230, 0, 0, 0.8),          /* halo rouge vif diffus */
+                    1px 1px 0 rgba(230, 0, 0, 1);           /* ombre rouge nette */
                 }
                 
-                /* 2-col layout pour le formulaire submit */
+                /* 3) Grille 2 colonnes (.form-grid) : organise le formulaire en deux colonnes égales */
                 .form-grid {
-                  display: grid;
-                  grid-template-columns: repeat(2, 1fr);
-                  grid-gap: 1.5rem;
+                  display: grid;                           /* usage de CSS Grid */
+                  grid-template-columns: repeat(2, 1fr);   /* deux colonnes égales (1fr + 1fr) */
+                  grid-gap: 1.5rem;                        /* espacement de 1.5rem entre les cases */
                 }
                 
-                /* Chaque question+input dans sa propre « case » */
+                /* 4) Chaque question+input en .form-group : disposition verticale */
                 .form-group {
-                  display: flex;
-                  flex-direction: column;
+                  display: flex;                 /* usage de Flexbox */
+                  flex-direction: column;        /* empilement vertical des éléments (question + input) */
                 }
                 
-                /* Champs qui occupent toute la largeur */
+                /* 5) Si une .form-group utilise grid-column, on lui fait occuper toute la largeur */
                 .form-grid > .form-group[style*="grid-column"] {
-                  grid-column: 1 / -1;
+                  grid-column: 1 / -1;           /* occupe toutes les colonnes (1 à la dernière) */
                 }
                 
-                /* 1) On fixe le panel en full-screen */
-                #submitPanel {
-                  position: fixed;       /* colle le panel à la fenêtre */
-                  background-image: url('./icons/bureau.jpg');
-                  background-size: cover;
-                  background-position: center;
-                  background-repeat: no-repeat;
-                  overflow: auto;  top: 0;
-                  left: 0;
-                  width: 100vw;          /* pleine largeur */
-                  height: 100vh;         /* pleine hauteur */
-                  overflow: hidden !important;
-                  z-index: 10000;        /* au-dessus de tout */
+                /* 6) Styles généraux pour les champs <input> et <textarea> de classe .form-input */
+                input.form-input,
+                textarea.form-input {
+                  /* a) Texte à l’intérieur */
+                  font-family: 'IM FELL ENGLISH SC', serif; /* même police pour uniformité */
+                  font-size: 1.5em;             /* taille du texte plus grande */
+                  line-height: 1.0;             /* interligne serré */
+                  color: #FFFFE0;               /* texte jaune très pâle pour contraste */
+                  margin: 0;                    /* suppression des marges par défaut */
+                  text-shadow:
+                    0 0 4px rgba(230, 0, 0, 0.8),  /* halo rouge vif diffus */
+                    1px 1px 0 rgba(230, 0, 0, 1);   /* ombre rouge nette */
+                
+                  /* b) Fond sombre et contour lumineux */
+                  background: rgba(0, 0, 0, 0.8); /* fond semi-transparent sombre */
+                  border: none;                   /* pas de bordure simple */
+                  box-shadow: 0 0 50px #e60000;   /* halo rouge autour du champ */
+                  border-radius: 8px;             /* coins arrondis */
+                
+                  /* c) Taille et gestion du scroll */
+                  width: 80%;                    /* champ remplit 80% du conteneur parent */
+                  max-width: 6000px;             /* largeur maximale pour prévenir un débordement extrême */
+                  height: 1.5em;                 /* hauteur de base pour les <input> */
+                  padding: 0;                    /* pas de padding interne pour laisser respirer le texte */
+                  box-sizing: border-box;        /* inclut padding et bordure dans la largeur/hauteur */
+                  overflow-y: auto;              /* scroll vertical si le contenu dépasse (utile pour <textarea>) */
+                  resize: vertical;              /* permet à l’utilisateur de redimensionner verticalement */
                 }
                 
-                /* Affiche le panel quand la classe .visible est appliquée */
-                #submitPanel.visible {
-                  display: block;
+                /* 7) Hauteur minimale pour les <textarea> de classe .form-input */
+                textarea.form-input {
+                  min-height: 8em;               /* laisse une zone confortable pour écrire */
+                  overflow-y: auto;              /* scroll vertical si le texte dépasse cette hauteur */
                 }
                 
-                /* 2) (Optionnel) si tu veux un scroll interne pour le contenu */
-                #submitContent {
-                  position: absolute;
-                  top: 3rem;             /* laisse de la place pour la croix */
-                  bottom: 0;
-                  left: 0;
-                  right: 0;
-                  overflow-y: auto;      /* scroll vertical si nécessaire */
-                  padding: 1rem;
+                /* 8) Style du texte indicatif dans les champs (placeholder) */
+                input.form-input::placeholder,
+                textarea.form-input::placeholder {
+                  color: #aaa;   /* gris clair pour le placeholder */
+                  opacity: 1;    /* opacité maximale pour une meilleure lisibilité */
                 }
                 
-                /* Responsive : 1 colonne sous 768px */
+                /* 9) Style pour le bouton “Suggérer ce lieu” : fond rouge, texte immersif, halo extérieur */
+                .suggest-button {
+                  /* a) Texte du bouton */
+                  font-family: 'IM FELL ENGLISH SC', serif;  /* même police immersive que le reste */
+                  font-size: 1.8em;             /* taille du texte plus grande que les champs */
+                  line-height: 1.0;             /* interligne serré */
+                  text-transform: uppercase;    /* tout en majuscules */
+                  color: #FFFFE0;               /* texte jaune très pâle */
+                
+                  /* b) Fond et contour */
+                  background-color: #e60000;    /* fond rouge DarkMap */
+                  border: none;                 /* pas de bordure par défaut */
+                  box-shadow: 0 0 50px #FFFFE0;  /* halo jaune pâle autour du bouton */
+                  border-radius: 8px;           /* coins arrondis */
+                
+                  /* c) Espacements et interaction */
+                  padding: 0.3em 0.3em;         /* espace intérieur autour du texte */
+                  cursor: pointer;              /* curseur main au survol */
+                  display: inline-block;        /* pour que le fond épouse la taille du contenu */
+                  transition:
+                    background-color 0.2s ease,
+                    box-shadow 0.2s ease,
+                    transform 0.2s ease;       /* transition douce pour le hover */
+                
+                  /* d) Hauteur minimale */
+                  min-height: 2.4em;            /* empêche le bouton d’être trop fin */
+                  box-sizing: border-box;       /* inclut padding et bordure dans les dimensions */
+                }
+                
+                /* 10) Effet hover pour le bouton .suggest-button : grossissement et fond plus sombre */
+                .suggest-button:hover {
+                  transform: scale(1.3);             /* agrandissement à 130% */
+                  background-color: #cc0000;         /* rouge un peu plus foncé au survol */
+                  box-shadow: 0 0 60px rgba(230, 0, 0, 0.9); /* halo rouge renforcé */
+                }
+                
+                /* 11) Forcer html et body en plein écran sans marges ni scroll global */
+                html, body {
+                  margin: 0;                    /* suppression des marges par défaut */
+                  padding: 0;                   /* suppression des paddings par défaut */
+                  height: 100vh;                /* hauteur de la fenêtre pour tout l’écran */
+                  overflow: hidden;             /* empêche le scroll global, on gère le scroll interne */
+                }
+                
+                /* 12) Responsive : passe en 1 colonne sous 768px pour la grille du formulaire */
                 @media (max-width: 768px) {
                   .form-grid {
-                    grid-template-columns: 1fr;
+                    grid-template-columns: 1fr; /* une seule colonne */
                   }
                 }
 
