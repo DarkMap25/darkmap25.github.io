@@ -434,11 +434,11 @@
                         /* 2) Style du titre principal “darkmap” */
                         #detailPanel .panel-header h1 {
                           margin: 0;
-                          font-size: 4rem;
+                          font-size: var(--header-h1-font-size);
                           /* Police serif rappelant DarkMap */
                           font-family: 'IM FELL ENGLISH SC', serif;
                           font-weight: 900;
-                          color: #e60000;
+                          color: var(--header-h1-color);
                           /* Légère lueur jaune clair pour faire ressortir le titre */
                           text-shadow:
                             0 0 4px rgba(255, 255, 224, 0.8),
@@ -448,48 +448,56 @@
                         
                         /* 3) Style du sous-titre (nom de l’affaire cliquée) */
                         #detailPanel .panel-header h2 {
-                          margin: 0.5rem 0 0;
-                          font-size: 2rem;
-                          font-family: 'IM FELL ENGLISH SC', serif;
-                          font-weight: 700;
-                          color: #FFFFE0;
-                          /* Légère lueur rouge pour bien séparer le sous-titre */
-                          text-shadow:
-                            0 0 4px rgba(230, 0, 0, 0.8),
-                            1px 1px 0 rgba(230, 0, 0, 1);
-                          text-align: center;
+                                    display: block;
+                                    font-size: 1.5em;
+                                    font-family: 'Im Fell English SC', serif;
+                                    font-weight: bold;
+                                    color: #e60000;
+                                    text-align: center;
+                                    text-transform: uppercase;
+                                    margin-bottom: 0em;
+                                    text-shadow: 0px 0px 4px rgba(255, 255, 224, 0.8), 1px 1px 0px rgba(255, 255, 224, 1);
                         }
                         
                         /* 4) Conteneur principal du contenu texte à l’intérieur du panneau */
                         #detailPanel .panel-body {
-                          max-width: 800px;               /* largeur maximale pour faciliter la lecture */
-                          margin: 0 auto;                 /* centre horizontalement */
-                          font-family: 'Cormorant Garamond', serif; /* police élégante pour le corps de texte */
-                          line-height: 1.6;               /* interligne confortable */
-                        }
+                                    font-family: 'Im Fell English SC', serif;
+                                    font-size: 1.2em;
+                                    line-height: 1.0;
+                                    color: #FFFFE0;
+                                    margin: 0;
+                                    text-shadow: 0px 0px 4px rgba(230, 0, 0, 0.8), 1px 1px 0px rgba(230, 0, 0, 1);                        }
                         
                         /* 5) Chaque section d’information (résumé, catégorie, date, etc.) */
                         #detailPanel .info-section {
-                          margin-bottom: 1rem;  /* espace entre chaque bloc d’info */
+                          margin-bottom: 0.4rem;  /* espace entre chaque bloc d’info */
                         }
                         
                         /* 6) Style des labels en gras dans chaque info-section */
                         #detailPanel .info-section strong {
-                          /* Couleur rouge pour rappeler DarkMap, texte en majuscules */
-                          color: #e60000;
-                          text-transform: uppercase;
-                          font-size: 1.1rem;
-                          margin-right: 0.5rem; /* espacement entre le label et la donnée */
+                                    display: block;
+                                    font-size: 1.2em;
+                                    font-family: 'Im Fell English SC', serif;
+                                    font-weight: bold;
+                                    color: #e60000;
+                                    text-transform: uppercase;
+                                    margin-bottom: 0em;
+                                    text-shadow: 0px 0px 4px rgba(255, 255, 224, 0.8), 1px 1px 0px rgba(255, 255, 224, 1);                          margin-right: 0.5rem; /* espacement entre le label et la donnée */
                         }
                         
                         /* 7) Style par défaut pour les paragraphes (résumé long ou résumé court) */
                         #detailPanel .info-section p {
-                          margin: 0; /* on enlève la marge par défaut pour un rendu propre */
-                        }
+                                    font-family: 'Im Fell English SC', serif;
+                                    font-size: 1.2em;
+                                    line-height: 1.0;
+                                    color: #FFFFE0;
+                                    margin: 0;
+                                    text-shadow: 0px 0px 4px rgba(230, 0, 0, 0.8), 1px 1px 0px rgba(230, 0, 0, 1); 
+                        }                         
                         
                         /* 8) Style des liens (articles, vidéos, Wikipedia…) */
                         #detailPanel a {
-                          color: #e60000;           /* rouge pour se fondre dans l’identité visuelle */
+                          color: #FEEEE0;           /* rouge pour se fondre dans l’identité visuelle */
                           text-decoration: underline; /* souligné pour identifier comme lien */
                           word-break: break-all;    /* évite de dépasser en cas de longues URL */
                         }
