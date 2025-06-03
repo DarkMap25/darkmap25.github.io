@@ -192,72 +192,179 @@
           createLegend();
 
 
-// PARTIE III / BOUTON FERMETURE / VOIR PLUS //
+// PARTIE III / VOIR PLUS //
 
 
-// Ajoutez CE BLOC au tout début de script.js
-
+                // === BLOC INITIAL : variable pour savoir quel panneau est ouvert ===
                 let currentlyOpenPanel = null;   // ‘null’ si aucun panel/modal/plein-écran n’est ouvert
-
-// III.1 Handler pour ouvrir le panneau "Voir plus"
-
+                
+                // === 1) Handler pour ouvrir le panneau "Voir plus" dans le style DarkMap
                 document.addEventListener("click", function(e) {
-                  // 1) On cible vraiment le lien .voir-plus, quel que soit l'élément cliqué à l'intérieur
+                  // === 1) On cible vraiment le lien .voir-plus, quel que soit l'élément cliqué à l'intérieur ===
                   const voirPlusBtn = e.target.closest(".voir-plus");
-                  if (!voirPlusBtn) return;
+                  if (!voirPlusBtn) return;  // Si le clic n’est pas sur un .voir-plus, on sort
                   e.preventDefault();
                 
-                  // 2) Si on est en plein écran, on en sort
+                  // === 2) Si on est en plein écran, on en sort pour éviter conflit ===
                   if (document.fullscreenElement) {
                     document.exitFullscreen();
                   }
                 
+                  // === 3) Références aux éléments DOM : carte, panneau de détail, contenu du panneau ===
                   const mapContainer  = document.getElementById("map");
                   const detailPanel   = document.getElementById("detailPanel");
                   const detailContent = document.getElementById("detailContent");
                 
-                  // 3) Sauvegarde de la vue actuelle (centre + zoom)
+                  // === 4) Sauvegarde de la vue actuelle (centre + zoom) de la carte ===
                   window._prevMapView = {
                     center: map.getCenter(),
                     zoom:   map.getZoom()
                   };
                 
-                  // 4) Masquer la carte et afficher le panneau
+                  // === 5) Masquer la carte et afficher le panneau en fullscreen DarkMap ===
                   mapContainer.style.display = "none";
                   detailPanel.classList.add("visible", "full-view");
-
-                // === NOUVEAU : on mémorise quel panel est ouvert ===
-                         currentlyOpenPanel = detailPanel;
-                         document.getElementById("globalCloseBtn").style.display = "block";
-                        
-                  // 5) Construction du HTML comme avant, en utilisant voirPlusBtn au lieu de e.target
+                
+                  // === 6) On mémorise quel panel est ouvert et on affiche le bouton de fermeture global ===
+                  currentlyOpenPanel = detailPanel;
+                  document.getElementById("globalCloseBtn").style.display = "block";
+                
+                  // === 7) Récupération des données du lieu à partir de l’ID ===
                   const id   = voirPlusBtn.getAttribute("data-id");
                   const lieu = window.lieuxData.find(l => l.ID == id);
-                  if (!lieu) return;
+                  if (!lieu) return;  // Si pas de lieu correspondant, on sort
                 
-                  let html = `<h2>${lieu.nom}</h2>`;
-                  html += `<p>${lieu.resume_long || lieu.resume}</p>`;
-                  if (lieu.date_debut || lieu.date_fin) {
-                    const d = lieu.date_debut||"", f = lieu.date_fin||"";
-                    html += `<p><strong>Période :</strong> ${d}${d&&f?" – "+f:""}</p>`;
+                  // === 8) Construction du HTML dans le style DarkMap ===
+                  let html = "";
+                
+                  // 8.1) Header du panneau : titre principal “darkmap” + sous-titre (nom de l’affaire)
+                  html += `
+                    <div class="panel-header">
+                      <h1>darkmap</h1>
+                      <h2>${lieu.nom}</h2>
+                    </div>
+                    <div class="panel-body">
+                  `;
+                
+                  // 8.2) Affichage du résumé long (ou résumé court si pas de résumé long)
+                  html += `<div class="info-section"><p>${lieu.resume_long || lieu.resume}</p></div>`;
+                
+                  // 8.3) Affichage de la catégorie si présente
+                  if (lieu.categorie) {
+                    html += `
+                      <div class="info-section">
+                        <strong>Catégorie :</strong> ${lieu.categorie}
+                      </div>
+                    `;
                   }
                 
-                  const ignore = ["ID","nom","resume","resume_long","latitude","longitude","date_debut","date_fin"];
-                  function formatLabel(k){
-                    return k.split("_").map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(" ");
-                  }
-                
-                  for (const [key,value] of Object.entries(lieu)) {
-                    if (ignore.includes(key)||!value) continue;
-                    if (typeof value==="string" && /^https?:\/\//.test(value)) {
-                      html += `<p><strong>${formatLabel(key)} :</strong> <a href="${value}" target="_blank">${value}</a></p>`;
+                  // 8.4) Gestion de la date ou période : si date_debut et date_fin sont identiques, on affiche "Date"
+                  const dDeb = lieu.date_debut || "";
+                  const dFin = lieu.date_fin   || "";
+                  if (dDeb && dFin) {
+                    if (dDeb === dFin) {
+                      // Même date de début et de fin → on affiche une seule date
+                      html += `
+                        <div class="info-section">
+                          <strong>Date :</strong> ${dDeb}
+                        </div>
+                      `;
                     } else {
-                      html += `<p><strong>${formatLabel(key)} :</strong> ${value}</p>`;
+                      // Période différente → on affiche la période
+                      html += `
+                        <div class="info-section">
+                          <strong>Période :</strong> ${dDeb} – ${dFin}
+                        </div>
+                      `;
                     }
+                  } else if (lieu.date) {
+                    // Si clé unique "date" définie (sans date_debut/date_fin)
+                    html += `
+                      <div class="info-section">
+                        <strong>Date :</strong> ${lieu.date}
+                      </div>
+                    `;
                   }
                 
+                  // 8.5) Affichage du nombre de morts si renseigné
+                  if (lieu.nombre_morts != null && lieu.nombre_morts !== "") {
+                    html += `
+                      <div class="info-section">
+                        <strong>Nombre de morts :</strong> ${lieu.nombre_morts}
+                      </div>
+                    `;
+                  }
+                
+                  // 8.6) Affichage du niveau de médiatisation si renseigné
+                  if (lieu.niveau_mediatisation != null && lieu.niveau_mediatisation !== "") {
+                    html += `
+                      <div class="info-section">
+                        <strong>Niveau médiatisation :</strong> ${lieu.niveau_mediatisation}
+                      </div>
+                    `;
+                  }
+                
+                  // 8.7) Affichage de l’adresse exacte si présente
+                  if (lieu.adresse_exacte) {
+                    html += `
+                      <div class="info-section">
+                        <strong>Adresse exacte :</strong> ${lieu.adresse_exacte}
+                      </div>
+                    `;
+                  }
+                
+                  // 8.8) Affichage de l’état actuel du lieu si présent
+                  if (lieu.etat_actuel_du_lieu) {
+                    html += `
+                      <div class="info-section">
+                        <strong>État du lieu :</strong> ${lieu.etat_actuel_du_lieu}
+                      </div>
+                    `;
+                  }
+                
+                  // 8.9) Regroupement et affichage de tous les liens et images associées
+                  const liens = [];
+                  ["lien", "liens_articles_presse", "liens_videos"].forEach(key => {
+                    if (lieu[key]) {
+                      // Si plusieurs liens dans une seule chaîne séparés par des virgules, on les éclate
+                      if (typeof lieu[key] === "string" && lieu[key].includes(",")) {
+                        lieu[key].split(",").forEach(u => {
+                          liens.push(u.trim());
+                        });
+                      } else {
+                        liens.push(lieu[key]);
+                      }
+                    }
+                  });
+                
+                  if (liens.length > 0) {
+                    html += `<div class="links-images"><ul>`;
+                    liens.forEach(url => {
+                      // Si l'URL semble pointer vers une image, on l’affiche en <img>
+                      if (url.match(/\.(jpeg|jpg|gif|png|svg)$/i)) {
+                        html += `
+                          <li>
+                            <img src="${url}" alt="Image associée">
+                          </li>
+                        `;
+                      } else {
+                        // Sinon on crée un lien cliquable <a>
+                        html += `
+                          <li>
+                            <a href="${url}" target="_blank">${url}</a>
+                          </li>
+                        `;
+                      }
+                    });
+                    html += `</ul></div>`;
+                  }
+                
+                  // 8.10) Fermeture de la balise panel-body
+                  html += `</div>`;
+                
+                  // === 9) Injection du HTML construit dans le panneau de détail ===
                   detailContent.innerHTML = html;
-                  // (le CSS fera apparaître automatiquement #closeDetailPanel via #detailPanel.visible)
+                  // (Le CSS prendra en charge l’apparition du bouton de fermeture via #detailPanel.visible)
                 });
 
 
