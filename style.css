@@ -399,21 +399,19 @@
                           left: 0;
                           width: 100vw;   /* largeur totale de la fenêtre */
                           height: 100vh;  /* hauteur totale de la fenêtre */
-                        
                           /* Fond : image bureau.jpg depuis le dossier icons */
                           background-image: url('icons/bureau.jpg');
                           background-size: cover;           /* l’image couvre tout l’overlay */
                           background-position: center;      /* centrage de l’image */
                           background-repeat: no-repeat;     /* pas de répétition */
-                        
                           /* Légère augmentation de la luminosité pour atténuer l’effet sombre */
                           filter: brightness(1.8);
-                        
                           /* Texte en clair pour le contraste */
                           color: #f0f0f0;
                           z-index: 2000;    /* au-dessus des autres éléments */
-                          overflow: auto;   /* autorise le scroll si le contenu dépasse */
-                        }
+                          overflow-y: auto;   /* autorise le scroll vertical du panneau uniquement */
+                          overflow-x: hidden; /* empêche le scroll horizontal */
+                           }
                         
                         /* iii. Un peu de padding quand le panneau est en plein écran */
                         #detailPanel.full-view {
@@ -797,7 +795,7 @@
                   /* ii. Le fond sombre et le contour lumineux (wrapper) */
                   background: rgba(0, 0, 0, 0.8); /* fond semi-transparent sombre */
                   border: none;                   /* suppression du contour rouge simple */
-                  box-shadow: 0 0 50px #e60000;   /* grand halo rouge autour du champ */
+                  box-shadow: 0 0 20px #e60000;   /* grand halo rouge autour du champ */
                   border-radius: 8px;             /* coins arrondis identiques à la popup */
                 
                   /* iii. Gestion de la taille et du défilement (scroll) */
