@@ -382,31 +382,136 @@
                   background: transparent;
                 }
 
-/* === II.2.1 VOIR PLUS : fullscreen uniquement quand ouvert === */
+/* === II.2.1 VOIR PLUS : fullscreen uniquement quand ouvert (style DarkMap complet) === */
 
-                /* i. Par défaut, on le cache et on ne définit PAS sa hauteur ici */
-                #detailPanel {
-                  display: none;
-                }
-
-                /* Plein écran quand visible === */
-                #detailPanel.visible {
-                  display: block;           /* on passe de none à block */
-                  position: fixed;          /* au-dessus de tout */
-                  top: 0;
-                  left: 0;
-                  width: 100vw;             /* largeur totale de la fenêtre */
-                  height: 100vh;            /* hauteur totale de la fenêtre */
-                  background-color: rgba(0, 0, 0, 0.9);
-                  color: #fff;
-                  z-index: 2000;
-                  overflow: auto;           /* scroll si contenu trop long */
-                }
-                
-                /* Un peu de padding quand on est en plein écran */
-                #detailPanel.full-view {
-                  padding: 2rem;
-                }
+                        /* i. Par défaut, on cache le panneau de détail */
+                        #detailPanel {
+                          display: none;
+                        }
+                        
+                        /* ii. Plein écran quand visible avec l’image bureau.jpg en fond et ambiance DarkMap */
+                        #detailPanel.visible {
+                          /* On passe de none à block pour afficher le panneau en plein écran */
+                          display: block;
+                          /* Positionnement au-dessus de tout le reste */
+                          position: fixed;
+                          top: 0;
+                          left: 0;
+                          width: 100vw;   /* largeur totale de la fenêtre */
+                          height: 100vh;  /* hauteur totale de la fenêtre */
+                        
+                          /* Fond : image bureau.jpg depuis le dossier icons + couche sombre semi-transparente */
+                          background-image: url('./icons/bureau.jpg');
+                          background-size: cover;
+                          background-position: center;
+                          background-repeat: no-repeat;
+                          background-color: rgba(0, 0, 0, 0.8);
+                          background-blend-mode: overlay;
+                        
+                          /* Couleur du texte claire pour un bon contraste */
+                          color: #f0f0f0;
+                          z-index: 2000;
+                          overflow: auto; /* autorise le scroll si le contenu dépasse */
+                        }
+                        
+                        /* iii. Un peu de padding quand le panneau est en plein écran */
+                        #detailPanel.full-view {
+                          padding: 2rem;
+                        }
+                        
+                        /* === Styles internes pour structurer le contenu “Voir plus” === */
+                        
+                        /* 1) Conteneur pour le header (titre DarkMap + sous-titre titre de l’affaire) */
+                        #detailPanel .panel-header {
+                          /* On centre horizontalement les titres et on ajoute de l’espace en bas */
+                          display: flex;
+                          flex-direction: column;
+                          align-items: center;
+                          justify-content: flex-start;
+                          margin-bottom: 2rem;
+                        }
+                        
+                        /* 2) Style du titre principal “darkmap” */
+                        #detailPanel .panel-header h1 {
+                          margin: 0;
+                          font-size: 4rem;
+                          /* Police serif rappelant DarkMap */
+                          font-family: 'IM FELL ENGLISH SC', serif;
+                          font-weight: 900;
+                          color: #e60000;
+                          /* Légère lueur jaune clair pour faire ressortir le titre */
+                          text-shadow:
+                            0 0 4px rgba(255, 255, 224, 0.8),
+                            1px 1px 0 rgba(255, 255, 224, 1);
+                          text-align: center;
+                        }
+                        
+                        /* 3) Style du sous-titre (nom de l’affaire cliquée) */
+                        #detailPanel .panel-header h2 {
+                          margin: 0.5rem 0 0;
+                          font-size: 2rem;
+                          font-family: 'IM FELL ENGLISH SC', serif;
+                          font-weight: 700;
+                          color: #FFFFE0;
+                          /* Légère lueur rouge pour bien séparer le sous-titre */
+                          text-shadow:
+                            0 0 4px rgba(230, 0, 0, 0.8),
+                            1px 1px 0 rgba(230, 0, 0, 1);
+                          text-align: center;
+                        }
+                        
+                        /* 4) Conteneur principal du contenu texte à l’intérieur du panneau */
+                        #detailPanel .panel-body {
+                          max-width: 800px;               /* largeur maximale pour faciliter la lecture */
+                          margin: 0 auto;                 /* centre horizontalement */
+                          font-family: 'Cormorant Garamond', serif; /* police élégante pour le corps de texte */
+                          line-height: 1.6;               /* interligne confortable */
+                        }
+                        
+                        /* 5) Chaque section d’information (résumé, catégorie, date, etc.) */
+                        #detailPanel .info-section {
+                          margin-bottom: 1rem;  /* espace entre chaque bloc d’info */
+                        }
+                        
+                        /* 6) Style des labels en gras dans chaque info-section */
+                        #detailPanel .info-section strong {
+                          /* Couleur rouge pour rappeler DarkMap, texte en majuscules */
+                          color: #e60000;
+                          text-transform: uppercase;
+                          font-size: 1.1rem;
+                          margin-right: 0.5rem; /* espacement entre le label et la donnée */
+                        }
+                        
+                        /* 7) Style par défaut pour les paragraphes (résumé long ou résumé court) */
+                        #detailPanel .info-section p {
+                          margin: 0; /* on enlève la marge par défaut pour un rendu propre */
+                        }
+                        
+                        /* 8) Style des liens (articles, vidéos, Wikipedia…) */
+                        #detailPanel a {
+                          color: #e60000;           /* rouge pour se fondre dans l’identité visuelle */
+                          text-decoration: underline; /* souligné pour identifier comme lien */
+                          word-break: break-all;    /* évite de dépasser en cas de longues URL */
+                        }
+                        
+                        /* 9) Conteneur pour la liste de tous les liens et images associées */
+                        #detailPanel .links-images {
+                          margin-top: 2rem; /* espace avant cette section */
+                        }
+                        
+                        /* 10) Chaque élément (lien ou image) dans la liste */
+                        #detailPanel .links-images li {
+                          margin-bottom: 0.5rem; /* petit espace entre les éléments listés */
+                          list-style: none;      /* on retire la puce par défaut */
+                        }
+                        
+                        /* 11) Style des images associées : taille responsive et bordure rouge */
+                        #detailPanel .links-images img {
+                          max-width: 100%;         /* s’adapte à la largeur du conteneur */
+                          height: auto;            /* garde les proportions */
+                          border: 2px solid #e60000; /* fine bordure rouge */
+                          border-radius: 8px;      /* coins légèrement arrondis */
+                        }
 
 /* === II.3 Submit Panel corrigé === */
 
