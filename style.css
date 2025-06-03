@@ -421,6 +421,7 @@
                   background-size: cover;
                   background-position: center;
                   background-repeat: no-repeat;
+                  filter: brightness(1.5);
                   overflow: hidden;      /* le scroll se fera uniquement dans #submitContent */
                   z-index: 10000;
                   display: none;         /* rendu visible uniquement quand on ajoute .visible */
