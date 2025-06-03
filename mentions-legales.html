@@ -6,7 +6,13 @@
   <title>Mentions légales - DarkMap</title>
   <style>
     body {
-      background-color: #0d0d0d;
+      /* Fond d’écran depuis icons/panneau.jpg */
+      background-image: url('icons/panneau.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      background-color: #0d0d0d; /* couleur de secours si l’image ne se charge pas */
       color: #f0f0f0;
       font-family: 'Cormorant Garamond', serif;
       max-width: 800px;
@@ -14,12 +20,23 @@
       padding: 40px 20px;
       line-height: 1.6;
     }
+    /* Titres en bleu (comme le footer) */
     h2 {
-      color: #e60000;
+      color: #1E90FF;
     }
     a {
       color: #e60000;
       text-decoration: underline;
+    }
+    /* Style pour le paragraphe des crédits cartographiques */
+    .credits-cartes {
+      margin-top: 2rem;
+      font-size: 0.9em;
+      color: #cccccc;
+    }
+    .credits-cartes a {
+      color: #1E90FF;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -41,5 +58,13 @@
   <p><strong>Propriété intellectuelle :</strong> Le contenu du site (textes, images, structure) est la propriété de DarkMap.fr, sauf mention contraire. Toute reproduction, même partielle, est interdite sans autorisation écrite.</p>
 
   <p><strong>Contact :</strong> Pour toute demande liée au contenu, aux droits ou à un signalement : <a href="mailto:contact@darkmap.fr">darkmap.fr@gmail.com</a></p>
+
+  <div class="credits-cartes">
+    <p><strong>Crédits cartographiques :</strong></p>
+    <ul>
+      <li>Les fonds de carte sont fournis par <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a>, sous licence ODbL.</li>
+      <li>Les fonctionnalités de cartographie interactives sont réalisées grâce à <a href="https://leafletjs.com/" target="_blank">Leaflet</a>.</li>
+    </ul>
+  </div>
 </body>
 </html>
