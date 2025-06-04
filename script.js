@@ -622,78 +622,63 @@
             { position: 'topleft' }
           ).addTo(map);
 
-// V.3 Ajout du bouton de fermeture Mentions Légales 
+// V.3 Ajout du bouton de fermeture Mentions Légales
 
-                // i. Cible le lien "Mentions légales" //
+                // i. On récupère une seule fois l’élément <a id="mentionsLink"> dans le DOM
                 const mentionsLink = document.getElementById('mentionsLink');
+                
+                // ii. On récupère aussi une seule fois ces éléments du panneau de détail
+                const panel          = document.getElementById('detailPanel');   // équivalent de detailPanel
+                const detailContent  = document.getElementById('detailContent');
+                const globalCloseBtn = document.getElementById('globalCloseBtn');
+                
+                // iii. Lorsque l’on clique sur "Mentions légales", on ouvre le panneau, on charge le HTML et on applique les styles
                 mentionsLink.addEventListener('click', function(e) {
                   e.preventDefault();
                 
-                  // Sauvegarde et ajustement de la carte si nécessaire
-                  if (window._prevMapView) {
-                    map.invalidateSize(); // Force Leaflet à recalculer ses dimensions
-                  }
-                
-                  // Masquer la carte et ouvrir le panneau de détail
+                  // → 1) Masquer la carte si besoin (le code existant)
                   document.getElementById('map').style.display = 'none';
-                  const panel = document.getElementById('detailPanel');
+                
+                  // → 2) Afficher le panneau #detailPanel (avec ses sous-classes) en plein écran
                   panel.classList.add('visible', 'full-view');
                 
-                  // Charger le fichier HTML des mentions légales
+                  // → 3) AJOUT : on marque ce panneau comme “legal” pour pouvoir cibler le bon fond + polices + titres en CSS
+                  panel.classList.add('legal');
+                
+                  // → 4) Charger le fichier HTML des mentions légales
                   fetch('mentions-legales.html')
                     .then(resp => resp.text())
                     .then(htmlString => {
-                      // Parser le HTML reçu pour en extraire uniquement le <body>
-                      const parser = new DOMParser();
-                      const doc = parser.parseFromString(htmlString, 'text/html');
-                      const bodyContent = doc.body.innerHTML; // tout ce qui est dans <body>…</body>
-                
-                      // Injecter **seulement** ce contenu dans le panneau, sans écraser les styles globaux
-                      document.getElementById('detailContent').innerHTML = bodyContent;
-                
-                      // === NOUVEAU : on mémorise quel panel est ouvert ===
-                      currentlyOpenPanel = panel;
-                      document.getElementById('globalCloseBtn').style.display = 'block';
-                    })
-                    .catch(err => {
-                      // En cas d’erreur, afficher un message amical
-                      document.getElementById('detailContent').innerHTML =
-                        '<p>Impossible de charger les mentions légales.</p>';
-                      console.error(err);
-                    });
-                });
-                // ii. Ajout styles mentions //
-                  mentionsLink.addEventListener('click', function(e) {
-                  e.preventDefault();
-                  // … Masquer la carte, afficher #detailPanel …
-                  fetch('mentions-legales.html')
-                    .then(resp => resp.text())
-                    .then(htmlString => {
+                      // • Parser le HTML récupéré
                       const parser = new DOMParser();
                       const doc = parser.parseFromString(htmlString, 'text/html');
                 
-                      // 1) Récupérer tous les <style> du <head> de mentions-legales.html
+                      // • Optionnel : récupérer tous les <style> du head de mentions-legales.html
+                      //   pour conserver les polices / couleurs qui y sont définies.
                       const headStyles = Array.from(doc.head.querySelectorAll('style'));
                       headStyles.forEach(styleEl => {
-                        // On duplique chaque <style> dans le <head> de la page courante,
-                        // afin que ces règles CSS soient appliquées.
                         document.head.appendChild(styleEl.cloneNode(true));
                       });
                 
-                      // 2) Puis on copie le <body> dans #detailContent
+                      // • Récupérer le contenu du <body> (tout ce qui est dans <body>…</body>)
                       const bodyContent = doc.body.innerHTML;
-                      document.getElementById('detailContent').innerHTML = bodyContent;
                 
-                      currentlyOpenPanel = detailPanel;
-                      document.getElementById('globalCloseBtn').style.display = 'block';
+                      // • Injecter ce contenu DANS #detailContent (sans écraser le <head>)
+                      detailContent.innerHTML = bodyContent;
+                
+                      // → 5) On mémorise quel panneau est ouvert (pour la logique d’annulation éventuelle)
+                      currentlyOpenPanel = panel;
+                
+                      // → 6) On rend visible le bouton de fermeture
+                      globalCloseBtn.style.display = 'block';
                     })
                     .catch(err => {
-                      document.getElementById('detailContent').innerHTML =
-                        '<p>Impossible de charger les mentions légales.</p>';
+                      // En cas d’erreur réseau ou parse
+                      detailContent.innerHTML = '<p>Impossible de charger les mentions légales.</p>';
                       console.error(err);
                     });
+                
                 });
-
 
 // V.4 Ajout du bouton "Lieu au hasard 🎲"
 
