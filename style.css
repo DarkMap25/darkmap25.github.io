@@ -503,14 +503,13 @@
                 /* 7) Conteneur pour la liste finale de liens et d’images associées */
                 #detailPanel .links-images {
                   width: 100%;              /* prend toute la largeur (sous les blocs) */
-                  margin-top: 2rem;
+                  margin-top: 1rem;
                 }
                 
                 /* 8) Chaque élément (lien ou image) dans la liste */
                 #detailPanel .links-images li {
-                  margin-bottom: 0.5rem;    /* léger espace vertical */
+                  margin-bottom: 0.4rem;    /* léger espace vertical */
                   list-style-type: disc;         /* puce classique ● */
-                  margin-left: 1.2rem;           /* décale un peu le texte pour laisser de la place à la puce */
                 }
                 
                 /* 9) Style des images associées : responsive et bordure rouge */
