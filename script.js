@@ -460,28 +460,33 @@
             L.control.submitStory({ position: 'bottomright' }).addTo(map);
 
 // IV.2.2 Fonction d’ouverture du panneau de soumission (fetch externe)
-
+               
                 function openSubmitPanel() {
-                // i. SI ON EST EN PLEIN ÉCRAN, ON EN SORT
-                  if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
-                    // Utilisation de l’API standard
+                  // i. SI ON EST EN PLEIN ÉCRAN, ON EN SORT
+                  if (
+                    document.fullscreenElement ||
+                    document.webkitFullscreenElement ||
+                    document.mozFullScreenElement ||
+                    document.msFullscreenElement
+                  ) {
                     if (document.exitFullscreen) {
                       document.exitFullscreen();
-                    } else if (document.webkitExitFullscreen) { 
-                      document.webkitExitFullscreen();       // pour Safari / Chrome anciens
-                    } else if (document.mozCancelFullScreen) { 
-                      document.mozCancelFullScreen();        // pour Firefox
-                    } else if (document.msExitFullscreen) { 
-                      document.msExitFullscreen();           // pour IE/Edge
+                    } else if (document.webkitExitFullscreen) {
+                      document.webkitExitFullscreen(); // pour Safari / Chrome anciens
+                    } else if (document.mozCancelFullScreen) {
+                      document.mozCancelFullScreen(); // pour Firefox
+                    } else if (document.msExitFullscreen) {
+                      document.msExitFullscreen(); // pour IE/Edge
                     }
                   }
+                
                   // Masquer la carte
                   document.getElementById('map').style.display = 'none';
                 
                   // Afficher le panneau de soumission
-                  const panel = document.getElementById('submitPanel');
-                  panel.classList.remove('hidden');
-                  panel.classList.add('visible', 'full-view');
+                  const submitPanel = document.getElementById('submitPanel');
+                  submitPanel.classList.remove('hidden');
+                  submitPanel.classList.add('visible', 'full-view');
                 
                   // Charger le HTML de submit.html
                   fetch('submit.html')
@@ -499,16 +504,16 @@
                       // 1. Récupérer l'élément <header>
                       const headerEl = doc.querySelector('header');
                       // 2. Récupérer l'élément <form>
-                      const formEl   = doc.querySelector('form');
+                      const formEl = doc.querySelector('form');
                 
                       // Vérifier si on a bien récupéré le formulaire
                       if (formEl) {
                         // → construire la chaîne HTML à injecter
                         let html = '';
                         if (headerEl) {
-                          html += headerEl.outerHTML;   // injecte <header>…</header>
+                          html += headerEl.outerHTML; // injecte <header>…</header>
                         }
-                        html += formEl.outerHTML;       // injecte ensuite le <form>…</form>
+                        html += formEl.outerHTML; // injecte ensuite le <form>…</form>
                 
                         // Injecter le header et le formulaire dans #submitContent
                         document.getElementById('submitContent').innerHTML = html;
@@ -579,7 +584,7 @@
                     });
                 
                   // === On mémorise quel panel est ouvert ===
-                  currentlyOpenPanel = document.getElementById('submitPanel');
+                  currentlyOpenPanel = submitPanel;
                   document.getElementById('globalCloseBtn').style.display = 'block';
                 }
 
