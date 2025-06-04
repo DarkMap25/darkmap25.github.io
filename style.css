@@ -386,132 +386,138 @@
                 }
 
 /* === II.2.1 VOIR PLUS === */
-
-                        /* i. Par défaut, on cache le panneau de détail */
-                        #detailPanel {
-                          display: none;
-                        }
-                        
-                        /* ii. Plein écran quand visible avec l’image bureau.jpg en fond et ambiance DarkMap */
-                        #detailPanel.visible {
-                          /* Affiche le panneau en plein écran */
-                          display: block;
-                          /* Positionne le panneau au-dessus de tout le contenu */
-                          position: fixed;
-                          top: 0;
-                          left: 0;
-                          width: 100vw;   /* largeur totale de la fenêtre */
-                          height: 100vh;  /* hauteur totale de la fenêtre */
-                          /* Fond : image bureau.jpg depuis le dossier icons */
-                          background-image: url('icons/bureau.jpg');
-                          background-size: cover;           /* l’image couvre tout l’overlay */
-                          background-position: center;      /* centrage de l’image */
-                          background-repeat: no-repeat;     /* pas de répétition */
-                          /* Légère augmentation de la luminosité pour atténuer l’effet sombre */
-                          filter: brightness(1.8);
-                          /* Texte en clair pour le contraste */
-                          color: #f0f0f0;
-                          z-index: 2000;    /* au-dessus des autres éléments */
-                          overflow-y: auto;   /* autorise le scroll vertical du panneau uniquement */
-                          overflow-x: hidden; /* empêche le scroll horizontal */
-                           }
-                        
-                        /* iii. Un peu de padding quand le panneau est en plein écran */
-                        #detailPanel.full-view {
-                          padding: 2rem;
-                        }
-
+                
+                /* i. Par défaut, on cache le panneau de détail */
+                #detailPanel {
+                  display: none;
+                }
+                
+                /* ii. Plein écran quand visible avec l’image bureau.jpg en fond et ambiance DarkMap */
+                #detailPanel.visible {
+                  display: block;
+                  position: fixed;
+                  top: 0;
+                  left: 0;
+                  width: 100vw;           /* largeur totale de la fenêtre */
+                  height: 100vh;          /* hauteur totale de la fenêtre */
+                  background-image: url('icons/bureau.jpg');
+                  background-size: cover;     /* l’image couvre tout l’overlay */
+                  background-position: center;/* centrage de l’image */
+                  background-repeat: no-repeat;
+                  filter: brightness(1.8);
+                  color: #f0f0f0;             /* texte clair pour le contraste */
+                  z-index: 2000;              /* au-dessus des autres éléments */
+                  overflow-y: auto;           /* autorise le scroll vertical du panneau */
+                  overflow-x: hidden;         /* empêche le scroll horizontal */
+                }
+                
+                /* iii. Un peu de padding quand le panneau est en plein écran */
+                #detailPanel.full-view {
+                  padding: 2rem;
+                }
+                
 /* === II.2.2 Styles internes pour structurer le contenu “Voir plus” === */
-
-                /* 1) Conteneur principal du contenu texte : 90% de largeur, centré */
+                
+                /* 1) Conteneur principal du contenu texte : on passe en Flexbox pour gérer 2 colonnes */
                 #detailPanel .panel-body {
-                  font-family: 'IM FELL ENGLISH SC', serif; /* police immersive DarkMap */
-                  font-size: 1.2em;                         /* taille de texte confortable */
-                  line-height: 1.0;                         /* interligne compact */
-                  color: #FFFFE0;                           /* jaune très pâle pour le texte */
-                  width: 90%;                               /* limite la largeur à 90% de l’écran */
-                  margin: 0 auto;                           /* centre horizontalement */
+                  display: flex;
+                  flex-wrap: wrap;           /* permet le retour à la ligne */
+                  gap: 1rem;                 /* espace horizontal et vertical entre blocs */
+                  font-family: 'IM FELL ENGLISH SC', serif;
+                  font-size: 1.2em;
+                  line-height: 1.0;
+                  color: #FFFFE0;            /* jaune très pâle pour le texte */
+                  width: 90%;
+                  margin: 0 auto;            /* centre horizontalement */
                   text-shadow:
-                    0 0 4px rgba(230, 0, 0, 0.8),           /* halo rouge diffus pour le texte */
-                    1px 1px 0 rgba(230, 0, 0, 1);           /* ombre nette rouge */
+                    0 0 4px rgba(230, 0, 0, 0.8),
+                    1px 1px 0 rgba(230, 0, 0, 1);
                 }
                 
-                /* 2) Chaque section d’information (résumé, catégorie, date, etc.) */
+                /* 2) Style du titre de l’affaire (le <h2>) dans panel-header */
+                #detailPanel .panel-header h2 {
+                  margin: 0;
+                  font-size: 1.5em;                 /* même taille qu’auparavant */
+                  font-family: 'IM FELL ENGLISH SC', serif;
+                  font-weight: bold;
+                  color: #e60000;                   /* rouge vif DarkMap */
+                  text-align: center;               /* centré horizontalement */
+                  text-transform: uppercase;        /* tout en majuscules */
+                  text-shadow:
+                    0 0 4px rgba(255, 255, 224, 0.8),
+                    1px 1px 0 rgba(255, 255, 224, 1);
+                  width: 100%;                      /* prend toute la largeur du flex */
+                  margin-bottom: 1.5rem;
+                }
+                
+                /* 3) Chaque section d’information (résumé, catégorie, date, etc.) */
                 #detailPanel .panel-body .info-section {
-                  margin-bottom: 1rem; /* espace vertical pour séparer les blocs */
+                  box-sizing: border-box;
                 }
                 
-                /* 2.1) Premier bloc (résumé) : occupe toute la largeur à 100% */
+                /* 3.1) Premier bloc (résumé) : occupe 100 % de la largeur */
                 #detailPanel .panel-body .info-section.first-section {
-                  display: block;      /* bloc unique sur la ligne */
-                  width: 100%;         /* 100% du conteneur à 90% */
-                  margin-bottom: 1.5rem; /* espace plus important avant la suite */
+                  flex: 0 0 100%;
+                  margin-bottom: 1.5rem;    /* espace sous le résumé */
                 }
                 
-                /* 2.2) Blocs suivants : deux par ligne */
+                /* 3.2) Tous les autres blocs : deux par ligne (48 % chacun) */
                 #detailPanel .panel-body .info-section:not(.first-section) {
-                  display: inline-block;   /* permet de mettre deux blocs côte à côte */
-                  width: 48%;              /* 48% + 48% + 4% d’écart = 100% */
-                  box-sizing: border-box;  /* inclut padding et bordure dans la largeur */
-                  vertical-align: top;     /* aligne en haut pour que les blocs soient alignés */
-                  margin-bottom: 1.5rem;   /* espace sous chaque ligne de deux colonnes */
+                  flex: 0 0 48%;
+                  margin-bottom: 1.5rem;
                 }
                 
-                /* 2.3) Espace horizontal entre les colonnes : appliqué aux blocs “pairs” */
-                #detailPanel .panel-body .info-section:not(.first-section):nth-of-type(2n) {
-                  margin-right: 4%; /* 4% d’écart entre la colonne de gauche et celle de droite */
-                }
-                
-                /* 3) Style des labels en gras dans chaque info-section */
+                /* 4) Style des labels (<strong>) dans chaque info-section */
                 #detailPanel .panel-body .info-section strong {
-                  display: block;                            /* pour prendre toute la largeur du bloc */
-                  font-size: 1.2em;                          /* taille de label plus grande */
-                  font-family: 'IM FELL ENGLISH SC', serif;  /* même police pour uniformité */
-                  font-weight: bold;                         /* texte en gras */
-                  color: #e60000;                            /* rouge vif DarkMap */
-                  text-transform: uppercase;                 /* tout en majuscules */
-                  margin-bottom: 0.2rem;                     /* léger espace sous le label avant la donnée */
+                  display: block;                      /* prend toute la largeur du bloc */
+                  font-size: 1.2em;
+                  font-family: 'IM FELL ENGLISH SC', serif;
+                  font-weight: bold;
+                  color: #e60000;                      /* rouge vif DarkMap */
+                  text-transform: uppercase;
+                  margin-bottom: 0.2rem;
                   text-shadow:
-                    0 0 4px rgba(255, 255, 224, 0.8),         /* halo jaune clair diffus */
-                    1px 1px 0 rgba(255, 255, 224, 1);         /* ombre nette jaune clair */
+                    0 0 4px rgba(255, 255, 224, 0.8),
+                    1px 1px 0 rgba(255, 255, 224, 1);
                 }
                 
-                /* 4) Style par défaut pour les paragraphes (valeur) dans chaque info-section */
+                /* 5) Style par défaut pour les paragraphes (<p>) dans chaque info-section */
                 #detailPanel .panel-body .info-section p {
-                  font-family: 'IM FELL ENGLISH SC', serif;  /* police immersive DarkMap */
-                  font-size: 1.2em;                          /* taille de texte confortable */
-                  line-height: 1.0;                          /* interligne compact */
-                  color: #FFFFE0;                            /* jaune très pâle */
-                  margin: 0;                                 /* pas de marge interne */
+                  margin: 0;
+                  font-family: 'IM FELL ENGLISH SC', serif;
+                  font-size: 1.2em;
+                  line-height: 1.0;
+                  color: #FFFFE0;
                   text-shadow:
-                    0 0 4px rgba(230, 0, 0, 0.8),             /* halo rouge diffus pour le texte */
-                    1px 1px 0 rgba(230, 0, 0, 1);             /* ombre nette rouge */
+                    0 0 4px rgba(230, 0, 0, 0.8),
+                    1px 1px 0 rgba(230, 0, 0, 1);
                 }
                 
-                /* 5) Style des liens (articles, vidéos, Wikipédia…) dans les info-section */
+                /* 6) Style des liens (<a>) éventuels dans les info-section */
                 #detailPanel .panel-body .info-section a {
-                  color: #FEEEE0;            /* jaune très pâle pour les liens */
-                  text-decoration: underline;/* souligné pour indiquer qu’il s’agit d’un lien */
-                  word-break: break-all;     /* évite les débordements de longues URL */
+                  color: #FEEEE0;           /* jaune très pâle pour les liens */
+                  text-decoration: underline;
+                  word-break: break-all;
                 }
                 
-                /* 6) Conteneur final pour la liste de tous les liens et images associées */
+                /* 7) Conteneur pour la liste finale de liens et d’images associées */
                 #detailPanel .links-images {
-                  margin-top: 2rem;          /* espace avant cette section */
+                  width: 100%;              /* prend toute la largeur (sous les blocs) */
+                  margin-top: 2rem;
                 }
                 
-                /* 7) Chaque élément (lien ou image) dans la liste */
+                /* 8) Chaque élément (lien ou image) dans la liste */
                 #detailPanel .links-images li {
-                  margin-bottom: 0.5rem;     /* léger espace vertical entre les éléments */
-                  list-style: none;          /* retire la puce par défaut */
+                  margin-bottom: 0.5rem;    /* léger espace vertical */
+                  list-style: none;         /* retire la puce par défaut */
                 }
                 
-                /* 8) Style des images associées : responsive et bordure rouge */
+                /* 9) Style des images associées : responsive et bordure rouge */
                 #detailPanel .links-images img {
-                  max-width: 100%;           /* s’adapte à la largeur du conteneur */
-                  height: auto;              /* conserve les proportions */
-                  border: 2px solid #e60000; /* fine bordure rouge vif */
-                  border-radius: 8px;        /* coins légèrement arrondis */
+                  max-width: 100%;
+                  height: auto;
+                  border: 2px solid #e60000;
+                  border-radius: 8px;
                 }
 
 /* === II.3 Submit Panel corrigé === */
