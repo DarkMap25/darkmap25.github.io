@@ -762,8 +762,7 @@
 
 // V.5 BOUTON FERMETURE CENTRALE //
 
-// ====  Création unique du bouton globalCloseBtn  ====
-
+                // ====  Création unique du bouton globalCloseBtn  ====
                 ;(function() {
                   // Si le bouton n’existe pas déjà, on le crée
                   if (!document.getElementById('globalCloseBtn')) {
@@ -774,7 +773,7 @@
                     document.body.appendChild(btn);
                   }
                 })();
-
+                
                 document.getElementById('globalCloseBtn').addEventListener('click', function(e) {
                   e.preventDefault();
                   e.stopPropagation();
@@ -808,7 +807,11 @@
                     }
                     // b) Si c’est submitPanel (Soumettre)
                     else if (currentlyOpenPanel.id === 'submitPanel') {
+                      // i. Masquer submitPanel
                       currentlyOpenPanel.classList.remove('visible', 'full-view');
+                      // ii. Rajouter la classe 'hidden' pour bien revenir à l’état initial
+                      currentlyOpenPanel.classList.add('hidden');
+                      // iii. Réafficher la carte
                       document.getElementById('map').style.display = 'block';
                     }
                     // c) (Éventuel) cas d’un autre panel (si vous en avez créé un différent), on le cache de la même façon
