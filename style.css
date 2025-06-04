@@ -509,7 +509,8 @@
                 /* 8) Chaque élément (lien ou image) dans la liste */
                 #detailPanel .links-images li {
                   margin-bottom: 0.5rem;    /* léger espace vertical */
-                  list-style: none;         /* retire la puce par défaut */
+                  list-style-type: disc;         /* puce classique ● */
+                  margin-left: 1.2rem;           /* décale un peu le texte pour laisser de la place à la puce */
                 }
                 
                 /* 9) Style des images associées : responsive et bordure rouge */
