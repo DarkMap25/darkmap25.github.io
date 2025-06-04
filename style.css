@@ -437,7 +437,7 @@
                 /* 2) Style du titre de l’affaire (le <h2>) dans panel-header */
                 #detailPanel .panel-header h2 {
                   margin: 0;
-                  font-size: 1.5em;                 /* même taille qu’auparavant */
+                  font-size: 3em;                 /* même taille qu’auparavant */
                   font-family: 'IM FELL ENGLISH SC', serif;
                   font-weight: bold;
                   color: #e60000;                   /* rouge vif DarkMap */
