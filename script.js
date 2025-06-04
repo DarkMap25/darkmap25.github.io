@@ -826,28 +826,38 @@ document.getElementById('globalCloseBtn').addEventListener('click', function(e) 
   }
 });
 
-// === Gestion du bouton global de fermeture "croix" ===
+// Gestion du bouton global de fermeture
+document.getElementById('globalCloseBtn').addEventListener('click', function(e) {
+  // On masque le bouton croix
+  this.style.display = 'none';
 
-// On écoute le clic sur le bouton croix global (id="globalCloseBtn")
-document.getElementById('globalCloseBtn').addEventListener('click', function() {
-  // Si un panel est ouvert (submit ou voir plus)
-  if (currentlyOpenPanel) {
-    // On le cache (enlève la classe visible et remet hidden, pour submit/voirplus)
-    currentlyOpenPanel.classList.remove('visible', 'full-view');
-    currentlyOpenPanel.classList.add('hidden');
-
-    // On efface aussi le contenu interne pour le submitPanel, pour éviter les bugs lors des rechargements successifs
-    if (currentlyOpenPanel.id === 'submitPanel') {
-      document.getElementById('submitContent').innerHTML = '';
-    }
-
-    // On remet la carte visible
-    document.getElementById('map').style.display = '';
-
-    // On oublie le panneau ouvert
-    currentlyOpenPanel = null;
+  // On ferme tous les panels possibles
+  // 1. Soumission (submitPanel)
+  var submitPanel = document.getElementById('submitPanel');
+  if (submitPanel) {
+    submitPanel.classList.remove('visible', 'full-view');
+    submitPanel.classList.add('hidden');
+    // On vide le contenu au cas où
+    var submitContent = document.getElementById('submitContent');
+    if (submitContent) submitContent.innerHTML = '';
   }
 
-  // On masque la croix (le bouton de fermeture)
-  this.style.display = 'none';
+  // 2. Voir plus / Mentions légales (detailPanel)
+  var detailPanel = document.getElementById('detailPanel');
+  if (detailPanel) {
+    detailPanel.classList.remove('visible', 'full-view');
+    detailPanel.classList.add('hidden');
+    var detailContent = document.getElementById('detailContent');
+    if (detailContent) detailContent.innerHTML = '';
+  }
+
+  // 3. On réaffiche la carte
+  var mapDiv = document.getElementById('map');
+  if (mapDiv) mapDiv.style.display = 'block';
+
+  // 4. On enlève tous les overlays possibles
+  // (si tu en rajoutes d'autres, copie/colle leur fermeture ici)
+
+  // 5. On revalide la taille de la carte si besoin (Leaflet)
+  if (typeof map !== 'undefined' && map.invalidateSize) map.invalidateSize();
 });
