@@ -684,7 +684,7 @@
                       const bodyContent = doc.body.innerHTML;
                       document.getElementById('detailContent').innerHTML = bodyContent;
                 
-                      currentlyOpenPanel = panel;
+                      currentlyOpenPanel = detailPanel;
                       document.getElementById('globalCloseBtn').style.display = 'block';
                     })
                     .catch(err => {
