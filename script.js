@@ -809,7 +809,6 @@
                     // b) Si c’est submitPanel (Soumettre)
                     else if (currentlyOpenPanel.id === 'submitPanel') {
                       currentlyOpenPanel.classList.remove('visible', 'full-view');
-                      currentlyOpenPanel.classList.add('hidden');
                       document.getElementById('map').style.display = 'block';
                     }
                     // c) (Éventuel) cas d’un autre panel (si vous en avez créé un différent), on le cache de la même façon
