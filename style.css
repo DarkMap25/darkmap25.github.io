@@ -1105,34 +1105,45 @@
 
 /* === III.2.3 Styles spécifiques pour les mentions légales (chargées dans #detailContent) === */
 
-                /* Quand #detailPanel est visible ET a la classe .legal, on cible #detailContent pour le bon fond */
-                #detailPanel.visible.legal #detailContent {
-                  /* Prend désormais 100 % de la largeur et de la hauteur de l’écran */
-                  position: absolute;
-                  top: 0;
-                  left: 0;
-                  width: 100%;
-                  height: 100%;                  /* Fond panneau.jpg */
+                /* 1) Fond “panneau.jpg” sur tout le panneau (#detailPanel) */
+                #detailPanel.visible.legal {
+                  /* Conserve uniquement l’image de fond, sans aucune couche sombre */
                   background-image: url('icons/panneau.jpg');
                   background-size: cover;
                   background-position: center;
                   background-repeat: no-repeat;
+                }
                 
-                  /* On force un padding + une largeur de texte identique à vos mentions légales */
+                /* 2) Contenu (#detailContent) en pleine largeur + texte centré */
+                #detailPanel.visible.legal #detailContent {
+                  /* On enlève tout fond pour ne voir que le panneau (background du parent) */
+                  background: transparent;
+                
+                  /* 100 % de largeur, hauteur auto avec scroll vertical sur #detailPanel si nécessaire */
+                  width: 100%;
+                  height: auto;
+                
+                  /* Centrage horizontal du contenu texte */
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center; /* centre horizontalement tous les enfants */
+                  text-align: center;   /* centre le texte à l’intérieur des h2, p, etc. */
+                
+                  /* Espacements intérieurs pour que le texte ne colle pas aux bords */
                   padding: 40px 20px;
+                
+                  /* Police et couleur du texte pour les mentions légales */
                   color: #f0f0f0;
                   font-family: 'Cormorant Garamond', serif;
                   line-height: 1.6;
-                  max-width: 800px;
-                  margin: 0 auto;
                 }
                 
-                /* Titres <h2> en bleu **uniquement** dans le contexte des mentions légales */
+                /* 3) Titres <h2> en #E6E6FA dans le contexte “mentions légales” */
                 #detailPanel.visible.legal #detailContent h2 {
-                  color: #E6E6FA;                  /* couleur du texte */
+                  color: #E6E6FA;
                 }
                 
-                /* Liens <a> restent rouges */
+                /* 4) Liens <a> restent rouges pour cohérence */
                 #detailPanel.visible.legal #detailContent a {
                   color: #e60000;
                   text-decoration: underline;
