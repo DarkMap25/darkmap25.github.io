@@ -192,13 +192,15 @@
           createLegend();
 
 
+
 // PARTIE III / VOIR PLUS //
 
 
-                // === BLOC INITIAL : variable pour savoir quel panneau est ouvert ===
+
+                              // === BLOC INITIAL : variable pour savoir quel panneau est ouvert ===
                 let currentlyOpenPanel = null;   // ‘null’ si aucun panel/modal/plein-écran n’est ouvert
                 
-                // === 1) Handler pour ouvrir le panneau "Voir plus" dans le style DarkMap
+                // === 1) Handler pour ouvrir le panneau "Voir plus" dans le style DarkMap ===
                 document.addEventListener("click", function(e) {
                   // === 1) On cible vraiment le lien .voir-plus, quel que soit l'élément cliqué à l'intérieur ===
                   const voirPlusBtn = e.target.closest(".voir-plus");
@@ -247,7 +249,12 @@
                   `;
                 
                   // 8.2) Affichage du résumé long (ou résumé court si pas de résumé long)
-                  html += `<div class="info-section"><p>${lieu.resume_long || lieu.resume}</p></div>`;
+                  //      → on ajoute class="first-section" pour que le résumé prenne 100 % de la largeur
+                  html += `
+                    <div class="info-section first-section">
+                      <p>${lieu.resume_long || lieu.resume}</p>
+                    </div>
+                  `;
                 
                   // 8.3) Affichage de la catégorie si présente
                   if (lieu.categorie) {
@@ -258,7 +265,7 @@
                     `;
                   }
                 
-                  // 8.4) Gestion de la date ou période : si date_debut et date_fin sont identiques, on affiche "Date"
+                  // 8.4) Gestion de la date ou période
                   const dDeb = lieu.date_debut || "";
                   const dFin = lieu.date_fin   || "";
                   if (dDeb && dFin) {
@@ -326,7 +333,7 @@
                   const liens = [];
                   ["lien", "liens_articles_presse", "liens_videos"].forEach(key => {
                     if (lieu[key]) {
-                      // Si plusieurs liens dans une seule chaîne séparés par des virgules, on les éclate
+                      // Si plusieurs liens séparés par des virgules, on les sépare
                       if (typeof lieu[key] === "string" && lieu[key].includes(",")) {
                         lieu[key].split(",").forEach(u => {
                           liens.push(u.trim());
@@ -340,7 +347,7 @@
                   if (liens.length > 0) {
                     html += `<div class="links-images"><ul>`;
                     liens.forEach(url => {
-                      // Si l'URL semble pointer vers une image, on l’affiche en <img>
+                      // Si l'URL pointe vers une image, on l’affiche ; sinon on crée un lien <a>
                       if (url.match(/\.(jpeg|jpg|gif|png|svg)$/i)) {
                         html += `
                           <li>
@@ -348,7 +355,6 @@
                           </li>
                         `;
                       } else {
-                        // Sinon on crée un lien cliquable <a>
                         html += `
                           <li>
                             <a href="${url}" target="_blank">${url}</a>
@@ -368,7 +374,9 @@
                 });
 
 
+
 // PARTIE IV / PLEIN ECRAN / SOUMETTRE / MENTIONS LEGALES //
+
 
 
 // IV.1.1 Ajout du bouton plein écran à la carte
