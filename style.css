@@ -1103,7 +1103,41 @@
                   font-weight: bold;
                 }
 
-/* === III.2.3 Positionnement des contrôles en haut à droite === */
+/* === III.2.3 Styles spécifiques pour les mentions légales (chargées dans #detailContent) === */
+
+                /* Quand #detailPanel est visible ET a la classe .legal, on cible #detailContent pour le bon fond */
+                #detailPanel.visible.legal #detailContent {
+                  /* Fond panneau.jpg */
+                  background-image: url('icons/panneau.jpg');
+                  background-size: cover;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                
+                  /* Calque sombre semi‐transparent pour que le texte reste lisible */
+                  background-color: rgba(0, 0, 0, 0.5);
+                  background-blend-mode: overlay;
+                
+                  /* On force un padding + une largeur de texte identique à vos mentions légales */
+                  padding: 40px 20px;
+                  color: #f0f0f0;
+                  font-family: 'Cormorant Garamond', serif;
+                  line-height: 1.6;
+                  max-width: 800px;
+                  margin: 0 auto;
+                }
+                
+                /* Titres <h2> en bleu **uniquement** dans le contexte des mentions légales */
+                #detailPanel.visible.legal #detailContent h2 {
+                  color: #1E90FF;
+                }
+                
+                /* Liens <a> restent rouges */
+                #detailPanel.visible.legal #detailContent a {
+                  color: #e60000;
+                  text-decoration: underline;
+                }
+
+/* === III.2.4 Positionnement des contrôles en haut à droite === */
 
                 .leaflet-topright {
                     display: flex; /* Utiliser flex pour aligner les éléments verticalement */
