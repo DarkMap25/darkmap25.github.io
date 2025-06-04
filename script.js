@@ -644,190 +644,184 @@
 
 // V.3 Ajout du bouton de fermeture Mentions Légales
 
-                // i. On récupère une seule fois l’élément <a id="mentionsLink"> dans le DOM
-                const mentionsLink = document.getElementById('mentionsLink');
-                
-                // ii. On récupère aussi une seule fois ces éléments du panneau de détail
-                const panel          = document.getElementById('detailPanel');   // équivalent de detailPanel
-                const detailContent  = document.getElementById('detailContent');
-                const globalCloseBtn = document.getElementById('globalCloseBtn');
-                
-                // iii. Lorsque l’on clique sur "Mentions légales", on ouvre le panneau, on charge le HTML et on applique les styles
-                mentionsLink.addEventListener('click', function(e) {
-                  e.preventDefault();
-                
-                  // → 1) Masquer la carte si besoin (le code existant)
-                  document.getElementById('map').style.display = 'none';
-                
-                  // → 2) Afficher le panneau #detailPanel (avec ses sous-classes) en plein écran
-                  panel.classList.add('visible', 'full-view');
-                
-                  // → 3) AJOUT : on marque ce panneau comme “legal” pour pouvoir cibler le bon fond + polices + titres en CSS
-                  panel.classList.add('legal');
-                
-                  // → 4) Charger le fichier HTML des mentions légales
-                  fetch('mentions-legales.html')
-                    .then(resp => resp.text())
-                    .then(htmlString => {
-                      // • Parser le HTML récupéré
-                      const parser = new DOMParser();
-                      const doc = parser.parseFromString(htmlString, 'text/html');
-                
-                      // • Optionnel : récupérer tous les <style> du head de mentions-legales.html
-                      //   pour conserver les polices / couleurs qui y sont définies.
-                      const headStyles = Array.from(doc.head.querySelectorAll('style'));
-                      headStyles.forEach(styleEl => {
-                        document.head.appendChild(styleEl.cloneNode(true));
-                      });
-                
-                      // • Récupérer le contenu du <body> (tout ce qui est dans <body>…</body>)
-                      const bodyContent = doc.body.innerHTML;
-                
-                      // • Injecter ce contenu DANS #detailContent (sans écraser le <head>)
-                      detailContent.innerHTML = bodyContent;
-                
-                      // → 5) On mémorise quel panneau est ouvert (pour la logique d’annulation éventuelle)
-                      currentlyOpenPanel = panel;
-                
-                      // → 6) On rend visible le bouton de fermeture
-                      globalCloseBtn.style.display = 'block';
-                    })
-                    .catch(err => {
-                      // En cas d’erreur réseau ou parse
-                      detailContent.innerHTML = '<p>Impossible de charger les mentions légales.</p>';
-                      console.error(err);
-                    });
-                });
-                
-                // iv. Gestion du clic sur le bouton de fermeture global (pour TOUS les contextes : “Voir plus”, “Soumettre”, ou “Mentions légales”)
-                globalCloseBtn.addEventListener('click', function() {
-                  // • 1) On cache le panneau quel que soit son usage
-                  panel.classList.remove('visible', 'full-view');
-                
-                  // • 2) LÀ OÙ LES MODIFS SONT ESSENTIELLES :
-                  //    retirer aussi la classe 'legal' pour que le CSS “mentions légales” ne reste pas actif
-                  if (panel.classList.contains('legal')) {
-                    panel.classList.remove('legal');
-                    // Si vous avez injecté <style> depuis le head de mentions-legales.html, vous pouvez aussi les retirer ici
-                    // (facultatif si vous ne voulez plus conserver ces règles). Exemple :
-                    // Array.from(document.head.querySelectorAll('style.mentions')).forEach(el => el.remove());
-                  }
-                
-                  // • 3) Vider le contenu (facultatif, permet de libérer de la mémoire ou éviter doublons)
-                  detailContent.innerHTML = '';
-                
-                  // • 4) Masquer la croix de fermeture à nouveau
-                  globalCloseBtn.style.display = 'none';
-                
-                  // • 5) Réafficher la carte si besoin
-                  document.getElementById('map').style.display = 'block';
-                
-                  // • 6) Réinitialiser la variable d’état du panneau ouvert (si vous l’utilisez)
-                  currentlyOpenPanel = null;
-                });
+// i. On récupère une seule fois l’élément <a id="mentionsLink"> dans le DOM
+const mentionsLink   = document.getElementById('mentionsLink');
+
+// ii. On récupère aussi une seule fois ces éléments du panneau de détail
+const detailPanel    = document.getElementById('detailPanel');
+const detailContent  = document.getElementById('detailContent');
+const globalCloseBtn = document.getElementById('globalCloseBtn');
+
+// iii. Lorsque l’on clique sur "Mentions légales", on ouvre le panneau, on charge le HTML et on applique les styles
+mentionsLink.addEventListener('click', function(e) {
+  e.preventDefault();
+
+  // → 1) Masquer la carte
+  document.getElementById('map').style.display = 'none';
+
+  // → 2) Afficher le panneau #detailPanel en plein écran
+  detailPanel.classList.add('visible', 'full-view');
+
+  // → 3) Marquer ce panneau comme “legal” pour cibler le bon fond + polices + titres en CSS
+  detailPanel.classList.add('legal');
+
+  // → 4) Charger le fichier HTML des mentions légales
+  fetch('mentions-legales.html')
+    .then(resp => resp.text())
+    .then(htmlString => {
+      // • Parser le HTML récupéré
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(htmlString, 'text/html');
+
+      // • Récupérer tous les <style> du head de mentions-legales.html pour conserver les polices/couleurs
+      const headStyles = Array.from(doc.head.querySelectorAll('style'));
+      headStyles.forEach(styleEl => {
+        document.head.appendChild(styleEl.cloneNode(true));
+      });
+
+      // • Récupérer le contenu du <body>
+      const bodyContent = doc.body.innerHTML;
+
+      // • Injecter ce contenu dans #detailContent
+      detailContent.innerHTML = bodyContent;
+
+      // → 5) Mémoriser quel panneau est ouvert
+      currentlyOpenPanel = detailPanel;
+
+      // → 6) Afficher le bouton de fermeture
+      globalCloseBtn.style.display = 'block';
+    })
+    .catch(err => {
+      detailContent.innerHTML = '<p>Impossible de charger les mentions légales.</p>';
+      console.error(err);
+    });
+});
+
+// iv. Gestion du clic sur le bouton de fermeture global (pour “Voir plus”, “Soumettre”, “Mentions légales”)
+globalCloseBtn.addEventListener('click', function() {
+  // • 1) Cacher le panneau quel que soit son usage
+  detailPanel.classList.remove('visible', 'full-view');
+
+  // • 2) Retirer la classe 'legal' si présente
+  if (detailPanel.classList.contains('legal')) {
+    detailPanel.classList.remove('legal');
+  }
+
+  // • 3) Vider le contenu
+  detailContent.innerHTML = '';
+
+  // • 4) Masquer la croix de fermeture
+  globalCloseBtn.style.display = 'none';
+
+  // • 5) Réafficher la carte
+  document.getElementById('map').style.display = 'block';
+
+  // • 6) Réinitialiser la variable d’état du panneau ouvert
+  currentlyOpenPanel = null;
+});
 
 // V.4 Ajout du bouton "Lieu au hasard 🎲"
 
-            const randomControl = L.control({ position: 'topright' });
-            randomControl.onAdd = function() {
-              const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-              container.id = 'randomButton';
-              container.innerHTML = '🎲';
-              container.title = 'Lieu au hasard 🎲';
-              L.DomEvent.disableClickPropagation(container);
-              return container;
-            };
-            randomControl.addTo(map);
-            
-            //  Clic sur 🎲 pour afficher un lieu aléatoire / Zoom
-            setTimeout(() => {
-              const btn = document.getElementById("randomButton");
-              if (!btn) return;
-              btn.addEventListener("click", () => {
-                if (!window.allMarkers?.length) return;
-                const randomIndex = Math.floor(Math.random() * window.allMarkers.length);
-                const randomMarker = window.allMarkers[randomIndex];
-                const latlng = randomMarker.getLatLng();
-                const currentZoom = map.getZoom();
-            
-                map.closePopup();
-            
-                if (currentZoom >= 10) {
-                  map.setView(map.getCenter(), 5);
-                  setTimeout(() => {
-                    map.flyTo(latlng, 10, { animate: true, duration: 2.5, easeLinearity: 0.25 });
-                    setTimeout(() => randomMarker.openPopup(), 3000);
-                  }, 700);
-                } else {
-                  map.flyTo(latlng, 10, { animate: true, duration: 2.5, easeLinearity: 0.25 });
-                  setTimeout(() => randomMarker.openPopup(), 3000);
-                }
-              });
-            }, 0);
+const randomControl = L.control({ position: 'topright' });
+randomControl.onAdd = function() {
+  const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+  container.id = 'randomButton';
+  container.innerHTML = '🎲';
+  container.title = 'Lieu au hasard 🎲';
+  L.DomEvent.disableClickPropagation(container);
+  return container;
+};
+randomControl.addTo(map);
+
+// Clic sur 🎲 pour afficher un lieu aléatoire / Zoom
+setTimeout(() => {
+  const btn = document.getElementById("randomButton");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    if (!window.allMarkers?.length) return;
+    const randomIndex = Math.floor(Math.random() * window.allMarkers.length);
+    const randomMarker = window.allMarkers[randomIndex];
+    const latlng = randomMarker.getLatLng();
+    const currentZoom = map.getZoom();
+
+    map.closePopup();
+
+    if (currentZoom >= 10) {
+      map.setView(map.getCenter(), 5);
+      setTimeout(() => {
+        map.flyTo(latlng, 10, { animate: true, duration: 2.5, easeLinearity: 0.25 });
+        setTimeout(() => randomMarker.openPopup(), 3000);
+      }, 700);
+    } else {
+      map.flyTo(latlng, 10, { animate: true, duration: 2.5, easeLinearity: 0.25 });
+      setTimeout(() => randomMarker.openPopup(), 3000);
+    }
+  });
+}, 0);
 
 // V.5 BOUTON FERMETURE CENTRALE //
 
-                // ====  Création unique du bouton globalCloseBtn  ====
-                ;(function() {
-                  // Si le bouton n’existe pas déjà, on le crée
-                  if (!document.getElementById('globalCloseBtn')) {
-                    const btn = document.createElement('button');
-                    btn.id = 'globalCloseBtn';
-                    btn.className = 'overlay-close';  // reprend la classe CSS que vous avez définie
-                    btn.textContent = '❌';
-                    document.body.appendChild(btn);
-                  }
-                })();
-                
-                document.getElementById('globalCloseBtn').addEventListener('click', function(e) {
-                  e.preventDefault();
-                  e.stopPropagation();
-                
-                  // 1) Si on est en plein écran, on en sort
-                  if (document.fullscreenElement) {
-                    document.exitFullscreen?.() ??
-                      document.mozCancelFullScreen?.() ??
-                      document.webkitExitFullscreen?.() ??
-                      document.msExitFullscreen?.();
-                    return;
-                  }
-                
-                  // 2) Sinon, si un panel est ouvert (Voir plus, Soumettre, Mentions), on le ferme
-                  if (currentlyOpenPanel) {
-                    // a) Si c’est detailPanel (Voir plus ou Mentions légales)
-                    if (currentlyOpenPanel.id === 'detailPanel') {
-                      // i. Masquer detailPanel
-                      currentlyOpenPanel.classList.remove('visible', 'full-view');
-                      // ii. Vider le contenu
-                      document.getElementById('detailContent').innerHTML = '';
-                      // iii. Réafficher la carte
-                      document.getElementById('map').style.display = 'block';
-                      // iv. Redimensionner Leaflet
-                      map.invalidateSize();
-                      // v. Restaurer la vue si on venait de « Voir plus »
-                      if (window._prevMapView) {
-                        map.setView(window._prevMapView.center, window._prevMapView.zoom, { animate: false });
-                        delete window._prevMapView;
-                      }
-                    }
-                    // b) Si c’est submitPanel (Soumettre)
-                    else if (currentlyOpenPanel.id === 'submitPanel') {
-                      // i. Masquer submitPanel
-                      currentlyOpenPanel.classList.remove('visible', 'full-view');
-                      // ii. Rajouter la classe 'hidden' pour bien revenir à l’état initial
-                      currentlyOpenPanel.classList.add('hidden');
-                      // iii. Réafficher la carte
-                      document.getElementById('map').style.display = 'block';
-                    }
-                    // c) (Éventuel) cas d’un autre panel (si vous en avez créé un différent), on le cache de la même façon
-                    else {
-                      currentlyOpenPanel.classList.remove('visible', 'full-view');
-                      currentlyOpenPanel.classList.add('hidden');
-                    }
-                
-                    // 3) On cache la croix
-                    document.getElementById('globalCloseBtn').style.display = 'none';
-                    // 4) Réinitialiser le pointeur de panel ouvert
-                    currentlyOpenPanel = null;
-                  }
-                });
+// ====  Création unique du bouton globalCloseBtn  ====
+;(function() {
+  // Si le bouton n’existe pas déjà, on le crée
+  if (!document.getElementById('globalCloseBtn')) {
+    const btn = document.createElement('button');
+    btn.id = 'globalCloseBtn';
+    btn.className = 'overlay-close';  // reprend la classe CSS définie
+    btn.textContent = '❌';
+    document.body.appendChild(btn);
+  }
+})();
+
+document.getElementById('globalCloseBtn').addEventListener('click', function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  // 1) Si on est en plein écran, on en sort
+  if (document.fullscreenElement) {
+    document.exitFullscreen?.() ??
+      document.mozCancelFullScreen?.() ??
+      document.webkitExitFullscreen?.() ??
+      document.msExitFullscreen?.();
+    return;
+  }
+
+  // 2) Sinon, si un panel est ouvert (Voir plus, Soumettre, Mentions), on le ferme
+  if (currentlyOpenPanel) {
+    // a) Si c’est detailPanel (Voir plus ou Mentions légales)
+    if (currentlyOpenPanel.id === 'detailPanel') {
+      // i. Masquer detailPanel
+      currentlyOpenPanel.classList.remove('visible', 'full-view');
+      // ii. Vider le contenu
+      document.getElementById('detailContent').innerHTML = '';
+      // iii. Réafficher la carte
+      document.getElementById('map').style.display = 'block';
+      // iv. Redimensionner Leaflet
+      map.invalidateSize();
+      // v. Restaurer la vue si on venait de « Voir plus »
+      if (window._prevMapView) {
+        map.setView(window._prevMapView.center, window._prevMapView.zoom, { animate: false });
+        delete window._prevMapView;
+      }
+    }
+    // b) Si c’est submitPanel (Soumettre)
+    else if (currentlyOpenPanel.id === 'submitPanel') {
+      // i. Masquer submitPanel
+      currentlyOpenPanel.classList.remove('visible', 'full-view');
+      // ii. Rajouter la classe 'hidden' pour revenir à l’état initial
+      currentlyOpenPanel.classList.add('hidden');
+      // iii. Réafficher la carte
+      document.getElementById('map').style.display = 'block';
+    }
+    // c) Cas d’un autre panel éventuel
+    else {
+      currentlyOpenPanel.classList.remove('visible', 'full-view');
+      currentlyOpenPanel.classList.add('hidden');
+    }
+
+    // 3) Masquer la croix
+    document.getElementById('globalCloseBtn').style.display = 'none';
+    // 4) Réinitialiser la variable d’état
+    currentlyOpenPanel = null;
+  }
+});
