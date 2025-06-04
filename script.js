@@ -677,7 +677,33 @@
                       detailContent.innerHTML = '<p>Impossible de charger les mentions légales.</p>';
                       console.error(err);
                     });
+                });
                 
+                // iv. Gestion du clic sur le bouton de fermeture global (pour TOUS les contextes : “Voir plus”, “Soumettre”, ou “Mentions légales”)
+                globalCloseBtn.addEventListener('click', function() {
+                  // • 1) On cache le panneau quel que soit son usage
+                  panel.classList.remove('visible', 'full-view');
+                
+                  // • 2) LÀ OÙ LES MODIFS SONT ESSENTIELLES :
+                  //    retirer aussi la classe 'legal' pour que le CSS “mentions légales” ne reste pas actif
+                  if (panel.classList.contains('legal')) {
+                    panel.classList.remove('legal');
+                    // Si vous avez injecté <style> depuis le head de mentions-legales.html, vous pouvez aussi les retirer ici
+                    // (facultatif si vous ne voulez plus conserver ces règles). Exemple :
+                    // Array.from(document.head.querySelectorAll('style.mentions')).forEach(el => el.remove());
+                  }
+                
+                  // • 3) Vider le contenu (facultatif, permet de libérer de la mémoire ou éviter doublons)
+                  detailContent.innerHTML = '';
+                
+                  // • 4) Masquer la croix de fermeture à nouveau
+                  globalCloseBtn.style.display = 'none';
+                
+                  // • 5) Réafficher la carte si besoin
+                  document.getElementById('map').style.display = 'block';
+                
+                  // • 6) Réinitialiser la variable d’état du panneau ouvert (si vous l’utilisez)
+                  currentlyOpenPanel = null;
                 });
 
 // V.4 Ajout du bouton "Lieu au hasard 🎲"
