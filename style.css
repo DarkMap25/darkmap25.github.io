@@ -1,9 +1,3 @@
-/* Hidden */
-
-.hidden {
-  display: none !important;
-}
-
 /* ===  Variables de configuration (modifiable : hauteur en vh, tailles, couleurs…) === */
 
         :root {
