@@ -574,42 +574,11 @@
               e.preventDefault();
               openSubmitPanel();
             });
-
-// IV.3 MENTIONS LEGALES //
-
-                mentionsLink.addEventListener('click', function(e) {
-                  e.preventDefault();
-                  // … Masquer la carte, afficher #detailPanel …
-                  fetch('mentions-legales.html')
-                    .then(resp => resp.text())
-                    .then(htmlString => {
-                      const parser = new DOMParser();
-                      const doc = parser.parseFromString(htmlString, 'text/html');
-                
-                      // 1) Récupérer tous les <style> du <head> de mentions-legales.html
-                      const headStyles = Array.from(doc.head.querySelectorAll('style'));
-                      headStyles.forEach(styleEl => {
-                        // On duplique chaque <style> dans le <head> de la page courante,
-                        // afin que ces règles CSS soient appliquées.
-                        document.head.appendChild(styleEl.cloneNode(true));
-                      });
-                
-                      // 2) Puis on copie le <body> dans #detailContent
-                      const bodyContent = doc.body.innerHTML;
-                      document.getElementById('detailContent').innerHTML = bodyContent;
-                
-                      currentlyOpenPanel = panel;
-                      document.getElementById('globalCloseBtn').style.display = 'block';
-                    })
-                    .catch(err => {
-                      document.getElementById('detailContent').innerHTML =
-                        '<p>Impossible de charger les mentions légales.</p>';
-                      console.error(err);
-                    });
-                });
+              
 
 
 // === PARTIE V / BOUTONS ET ACTIONS === //
+
 
 
 // V.1.1 Ajout du bouton de localisation
@@ -693,6 +662,38 @@
                       console.error(err);
                     });
                 });
+                // ii. Ajout styles mentions //
+                  mentionsLink.addEventListener('click', function(e) {
+                  e.preventDefault();
+                  // … Masquer la carte, afficher #detailPanel …
+                  fetch('mentions-legales.html')
+                    .then(resp => resp.text())
+                    .then(htmlString => {
+                      const parser = new DOMParser();
+                      const doc = parser.parseFromString(htmlString, 'text/html');
+                
+                      // 1) Récupérer tous les <style> du <head> de mentions-legales.html
+                      const headStyles = Array.from(doc.head.querySelectorAll('style'));
+                      headStyles.forEach(styleEl => {
+                        // On duplique chaque <style> dans le <head> de la page courante,
+                        // afin que ces règles CSS soient appliquées.
+                        document.head.appendChild(styleEl.cloneNode(true));
+                      });
+                
+                      // 2) Puis on copie le <body> dans #detailContent
+                      const bodyContent = doc.body.innerHTML;
+                      document.getElementById('detailContent').innerHTML = bodyContent;
+                
+                      currentlyOpenPanel = panel;
+                      document.getElementById('globalCloseBtn').style.display = 'block';
+                    })
+                    .catch(err => {
+                      document.getElementById('detailContent').innerHTML =
+                        '<p>Impossible de charger les mentions légales.</p>';
+                      console.error(err);
+                    });
+                });
+
 
 // V.4 Ajout du bouton "Lieu au hasard 🎲"
 
