@@ -345,7 +345,7 @@
                 
                   if (liens.length > 0) {
                           html += `
-                            <div class="info-section">
+                            <div class="info-section first-section">
                               <strong>Sources :</strong>
                               <div class="links-images">
                                 <ul>
