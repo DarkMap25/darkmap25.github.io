@@ -344,26 +344,34 @@
                   });
                 
                   if (liens.length > 0) {
-                    html += `<div class="links-images"><ul>`;
-                    liens.forEach(url => {
-                      // Si l'URL pointe vers une image, on l’affiche ; sinon on crée un lien <a>
-                      if (url.match(/\.(jpeg|jpg|gif|png|svg)$/i)) {
-                        html += `
-                          <li>
-                            <img src="${url}" alt="Image associée">
-                          </li>
-                        `;
-                      } else {
-                        html += `
-                          <li>
-                            <a href="${url}" target="_blank">${url}</a>
-                          </li>
-                        `;
-                      }
-                    });
-                    html += `</ul></div>`;
-                  }
-                
+                          html += `
+                            <div class="info-section">
+                              <strong>Sources :</strong>
+                              <div class="links-images">
+                                <ul>
+                          `;
+                          liens.forEach(url => {
+                            if (url.match(/\.(jpeg|jpg|gif|png|svg)$/i)) {
+                              html += `
+                                  <li>
+                                    <img src="${url}" alt="Image associée">
+                                  </li>
+                              `;
+                            } else {
+                              html += `
+                                  <li>
+                                    <a href="${url}" target="_blank">${url}</a>
+                                  </li>
+                              `;
+                            }
+                          });
+                          html += `
+                                </ul>
+                              </div>
+                            </div>
+                          `;
+                        }
+                                        
                   // 8.10) Fermeture de la balise panel-body
                   html += `</div>`;
                 
