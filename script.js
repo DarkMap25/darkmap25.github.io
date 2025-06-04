@@ -197,7 +197,7 @@
 
 
 
-                              // === BLOC INITIAL : variable pour savoir quel panneau est ouvert ===
+                // === BLOC INITIAL : variable pour savoir quel panneau est ouvert ===
                 let currentlyOpenPanel = null;   // ‘null’ si aucun panel/modal/plein-écran n’est ouvert
                 
                 // === 1) Handler pour ouvrir le panneau "Voir plus" dans le style DarkMap ===
@@ -239,10 +239,9 @@
                   // === 8) Construction du HTML dans le style DarkMap ===
                   let html = "";
                 
-                  // 8.1) Header du panneau : titre principal “darkmap” + sous-titre (nom de l’affaire)
+                  // 8.1) Header du panneau : **seulement** le titre de l’affaire en <h2>
                   html += `
                     <div class="panel-header">
-                      <h1>darkmap</h1>
                       <h2>${lieu.nom}</h2>
                     </div>
                     <div class="panel-body">
