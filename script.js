@@ -825,3 +825,29 @@ document.getElementById('globalCloseBtn').addEventListener('click', function(e) 
     currentlyOpenPanel = null;
   }
 });
+
+// === Gestion du bouton global de fermeture "croix" ===
+
+// On écoute le clic sur le bouton croix global (id="globalCloseBtn")
+document.getElementById('globalCloseBtn').addEventListener('click', function() {
+  // Si un panel est ouvert (submit ou voir plus)
+  if (currentlyOpenPanel) {
+    // On le cache (enlève la classe visible et remet hidden, pour submit/voirplus)
+    currentlyOpenPanel.classList.remove('visible', 'full-view');
+    currentlyOpenPanel.classList.add('hidden');
+
+    // On efface aussi le contenu interne pour le submitPanel, pour éviter les bugs lors des rechargements successifs
+    if (currentlyOpenPanel.id === 'submitPanel') {
+      document.getElementById('submitContent').innerHTML = '';
+    }
+
+    // On remet la carte visible
+    document.getElementById('map').style.display = '';
+
+    // On oublie le panneau ouvert
+    currentlyOpenPanel = null;
+  }
+
+  // On masque la croix (le bouton de fermeture)
+  this.style.display = 'none';
+});
