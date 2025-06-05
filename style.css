@@ -1156,50 +1156,47 @@
                     -webkit-overflow-scrolling: touch; /* Fluidité du scroll sur iOS */
                   }
                 
-                  /* 2. Carte responsive : largeur toujours à 90% de la page, hauteur libre si besoin
-                        (laissez la carte s’étendre verticalement tant que l’utilisateur peut scroller) */
+                  /* 2. Carte responsive : largeur toujours à 90% de la page, hauteur libre si besoin */
                   #map {
                     width: 90vw;               /* 90% de la largeur de l’écran */
                     max-width: 600px;          /* Pour éviter une carte trop large sur écrans intermédiaires */
-                    /* Hauteur fixe non imposée pour permettre au contenu texte + carte de dépasser
-                       et laisser le scroll body gérer le défilement global. */
                     margin: 0 auto;            /* Centrer horizontalement */
                     border-radius: 8px;
                   }
                 
-                  /* 3. Boutons sur la carte (zoom, localisation, submit, etc.) :
-                        réduire la taille de police/icône à 2em au lieu de 2.5em.
-                        Sélectionnez ici les classes ou sélecteurs correspondant à vos contrôles Leaflet ou à vos boutons personnalisés. */
-                  /* Exemple pour Leaflet : */
-                  .leaflet-control-container .leaflet-control a,
-                  /* Exemple pour un bouton « submit » personnalisé (adaptez selon votre HTML) */
-                  .btn-submit,
-                  /* Exemple pour un bouton d’emplacement (adaptez selon votre HTML) */
+                  /* 3. Boutons sur la carte (zoom, localisation, submit, etc.) */
                   .btn-locate {
                     font-size: 2em !important; /* Réduction à 2em */
                     padding: 0.3em 0.5em;       /* Ajuster le padding si nécessaire */
                   }
                 
                   /* 4. Popup Leaflet :
-                       – largeur à 80% de la largeur de la carte (la carte fait 90% de la page) ;
-                         on met donc la popup à max-width: 80% pour qu’elle soit elle-même responsive par rapport à viewport. */
-                  .leaflet-popup-content-wrapper {
-                    max-width: 60% !important;   /* 60% de la largeur de la fenêtre */
-                    padding: 0.6em 0.8em;         /* Un peu de padding pour le confort de lecture */
-                    border-radius: 6px;
-                  }
-                  /* Faire défiler le contenu de la popup si le résumé d’histoire est trop long */
-                  .leaflet-popup-content {
-                    max-height: 40vh;            /* Limiter la hauteur de la popup à 60% de la hauteur d’écran */
-                    overflow-y: auto;            /* Scroll vertical si dépasse */
-                    line-height: 1.2em !important; /* Hauteur de ligne lisible sur mobile */
-                    font-size: 1rem !important;  /* Ajustement par défaut du texte de la popup */
-                  }
-                
-                  /* 5. InfoLegend (légende d’informations) :
-                       – police actuellement à 16px (1em), on la réduit à 0.8em (= ~12.8px) ;
-                       – .line8 (si vous avez une classe pour „ligne 8“) on met aussi à 0.8em ;
-                       – emoji dans la légende (supposé avoir classe .legend-emoji) on met à 0.8em. */
+                   .leaflet-popup-content-wrapper {
+                            /* largeur à 80% de la carte (qui fait 90% de la page) */
+                            max-width: 80% !important;
+                            /* on fixe une hauteur max à 60% de la hauteur d'écran */ 
+                            max-height: 60vh;
+                            /* le wrapper devient scrollable si le contenu dépasse 60vh */
+                            overflow-y: auto;
+                            /* fond noir opaque (ou tu peux mettre rgba(0,0,0,0.8) si tu veux semi-transparent) */
+                            background-color: #000;
+                            /* on inclut le padding dans la boîte pour que le fond englobe tout */
+                            box-sizing: border-box;
+                            padding: 0.6em 0.8em;
+                            border-radius: 6px;
+                            /* pour s’assurer que le fond prenne bien toute la largeur/hauteur calculée */
+                            display: block;
+                          }
+                        
+                          .leaflet-popup-content {
+                            /* on remet la taille du texte souhaitée */
+                            font-size: 1rem !important;
+                            line-height: 1.2em !important;
+                            /* pour éviter que certains mots longs ou URL dépassent du conteneur */
+                            word-break: break-word;
+                          }
+                                        
+                  /* 5. InfoLegend */
                   .info-legend {
                     font-size: 0.8em;            /* Réduit la taille de tout le texte de la légende */
                     line-height: 1.1em;          /* Conserver un interligne cohérent */
@@ -1211,8 +1208,30 @@
                     font-size: 0.8em;            /* Réduction de l’emoji */
                     vertical-align: middle;      /* Pour que l’emoji reste bien aligné avec le texte */
                   }
+
+                  /* 1. Réduire la taille du texte d’intro de 1.2em → 1.0em */
+                  .intro {
+                    font-size: 1.0em; /* passe de 1.2em à 1.0em */
+                    /* marges/paddings déjà gérés précédemment */
+                  }
                 
+                  /* 2. Dans l’intro, réduire .line8 de 20 % :
+                        si .line8 héritait de 1.0em (après réduction), on le passe à 0.8em */
+                  .intro .line8 {
+                    font-size: 0.8em; /* 20 % de moins qu’1.0em */
+                  }
                 
+                  /* 3. Réduire la taille du footer de 0.8em → 0.6em */
+                  footer {
+                    font-size: 0.6em; /* passe de 0.8em à 0.6em */
+                  }
+                
+                  /* 4. Dans le footer, réduire .line8 « un petit peu » (20 % de 0.6em = 0.48em) */
+                  footer .line8 {
+                    font-size: 0.48em; /* 20 % de moins que 0.6em */
+                  }
+                }
+                                
 
 /* === IV.3 Surcharge de carte réglée en dernier pour prendre le pas === */
 
