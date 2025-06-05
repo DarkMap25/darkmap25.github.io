@@ -1170,22 +1170,25 @@
                     padding: 0.3em 0.5em;       /* Ajuster le padding si nécessaire */
                   }
                 
-                  /* 4. Popup Leaflet :
-                   .leaflet-popup-content-wrapper {
-                            /* largeur à 60% de la carte (qui fait 90% de la page) */
-                            max-width: 300px !important;
-                            /* on fixe une hauteur max à 60% de la hauteur d'écran */ 
-                            max-height: 300px;
-                            /* le wrapper devient scrollable si le contenu dépasse 60vh */
-                            overflow-y: auto;
-                            /* fond noir opaque (ou tu peux mettre rgba(0,0,0,0.8) si tu veux semi-transparent) */
-                            background-color: #000;
-                            /* on inclut le padding dans la boîte pour que le fond englobe tout */
-                            box-sizing: border-box;
-                            padding: 0.6em 0.8em;
-                            border-radius: 6px;
-                            /* pour s’assurer que le fond prenne bien toute la largeur/hauteur calculée */
-                            display: block;
+                          /* 1) Cibler précisément le wrapper Leaflet quand il est animé */
+                          div.leaflet-popup-content-wrapper.leaflet-zoom-animated {
+                            /* Force une largeur égale à 60% du viewport (vous pouvez ajuster 60 → 50, 70, etc.) */
+                            width: 60vw !important;
+                            max-width: none !important;      /* On lève le “max-width” global de Leaflet */
+                            box-sizing: border-box;          /* Inclut padding + border dans la largeur */
+                            padding: 0.6em 0.8em;            /* Même confort qu’avant */
+                            background-color: #000;          /* Exemple : fond noir */
+                            border-radius: 6px;              /* Conserve les coins arrondis */
+                            overflow-y: auto;               /* Permettre le scroll interne si besoin */
+                            max-height: 60vh;               /* Pour ne pas dépasser 60% de la hauteur de l’écran */
+                          }
+                        
+                          /* 2) Ajuster le style du texte à l’intérieur */
+                          div.leaflet-popup-content-wrapper.leaflet-zoom-animated .leaflet-popup-content {
+                            font-size: 1rem !important;
+                            line-height: 1.2em !important;
+                            word-break: break-word;          /* Empêche le débordement horizontal */
+                            color: #fff !important;         /* Texte en blanc pour rester lisible sur fond noir */
                           }
                         
                           .leaflet-popup-content {
