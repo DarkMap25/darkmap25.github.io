@@ -1197,36 +1197,28 @@
                   /* 5. InfoLegend */
                   .info.legend {
                     font-size: 0.4em;            /* Réduit la taille de tout le texte de la légende */
-                    line-height: 1em;          /* Conserver un interligne cohérent */
+                    line-height: 2em;          /* Conserver un interligne cohérent */
                   }
-                  .info.legend .line8 {
-                    font-size: 0.4em;            /* Même réglage pour l’élément spécifique „line8“ */
-                  }
-                  .info.legend .legend-emoji {
+                
+                  .info.legend .legend-item.emoji {
                     font-size: 0.4em;            /* Réduction de l’emoji */
                     vertical-align: middle;      /* Pour que l’emoji reste bien aligné avec le texte */
                   }
 
+                         .info.legend .legend-item .category-name {
+                    font-size: 0.4em;
+                    font-weight: bold;
+                          }
+                        
                   /* 1. Réduire la taille du texte d’intro de 1.2em → 1.0em */
                   .intro {
                     font-size: 1.0em; /* passe de 1.2em à 1.0em */
                     /* marges/paddings déjà gérés précédemment */
                   }
                 
-                  /* 2. Dans l’intro, réduire .line8 de 20 % :
-                        si .line8 héritait de 1.0em (après réduction), on le passe à 0.8em */
-                  .intro .line8 {
-                    font-size: 0.8em; /* 20 % de moins qu’1.0em */
-                  }
-                
                   /* 3. Réduire la taille du footer de 0.8em → 0.6em */
                   footer {
                     font-size: 0.6em; /* passe de 0.8em à 0.6em */
-                  }
-                
-                  /* 4. Dans le footer, réduire .line8 « un petit peu » (20 % de 0.6em = 0.48em) */
-                  footer .line8 {
-                    font-size: 0.48em; /* 20 % de moins que 0.6em */
                   }
                 }
                                 
