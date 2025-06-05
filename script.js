@@ -150,9 +150,10 @@
                 // 1) transformation latlng → point écran
                 const point = map.latLngToContainerPoint(latlng);
             
-                // 2) on retire offsetY pixels sur l'axe Y pour remonter la carte
-                const offsetPoint = L.point(point.x, point.y - offsetY);
-            
+                 // 2) on calcule le point cible pour centrer horizontalement et abaisser verticalement :
+                  const centerX = mapSize.x / 2;
+                  const offsetPoint = L.point(centerX, point.y - offsetY); 
+                      
                 // 3) reconvertit en latlng
                 const newCenter = map.containerPointToLatLng(offsetPoint);
             
