@@ -1196,14 +1196,14 @@
                                         
                   /* 5. InfoLegend */
                   .info.legend {
-                    font-size: 0.6em;            /* Réduit la taille de tout le texte de la légende */
-                    line-height: 0.8em;          /* Conserver un interligne cohérent */
+                    font-size: 0.4em;            /* Réduit la taille de tout le texte de la légende */
+                    line-height: 1em;          /* Conserver un interligne cohérent */
                   }
                   .info.legend .line8 {
-                    font-size: 0.6em;            /* Même réglage pour l’élément spécifique „line8“ */
+                    font-size: 0.4em;            /* Même réglage pour l’élément spécifique „line8“ */
                   }
                   .info.legend .legend-emoji {
-                    font-size: 0.8em;            /* Réduction de l’emoji */
+                    font-size: 0.4em;            /* Réduction de l’emoji */
                     vertical-align: middle;      /* Pour que l’emoji reste bien aligné avec le texte */
                   }
 
