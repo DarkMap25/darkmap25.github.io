@@ -1183,7 +1183,6 @@
                             background-color: #000;          /* Exemple : fond noir */
                             border-radius: 6px;              /* Conserve les coins arrondis */
                             overflow-y: auto;               /* Permettre le scroll interne si besoin */
-                            max-height: 50vh;               /* Pour ne pas dépasser 50% de la hauteur de l’écran */
                           }
                         
                           /* 2) Ajuster le style du texte à l’intérieur */
