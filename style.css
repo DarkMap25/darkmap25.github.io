@@ -31,8 +31,6 @@
                 background-position: center; /* L'image est centrée */
                 background-repeat: no-repeat; /* L'image ne se répète pas */
                 background-attachment: scroll; /* Le fond défile avec la page (plus compatible mobile) */
-                color: #f0f0f0; /* Couleur du texte */
-                font-family: 'Quicksand', sans-serif; /* Police du texte */
                 position: relative; /* Positionnement pour le calque noir transparent */
               }
 
@@ -56,10 +54,9 @@
                 top: 0; left: 0;
                 width: 100%; height: 100%;
                 background-color: #0d0d0d; /* ton fond sombre */
-                background-image: url('./icons/background.jpg');
+                background-image: url('icons/background.jpg');
                 background-size: cover;
                 background-position: center;
-                background-attachment: fixed;
                 display: block;
               }
 
