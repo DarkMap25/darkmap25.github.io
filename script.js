@@ -1,24 +1,5 @@
-//  DÉTECTER LE MOBILE ET DÉFINIR maxWidth
-                
-                // On récupère la largeur de la fenêtre au chargement
-                var viewportWidth = window.innerWidth;
-                
-                // Si l’écran est plus petit que 768px, on calcule 50 % du viewport en pixels
-                if (viewportWidth < 768) {
-                  // Exemple : 50 % de la largeur de la fenêtre en px
-                  var mobileMaxWidth = Math.floor(viewportWidth * 0.5);
-                
-                  // On écrase alors l’option “maxWidth” par défaut de Leaflet pour tous les popups
-                  L.Popup.prototype.options.maxWidth = mobileMaxWidth;
-                
-                  // Si besoin, on peut aussi limiter la hauteur pour activer le scroll interne
-                  var viewportHeight = window.innerHeight;
-                  L.Popup.prototype.options.maxHeight = Math.floor(viewportHeight * 0.6);
-                }
-                
-                        
-
 // === PARTIE I / CREATION CARTE / INTRODUCTION === //
+
 
 
 //  I.1. Création du fond de carte Alidade Smooth Dark
@@ -114,6 +95,7 @@
           function createEmojiMarker(lieu) {
             const emoji = emojiParCategorie[lieu.categorie] || "❓";
           
+            // Création de l’icône emoji personnalisée
             const emojiIcon = L.divIcon({
               className: 'emoji-icon',
               html: `<div class="emoji-marker">${emoji}</div>`,
@@ -121,48 +103,66 @@
               iconAnchor: [15, 15],
               popupAnchor: [0, -15]
             });
-  
-// II.2.1 Création du Pop-Up
+
+  // II.2.1 Création du contenu HTML du Pop-Up
             
-          const popupContent = `
-            <strong>${lieu.nom}</strong><br>
-            ${lieu.resume}<br>
-            <a href="#" class="voir-plus" data-id="${lieu.ID}">Voir plus</a>
-          `;
+            const popupContent = `
+              <strong>${lieu.nom}</strong><br>
+              ${lieu.resume}<br>
+              <a href="#" class="voir-plus" data-id="${lieu.ID}">Voir plus</a>
+            `;
 
-          const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
-            .bindPopup(popupContent, {
-              className: 'custom-popup',  // <— nouvelle classe CSS
-              minWidth: 200,              // largeur minimale
-              maxWidth: 600,              // largeur maximale
-              maxHeight: 300,             // hauteur max avec scroll interne
-              autoPan: true,
-              keepInView: false
-            });
-
-// II.2.2 Abaissement du Pop-Up
+                // Calcul dynamique de maxWidth/maxHeight pour le Pop-Up
+                const vw = window.innerWidth;
+                const vh = window.innerHeight;
+                let popupOptions;
+                if (vw < 768) {
+                  popupOptions = {
+                    className: 'custom-popup',
+                    minWidth: 120,
+                    maxWidth: Math.floor(vw * 0.5),    // 50% de la largeur écran
+                    maxHeight: Math.floor(vh * 0.6),   // 60% de la hauteur écran
+                    autoPan: true,
+                    keepInView: false
+                  };
+                } else {
+                  popupOptions = {
+                    className: 'custom-popup',
+                    minWidth: 200,
+                    maxWidth: 600,
+                    maxHeight: 300,
+                    autoPan: true,
+                    keepInView: false
+                  };
+                }
               
-            marker.on('click', () => {
-              const latlng = marker.getLatLng();
-              const mapSize = map.getSize();               // taille de la fenêtre Leaflet en pixels
-              const offsetY = mapSize.y * 0.20;            // 20% vers le bas
-          
-            // 1) transformation latlng → point écran
-            const point = map.latLngToContainerPoint(latlng);
-          
-            // 2) on retire offsetY pixels sur l'axe Y pour remonter la carte
-            const offsetPoint = L.point(point.x, point.y - offsetY);
-          
-            // 3) reconvertit en latlng
-            const newCenter = map.containerPointToLatLng(offsetPoint);
-          
-            // 4) centre la carte là-dessus et ouvre la popup
-            map.setView(newCenter, map.getZoom(), { animate: true });
-            marker.openPopup();
-          });
-          
-          return marker;
-        }
+                // Création du marqueur et liaison du Pop-Up avec les options dynamiques
+                const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
+                  .bindPopup(popupContent, popupOptions);
+
+  // II.2.2 Abaissement du Pop-Up lorsqu’on clique sur le marqueur
+            
+              marker.on('click', () => {
+                const latlng = marker.getLatLng();
+                const mapSize = map.getSize();             // taille de la fenêtre Leaflet en pixels
+                const offsetY = mapSize.y * 0.20;          // 20% vers le bas
+            
+                // 1) transformation latlng → point écran
+                const point = map.latLngToContainerPoint(latlng);
+            
+                // 2) on retire offsetY pixels sur l'axe Y pour remonter la carte
+                const offsetPoint = L.point(point.x, point.y - offsetY);
+            
+                // 3) reconvertit en latlng
+                const newCenter = map.containerPointToLatLng(offsetPoint);
+            
+                // 4) centre la carte là-dessus et ouvre la popup
+                map.setView(newCenter, map.getZoom(), { animate: true });
+                marker.openPopup();
+              });
+            
+              return marker;
+            }
 
 // II.2.3 Chargement du fichier lieux.json et création des marqueurs
 
