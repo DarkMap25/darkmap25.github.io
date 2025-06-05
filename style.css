@@ -1173,7 +1173,7 @@
                           /* 1) Cibler précisément le wrapper Leaflet quand il est animé */
                           div.leaflet-popup-content-wrapper.leaflet-zoom-animated {
                             /* Force une largeur égale à 60% du viewport (vous pouvez ajuster 60 → 50, 70, etc.) */
-                            width: 60vw !important;
+                            width: 50vw !important;
                             max-width: none !important;      /* On lève le “max-width” global de Leaflet */
                             box-sizing: border-box;          /* Inclut padding + border dans la largeur */
                             padding: 0.6em 0.8em;            /* Même confort qu’avant */
