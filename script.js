@@ -122,7 +122,7 @@
                     minWidth: 120,
                     maxWidth: Math.floor(vw * 0.6),    // 60% de la largeur écran
                     maxHeight: Math.floor(vh * 0.4),   // 40% de la hauteur écran
-                    autoPan: false,
+                    autoPan: true,
                     keepInView: false
                   };
                 } else {
@@ -131,7 +131,7 @@
                     minWidth: 200,
                     maxWidth: 600,
                     maxHeight: 300,
-                    autoPan: false,
+                    autoPan: true,
                     keepInView: false
                   };
                 }
