@@ -1173,9 +1173,9 @@
                   /* 4. Popup Leaflet :
                    .leaflet-popup-content-wrapper {
                             /* largeur à 60% de la carte (qui fait 90% de la page) */
-                            max-width: 60% !important;
+                            max-width: 300px !important;
                             /* on fixe une hauteur max à 60% de la hauteur d'écran */ 
-                            max-height: 60vh;
+                            max-height: 300px;
                             /* le wrapper devient scrollable si le contenu dépasse 60vh */
                             overflow-y: auto;
                             /* fond noir opaque (ou tu peux mettre rgba(0,0,0,0.8) si tu veux semi-transparent) */
