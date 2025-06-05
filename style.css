@@ -357,6 +357,19 @@
                   text-shadow: none !important;    /* supprime l’ombre héritée */
                 }
 
+                /* vi. Croix fermeture popup */
+                .leaflet-popup-close-button {
+                  color: red !important;
+                  background: none;
+                  border: none;
+                  font-size: 1rem;
+                  transition: transform 0.2s ease;
+                }
+                
+                .leaflet-popup-close-button:hover {
+                  transform: scale(1.5);
+                }
+
 /* === II.1.2 Scroll PopUP === */
 
                 .custom-popup .leaflet-popup-content {
