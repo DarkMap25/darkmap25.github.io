@@ -363,6 +363,19 @@
                   text-shadow: none !important;    /* supprime l’ombre héritée */
                 }
 
+                /* vi. POP-UP en premier plan */
+                        /* 1) On remonte la popup-pane très haut pour qu’elle soit toujours par-dessus */
+                        .leaflet-popup-pane {
+                          z-index: 1000 !important;
+                        }
+                        
+                        /* 2) On s’assure que les contrôles Leaflet restent en dessous */
+                        .leaflet-control-container {
+                          z-index: 500 !important;
+                        }
+
+/* (Optionnel) si vous avez d’autres éléments Leaflet personnalisés, ajustez leurs z-index si besoin */
+
 /* === II.1.2 Scroll PopUP === */
 
                 .custom-popup .leaflet-popup-content {
