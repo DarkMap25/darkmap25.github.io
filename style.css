@@ -123,13 +123,13 @@
                           overflow: hidden;                  /* masque le texte non encore “tapé” */
                           width: 0;                          /* démarre à 0 pour l’animation */
                           border-right: 2px solid rgba(230,0,0,0.75); /* curseur */
-                          animation: typing 4s steps(33, end) forwards;
+                          animation: typing 4s steps(31, end) forwards;
                         }
                         
                         /* Keyframes du “typing” */
                         @keyframes typing {
                           from { width: 0ch; }
-                          to   { width: 33ch; }
+                          to   { width: 31ch; }
                         }
                                       
               /* === Fade-in carte, intro et footer après l’animation === */
@@ -1172,9 +1172,6 @@
                 
                           /* 1) Cibler précisément le wrapper Leaflet quand il est animé */
                           div.leaflet-popup-content-wrapper.leaflet-zoom-animated {
-                            /* Force une largeur égale à 60% du viewport (vous pouvez ajuster 60 → 50, 70, etc.) */
-                            width: 50vw !important;
-                            max-width: none !important;      /* On lève le “max-width” global de Leaflet */
                             box-sizing: border-box;          /* Inclut padding + border dans la largeur */
                             padding: 0.6em 0.8em;            /* Même confort qu’avant */
                             background-color: #000;          /* Exemple : fond noir */
@@ -1184,17 +1181,10 @@
                           }
                         
                           /* 2) Ajuster le style du texte à l’intérieur */
-                          div.leaflet-popup-content-wrapper.leaflet-zoom-animated .leaflet-popup-content {
-                            font-size: 1rem !important;
-                            line-height: 1.2em !important;
-                            word-break: break-word;          /* Empêche le débordement horizontal */
-                            color: #fff !important;         /* Texte en blanc pour rester lisible sur fond noir */
-                          }
-                        
                           .leaflet-popup-content {
                             /* on remet la taille du texte souhaitée */
-                            font-size: 1rem !important;
-                            line-height: 1.2em !important;
+                            font-size: 0.8rem ;
+                            line-height: 1em ;
                             /* pour éviter que certains mots longs ou URL dépassent du conteneur */
                             word-break: break-word;
                           }
