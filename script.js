@@ -1,3 +1,22 @@
+//  DÉTECTER LE MOBILE ET DÉFINIR maxWidth
+                
+                // On récupère la largeur de la fenêtre au chargement
+                var viewportWidth = window.innerWidth;
+                
+                // Si l’écran est plus petit que 768px, on calcule 50 % du viewport en pixels
+                if (viewportWidth < 768) {
+                  // Exemple : 50 % de la largeur de la fenêtre en px
+                  var mobileMaxWidth = Math.floor(viewportWidth * 0.5);
+                
+                  // On écrase alors l’option “maxWidth” par défaut de Leaflet pour tous les popups
+                  L.Popup.prototype.options.maxWidth = mobileMaxWidth;
+                
+                  // Si besoin, on peut aussi limiter la hauteur pour activer le scroll interne
+                  var viewportHeight = window.innerHeight;
+                  L.Popup.prototype.options.maxHeight = Math.floor(viewportHeight * 0.6);
+                
+                        
+
 // === PARTIE I / CREATION CARTE / INTRODUCTION === //
 
 
@@ -26,7 +45,7 @@
 // I.3 Définition des limites géographiques (France métropolitaine + Corse)
 
         const franceBounds = L.latLngBounds(
-          L.latLng(40, -17),
+          L.latLng(28, -16),
           L.latLng(65, 21)
         );
 
