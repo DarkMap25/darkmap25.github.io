@@ -1077,7 +1077,6 @@
 
                 /* 1) Fond “panneau.jpg” sur tout le panneau (#detailPanel) */
                 #detailPanel.visible.legal {
-                  /* Conserve uniquement l’image de fond, sans aucune couche sombre */
                   background-image: url('icons/panneau.jpg');
                   background-size: cover;
                   background-position: center;
@@ -1086,39 +1085,43 @@
                 
                 /* 2) Contenu (#detailContent) en pleine largeur + texte centré */
                 #detailPanel.visible.legal #detailContent {
-                  /* On enlève tout fond pour ne voir que le panneau (background du parent) */
                   background: transparent;
-                
-                  /* 100 % de largeur, hauteur auto avec scroll vertical sur #detailPanel si nécessaire */
-                  width: 100%;
-                  height: auto;
-                
-                  /* Centrage horizontal du contenu texte */
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center; /* centre horizontalement tous les enfants */
-                  text-align: center;   /* centre le texte à l’intérieur des h2, p, etc. */
-                
-                  /* Espacements intérieurs pour que le texte ne colle pas aux bords */
+                  
+                  /* On passe en bloc normal pour que les paragraphes fassent 100% de la largeur dispo */
+                  display: block;
+                  width: 90vw;            /* ou 100% selon votre besoin */
+                  max-width: 800px;       /* limite pratique pour la lisibilité */
+                  margin: 0 auto;         /* centre horizontalement #detailContent */
+                  
                   padding: 40px 20px;
+                  box-sizing: border-box; /* inclut le padding dans la largeur */
                 
-                  /* Police et couleur du texte pour les mentions légales */
+                  /* Pour empêcher tout débordement horizontal */
+                  overflow-x: hidden;
+                
                   color: #f0f0f0;
                   font-family: 'Cormorant Garamond', serif;
                   line-height: 1.6;
-                          /* — AJOUTÉ pour éviter tout débordement horizontal — */
-                  box-sizing: border-box;      /* inclut padding et bordure dans la largeur */
-                  max-width: 100%;             /* empêche le contenu de dépasser */
-                  overflow-x: hidden;          /* masque le débordement horizontal */
-                  word-wrap: break-word;       /* force les longs mots à aller à la ligne */         
+                  text-align: center;     /* centre le texte à l’intérieur des <h2>, <p>, etc. */
                 }
-                                
-                /* 3) Titres <h2> en #E6E6FA dans le contexte “mentions légales” */
+                
+                /* 3) Forcer chaque bloc textuel à ne pas dépasser et à se casser correctement */
+                #detailPanel.visible.legal #detailContent h2,
+                #detailPanel.visible.legal #detailContent p,
+                #detailPanel.visible.legal #detailContent ul,
+                #detailPanel.visible.legal #detailContent li {
+                  width: 100%;
+                  box-sizing: border-box;
+                  word-break: break-word;  /* découpe les mots trop longs */
+                  margin-bottom: 1rem;     /* espacement standard entre les blocs */
+                }
+                
+                /* 4) Titres <h2> en #E6E6FA dans le contexte “mentions légales” */
                 #detailPanel.visible.legal #detailContent h2 {
                   color: #E6E6FA;
                 }
                 
-                /* 4) Liens <a> restent rouges pour cohérence */
+                /* 5) Liens <a> restent rouges pour cohérence */
                 #detailPanel.visible.legal #detailContent a {
                   color: #e60000;
                   text-decoration: underline;
