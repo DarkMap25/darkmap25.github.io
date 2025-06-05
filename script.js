@@ -14,6 +14,7 @@
                   // Si besoin, on peut aussi limiter la hauteur pour activer le scroll interne
                   var viewportHeight = window.innerHeight;
                   L.Popup.prototype.options.maxHeight = Math.floor(viewportHeight * 0.6);
+                }
                 
                         
 
