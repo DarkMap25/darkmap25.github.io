@@ -363,42 +363,6 @@
                   text-shadow: none !important;    /* supprime l’ombre héritée */
                 }
 
-                /* vi. FORCER LES POPUPS AU-DESSUS DES CONTRÔLES  */
-                .leaflet-popup-pane {
-                  z-index: 10000 !important;
-                }
-                
-                .leaflet-popup {
-                  z-index: 10000 !important;
-                }
-                
-                /* Légende “emoji” sous le popup */
-                .info.legend {
-                  z-index: 850 !important;
-                }
-                
-                /* Contrôle de zoom Leaflet sous le popup */
-                .leaflet-control-zoom,
-                .leaflet-control-zoom-in,
-                .leaflet-control-zoom-out {
-                  z-index: 800 !important;
-                }
-                
-                /* Contrôle “couches de fond” (layers) sous le popup */
-                .leaflet-control-layers {
-                  z-index: 800 !important;
-                }
-                
-                /* Bouton de géolocalisation (Leaflet.Locate) sous le popup */
-                .leaflet-control-locate {
-                  z-index: 800 !important;
-                }
-                
-                /* Bouton “Lieu au hasard” sous le popup */
-                #randomButton {
-                  z-index: 800 !important;
-                }
-
 /* === II.1.2 Scroll PopUP === */
 
                 .custom-popup .leaflet-popup-content {
