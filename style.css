@@ -1142,97 +1142,12 @@
                 }
 
 
+
 /* === PARTIE IV / ADAPTATIONS === */
 
 
-/* === IV.1 Adaptation pour écrans jusqu’à 768px === */
 
-              @media (max-width: 768px) {
-                /* — Fond mobile (image différente, rognée et défilante) */
-                body {
-                  background-image: url('icons/background.jpg');
-                  background-size: cover;
-                  background-position: center center;
-                  background-attachment: scroll;
-                }
-              
-                /* i. Carte : hauteur réduite, centrée et coins arrondis */
-                #map {
-                  height: 66vh;
-                  max-width: 90%;
-                  margin: 0 auto;
-                }
-              
-                /* ii. Titre principal : taille réduite */
-                h1 {
-                  font-size: 1.5em;
-                }
-              
-                /* iii. Texte d’introduction : taille réduite et marges ajustées */
-                .intro {
-                  font-size: 0.8em;
-                  margin: 20px auto;
-                }
-              
-                /* iv. Conteneur de l’intro : taille de police encore plus petite */
-                #intro-text {
-                  font-size: 1.0em;
-                }
-              
-                /* v. Popups Leaflet : largeur et typographie adaptées */
-                .leaflet-popup-content-wrapper {
-                  max-width: 334px !important;
-                }
-                .leaflet-popup-content,
-                .leaflet-popup-content * {
-                  font-size: 1.0em !important;
-                  line-height: 1.0 !important;
-                }
-              }
 
-/* === IV.2 Adaptation pour écrans jusqu’à 480px === */
-
-              @media (max-width: 480px) {
-                /* i. Fond très petit écran (mêmes réglages que pour 768px) */
-                body {
-                  background-image: url('icons/background.jpg');
-                  background-size: cover;
-                  background-position: center center;
-                  background-attachment: scroll;
-                }
-              
-                /* ii. Carte : largeur fixe, sans ombre pour alléger l’affichage */
-                #map {
-                  height: 66vh;
-                  width: 90%;
-                  margin: 0 auto;
-                }
-              
-                /* iv. Titre principal : même taille que pour 768px */
-                h1 {
-                  font-size: 1.5em;
-                }
-              
-                /* v. Texte d’introduction : taille encore réduite */
-                .intro {
-                  font-size: 0.5em;
-                }
-              
-                /* vi. Conteneur de l’intro : taille minimale */
-                #intro-text {
-                  font-size: 1.0em;
-                }
-              
-                /* vii. Popups Leaflet : largeur et typographie pour petits écrans */
-                .leaflet-popup-content-wrapper {
-                  max-width: 240px !important;
-                }
-                .leaflet-popup-content,
-                .leaflet-popup-content * {
-                  font-size: 10px !important;
-                  line-height: 1 !important;
-                }
-              }
 
 /* === IV.3 Surcharge de carte réglée en dernier pour prendre le pas === */
 
