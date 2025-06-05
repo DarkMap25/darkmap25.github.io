@@ -161,7 +161,11 @@
                 map.setView(newCenter, map.getZoom(), { animate: true });
                 marker.openPopup();
               });
-            
+
+                  // 5) n’ouvrir le popup qu’une fois le recentrage terminé
+                  map.once('moveend', () => {
+                    marker.openPopup();
+                  });            
               return marker;
             }
 
