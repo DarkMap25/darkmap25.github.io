@@ -1183,6 +1183,8 @@
                             background-color: #000;          /* Exemple : fond noir */
                             border-radius: 6px;              /* Conserve les coins arrondis */
                             overflow-y: auto;               /* Permettre le scroll interne si besoin */
+                            max-width: 80vw !important;     /* Limiter la largeur à 80% de la largeur de l’écran */
+                            width: auto !important;   
                           }
                         
                           /* 2) Ajuster le style du texte à l’intérieur */
@@ -1193,8 +1195,12 @@
                             /* pour éviter que certains mots longs ou URL dépassent du conteneur */
                             word-break: break-word;
                           }
-                                        
-                  /* 5. InfoLegend */
+
+                        #detailPanel .panel-header h2 {
+                            font-size: 2em; /* Taille titre voir plus */ 
+                          }                        
+                
+                /* 5. InfoLegend */
                   .info.legend {
                     font-size: 0.4em;            /* Réduit la taille de tout le texte de la légende */
                     line-height: 2em;          /* Conserver un interligne cohérent */
