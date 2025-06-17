@@ -1183,7 +1183,7 @@
                             background-color: #000;          /* Exemple : fond noir */
                             border-radius: 6px;              /* Conserve les coins arrondis */
                             overflow-y: auto;               /* Permettre le scroll interne si besoin */
-                            max-width: 80vw !important;     /* Limiter la largeur à 80% de la largeur de l’écran */
+                            max-width: 60vw !important;     /* Limiter la largeur à 60% de la largeur de l’écran */
                             width: auto !important;   
                           }
                         
@@ -1196,9 +1196,19 @@
                             word-break: break-word;
                           }
 
-                        #detailPanel .panel-header h2 {
-                            font-size: 2em; /* Taille titre voir plus */ 
-                          }                        
+                          /* Cible le titre h2 du panneau "Voir plus" */
+                          #detailPanel .panel-header h2 {
+                            /* Centre le titre horizontalement */
+                            margin: 0 auto;
+                            text-align: center;
+                        /* Limite la largeur du titre à 80% de la fenêtre */
+                            max-width: 80vw;
+                        /* Ajoute un padding horizontal pour laisser la place à la croix */
+                            padding: 0 1rem;
+                        /* Retour à la ligne si le titre est trop long */
+                            overflow-wrap: break-word;
+                            white-space: normal;
+                          }
                 
                 /* 5. InfoLegend */
                   .info.legend {
