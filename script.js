@@ -104,15 +104,15 @@
               popupAnchor: [0, -15]
             });
 
-  // II.2.1 Création du contenu HTML du Pop-Up
-            
-            const popupContent = `
-              <strong>${lieu.nom}</strong><br>
-              ${lieu.resume}<br>
-              <a href="#" class="voir-plus" data-id="${lieu.ID}">Voir plus</a>
-            `;
-
-                // Calcul dynamique de maxWidth/maxHeight pour le Pop-Up
+ // II.2.1 Création du contenu HTML du Pop-Up
+                  
+                const popupContent = `
+                  <strong>${lieu.nom}</strong><br>
+                  ${lieu.resume}<br>
+                  <a href="#" class="voir-plus" data-id="${lieu.ID}">Voir plus</a>
+                `;
+                
+                // II.2.2 Calcul dynamique de maxWidth/maxHeight et configuration du Pan
                 const vw = window.innerWidth;
                 const vh = window.innerHeight;
                 let popupOptions;
@@ -120,9 +120,9 @@
                   popupOptions = {
                     className: 'custom-popup',
                     minWidth: 120,
-                    maxWidth: Math.floor(vw * 0.6),    // 60% de la largeur écran
+                    maxWidth: Math.floor(vw * 0.6),    // 60% de la largeur écran (mobile)
                     maxHeight: Math.floor(vh * 0.4),   // 40% de la hauteur écran
-                    autoPan: true,
+                    autoPan: false,                     // ← Désactivé pour ne pas interférer
                     keepInView: false
                   };
                 } else {
@@ -131,41 +131,40 @@
                     minWidth: 200,
                     maxWidth: 600,
                     maxHeight: 300,
-                    autoPan: true,
+                    autoPan: false,                     // ← Désactivé sur desktop aussi
                     keepInView: false
                   };
                 }
-              
-                // Création du marqueur et liaison du Pop-Up avec les options dynamiques
+                
+// II.2.3 Création du marqueur et liaison du Pop-Up avec nos options
                 const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
                   .bindPopup(popupContent, popupOptions);
+                
+                // II.2.4 Gestion du clic pour recentrer à 20% vers le bas, puis ouvrir le popup
+                marker.on('click', () => {
+                  // Récupère les coordonnées et taille de la map
+                  const latlng   = marker.getLatLng();
+                  const mapSize  = map.getSize();
+                  const offsetY  = mapSize.y * 0.20;          // 20% vers le bas
+                
+                  // Convertit latlng → point écran, calcule le point ciblé
+                  const point    = map.latLngToContainerPoint(latlng);
+                  const centerX  = mapSize.x / 2;
+                  const offsetPt = L.point(centerX, point.y - offsetY);
+                
+                  // Reconvertit en latlng et recentre sans changer le zoom
+                  const newCenter = map.containerPointToLatLng(offsetPt);
+                  map.setView(newCenter, map.getZoom(), { animate: true });
+                
+                  // Ouvre le popup une fois le mouvement terminé
+                  map.once('moveend', () => {
+                    marker.openPopup();
+                  });
+                });
+                
+                return marker;
 
-  // II.2.2 Abaissement du Pop-Up lorsqu’on clique sur le marqueur
-            
-              marker.on('click', () => {
-                const latlng = marker.getLatLng();
-                const mapSize = map.getSize();             // taille de la fenêtre Leaflet en pixels
-                const offsetY = mapSize.y * 0.20;          // 20% vers le bas
-            
-                // 1) transformation latlng → point écran
-                const point = map.latLngToContainerPoint(latlng);
-            
-                 // 2) on calcule le point cible pour centrer horizontalement et abaisser verticalement :
-                  const centerX = mapSize.x / 2;
-                  const offsetPoint = L.point(centerX, point.y - offsetY); 
-                      
-                // 3) reconvertit en latlng
-                const newCenter = map.containerPointToLatLng(offsetPoint);
-            
-                // 4) centre la carte là-dessus et ouvre la popup
-                map.setView(newCenter, map.getZoom(), { animate: true });
-                marker.openPopup();
-              });
-         
-              return marker;
-            }
-
-// II.2.3 Chargement du fichier lieux.json et création des marqueurs
+// II.2.4 Chargement du fichier lieux.json et création des marqueurs
 
           fetch('lieux.json')
             .then(response => response.json())
@@ -181,7 +180,7 @@
             })
             .catch(error => console.error('Erreur lors du chargement des lieux :', error));
 
-// II.2.4 Création de la légende emoji
+// II.2.5 Création de la légende emoji
 
           function createLegend() {
             const legend = L.control({ position: 'bottomleft' });
