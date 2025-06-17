@@ -1183,13 +1183,13 @@
                             background-color: #000;          /* Exemple : fond noir */
                             border-radius: 6px;              /* Conserve les coins arrondis */
                             overflow-y: auto;               /* Permettre le scroll interne si besoin */
-                            max-width: 50vw !important;     /* Limiter la largeur à 50% de la largeur de l’écran */
+                            max-width: 60vw !important;     /* Limiter la largeur à 50% de la largeur de l’écran */
                             width: auto !important;   
                           }
                         
                           /* 2) Ajuster le style du texte à l’intérieur */
                           .leaflet-popup-content {
-                            max-width: 50vw !important;                           
+                            max-width: 60vw !important;                           
                           /* on remet la taille du texte souhaitée */
                             font-size: 0.8rem ;
                             line-height: 1em ;
