@@ -142,31 +142,30 @@
                 
 // II.2.4 Gestion du clic pour recentrer à 20% vers le bas, puis ouvrir le popup
                 
-                marker.on('click', function() {
-                  // 1) coordonnées lat/lng du marqueur
-                  const latlng  = marker.getLatLng();
-                  // 2) taille de la fenêtre Leaflet en pixels
-                  const size    = map.getSize();
-                  // 3) conversion latlng → point écran (pixels)
-                  const point   = map.latLngToContainerPoint(latlng);
+                marker.on('click', () => {
+                  // 1) Récupère la position du marqueur en pixels dans la fenêtre
+                  const latlng   = marker.getLatLng();
+                  const point    = map.latLngToContainerPoint(latlng);
                 
-                  // 4) calcul du décalage voulu :
-                  //    - dx : pour placer le point à centerX
-                  //    - dy : pour placer le point à (centerY - 20% hauteur)
-                  const centerX = size.x / 2;
-                  const centerY = size.y / 2;
-                  const offsetY = size.y * 0.20;
-                  const dx      = centerX - point.x;
-                  const dy      = (centerY - offsetY) - point.y;
+                  // 2) Calcule le décalage vertical (20 % de la hauteur)
+                  const mapSize  = map.getSize();
+                  const offsetY  = mapSize.y * 0.20;
                 
-                  // 5) on pan la carte de ce décalage
-                  map.panBy([dx, dy], { animate: true });
+                  // 3) Crée un "point cible" : même X (le pixel du marqueur), Y = markerY – offsetY
+                  //    => on veut que ce pixel (marker) remonte en centreY+offsetY
+                  const targetPoint = L.point(point.x, point.y - offsetY);
                 
-                  // 6) ouverture du popup quand le pan est fini
+                  // 4) Transforme ce point cible en lat/lng absolu
+                  const newCenter = map.containerPointToLatLng(targetPoint);
+                
+                  // 5) Recentre la carte sur ce lat/lng (zoom inchangé)
+                  map.setView(newCenter, map.getZoom(), { animate: true });
+                
+                  // 6) Quand le recentrage est fini, ouvre le popup
                   map.once('moveend', () => {
                     marker.openPopup();
                   });
-                });          
+                });
                 return marker;
           }
 
