@@ -129,8 +129,8 @@
                   popupOptions = {
                     className: 'custom-popup',
                     minWidth: 200,
-                    maxWidth: Math.floor(vw * 0.6),    // 60% de la largeur écran 
-                    maxHeight: Math.floor(vh * 0.4),   // 40% de la hauteur écran
+                    maxWidth: Math.floor(vw * 0.8),    // 60% de la largeur écran 
+                    maxHeight: Math.floor(vh * 0.3),   // 40% de la hauteur écran
                     autoPan: false,                     // ← Désactivé sur desktop aussi
                     keepInView: false
                   };
