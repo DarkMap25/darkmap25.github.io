@@ -1,220 +1,222 @@
 // === PARTIE I / CREATION CARTE / INTRODUCTION === //
 
-
-
-//  I.1. Création du fond de carte Alidade Smooth Dark
-
-        const alidadedarkLayer = L.tileLayer(
-          'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=a1ef2388-4a98-4134-8ffc-d2496230635e',
-          {
-            attribution: false,
-            minZoom: 5,
-            maxZoom: 18
-          }
-        );
-
-// I.2 Création du fond de carte Thunderforest Atlas
-
-        const thunderforestAtlasLayer = L.tileLayer(
-          'https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=2f67b0d994104bf69ffcd0cf70f86a08',
-          {
-            attribution: false,
-            minZoom: 5,
-            maxZoom: 18
-          }
-        );
-
-// I.3 Définition des limites géographiques (France métropolitaine + Corse)
-
-        const franceBounds = L.latLngBounds(
-          L.latLng(28, -16),
-          L.latLng(65, 21)
-        );
-
-// I.4 Initialisation de la carte avec le calque sombre par défaut
-
-        const map = L.map('map', {
-          center: [46.5, 2.5],
-          zoom: 6,
-          layers: [alidadedarkLayer],
-          maxBounds: franceBounds,
-          maxBoundsViscosity: 0.5
-        });
-
-// I.5 Animation d’introduction au chargement de la page
-
-        // Il écoute le DOMContentLoaded pour lancer le reveal progressif.
-        document.addEventListener('DOMContentLoaded', () => {
-          // Durée totale avant le reveal = 3s (typing CSS) + 1s de pause = 4000ms
-          const revealDelay = 3000 + 1000;
         
-          // Après le délai, on déclenche le fade-in et on supprime l'overlay
-          setTimeout(() => {
-            // Fade-in de la carte
-            const mapEl = document.getElementById('map');
-            if (mapEl) {
-              mapEl.style.opacity = '1';
-            }
         
-            // Fade-in de la section intro
-            const introEl = document.querySelector('.intro');
-            if (introEl) {
-              introEl.style.opacity = '1';
-            }
+        //  I.1. Création du fond de carte Alidade Smooth Dark
         
-            // Fade-in du footer
-            const footerEl = document.querySelector('footer');
-            if (footerEl) {
-              footerEl.style.opacity = '1';
-            }
+                const alidadedarkLayer = L.tileLayer(
+                  'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=a1ef2388-4a98-4134-8ffc-d2496230635e',
+                  {
+                    attribution: false,
+                    minZoom: 5,
+                    maxZoom: 18
+                  }
+                );
         
-            // Suppression de l'overlay pour rétablir l'interaction normale
-            const overlayEl = document.getElementById('intro-overlay');
-            if (overlayEl) {
-              overlayEl.remove();
-            }
-          }, revealDelay);
-        });
+        // I.2 Création du fond de carte Thunderforest Atlas
+        
+                const thunderforestAtlasLayer = L.tileLayer(
+                  'https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=2f67b0d994104bf69ffcd0cf70f86a08',
+                  {
+                    attribution: false,
+                    minZoom: 5,
+                    maxZoom: 18
+                  }
+                );
+        
+        // I.3 Définition des limites géographiques (France métropolitaine + Corse)
+        
+                const franceBounds = L.latLngBounds(
+                  L.latLng(28, -16),
+                  L.latLng(65, 21)
+                );
+        
+        // I.4 Initialisation de la carte avec le calque sombre par défaut
+        
+                const map = L.map('map', {
+                  center: [46.5, 2.5],
+                  zoom: 6,
+                  layers: [alidadedarkLayer],
+                  maxBounds: franceBounds,
+                  maxBoundsViscosity: 0.5
+                });
+
+        // I.5 Animation d’introduction au chargement de la page
+        
+                // Il écoute le DOMContentLoaded pour lancer le reveal progressif.
+                document.addEventListener('DOMContentLoaded', () => {
+                  // Durée totale avant le reveal = 3s (typing CSS) + 1s de pause = 4000ms
+                  const revealDelay = 3000 + 1000;
+                
+                  // Après le délai, on déclenche le fade-in et on supprime l'overlay
+                  setTimeout(() => {
+                    // Fade-in de la carte
+                    const mapEl = document.getElementById('map');
+                    if (mapEl) {
+                      mapEl.style.opacity = '1';
+                    }
+                
+                    // Fade-in de la section intro
+                    const introEl = document.querySelector('.intro');
+                    if (introEl) {
+                      introEl.style.opacity = '1';
+                    }
+                
+                    // Fade-in du footer
+                    const footerEl = document.querySelector('footer');
+                    if (footerEl) {
+                      footerEl.style.opacity = '1';
+                    }
+                
+                    // Suppression de l'overlay pour rétablir l'interaction normale
+                    const overlayEl = document.getElementById('intro-overlay');
+                    if (overlayEl) {
+                      overlayEl.remove();
+                    }
+                  }, revealDelay);
+                });
+
 
 
 // === PARTIE II / EMOJIS / POP-UP  === //
 
 
-// II.1.1 Définition des emojis par catégorie
-          const emojiParCategorie = {
-            "Affaires Non Résolues": "❓",
-            "Crimes": "☠️",
-            "Drames": "⚰️",
-            "Guerres et Conflits": "⚔️",
-            "Lieux Abandonnés": "🏰",
-            "Lieux Mystérieux": "👁️"
-          };
+        
+        // II.1.1 Définition des emojis par catégorie
+                  const emojiParCategorie = {
+                    "Affaires Non Résolues": "❓",
+                    "Crimes": "☠️",
+                    "Drames": "⚰️",
+                    "Guerres et Conflits": "⚔️",
+                    "Lieux Abandonnés": "🏰",
+                    "Lieux Mystérieux": "👁️"
+                  };
 
-// II.1.2 Fonction pour créer un marqueur emoji pour chaque lieu
-
-          function createEmojiMarker(lieu) {
-            const emoji = emojiParCategorie[lieu.categorie] || "❓";
-          
-            // Création de l’icône emoji personnalisée
-            const emojiIcon = L.divIcon({
-              className: 'emoji-icon',
-              html: `<div class="emoji-marker">${emoji}</div>`,
-              iconSize: [30, 30],
-              iconAnchor: [15, 15],
-              popupAnchor: [0, -15]
-            });
-
- // II.2.1 Création du contenu HTML du Pop-Up
+        // II.1.2 Fonction pour créer un marqueur emoji pour chaque lieu
+        
+                  function createEmojiMarker(lieu) {
+                    const emoji = emojiParCategorie[lieu.categorie] || "❓";
                   
-                const popupContent = `
-                  <strong>${lieu.nom}</strong><br>
-                  ${lieu.resume}<br>
-                  <a href="#" class="voir-plus" data-id="${lieu.ID}">Voir plus</a>
-                `;
-                
-// II.2.2 Calcul dynamique de maxWidth/maxHeight et configuration du Pan
-                const vw = window.innerWidth;
-                const vh = window.innerHeight;
-                let popupOptions;
-                if (vw < 768) {
-                  popupOptions = {
-                    className: 'custom-popup',
-                    minWidth: 120,
-                    maxWidth: Math.floor(vw * 0.6),    // 60% de la largeur écran (mobile)
-                    maxHeight: Math.floor(vh * 0.4),   // 40% de la hauteur écran
-                    autoPan: false,                     // ← Désactivé pour ne pas interférer
-                    keepInView: false
-                  };
-                } else {
-                  popupOptions = {
-                    className: 'custom-popup',
-                    minWidth: 200,
-                    maxWidth: Math.floor(vw * 0.6),    // 60% de la largeur écran 
-                    maxHeight: Math.floor(vh * 0.3),   // 30% de la hauteur écran
-                    autoPan: false,                     // ← Désactivé sur desktop aussi
-                    keepInView: false
-                  };
-                }
-                
-// II.2.3 Création du marqueur et liaison du Pop-Up avec nos options
-                const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
-                  .bindPopup(popupContent, popupOptions);
-                
-// II.2.4 Gestion du clic pour recentrer à 20% vers le bas, puis ouvrir le popup
-                
-                marker.on('click', () => {
-                  // 1) Récupère la position du marqueur en pixels dans la fenêtre
-                  const latlng   = marker.getLatLng();
-                  const point    = map.latLngToContainerPoint(latlng);
-                
-                  // 2) Calcule le décalage vertical (20 % de la hauteur)
-                  const mapSize  = map.getSize();
-                  const offsetY  = mapSize.y * 0.20;
-                
-                  // 3) Crée un "point cible" : même X (le pixel du marqueur), Y = markerY – offsetY
-                  //    => on veut que ce pixel (marker) remonte en centreY+offsetY
-                  const targetPoint = L.point(point.x, point.y - offsetY);
-                
-                  // 4) Transforme ce point cible en lat/lng absolu
-                  const newCenter = map.containerPointToLatLng(targetPoint);
-                
-                  // 5) Recentre la carte sur ce lat/lng (zoom inchangé)
-                  map.setView(newCenter, map.getZoom(), { animate: true });
-                
-                  // 6) Quand le recentrage est fini, ouvre le popup
-                  map.once('moveend', () => {
-                    marker.openPopup();
-                  });
-                });
-                return marker;
-          }
+                    // Création de l’icône emoji personnalisée
+                    const emojiIcon = L.divIcon({
+                      className: 'emoji-icon',
+                      html: `<div class="emoji-marker">${emoji}</div>`,
+                      iconSize: [30, 30],
+                      iconAnchor: [15, 15],
+                      popupAnchor: [0, -15]
+                    });
 
-// II.2.4 Chargement du fichier lieux.json et création des marqueurs
+         // II.2.1 Création du contenu HTML du Pop-Up
+                          
+                        const popupContent = `
+                          <strong>${lieu.nom}</strong><br>
+                          ${lieu.resume}<br>
+                          <a href="#" class="voir-plus" data-id="${lieu.ID}">Voir plus</a>
+                        `;
+                
+        // II.2.2 Calcul dynamique de maxWidth/maxHeight et configuration du Pan
+                        const vw = window.innerWidth;
+                        const vh = window.innerHeight;
+                        let popupOptions;
+                        if (vw < 768) {
+                          popupOptions = {
+                            className: 'custom-popup',
+                            minWidth: 120,
+                            maxWidth: Math.floor(vw * 0.6),    // 60% de la largeur écran (mobile)
+                            maxHeight: Math.floor(vh * 0.4),   // 40% de la hauteur écran
+                            autoPan: false,                     // ← Désactivé pour ne pas interférer
+                            keepInView: false
+                          };
+                        } else {
+                          popupOptions = {
+                            className: 'custom-popup',
+                            minWidth: 200,
+                            maxWidth: Math.floor(vw * 0.6),    // 60% de la largeur écran 
+                            maxHeight: Math.floor(vh * 0.3),   // 30% de la hauteur écran
+                            autoPan: false,                     // ← Désactivé sur desktop aussi
+                            keepInView: false
+                          };
+                        }
+                
+        // II.2.3 Création du marqueur et liaison du Pop-Up avec nos options
+                        const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
+                          .bindPopup(popupContent, popupOptions);
+                        
+        // II.2.4 Gestion du clic pour recentrer à 20% vers le bas, puis ouvrir le popup
+                        
+                        marker.on('click', () => {
+                          // 1) Récupère la position du marqueur en pixels dans la fenêtre
+                          const latlng   = marker.getLatLng();
+                          const point    = map.latLngToContainerPoint(latlng);
+                        
+                          // 2) Calcule le décalage vertical (20 % de la hauteur)
+                          const mapSize  = map.getSize();
+                          const offsetY  = mapSize.y * 0.20;
+                        
+                          // 3) Crée un "point cible" : même X (le pixel du marqueur), Y = markerY – offsetY
+                          //    => on veut que ce pixel (marker) remonte en centreY+offsetY
+                          const targetPoint = L.point(point.x, point.y - offsetY);
+                        
+                          // 4) Transforme ce point cible en lat/lng absolu
+                          const newCenter = map.containerPointToLatLng(targetPoint);
+                        
+                          // 5) Recentre la carte sur ce lat/lng (zoom inchangé)
+                          map.setView(newCenter, map.getZoom(), { animate: true });
+                        
+                          // 6) Quand le recentrage est fini, ouvre le popup
+                          map.once('moveend', () => {
+                            marker.openPopup();
+                          });
+                        });
+                        return marker;
+                  }
 
-          fetch('lieux.json')
-            .then(response => response.json())
-            .then(data => {
-              window.lieuxData = data;
-          
-              const markers = data.map(lieu => createEmojiMarker(lieu));
-              window.allMarkers = markers;
-          
-              const group = L.featureGroup(markers);
-              group.addTo(map);
-              map.fitBounds(group.getBounds());
-            })
-            .catch(error => console.error('Erreur lors du chargement des lieux :', error));
+        // II.2.4 Chargement du fichier lieux.json et création des marqueurs
+        
+                  fetch('lieux.json')
+                    .then(response => response.json())
+                    .then(data => {
+                      window.lieuxData = data;
+                  
+                      const markers = data.map(lieu => createEmojiMarker(lieu));
+                      window.allMarkers = markers;
+                  
+                      const group = L.featureGroup(markers);
+                      group.addTo(map);
+                      map.fitBounds(group.getBounds());
+                    })
+                    .catch(error => console.error('Erreur lors du chargement des lieux :', error));
 
-// II.2.5 Création de la légende emoji
-
-          function createLegend() {
-            const legend = L.control({ position: 'bottomleft' });
-          
-            legend.onAdd = function (map) {
-              const div = L.DomUtil.create('div', 'info legend');
-              const categories = [
-                { name: 'Affaires Non Résolues', emoji: '❓' },
-                { name: 'Crimes', emoji: '☠️' },
-                { name: 'Drames', emoji: '⚰️' },
-                { name: 'Guerres et Conflits', emoji: '⚔️' },
-                { name: 'Lieux Abandonnés', emoji: '🏰' },
-                { name: 'Lieux Mystérieux', emoji: '👁️' }
-              ];
-          
-              categories.forEach(category => {
-                div.innerHTML += `
-                  <div class="legend-item">
-                    <span class="emoji">${category.emoji}</span>
-                    <span class="category-name">${category.name}</span>
-                  </div>
-                `;
-              });
-              return div;
-            };
-          
-            legend.addTo(map);
-          }
-          createLegend();
+        // II.2.5 Création de la légende emoji
+        
+                  function createLegend() {
+                    const legend = L.control({ position: 'bottomleft' });
+                  
+                    legend.onAdd = function (map) {
+                      const div = L.DomUtil.create('div', 'info legend');
+                      const categories = [
+                        { name: 'Affaires Non Résolues', emoji: '❓' },
+                        { name: 'Crimes', emoji: '☠️' },
+                        { name: 'Drames', emoji: '⚰️' },
+                        { name: 'Guerres et Conflits', emoji: '⚔️' },
+                        { name: 'Lieux Abandonnés', emoji: '🏰' },
+                        { name: 'Lieux Mystérieux', emoji: '👁️' }
+                      ];
+                  
+                      categories.forEach(category => {
+                        div.innerHTML += `
+                          <div class="legend-item">
+                            <span class="emoji">${category.emoji}</span>
+                            <span class="category-name">${category.name}</span>
+                          </div>
+                        `;
+                      });
+                      return div;
+                    };
+                  
+                    legend.addTo(map);
+                  }
+                  createLegend();
 
 
 
@@ -411,39 +413,39 @@
 
 
 
-// IV.1.1 Ajout du bouton plein écran à la carte
+        // IV.1.1 Ajout du bouton plein écran à la carte
+        
+                  const fullscreenControl = L.control({ position: 'bottomright' });
+                  fullscreenControl.onAdd = function(map) {
+                    const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+                    container.id = 'fullscreenButton';
+                    container.innerHTML = '&#x2194;&#xFE0F;';
+                    container.title = 'Passer en plein écran';
+                    container.style.cursor = 'pointer';
+                    L.DomEvent.disableClickPropagation(container);
+                    container.addEventListener('click', toggleFullscreen);
+                    return container;
+                  };
+                  fullscreenControl.addTo(map);
 
-          const fullscreenControl = L.control({ position: 'bottomright' });
-          fullscreenControl.onAdd = function(map) {
-            const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-            container.id = 'fullscreenButton';
-            container.innerHTML = '&#x2194;&#xFE0F;';
-            container.title = 'Passer en plein écran';
-            container.style.cursor = 'pointer';
-            L.DomEvent.disableClickPropagation(container);
-            container.addEventListener('click', toggleFullscreen);
-            return container;
-          };
-          fullscreenControl.addTo(map);
+        // IV.1.2 Fonction pour basculer en plein écran et sortir
 
-// IV.1.2 Fonction pour basculer en plein écran et sortir
+                  function toggleFullscreen() {
+                    const mapElement = document.getElementById('map');
+                    if (!document.fullscreenElement) {
+                      mapElement.requestFullscreen?.() ??
+                        mapElement.mozRequestFullScreen?.() ??
+                        mapElement.webkitRequestFullscreen?.() ??
+                        mapElement.msRequestFullscreen?.();
+                    } else {
+                      document.exitFullscreen?.() ??
+                        document.mozCancelFullScreen?.() ??
+                        document.webkitExitFullscreen?.() ??
+                        document.msExitFullscreen?.();
+                    }
+                  }
 
-          function toggleFullscreen() {
-            const mapElement = document.getElementById('map');
-            if (!document.fullscreenElement) {
-              mapElement.requestFullscreen?.() ??
-                mapElement.mozRequestFullScreen?.() ??
-                mapElement.webkitRequestFullscreen?.() ??
-                mapElement.msRequestFullscreen?.();
-            } else {
-              document.exitFullscreen?.() ??
-                document.mozCancelFullScreen?.() ??
-                document.webkitExitFullscreen?.() ??
-                document.msExitFullscreen?.();
-            }
-          }
-
-//  IV.1.3 Mise à jour de l’icône et du titre du bouton plein écran 
+        //  IV.1.3 Mise à jour de l’icône et du titre du bouton plein écran 
 
                 ['fullscreenchange', 'mozfullscreenchange', 'webkitfullscreenchange', 'msfullscreenchange']
                   .forEach(evt => document.addEventListener(evt, updateFullscreenButton));
@@ -465,26 +467,26 @@
                   }
                 }
 
-// IV.2.1 Création du contrôle Leaflet “Soumettre une histoire” (emoji 📜 en bas à droite)
+        // IV.2.1 Création du contrôle Leaflet “Soumettre une histoire” (emoji 📜 en bas à droite)
 
-            L.Control.SubmitStory = L.Control.extend({
-              onAdd: function() {
-                const btn = L.DomUtil.create('a', 'leaflet-bar leaflet-control submit-story-control');
-                btn.innerHTML = '📜';
-                btn.title     = 'Soumettre une histoire';
-                btn.href      = '#';
-                L.DomEvent.on(btn, 'click', e => {
-                  L.DomEvent.stop(e);
-                  openSubmitPanel();
-                });
-                return btn;
-              },
-              onRemove: function() {}
-            });
-            L.control.submitStory = opts => new L.Control.SubmitStory(opts);
-            L.control.submitStory({ position: 'bottomright' }).addTo(map);
+                    L.Control.SubmitStory = L.Control.extend({
+                      onAdd: function() {
+                        const btn = L.DomUtil.create('a', 'leaflet-bar leaflet-control submit-story-control');
+                        btn.innerHTML = '📜';
+                        btn.title     = 'Soumettre une histoire';
+                        btn.href      = '#';
+                        L.DomEvent.on(btn, 'click', e => {
+                          L.DomEvent.stop(e);
+                          openSubmitPanel();
+                        });
+                        return btn;
+                      },
+                      onRemove: function() {}
+                    });
+                    L.control.submitStory = opts => new L.Control.SubmitStory(opts);
+                    L.control.submitStory({ position: 'bottomright' }).addTo(map);
 
-// IV.2.2 Fonction d’ouverture du panneau de soumission (fetch externe)
+        // IV.2.2 Fonction d’ouverture du panneau de soumission (fetch externe)
                
                 function openSubmitPanel() {
                   // i. SI ON EST EN PLEIN ÉCRAN, ON EN SORT
@@ -613,7 +615,7 @@
                   document.getElementById('globalCloseBtn').style.display = 'block';
                 }
 
-// IV.2.3 Liaison du lien "suggérer des lieux" dans l'intro (index.html)
+        // IV.2.3 Liaison du lien "suggérer des lieux" dans l'intro (index.html)
 
             document.getElementById('submitLink')?.addEventListener('click', e => {
               e.preventDefault();
@@ -626,7 +628,7 @@
 
 
 
-// V.1.1 Ajout du bouton de localisation
+        // V.1.1 Ajout du bouton de localisation
 
             L.control.locate({
               position: 'topright',
@@ -639,7 +641,7 @@
               keepCurrentZoomLevel: true
             }).addTo(map);
 
-// V.1.2 Animation pour zoomer doucement lors de la géolocalisation
+        // V.1.2 Animation pour zoomer doucement lors de la géolocalisation
 
             map.on('locationfound', function(event) {
               const targetLatLng = event.latlng;
@@ -659,230 +661,255 @@
               });
             });
 
-// V.2 Ajout du contrôle de changement de fond de carte
+        // V.2 Ajout du contrôle de changement de fond de carte
 
-          L.control.layers(
-            { 'Dark': alidadedarkLayer, 'Atlas': thunderforestAtlasLayer },
-            {},
-            { position: 'topleft' }
-          ).addTo(map);
+                  L.control.layers(
+                    { 'Dark': alidadedarkLayer, 'Atlas': thunderforestAtlasLayer },
+                    {},
+                    { position: 'topleft' }
+                  ).addTo(map);
 
-// V.3 Ajout du bouton de fermeture Mentions Légales
+        // V.3 Ajout du bouton de fermeture Mentions Légales
 
-// i. On récupère une seule fois l’élément <a id="mentionsLink"> dans le DOM
-const mentionsLink   = document.getElementById('mentionsLink');
+                // i. On récupère une seule fois l’élément <a id="mentionsLink"> dans le DOM
+                const mentionsLink   = document.getElementById('mentionsLink');
+                
+                // ii. On récupère aussi une seule fois ces éléments du panneau de détail
+                const detailPanel    = document.getElementById('detailPanel');
+                const detailContent  = document.getElementById('detailContent');
+                const globalCloseBtn = document.getElementById('globalCloseBtn');
+                
+                // iii. Lorsque l’on clique sur "Mentions légales", on ouvre le panneau, on charge le HTML et on applique les styles
+                mentionsLink.addEventListener('click', function(e) {
+                  e.preventDefault();
+                
+                  // → 1) Masquer la carte
+                  document.getElementById('map').style.display = 'none';
+                
+                  // → 2) Afficher le panneau #detailPanel en plein écran
+                  detailPanel.classList.add('visible', 'full-view');
+                
+                  // → 3) Marquer ce panneau comme “legal” pour cibler le bon fond + polices + titres en CSS
+                  detailPanel.classList.add('legal');
+                
+                  // → 4) Charger le fichier HTML des mentions légales
+                  fetch('mentions-legales.html')
+                    .then(resp => resp.text())
+                    .then(htmlString => {
+                      // • Parser le HTML récupéré
+                      const parser = new DOMParser();
+                      const doc = parser.parseFromString(htmlString, 'text/html');
+                
+                      // • Récupérer tous les <style> du head de mentions-legales.html pour conserver les polices/couleurs
+                      const headStyles = Array.from(doc.head.querySelectorAll('style'));
+                      headStyles.forEach(styleEl => {
+                        document.head.appendChild(styleEl.cloneNode(true));
+                      });
+                
+                      // • Récupérer le contenu du <body>
+                      const bodyContent = doc.body.innerHTML;
+                
+                      // • Injecter ce contenu dans #detailContent
+                      detailContent.innerHTML = bodyContent;
+                
+                      // → 5) Mémoriser quel panneau est ouvert
+                      currentlyOpenPanel = detailPanel;
+                
+                      // → 6) Afficher le bouton de fermeture
+                      globalCloseBtn.style.display = 'block';
+                    })
+                    .catch(err => {
+                      detailContent.innerHTML = '<p>Impossible de charger les mentions légales.</p>';
+                      console.error(err);
+                    });
+                });
+                
+                // iv. Gestion du clic sur le bouton de fermeture global (pour “Voir plus”, “Soumettre”, “Mentions légales”)
+                globalCloseBtn.addEventListener('click', function() {
+                  // • 1) Cacher le panneau quel que soit son usage
+                  detailPanel.classList.remove('visible', 'full-view');
+                
+                  // • 2) Retirer la classe 'legal' si présente
+                  if (detailPanel.classList.contains('legal')) {
+                    detailPanel.classList.remove('legal');
+                  }
+                
+                  // • 3) Vider le contenu
+                  detailContent.innerHTML = '';
+                
+                  // • 4) Masquer la croix de fermeture
+                  globalCloseBtn.style.display = 'none';
+                
+                  // • 5) Réafficher la carte
+                  document.getElementById('map').style.display = 'block';
+                
+                  // • 6) Réinitialiser la variable d’état du panneau ouvert
+                  currentlyOpenPanel = null;
+                });
 
-// ii. On récupère aussi une seule fois ces éléments du panneau de détail
-const detailPanel    = document.getElementById('detailPanel');
-const detailContent  = document.getElementById('detailContent');
-const globalCloseBtn = document.getElementById('globalCloseBtn');
+        // V.4 Ajout du bouton "Lieu au hasard 🎲"
 
-// iii. Lorsque l’on clique sur "Mentions légales", on ouvre le panneau, on charge le HTML et on applique les styles
-mentionsLink.addEventListener('click', function(e) {
-  e.preventDefault();
+                const randomControl = L.control({ position: 'topright' });
+                randomControl.onAdd = function() {
+                  const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+                  container.id = 'randomButton';
+                  container.innerHTML = '🎲';
+                  container.title = 'Lieu au hasard 🎲';
+                  L.DomEvent.disableClickPropagation(container);
+                  return container;
+                };
+                randomControl.addTo(map);
 
-  // → 1) Masquer la carte
-  document.getElementById('map').style.display = 'none';
+        // V.5 ZOOM bouton 🎲 
 
-  // → 2) Afficher le panneau #detailPanel en plein écran
-  detailPanel.classList.add('visible', 'full-view');
+                setTimeout(() => {
+                  const btn = document.getElementById("randomButton");
+                  if (!btn) return;
+                
+                  btn.addEventListener("click", () => {
+                    // 1) Sélection aléatoire du marqueur et récupération de ses coordonnées lat/lng
+                    const randomIndex   = Math.floor(Math.random() * window.allMarkers.length);
+                    const randomMarker  = window.allMarkers[randomIndex];
+                    const latlng        = randomMarker.getLatLng();
+                
+                    // 2) Ferme tout popup éventuel avant le recentrage
+                    map.closePopup();
+                
+                    // 3) Calcul du "nouveau centre" 20 % plus bas que la position du marqueur
+                    const size          = map.getSize();                                   // taille de la map en pixels
+                    const point         = map.latLngToContainerPoint(latlng);             // position du marker en pixels
+                    const offsetY       = size.y * 0.20;                                   // 20 % de la hauteur vers le bas
+                    const targetPoint   = L.point(point.x, point.y - offsetY);            // même X, Y décalé
+                    const newCenter     = map.containerPointToLatLng(targetPoint);        // reconverti en lat/lng
+                
+                    // 4) Récupère le zoom actuel pour ajuster le comportement
+                    const currentZoom   = map.getZoom();
+                
+                    if (currentZoom >= 10) {
+                      // 5a) Si on est déjà très zoomé : on dézoom à 5 avant de remonter
+                      map.setView(map.getCenter(), 5);
+                      setTimeout(() => {
+                        // 6a) Vol animé vers newCenter avec un zoom à 10
+                        map.flyTo(newCenter, 10, {
+                          animate: true,
+                          duration: 2.5,
+                          easeLinearity: 0.25
+                        });
+                        // 7a) Ouvre le popup après l’animation
+                        setTimeout(() => randomMarker.openPopup(), 3000);
+                      }, 700);
+                    } else {
+                      // 5b) Sinon : vol direct vers newCenter au zoom 10
+                      map.flyTo(newCenter, 10, {
+                        animate: true,
+                        duration: 2.5,
+                        easeLinearity: 0.25
+                      });
+                      // 6b) Ouvre le popup après l’animation
+                      setTimeout(() => randomMarker.openPopup(), 3000);
+                    }
+                  });
+                }, 0);
 
-  // → 3) Marquer ce panneau comme “legal” pour cibler le bon fond + polices + titres en CSS
-  detailPanel.classList.add('legal');
+        // V.6 BOUTON FERMETURE CENTRALE //
 
-  // → 4) Charger le fichier HTML des mentions légales
-  fetch('mentions-legales.html')
-    .then(resp => resp.text())
-    .then(htmlString => {
-      // • Parser le HTML récupéré
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(htmlString, 'text/html');
-
-      // • Récupérer tous les <style> du head de mentions-legales.html pour conserver les polices/couleurs
-      const headStyles = Array.from(doc.head.querySelectorAll('style'));
-      headStyles.forEach(styleEl => {
-        document.head.appendChild(styleEl.cloneNode(true));
-      });
-
-      // • Récupérer le contenu du <body>
-      const bodyContent = doc.body.innerHTML;
-
-      // • Injecter ce contenu dans #detailContent
-      detailContent.innerHTML = bodyContent;
-
-      // → 5) Mémoriser quel panneau est ouvert
-      currentlyOpenPanel = detailPanel;
-
-      // → 6) Afficher le bouton de fermeture
-      globalCloseBtn.style.display = 'block';
-    })
-    .catch(err => {
-      detailContent.innerHTML = '<p>Impossible de charger les mentions légales.</p>';
-      console.error(err);
-    });
-});
-
-// iv. Gestion du clic sur le bouton de fermeture global (pour “Voir plus”, “Soumettre”, “Mentions légales”)
-globalCloseBtn.addEventListener('click', function() {
-  // • 1) Cacher le panneau quel que soit son usage
-  detailPanel.classList.remove('visible', 'full-view');
-
-  // • 2) Retirer la classe 'legal' si présente
-  if (detailPanel.classList.contains('legal')) {
-    detailPanel.classList.remove('legal');
-  }
-
-  // • 3) Vider le contenu
-  detailContent.innerHTML = '';
-
-  // • 4) Masquer la croix de fermeture
-  globalCloseBtn.style.display = 'none';
-
-  // • 5) Réafficher la carte
-  document.getElementById('map').style.display = 'block';
-
-  // • 6) Réinitialiser la variable d’état du panneau ouvert
-  currentlyOpenPanel = null;
-});
-
-// V.4 Ajout du bouton "Lieu au hasard 🎲"
-
-const randomControl = L.control({ position: 'topright' });
-randomControl.onAdd = function() {
-  const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-  container.id = 'randomButton';
-  container.innerHTML = '🎲';
-  container.title = 'Lieu au hasard 🎲';
-  L.DomEvent.disableClickPropagation(container);
-  return container;
-};
-randomControl.addTo(map);
-
-// Clic sur 🎲 pour afficher un lieu aléatoire / Zoom
-setTimeout(() => {
-  const btn = document.getElementById("randomButton");
-  if (!btn) return;
-  btn.addEventListener("click", () => {
-    if (!window.allMarkers?.length) return;
-    const randomIndex = Math.floor(Math.random() * window.allMarkers.length);
-    const randomMarker = window.allMarkers[randomIndex];
-    const latlng = randomMarker.getLatLng();
-    const currentZoom = map.getZoom();
-
-    map.closePopup();
-
-    if (currentZoom >= 10) {
-      map.setView(map.getCenter(), 5);
-      setTimeout(() => {
-        map.flyTo(latlng, 10, { animate: true, duration: 2.5, easeLinearity: 0.25 });
-        setTimeout(() => randomMarker.openPopup(), 3000);
-      }, 700);
-    } else {
-      map.flyTo(latlng, 10, { animate: true, duration: 2.5, easeLinearity: 0.25 });
-      setTimeout(() => randomMarker.openPopup(), 3000);
-    }
-  });
-}, 0);
-
-// V.5 BOUTON FERMETURE CENTRALE //
-
-// ====  Création unique du bouton globalCloseBtn  ====
-;(function() {
-  // Si le bouton n’existe pas déjà, on le crée
-  if (!document.getElementById('globalCloseBtn')) {
-    const btn = document.createElement('button');
-    btn.id = 'globalCloseBtn';
-    btn.className = 'overlay-close';  // reprend la classe CSS définie
-    btn.textContent = '❌';
-    document.body.appendChild(btn);
-  }
-})();
-
-document.getElementById('globalCloseBtn').addEventListener('click', function(e) {
-  e.preventDefault();
-  e.stopPropagation();
-
-  // 1) Si on est en plein écran, on en sort
-  if (document.fullscreenElement) {
-    document.exitFullscreen?.() ??
-      document.mozCancelFullScreen?.() ??
-      document.webkitExitFullscreen?.() ??
-      document.msExitFullscreen?.();
-    return;
-  }
-
-  // 2) Sinon, si un panel est ouvert (Voir plus, Soumettre, Mentions), on le ferme
-  if (currentlyOpenPanel) {
-    // a) Si c’est detailPanel (Voir plus ou Mentions légales)
-    if (currentlyOpenPanel.id === 'detailPanel') {
-      // i. Masquer detailPanel
-      currentlyOpenPanel.classList.remove('visible', 'full-view');
-      // ii. Vider le contenu
-      document.getElementById('detailContent').innerHTML = '';
-      // iii. Réafficher la carte
-      document.getElementById('map').style.display = 'block';
-      // iv. Redimensionner Leaflet
-      map.invalidateSize();
-      // v. Restaurer la vue si on venait de « Voir plus »
-      if (window._prevMapView) {
-        map.setView(window._prevMapView.center, window._prevMapView.zoom, { animate: false });
-        delete window._prevMapView;
-      }
-    }
-    // b) Si c’est submitPanel (Soumettre)
-    else if (currentlyOpenPanel.id === 'submitPanel') {
-      // i. Masquer submitPanel
-      currentlyOpenPanel.classList.remove('visible', 'full-view');
-      // ii. Rajouter la classe 'hidden' pour revenir à l’état initial
-      currentlyOpenPanel.classList.add('hidden');
-      // iii. Réafficher la carte
-      document.getElementById('map').style.display = 'block';
-    }
-    // c) Cas d’un autre panel éventuel
-    else {
-      currentlyOpenPanel.classList.remove('visible', 'full-view');
-      currentlyOpenPanel.classList.add('hidden');
-    }
-
-    // 3) Masquer la croix
-    document.getElementById('globalCloseBtn').style.display = 'none';
-    // 4) Réinitialiser la variable d’état
-    currentlyOpenPanel = null;
-  }
-});
-
-// Gestion du bouton global de fermeture
-document.getElementById('globalCloseBtn').addEventListener('click', function(e) {
-  // On masque le bouton croix
-  this.style.display = 'none';
-
-  // On ferme tous les panels possibles
-  // 1. Soumission (submitPanel)
-  var submitPanel = document.getElementById('submitPanel');
-  if (submitPanel) {
-    submitPanel.classList.remove('visible', 'full-view');
-    submitPanel.classList.add('hidden');
-    // On vide le contenu au cas où
-    var submitContent = document.getElementById('submitContent');
-    if (submitContent) submitContent.innerHTML = '';
-  }
-
-  // 2. Voir plus / Mentions légales (detailPanel)
-  var detailPanel = document.getElementById('detailPanel');
-  if (detailPanel) {
-    detailPanel.classList.remove('visible', 'full-view');
-    detailPanel.classList.add('hidden');
-    var detailContent = document.getElementById('detailContent');
-    if (detailContent) detailContent.innerHTML = '';
-  }
-
-  // 3. On réaffiche la carte
-  var mapDiv = document.getElementById('map');
-  if (mapDiv) mapDiv.style.display = 'block';
-
-  // 4. On enlève tous les overlays possibles
-  // (si tu en rajoutes d'autres, copie/colle leur fermeture ici)
-
-  // 5. On revalide la taille de la carte si besoin (Leaflet)
-  if (typeof map !== 'undefined' && map.invalidateSize) map.invalidateSize();
-});
+                // ====  Création unique du bouton globalCloseBtn  ====
+                ;(function() {
+                  // Si le bouton n’existe pas déjà, on le crée
+                  if (!document.getElementById('globalCloseBtn')) {
+                    const btn = document.createElement('button');
+                    btn.id = 'globalCloseBtn';
+                    btn.className = 'overlay-close';  // reprend la classe CSS définie
+                    btn.textContent = '❌';
+                    document.body.appendChild(btn);
+                  }
+                })();
+                
+                document.getElementById('globalCloseBtn').addEventListener('click', function(e) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                
+                  // 1) Si on est en plein écran, on en sort
+                  if (document.fullscreenElement) {
+                    document.exitFullscreen?.() ??
+                      document.mozCancelFullScreen?.() ??
+                      document.webkitExitFullscreen?.() ??
+                      document.msExitFullscreen?.();
+                    return;
+                  }
+                
+                  // 2) Sinon, si un panel est ouvert (Voir plus, Soumettre, Mentions), on le ferme
+                  if (currentlyOpenPanel) {
+                    // a) Si c’est detailPanel (Voir plus ou Mentions légales)
+                    if (currentlyOpenPanel.id === 'detailPanel') {
+                      // i. Masquer detailPanel
+                      currentlyOpenPanel.classList.remove('visible', 'full-view');
+                      // ii. Vider le contenu
+                      document.getElementById('detailContent').innerHTML = '';
+                      // iii. Réafficher la carte
+                      document.getElementById('map').style.display = 'block';
+                      // iv. Redimensionner Leaflet
+                      map.invalidateSize();
+                      // v. Restaurer la vue si on venait de « Voir plus »
+                      if (window._prevMapView) {
+                        map.setView(window._prevMapView.center, window._prevMapView.zoom, { animate: false });
+                        delete window._prevMapView;
+                      }
+                    }
+                    // b) Si c’est submitPanel (Soumettre)
+                    else if (currentlyOpenPanel.id === 'submitPanel') {
+                      // i. Masquer submitPanel
+                      currentlyOpenPanel.classList.remove('visible', 'full-view');
+                      // ii. Rajouter la classe 'hidden' pour revenir à l’état initial
+                      currentlyOpenPanel.classList.add('hidden');
+                      // iii. Réafficher la carte
+                      document.getElementById('map').style.display = 'block';
+                    }
+                    // c) Cas d’un autre panel éventuel
+                    else {
+                      currentlyOpenPanel.classList.remove('visible', 'full-view');
+                      currentlyOpenPanel.classList.add('hidden');
+                    }
+                
+                    // 3) Masquer la croix
+                    document.getElementById('globalCloseBtn').style.display = 'none';
+                    // 4) Réinitialiser la variable d’état
+                    currentlyOpenPanel = null;
+                  }
+                });
+                
+                // Gestion du bouton global de fermeture
+                document.getElementById('globalCloseBtn').addEventListener('click', function(e) {
+                  // On masque le bouton croix
+                  this.style.display = 'none';
+                
+                  // On ferme tous les panels possibles
+                  // 1. Soumission (submitPanel)
+                  var submitPanel = document.getElementById('submitPanel');
+                  if (submitPanel) {
+                    submitPanel.classList.remove('visible', 'full-view');
+                    submitPanel.classList.add('hidden');
+                    // On vide le contenu au cas où
+                    var submitContent = document.getElementById('submitContent');
+                    if (submitContent) submitContent.innerHTML = '';
+                  }
+                
+                  // 2. Voir plus / Mentions légales (detailPanel)
+                  var detailPanel = document.getElementById('detailPanel');
+                  if (detailPanel) {
+                    detailPanel.classList.remove('visible', 'full-view');
+                    detailPanel.classList.add('hidden');
+                    var detailContent = document.getElementById('detailContent');
+                    if (detailContent) detailContent.innerHTML = '';
+                  }
+                
+                  // 3. On réaffiche la carte
+                  var mapDiv = document.getElementById('map');
+                  if (mapDiv) mapDiv.style.display = 'block';
+                
+                  // 4. On enlève tous les overlays possibles
+                  // (si tu en rajoutes d'autres, copie/colle leur fermeture ici)
+                
+                  // 5. On revalide la taille de la carte si besoin (Leaflet)
+                  if (typeof map !== 'undefined' && map.invalidateSize) map.invalidateSize();
+                });
