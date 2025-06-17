@@ -140,27 +140,33 @@
                 const marker = L.marker([lieu.latitude, lieu.longitude], { icon: emojiIcon })
                   .bindPopup(popupContent, popupOptions);
                 
-                // II.2.4 Gestion du clic pour recentrer à 20% vers le bas, puis ouvrir le popup
-                marker.on('click', () => {
-                  // Récupère les coordonnées et taille de la map
-                  const latlng   = marker.getLatLng();
-                  const mapSize  = map.getSize();
-                  const offsetY  = mapSize.y * 0.20;          // 20% vers le bas
+// II.2.4 Gestion du clic pour recentrer à 20% vers le bas, puis ouvrir le popup
                 
-                  // Convertit latlng → point écran, calcule le point ciblé
-                  const point    = map.latLngToContainerPoint(latlng);
-                  const centerX  = mapSize.x / 2;
-                  const offsetPt = L.point(centerX, point.y - offsetY);
+                marker.on('click', function() {
+                  // 1) coordonnées lat/lng du marqueur
+                  const latlng  = marker.getLatLng();
+                  // 2) taille de la fenêtre Leaflet en pixels
+                  const size    = map.getSize();
+                  // 3) conversion latlng → point écran (pixels)
+                  const point   = map.latLngToContainerPoint(latlng);
                 
-                  // Reconvertit en latlng et recentre sans changer le zoom
-                  const newCenter = map.containerPointToLatLng(offsetPt);
-                  map.setView(newCenter, map.getZoom(), { animate: true });
+                  // 4) calcul du décalage voulu :
+                  //    - dx : pour placer le point à centerX
+                  //    - dy : pour placer le point à (centerY - 20% hauteur)
+                  const centerX = size.x / 2;
+                  const centerY = size.y / 2;
+                  const offsetY = size.y * 0.20;
+                  const dx      = centerX - point.x;
+                  const dy      = (centerY - offsetY) - point.y;
                 
-                  // Ouvre le popup une fois le mouvement terminé
+                  // 5) on pan la carte de ce décalage
+                  map.panBy([dx, dy], { animate: true });
+                
+                  // 6) ouverture du popup quand le pan est fini
                   map.once('moveend', () => {
                     marker.openPopup();
                   });
-                });
+                });          
                 return marker;
           }
 
