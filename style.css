@@ -377,7 +377,7 @@
                   overflow-x: hidden;  /* le scroll horizontal */
                   /* facultatif : pour une barre plus discrète */
                   scrollbar-width: thin;       /* Firefox */
-                  scrollbar-color: #e60000 transparent;
+                  scrollbar-color: #FFFFE0 transparent;
                 }
                 
                 /* Chrome, Edge, Safari */
