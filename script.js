@@ -112,7 +112,7 @@
                   <a href="#" class="voir-plus" data-id="${lieu.ID}">Voir plus</a>
                 `;
                 
-                // II.2.2 Calcul dynamique de maxWidth/maxHeight et configuration du Pan
+// II.2.2 Calcul dynamique de maxWidth/maxHeight et configuration du Pan
                 const vw = window.innerWidth;
                 const vh = window.innerHeight;
                 let popupOptions;
@@ -161,8 +161,8 @@
                     marker.openPopup();
                   });
                 });
-                
                 return marker;
+          }
 
 // II.2.4 Chargement du fichier lieux.json et création des marqueurs
 
