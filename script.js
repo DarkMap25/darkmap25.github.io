@@ -762,7 +762,7 @@
 
         // V.5 ZOOM bouton 🎲 
                 
-                setTimeout(() => {
+                 setTimeout(() => {
                   const btn = document.getElementById("randomButton");
                   if (!btn) return;
                   btn.addEventListener("click", () => {
@@ -773,29 +773,37 @@
                     const latlng       = randomMarker.getLatLng();
                 
                     map.closePopup();
-                          
-                // 1) CALCUL DE L’OFFSET À PARTIR DU MARQUEUR
-                const offsetY     = map.getSize().y * 0.20;
-                // point en pixels du marqueur dans la fenêtre
-                const markerPoint = map.latLngToContainerPoint(latlng);
-                // on décale ce point vers le haut pour faire de la place au pop-up
-                const targetPoint = L.point(markerPoint.x, markerPoint.y - offsetY);
-                // on retransforme en lat/lng pour centrer la carte
-                const newCenter   = map.containerPointToLatLng(targetPoint);
-                          
-                const currentZoom = map.getZoom();
+                
+                    // 1) CALCUL DE L’OFFSET À PARTIR DU MARQUEUR
+                    const offsetY     = map.getSize().y * 0.20;
+                    const currentZoom = map.getZoom();
+                
                     if (currentZoom >= 10) {
+                      // premier clic depuis zoom ≥ 10 : redescend d'abord à zoom 5
                       map.setView(map.getCenter(), 5);
-                      setTimeout(() => {
+                
+                      // une fois le zoom 5 appliqué, on recalcule et on vole
+                      map.once('zoomend', () => {
+                        const markerPoint = map.latLngToContainerPoint(latlng);
+                        const targetPoint = L.point(markerPoint.x, markerPoint.y - offsetY);
+                        const newCenter   = map.containerPointToLatLng(targetPoint);
+                
                         map.flyTo(newCenter, 10, {
                           animate: true,
                           duration: 2.5,
                           easeLinearity: 0.25
                         });
                         setTimeout(() => randomMarker.openPopup(), 3000);
-                      }, 700);
+                      });
+                
                     } else {
-                      map.flyTo(newCenter, 10, {
+                      // zoom < 10 : on calcule le centre pour le zoom cible (10)
+                      const targetZoom  = 10;
+                      const proj        = map.project(latlng, targetZoom);
+                      const targetPoint = L.point(proj.x, proj.y - offsetY);
+                      const newCenter   = map.unproject(targetPoint, targetZoom);
+                
+                      map.flyTo(newCenter, targetZoom, {
                         animate: true,
                         duration: 2.5,
                         easeLinearity: 0.25
