@@ -796,7 +796,7 @@
                   });
                 
                   // 4) zoom arrière animé vers 5 (déclenche zoomend)
-                  map.setView(map.getCenter(), 5, {
+                  map.flyTo(map.getCenter(), 5, {
                     animate: true,
                     duration: 0.5
                   });
