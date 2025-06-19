@@ -587,7 +587,7 @@
                 /* 5) Style de la tagline sous le <h1> : texte secondaire centré avec ombre rouge */
                 #submitPanel header .tagline {
                   display: block;               /* affichage en bloc pour prendre toute la largeur disponible */
-                  margin: 0.5rem 0 1rem;             /* 1rem en dessous pour la séparation */
+                  margin: 0 0 2rem;             /* 1rem en dessous pour la séparation */
                   font-size: var(--header-tagline-font-size); /* taille dynamique définie par une variable CSS */
                   color: #FFFFE0;               /* couleur jaune très pâle pour contraster */
                   font-family: 'IM FELL ENGLISH SC', serif;    /* même police que le titre pour cohérence */
@@ -1091,7 +1091,6 @@
                   /* AJOUTS POUR CENTRER ET GÉRER LE SCROLL DE L'OVERLAY */
                   display: flex; /* Active Flexbox */
                   justify-content: center; /* Centre le contenu (#detailContent) horizontalement */
-                  align-items: center; /* Centre le contenu (#detailContent) verticalement */
                   overflow-y: auto; /* Permet le défilement vertical du panneau si le contenu dépasse */
                   overflow-x: hidden; /* Empêche le défilement horizontal sur le panneau lui-même */
                   /* Assurez-vous que #detailPanel a bien height: 100vh; dans sa définition générale */
