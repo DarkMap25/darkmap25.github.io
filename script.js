@@ -737,44 +737,64 @@
                 
         // V.4 — Création du bouton “Lieu au hasard 🎲”
 
-                // On étend L.Control pour injecter le bouton et son listener en une seule fois.
                 const RandomControl = L.Control.extend({
                   options: { position: 'topright' },
+                
                   onAdd(map) {
-                    // Création du container et désactivation de la propagation de clic
-                    const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+                    // — Création du container du contrôle et désactivation de la propagation du clic à la carte
+                    const container = L.DomUtil.create(
+                      'div',
+                      'leaflet-bar leaflet-control leaflet-control-custom'
+                    );
                     container.id = 'randomButton';
                     container.title = 'Lieu au hasard 🎲';
                     container.innerHTML = '🎲';
                     L.DomEvent.disableClickPropagation(container);
                 
-                    // Gestion du clic : on choisit un marqueur aléatoire et on centre avec offset
+                    // — Gestion du clic : vol animé vers un marqueur aléatoire + ouverture de sa popup
                     L.DomEvent.on(container, 'click', () => {
-                      if (window.allMarkers === undefined) return;
-                            
+                      // 1) On récupère un marqueur aléatoire parmi ceux chargés
                       const randomIndex  = Math.floor(Math.random() * window.allMarkers.length);
                       const randomMarker = window.allMarkers[randomIndex];
                       const latlng       = randomMarker.getLatLng();
                       map.closePopup();
                 
-                      // Conversion lat/lng → point écran, décalage vertical de 20 %, puis retour en lat/lng
+                      // 2) Calcul du centre cible : conversion lat/lng → point écran + décalage vertical
                       const size        = map.getSize();
-                      const offsetY     = size.y * 0.20;
+                      const offsetY     = size.y * 0.20;  // 20% vers le haut
                       const markerPoint = map.latLngToContainerPoint(latlng);
                       const targetPoint = L.point(markerPoint.x, markerPoint.y - offsetY);
                       const newCenter   = map.containerPointToLatLng(targetPoint);
                 
-                      // Si on est déjà fortement zoomé, on “zoom out” avant de voler
+                      // 3) Si on est très zoomé, on fait d’abord un zoom-out animé avant de voler
                       const currentZoom = map.getZoom();
                       if (currentZoom >= 10) {
-                        map.setView(map.getCenter(), 5);
-                        setTimeout(() => {
-                          map.flyTo(newCenter, 10, { animate: true, duration: 2.5, easeLinearity: 0.25 });
-                          setTimeout(() => randomMarker.openPopup(), 3000);
-                        }, 700);
+                        // 3.a) À la fin du zoom-out, on déclenche le vol vers le marqueur
+                        map.once('moveend', () => {
+                          map.flyTo(newCenter, 10, {
+                            animate: true,
+                            duration: 2.5,
+                            easeLinearity: 0.25
+                          });
+                          // 3.b) À la fin du vol, on ouvre la popup
+                          map.once('moveend', () => randomMarker.openPopup());
+                        });
+                        // 3.c) Lancement du zoom-out animé vers le niveau 5
+                        map.flyTo(map.getCenter(), 5, {
+                          animate: true,
+                          duration: 1,
+                          easeLinearity: 0.25
+                        });
+                
                       } else {
-                        map.flyTo(newCenter, 10, { animate: true, duration: 2.5, easeLinearity: 0.25 });
-                        setTimeout(() => randomMarker.openPopup(), 3000);
+                        // 4) Si zoom modéré, on vole directement vers le marqueur
+                        map.flyTo(newCenter, 10, {
+                          animate: true,
+                          duration: 2.5,
+                          easeLinearity: 0.25
+                        });
+                        // 4.a) À la fin du vol, on ouvre la popup
+                        map.once('moveend', () => randomMarker.openPopup());
                       }
                     });
                 
