@@ -747,58 +747,65 @@
                   currentlyOpenPanel = null;
                 });
 
-        // V.4 Ajout du bouton "Lieu au hasard 🎲"
-
-                const randomControl = L.control({ position: 'topright' });
-                randomControl.onAdd = function() {
-                  const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-                  container.id = 'randomButton';
-                  container.innerHTML = '🎲';
-                  container.title = 'Lieu au hasard 🎲';
-                  L.DomEvent.disableClickPropagation(container);
-                  return container;
-                };
-                randomControl.addTo(map);
-
-        // V.5 ZOOM bouton 🎲 
-                
+        // V.5 ZOOM bouton 🎲
+               
                 setTimeout(() => {
+                  // ––– 1) Récupération du bouton et sécurité si absent
                   const btn = document.getElementById("randomButton");
                   if (!btn) return;
+                
+                  // ––– 2) Gestion du clic sur le bouton
                   btn.addEventListener("click", () => {
+                    //    – Sécurité si aucun marqueur n’est chargé
                     if (!window.allMarkers?.length) return;
                 
+                    //    – Sélection aléatoire d’un marqueur parmi tous
                     const randomIndex  = Math.floor(Math.random() * window.allMarkers.length);
                     const randomMarker = window.allMarkers[randomIndex];
                     const latlng       = randomMarker.getLatLng();
                 
+                    //    – On referme d’abord toute popup ouverte
                     map.closePopup();
                 
-                    // 1) CALCUL CONSTANT DU CENTRE + OFFSET VERTICAL
+                    // ––– 3) Calcul du point cible à l’écran avec un décalage vertical
+                    //    a) Taille de la carte en pixels
                     const size    = map.getSize();
-                    const centerX = size.x / 2;
-                    const centerY = size.y / 2;
-                    const offsetY = size.y * 0.20;
-                    const targetPoint = L.point(centerX, centerY - offsetY);
-                    const newCenter   = map.containerPointToLatLng(targetPoint);
+                    const offsetY = size.y * 0.20;  // 20% vers le bas
                 
+                    //    b) Conversion des coordonnées géographiques du marqueur en point écran
+                    const markerPoint = map.latLngToContainerPoint(latlng);
+                
+                    //    c) On soulève le point de l’offset pour que le marqueur apparaisse plus bas
+                    const targetPoint = L.point(markerPoint.x, markerPoint.y - offsetY);
+                
+                    //    d) Retour en coordonnées lat/lng à partir du point écran modifié
+                    const newCenter = map.containerPointToLatLng(targetPoint);
+                
+                    // ––– 4) Gestion du zoom : si on est déjà fort zoomé, on zoom out avant de voler
                     const currentZoom = map.getZoom();
                     if (currentZoom >= 10) {
+                      //    a) Réduction rapide du zoom pour donner de la perspective
                       map.setView(map.getCenter(), 5);
+                
+                      //    b) Puis après un léger délai, on effectue l’animation de vol vers la nouvelle vue
                       setTimeout(() => {
                         map.flyTo(newCenter, 10, {
                           animate: true,
                           duration: 2.5,
                           easeLinearity: 0.25
                         });
+                        //      – On ouvre la popup du marqueur après l’animation
                         setTimeout(() => randomMarker.openPopup(), 3000);
                       }, 700);
+                
                     } else {
+                      //    a) Si zoom faible, on vole directement vers la nouvelle vue
                       map.flyTo(newCenter, 10, {
                         animate: true,
                         duration: 2.5,
                         easeLinearity: 0.25
                       });
+                      //    b) Ouverture de la popup après l’animation
                       setTimeout(() => randomMarker.openPopup(), 3000);
                     }
                   });
