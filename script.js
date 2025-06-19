@@ -131,7 +131,7 @@
                           popupOptions = {
                             className: 'custom-popup',
                             minWidth: 200,
-                            maxWidth: Math.floor(vw * 0.7),    // 70% de la largeur écran 
+                            maxWidth: Math.floor(vw * 0.65),    // 65% de la largeur écran 
                             maxHeight: Math.floor(vh * 0.25),   // 25% de la hauteur écran
                             autoPan: false,                     // ← Désactivé sur desktop aussi
                             keepInView: false
@@ -171,7 +171,7 @@
                         return marker;
                   }
 
-        // II.2.5 Chargement du fichier lieux.json et création des marqueurs
+        // II.2.4 Chargement du fichier lieux.json et création des marqueurs
         
                   fetch('lieux.json')
                     .then(response => response.json())
@@ -179,21 +179,15 @@
                       window.lieuxData = data;
                   
                       const markers = data.map(lieu => createEmojiMarker(lieu));
+                      window.allMarkers = markers;
                   
-                         // — 1) On stocke les marqueurs dans la variable globale
-                    window.allMarkers = markers;
-                
-                    // — 2) On ajoute le contrôle “Lieu au hasard 🎲” *après* avoir chargé tous les marqueurs*
-                    map.addControl(new RandomControl());
-                
-                    // — 3) On place les marqueurs sur la carte et on cadre la vue
-                    const group = L.featureGroup(markers);
-                    group.addTo(map);
-                    map.fitBounds(group.getBounds());
+                      const group = L.featureGroup(markers);
+                      group.addTo(map);
+                      map.fitBounds(group.getBounds());
                     })
                     .catch(error => console.error('Erreur lors du chargement des lieux :', error));
 
-        // II.2.6 Création de la légende emoji
+        // II.2.5 Création de la légende emoji
         
                   function createLegend() {
                     const legend = L.control({ position: 'bottomleft' });
@@ -627,94 +621,102 @@
               e.preventDefault();
               openSubmitPanel();
             });
-
+              
 
 
 // === PARTIE V / BOUTONS ET ACTIONS === //
 
 
 
-        // V.1.1 — Bouton de géolocalisation “Localiser ma position”
+        // V.1.1 Ajout du bouton de localisation
 
-                // On initialise le contrôle Leaflet.Locate avec ses options et on l’ajoute à la carte.
-                L.control.locate({
-                  position: 'topright',
-                  strings: { title: "Localiser ma position" },
-                  drawCircle: true,
-                  drawMarker: true,
-                  follow: true,
-                  stopFollowingOnDrag: true,
-                  setView: true,
-                  keepCurrentZoomLevel: true
-                }).addTo(map);
-                
-        // V.1.2 — Animation “zoom doux” après géolocalisation
+            L.control.locate({
+              position: 'topright',
+              strings: { title: "Localiser ma position" },
+              drawCircle: true,
+              drawMarker: true,
+              follow: true,
+              stopFollowingOnDrag: true,
+              setView: true,
+              keepCurrentZoomLevel: true
+            }).addTo(map);
 
-                // Lorsqu’on reçoit l’événement locationfound, on ajuste le zoom et on vole en douceur vers la position.
-                map.on('locationfound', function(event) {
-                  const targetLatLng = event.latlng;
-                  const targetZoom = 9;
-                
-                  // Si on est déjà très zoomé, on recule un peu pour avoir de la perspective
-                  const currentZoom = map.getZoom();
-                  if (currentZoom > targetZoom - 2) {
-                    map.setZoom(targetZoom - 2);
-                  }
-                
-                  // On décale de 200 ms pour laisser le temps à setZoom de s’appliquer
-                  setTimeout(() => {
-                    map.flyTo(targetLatLng, targetZoom, {
-                      animate: true,
-                      duration: 2.5,
-                      easeLinearity: 0.25
-                    });
-                  }, 200);
+        // V.1.2 Animation pour zoomer doucement lors de la géolocalisation
+
+            map.on('locationfound', function(event) {
+              const targetLatLng = event.latlng;
+              const targetZoom = 9;
+            
+              const currentZoom = map.getZoom();
+              if (currentZoom > targetZoom - 2) {
+                map.setZoom(targetZoom - 2);
+              }
+            
+              setTimeout(() => {
+                map.flyTo(targetLatLng, targetZoom, {
+                  animate: true,
+                  duration: 2.5,
+                  easeLinearity: 0.25
                 });
-                
-        // V.2 — Contrôle de changement de fond de carte
+              });
+            });
 
-                // On propose deux fonds (Dark et Atlas) au sommet à gauche.
-                L.control.layers(
-                  { 'Dark': alidadedarkLayer, 'Atlas': thunderforestAtlasLayer },
-                  {},
-                  { position: 'topleft' }
-                ).addTo(map);
-                
-        // V.3 — Ouverture/fermeture du panneau Mentions Légales
+        // V.2 Ajout du contrôle de changement de fond de carte
 
-                // On prépare les références DOM et on gère l’affichage du panneau fullscreen.
+                  L.control.layers(
+                    { 'Dark': alidadedarkLayer, 'Atlas': thunderforestAtlasLayer },
+                    {},
+                    { position: 'topleft' }
+                  ).addTo(map);
+
+        // V.3 Ajout du bouton de fermeture Mentions Légales
+
+                // i. On récupère une seule fois l’élément <a id="mentionsLink"> dans le DOM
                 const mentionsLink   = document.getElementById('mentionsLink');
+                
+                // ii. On récupère aussi une seule fois ces éléments du panneau de détail
                 const detailPanel    = document.getElementById('detailPanel');
                 const detailContent  = document.getElementById('detailContent');
                 const globalCloseBtn = document.getElementById('globalCloseBtn');
                 
+                // iii. Lorsque l’on clique sur "Mentions légales", on ouvre le panneau, on charge le HTML et on applique les styles
                 mentionsLink.addEventListener('click', function(e) {
                   e.preventDefault();
                 
-                  // 1) Masquer la carte
+                  // → 1) Masquer la carte
                   document.getElementById('map').style.display = 'none';
                 
-                  // 2) Afficher le panneau en plein écran et lui donner le style “legal”
-                  detailPanel.classList.add('visible', 'full-view', 'legal');
+                  // → 2) Afficher le panneau #detailPanel en plein écran
+                  detailPanel.classList.add('visible', 'full-view');
                 
-                  // 3) Charger le HTML des mentions légales et injecter head + body
+                  // → 3) Marquer ce panneau comme “legal” pour cibler le bon fond + polices + titres en CSS
+                  detailPanel.classList.add('legal');
+                
+                  // → 4) Charger le fichier HTML des mentions légales
                   fetch('mentions-legales.html')
                     .then(resp => resp.text())
                     .then(htmlString => {
+                      // • Parser le HTML récupéré
                       const parser = new DOMParser();
                       const doc = parser.parseFromString(htmlString, 'text/html');
                 
-                      // • Conserver <style> du head
-                      doc.head.querySelectorAll('style').forEach(styleEl => {
+                      // • Récupérer tous les <style> du head de mentions-legales.html pour conserver les polices/couleurs
+                      const headStyles = Array.from(doc.head.querySelectorAll('style'));
+                      headStyles.forEach(styleEl => {
                         document.head.appendChild(styleEl.cloneNode(true));
                       });
                 
-                      // • Injecter le body dans le panneau
-                      detailContent.innerHTML = doc.body.innerHTML;
+                      // • Récupérer le contenu du <body>
+                      const bodyContent = doc.body.innerHTML;
                 
-                      // • Afficher la croix de fermeture
-                      globalCloseBtn.style.display = 'block';
+                      // • Injecter ce contenu dans #detailContent
+                      detailContent.innerHTML = bodyContent;
+                
+                      // → 5) Mémoriser quel panneau est ouvert
                       currentlyOpenPanel = detailPanel;
+                
+                      // → 6) Afficher le bouton de fermeture
+                      globalCloseBtn.style.display = 'block';
                     })
                     .catch(err => {
                       detailContent.innerHTML = '<p>Impossible de charger les mentions légales.</p>';
@@ -722,87 +724,87 @@
                     });
                 });
                 
+                // iv. Gestion du clic sur le bouton de fermeture global (pour “Voir plus”, “Soumettre”, “Mentions légales”)
                 globalCloseBtn.addEventListener('click', function() {
-                  // 1) Cacher le panneau et retirer la classe “legal”
-                  detailPanel.classList.remove('visible', 'full-view', 'legal');
+                  // • 1) Cacher le panneau quel que soit son usage
+                  detailPanel.classList.remove('visible', 'full-view');
                 
-                  // 2) Vider le contenu et masquer la croix
+                  // • 2) Retirer la classe 'legal' si présente
+                  if (detailPanel.classList.contains('legal')) {
+                    detailPanel.classList.remove('legal');
+                  }
+                
+                  // • 3) Vider le contenu
                   detailContent.innerHTML = '';
+                
+                  // • 4) Masquer la croix de fermeture
                   globalCloseBtn.style.display = 'none';
                 
-                  // 3) Réafficher la carte et réinitialiser l’état
+                  // • 5) Réafficher la carte
                   document.getElementById('map').style.display = 'block';
+                
+                  // • 6) Réinitialiser la variable d’état du panneau ouvert
                   currentlyOpenPanel = null;
                 });
-                
-        // V.4 — Création du bouton “Lieu au hasard 🎲”
 
-                const RandomControl = L.Control.extend({
-                  options: { position: 'topright' },
+        // V.4 Ajout du bouton "Lieu au hasard 🎲"
+
+                const randomControl = L.control({ position: 'topright' });
+                randomControl.onAdd = function() {
+                  const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+                  container.id = 'randomButton';
+                  container.innerHTML = '🎲';
+                  container.title = 'Lieu au hasard 🎲';
+                  L.DomEvent.disableClickPropagation(container);
+                  return container;
+                };
+                randomControl.addTo(map);
+
+        // V.5 ZOOM bouton 🎲 
                 
-                  onAdd(map) {
-                    // — Création du container du contrôle et désactivation de la propagation du clic à la carte
-                    const container = L.DomUtil.create(
-                      'div',
-                      'leaflet-bar leaflet-control leaflet-control-custom'
-                    );
-                    container.id = 'randomButton';
-                    container.title = 'Lieu au hasard 🎲';
-                    container.innerHTML = '🎲';
-                    L.DomEvent.disableClickPropagation(container);
+                setTimeout(() => {
+                  const btn = document.getElementById("randomButton");
+                  if (!btn) return;
+                  btn.addEventListener("click", () => {
+                    if (!window.allMarkers?.length) return;
                 
-                    // — Gestion du clic : vol animé vers un marqueur aléatoire + ouverture de sa popup
-                    L.DomEvent.on(container, 'click', () => {
-                      // 1) On récupère un marqueur aléatoire parmi ceux chargés
-                      const randomIndex  = Math.floor(Math.random() * window.allMarkers.length);
-                      const randomMarker = window.allMarkers[randomIndex];
-                      const latlng       = randomMarker.getLatLng();
-                      map.closePopup();
+                    const randomIndex  = Math.floor(Math.random() * window.allMarkers.length);
+                    const randomMarker = window.allMarkers[randomIndex];
+                    const latlng       = randomMarker.getLatLng();
                 
-                      // 2) Calcul du centre cible : conversion lat/lng → point écran + décalage vertical
-                      const size        = map.getSize();
-                      const offsetY     = size.y * 0.20;  // 20% vers le haut
-                      const markerPoint = map.latLngToContainerPoint(latlng);
-                      const targetPoint = L.point(markerPoint.x, markerPoint.y - offsetY);
-                      const newCenter   = map.containerPointToLatLng(targetPoint);
+                    map.closePopup();
                 
-                      // 3) Si on est très zoomé, on fait d’abord un zoom-out animé avant de voler
-                      const currentZoom = map.getZoom();
-                      if (currentZoom >= 10) {
-                        // 3.a) À la fin du zoom-out, on déclenche le vol vers le marqueur
-                        map.once('moveend', () => {
-                          map.flyTo(newCenter, 10, {
-                            animate: true,
-                            duration: 2.5,
-                            easeLinearity: 0.25
-                          });
-                          // 3.b) À la fin du vol, on ouvre la popup
-                          map.once('moveend', () => randomMarker.openPopup());
-                        });
-                        // 3.c) Lancement du zoom-out animé vers le niveau 5
-                        map.flyTo(map.getCenter(), 5, {
-                          animate: true,
-                          duration: 1,
-                          easeLinearity: 0.25
-                        });
+                    // 1) CALCUL CONSTANT DU CENTRE + OFFSET VERTICAL
+                    const size    = map.getSize();
+                    const centerX = size.x / 2;
+                    const centerY = size.y / 2;
+                    const offsetY = size.y * 0.20;
+                    const targetPoint = L.point(centerX, centerY - offsetY);
+                    const newCenter   = map.containerPointToLatLng(targetPoint);
                 
-                      } else {
-                        // 4) Si zoom modéré, on vole directement vers le marqueur
+                    const currentZoom = map.getZoom();
+                    if (currentZoom >= 10) {
+                      map.setView(map.getCenter(), 5);
+                      setTimeout(() => {
                         map.flyTo(newCenter, 10, {
                           animate: true,
                           duration: 2.5,
                           easeLinearity: 0.25
                         });
-                        // 4.a) À la fin du vol, on ouvre la popup
-                        map.once('moveend', () => randomMarker.openPopup());
-                      }
-                    });
-                
-                    return container;
-                  }
-                });
+                        setTimeout(() => randomMarker.openPopup(), 3000);
+                      }, 700);
+                    } else {
+                      map.flyTo(newCenter, 10, {
+                        animate: true,
+                        duration: 2.5,
+                        easeLinearity: 0.25
+                      });
+                      setTimeout(() => randomMarker.openPopup(), 3000);
+                    }
+                  });
+                }, 0);
 
-        // V.5 BOUTON FERMETURE CENTRALE //
+        // V.6 BOUTON FERMETURE CENTRALE //
 
                 // ====  Création unique du bouton globalCloseBtn  ====
                 ;(function() {
