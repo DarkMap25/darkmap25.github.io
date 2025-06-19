@@ -787,6 +787,10 @@
                     if (currentZoom >= 10) {
                       map.setView(map.getCenter(), 5);
                       setTimeout(() => {
+                      // ⇨ on recalcule ici newCenter, une fois le zoom à 5 appliqué
+                       const markerPoint = map.latLngToContainerPoint(latlng);
+                       const targetPoint = L.point(markerPoint.x, markerPoint.y - offsetY);
+                       const newCenter   = map.containerPointToLatLng(targetPoint);                        
                         map.flyTo(newCenter, 10, {
                           animate: true,
                           duration: 2.5,
