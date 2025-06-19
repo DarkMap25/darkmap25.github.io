@@ -779,33 +779,32 @@
                     const currentZoom = map.getZoom();
 
                 if (currentZoom >= 10) {
-                  // ─── Étape 1 ───
-                  // On accroche d'abord le listener pour le premier zoomend (celui du zoom-out)
-                  map.once('zoomend', () => {
-                    // ─── Étape 4 ───
-                    // Après le zoom-out vers 5, on recalcule et on remonte vers le marqueur
+                  // 1) Premier vol : dézoom animé vers 5
+                  map.once('moveend', () => {
+                    // 2) Quand c’est fini, on recalcule newCenter pour ton randomMarker
                     const markerPoint = map.latLngToContainerPoint(latlng);
                     const targetPoint = L.point(markerPoint.x, markerPoint.y - offsetY);
                     const newCenter   = map.containerPointToLatLng(targetPoint);
+                
+                    // 3) Deuxième vol : rezoom animé vers 10 sur ce newCenter
+                    map.once('moveend', () => {
+                      // 4) Et quand ce vol est fini, on ouvre enfin le popup
+                      randomMarker.openPopup();
+                    });
                     map.flyTo(newCenter, 10, {
                       animate: true,
                       duration: 2.5,
                       easeLinearity: 0.25
                     });
-                
-                    // ─── Étape 5 ───
-                    // On ouvre le popup dès que ce second flyTo est terminé
-                    map.once('zoomend', () => randomMarker.openPopup());
                   });
                 
-                  // ─── Étape 2 ───
-                  // Puis on déclenche le zoom-out (celui-ci émettra un zoomend)
+                  // Lancement du premier vol (dézoom)
                   map.flyTo(map.getCenter(), 5, {
                     animate: true,
                     duration: 0.5
                   });
                 }
-                                          
+                                                          
                      else {
                       // zoom < 10 : on calcule le centre pour le zoom cible (10)
                       const targetZoom  = 10;
