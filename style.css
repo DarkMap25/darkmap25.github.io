@@ -556,18 +556,19 @@
                 
                 /* 3) Styles du <header> interne de #submitPanel : on neutralise la hauteur et on centre le contenu */
                 #submitPanel header {
-                  height: auto !important;     /* annule toute hauteur précédemment définie (ex. 22vh) */
-                  margin: 0;                    /* suppression des marges */
-                  padding: 0;                   /* suppression des paddings */
-                  background: transparent;      /* fond transparent pour laisser voir l’image en arrière-plan */
-                  display: flex;                /* affiche le header en flexbox */
-                  flex-direction: column;       /* aligne verticalement les enfants */
-                  align-items: center;          /* centre horizontalement les enfants */
-                  justify-content: center;      /* centre verticalement les enfants */
-                  position: relative;           /* position relative pour gérer l’empilement */
-                  z-index: 10001;               /* au-dessus du fond mais sous le contenu scrollable */
-                }
-                
+                  height: auto !important;
+                  margin: 0;
+                  padding: 0;
+                  background: rgba(0, 0, 0, 0.8); /* Ajoute un fond sombre pour qu'il ne soit pas transparent au scroll */
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  position: fixed; /* <-- CHANGE ICI ! */
+                  top: 0; /* <-- AJOUTE CECI ! */
+                  width: 100%; /* <-- AJOUTE CECI ! */
+                }        
+
                 /* 4) Style du <h1> dans le header : placé en haut, centré, avec l’ombre de texte */
                 #submitPanel header h1 {
                   margin: 1rem 0 0;             /* espace de 1rem au-dessus pour respirer */
@@ -602,12 +603,12 @@
                 /* 6) Zone interne scrollable (#submitContent) : commence juste sous le titre */
                 #submitContent {
                   position: absolute;            /* positionné par rapport à #submitPanel */
-                  top: 4rem;                     /* 4rem pour laisser la place du <h1> et de la croix de fermeture */
                   bottom: 0;                     /* s’étire jusqu’en bas de l’overlay */
                   left: 0;                       /* aligné à gauche */
                   right: 0;                      /* aligné à droite */
                   overflow-y: auto;              /* scroll vertical si le contenu dépasse */
                   padding: 1rem;                 /* espace intérieur pour le contenu du formulaire */
+                  padding-top: 10rem;
                 }
                 
                 /* 7) Si #submitContent contenait un <header> interne, on neutralise sa hauteur par défaut */
