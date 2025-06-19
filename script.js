@@ -179,12 +179,18 @@
                       window.lieuxData = data;
                   
                       const markers = data.map(lieu => createEmojiMarker(lieu));
-                      window.allMarkers = markers;
                   
-                      const group = L.featureGroup(markers);
-                      group.addTo(map);
-                      map.fitBounds(group.getBounds());
-                    })
+                         // — 1) On stocke les marqueurs dans la variable globale
+                    window.allMarkers = markers;
+                
+                    // — 2) On ajoute le contrôle “Lieu au hasard 🎲” *après* avoir chargé tous les marqueurs*
+                    map.addControl(new RandomControl());
+                
+                    // — 3) On place les marqueurs sur la carte et on cadre la vue
+                    const group = L.featureGroup(markers);
+                    group.addTo(map);
+                    map.fitBounds(group.getBounds());
+                    });
                     .catch(error => console.error('Erreur lors du chargement des lieux :', error));
 
         // II.2.5 Création de la légende emoji
@@ -775,8 +781,6 @@
                     return container;
                   }
                 });
-                // On ajoute enfin le contrôle à la carte
-                map.addControl(new RandomControl());
 
         // V.5 BOUTON FERMETURE CENTRALE //
 
