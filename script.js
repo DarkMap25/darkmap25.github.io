@@ -779,29 +779,33 @@
                     const currentZoom = map.getZoom();
 
                 if (currentZoom >= 10) {
-                  // 1) on prépare l’action à la fin du zoom arrière
+                  // ─── Étape 1 ───
+                  // On accroche d'abord le listener pour le premier zoomend (celui du zoom-out)
                   map.once('zoomend', () => {
+                    // ─── Étape 4 ───
+                    // Après le zoom-out vers 5, on recalcule et on remonte vers le marqueur
                     const markerPoint = map.latLngToContainerPoint(latlng);
                     const targetPoint = L.point(markerPoint.x, markerPoint.y - offsetY);
                     const newCenter   = map.containerPointToLatLng(targetPoint);
-                
-                    // 2) vol animé vers le zoom 10 sur le marqueur décalé
                     map.flyTo(newCenter, 10, {
                       animate: true,
                       duration: 2.5,
                       easeLinearity: 0.25
                     });
-                    // 3) ouverture du popup juste après
-                    setTimeout(() => randomMarker.openPopup(), 3000);
+                
+                    // ─── Étape 5 ───
+                    // On ouvre le popup dès que ce second flyTo est terminé
+                    map.once('zoomend', () => randomMarker.openPopup());
                   });
                 
-                  // 4) zoom arrière animé vers 5 (déclenche zoomend)
+                  // ─── Étape 2 ───
+                  // Puis on déclenche le zoom-out (celui-ci émettra un zoomend)
                   map.flyTo(map.getCenter(), 5, {
                     animate: true,
                     duration: 0.5
                   });
                 }
-                          
+                                          
                      else {
                       // zoom < 10 : on calcule le centre pour le zoom cible (10)
                       const targetZoom  = 10;
