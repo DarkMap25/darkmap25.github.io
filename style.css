@@ -627,7 +627,7 @@
                     0 0 4px rgba(255, 255, 224, 0.8),      /* halo jaune pâle */
                     1px 1px 0 rgba(255, 255, 224, 1);       /* ombre nette jaune pâle */
                   text-transform: uppercase;               /* tout en majuscules pour insister */
-                  margin: 0.2em 0;                         /* petit espace vertical autour */
+                  margin: 0.5em 0;                         /* petit espace vertical autour */
                 }
                 
                 /* 2) Cible du <small> à l’intérieur des .ask-submit : style plus discret */
