@@ -773,16 +773,17 @@
                     const latlng       = randomMarker.getLatLng();
                 
                     map.closePopup();
-                
-                    // 1) CALCUL CONSTANT DU CENTRE + OFFSET VERTICAL
-                    const size    = map.getSize();
-                    const centerX = size.x / 2;
-                    const centerY = size.y / 2;
-                    const offsetY = size.y * 0.20;
-                    const targetPoint = L.point(centerX, centerY - offsetY);
-                    const newCenter   = map.containerPointToLatLng(targetPoint);
-                
-                    const currentZoom = map.getZoom();
+                          
+                // 1) CALCUL DE L’OFFSET À PARTIR DU MARQUEUR
+                const offsetY     = map.getSize().y * 0.20;
+                // point en pixels du marqueur dans la fenêtre
+                const markerPoint = map.latLngToContainerPoint(latlng);
+                // on décale ce point vers le haut pour faire de la place au pop-up
+                const targetPoint = L.point(markerPoint.x, markerPoint.y - offsetY);
+                // on retransforme en lat/lng pour centrer la carte
+                const newCenter   = map.containerPointToLatLng(targetPoint);
+                          
+                const currentZoom = map.getZoom();
                     if (currentZoom >= 10) {
                       map.setView(map.getCenter(), 5);
                       setTimeout(() => {
