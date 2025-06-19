@@ -802,7 +802,7 @@
                   });
                 }
                           
-                    } else {
+                     else {
                       // zoom < 10 : on calcule le centre pour le zoom cible (10)
                       const targetZoom  = 10;
                       const proj        = map.project(latlng, targetZoom);
