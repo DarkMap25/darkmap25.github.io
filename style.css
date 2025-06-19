@@ -1,26 +1,28 @@
-/* ===  Variables de configuration (modifiable : hauteur en vh, tailles, couleurs…) === */
-
-        :root {
-          /* hauteurs des sections (total = 100vh) */
-          --header-height: 22vh;
-          --map-height:    64vh;
-          --intro-height:  12vh;
-          --footer-height:  2vh;
+        /* ===  Variables de configuration (modifiable : hauteur en vh, tailles, couleurs…) === */
         
-          /* typographies & couleurs */
-          --header-h1-font-size:      6em;
-          --header-h1-color:          #e60000;
-          --header-h1-shadow:         0 0 6px #000000;
-          --header-tagline-font-size: 1.6em;
-          --intro-font-size:          1.2em;
-          --footer-font-size:         0.8em;
-        }
+                :root {
+                  /* hauteurs des sections (total = 100vh) */
+                  --header-height: 22vh;
+                  --map-height:    64vh;
+                  --intro-height:  12vh;
+                  --footer-height:  2vh;
+                
+                  /* typographies & couleurs */
+                  --header-h1-font-size:      6em;
+                  --header-h1-color:          #e60000;
+                  --header-h1-shadow:         0 0 6px #000000;
+                  --header-tagline-font-size: 1.6em;
+                  --intro-font-size:          1.2em;
+                  --footer-font-size:         0.8em;
+                }
+
 
 
 /* ===  PARTIE I / GENERAL / INTRODUCTION / STRUCTURE SITE === */
 
 
-/* === I.1.1 Styles généraux === */
+
+        /* === I.1.1 Styles généraux === */
 
               body {
                 margin: 0; /* Suppression des marges par défaut */
@@ -34,7 +36,7 @@
                 position: relative; /* Positionnement pour le calque noir transparent */
               }
 
-/* === I.1.2 Calque noir transparent par-dessus l'image === */
+        /* === I.1.2 Calque noir transparent par-dessus l'image === */
 
               body::before {
                 content: ""; /* Contenu vide pour un pseudo-élément */
@@ -47,7 +49,7 @@
                 z-index: -1; /* Placer ce calque derrière le contenu principal */
               }
 
-/* === I.2.1 Overlay d’intro  === */
+        /* === I.2.1 Overlay d’intro  === */
 
               #intro-overlay {
                 position: absolute;           /* couvre tout l’écran */
@@ -137,9 +139,9 @@
                 transition: opacity 5s ease-in-out;
               }
 
-/* === I.3. Structure site === */
+        /* === I.3. Structure site === */
 
-/* === I.3.2 Mise en page flex-colonne full viewport === */
+        /* === I.3.2 Mise en page flex-colonne full viewport === */
 
               html, body {
                 height: 100vh;
@@ -152,7 +154,7 @@
                 flex-direction: column;
               }
 
-/* === I.3.3 Hauteurs des sections principales === */
+        /* === I.3.3 Hauteurs des sections principales === */
 
               header {
                 height: var(--header-height);
@@ -165,7 +167,7 @@
                 padding-top: 0;               /* aucun padding supplémentaire */
               }
 
-/* === I.3.4 Styles du header (titre + sous-titre) === */
+        /* === I.3.4 Styles du header (titre + sous-titre) === */
 
                 header h1 {
                   margin: 0;
@@ -243,7 +245,7 @@
                   transition: transform 0.2s ease;  /* rend l’animation fluide */
                 }
 
-/* === I.3.5 Styles globaux du footer : largeur, centrage et décor === */
+        /* === I.3.5 Styles globaux du footer : largeur, centrage et décor === */
 
               footer {
                 display: flex;                   /* mise en page en colonne flex */
@@ -306,7 +308,7 @@
 
 
 
-/* === II.1.1 Adaptation des popups Leaflet === */
+        /* === II.1.1 Adaptation des popups Leaflet === */
 
                 /* i. Le conteneur de la popup */
                 .custom-popup .leaflet-popup-content-wrapper {
@@ -370,7 +372,7 @@
                   transform: scale(1.5);
                 }
 
-/* === II.1.2 Scroll PopUP === */
+        /* === II.1.2 Scroll PopUP === */
 
                 .custom-popup .leaflet-popup-content {
                   overflow-y: auto;    /* autorise le scroll vertical */
@@ -392,7 +394,7 @@
                   background: transparent;
                 }
 
-/* === II.2.1 VOIR PLUS === */
+        /* === II.2.1 VOIR PLUS === */
                 
                 /* i. Par défaut, on cache le panneau de détail */
                 #detailPanel {
@@ -423,7 +425,7 @@
                   padding: 2rem;
                 }
                 
-/* === II.2.2 Styles internes pour structurer le contenu “Voir plus” === */
+        /* === II.2.2 Styles internes pour structurer le contenu “Voir plus” === */
                 
                 /* 1) Conteneur principal du contenu texte : on passe en Flexbox pour gérer 2 colonnes */
                 #detailPanel .panel-body {
@@ -527,7 +529,7 @@
                   border-radius: 8px;
                 }
 
-/* === II.3 Submit Panel corrigé === */
+        /* === II.3 Submit Panel corrigé === */
 
                 /* 1) Définition de l’overlay #submitPanel : positionné en plein écran, caché par défaut */
                 #submitPanel {
@@ -617,7 +619,7 @@
                 }
 
 
-/* === II.4 STYLES SOUMETTRE INTERNE === */
+        /* === II.4 STYLES SOUMETTRE INTERNE === */
 
                 /* 1) Style des questions .ask-submit dans le formulaire : police immersive + ombre + couleur DarkMap */
                 .ask-submit {
@@ -753,7 +755,7 @@
                   }
                 }
 
-/* === II.4.2 Styles généraux pour les champs <input> et <textarea> de classe .form-input === */
+        /* === II.4.2 Styles généraux pour les champs <input> et <textarea> de classe .form-input === */
 
                 input.form-input,
                 textarea.form-input {
@@ -799,7 +801,7 @@
                   opacity: 1;    /* s’assurer que c’est pleinement visible */
                 }
 
-/* === II.4.3 Style pour le bouton “Suggérer ce lieu” dans le même esprit que .form-input, mais en 1.6em sur fond rouge. === */
+        /* === II.4.3 Style pour le bouton “Suggérer ce lieu” dans le même esprit que .form-input, mais en 1.6em sur fond rouge. === */
 
                 .suggest-button {
                   /* i. Texte : même police, taille 1.6em, texte clair avec ombre rouge */
@@ -838,7 +840,7 @@
                   box-shadow: 0 0 60px rgba(230, 0, 0, 0.9); /* halo rouge renforcé */
                 }
 
-/* === II.4.4 CORRECTIONS SOUMETTRE === */
+        /* === II.4.4 CORRECTIONS SOUMETTRE === */
 
                 /* 1) Forcer html/body en plein écran sans marges ni scroll global */
                 html, body {
@@ -847,19 +849,21 @@
                   height: 100vh;
                   overflow: hidden;
                 }
-                
+
+
 
 /* === PARTIE III / PERSONNALISATION BOUTONS / STYLES === */
 
 
-/* === III.1.1 PERSONNALISATION DU BOUTON DE CHANGEMENT DE CARTE (Contrôle Leaflet) === */
+
+        /* === III.1.1 PERSONNALISATION DU BOUTON DE CHANGEMENT DE CARTE (Contrôle Leaflet) === */
 
                 .leaflet-control-layers {
                   color: #1a001a; /* texte sombre pour le contraste */
                   font-family: 'Quicksand', sans-serif; font-weight: 700;  
                 }
 
-/* === III.1.2 PERSONNALISATION DU BOUTON DE LOCALISATION (Emoji Direct Hit Visible et Cliquable) === */
+        /* === III.1.2 PERSONNALISATION DU BOUTON DE LOCALISATION (Emoji Direct Hit Visible et Cliquable) === */
 
                   .leaflet-control-locate {
                     background-color: transparent !important; /* Fond transparent */
@@ -909,7 +913,7 @@
                     transform: scale(1.5); /* ✅ effet de grossissement uniquement au survol */
                   }
 
-/* === III.1.3 PERSONNALISATION DU BOUTON DE CHANGEMENT DE FOND DE CARTE AVEC UN EMOJI 🗺️ === */
+        /* === III.1.3 PERSONNALISATION DU BOUTON DE CHANGEMENT DE FOND DE CARTE AVEC UN EMOJI 🗺️ === */
 
                 .leaflet-control-layers-toggle {
                   background-color: transparent !important;
@@ -933,7 +937,7 @@
                   font-size: inherit;
                 }
 
-/* === III.1.4 PERSONNALISATION DU BOUTON DE / FULLSCREEN / SOUMETTRE === */
+        /* === III.1.4 PERSONNALISATION DU BOUTON DE / FULLSCREEN / SOUMETTRE === */
 
                 #randomButton {
                     background-color: transparent !important;
@@ -982,7 +986,7 @@
                     transform: scale(1.5);
                 }
 
-/* === III.1.4 bis – Personnalisation de l’emoji 📜 en bas à droite === */
+        /* === III.1.4 bis – Personnalisation de l’emoji 📜 en bas à droite === */
 
                   /* 1) Autorise le débordement pour ne pas rogner la mise à l’échelle */
                   .leaflet-control-container,
@@ -1020,9 +1024,9 @@
                     transform: scale(1.5);
                   }
 
-/* === III.2 STYLES DIVERSES === */
+        /* === III.2 STYLES DIVERSES === */
 
-/* === III.2.1 Marqueurs emoji === */
+        /* === III.2.1 Marqueurs emoji === */
 
                 .emoji-marker {
                   font-size: 16px; /* Taille des marqueurs emoji */
@@ -1047,7 +1051,7 @@
                   transform: scale(1.5);
                 }
                 
-/* === III.2.2 Style pour la légende sans ombre et coins arrondis === */
+        /* === III.2.2 Style pour la légende sans ombre et coins arrondis === */
 
                 .info.legend {
                   color: #FFFFE0;  /* Couleur */
@@ -1079,7 +1083,7 @@
                   font-weight: bold;
                 }
 
-/* === III.2.3 Styles spécifiques pour les mentions légales (chargées dans #detailContent) === */
+        /* === III.2.3 Styles spécifiques pour les mentions légales (chargées dans #detailContent) === */
 
                 /* 1) Fond “panneau.jpg” sur tout le panneau (#detailPanel) */
                 #detailPanel.visible.legal {
@@ -1133,7 +1137,7 @@
                   text-decoration: underline;
                 }
 
-/* === III.2.4 Positionnement des contrôles en haut à droite === */
+        /* === III.2.4 Positionnement des contrôles en haut à droite === */
 
                 .leaflet-topright {
                     display: flex; /* Utiliser flex pour aligner les éléments verticalement */
@@ -1153,7 +1157,7 @@
 
 
 
-/* === IV.I ≤ 768px === */
+        /* === IV.I ≤ 768px === */
                 @media (max-width: 768px) {
                   /* 1. Autoriser le scroll si besoin (corps de page) */
                   html,
@@ -1238,8 +1242,7 @@
                   }
                 }
                                 
-
-/* === IV.3 Surcharge de carte réglée en dernier pour prendre le pas === */
+        /* === IV.3 Surcharge de carte réglée en dernier pour prendre le pas === */
 
               body > #map {
                 height: var(--map-height) !important;  /* prendra comme défini dans :root */
