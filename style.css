@@ -558,7 +558,7 @@
                 #submitPanel header {
                   height: auto !important;
                   margin: 0;
-                  padding: 0;
+                  padding: 1rem 1rem;
                   background: rgba(0, 0, 0, 0.8); /* Ajoute un fond sombre pour qu'il ne soit pas transparent au scroll */
                   display: flex;
                   flex-direction: column;
@@ -587,7 +587,6 @@
                 /* 5) Style de la tagline sous le <h1> : texte secondaire centré avec ombre rouge */
                 #submitPanel header .tagline {
                   display: block;               /* affichage en bloc pour prendre toute la largeur disponible */
-                  margin: 0 0 2rem;             /* 1rem en dessous pour la séparation */
                   font-size: var(--header-tagline-font-size); /* taille dynamique définie par une variable CSS */
                   color: #FFFFE0;               /* couleur jaune très pâle pour contraster */
                   font-family: 'IM FELL ENGLISH SC', serif;    /* même police que le titre pour cohérence */
