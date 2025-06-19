@@ -814,8 +814,8 @@
                           // Deuxième vol : rezoom animé vers 10 sur ce newCenter.
                           map.flyTo(newCenter, targetZoom, {
                             animate: true,
-                            duration: 2.5, // Durée pour le rezoom
-                            easeLinearity: 0.25
+                            duration: 4, // Durée pour le rezoom
+                            easeLinearity: 0.1
                           });
                 
                           // On écoute la fin du REZOOM (dernière animation) pour ouvrir le popup.
@@ -831,8 +831,8 @@
                 
                       map.flyTo(newCenter, targetZoom, {
                         animate: true,
-                        duration: 2.5,
-                        easeLinearity: 0.25
+                        duration: 4,
+                        easeLinearity: 0.1
                       });
                 
                       // On écoute la fin de ce vol unique pour ouvrir le popup.
