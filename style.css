@@ -289,7 +289,7 @@
                   top: 1rem;
                   right: 1rem;
                   border: none;
-                  background-color: #000000;
+                  background: transparent;
                   font-size: 2rem;
                   cursor: pointer;
                   z-index: 10003;
@@ -587,7 +587,7 @@
                 /* 5) Style de la tagline sous le <h1> : texte secondaire centré avec ombre rouge */
                 #submitPanel header .tagline {
                   display: block;               /* affichage en bloc pour prendre toute la largeur disponible */
-                  margin: 0 0 1rem;             /* 1rem en dessous pour la séparation */
+                  margin: 0.5rem 0 1rem;             /* 1rem en dessous pour la séparation */
                   font-size: var(--header-tagline-font-size); /* taille dynamique définie par une variable CSS */
                   color: #FFFFE0;               /* couleur jaune très pâle pour contraster */
                   font-family: 'IM FELL ENGLISH SC', serif;    /* même police que le titre pour cohérence */
@@ -1081,34 +1081,45 @@
 
         /* === III.2.3 Styles spécifiques pour les mentions légales (chargées dans #detailContent) === */
 
-                /* 1) Fond “panneau.jpg” sur tout le panneau (#detailPanel) */
+                /* 1) Fond “panneau.jpg” sur tout le panneau (#detailPanel) ET GESTION DU CENTRAGE/SCROLL */
                 #detailPanel.visible.legal {
                   background-image: url('icons/panneau.jpg');
                   background-size: cover;
                   background-position: center;
                   background-repeat: no-repeat;
+                
+                  /* AJOUTS POUR CENTRER ET GÉRER LE SCROLL DE L'OVERLAY */
+                  display: flex; /* Active Flexbox */
+                  justify-content: center; /* Centre le contenu (#detailContent) horizontalement */
+                  align-items: center; /* Centre le contenu (#detailContent) verticalement */
+                  overflow-y: auto; /* Permet le défilement vertical du panneau si le contenu dépasse */
+                  overflow-x: hidden; /* Empêche le défilement horizontal sur le panneau lui-même */
+                  /* Assurez-vous que #detailPanel a bien height: 100vh; dans sa définition générale */
                 }
                 
-                /* 2) Contenu (#detailContent) en pleine largeur + texte centré */
+                /* 2) Contenu (#detailContent) en pleine largeur + texte aligné à gauche pour lisibilité */
                 #detailPanel.visible.legal #detailContent {
                   background: transparent;
-                  
+                
                   /* On passe en bloc normal pour que les paragraphes fassent 100% de la largeur dispo */
                   display: block;
-                  width: 90vw;            /* ou 100% selon votre besoin */
-                  max-width: 800px;       /* limite pratique pour la lisibilité */
-                  margin: 0 auto;         /* centre horizontalement #detailContent */
-                  
+                  width: 90vw;             /* ou 100% selon votre besoin */
+                  max-width: 800px;        /* limite pratique pour la lisibilité */
+                  margin: 0 auto;          /* centre horizontalement #detailContent */
+                
                   padding: 40px 20px;
                   box-sizing: border-box; /* inclut le padding dans la largeur */
                 
-                  /* Pour empêcher tout débordement horizontal */
+                  /* Pour empêcher tout débordement horizontal (sur le contenu lui-même) */
                   overflow-x: hidden;
+                  /* PAS BESOIN DE overflow-y: auto; ici, car #detailPanel.visible.legal gère déjà le scroll */
                 
                   color: #f0f0f0;
                   font-family: 'Cormorant Garamond', serif;
                   line-height: 1.6;
-                  text-align: center;     /* centre le texte à l’intérieur des <h2>, <p>, etc. */
+                  /* SUPPRIMER OU COMMENTER CECI POUR UNE MEILLEURE LISIBILITÉ DU TEXTE LONG */
+                  /* text-align: center; */
+                  text-align: left; /* Ou laissez le par défaut (left) pour une meilleure lisibilité */
                 }
                 
                 /* 3) Forcer chaque bloc textuel à ne pas dépasser et à se casser correctement */
@@ -1118,13 +1129,18 @@
                 #detailPanel.visible.legal #detailContent li {
                   width: 100%;
                   box-sizing: border-box;
-                  word-break: break-word;  /* découpe les mots trop longs */
-                  margin-bottom: 1rem;     /* espacement standard entre les blocs */
+                  word-break: break-word; /* découpe les mots trop longs */
+                  margin-bottom: 1rem;   /* espacement standard entre les blocs */
+                  /* Si vous avez enlevé text-align: center; sur #detailContent, */
+                  /* vous pouvez ajouter text-align: center; ici pour les h2 SEULEMENT */
+                  /* Ou laissez-les alignés à gauche comme le reste du texte */
                 }
                 
                 /* 4) Titres <h2> en #E6E6FA dans le contexte “mentions légales” */
                 #detailPanel.visible.legal #detailContent h2 {
                   color: #E6E6FA;
+                  /* Vous pouvez remettre text-align: center; ici si vous voulez que SEULS les titres soient centrés */
+                  /* text-align: center; */
                 }
                 
                 /* 5) Liens <a> restent rouges pour cohérence */
