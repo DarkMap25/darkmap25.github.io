@@ -777,25 +777,31 @@
                     // 1) CALCUL DE L’OFFSET À PARTIR DU MARQUEUR
                     const offsetY     = map.getSize().y * 0.20;
                     const currentZoom = map.getZoom();
+
+                if (currentZoom >= 10) {
+                  // 1) on prépare l’action à la fin du zoom arrière
+                  map.once('zoomend', () => {
+                    const markerPoint = map.latLngToContainerPoint(latlng);
+                    const targetPoint = L.point(markerPoint.x, markerPoint.y - offsetY);
+                    const newCenter   = map.containerPointToLatLng(targetPoint);
                 
-                    if (currentZoom >= 10) {
-                      // premier clic depuis zoom ≥ 10 : redescend d'abord à zoom 5
-                      map.setView(map.getCenter(), 5);
+                    // 2) vol animé vers le zoom 10 sur le marqueur décalé
+                    map.flyTo(newCenter, 10, {
+                      animate: true,
+                      duration: 2.5,
+                      easeLinearity: 0.25
+                    });
+                    // 3) ouverture du popup juste après
+                    setTimeout(() => randomMarker.openPopup(), 3000);
+                  });
                 
-                      // une fois le zoom 5 appliqué, on recalcule et on vole
-                      map.once('zoomend', () => {
-                        const markerPoint = map.latLngToContainerPoint(latlng);
-                        const targetPoint = L.point(markerPoint.x, markerPoint.y - offsetY);
-                        const newCenter   = map.containerPointToLatLng(targetPoint);
-                
-                        map.flyTo(newCenter, 10, {
-                          animate: true,
-                          duration: 2.5,
-                          easeLinearity: 0.25
-                        });
-                        setTimeout(() => randomMarker.openPopup(), 3000);
-                      });
-                
+                  // 4) zoom arrière animé vers 5 (déclenche zoomend)
+                  map.setView(map.getCenter(), 5, {
+                    animate: true,
+                    duration: 0.5
+                  });
+                }
+                          
                     } else {
                       // zoom < 10 : on calcule le centre pour le zoom cible (10)
                       const targetZoom  = 10;
