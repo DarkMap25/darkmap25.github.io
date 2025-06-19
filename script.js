@@ -760,86 +760,86 @@
                 };
                 randomControl.addTo(map);
 
-        // V.5 ZOOM bouton 🎲
+// V.5 ZOOM bouton 🎲
 
-                setTimeout(() => {
-                  const btn = document.getElementById("randomButton");
-                  if (!btn) return;
-                
-                  btn.addEventListener("click", () => {
-                    if (!window.allMarkers?.length) return;
-                
-                    const randomIndex = Math.floor(Math.random() * window.allMarkers.length);
-                    const randomMarker = window.allMarkers[randomIndex];
-                    const latlng = randomMarker.getLatLng();
-                
-                    map.closePopup();
-                
-                    // CALCUL DE L’OFFSET À PARTIR DU MARQUEUR (toujours 20% plus bas)
-                    const offsetY = map.getSize().y * 0.20;
-                    const currentZoom = map.getZoom();
-                
-                    // Fonction utilitaire pour calculer le nouveau centre avec l'offset
-                    const calculateOffsetCenter = (markerLatLng, targetZoom) => {
-                      const markerPoint = map.project(markerLatLng, targetZoom);
-                      // Applique l'offset sur l'axe Y (vers le bas, donc on soustrait)
-                      const targetPoint = L.point(markerPoint.x, markerPoint.y - offsetY);
-                      return map.unproject(targetPoint, targetZoom);
-                    };
-                
-                    // Gestionnaire unique pour l'ouverture du popup après la dernière animation
-                    // Nous le définissons ici pour qu'il soit propre et réutilisable.
-                    const openPopupAfterAnimation = () => {
-                        randomMarker.openPopup();
-                        // Optionnel mais recommandé: retirer l'écouteur après utilisation
-                        // pour éviter des déclenchements non voulus si la carte bouge plus tard.
-                        map.off('moveend', openPopupAfterAnimation); 
-                    };
-                
-                    if (currentZoom >= 10) {
-                      // Cas 1: Le zoom actuel est >= 10.
-                      // On dézoom d'abord à 5.
-                      map.flyTo(map.getCenter(), 5, {
-                        animate: true,
-                        duration: 1.0 // **AUGMENTÉ : dézoom un peu plus lent (1 seconde)**
-                      });
-                
-                      // On écoute la fin du DÉZOOM (première animation).
-                      // 'once' garantit que l'écouteur est retiré après le premier déclenchement.
-                      map.once('moveend', () => {
-                        const targetZoom = 10;
-                        // Calcule le centre final avec l'offset pour le rezoom à 10.
-                        const newCenter = calculateOffsetCenter(latlng, targetZoom);
-                
-                        // Deuxième vol : rezoom animé vers 10 sur ce newCenter.
-                        map.flyTo(newCenter, targetZoom, {
-                          animate: true,
-                          duration: 2.5, // Durée pour le rezoom (inchangée)
-                          easeLinearity: 0.25
-                        });
-                
-                        // On écoute la fin du REZOOM (deuxième et dernière animation).
-                        // C'est à ce moment précis que nous voulons ouvrir le popup.
-                        map.once('moveend', openPopupAfterAnimation);
-                      });
-                
-                    } else {
-                      // Cas 2: Le zoom actuel est entre 5 et 9 (moins de 10).
-                      // On vole directement vers le nouveau centre avec le zoom cible de 10.
-                      const targetZoom = 10;
-                      const newCenter = calculateOffsetCenter(latlng, targetZoom);
-                
-                      map.flyTo(newCenter, targetZoom, {
-                        animate: true,
-                        duration: 2.5, // Durée pour le vol direct (inchangée)
-                        easeLinearity: 0.25
-                      });
-                
-                      // On écoute la fin de ce vol unique pour ouvrir le popup.
-                      map.once('moveend', openPopupAfterAnimation);
-                    }
-                  });
-                }, 0);
+setTimeout(() => {
+  const btn = document.getElementById("randomButton");
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    if (!window.allMarkers?.length) return;
+
+    const randomIndex = Math.floor(Math.random() * window.allMarkers.length);
+    const randomMarker = window.allMarkers[randomIndex];
+    const latlng = randomMarker.getLatLng();
+
+    map.closePopup();
+
+    // CALCUL DE L’OFFSET À PARTIR DU MARQUEUR (toujours 20% plus bas)
+    const offsetY = map.getSize().y * 0.20;
+    const currentZoom = map.getZoom();
+
+    // Fonction utilitaire pour calculer le nouveau centre avec l'offset
+    const calculateOffsetCenter = (markerLatLng, targetZoom) => {
+      const markerPoint = map.project(markerLatLng, targetZoom);
+      // Applique l'offset sur l'axe Y (vers le bas, donc on soustrait)
+      const targetPoint = L.point(markerPoint.x, markerPoint.y - offsetY);
+      return map.unproject(targetPoint, targetZoom);
+    };
+
+    // Gestionnaire unique pour l'ouverture du popup après la dernière animation
+    const openPopupAfterAnimation = () => {
+        randomMarker.openPopup();
+        // On retire l'écouteur après utilisation pour éviter des déclenchements non voulus.
+        map.off('moveend', openPopupAfterAnimation);
+    };
+
+    if (currentZoom >= 10) {
+      // Cas 1: Le zoom actuel est >= 10.
+      // On dézoom d'abord à 5.
+      map.flyTo(map.getCenter(), 5, {
+        animate: true,
+        duration: 1.0 // Durée du dézoom
+      });
+
+      // On écoute la fin du DÉZOOM (première animation).
+      map.once('moveend', () => {
+        // Ajouter un petit délai ici pour laisser la carte se stabiliser
+        // avant de lancer la seconde animation.
+        setTimeout(() => {
+          const targetZoom = 10;
+          // Calcule le centre final avec l'offset pour le rezoom à 10.
+          const newCenter = calculateOffsetCenter(latlng, targetZoom);
+
+          // Deuxième vol : rezoom animé vers 10 sur ce newCenter.
+          map.flyTo(newCenter, targetZoom, {
+            animate: true,
+            duration: 2.5, // Durée pour le rezoom
+            easeLinearity: 0.25
+          });
+
+          // On écoute la fin du REZOOM (dernière animation) pour ouvrir le popup.
+          map.once('moveend', openPopupAfterAnimation);
+        }, 300); // **NOUVEAU DELAI : 300 ms (ajustable) entre le dézoom et le rezoom**
+      });
+
+    } else {
+      // Cas 2: Le zoom actuel est entre 5 et 9 (moins de 10).
+      // On vole directement vers le nouveau centre avec le zoom cible de 10.
+      const targetZoom = 10;
+      const newCenter = calculateOffsetCenter(latlng, targetZoom);
+
+      map.flyTo(newCenter, targetZoom, {
+        animate: true,
+        duration: 2.5,
+        easeLinearity: 0.25
+      });
+
+      // On écoute la fin de ce vol unique pour ouvrir le popup.
+      map.once('moveend', openPopupAfterAnimation);
+    }
+  });
+}, 0);
 
         // V.6 BOUTON FERMETURE CENTRALE //
 
