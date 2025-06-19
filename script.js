@@ -760,64 +760,82 @@
                 };
                 randomControl.addTo(map);
 
-        // V.5 ZOOM bouton 🎲 
-                
-                 setTimeout(() => {
+        // V.5 ZOOM bouton 🎲
+
+                setTimeout(() => {
                   const btn = document.getElementById("randomButton");
                   if (!btn) return;
+                
                   btn.addEventListener("click", () => {
                     if (!window.allMarkers?.length) return;
                 
-                    const randomIndex  = Math.floor(Math.random() * window.allMarkers.length);
+                    const randomIndex = Math.floor(Math.random() * window.allMarkers.length);
                     const randomMarker = window.allMarkers[randomIndex];
-                    const latlng       = randomMarker.getLatLng();
+                    const latlng = randomMarker.getLatLng();
                 
                     map.closePopup();
                 
                     // 1) CALCUL DE L’OFFSET À PARTIR DU MARQUEUR
-                    const offsetY     = map.getSize().y * 0.20;
+                    // La ligne suivante calcule la valeur de l'offset. Elle est déjà présente et correcte.
+                    const offsetY = map.getSize().y * 0.20; 
                     const currentZoom = map.getZoom();
-
-                if (currentZoom >= 10) {
-                  // 1) Premier vol : dézoom animé vers 5
-                  map.once('moveend', () => {
-                    // 2) Quand c’est fini, on recalcule newCenter pour ton randomMarker
-                    const markerPoint = map.latLngToContainerPoint(latlng);
-                    const targetPoint = L.point(markerPoint.x, markerPoint.y - offsetY);
-                    const newCenter   = map.containerPointToLatLng(targetPoint);
                 
-                    // 3) Deuxième vol : rezoom animé vers 10 sur ce newCenter
-                    map.once('moveend', () => {
-                      // 4) Et quand ce vol est fini, on ouvre enfin le popup
-                      randomMarker.openPopup();
-                    });
-                    map.flyTo(newCenter, 10, {
-                      animate: true,
-                      duration: 2.5,
-                      easeLinearity: 0.25
-                    });
-                  });
+                    // Fonction utilitaire pour calculer le nouveau centre avec l'offset
+                    const calculateOffsetCenter = (markerLatLng, targetZoom) => {
+                      // Projette les coordonnées lat/lng du marqueur en coordonnées pixel à un zoom donné
+                      const markerPoint = map.project(markerLatLng, targetZoom);
+                      // Applique l'offset sur l'axe Y (vers le bas)
+                      const targetPoint = L.point(markerPoint.x, markerPoint.y - offsetY);
+                      // Convertit les nouvelles coordonnées pixel en coordonnées lat/lng
+                      return map.unproject(targetPoint, targetZoom);
+                    };
                 
-                  // Lancement du premier vol (dézoom)
-                  map.flyTo(map.getCenter(), 5, {
-                    animate: true,
-                    duration: 0.5
-                  });
-                }
-                                                          
-                     else {
-                      // zoom < 10 : on calcule le centre pour le zoom cible (10)
-                      const targetZoom  = 10;
-                      const proj        = map.project(latlng, targetZoom);
-                      const targetPoint = L.point(proj.x, proj.y - offsetY);
-                      const newCenter   = map.unproject(targetPoint, targetZoom);
+                
+                    if (currentZoom >= 10) {
+                      // Cas 1: Le zoom actuel est >= 10
+                      // On dézoom d'abord à 5
+                      map.flyTo(map.getCenter(), 5, {
+                        animate: true,
+                        duration: 0.5 // Durée courte pour le dézoom initial
+                      });
+                
+                      // On écoute la fin du dézoom à 5
+                      map.once('moveend', () => {
+                        const targetZoom = 10;
+                        // Utilise la fonction utilitaire pour calculer le centre avec l'offset pour le rezoom à 10
+                        const newCenter = calculateOffsetCenter(latlng, targetZoom);
+                
+                        // Deuxième vol : rezoom animé vers 10 sur ce newCenter
+                        map.flyTo(newCenter, targetZoom, {
+                          animate: true,
+                          duration: 2.5, // Durée pour le rezoom
+                          easeLinearity: 0.25
+                        });
+                
+                        // On écoute la fin du rezoom pour ouvrir le popup
+                        map.once('moveend', () => {
+                          randomMarker.openPopup();
+                        });
+                      });
+                
+                    } else {
+                      // Cas 2: Le zoom actuel est entre 5 et 9 (moins de 10)
+                      // On vole directement vers le nouveau centre avec le zoom cible de 10
+                
+                      const targetZoom = 10;
+                      // Utilise la fonction utilitaire pour calculer le centre avec l'offset pour le vol direct à 10
+                      const newCenter = calculateOffsetCenter(latlng, targetZoom);
                 
                       map.flyTo(newCenter, targetZoom, {
                         animate: true,
                         duration: 2.5,
                         easeLinearity: 0.25
                       });
-                      setTimeout(() => randomMarker.openPopup(), 3000);
+                
+                      // On écoute la fin du vol pour ouvrir le popup
+                      map.once('moveend', () => {
+                        randomMarker.openPopup();
+                      });
                     }
                   });
                 }, 0);
