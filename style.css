@@ -544,7 +544,7 @@
                   background-position: center;     /* centrage de l’image */
                   background-repeat: no-repeat;    /* pas de répétition */
                   filter: brightness(1.8);         /*  légèrement la luminosité de l’image */
-                  overflow: hidden;                /* le scroll se fera uniquement dans #submitContent */
+                  overflow-y: auto;                
                   z-index: 10000;                  /* au-dessus de tous les autres éléments */
                   display: none;                   /* invisible tant que la classe .visible n’est pas appliquée */
                 }
@@ -602,10 +602,6 @@
                 
                 /* 6) Zone interne scrollable (#submitContent) : commence juste sous le titre */
                 #submitContent {
-                  position: absolute;            /* positionné par rapport à #submitPanel */
-                  bottom: 0;                     /* s’étire jusqu’en bas de l’overlay */
-                  left: 0;                       /* aligné à gauche */
-                  right: 0;                      /* aligné à droite */
                   overflow-y: auto;              /* scroll vertical si le contenu dépasse */
                   padding: 1rem;                 /* espace intérieur pour le contenu du formulaire */
                   padding-top: 10rem;
