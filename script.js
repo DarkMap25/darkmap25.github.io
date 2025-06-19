@@ -171,7 +171,7 @@
                         return marker;
                   }
 
-        // II.2.4 Chargement du fichier lieux.json et création des marqueurs
+        // II.2.5 Chargement du fichier lieux.json et création des marqueurs
         
                   fetch('lieux.json')
                     .then(response => response.json())
@@ -190,10 +190,10 @@
                     const group = L.featureGroup(markers);
                     group.addTo(map);
                     map.fitBounds(group.getBounds());
-                    });
+                    })
                     .catch(error => console.error('Erreur lors du chargement des lieux :', error));
 
-        // II.2.5 Création de la légende emoji
+        // II.2.6 Création de la légende emoji
         
                   function createLegend() {
                     const legend = L.control({ position: 'bottomleft' });
