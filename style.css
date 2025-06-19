@@ -571,7 +571,6 @@
 
                 /* 4) Style du <h1> dans le header : placé en haut, centré, avec l’ombre de texte */
                 #submitPanel header h1 {
-                  margin: 1rem 0 0;             /* espace de 1rem au-dessus pour respirer */
                   font-size: var(--header-h1-font-size);    /* taille dynamique définie par une variable CSS */
                   font-family: 'IM FELL ENGLISH SC', serif; /* police serif immersive de DarkMap */
                   font-weight: 900;             /* texte très gras */
@@ -588,7 +587,7 @@
                 /* 5) Style de la tagline sous le <h1> : texte secondaire centré avec ombre rouge */
                 #submitPanel header .tagline {
                   display: block;               /* affichage en bloc pour prendre toute la largeur disponible */
-                  margin: 0.5rem 0 1rem;        /* 0.5rem au-dessus, 1rem en dessous pour la séparation */
+                  margin: 0 0 1rem;             /* 1rem en dessous pour la séparation */
                   font-size: var(--header-tagline-font-size); /* taille dynamique définie par une variable CSS */
                   color: #FFFFE0;               /* couleur jaune très pâle pour contraster */
                   font-family: 'IM FELL ENGLISH SC', serif;    /* même police que le titre pour cohérence */
