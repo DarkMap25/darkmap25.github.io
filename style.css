@@ -1337,19 +1337,14 @@
   /* Réduction de l’espacement entre questions et champs de réponse */
   #submitContent .form-grid {
     grid-template-columns: 1fr !important;  /* une seule colonne */
-    grid-gap: 1rem !important;              /* espace réduit entre blocs */
+    grid-gap: 0.5rem !important;              /* espace réduit entre blocs */
   }
   #submitContent .form-group {
     display: flex;               /* empile les éléments */
     flex-direction: column;      /* question puis champ */
-    gap: 0.3em !important;       /* espacement précis entre <p> et input/textarea */
+    gap: 0.5em !important;       /* espacement précis entre <p> et input/textarea */
   }
-  #submitContent .ask-submit {
-    margin: 0.1em 0 !important;  /* moins d’espace au-dessus et en dessous */
-  }
-  #submitContent .form-input {
-    margin-bottom: 0.4em !important;  /* petit écart sous le champ */
-  }
+
 
                 /* 1) Centrage avec marge de 5 vw de chaque côté */
                   #detailPanel.full-view {
