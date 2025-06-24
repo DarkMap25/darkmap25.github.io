@@ -1275,7 +1275,8 @@
                         
                   .custom-popup .leaflet-popup-content-wrapper {
                     /* On fixe une hauteur max plus petite (ici 50% de la hauteur de l’écran) */
-                    max-height: 30vh !important;
+                    max-height: 35vh !important;
+                    overflow: hidden !important;
                   }
                         
                         /* Réduction de 30 % de la taille du titre “Voir plus” (h2 dans #detailPanel) */
