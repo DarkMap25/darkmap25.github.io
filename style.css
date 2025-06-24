@@ -699,8 +699,30 @@
                   color: #aaa;   /* gris clair pour le placeholder */
                   opacity: 1;    /* opacité maximale pour une meilleure lisibilité */
                 }
+
+                /* 9) panneau déroulant */
+                #submitContent select.form-input {
+                  background-color: rgba(230, 0, 0, 0.8); /* fond rouge semi-transparent DarkMap */
+                  color: #FFFFE0;                         /* texte jaune très pâle pour le contraste */
+                  border: none;                           /* suppression de la bordure par défaut */
+                  box-shadow: 0 0 20px #e60000;           /* halo lumineux rouge autour du champ */
+                  border-radius: 8px;                     /* coins arrondis */
+                  padding: 0.5em 1em;                     /* espacement intérieur confortable */
+                  width: 90%;               /* occupe 90 % de la largeur pour laisser 5 % de marge de chaque côté */
+                  margin: 0 auto;           /* centrage horizontal automatique */
+                  box-sizing: border-box;   /* inclut le padding dans le calcul de la largeur */          
+                        /*  On masque la flèche native pour pouvoir la customiser si besoin */
+                  -webkit-appearance: none;
+                  -moz-appearance: none;
+                  appearance: none;
+                }
                 
-                /* 9) Style pour le bouton “Suggérer ce lieu” : fond rouge, texte immersif, halo extérieur */
+                /*   On stylise les <option> du menu pour conserver le même thème sombre */
+                #submitContent select.form-input option {
+                  background-color: rgba(0, 0, 0, 0.8); /* fond sombre semi-transparent */
+                  color: #FFFFE0;                       /* texte clair */
+                }
+                /* 10) Style pour le bouton “Suggérer ce lieu” : fond rouge, texte immersif, halo extérieur */
                 .suggest-button {
                   /* a) Texte du bouton */
                   font-family: 'IM FELL ENGLISH SC', serif;  /* même police immersive que le reste */
@@ -729,21 +751,21 @@
                   box-sizing: border-box;       /* inclut padding et bordure dans les dimensions */
                 }
                 
-                /* 10) Effet hover pour le bouton .suggest-button : grossissement et fond plus sombre */
+                /* 11) Effet hover pour le bouton .suggest-button : grossissement et fond plus sombre */
                 .suggest-button:hover {
                   transform: scale(1.3);             /* agrandissement à 130% */
                   background-color: #cc0000;         /* rouge un peu plus foncé au survol */
                   box-shadow: 0 0 60px rgba(230, 0, 0, 0.9); /* halo beige renforcé */
                 }
                 
-                /* 11) Forcer html et body en plein écran sans marges ni scroll global */
+                /* 12) Forcer html et body en plein écran sans marges ni scroll global */
                 html, body {
                   margin: 0;                    /* suppression des marges par défaut */
                   padding: 0;                   /* suppression des paddings par défaut */
                   height: 100vh;                /* hauteur de la fenêtre pour tout l’écran */
                 }
                 
-                /* 12) Responsive : passe en 1 colonne sous 768px pour la grille du formulaire */
+                /* 13) Responsive : passe en 1 colonne sous 768px pour la grille du formulaire */
                 @media (max-width: 768px) {
                   .form-grid {
                     grid-template-columns: 1fr; /* une seule colonne */
@@ -834,17 +856,6 @@
                   background-color: #cc0000;          /* rouge un peu plus foncé au survol */
                   box-shadow: 0 0 60px rgba(230, 0, 0, 0.9); /* halo rouge renforcé */
                 }
-
-        /* === II.4.4 CORRECTIONS SOUMETTRE === */
-
-                /* 1) Forcer html/body en plein écran sans marges ni scroll global */
-                html, body {
-                  margin: 0;
-                  padding: 0;
-                  height: 100vh;
-                  overflow: hidden;
-                }
-
 
 
 /* === PARTIE III / PERSONNALISATION BOUTONS / STYLES === */
