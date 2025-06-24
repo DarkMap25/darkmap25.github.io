@@ -1272,8 +1272,13 @@
                   .custom-popup .leaflet-popup-content strong {
                     font-size: calc(1.5em * 0.7); /* passe de 1.5em à ≃1.05em */
                   }
-                
-                  /* Réduction de 30 % de la taille du titre “Voir plus” (h2 dans #detailPanel) */
+                        
+                  .custom-popup .leaflet-popup-content-wrapper {
+                    /* On fixe une hauteur max plus petite (ici 50% de la hauteur de l’écran) */
+                    max-height: 30vh !important;
+                  }
+                        
+                        /* Réduction de 30 % de la taille du titre “Voir plus” (h2 dans #detailPanel) */
                   #detailPanel .panel-header h2 {
                     font-size: calc(3em * 0.7); /* passe de 3em à ≃2.1em */
                   }
