@@ -1350,8 +1350,7 @@
                 
                 /* 1) Titre principal (<h2>) : passe de 3em à 2.4em (–20 %) */
                   #detailPanel .panel-header h2 {
-                    font-size: 2.4em !important;
-                    margin-bottom: 1.2rem !important; /* si vous voulez aussi ajuster l’espacement */
+                    font-size: 1.4em !important;
                   }
                 
                   /* 2) Texte général du panneau (le conteneur flex) : passe de 1.2em à 0.96em (–20 %) */
