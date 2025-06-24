@@ -602,7 +602,7 @@
                 #submitContent {
                   overflow-y: auto;              /* scroll vertical si le contenu dépasse */
                   padding: 1rem;                 /* espace intérieur pour le contenu du formulaire */
-                  padding-top: 10rem;
+                  padding-top: 12rem;
                 }
                 
                 /* 7) Si #submitContent contenait un <header> interne, on neutralise sa hauteur par défaut */
@@ -1197,7 +1197,7 @@
                             background-color: #000;          /* Exemple : fond noir */
                             border-radius: 6px;              /* Conserve les coins arrondis */
                             overflow-y: auto;               /* Permettre le scroll interne si besoin */
-                            max-width: 60vw !important;     /* Limiter la largeur à 50% de la largeur de l’écran */
+                            max-width: 60vw !important;     /* Limiter la largeur à 60% de la largeur de l’écran */
                             width: auto !important;   
                           }
                         
