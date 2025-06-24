@@ -607,7 +607,7 @@
                 
                 /* 7) Si #submitContent contenait un <header> interne, on neutralise sa hauteur par défaut */
                 #submitContent header {
-                  height: auto !important;       /* annule toute hauteur forcée */
+                  height: auto !important;        /* annule toute hauteur forcée */
                   margin: 0;                      /* suppression des marges */
                   padding: 0;                     /* suppression des paddings */
                   background: transparent;        /* fond transparent pour laisser voir le scroll */
@@ -702,13 +702,13 @@
 
                 /* 9) panneau déroulant */
                 #submitContent select.form-input {
-                  background-color: rgba(230, 0, 0, 0.8); /* fond rouge semi-transparent DarkMap */
+                  background-color: #000
                   color: #FFFFE0;                         /* texte jaune très pâle pour le contraste */
-                  border: none;                           /* suppression de la bordure par défaut */
-                  box-shadow: 0 0 20px #e60000;           /* halo lumineux rouge autour du champ */
+                  border-box: none;                           /* suppression de la bordure par défaut */
+                  box-shadow: 0 0 50px #e60000;           /* halo lumineux rouge autour du champ */
                   border-radius: 8px;                     /* coins arrondis */
                   padding: 0.5em 1em;                     /* espacement intérieur confortable */
-                  width: 90%;               /* occupe 90 % de la largeur pour laisser 5 % de marge de chaque côté */
+                  width: 80%;               /* occupe 90 % de la largeur pour laisser 5 % de marge de chaque côté */
                   margin: 0 auto;           /* centrage horizontal automatique */
                   box-sizing: border-box;   /* inclut le padding dans le calcul de la largeur */          
                         /*  On masque la flèche native pour pouvoir la customiser si besoin */
