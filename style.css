@@ -1273,12 +1273,20 @@
                     font-size: calc(1.5em * 0.7); /* passe de 1.5em à ≃1.05em */
                   }
                         
+                   /* 1) On libère le wrapper pour qu’il n’occulte pas la barre de défilement */
                   .custom-popup .leaflet-popup-content-wrapper {
-                    /* On fixe une hauteur max plus petite (ici 50% de la hauteur de l’écran) */
-                    max-height: 35vh !important;
-                    overflow: hidden !important;
+                    max-height: 35vh !important;      /* on conserve la hauteur maxi voulue */
+                    overflow: visible !important;     /* on ne cache plus rien, y compris la scrollbar */
                   }
-                        
+                
+                  /* 2) On impose le scroll interne sur le contenu pour tout rendre accessible */
+                  .custom-popup .leaflet-popup-content {
+                    max-height: 35vh !important;      /* même hauteur maxi que le wrapper */
+                    overflow-y: auto !important;      /* scrollbar verticale activée */
+                    box-sizing: border-box;           /* padding inclus dans la hauteur */
+                    word-wrap: break-word;            /* coupe les mots trop longs */
+                  }                        
+                             
                         /* Réduction de 30 % de la taille du titre “Voir plus” (h2 dans #detailPanel) */
                   #detailPanel .panel-header h2 {
                     font-size: calc(3em * 0.7); /* passe de 3em à ≃2.1em */
