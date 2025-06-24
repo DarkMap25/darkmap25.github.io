@@ -1309,31 +1309,47 @@
                     font-size: calc(2rem * 0.7); /* passe de 2rem à ≃1.4rem */
                   }
                 
-                  /* === ADAPTATIONS DU PANNEAU “Soumettre” === */
-                
-                  /* Réduction générale de 20 % de tous les éléments du formulaire */
-                  #submitPanel.visible header h1,
-                  #submitPanel.visible header .tagline,
-                  #submitPanel.visible .ask-submit,
-                  #submitContent input.form-input,
-                  #submitContent textarea.form-input,
-                  #submitContent .form-submit-button {
-                    transform: scale(0.8);            /* réduction à 80 % */
-                    transform-origin: top center;      /* échelle depuis le centre supérieur */
-                  }
-                
-                  /* Marges latérales égales dans le contenu scrollable “Soumettre” */
-                  #submitContent {
-                    padding-left: 5vw;                 /* même marge à gauche */
-                    padding-right: 5vw;                /* même marge à droite */
-                  }
-                
-                  /* Assure le retour à la ligne automatique et la lisibilité du texte */
-                  #submitContent,
-                  #submitContent * {
-                    word-wrap: break-word;             /* coupe les mots trop longs */
-                    white-space: normal;               /* autorise les retours à la ligne */
-                  }
+                 /* === ADAPTATIONS DU PANNEAU “Soumettre” === */
+  /* Réduction générale de 20 % de tous les éléments du formulaire */
+  #submitPanel.visible header h1,
+  #submitPanel.visible header .tagline,
+  #submitPanel.visible .ask-submit,
+  #submitContent input.form-input,
+  #submitContent textarea.form-input,
+  #submitContent .form-submit-button {
+    transform: scale(0.8);            /* réduction à 80 % */
+    transform-origin: top center;      /* échelle depuis le centre supérieur */
+  }
+
+  /* Marges latérales égales dans le contenu scrollable “Soumettre” */
+  #submitContent {
+    padding-left: 5vw;                 /* même marge à gauche */
+    padding-right: 5vw;                /* même marge à droite */
+  }
+
+  /* Assure le retour à la ligne automatique et la lisibilité du texte */
+  #submitContent,
+  #submitContent * {
+    word-wrap: break-word;             /* coupe les mots trop longs */
+    white-space: normal;               /* autorise les retours à la ligne */
+  }
+
+  /* Réduction de l’espacement entre questions et champs de réponse */
+  #submitContent .form-grid {
+    grid-template-columns: 1fr !important;  /* une seule colonne */
+    grid-gap: 1rem !important;              /* espace réduit entre blocs */
+  }
+  #submitContent .form-group {
+    display: flex;               /* empile les éléments */
+    flex-direction: column;      /* question puis champ */
+    gap: 0.3em !important;       /* espacement précis entre <p> et input/textarea */
+  }
+  #submitContent .ask-submit {
+    margin: 0.1em 0 !important;  /* moins d’espace au-dessus et en dessous */
+  }
+  #submitContent .form-input {
+    margin-bottom: 0.4em !important;  /* petit écart sous le champ */
+  }
 
                 /* 1) Centrage avec marge de 5 vw de chaque côté */
                   #detailPanel.full-view {
