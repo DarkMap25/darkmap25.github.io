@@ -1251,7 +1251,65 @@
                     font-size: 0.6em; /* passe de 0.8em à 0.6em */
                   }
                 }
-                                
+
+        /* IV.2  ≤ 450px  */
+
+                @media (max-width: 450px) {
+                
+                  /* Réduction de 30 % de la taille du titre dans les pop-ups Leaflet */
+                  .custom-popup .leaflet-popup-content strong {
+                    font-size: calc(1.5em * 0.7); /* passe de 1.5em à ≃1.05em */
+                  }
+                
+                  /* Réduction de 30 % de la taille du titre “Voir plus” (h2 dans #detailPanel) */
+                  #detailPanel .panel-header h2 {
+                    font-size: calc(3em * 0.7); /* passe de 3em à ≃2.1em */
+                  }
+                
+                  /* Marges latérales égales et centrage du contenu “Voir plus” */
+                  /* padding 5 vw de chaque côté pour un centrage fluide */
+                  #detailPanel.full-view {
+                    padding-left: 5vw;
+                    padding-right: 5vw;
+                  }
+                
+                  /* Empêche l’effet “rebond” lors du scroll jusqu’en bas du panneau */
+                  #detailPanel.visible {
+                    overscroll-behavior: contain;
+                  }
+                
+                  /* Réduction de 30 % de la taille du bouton croix globale */
+                  .overlay-close {
+                    font-size: calc(2rem * 0.7); /* passe de 2rem à ≃1.4rem */
+                  }
+                
+                  /* === ADAPTATIONS DU PANNEAU “Soumettre” === */
+                
+                  /* Réduction générale de 20 % de tous les éléments du formulaire */
+                  #submitPanel.visible header h1,
+                  #submitPanel.visible header .tagline,
+                  #submitPanel.visible .ask-submit,
+                  #submitContent input.form-input,
+                  #submitContent textarea.form-input,
+                  #submitContent .form-submit-button {
+                    transform: scale(0.8);            /* réduction à 80 % */
+                    transform-origin: top center;      /* échelle depuis le centre supérieur */
+                  }
+                
+                  /* Marges latérales égales dans le contenu scrollable “Soumettre” */
+                  #submitContent {
+                    padding-left: 5vw;                 /* même marge à gauche */
+                    padding-right: 5vw;                /* même marge à droite */
+                  }
+                
+                  /* Assure le retour à la ligne automatique et la lisibilité du texte */
+                  #submitContent,
+                  #submitContent * {
+                    word-wrap: break-word;             /* coupe les mots trop longs */
+                    white-space: normal;               /* autorise les retours à la ligne */
+                  }
+                }
+                                                
         /* === IV.3 Surcharge de carte réglée en dernier pour prendre le pas === */
 
               body > #map {
