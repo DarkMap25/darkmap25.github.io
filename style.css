@@ -34,6 +34,7 @@
                 background-repeat: no-repeat; /* L'image ne se répète pas */
                 background-attachment: scroll; /* Le fond défile avec la page (plus compatible mobile) */
                 position: relative; /* Positionnement pour le calque noir transparent */
+                overflow-x: hidden;
               }
 
         /* === I.1.2 Calque noir transparent par-dessus l'image === */
@@ -702,7 +703,7 @@
 
                 /* 9) panneau déroulant */
                 #submitContent select.form-input {
-                  background-color: #000
+                  background-color: #000;
                   color: #FFFFE0;                         /* texte jaune très pâle pour le contraste */
                   border-box: none;                           /* suppression de la bordure par défaut */
                   box-shadow: 0 0 50px #e60000;           /* halo lumineux rouge autour du champ */
