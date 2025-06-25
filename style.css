@@ -1464,8 +1464,14 @@
   .leaflet-control-container .leaflet-bar {
     display: flex !important;         /* transforme la pile en ligne (ou colonne) */
     flex-direction: column;           /* ou row si vous voulez horizontal */
-    gap: 0.3em !important;            /* espace uniforme entre TOUS les boutons */
   }
+          /* Pour les contrôles qui ne sont pas dans .leaflet-bar, on applique une marge */
+  .leaflet-control-locate,       /* bouton de géolocalisation */
+  .submit-story-control,         /* bouton “Soumettre” */
+  #randomButton,                 /* bouton “Histoire Aléatoire” */
+  #fullscreenButton {            /* bouton plein écran */
+    margin-bottom: 0.3em !important;  /* réduit l’espace sous chaque bouton */
+  }        
         
   /* 4) LÉGENDE LEAFLET */
   /* ------------------ */
