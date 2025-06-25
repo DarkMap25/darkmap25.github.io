@@ -537,7 +537,6 @@
                   position: fixed;         /* position au-dessus de tout le contenu */
                   top: 0;                  /* aligné en haut de la fenêtre */
                   left: 0;                 /* aligné à gauche de la fenêtre */
-                  margin-left: 1em;
                   width: 100vw;            /* largeur = largeur de la fenêtre */
                   height: 100vh;           /* hauteur = hauteur de la fenêtre */
                   /* Chargement de l’image de fond submit.jpg depuis le dossier icons (style.css à la racine) */
@@ -602,7 +601,10 @@
                 #submitContent {
                  position: relative;
                  overflow-y: auto;              /* scroll vertical si le contenu dépasse */
-                }
+                 padding-left: 1em !important;           /* espace interne à gauche */
+                 padding-right: 1em !important;          /* espace interne à droite */
+                 box-sizing: border-box; 
+                                }
                 
                 /* 7) Si #submitContent contenait un <header> interne, on neutralise sa hauteur par défaut */
                 #submitContent header {
