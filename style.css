@@ -601,9 +601,8 @@
                 
                 /* 6) Zone interne scrollable (#submitContent) : commence juste sous le titre */
                 #submitContent {
-                  overflow-y: auto;              /* scroll vertical si le contenu dépasse */
-                  padding: 1rem;                 /* espace intérieur pour le contenu du formulaire */
-                  padding-top: 12rem;
+                 position: relative;
+                 overflow-y: auto;              /* scroll vertical si le contenu dépasse */
                 }
                 
                 /* 7) Si #submitContent contenait un <header> interne, on neutralise sa hauteur par défaut */
