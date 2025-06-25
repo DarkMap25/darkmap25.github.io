@@ -707,12 +707,13 @@
                   font-family: 'IM FELL ENGLISH SC', serif;
                   font-size: 1.2em;
                   line-height: 1.0;
-                  color: #FFFFE0;               /* texte jaune très pâle pour contraste */
+                  color: #FEEE0;               /* texte jaune très pâle pour contraste */
                   margin: 0;                    /* suppression des marges par défaut */
                   text-shadow:
                     0 0 4px rgba(230, 0, 0, 0.8),  /* halo rouge vif diffus */
-                    1px 1px 0 rgba(230, 0, 0, 1);   /* ombre rouge nette */                
-                
+                    1px 1px 0 rgba(230, 0, 0, 1);   /* ombre rouge nette */  
+                  background-color: #000;
+                        
                   /* c) bordure rouge vive + halo */
                   border: 1px solid #e60000 !important;
                   box-shadow: 0 0 50px #e60000;
@@ -732,18 +733,7 @@
                   -moz-appearance: none;
                   appearance: none;
                 }
-                
-                /* g) options dans le panneau déroulant */
-                #submitContent select.form-input option {
-                  background: #000;
-                  font-family: 'IM FELL ENGLISH SC', serif;
-                  font-size: 1.2em;
-                  line-height: 1.0;
-                  color: #FFFFE0;               /* texte jaune très pâle pour contraste */
-                  margin: 0;                    /* suppression des marges par défaut */
-                  text-shadow:
-                    0 0 4px rgba(230, 0, 0, 0.8),  /* halo rouge vif diffus */
-                    1px 1px 0 rgba(230, 0, 0, 1);   /* ombre rouge nette */                  }
+                                
 
                 /* 10) Style pour le bouton “Suggérer ce lieu” : fond rouge, texte immersif, halo extérieur */
                 .suggest-button {
