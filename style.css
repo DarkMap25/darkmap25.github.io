@@ -1406,6 +1406,57 @@
                   }
                 }
 
+/* === ADAPTATIONS POUR ÉCRANS < 375px === */
+@media (max-width: 375px) {
+
+  /* 1) HEADER PRINCIPAL & OVERLAY “La carte de France, version Dark.” */
+  /* --------------------------------------------------------------- */
+  /* Réduction de 20 % du titre principal en <header> */
+  header h1 {
+    font-size: calc(var(--header-h1-font-size) * 0.8) !important;
+  }
+  /* Réduction de 20 % de la tagline sous le titre */
+  header .tagline {
+    font-size: calc(var(--header-tagline-font-size) * 0.8) !important;
+  }
+  /* Réduction de 20 % du titre statique “darkmap” dans l’overlay */
+  .overlay-header-container .static-title {
+    font-size: calc(var(--header-h1-font-size) * 0.8) !important;
+  }
+  /* Réduction de 20 % du texte animé “La carte de France…” */
+  #overlay-text {
+    font-size: calc(var(--header-tagline-font-size) * 0.8) !important;
+  }
+
+  /* 2) POP-UP LEAFLET — HAUTEUR MAXIMALE */
+  /* ----------------------------------- */
+  /* On passe de 35vh à 30vh pour que la popup rentre mieux */
+  .custom-popup .leaflet-popup-content-wrapper {
+    max-height: 30vh !important;
+  }
+
+  /* 3) CONTRÔLES LEAFLET — ZOOM, LOCALISATION, SOUMETTRE, PLEIN ÉCRAN, DÉS */
+  /* --------------------------------------------------------------------- */
+  /* On réduit de 20 % tous les boutons situés sur la carte */
+  .leaflet-control-zoom-in,
+  .leaflet-control-zoom-out,
+  .leaflet-control-locate a,
+  .leaflet-control-layers-toggle,
+  .submit-story-control,
+  #fullscreenButton {
+    transform: scale(0.8);
+    transform-origin: center center;
+  }
+
+  /* 4) LÉGENDE LEAFLET */
+  /* ------------------ */
+  /* On réduit la légende entière de 20 % */
+  .info.legend {
+    transform: scale(0.8);
+    transform-origin: bottom left;
+  }
+}
+
         /* === IV.3 Surcharge de carte réglée en dernier pour prendre le pas === */
 
               body > #map {
