@@ -1352,8 +1352,8 @@
                     position: sticky;      /* reste collé en haut quand on scroll */
                     top: 0;                /* positionné tout en haut du panneau */
                     z-index: 100;          /* au-dessus de tout le contenu défilant */
-                    background-color: #000;/* fond noir pour masquer ce qu'il y a dessous */
-                  }
+                    margin: 0 !important;                /* annule toute marge haut/bas */
+              }
                 
                   /* Contexte de position pour que le header soit au-dessus */
                   #submitContent {
