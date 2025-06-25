@@ -1311,7 +1311,7 @@
                
                         /* === RÉDUCTION DE 20 % DES EMOJIS DANS LA LÉGENDE === */
                 .info.legend .legend-item .emoji {
-                  font-size: 12px;    
+                  font-size: 8px;    
                 }
  
   /* Soumettre  */
