@@ -703,37 +703,27 @@
 
                 /* 9) panneau déroulant “Choisissez une catégorie” */
                 #submitContent select.form-input {
-                  /* a) même typo et taille que tes autres .form-input */
                   font-family: 'IM FELL ENGLISH SC', serif;
                   font-size: 1.2em;
                   line-height: 1.0;
-                  color: #FEEE0;               /* texte jaune très pâle pour contraste */
-                  margin: 0;                    /* suppression des marges par défaut */
-                  text-shadow:
-                    0 0 4px rgba(230, 0, 0, 0.8),  /* halo rouge vif diffus */
-                    1px 1px 0 rgba(230, 0, 0, 1);   /* ombre rouge nette */  
-                  background-color: #000;
-                        
-                  /* c) bordure rouge vive + halo */
-                  border: 1px solid #e60000 !important;
+                  color: #FFFFE0 !important;               /* jaune très pâle valide */
+                  background-color: #000 !important;       /* fond noir */
+                  border: 1px solid #e60000 !important;    /* liseré rouge */
                   box-shadow: 0 0 50px #e60000;
-                
-                  /* d) coins arrondis et dimension identiques */
                   border-radius: 8px;
-                  width: 80%;                      /* même que tes inputs */
-                  max-width: 6000px;
-                  height: 1.5em;                   /* même hauteur de base que les <input> */
-                
-                  /* e) espace intérieur pour le texte + éviter tout débordement */
-                  padding: 0 0.5em;                
+                  width: 80%;
+                  padding: 0.5em 1em;
                   box-sizing: border-box;
-                
-                  /* f) masquer la flèche native pour pouvoir customiser */
                   -webkit-appearance: none;
                   -moz-appearance: none;
                   appearance: none;
                 }
-                                
+                
+                /* on cible aussi chaque option pour qu’elles héritent bien de la couleur */
+                #submitContent select.form-input option {
+                  color: #FFFFE0 !important;               /* même jaune très pâle */
+                  background-color: rgba(0, 0, 0, 0.8);
+                }            
 
                 /* 10) Style pour le bouton “Suggérer ce lieu” : fond rouge, texte immersif, halo extérieur */
                 .suggest-button {
