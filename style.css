@@ -705,12 +705,13 @@
                 #submitContent select.form-input {
                   /* a) même typo et taille que tes autres .form-input */
                   font-family: 'IM FELL ENGLISH SC', serif;
-                  font-size: 1.5em;
+                  font-size: 1.2em;
                   line-height: 1.0;
-                
-                  /* b) texte et fond */
-                  color: #FFFFE0;                  /* jaune très pâle */
-                  background: rgba(0, 0, 0, 0.8);  /* fond sombre semi-transparent */
+                  color: #FFFFE0;               /* texte jaune très pâle pour contraste */
+                  margin: 0;                    /* suppression des marges par défaut */
+                  text-shadow:
+                    0 0 4px rgba(230, 0, 0, 0.8),  /* halo rouge vif diffus */
+                    1px 1px 0 rgba(230, 0, 0, 1);   /* ombre rouge nette */                
                 
                   /* c) bordure rouge vive + halo */
                   border: 1px solid #e60000 !important;
@@ -734,9 +735,15 @@
                 
                 /* g) options dans le panneau déroulant */
                 #submitContent select.form-input option {
-                  background: rgba(0, 0, 0, 0.8);  /* même fond sombre semi-transparent */
-                  color: #FFFFE0;                  /* texte jaune très pâle */
-                }
+                  background: #000;
+                  font-family: 'IM FELL ENGLISH SC', serif;
+                  font-size: 1.2em;
+                  line-height: 1.0;
+                  color: #FFFFE0;               /* texte jaune très pâle pour contraste */
+                  margin: 0;                    /* suppression des marges par défaut */
+                  text-shadow:
+                    0 0 4px rgba(230, 0, 0, 0.8),  /* halo rouge vif diffus */
+                    1px 1px 0 rgba(230, 0, 0, 1);   /* ombre rouge nette */                  }
 
                 /* 10) Style pour le bouton “Suggérer ce lieu” : fond rouge, texte immersif, halo extérieur */
                 .suggest-button {
