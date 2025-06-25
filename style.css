@@ -701,28 +701,43 @@
                   opacity: 1;    /* opacité maximale pour une meilleure lisibilité */
                 }
 
-                /* 9) panneau déroulant */
+                /* 9) panneau déroulant “Choisissez une catégorie” */
                 #submitContent select.form-input {
-                  background-color: #000;
-                  color: #FFFFE0;                         /* texte jaune très pâle pour le contraste */
-                  border-box: none;                           /* suppression de la bordure par défaut */
-                  box-shadow: 0 0 50px #e60000;           /* halo lumineux rouge autour du champ */
-                  border-radius: 8px;                     /* coins arrondis */
-                  padding: 0.5em 1em;                     /* espacement intérieur confortable */
-                  width: 80%;               /* occupe 90 % de la largeur pour laisser 5 % de marge de chaque côté */
-                  margin: 0 auto;           /* centrage horizontal automatique */
-                  box-sizing: border-box;   /* inclut le padding dans le calcul de la largeur */          
-                        /*  On masque la flèche native pour pouvoir la customiser si besoin */
+                  /* a) même typo et taille que tes autres .form-input */
+                  font-family: 'IM FELL ENGLISH SC', serif;
+                  font-size: 1.5em;
+                  line-height: 1.0;
+                
+                  /* b) texte et fond */
+                  color: #FFFFE0;                  /* jaune très pâle */
+                  background: rgba(0, 0, 0, 0.8);  /* fond sombre semi-transparent */
+                
+                  /* c) bordure rouge vive + halo */
+                  border: 1px solid #e60000 !important;
+                  box-shadow: 0 0 50px #e60000;
+                
+                  /* d) coins arrondis et dimension identiques */
+                  border-radius: 8px;
+                  width: 80%;                      /* même que tes inputs */
+                  max-width: 6000px;
+                  height: 1.5em;                   /* même hauteur de base que les <input> */
+                
+                  /* e) espace intérieur pour le texte + éviter tout débordement */
+                  padding: 0 0.5em;                
+                  box-sizing: border-box;
+                
+                  /* f) masquer la flèche native pour pouvoir customiser */
                   -webkit-appearance: none;
                   -moz-appearance: none;
                   appearance: none;
                 }
                 
-                /*   On stylise les <option> du menu pour conserver le même thème sombre */
+                /* g) options dans le panneau déroulant */
                 #submitContent select.form-input option {
-                  background-color: rgba(0, 0, 0, 0.8); /* fond sombre semi-transparent */
-                  color: #FFFFE0;                       /* texte clair */
+                  background: rgba(0, 0, 0, 0.8);  /* même fond sombre semi-transparent */
+                  color: #FFFFE0;                  /* texte jaune très pâle */
                 }
+
                 /* 10) Style pour le bouton “Suggérer ce lieu” : fond rouge, texte immersif, halo extérieur */
                 .suggest-button {
                   /* a) Texte du bouton */
