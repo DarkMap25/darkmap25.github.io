@@ -769,12 +769,6 @@
                             grid-template-columns: 1fr !important;  /* une seule colonne */
                             grid-gap: 1rem !important;              /* réduit le gap de 1.5rem → 1rem */
                           }
-                        
-                          .form-group {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 0.3em !important;                  /* espace réduit entre question et champ */
-                          }
                         }
 
         /* === II.4.2 Styles généraux pour les champs <input> et <textarea> de classe .form-input === */
@@ -1368,7 +1362,14 @@
                   #submitContent {
                     position: relative;
                   }
-
+                          #submitContent .ask-submit {
+                    margin: 0.1em 0 !important;       /* réduire ou carrément 0 si tu veux */
+                  }
+                          #submitContent .form-input {
+                    margin-top: 0.2em !important;    /* espace serré entre question et champ */
+                    margin-bottom: 0 !important;     /* supprime l’espace sous le champ si besoin */
+                  }     
+                        
                 /* 1) Centrage avec marge de 5 vw de chaque côté */
                   #detailPanel.full-view {
                     padding-left: 2vw !important;
