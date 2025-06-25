@@ -1442,7 +1442,6 @@
     max-height: 33vh !important;     /* même hauteur max que le wrapper */
     overflow-y: auto !important;     /* scrollbar verticale activée */
     box-sizing: border-box;          /* padding inclus dans la hauteur */
-    padding: 0.5em 1em;              /* confort de lecture */
     word-wrap: break-word;           /* coupe les mots trop longs */
     white-space: normal;             /* autorise les retours à la ligne */
   }
