@@ -704,7 +704,7 @@
                 /* 9) panneau déroulant “Choisissez une catégorie” */
                 #submitContent select.form-input {
                   font-family: 'IM FELL ENGLISH SC', serif;
-                  font-size: 1.2em;
+                  font-size: 1em;
                   line-height: 1.0;
                   color: #FFFFE0 !important;               /* jaune très pâle valide */
                   background-color: #000 !important;       /* fond noir */
