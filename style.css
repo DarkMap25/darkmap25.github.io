@@ -1430,11 +1430,23 @@
 
   /* 2) POP-UP LEAFLET — HAUTEUR MAXIMALE */
   /* ----------------------------------- */
-  /* On passe de 35vh à 30vh pour que la popup rentre mieux */
+  /* On passe de 35vh à 33vh pour que la popup rentre mieux */
+/* 1) On libère le wrapper pour que la scrollbar soit visible */
   .custom-popup .leaflet-popup-content-wrapper {
-    max-height: 30vh !important;
+    max-height: 33vh !important;     /* hauteur max de la bulle */
+    overflow: visible !important;    /* ne masque pas la scrollbar */
   }
 
+  /* 2) On rend le contenu scrollable à l’intérieur pour tout voir */
+  .custom-popup .leaflet-popup-content {
+    max-height: 33vh !important;     /* même hauteur max que le wrapper */
+    overflow-y: auto !important;     /* scrollbar verticale activée */
+    box-sizing: border-box;          /* padding inclus dans la hauteur */
+    padding: 0.5em 1em;              /* confort de lecture */
+    word-wrap: break-word;           /* coupe les mots trop longs */
+    white-space: normal;             /* autorise les retours à la ligne */
+  }
+        
   /* 3) CONTRÔLES LEAFLET — ZOOM, LOCALISATION, SOUMETTRE, PLEIN ÉCRAN, DÉS */
   /* --------------------------------------------------------------------- */
   /* On réduit de 20 % tous les boutons situés sur la carte */
@@ -1443,6 +1455,7 @@
   .leaflet-control-locate a,
   .leaflet-control-layers-toggle,
   .submit-story-control,
+  #randomButton,
   #fullscreenButton {
     transform: scale(0.8);
     transform-origin: center center;
