@@ -1329,8 +1329,8 @@
                 
                   /* Marges latérales égales dans le contenu scrollable “Soumettre” */
                   #submitContent {
-                    padding-left: 5vw;                 /* même marge à gauche */
-                    padding-right: 5vw;                /* même marge à droite */
+                    padding-left: 2vw;                 /* même marge à gauche */
+                    padding-right: 2vw;                /* même marge à droite */
                   }
                 
                   /* Assure le retour à la ligne automatique et la lisibilité du texte */
@@ -1355,9 +1355,9 @@
                   #submitPanel.visible header {
                     position: sticky;      /* reste collé en haut quand on scroll */
                     top: 0;                /* positionné tout en haut du panneau */
-                    z-index: 100;          /* au-dessus de tout le contenu défilant */
                     margin: 0 !important;                /* annule toute marge haut/bas */
-              }
+                    padding-top: 0 !important;  /* supprime la marge dans le panneau “Soumettre” */            
+                  }
                 
                   /* Contexte de position pour que le header soit au-dessus */
                   #submitContent {
@@ -1366,8 +1366,8 @@
 
                 /* 1) Centrage avec marge de 5 vw de chaque côté */
                   #detailPanel.full-view {
-                    padding-left: 5vw !important;
-                    padding-right: 5vw !important;
+                    padding-left: 2vw !important;
+                    padding-right: 2vw !important;
                     box-sizing: border-box;      /* inclut le padding dans la largeur calculée */
                   }
                 
