@@ -565,9 +565,7 @@
                   flex-direction: column;
                   align-items: center;
                   justify-content: center;
-                  position: fixed; /* <-- CHANGE ICI ! */
-                  top: 0; /* <-- AJOUTE CECI ! */
-                  width: 100%; /* <-- AJOUTE CECI ! */
+                  position: static;
                 }        
 
                 /* 4) Style du <h1> dans le header : placé en haut, centré, avec l’ombre de texte */
