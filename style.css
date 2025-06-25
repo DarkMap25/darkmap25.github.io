@@ -764,11 +764,18 @@
                 }
                 
                 /* 13) Responsive : passe en 1 colonne sous 768px pour la grille du formulaire */
-                @media (max-width: 768px) {
-                  .form-grid {
-                    grid-template-columns: 1fr; /* une seule colonne */
-                  }
-                }
+               @media (max-width: 768px) {
+                          .form-grid {
+                            grid-template-columns: 1fr !important;  /* une seule colonne */
+                            grid-gap: 1rem !important;              /* réduit le gap de 1.5rem → 1rem */
+                          }
+                        
+                          .form-group {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.3em !important;                  /* espace réduit entre question et champ */
+                          }
+                        }
 
         /* === II.4.2 Styles généraux pour les champs <input> et <textarea> de classe .form-input === */
 
