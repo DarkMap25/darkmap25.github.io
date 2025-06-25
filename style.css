@@ -1308,7 +1308,11 @@
                   .overlay-close {
                     font-size: calc(2rem * 0.7); /* passe de 2rem à ≃1.4rem */
                   }
-                
+               
+                        /* === RÉDUCTION DE 20 % DES EMOJIS DANS LA LÉGENDE === */
+                .info.legend .legend-item .emoji {
+                  font-size: 80% !important;    /* passe à 80 % de la taille originale */
+                }
  
   /* Soumettre  */
                         
