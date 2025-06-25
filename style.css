@@ -1180,6 +1180,7 @@
 
 
         /* === IV.I ≤ 768px === */
+
                 @media (max-width: 768px) {
                   /* 1. Autoriser le scroll si besoin (corps de page) */
                   html,
@@ -1311,7 +1312,7 @@
                
                         /* === RÉDUCTION DE 20 % DES EMOJIS DANS LA LÉGENDE === */
                 .info.legend .legend-item .emoji {
-                  font-size: 80% !important;    /* passe à 80 % de la taille originale */
+                  font-size: 12px;    
                 }
  
   /* Soumettre  */
@@ -1474,7 +1475,7 @@
   .submit-story-control,         /* bouton “Soumettre” */
   #randomButton,                 /* bouton “Histoire Aléatoire” */
   #fullscreenButton {            /* bouton plein écran */
-    margin-bottom: 0.3em !important;  /* réduit l’espace sous chaque bouton */
+    margin-bottom: 0.2em !important;  /* réduit l’espace sous chaque bouton */
   }        
         
   /* 4) LÉGENDE LEAFLET */
